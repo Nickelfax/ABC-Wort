@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#4a90d9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ABC Start">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../icon-512.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Start</title>
+    <style>
+        :root { --primary: #4a90e2; --secondary: #f5a623; --success: #2ecc71; --danger: #e74c3c; --purple: #9b59b6; --bg: #f0f4f8; --card-bg: #ffffff; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.5rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .word-display.empty { color: #bdc3c7; font-size: 1.2rem; font-weight: normal; font-style: italic; }
+        .char-block { background: #eef6ff; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; }
+        .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; }
+        button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn-clear { background: white !important; color: var(--danger) !important; border: 2px solid var(--danger); }
+        .toggle-switch { position: relative; width: 52px; height: 28px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+        .toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+        .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+        .case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .case-label { font-size: 1.1rem; font-weight: bold; min-width: 20px; color: #2c3e50; }
+        .diktat-status { font-size: 1rem; color: #555; min-height: 1.4em; }
+        .diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+        .diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+        .grammatik-display { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        .grammatik-aufgabe { font-size: 1.5rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; }
+        .artikel-buttons { display: flex; gap: 12px; justify-content: center; width: 100%; }
+        .art-btn { padding: 14px 24px; font-size: 1.4rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; max-width: 120px; }
+        .art-btn.richtig { background: var(--success); color: white; }
+        .art-btn.falsch { background: var(--danger); color: white; }
+        .auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+        .auswahl-btn { padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .auswahl-btn.richtig { background: var(--success); color: white; }
+        .auswahl-btn.falsch { background: var(--danger); color: white; }
+        .bewegung-hint { font-size: 1.5rem; animation: laufen 1.5s ease-in-out infinite; display: inline-block; }
+        @keyframes laufen { 0%,100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+        .key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 15px 5px; text-align: center; font-size: 1.4rem; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s; user-select: none; }
+        .key.vokal { background: #fff8e1; border-color: #ffe082; color: #e65100; }
+        .key.konsonant { background: #e8f5e9; border-color: #a5d6a7; color: #1b5e20; }
+        .key.diphthong { background: #fff3cd; border-color: #ffeeba; color: #856404; }
+        .key.zahl { background: #e8eaf6; border-color: #9fa8da; color: #283593; }
+        .keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 10px; }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-overlay.open { display: flex; }
+        .modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+
+        /* Uebersetzungs-Feature */
+        #uebersetzungAnzeige {
+            width: 100%; max-width: 700px; text-align: center;
+            font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em;
+            margin-bottom: 4px; letter-spacing: 0.03em;
+            transition: opacity 0.3s ease;
+        }
+        #uebersetzungAnzeige.laden { opacity: 0.4; }
+        #sprachDropdownBereich {
+            display: none; width: 100%; max-width: 700px;
+            margin-bottom: 10px; justify-content: center;
+            align-items: center; gap: 8px;
+        }
+        #sprachDropdownBereich.sichtbar { display: flex; }
+        #sprachSelect {
+            border-radius: 10px; border: 2px solid #e9ecef;
+            padding: 6px 10px; font-size: 1rem;
+            background: white; color: #2c3e50; cursor: pointer;
+        }
+        #sprachSelect:focus { outline: none; border-color: var(--primary); }
+        @media (max-width: 600px) {
+            body { padding: 8px; }
+            .word-display { min-height: 60px; font-size: 1.6rem; }
+            .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 5px; }
+            .key { padding: 10px 2px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px;">
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)">🔤</button>
+            <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)">➖</button>
+            <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)">🙈</button>
+            <div id="sprachDropdownInDiktat" style="display:none; margin-left:4px;">
+                <select id="sprachSelectDiktat" onchange="sprachWechseln(this.value)"
+                    style="border-radius:8px; border:2px solid #e9ecef; padding:4px 8px; font-size:0.95rem; background:white; color:#2c3e50; cursor:pointer;">
+                </select>
+            </div>
+            <span style="margin-left:auto; font-size:0.9rem; color:#555;">
+                ✓ <strong id="diktatRichtig">0</strong>
+                &nbsp;✗ <strong id="diktatFalsch">0</strong>
+            </span>
+        </div>
+    </div>
+    <div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px;">
+        <div style="display:flex; gap:8px;">
+            <button class="diktat-modus-btn aktiv" id="btnGArtikel" onclick="grammatikSetModus('artikel',this)">der die das</button>
+            <button class="diktat-modus-btn" id="btnGKasus" onclick="grammatikSetModus('kasus',this)">der den...</button>
+            <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">ich du...</button>
+            <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">🕐</button>
+        </div>
+    </div>
+    <div class="diktat-status" id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center;"></div>
+
+    <select id="sprachSelect" style="display:none;" onchange="sprachWechseln(this.value)"></select>
+    <div id="uebersetzungAnzeige"></div>
+
+    <div id="wordDisplay" class="word-display empty">Klicke auf Buchstaben, um ein Wort zu bauen</div>
+    <div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; padding:0 4px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+            <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+            <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+            <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary);">N1</span>
+        </div>
+    </div>
+    <div class="controls">
+        <button onclick="wiederholenButton()" style="background:#4a90e2; font-size:1.6rem;">🔁</button>
+        <button onclick="speakWord()" style="background:#2ecc71; font-size:1.6rem;">🔊</button>
+        <button onclick="randomWord()" style="background:#9b59b6; font-size:1.6rem;">🎲</button>
+        <div class="case-toggle" style="justify-content:center;">
+            <span style="font-size:1.2rem;">🖊️</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()">
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="case-label" id="diktatLabel" style="font-size:0.85rem;">Dkt</span>
+        </div>
+        <div class="case-toggle" style="justify-content:center;">
+            <span style="font-size:1.2rem;">❓</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()">
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="case-label" id="grammatikLabel" style="font-size:0.85rem;">Grm</span>
+        </div>
+        <div class="case-toggle" style="justify-content:center;">
+            <span style="font-size:1.2rem;">🌍</span>
+            <label class="toggle-switch" title="Uebersetzung ein- oder ausschalten">
+                <input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()">
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="case-label" id="uebersetzungLabel" style="font-size:0.85rem;">Tr</span>
+        </div>
+        <button class="btn-clear" onclick="clearWord()" style="font-size:1.6rem;">🗑️</button>
+    </div>
+    <div class="keyboard-container">
+        <div style="margin-bottom:15px;">
+            <div class="case-toggle">
+                <span style="font-size:1rem; font-weight:bold;">A</span>
+                <label class="toggle-switch"><input type="checkbox" id="caseToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+                <span class="case-label" id="caseLabel">a</span>
+                <label class="toggle-switch"><input type="checkbox" id="anlautToggle" checked><span class="toggle-slider"></span></label>
+                <span style="font-size:1rem; font-weight:bold;" id="anlautLabel">ABeCe</span>
+                <label class="toggle-switch" style="margin-left:12px;"><input type="checkbox" id="emojiToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+                <span style="font-size:1.2rem;">🖼️</span>
+            </div>
+            <div class="keyboard-grid" id="alphabetGrid"></div>
+        </div>
+        <div style="margin-bottom:15px;">
+            <div class="case-toggle">
+                <span style="font-size:0.9rem; color:#7f8c8d; font-weight:bold;">sch &amp; co.</span>
+                <label class="toggle-switch"><input type="checkbox" id="diphthongToggle"><span class="toggle-slider"></span></label>
+                <span class="case-label" id="diphthongLabel">aus</span>
+            </div>
+        </div>
+        <div style="margin-bottom:15px;">
+            <div class="case-toggle">
+                <span style="font-size:0.9rem; color:#7f8c8d; font-weight:bold;">🔢 (0-9)</span>
+                <label class="toggle-switch"><input type="checkbox" id="numberToggle"><span class="toggle-slider"></span></label>
+                <span class="case-label" id="numberLabel">aus</span>
+            </div>
+        </div>
+        <div>
+            <div class="case-toggle">
+                <span style="font-size:1.3rem;">🌈</span>
+                <label class="toggle-switch"><input type="checkbox" id="colorToggle"><span class="toggle-slider"></span></label>
+                <span class="case-label" id="colorLabel">aus</span>
+            </div>
+            <div class="keyboard-grid" id="colorGrid" style="display:none;"></div>
+        </div>
+    </div>
+    <div id="storageModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>📚 Gespeicherte Wörter</h2>
+            <div id="storedWordsList"></div>
+            <button style="background:#95a5a6; margin-top:15px; width:100%;" onclick="closeStorage()">Schließen</button>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script>
+        const alphabet = "A B C D E F G H I J K L M N O P Q R R S T U V W X Y Z Ä Ö Ü ß 💶".split(" ");
+        const vokale = new Set(['A','E','I','O','U','Ä','Ö','Ü','a','e','i','o','u','ä','ö','ü']);
+        const diphthongs = [
+            {char:"sch"},{char:"ch (ich)",audioKey:"ch_ich"},{char:"ch (ach)",audioKey:"ch_ach"},
+            {char:"ng"},{char:"ck"},{char:"sp"},{char:"st"},{char:"ei"},{char:"ie"},{char:"eu"},{char:"äu"},{char:"au"}
+        ];
+        const wordList = ["Mama","Papa","Kind","Haus","Baum","Hund","Katze","Maus","Schule","Buch","Tisch","Stuhl","Auto","Ball","Milch","Brot","Apfel","Sonne","Mond","Stern","Blume","Garten","Straße","Brücke","Schiff","Vogel","Fisch","Frosch"];
+        const audioData = {'a':'../audio_final/a.m4a','b':'../audio_final/b.m4a','r1':'../audio_final/r1.m4a','r2':'../audio_final/r2.m4a','ß':'../audio_final/ß.m4a','ae':'../audio_final/ae.m4a','oe':'../audio_final/oe.m4a','ue':'../audio_final/ue.m4a','sch':'../audio_final/sch.m4a','ch_ich':'../audio_final/ch_ich.m4a','ch_ach':'../audio_final/ch_ach.m4a'};
+        const audioDataWord = {'a':'../audio_final/ph_a.m4a'};
+
+        // Uebersetzungs-System
+        const sprachen = [
+            { code: 'ar', flag: '🇸🇦', name: 'العربية' },
+            { code: 'fa', flag: '🇮🇷', name: 'فارسی' },
+            { code: 'hi', flag: '🇮🇳', name: 'हिन्दी' },
+            { code: 'ur', flag: '🇵🇰', name: 'اردو' },
+            { code: 'ru', flag: '🇷🇺', name: 'Русский' },
+            { code: 'zh', flag: '🇨🇳', name: '中文' },
+            { code: 'en', flag: '🇬🇧', name: 'English' },
+            { code: 'tr', flag: '🇹🇷', name: 'Türkçe' },
+            { code: 'uk', flag: '🇺🇦', name: 'Українська' },
+        ];
+
+        let uebersetzungAktiv = false;
+        let userLang = 'ar';
+        try { userLang = localStorage.getItem('abcwort_lang') || 'ar'; } catch(e) {}
+        const uebersetzungsCache = {};
+
+        function sprachDropdownBauen() {
+            ['sprachSelect','sprachSelectDiktat'].forEach(id => {
+                const sel = document.getElementById(id);
+                if (!sel) return;
+                sel.innerHTML = '';
+                sprachen.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.code;
+                    opt.textContent = s.flag + ' ' + s.name;
+                    if (s.code === userLang) opt.selected = true;
+                    sel.appendChild(opt);
+                });
+            });
+        }
+
+        function sprachWechseln(code) {
+            userLang = code;
+            try { localStorage.setItem('abcwort_lang', code); } catch(e) {}
+            // beide Dropdowns synchron halten
+            ['sprachSelect','sprachSelectDiktat'].forEach(id => {
+                const sel = document.getElementById(id);
+                if (sel) sel.value = code;
+            });
+            const wort = uebersetzungsAktuellesWort();
+            if (wort) uebersetzeUndZeige(wort);
+        }
+
+        function uebersetzungToggle() {
+            uebersetzungAktiv = document.getElementById('uebersetzungToggleSwitch').checked;
+            const anzeige = document.getElementById('uebersetzungAnzeige');
+            const inDiktat = document.getElementById('sprachDropdownInDiktat');
+            if (uebersetzungAktiv) {
+                if (inDiktat) inDiktat.style.display = 'block';
+                const wort = uebersetzungsAktuellesWort();
+                if (wort) uebersetzeUndZeige(wort);
+            } else {
+                if (inDiktat) inDiktat.style.display = 'none';
+                anzeige.textContent = '';
+            }
+        }
+
+        function uebersetzungsAktuellesWort() {
+            if (diktatAktiv && diktatAktuell) return diktatAktuell;
+            if (grammatikAktiv && grammatikAktuell)
+                return grammatikAktuell.wort || grammatikAktuell.verb || '';
+            return '';
+        }
+
+        async function uebersetzeAPI(text) {
+            if (!text) return '';
+            const key = 'de:' + userLang + ':' + text;
+            if (uebersetzungsCache[key]) return uebersetzungsCache[key];
+            try {
+                const res = await fetch('https://libretranslate.com/translate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ q: text, source: 'de', target: userLang, format: 'text' })
+                });
+                if (!res.ok) return '';
+                const data = await res.json();
+                const result = data.translatedText || '';
+                if (result) uebersetzungsCache[key] = result;
+                return result;
+            } catch(e) { return ''; }
+        }
+
+        function uebersetzeUndZeige(text) {
+            if (!uebersetzungAktiv || !text) return;
+            const anzeige = document.getElementById('uebersetzungAnzeige');
+            const sprache = sprachen.find(s => s.code === userLang);
+            const flag = sprache ? sprache.flag : '🌍';
+            const key = 'de:' + userLang + ':' + text;
+            if (uebersetzungsCache[key]) {
+                anzeige.textContent = flag + ' ' + uebersetzungsCache[key];
+                anzeige.classList.remove('laden');
+                return;
+            }
+            anzeige.textContent = flag + ' …';
+            anzeige.classList.add('laden');
+            uebersetzeAPI(text).then(result => {
+                anzeige.textContent = result ? flag + ' ' + result : '';
+                anzeige.classList.remove('laden');
+            });
+        }
+        // Ende Uebersetzungs-System
+
+        let currentWord = [];
+        let savedWords = [];
+        try { savedWords = JSON.parse(localStorage.getItem('wordBuilderSavedWords')) || []; } catch(e) {}
+        function init() { renderAlphabet(); renderColors(); updateDisplay(); ladeExterneDaten(); }
+        async function ladeExterneDaten() { try { const [gRes,dRes] = await Promise.all([fetch('../data/grammatik.json'),fetch('../data/diktat.json')]); if(gRes.ok){const gData=await gRes.json();if(gData.artikel)grammatikDaten.artikel=gData.artikel;if(gData.kasus)grammatikDaten.kasus=gData.kasus;if(gData.tempus)grammatikDaten.tempus=gData.tempus;} if(dRes.ok){const dData=await dRes.json();const fixPfad=arr=>arr.map(e=>({...e,audio:'../'+e.audio}));if(dData.n1){if(dData.n1.worte)diktatWorteN1.splice(0,diktatWorteN1.length,...fixPfad(dData.n1.worte));if(dData.n1.silben)diktatSilbenN1.splice(0,diktatSilbenN1.length,...fixPfad(dData.n1.silben));}if(dData.n2){if(dData.n2.worte)diktatWorteN2.splice(0,diktatWorteN2.length,...fixPfad(dData.n2.worte));if(dData.n2.silben)diktatSilbenN2.splice(0,diktatSilbenN2.length,...fixPfad(dData.n2.silben));}if(dData.n3){if(dData.n3.worte)diktatWorteN3.splice(0,diktatWorteN3.length,...fixPfad(dData.n3.worte));}} } catch(e){console.log('Offline');} }
+        let diktatAktiv=false,grammatikAktiv=false,diktatRichtig=0,diktatFalsch=0;
+        function updateModusUI() {
+            const beides=diktatAktiv||grammatikAktiv;
+            
+            document.getElementById('niveauSliderBereich').style.display=beides?'block':'none';
+            document.getElementById('diktatStatus').style.display=beides?'block':'none';
+            document.getElementById('diktatModusBereich').style.display=diktatAktiv?'block':'none';
+            document.getElementById('grammatikZeile').style.display=grammatikAktiv?'flex':'none';
+            if(!beides){document.getElementById('diktatStatus').textContent='';document.getElementById('uebersetzungAnzeige').textContent='';updateDisplay();}
+        }
+        function diktatToggle(){diktatAktiv=document.getElementById('diktatToggleSwitch').checked;updateModusUI();if(diktatAktiv){diktatNeuesWort();}else if(grammatikAktiv){grammatikNeueAufgabe();}}
+        function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikToggleSwitch').checked;updateModusUI();if(grammatikAktiv){grammatikNeueAufgabe();}else if(diktatAktiv){diktatNeuesWort();}}
+        function niveauSliderChange(val){const niv=['n1','n2','n3'][val-1];diktatNiveau=niv;document.getElementById('niveauLabel').textContent='N'+val;if(diktatAktiv)diktatNeuesWort();if(grammatikAktiv)grammatikNeueAufgabe();}
+        function randomWord(){if(diktatAktiv&&grammatikAktiv){Math.random()>0.5?diktatNeuesWort():grammatikNeueAufgabe();}else if(diktatAktiv){diktatNeuesWort();}else if(grammatikAktiv){grammatikNeueAufgabe();}else{const word=wordList[Math.floor(Math.random()*wordList.length)];currentWord=word.split('');updateDisplay();speakWord();}}
+        function clearWord(){if(diktatAktiv){diktatEingabe='';diktatRender();return;}if(grammatikAktiv){grammatikNeueAufgabe();return;}if(currentWord.length===0)return;showToast('Gehalten: nochmal klicken zum Löschen',true,()=>{currentWord=[];updateDisplay();});}
+        function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;}if(diktatAktiv)diktatNochmal();else speakWord();}
+        function playAudioSequence(keys,index=0){if(index>=keys.length)return;const audio=new Audio(audioData[keys[index]]);audio.onended=()=>playAudioSequence(keys,index+1);audio.play().catch(()=>speakCharTTS(keys[index]));}
+        const vokalMap={'A':'Aaa','E':'Eee','I':'Iii','O':'Ooo','U':'Uuu','a':'aaa','e':'eee','i':'iii','o':'ooo','u':'uuu','Ä':'Äää','Ö':'Ööö','Ü':'Üüü','ä':'äää','ö':'ööö','ü':'üüü','ei':'ei','eu':'eu','äu':'äu','au':'au','sch':'sch','ch':'ch','ng':'ng','ck':'ck','sp':'sp','st':'st','ß':'ß'};
+        const konsonantMap={'B':'be','C':'ze','D':'de','F':'ef','G':'ge','H':'ha','J':'jot','K':'ka','L':'el','M':'em','N':'en','P':'pe','Q':'qu','R':'er','S':'es','T':'te','V':'ve','W':'we','X':'iks','Y':'üpsilon','Z':'zet','b':'be','c':'ze','d':'de','f':'ef','g':'ge','h':'ha','j':'jot','k':'ka','l':'el','m':'em','n':'en','p':'pe','q':'qu','r':'er','s':'es','t':'te','v':'ve','w':'we','x':'iks','y':'üpsilon','z':'zet'};
+        function speakCharTTS(char){const z={'0':'null','1':'eins','2':'zwei','3':'drei','4':'vier','5':'fünf','6':'sechs','7':'sieben','8':'acht','9':'neun'};const t=z[char]||vokalMap[char]||konsonantMap[char]||char;const u=new SpeechSynthesisUtterance(t);u.lang='de-DE';u.rate=(char in vokalMap)?0.6:0.8;u.pitch=1.1;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}
+        function speakCharWithKey(key){window.speechSynthesis.cancel();const usePhoneme=document.getElementById('anlautToggle').checked;const data=usePhoneme?audioData:audioDataWord;const src=data[key]||audioData[key];if(src)new Audio(src).play().catch(()=>speakCharTTS(key));else speakCharTTS(key);}
+        function speakChar(char){window.speechSynthesis.cancel();const lower=char.toLowerCase();if(lower==='ch'){playAudioSequence(['ch_ich','ch_ach']);return;}if(lower==='äu'){speakCharWithKey('eu');return;}if(lower==='ß'){speakCharWithKey('ß');return;}if(lower==='r'){speakCharWithKey('r1');return;}if(lower==='ä'){speakCharWithKey('ae');return;}if(lower==='ö'){speakCharWithKey('oe');return;}if(lower==='ü'){speakCharWithKey('ue');return;}const usePhoneme=document.getElementById('anlautToggle').checked;const data=usePhoneme?audioData:audioDataWord;const src=data[lower]||audioData[lower];if(src)new Audio(src).play().catch(()=>speakCharTTS(char));else speakCharTTS(char);}
+        function speakWord(){const wordStr=currentWord.join('');if(wordStr.length===0)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(wordStr);u.lang='de-DE';u.rate=0.85;const voices=window.speechSynthesis.getVoices();if(voices.length===0){window.speechSynthesis.addEventListener('voiceschanged',()=>window.speechSynthesis.speak(u),{once:true});}else{window.speechSynthesis.speak(u);}}
+        const rIndex=alphabet.indexOf('R');
+        function renderAlphabet(){const container=document.getElementById('alphabetGrid');const isLower=document.getElementById('caseToggle').checked;const useEmoji=document.getElementById('emojiToggle').checked;const showDiphthongs=document.getElementById('diphthongToggle').checked;const showNumbers=document.getElementById('numberToggle').checked;container.innerHTML='';alphabet.forEach((upperChar,idx)=>{const char=isLower?upperChar.toLowerCase():upperChar;const btn=document.createElement('div');if(upperChar==='💶'){const spacer=document.createElement('div');container.appendChild(spacer);btn.className='key zahl';btn.innerHTML='<span style="font-size:1.1rem;">€</span>';btn.onclick=()=>window.open('https://ko-fi.com/nickelfax','_blank');container.appendChild(btn);return;}btn.className='key '+(vokale.has(upperChar)?'vokal':'konsonant');btn.textContent=char;if(upperChar==='R'&&idx===rIndex+1){btn.textContent=char+'₂';btn.onclick=()=>{if(diktatAktiv){diktatAddChar(char);return;}currentWord.push(char);updateDisplay();speakCharWithKey('r2');};}else if(upperChar==='R'&&idx===rIndex){btn.textContent=char+'₁';btn.onclick=()=>{if(diktatAktiv){diktatAddChar(char);return;}currentWord.push(char);updateDisplay();speakCharWithKey('r1');};}else{btn.onclick=()=>addChar(upperChar==='ß'?'ß':char);}container.appendChild(btn);});if(showDiphthongs){diphthongs.forEach(item=>{const btn=document.createElement('div');btn.className='key diphthong';btn.textContent=item.char;if(item.audioKey){btn.onclick=()=>{if(diktatAktiv){diktatAddChar('ch');return;}currentWord.push('ch');updateDisplay();new Audio(audioData[item.audioKey]).play().catch(()=>speakCharTTS('ch'));};}else{btn.onclick=()=>addChar(item.char);}container.appendChild(btn);});}if(showNumbers){for(let i=0;i<=9;i++){const btn=document.createElement('div');btn.className='key zahl';btn.textContent=i;btn.onclick=()=>{if(diktatAktiv){diktatAddChar(String(i));return;}currentWord.push(String(i));updateDisplay();speakCharTTS(String(i));};container.appendChild(btn);}}}
+        function renderColors(){const grid=document.getElementById('colorGrid');grid.innerHTML='';const colors=[{emoji:'🔴',word:'rot'},{emoji:'🟠',word:'orange'},{emoji:'🟡',word:'gelb'},{emoji:'🟢',word:'grün'},{emoji:'🔵',word:'blau'},{emoji:'🟣',word:'lila'},{emoji:'⚫',word:'schwarz'},{emoji:'⚪',word:'weiß'},{emoji:'🟤',word:'braun'},{emoji:'🌸',word:'rosa'},{emoji:'🌫️',word:'grau'}];colors.forEach(item=>{const btn=document.createElement('div');btn.className='key zahl';btn.innerHTML=`<span style="font-size:1.4rem;">${item.emoji}</span><span style="font-size:0.6rem;font-weight:bold;">${item.word}</span>`;btn.onclick=()=>{currentWord.push(item.word);updateDisplay();speakCharTTS(item.word);};grid.appendChild(btn);});}
+        function addChar(char){if(diktatAktiv){diktatAddChar(char);return;}currentWord.push(char);updateDisplay();speakChar(char);}
+        function removeChar(index){currentWord.splice(index,1);updateDisplay();}
+        function updateDisplay(){const display=document.getElementById('wordDisplay');display.innerHTML='';if(diktatAktiv){diktatRender();return;}if(currentWord.length===0){display.classList.add('empty');display.textContent='Klicke auf Buchstaben, um ein Wort zu bauen';return;}display.classList.remove('empty');currentWord.forEach((char,index)=>{const span=document.createElement('div');span.className='char-block';span.textContent=char;span.onclick=()=>removeChar(index);display.appendChild(span);});}
+        function saveWord(){if(currentWord.length===0){showToast('Bitte erstelle zuerst ein Wort!');return;}const wordStr=currentWord.join('');if(savedWords.includes(wordStr)){showToast('Dieses Wort ist bereits gespeichert!');return;}savedWords.push(wordStr);try{localStorage.setItem('wordBuilderSavedWords',JSON.stringify(savedWords));}catch(e){}showToast('Wort gespeichert! 🎉');currentWord=[];updateDisplay();}
+        function openStorage(){const content=document.getElementById('storedWordsList');content.innerHTML='';if(savedWords.length===0){const p=document.createElement('p');p.textContent='Noch keine gespeicherten Wörter.';content.appendChild(p);}else{savedWords.forEach((word,index)=>{const div=document.createElement('div');const span=document.createElement('span');span.textContent=word;const btn=document.createElement('button');btn.textContent='Löschen';btn.onclick=()=>deleteWord(index);div.appendChild(span);div.appendChild(btn);content.appendChild(div);});}document.getElementById('storageModal').classList.add('open');}
+        function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+        function deleteWord(index){savedWords.splice(index,1);try{localStorage.setItem('wordBuilderSavedWords',JSON.stringify(savedWords));}catch(e){}openStorage();}
+        let toastTimer=null,pendingAction=null;
+        function showToast(message,withAction=false,action=null){const toast=document.getElementById('toast');toast.textContent=message;toast.classList.add('show');pendingAction=withAction?action:null;if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.classList.remove('show');if(pendingAction){pendingAction();pendingAction=null;}},1800);}
+        document.addEventListener('DOMContentLoaded',()=>{document.getElementById('colorToggle').addEventListener('change',function(){document.getElementById('colorGrid').style.display=this.checked?'':'none';document.getElementById('colorLabel').textContent=this.checked?'an':'aus';});document.getElementById('diphthongToggle').addEventListener('change',function(){document.getElementById('diphthongLabel').textContent=this.checked?'an':'aus';renderAlphabet();});document.getElementById('numberToggle').addEventListener('change',function(){document.getElementById('numberLabel').textContent=this.checked?'an':'aus';renderAlphabet();});});
+        let diktatAktuell='',diktatGesperrt=false,diktatHatFehler=false,diktatBuzzerGespielt=false,diktatModus='hilfe',diktatEingabe='',diktatListe='worte',diktatNiveau='n1';
+        let diktatCtx=null;
+        function getDiktatCtx(){if(!diktatCtx)diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return diktatCtx;}
+        const diktatWorteN1=[{wort:'Essen',audio:'../audio_diktat/Essen.m4a'},{wort:'Ball',audio:'../audio_diktat/Ball.m4a'},{wort:'Buch',audio:'../audio_diktat/Buch.m4a'},{wort:'Hund',audio:'../audio_diktat/Hund.m4a'},{wort:'Sonne',audio:'../audio_diktat/Sonne.m4a'},{wort:'Hand',audio:'../audio_diktat/Hand.m4a'},{wort:'Nase',audio:'../audio_diktat/Nase.m4a'},{wort:'Kalt',audio:'../audio_diktat/Kalt.m4a'},{wort:'Warm',audio:'../audio_diktat/Warm.m4a'},{wort:'Zug',audio:'../audio_diktat/Zug.m4a'}];
+        const diktatSilbenN1=[{wort:'ab',audio:'../audio_diktat/Ab-.m4a'},{wort:'be',audio:'../audio_diktat/Be-.m4a'},{wort:'ge',audio:'../audio_diktat/Ge-.m4a'}];
+        const diktatWorteN2=[{wort:'Blume',audio:'../audio_diktat/Blume.m4a'},{wort:'Schule',audio:'../audio_diktat/Schule.m4a'},{wort:'Garten',audio:'../audio_diktat/Garten.m4a'}];
+        const diktatSilbenN2=[{wort:'un',audio:'../audio_diktat/Un-.m4a'},{wort:'ver',audio:'../audio_diktat/Ver-.m4a'}];
+        const diktatWorteN3=[{wort:'Freundschaft',audio:'../audio_diktat/Freundschaft.m4a'},{wort:'Verantwortung',audio:'../audio_diktat/Verantwortung.m4a'}];
+        const diktatSilbenN3=[];
+        function diktatGetListe(){const istSilbe=diktatListe==='silben';let worte,silben;if(diktatNiveau==='n1'){worte=diktatWorteN1;silben=diktatSilbenN1;}else if(diktatNiveau==='n2'){worte=diktatWorteN2;silben=diktatSilbenN2;}else{worte=diktatWorteN3;silben=diktatSilbenN3;}const liste=istSilbe?silben:worte;if(liste.length===0)return istSilbe?diktatSilbenN1:diktatWorteN1;return liste;}
+        let isPro=false;
+        try{isPro=localStorage.getItem('abcwort_pro')==='true';}catch(e){}
+        function proCheck(feature){if(isPro)return true;const display=document.getElementById('wordDisplay');display.classList.remove('empty');display.innerHTML=`<div style="text-align:center;padding:1rem;"><div style="font-size:2rem;">🔓</div><div>${feature} ist nur in Pro verfügbar.</div><button onclick="window.open('https://ko-fi.com/nickelfax','_blank')" style="background:var(--secondary);padding:10px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-weight:bold;margin-top:8px;">Pro freischalten ☕</button></div>`;return false;}
+        function proKaufen(){window.open('https://ko-fi.com/nickelfax','_blank');}
+        function proAktivieren(){const code=prompt('Pro-Code eingeben:');if(!code)return;if(code.toUpperCase()==='ABCWORT-PRO-2025'){isPro=true;try{localStorage.setItem('abcwort_pro','true');}catch(e){}showToast('Pro aktiviert! 🎉');updateDisplay();}else{showToast('Falscher Code!');}}
+        let grammatikModus='artikel',grammatikGesperrt=false,grammatikAktuell=null;
+        const verbForms={'sein':['bin','bist','ist','sind','seid','sind'],'haben':['habe','hast','hat','haben','habt','haben'],'machen':['mache','machst','macht','machen','macht','machen'],'spielen':['spiele','spielst','spielt','spielen','spielt','spielen'],'können':['kann','kannst','kann','können','könnt','können']};
+        const pronouns=['👤 ich','👤 du','👤 er','👤👤 wir','👤👤 ihr','👤👤 sie'];
+        const pronounsTTS=['ich','du','er','wir','ihr','sie'];
+        const verbGroups={n1:['sein','haben','machen','spielen'],n2_unreg:['fahren','laufen'],n2_trenn:['einkaufen'],n3_modal:['können']};
+        const grammatikDaten={artikel:{n1:[{wort:'Hund',artikel:'der',unbestimmt:'ein',emoji:'🐕'},{wort:'Katze',artikel:'die',unbestimmt:'eine',emoji:'🐈'},{wort:'Kind',artikel:'das',unbestimmt:'ein',emoji:'👦'},{wort:'Ball',artikel:'der',unbestimmt:'ein',emoji:'⚽'},{wort:'Sonne',artikel:'die',unbestimmt:'eine',emoji:'☀️'},{wort:'Buch',artikel:'das',unbestimmt:'ein',emoji:'📖'}],n2:[{wort:'Schule',artikel:'die',unbestimmt:'eine',emoji:'🏫'},{wort:'Tisch',artikel:'der',unbestimmt:'ein',emoji:'🪑'}],n3:[{wort:'Gerechtigkeit',artikel:'die',unbestimmt:'eine',emoji:'⚖️'},{wort:'Freundschaft',artikel:'die',unbestimmt:'eine',emoji:'🤝'}]},kasus:{n1:[{satz:'Ich sehe ___',wort:'Hund',kasus:'Akkusativ',antworten:['der Hund','den Hund','dem Hund','des Hundes'],richtig:'den Hund'}],n2:[{satz:'Wir besuchen ___',wort:'Schule',kasus:'Akkusativ',antworten:['die Schule','der Schule','den Schule','dem Schule'],richtig:'die Schule'}],n3:[{satz:'Trotz ___ Regens',wort:'Regen',kasus:'Genitiv',antworten:['der Regen','den Regen','dem Regen','des Regens'],richtig:'des Regens'}]},tempus:{n1:[{verb:'gehen',hilfsverb:'sein',bewegung:true,antworten:['hat gegangen','ist gegangen','haben gegangen','sind gegangen'],richtig:'ist gegangen'},{verb:'essen',hilfsverb:'haben',bewegung:false,antworten:['ist gegessen','hat gegessen','sind gegessen','haben gegessen'],richtig:'hat gegessen'}],n2:[{verb:'fahren',hilfsverb:'sein',bewegung:true,antworten:['hat gefahren','ist gefahren','haben gefahren','sind gefahren'],richtig:'ist gefahren'}],n3:[{verb:'verstehen',hilfsverb:'haben',bewegung:false,antworten:['ist verstanden','hat verstanden','sind verstanden','haben verstanden'],richtig:'hat verstanden'}]}};
+        function grammatikSetModus(modus,btn){grammatikModus=modus;['btnGArtikel','btnGKasus','btnGKonj','btnGTempus'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('aktiv');});btn.classList.add('aktiv');grammatikNeueAufgabe();}
+        function grammatikGetListe(){const niv=diktatNiveau==='alle'?'n1':diktatNiveau;if(grammatikModus==='konjugation')return null;const data=grammatikDaten[grammatikModus];if(!data)return[];if(diktatNiveau==='alle')return[...(data.n1||[]),...(data.n2||[]),...(data.n3||[])];return data[niv]||data.n1||[];}
+        function grammatikGetVerb(){const niv=diktatNiveau;let pool=[...verbGroups.n1];if(niv==='n2'||niv==='alle'){if(!isPro){proCheck('N2 Verben');return null;}pool=[...verbGroups.n2_unreg,...verbGroups.n2_trenn];}if(niv==='n3'){if(!isPro){proCheck('Modalverben');return null;}pool=[...verbGroups.n3_modal];}const verb=pool[Math.floor(Math.random()*pool.length)];const pronIdx=Math.floor(Math.random()*6);const richtig=verbForms[verb]?verbForms[verb][pronIdx]:'...';const anderen=(verbForms[verb]||[]).filter((_,i)=>i!==pronIdx);const falsche=shuffle(anderen).slice(0,3);return{verb,pronomen:pronouns[pronIdx],pronomenTTS:pronounsTTS[pronIdx],richtig,antworten:shuffle([richtig,...falsche])};}
+        function grammatikNeueAufgabe(){grammatikGesperrt=false;const letztes=grammatikAktuell;if(grammatikModus==='konjugation'){let versuche=0;do{grammatikAktuell=grammatikGetVerb();versuche++;}while(grammatikAktuell&&letztes&&grammatikAktuell.verb===letztes.verb&&versuche<5);if(!grammatikAktuell)return;}else{if((diktatNiveau==='n2'||diktatNiveau==='n3')&&!isPro){proCheck('N2 und N3 Grammatik');return;}const liste=grammatikGetListe();if(!liste||liste.length===0)return;let versuche=0;do{grammatikAktuell=liste[Math.floor(Math.random()*liste.length)];versuche++;}while(letztes&&grammatikAktuell===letztes&&liste.length>1&&versuche<5);}
+            grammatikRender();
+            grammatikSprechen();
+            if(uebersetzungAktiv&&grammatikAktuell){const _gw=grammatikAktuell.wort||grammatikAktuell.verb||'';if(_gw)uebersetzeUndZeige(_gw);}
+        }
+        function grammatikSprechen(){window.speechSynthesis.cancel();let text='';if(grammatikModus==='artikel')text=grammatikAktuell.wort;else if(grammatikModus==='kasus')text=grammatikAktuell.satz.replace('___','');else if(grammatikModus==='konjugation'){const pronIdx=pronouns.indexOf(grammatikAktuell.pronomen);const pronTTS=pronIdx>=0?pronounsTTS[pronIdx]:grammatikAktuell.pronomen;text=`${pronTTS} ${grammatikAktuell.verb}`;}else if(grammatikModus==='tempus')text=grammatikAktuell.verb;const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=0.85;window.speechSynthesis.speak(u);}
+        function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+        const personFarben={'👤 ich':'#0097a7','👤 du':'#f57c00','👤 er':'#ab47bc','👤👤 wir':'#0097a7','👤👤 ihr':'#f57c00','👤👤 sie':'#ab47bc'};
+        function personColor(pronomen){return personFarben[pronomen]||'#2c3e50';}
+        function grammatikRender(){const display=document.getElementById('wordDisplay');display.classList.remove('empty');display.innerHTML='';const d=grammatikAktuell;if(grammatikModus==='artikel'){const bestimmt=Math.random()>0.4;const richtigerArtikel=bestimmt?d.artikel:d.unbestimmt;display.innerHTML=`<div class="grammatik-display"><div class="grammatik-aufgabe">${d.emoji} ${d.wort}</div><div style="font-size:0.85rem;color:#7f8c8d;">${bestimmt?'Bestimmter Artikel?':'Unbestimmter Artikel?'}</div><div class="artikel-buttons"><button class="art-btn" onclick="grammatikCheckArtikel('${bestimmt?'der':'ein'}','${richtigerArtikel}',this)" style="color:#1565c0;">👤 ${bestimmt?'der':'ein'}</button><button class="art-btn" onclick="grammatikCheckArtikel('${bestimmt?'die':'eine'}','${richtigerArtikel}',this)" style="color:#c62828;">👤 ${bestimmt?'die':'eine'}</button><button class="art-btn" onclick="grammatikCheckArtikel('${bestimmt?'das':'ein'}','${richtigerArtikel}',this)" style="color:#2e7d32;">👤 ${bestimmt?'das':'ein'}</button></div><div id="grammatikStatus" class="diktat-status"></div></div>`;}else if(grammatikModus==='kasus'){const btns=shuffle(d.antworten);display.innerHTML=`<div class="grammatik-display"><div class="grammatik-aufgabe">${d.satz}</div><div style="font-size:0.85rem;color:#7f8c8d;">${d.kasus} · ${d.wort}</div><div class="auswahl-grid">${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${a}</button>`).join('')}</div><div id="grammatikStatus" class="diktat-status"></div></div>`;}else if(grammatikModus==='konjugation'){const btns=shuffle([...grammatikAktuell.antworten]);const pColor=personColor(grammatikAktuell.pronomen);display.innerHTML=`<div class="grammatik-display"><div class="grammatik-aufgabe" style="color:${pColor};">${grammatikAktuell.pronomen}</div><div style="font-size:0.85rem;color:#7f8c8d;">___ (${grammatikAktuell.verb})</div><div class="auswahl-grid">${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${grammatikAktuell.pronomen} ${a}</button>`).join('')}</div><div id="grammatikStatus" class="diktat-status"></div></div>`;}else if(grammatikModus==='tempus'){const btns=shuffle(d.antworten);const bHint=d.bewegung?'<span class="bewegung-hint">🏃</span> ':'';};}
+        function grammatikCheckArtikel(antwort,richtig,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;const korrekt=antwort===richtig;btn.classList.add(korrekt?'richtig':'falsch');if(!korrekt){btn.closest('.grammatik-display').querySelectorAll('.art-btn').forEach(b=>{const bText=b.textContent.trim().split(' ').pop();if(bText===richtig)b.classList.add('richtig');});}if(korrekt){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='✓ Richtig! 🎉';setTimeout(diktatFanfare,300);}else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`✗ Falsch! Es heißt: ${richtig} ${grammatikAktuell.wort}`;diktatBuzzer();}setTimeout(grammatikNeueAufgabe,1800);}
+        function grammatikCheck(antwort,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;const d=grammatikAktuell;let richtig=false;if(grammatikModus==='kasus')richtig=antwort===d.richtig;else if(grammatikModus==='konjugation')richtig=antwort===d.richtig;else if(grammatikModus==='tempus')richtig=antwort===d.richtig;btn.classList.add(richtig?'richtig':'falsch');if(richtig){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='✓ Richtig! 🎉';setTimeout(diktatFanfare,300);}else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='✗ Nicht ganz!';diktatBuzzer();}setTimeout(grammatikNeueAufgabe,1800);}
+        function diktatSetModus(m,btn){diktatModus=m;document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');diktatRender();}
+        function diktatNeuesWort(){const liste=diktatGetListe();const eintrag=liste[Math.floor(Math.random()*liste.length)];diktatAktuell=eintrag.wort;diktatAudioSrc=eintrag.audio;diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;currentWord=[];diktatRender();document.getElementById('diktatStatus').textContent='Hör zu und tippe das Wort';diktatSprechen();if(uebersetzungAktiv)uebersetzeUndZeige(diktatAktuell);}
+
+        let diktatAudioSrc='';
+        function diktatNochmal(){if(diktatAktuell)diktatSprechen();}
+        function diktatSprechen(){window.speechSynthesis.cancel();if(diktatAudioSrc){const audio=new Audio(diktatAudioSrc);audio.play().catch(()=>{const u=new SpeechSynthesisUtterance(diktatAktuell);u.lang='de-DE';u.rate=0.85;window.speechSynthesis.speak(u);});}}
+        function diktatRender(){const display=document.getElementById('wordDisplay');display.classList.remove('empty');const ziel=diktatAktuell.toLowerCase();const t=diktatEingabe.toLowerCase();let html=ziel.split('').map((b,i)=>{if(i<t.length){const farbe=t[i]===b?'var(--success)':'var(--danger)';const klick=t[i]!==b?`onclick="diktatLoeschen(${i})"`:'';}return`<div class="char-block" style="color:#bdc3c7">${diktatAktuell[i]}</div>`;}).join('');display.innerHTML=html;}
+        function diktatLoeschen(ab){diktatEingabe=diktatEingabe.substring(0,ab);diktatRender();}
+        function diktatAddChar(char){if(diktatGesperrt)return;const ziel=diktatAktuell.toLowerCase();const naechsterIdx=diktatEingabe.length;if(naechsterIdx>=ziel.length)return;diktatEingabe+=char;speakChar(char);if(char.toLowerCase()!==ziel[naechsterIdx]){diktatHatFehler=true;if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}}diktatRender();if(diktatEingabe.toLowerCase()===ziel){diktatGesperrt=true;if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Richtig! 🎉';}else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='Richtig — aber mit Korrekturen.';}setTimeout(diktatFanfare,300);setTimeout(diktatNeuesWort,2400);}else{document.getElementById('diktatStatus').textContent=diktatEingabe.length<ziel.length?'Weiter tippen…':'Noch nicht ganz…';}}
+        function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;[523.25,659.25,783.99,1046.5].forEach((f,i)=>{const o=ctx.createOscillator();const g=ctx.createGain();o.type='sawtooth';o.frequency.value=f;g.gain.setValueAtTime(0,t+i*0.13);g.gain.linearRampToValueAtTime(0.2,t+i*0.13+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+i*0.13+0.3);o.connect(g);g.connect(ctx.destination);o.start(t+i*0.13);o.stop(t+i*0.13+0.35);});}catch(e){}}
+        function diktatBuzzer(){try{const ctx=getDiktatCtx();const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type='sawtooth';osc.frequency.setValueAtTime(180,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);gain.gain.setValueAtTime(0.25,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+0.22);}catch(e){}}
+        window.addEventListener('DOMContentLoaded',init);
+    </script>
+    <script>
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../sw.js').then(()=>console.log('SW aktiv ✓')).catch(err=>console.log('SW Fehler:',err));});}
+    </script>
+</body>
+</html>
