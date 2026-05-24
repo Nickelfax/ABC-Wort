@@ -244,71 +244,73 @@ const laDeDict = {
 const grammatikDaten = {
     kasus: {
         n1: [
-            // 1. Deklination (a-Stämme, meist fem.)
-            { wort:'porta', kasus:'Genitiv Sg.', antworten:['portae','portam','portā','portarum'], richtig:'portae', hinweis:'1. Dekl. · Genitiv Sg.' },
-            { wort:'porta', kasus:'Akkusativ Sg.', antworten:['portam','portae','portā','portas'], richtig:'portam', hinweis:'1. Dekl. · Akkusativ Sg.' },
-            { wort:'aqua',  kasus:'Dativ Sg.', antworten:['aquae','aquam','aquā','aquas'], richtig:'aquae', hinweis:'1. Dekl. · Dativ Sg.' },
-            // 2. Deklination (o-Stämme, meist mask.)
-            { wort:'filius', kasus:'Genitiv Sg.', antworten:['filii','filium','filio','filiorum'], richtig:'filii', hinweis:'2. Dekl. · Genitiv Sg.' },
-            { wort:'dominus', kasus:'Akkusativ Sg.', antworten:['dominum','domini','domino','dominos'], richtig:'dominum', hinweis:'2. Dekl. · Akkusativ Sg.' },
-            { wort:'bellum', kasus:'Genitiv Sg.', antworten:['belli','bellum','bello','bellorum'], richtig:'belli', hinweis:'2. Dekl. (neut.) · Genitiv Sg.' },
-            // Vokativ N1
-            { wort:'amicus', kasus:'Vokativ Sg.', antworten:['amice','amicus','amici','amicum'], richtig:'amice', hinweis:'2. Dekl. · Vokativ: -us → -e' },
-            { wort:'porta',  kasus:'Vokativ Sg.', antworten:['porta','portae','portam','portā'], richtig:'porta', hinweis:'1. Dekl. · Vokativ = Nominativ' },
+            { wort:'porta', kasus:'Genitiv Sg.', antworten:['portae','portam','portā','portarum'], richtig:'portae', hinweis:'1. Dekl. · Genitiv Sg.', deutsch:'des Tores (Gen.)' },
+            { wort:'porta', kasus:'Akkusativ Sg.', antworten:['portam','portae','portā','portas'], richtig:'portam', hinweis:'1. Dekl. · Akkusativ Sg.', deutsch:'das Tor (Akk.)' },
+            { wort:'aqua',  kasus:'Dativ Sg.', antworten:['aquae','aquam','aquā','aquas'], richtig:'aquae', hinweis:'1. Dekl. · Dativ Sg.', deutsch:'dem Wasser (Dat.)' },
+            { wort:'filius', kasus:'Genitiv Sg.', antworten:['filii','filium','filio','filiorum'], richtig:'filii', hinweis:'2. Dekl. · Genitiv Sg.', deutsch:'des Sohnes (Gen.)' },
+            { wort:'dominus', kasus:'Akkusativ Sg.', antworten:['dominum','domini','domino','dominos'], richtig:'dominum', hinweis:'2. Dekl. · Akkusativ Sg.', deutsch:'den Herrn (Akk.)' },
+            { wort:'bellum', kasus:'Genitiv Sg.', antworten:['belli','bellum','bello','bellorum'], richtig:'belli', hinweis:'2. Dekl. (neut.) · Genitiv Sg.', deutsch:'des Krieges (Gen.)' },
+            { wort:'amicus', kasus:'Vokativ Sg.', antworten:['amice','amicus','amici','amicum'], richtig:'amice', hinweis:'2. Dekl. · Vokativ: -us → -e', deutsch:'o Freund! (Vok.)' },
+            { wort:'porta',  kasus:'Vokativ Sg.', antworten:['porta','portae','portam','portā'], richtig:'porta', hinweis:'1. Dekl. · Vokativ = Nominativ', deutsch:'o Tor! (Vok.)' },
         ],
         n2: [
-            // 3. Deklination (kons. Stämme)
-            { wort:'rex', kasus:'Genitiv Sg.', antworten:['regis','regem','regi','regum'], richtig:'regis', hinweis:'3. Dekl. · Genitiv Sg.' },
-            { wort:'miles', kasus:'Akkusativ Sg.', antworten:['militem','militis','militi','milites'], richtig:'militem', hinweis:'3. Dekl. · Akkusativ Sg.' },
-            { wort:'homo', kasus:'Dativ Sg.', antworten:['homini','hominem','hominis','hominibus'], richtig:'homini', hinweis:'3. Dekl. · Dativ Sg.' },
-            { wort:'pax', kasus:'Ablativ Sg.', antworten:['pace','pacis','pacem','paci'], richtig:'pace', hinweis:'3. Dekl. · Ablativ Sg.' },
-            // Vokativ N2 – der berühmteste aller Vokative!
-            { wort:'Brutus', kasus:'Vokativ Sg.', antworten:['Brute','Brutus','Bruti','Brutum'], richtig:'Brute', hinweis:'Et tu, Brute? · 2. Dekl. Vokativ' },
-            { wort:'filius', kasus:'Vokativ Sg.', antworten:['fili','filius','filii','filium'], richtig:'fili', hinweis:'2. Dekl. auf -ius → -i (Vokativ)' },
+            { wort:'rex', kasus:'Genitiv Sg.', antworten:['regis','regem','regi','regum'], richtig:'regis', hinweis:'3. Dekl. · Genitiv Sg.', deutsch:'des Königs (Gen.)' },
+            { wort:'miles', kasus:'Akkusativ Sg.', antworten:['militem','militis','militi','milites'], richtig:'militem', hinweis:'3. Dekl. · Akkusativ Sg.', deutsch:'den Soldaten (Akk.)' },
+            { wort:'homo', kasus:'Dativ Sg.', antworten:['homini','hominem','hominis','hominibus'], richtig:'homini', hinweis:'3. Dekl. · Dativ Sg.', deutsch:'dem Menschen (Dat.)' },
+            { wort:'pax', kasus:'Ablativ Sg.', antworten:['pace','pacis','pacem','paci'], richtig:'pace', hinweis:'3. Dekl. · Ablativ Sg.', deutsch:'mit/durch Frieden (Abl.)' },
+            { wort:'Brutus', kasus:'Vokativ Sg.', antworten:['Brute','Brutus','Bruti','Brutum'], richtig:'Brute', hinweis:'Et tu, Brute? · 2. Dekl. Vokativ', deutsch:'o Brutus! (Vok.)' },
+            { wort:'filius', kasus:'Vokativ Sg.', antworten:['fili','filius','filii','filium'], richtig:'fili', hinweis:'2. Dekl. auf -ius → -i (Vokativ)', deutsch:'o Sohn! (Vok.)' },
         ],
         n3: [
-            // Plural + Ablativ mit Präpositionen
-            { wort:'porta', kasus:'Genitiv Pl.', antworten:['portarum','portae','portas','portis'], richtig:'portarum', hinweis:'1. Dekl. · Genitiv Pl.' },
-            { wort:'filius', kasus:'Dativ/Abl. Pl.', antworten:['filiis','filii','filios','filiorum'], richtig:'filiis', hinweis:'2. Dekl. · Dat./Abl. Pl.' },
-            { wort:'rex', kasus:'Akkusativ Pl.', antworten:['reges','regis','regum','regibus'], richtig:'reges', hinweis:'3. Dekl. · Akkusativ Pl.' },
-            { wort:'cum amico', kasus:'Ablativ (Bedeutung)', antworten:['mit dem Freund','des Freundes','dem Freund','den Freund'], richtig:'mit dem Freund', hinweis:'cum + Ablativ = mit' },
-            { wort:'ex silva', kasus:'Ablativ (Bedeutung)', antworten:['aus dem Wald','in den Wald','des Waldes','im Wald'], richtig:'aus dem Wald', hinweis:'ex + Ablativ = aus' },
-            { wort:'sine aqua', kasus:'Ablativ (Bedeutung)', antworten:['ohne Wasser','mit Wasser','im Wasser','des Wassers'], richtig:'ohne Wasser', hinweis:'sine + Ablativ = ohne' },
+            { wort:'porta', kasus:'Genitiv Pl.', antworten:['portarum','portae','portas','portis'], richtig:'portarum', hinweis:'1. Dekl. · Genitiv Pl.', deutsch:'der Tore (Gen.Pl.)' },
+            { wort:'filius', kasus:'Dativ/Abl. Pl.', antworten:['filiis','filii','filios','filiorum'], richtig:'filiis', hinweis:'2. Dekl. · Dat./Abl. Pl.', deutsch:'den Söhnen (Dat.Pl.)' },
+            { wort:'rex', kasus:'Akkusativ Pl.', antworten:['reges','regis','regum','regibus'], richtig:'reges', hinweis:'3. Dekl. · Akkusativ Pl.', deutsch:'die Könige (Akk.Pl.)' },
+            { wort:'cum amico', kasus:'Ablativ (Bedeutung)', antworten:['mit dem Freund','des Freundes','dem Freund','den Freund'], richtig:'mit dem Freund', hinweis:'cum + Ablativ = mit', deutsch:'mit dem Freund' },
+            { wort:'ex silva', kasus:'Ablativ (Bedeutung)', antworten:['aus dem Wald','in den Wald','des Waldes','im Wald'], richtig:'aus dem Wald', hinweis:'ex + Ablativ = aus', deutsch:'aus dem Wald' },
+            { wort:'sine aqua', kasus:'Ablativ (Bedeutung)', antworten:['ohne Wasser','mit Wasser','im Wasser','des Wassers'], richtig:'ohne Wasser', hinweis:'sine + Ablativ = ohne', deutsch:'ohne Wasser' },
         ],
     },
     genus: {
-        // Latein hat 3 Genera: Mask./Fem./Neut.
         n1: [
-            { wort:'porta',   genus:'f', emoji:'🚪', dekl:'1.' }, { wort:'aqua',    genus:'f', emoji:'💧', dekl:'1.' },
-            { wort:'silva',   genus:'f', emoji:'🌳', dekl:'1.' }, { wort:'luna',    genus:'f', emoji:'🌙', dekl:'1.' },
-            { wort:'dominus', genus:'m', emoji:'👨', dekl:'2.' }, { wort:'filius',  genus:'m', emoji:'👦', dekl:'2.' },
-            { wort:'equus',   genus:'m', emoji:'🐴', dekl:'2.' }, { wort:'bellum',  genus:'n', emoji:'⚔️', dekl:'2.' },
-            { wort:'templum', genus:'n', emoji:'🏛️', dekl:'2.' },
+            { wort:'porta',   genus:'f', emoji:'🚪', dekl:'1.', deutsch:'Tor (fem.)' },
+            { wort:'aqua',    genus:'f', emoji:'💧', dekl:'1.', deutsch:'Wasser (fem.)' },
+            { wort:'silva',   genus:'f', emoji:'🌳', dekl:'1.', deutsch:'Wald (fem.)' },
+            { wort:'luna',    genus:'f', emoji:'🌙', dekl:'1.', deutsch:'Mond (fem.)' },
+            { wort:'dominus', genus:'m', emoji:'👨', dekl:'2.', deutsch:'Herr (mask.)' },
+            { wort:'filius',  genus:'m', emoji:'👦', dekl:'2.', deutsch:'Sohn (mask.)' },
+            { wort:'equus',   genus:'m', emoji:'🐴', dekl:'2.', deutsch:'Pferd (mask.)' },
+            { wort:'bellum',  genus:'n', emoji:'⚔️', dekl:'2.', deutsch:'Krieg (neutr.)' },
+            { wort:'templum', genus:'n', emoji:'🏛️', dekl:'2.', deutsch:'Tempel (neutr.)' },
         ],
         n2: [
-            { wort:'rex',     genus:'m', emoji:'👑', dekl:'3.' }, { wort:'miles',   genus:'m', emoji:'⚔️', dekl:'3.' },
-            { wort:'homo',    genus:'m', emoji:'🧑', dekl:'3.' }, { wort:'pax',     genus:'f', emoji:'🕊️', dekl:'3.' },
-            { wort:'urbs',    genus:'f', emoji:'🏙️', dekl:'3.' }, { wort:'nomen',   genus:'n', emoji:'📝', dekl:'3.' },
+            { wort:'rex',     genus:'m', emoji:'👑', dekl:'3.', deutsch:'König (mask.)' },
+            { wort:'miles',   genus:'m', emoji:'⚔️', dekl:'3.', deutsch:'Soldat (mask.)' },
+            { wort:'homo',    genus:'m', emoji:'🧑', dekl:'3.', deutsch:'Mensch (mask.)' },
+            { wort:'pax',     genus:'f', emoji:'🕊️', dekl:'3.', deutsch:'Frieden (fem.)' },
+            { wort:'urbs',    genus:'f', emoji:'🏙️', dekl:'3.', deutsch:'Stadt (fem.)' },
+            { wort:'nomen',   genus:'n', emoji:'📝', dekl:'3.', deutsch:'Name (neutr.)' },
         ],
         n3: [
-            { wort:'senatus', genus:'m', emoji:'🏛️', dekl:'4.' }, { wort:'manus',   genus:'f', emoji:'✋', dekl:'4.' },
-            { wort:'dies',    genus:'m', emoji:'☀️', dekl:'5.' }, { wort:'res',     genus:'f', emoji:'📦', dekl:'5.' },
+            { wort:'senatus', genus:'m', emoji:'🏛️', dekl:'4.', deutsch:'Senat (mask.)' },
+            { wort:'manus',   genus:'f', emoji:'✋', dekl:'4.', deutsch:'Hand (fem.)' },
+            { wort:'dies',    genus:'m', emoji:'☀️', dekl:'5.', deutsch:'Tag (mask.)' },
+            { wort:'res',     genus:'f', emoji:'📦', dekl:'5.', deutsch:'Sache (fem.)' },
         ]
     },
     konjugation: null, // unten
     tempus: {
         n1: [
-            { verb:'amare',   pronomen:'ego',   zeit:'Imperfekt', richtig:'amabam',  falsch:['amo','amavi','amabo'] },
-            { verb:'videre',  pronomen:'tu',    zeit:'Perfekt',   richtig:'vidisti', falsch:['vides','videbas','videbis'] },
-            { verb:'esse',    pronomen:'is/ea', zeit:'Imperfekt', richtig:'erat',    falsch:['est','fuit','erit'] },
+            { verb:'amare',   pronomen:'ego',   zeit:'Imperfekt', richtig:'amabam',   falsch:['amo','amavi','amabo'],       deutsch:'ich liebte' },
+            { verb:'videre',  pronomen:'tu',    zeit:'Perfekt',   richtig:'vidisti',  falsch:['vides','videbas','videbis'], deutsch:'du hast gesehen' },
+            { verb:'esse',    pronomen:'is/ea', zeit:'Imperfekt', richtig:'erat',     falsch:['est','fuit','erit'],         deutsch:'er/sie war' },
         ],
         n2: [
-            { verb:'dicere',  pronomen:'nos',   zeit:'Perfekt',   richtig:'diximus', falsch:['dicimus','dicebamus','dicemus'] },
-            { verb:'venire',  pronomen:'vos',   zeit:'Futur',     richtig:'venietis',falsch:['venitis','veniebatis','venistis'] },
+            { verb:'dicere',  pronomen:'nos',   zeit:'Perfekt',   richtig:'diximus',  falsch:['dicimus','dicebamus','dicemus'],    deutsch:'wir haben gesagt' },
+            { verb:'venire',  pronomen:'vos',   zeit:'Futur',     richtig:'venietis', falsch:['venitis','veniebatis','venistis'],  deutsch:'ihr werdet kommen' },
         ],
         n3: [
-            { verb:'vincere', pronomen:'ei/eae',zeit:'Plusquamperf.',richtig:'vicerant',falsch:['vincunt','vicerunt','vincent'] },
-            { verb:'scribere',pronomen:'ego',   zeit:'Futur II',  richtig:'scripsero',falsch:['scribo','scripsi','scribam'] },
+            { verb:'vincere', pronomen:'ei/eae',zeit:'Plusquamperf.',richtig:'vicerant', falsch:['vincunt','vicerunt','vincent'],   deutsch:'sie hatten gesiegt' },
+            { verb:'scribere',pronomen:'ego',   zeit:'Futur II',  richtig:'scripsero', falsch:['scribo','scripsi','scribam'],      deutsch:'ich werde geschrieben haben' },
         ]
     }
 };
@@ -726,7 +728,21 @@ function grammatikNeueAufgabe() {
         </div>`;
     }
     document.getElementById('diktatStatus').textContent='';
-    if (uebersetzungAktiv && grammatikAktuell) { const gw=grammatikAktuell.wort||grammatikAktuell.verb||''; if(gw) uebersetzeUndZeige(gw); }
+    if (uebersetzungAktiv && grammatikAktuell) {
+        const anzeige = document.getElementById('uebersetzungAnzeige');
+        let de = '';
+        if (grammatikAktuell.deutsch) {
+            de = grammatikAktuell.deutsch;
+        } else if (grammatikModus === 'konjugation') {
+            const pronounDE = ['ich','du','er/sie','wir','ihr','sie'][grammatikAktuell.pIdx] || '';
+            const verbDe = laDeDict[grammatikAktuell.verb] || grammatikAktuell.verb;
+            de = pronounDE + ' ___ ' + verbDe;
+        } else {
+            const gw = grammatikAktuell.wort || grammatikAktuell.verb || '';
+            if (gw) uebersetzeUndZeige(gw);
+        }
+        if (de) anzeige.textContent = '🇩🇪 ' + de;
+    }
 }
 
 function kasusAntwort(g,btn) {
@@ -784,16 +800,17 @@ function closeStorage(){document.getElementById('storageModal').classList.remove
 // === PRO-SYSTEM ===
 const THIS_APP_ID = 'la';
 const APP_REGISTRY = [
-    { id:'de',  name:'ABC Wort',    flag:'🇩🇪', subtitle:'Deutsch lernen',      file:'index.html',       proCode:null,                  color:'#4a90e2' },
-    { id:'ru',  name:'АБВ Слово',   flag:'🇷🇺', subtitle:'Russisch lernen',     file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
-    { id:'en',  name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',     file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
-    { id:'el',  name:'ΑΒΓ Λέξη',   flag:'🇬🇷', subtitle:'Griechisch lernen',   file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
-    { id:'ar',  name:'أبت كلمة',   flag:'🇸🇦', subtitle:'Arabisch lernen',     file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
-    { id:'hi',  name:'एबीसी शब्द', flag:'🇮🇳', subtitle:'Hindi lernen',        file:'abc_shabd.html',   proCode:'ABCSHABD-PRO-2025',   color:'#e65100' },
-    { id:'ur',  name:'ابت لفظ',    flag:'🇵🇰', subtitle:'Farsi/Urdu lernen',   file:'abc_lafz.html',    proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a' },
-    { id:'fa',  name:'الفبا کلمه', flag:'🇦🇫', subtitle:'Dari lernen',         file:'abc_kalima.html',  proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e' },
-    { id:'la',  name:'ABC Verbum',  flag:'🏛️',  subtitle:'Latein lernen',       file:'abc_verbum.html',  proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2' },
+    { id:'de', name:'ABC Wort',    flag:'🇩🇪', subtitle:'Deutsch lernen',    file:'index.html',       proCode:null,                  color:'#4a90e2' },
+    { id:'ru', name:'АБВ Слово',   flag:'🇷🇺', subtitle:'Russisch lernen',   file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
+    { id:'en', name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',   file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
+    { id:'el', name:'ΑΒΓ Λέξη',   flag:'🇬🇷', subtitle:'Griechisch lernen', file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
+    { id:'ar', name:'أبت كلمة',   flag:'🇸🇦', subtitle:'Arabisch lernen',   file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
+    { id:'hi', name:'एबीसी शब्द', flag:'🇮🇳', subtitle:'Hindi lernen',      file:'abc_shabd.html',   proCode:'ABCSHABD-PRO-2025',   color:'#e65100' },
+    { id:'ur', name:'ابت لفظ',    flag:'🇵🇰', subtitle:'Urdu lernen',       file:'abc_lafz.html',    proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a' },
+    { id:'fa', name:'الفبا کلمه', flag:'🇦🇫', subtitle:'Dari lernen',       file:'abc_kalima.html',  proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e' },
+    { id:'la', name:'ABC Verbum',  flag:'🏛️',  subtitle:'Latein lernen',     file:'abc_verbum.html',  proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2' },
     { id:'egy', name:'Medu Netjer', flag:'𓇳',  subtitle:'Hieroglyphen lernen', file:'abc_medu.html',    proCode:'ABCMEDU-PRO-2025',    color:'#b8860b' },
+    { id:'zh',  name:'汉字词',      flag:'🇨🇳', subtitle:'Mandarin lernen',     file:'abc_hanzi.html',   proCode:'ABCHANZI-PRO-2025',   color:'#c0392b' },
 ];
 const FREIE_RUNDEN = 10;
 
@@ -802,8 +819,20 @@ function proIstAktiv(appId) {
     if(!app||!app.proCode)return true;
     try{return localStorage.getItem('abc_pro_'+appId)==='true';}catch(e){return false;}
 }
+function getFreeLangs() {
+    try { return JSON.parse(localStorage.getItem('abc_free_langs') || '[]'); } catch(e) { return []; }
+}
+function addFreeLang(appId) {
+    const langs = getFreeLangs();
+    if (!langs.includes(appId)) { langs.push(appId); try { localStorage.setItem('abc_free_langs', JSON.stringify(langs)); } catch(e) {} }
+}
 function freiRundenCheck() {
     if(proIstAktiv(THIS_APP_ID))return true;
+    if(diktatNiveau==='n1'){
+        const fl=getFreeLangs();
+        if(fl.includes(THIS_APP_ID))return true;
+        if(fl.length<3){addFreeLang(THIS_APP_ID);return true;}
+    }
     let r=0;try{r=parseInt(localStorage.getItem('abc_runden_'+THIS_APP_ID)||'0');}catch(e){}
     if(r<FREIE_RUNDEN){try{localStorage.setItem('abc_runden_'+THIS_APP_ID,r+1);}catch(e){}return true;}
     proGateAnzeigen(THIS_APP_ID,'Dictatum & Grammatica');return false;
