@@ -951,6 +951,23 @@ function grammatikNeueAufgabe() {
         </div>`;
     }
     document.getElementById('diktatStatus').textContent='';
+    // Übersetzung anzeigen wenn aktiv
+    if (uebersetzungAktiv && grammatikAktuell) {
+        const anzeige = document.getElementById('uebersetzungAnzeige');
+        let de = '';
+        if (grammatikModus === 'lesung') {
+            // Antwort enthält bereits die Übersetzung (z.B. 'ꜥnḫ = Leben')
+            de = grammatikAktuell.richtig;
+        } else if (grammatikModus === 'genus') {
+            de = grammatikAktuell.wort + ' = ' + (grammatikAktuell.hint || '');
+        } else if (grammatikModus === 'determinativ') {
+            de = grammatikAktuell.richtig;
+        } else if (grammatikModus === 'zahl') {
+            de = grammatikAktuell.richtig;
+        }
+        if (de) anzeige.textContent = '🇩🇪 ' + de;
+        else anzeige.textContent = '';
+    }
 }
 
 function lesungAntwort(g, btn) {
@@ -1000,7 +1017,8 @@ const APP_REGISTRY = [
     { id:'ur',  name:'ابت لفظ',    flag:'🇵🇰', subtitle:'Urdu lernen',       file:'abc_lafz.html',    proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a' },
     { id:'fa',  name:'الفبا کلمه', flag:'🇦🇫', subtitle:'Dari lernen',       file:'abc_kalima.html',  proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e' },
     { id:'la',  name:'ABC Verbum',  flag:'🏛️',  subtitle:'Latein lernen',     file:'abc_verbum.html',  proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2' },
-    { id:'egy', name:'Medu Netjer', flag:'𓇳',  subtitle:'Hieroglyphen lernen',file:'abc_medu.html',   proCode:'ABCMEDU-PRO-2025',    color:'#b8860b' },
+{ id:'egy', name:'Medu Netjer', flag:'𓇳',  subtitle:'Hieroglyphen lernen', file:'abc_medu.html',    proCode:'ABCMEDU-PRO-2025',    color:'#b8860b' },
+    { id:'zh',  name:'汉字词',      flag:'🇨🇳', subtitle:'Mandarin lernen',     file:'abc_hanzi.html',   proCode:'ABCHANZI-PRO-2025',   color:'#c0392b' },
 ];
 const FREIE_RUNDEN = 10;
 
@@ -1009,8 +1027,20 @@ function proIstAktiv(appId) {
     if(!app||!app.proCode)return true;
     try{return localStorage.getItem('abc_pro_'+appId)==='true';}catch(e){return false;}
 }
+function getFreeLangs() {
+    try { return JSON.parse(localStorage.getItem('abc_free_langs') || '[]'); } catch(e) { return []; }
+}
+function addFreeLang(appId) {
+    const langs = getFreeLangs();
+    if (!langs.includes(appId)) { langs.push(appId); try { localStorage.setItem('abc_free_langs', JSON.stringify(langs)); } catch(e) {} }
+}
 function freiRundenCheck() {
     if(proIstAktiv(THIS_APP_ID))return true;
+    if(diktatNiveau==='n1'){
+        const fl=getFreeLangs();
+        if(fl.includes(THIS_APP_ID))return true;
+        if(fl.length<3){addFreeLang(THIS_APP_ID);return true;}
+    }
     let r=0;try{r=parseInt(localStorage.getItem('abc_runden_'+THIS_APP_ID)||'0');}catch(e){}
     if(r<FREIE_RUNDEN){try{localStorage.setItem('abc_runden_'+THIS_APP_ID,r+1);}catch(e){}return true;}
     proGateAnzeigen(THIS_APP_ID,'Diktat & Grammatik');return false;
