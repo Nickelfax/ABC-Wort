@@ -578,82 +578,33 @@ function openStorage(){const c=document.getElementById('storedWordsList');c.inne
 function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
 let toastTimer=null;
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800);}
+// === PRO-SYSTEM ===
+const THIS_APP_ID = 'en';
 
-        // === PRO-SYSTEM ===
-        const THIS_APP_ID = 'en';
-        // ═══════════════════════════════════════════════════════════════════════
-// PRO-SYSTEM + CROSS-SELL — gemeinsame Logik für alle ABC-Apps
-// ═══════════════════════════════════════════════════════════════════════
-
-// ── App-Registry (einfach erweiterbar) ───────────────────────────────
 const APP_REGISTRY = [
-    {
-        id:       'de',
-        name:     'ABC Start',
-        flag:     '🇩🇪',
-        subtitle: 'Deutsch lernen',
-        file:     'index.html',
-        proCode:  null,           // Basisapp — kostenlos
-        color:    '#4a90e2',
-    },
-    {
-        id:       'ru',
-        name:     'АБВ Слово',
-        flag:     '🇷🇺',
-        subtitle: 'Russisch lernen',
-        file:     'abv_slowo.html',
-        proCode:  'ABVSLOWO-PRO-2025',
-        color:    '#c0392b',
-    },
-    {
-        id:       'en',
-        name:     'ABC Word',
-        flag:     '🇬🇧',
-        subtitle: 'Englisch lernen',
-        file:     'abc_word.html',
-        proCode:  'ABCWORD-PRO-2025',
-        color:    '#1a5276',
-    },
-    // Zukünftig:
-    // { id:'ar', name:'ABD Kalimat', flag:'🇸🇦', subtitle:'Arabisch lernen', file:'abd_kalimat.html', proCode:'ABDKALIMAT-PRO-2025', color:'#1e8449' },
-    // { id:'tr', name:'ABC Kelime',  flag:'🇹🇷', subtitle:'Türkisch lernen',  file:'abc_kelime.html',  proCode:'ABCKELIME-PRO-2025',  color:'#e67e22' },
+    { id:'de', name:'ABC Wort',   flag:'🇩🇪', subtitle:'Deutsch lernen',    file:'index.html',       proCode:null,                  color:'#4a90e2' },
+    { id:'ru', name:'АБВ Слово',  flag:'🇷🇺', subtitle:'Russisch lernen',   file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
+    { id:'en', name:'ABC Word',   flag:'🇬🇧', subtitle:'Englisch lernen',   file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
+    { id:'el', name:'ΑΒΓ Λέξη',  flag:'🇬🇷', subtitle:'Griechisch lernen', file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
+    { id:'ar', name:'أبت كلمة',  flag:'🇸🇦', subtitle:'Arabisch lernen',   file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
 ];
 
-// ── Pro-Status lesen/schreiben ────────────────────────────────────────
+const FREIE_RUNDEN = 10;
+
 function proIstAktiv(appId) {
-    if (!appId) return false;
     const app = APP_REGISTRY.find(a => a.id === appId);
-    if (!app || !app.proCode) return true; // Basisapp immer frei
+    if (!app || !app.proCode) return true;
     try { return localStorage.getItem('abc_pro_' + appId) === 'true'; } catch(e) { return false; }
 }
 
-function proAktivierenFuerApp(appId, code) {
-    const app = APP_REGISTRY.find(a => a.id === appId);
-    if (!app) return false;
-    if (code.toUpperCase() === app.proCode) {
-        try { localStorage.setItem('abc_pro_' + appId, 'true'); } catch(e) {}
+function proCheck(appId, feature) {
+    if (proIstAktiv(appId)) return true;
+    let r = 0;
+    try { r = parseInt(localStorage.getItem('abc_runden_' + appId) || '0'); } catch(e) {}
+    if (r < FREIE_RUNDEN) {
+        try { localStorage.setItem('abc_runden_' + appId, r + 1); } catch(e) {}
         return true;
     }
-    return false;
-}
-
-// ── Pro-Gate anzeigen (X freie Runden, dann Gate) ────────────────────
-const FREIE_RUNDEN = 10;
-
-function proCheck(appId, feature, onSuccess) {
-    if (proIstAktiv(appId)) { onSuccess && onSuccess(); return true; }
-
-    // Runden-Counter
-    let runden = 0;
-    try { runden = parseInt(localStorage.getItem('abc_runden_' + appId) || '0'); } catch(e) {}
-
-    if (runden < FREIE_RUNDEN) {
-        try { localStorage.setItem('abc_runden_' + appId, runden + 1); } catch(e) {}
-        onSuccess && onSuccess();
-        return true;
-    }
-
-    // Gate zeigen
     proGateAnzeigen(appId, feature);
     return false;
 }
@@ -674,7 +625,7 @@ function proGateAnzeigen(appId, feature) {
                 Pro freischalten ☕ – 2,99€
             </button>
             <button onclick="proCodeEingeben('${appId}')"
-                style="background:var(--success,#27ae60); padding:8px 20px; border-radius:10px; color:white; border:none; cursor:pointer; font-size:0.85rem; width:100%;">
+                style="background:#27ae60; padding:8px 20px; border-radius:10px; color:white; border:none; cursor:pointer; font-size:0.85rem; width:100%;">
                 Ich habe bereits bezahlt ✓
             </button>
         </div>`;
@@ -688,10 +639,11 @@ function proKaufen(appId) {
 function proCodeEingeben(appId) {
     const code = prompt('Pro-Code eingeben:');
     if (!code) return;
-    if (proAktivierenFuerApp(appId, code)) {
+    const app = APP_REGISTRY.find(a => a.id === appId);
+    if (!app) return;
+    if (code.toUpperCase() === app.proCode) {
+        try { localStorage.setItem('abc_pro_' + appId, 'true'); localStorage.removeItem('abc_runden_' + appId); } catch(e) {}
         showToast('Pro aktiviert! Viel Spaß! 🎉');
-        // Runden-Counter zurücksetzen
-        try { localStorage.removeItem('abc_runden_' + appId); } catch(e) {}
         updateDisplay();
         if (typeof diktatNeuesWort === 'function' && diktatAktiv) diktatNeuesWort();
         if (typeof grammatikNeueAufgabe === 'function' && grammatikAktiv) grammatikNeueAufgabe();
@@ -700,82 +652,50 @@ function proCodeEingeben(appId) {
     }
 }
 
-// ── Cross-Sell-Banner ─────────────────────────────────────────────────
 function crossSellBannerEinfuegen(currentAppId) {
     const andere = APP_REGISTRY.filter(a => a.id !== currentAppId);
     const container = document.createElement('div');
     container.id = 'crossSellBanner';
-    container.style.cssText = `
-        width: 100%; max-width: 700px; margin-top: 24px;
-        background: white; border-radius: 16px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        overflow: hidden;
-    `;
-
+    container.style.cssText = 'width:100%;max-width:700px;margin-top:24px;background:white;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.08);overflow:hidden;';
     const header = document.createElement('div');
-    header.style.cssText = `
-        padding: 12px 16px; font-size: 0.8rem; font-weight: bold;
-        color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px;
-        border-bottom: 1px solid #f0f0f0;
-    `;
+    header.style.cssText = 'padding:12px 16px;font-size:0.8rem;font-weight:bold;color:#7f8c8d;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f0f0f0;';
     header.textContent = '🌍 Auch verfügbar';
     container.appendChild(header);
-
     andere.forEach(app => {
-        const istFreigeschaltet = proIstAktiv(app.id);
+        const aktiv = proIstAktiv(app.id);
         const item = document.createElement('div');
-        item.style.cssText = `
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 16px; border-bottom: 1px solid #f8f8f8;
-            cursor: pointer; transition: background 0.15s;
-        `;
+        item.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f8f8f8;cursor:pointer;transition:background 0.15s;';
         item.onmouseenter = () => item.style.background = '#f8f9fa';
         item.onmouseleave = () => item.style.background = 'white';
         item.onclick = () => window.location.href = app.file;
-
         item.innerHTML = `
-            <div style="display:flex; align-items:center; gap:12px;">
+            <div style="display:flex;align-items:center;gap:12px;">
                 <span style="font-size:1.8rem;">${app.flag}</span>
                 <div>
-                    <div style="font-weight:bold; color:#2c3e50; font-size:0.95rem;">${app.name}</div>
-                    <div style="font-size:0.8rem; color:#7f8c8d;">${app.subtitle}</div>
+                    <div style="font-weight:bold;color:#2c3e50;font-size:0.95rem;">${app.name}</div>
+                    <div style="font-size:0.8rem;color:#7f8c8d;">${app.subtitle}</div>
                 </div>
             </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-                ${istFreigeschaltet
-                    ? `<span style="background:#eafaf1; color:#27ae60; font-size:0.75rem; font-weight:bold; padding:3px 8px; border-radius:20px;">✓ Aktiviert</span>`
-                    : `<span style="background:#fff8e1; color:#e67e22; font-size:0.75rem; font-weight:bold; padding:3px 8px; border-radius:20px;">2,99 €</span>`
-                }
-                <span style="color:#bdc3c7; font-size:1.2rem;">›</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+                ${aktiv
+                    ? '<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Aktiviert</span>'
+                    : '<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">2,99 €</span>'}
+                <span style="color:#bdc3c7;font-size:1.2rem;">›</span>
             </div>`;
         container.appendChild(item);
     });
-
-    // Hub-Teaser (wenn mehr als eine Pro-App aktiv)
     const aktiviertePros = APP_REGISTRY.filter(a => a.proCode && proIstAktiv(a.id));
     if (aktiviertePros.length >= 2) {
-        const hubTeaser = document.createElement('div');
-        hubTeaser.style.cssText = `
-            padding: 12px 16px; background: linear-gradient(135deg, #667eea22, #764ba222);
-            display: flex; align-items: center; justify-content: space-between;
-        `;
-        hubTeaser.innerHTML = `
-            <div>
-                <div style="font-weight:bold; color:#2c3e50; font-size:0.9rem;">🏆 Pro Plus Hub</div>
-                <div style="font-size:0.75rem; color:#7f8c8d;">Alle Sprachen in einer App — bald verfügbar</div>
-            </div>
-            <span style="background:#e8e8f5; color:#6c5ce7; font-size:0.75rem; font-weight:bold; padding:3px 8px; border-radius:20px;">Bald</span>`;
-        container.appendChild(hubTeaser);
+        const hub = document.createElement('div');
+        hub.style.cssText = 'padding:12px 16px;background:linear-gradient(135deg,#667eea22,#764ba222);display:flex;align-items:center;justify-content:space-between;';
+        hub.innerHTML = '<div><div style="font-weight:bold;color:#2c3e50;font-size:0.9rem;">🏆 Pro Plus Hub</div><div style="font-size:0.75rem;color:#7f8c8d;">Alle Sprachen in einer App — bald verfügbar</div></div><span style="background:#e8e8f5;color:#6c5ce7;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">Bald</span>';
+        container.appendChild(hub);
     }
-
-    // Nach dem keyboard-container einfügen
     const kb = document.querySelector('.keyboard-container');
     if (kb && kb.parentNode) kb.parentNode.insertBefore(container, kb.nextSibling);
     else document.body.appendChild(container);
 }
-// ═══════════════════════════════════════════════════════════════════════
-
-        // === ENDE PRO-SYSTEM ===
+// === ENDE PRO-SYSTEM ===
 
         window.addEventListener('DOMContentLoaded',init);
 </script>
