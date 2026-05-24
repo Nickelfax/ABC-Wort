@@ -551,7 +551,7 @@ function navigiereZurueck() {
         diktatEingabe = ''; diktatGesperrt = false; diktatHatFehler = false; diktatBuzzerGespielt = false;
         currentWord = []; diktatRender();
         document.getElementById('diktatStatus').textContent = 'Hör zu und tippe das Wort';
-        diktatSprechen();
+        setTimeout(() => diktatSprechen(), 300);
     }
 }
 
