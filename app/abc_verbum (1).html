@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="la">
+<!-- © 2025 nickelfax. All rights reserved.
+     Unauthorized copying or distribution prohibited. -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#7b1fa2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ABC Verbum">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../icon-512.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Verbum</title>
+    <style>
+        :root {
+            --primary: #7b1fa2;
+            --secondary: #f9a825;
+            --success: #2e7d32;
+            --danger: #c62828;
+            --purple: #4a148c;
+            --bg: #f9f0ff;
+            --card-bg: #ffffff;
+        }
+        body { font-family: 'Segoe UI', 'Palatino Linotype', Georgia, serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        h1 { color: #4a148c; margin-bottom: 5px; text-align: center; font-size: 1.8rem; }
+        .subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; font-style: italic; }
+        .word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.5rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); box-sizing: border-box; font-family: 'Palatino Linotype', Georgia, serif; }
+        .word-display.empty { color: #bdc3c7; font-size: 1.1rem; font-weight: normal; font-style: italic; font-family: 'Segoe UI', sans-serif; }
+        .char-block { background: #f3e5f5; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; font-family: 'Palatino Linotype', Georgia, serif; }
+        .char-block:hover { background: #ffcdd2; border-color: var(--danger); transform: scale(1.05); }
+        .char-block::after { content: '✕'; position: absolute; top: -8px; right: -8px; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+        .char-block:hover::after { opacity: 1; }
+        .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; }
+        button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        button:active { transform: scale(0.95); }
+        .keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .keyboard-section { margin-bottom: 15px; }
+        .section-title { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 8px; }
+        .key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 14px 4px; text-align: center; font-size: 1.4rem; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s; user-select: none; font-family: 'Palatino Linotype', Georgia, serif; }
+        .key.vokal { background: #f3e5f5; border-color: #ce93d8; color: #7b1fa2; }
+        .key.konsonant { background: #e8f5e9; border-color: #a5d6a7; color: #1b5e20; }
+        .key.makron { background: #fff8e1; border-color: #ffe082; color: #e65100; }
+        .key.spezial { background: #e8eaf6; border-color: #9fa8da; color: #283593; font-size: 1rem; }
+        .key:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+        .case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .toggle-switch { position: relative; width: 52px; height: 28px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+        .toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+        .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+        .case-label { font-size: 1rem; font-weight: bold; min-width: 20px; color: #2c3e50; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-overlay.open { display: flex; }
+        .modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+        .stored-word { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+        .btn-close-modal { background: #95a5a6; margin-top: 15px; width: 100%; }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; white-space: nowrap; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .diktat-modus-zeile { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+        .diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+        .diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+        .grammatik-aufgabe { font-size: 1.5rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; font-family: 'Palatino Linotype', Georgia, serif; }
+        .grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; font-style: italic; }
+        .artikel-buttons { display: flex; gap: 8px; justify-content: center; width: 100%; flex-wrap: wrap; }
+        .art-btn { padding: 10px 14px; font-size: 1rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 70px; max-width: 140px; font-family: 'Palatino Linotype', Georgia, serif; }
+        .art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+        .art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+        .auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+        .auswahl-btn { padding: 12px; font-size: 0.95rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; text-align: center; font-family: 'Palatino Linotype', Georgia, serif; }
+        .auswahl-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+        .auswahl-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+        #uebersetzungAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em; margin-bottom: 4px; transition: opacity 0.3s; }
+        /* Latein-spezifisch: Deklinationstabelle */
+        .dekl-tabelle { width: 100%; border-collapse: collapse; font-family: 'Palatino Linotype', Georgia, serif; font-size: 0.9rem; margin-top: 8px; }
+        .dekl-tabelle th { background: var(--primary); color: white; padding: 6px 10px; text-align: left; }
+        .dekl-tabelle td { padding: 6px 10px; border-bottom: 1px solid #e9ecef; }
+        .dekl-tabelle tr:hover td { background: #f3e5f5; }
+        .dekl-tabelle .highlight { background: #fff8e1; font-weight: bold; color: var(--primary); }
+        @media (max-width: 600px) {
+            body { padding: 8px; } h1 { font-size: 1.3rem; }
+            .word-display { min-height: 60px; font-size: 1.6rem; padding: 10px; margin-bottom: 10px; }
+            button { padding: 9px 12px; font-size: 0.82rem; }
+            .keyboard-container { padding: 10px 8px; }
+            .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 5px; }
+            .key { padding: 10px 2px; font-size: 1.2rem; }
+            .toast { white-space: normal; max-width: 85vw; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🏛️ ABC Verbum</h1>
+<p class="subtitle">Latinum discere · Dictatum · Grammatica · Aedificatio verborum</p>
+
+<div id="scoreBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div style="display:flex; gap:20px; font-size:1rem; padding:8px 16px; background:#fff8e1; border:2px solid var(--secondary); border-radius:12px;">
+        <span>✓ Recte: <strong id="diktatRichtig">0</strong></span>
+        <span>✗ Prave: <strong id="diktatFalsch">0</strong></span>
+    </div>
+</div>
+
+<div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)" title="Cum litteris">🔤</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)" title="Lineae solum">➖</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)" title="Caecus">🙈</button>
+        <button class="diktat-modus-btn" id="btnDiktatStumm" onclick="diktatStummToggle(this)" title="Sonus on/off">🔊</button>
+    </div>
+</div>
+
+<div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" id="btnGKasus" onclick="grammatikSetModus('kasus',this)">Casus</button>
+        <button class="diktat-modus-btn" id="btnGGenus" onclick="grammatikSetModus('genus',this)">Genus</button>
+        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">Verbum</button>
+        <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">Tempus</button>
+    </div>
+</div>
+
+<div id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center; font-size:1rem; color:#555; min-height:1.4em; font-style:italic;"></div>
+
+<div id="uebersetzungAnzeige"></div>
+
+<div id="wordDisplay" class="word-display empty">
+    Clicca litteras ut verbum aedifices
+</div>
+
+<div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; box-sizing:border-box; padding:0 4px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+        <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+        <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary);">N1</span>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="wiederholenButton()" style="background:var(--primary); font-size:1.6rem;">🔁</button>
+    <button onclick="sprichWort()" style="background:var(--success); font-size:1.6rem;">🔊</button>
+    <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
+    <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
+    <button onclick="backspace()" style="font-size:1.6rem; background:#e74c3c;">⌫</button>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1rem; font-weight:bold; color:#2c3e50;">A</span>
+        <label class="toggle-switch" title="Maiusculi / Minusculi">
+            <input type="checkbox" id="caseToggle" onchange="renderKeyboard()">
+            <span class="toggle-slider"></span>
+        </label>
+        <span class="case-label" id="caseLabel">a</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🖊️</span>
+        <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">Dkt</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">❓</span>
+        <label class="toggle-switch"><input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">Grm</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🌍</span>
+        <label class="toggle-switch"><input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()"><span class="toggle-slider"></span></label>
+        <div id="sprachDropdownInControls" style="display:none;">
+            <select id="sprachSelectControls" onchange="sprachWechseln(this.value)"
+                style="border-radius:8px; border:2px solid #e9ecef; padding:4px 8px; font-size:0.95rem; background:white; color:#2c3e50; cursor:pointer;"></select>
+        </div>
+    </div>
+</div>
+
+<div class="keyboard-container">
+    <div class="keyboard-section">
+        <div class="section-title">🏛️ Litterae Latinae</div>
+        <div class="keyboard-grid" id="kbBase"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">Macra (ā ē ī ō ū)</span>
+            <label class="toggle-switch"><input type="checkbox" id="macraToggle" onchange="macraToggleChange()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="macraLabel">aus</span>
+        </div>
+        <div class="keyboard-grid" id="kbMacra" style="display:none;"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">Notae speciales</span>
+            <label class="toggle-switch"><input type="checkbox" id="spezialToggle" onchange="spezialToggleChange()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="spezialLabel">aus</span>
+        </div>
+        <div class="keyboard-grid" id="kbSpezial" style="display:none;"></div>
+    </div>
+</div>
+
+<div id="storageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>📚 Verba servata</h2>
+        <div id="storedWordsList"></div>
+        <button class="btn-close-modal" onclick="closeStorage()">Claude</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+// ── Lateinisches Alphabet ─────────────────────────────────────────────
+// Latein kennt kein W, K nur selten, J und V als Varianten
+const litteraeBase  = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z'];
+const vokale        = new Set(['A','E','I','O','U','a','e','i','o','u']);
+const macra         = ['ā','ē','ī','ō','ū','Ā','Ē','Ī','Ō','Ū']; // Längezeichen
+const speziales     = ['æ','œ','·','—','(',')']; // Ligatur + Satzzeichen
+
+// ── Wortliste ─────────────────────────────────────────────────────────
+const wordList = ['aqua','terra','vita','amor','pax','rex','deus','homo','mater','pater','filius','porta','villa','silva','luna'];
+
+// ── LA→DE Dictionary ─────────────────────────────────────────────────
+const laDeDict = {
+    'aqua':'Wasser','terra':'Erde / Land','vita':'Leben','amor':'Liebe',
+    'pax':'Frieden','rex':'König','deus':'Gott','homo':'Mensch',
+    'mater':'Mutter','pater':'Vater','filius':'Sohn','filia':'Tochter',
+    'porta':'Tor / Tür','villa':'Landhaus','silva':'Wald','luna':'Mond',
+    'sol':'Sonne','stella':'Stern','aquila':'Adler','canis':'Hund',
+    'equus':'Pferd','liber':'Buch','schola':'Schule','via':'Weg / Straße',
+    'bellum':'Krieg','pons':'Brücke','forum':'Marktplatz','urbs':'Stadt',
+    'miles':'Soldat','gladius':'Schwert','hasta':'Lanze','scutum':'Schild',
+    'senator':'Senator','imperator':'Feldherr / Kaiser','consul':'Konsul',
+    'Roma':'Rom','Italia':'Italien','Gallia':'Gallien','Germania':'Germanien',
+    'bonus':'gut','malus':'schlecht','magnus':'groß','parvus':'klein',
+    'longus':'lang','brevis':'kurz','altus':'hoch','novus':'neu',
+    'antiquus':'alt','pulcher':'schön','fortis':'stark / tapfer',
+    'esse':'sein','amare':'lieben','videre':'sehen','audire':'hören',
+    'dicere':'sagen','facere':'machen','ire':'gehen','venire':'kommen',
+    'habere':'haben','dare':'geben','vincere':'siegen','scribere':'schreiben',
+    'legere':'lesen','docere':'lehren','discere':'lernen',
+    'unus':'eins','duo':'zwei','tres':'drei','quattuor':'vier','quinque':'fünf',
+    'sex':'sechs','septem':'sieben','octo':'acht','novem':'neun','decem':'zehn',
+};
+
+// ── Grammatik-Daten ───────────────────────────────────────────────────
+// Latein hat 6 Kasus – das ist der Kern!
+const grammatikDaten = {
+    kasus: {
+        n1: [
+            // 1. Deklination (a-Stämme, meist fem.)
+            { wort:'porta', kasus:'Genitiv Sg.', antworten:['portae','portam','portā','portarum'], richtig:'portae', hinweis:'1. Dekl. · Genitiv Sg.' },
+            { wort:'porta', kasus:'Akkusativ Sg.', antworten:['portam','portae','portā','portas'], richtig:'portam', hinweis:'1. Dekl. · Akkusativ Sg.' },
+            { wort:'aqua',  kasus:'Dativ Sg.', antworten:['aquae','aquam','aquā','aquas'], richtig:'aquae', hinweis:'1. Dekl. · Dativ Sg.' },
+            // 2. Deklination (o-Stämme, meist mask.)
+            { wort:'filius', kasus:'Genitiv Sg.', antworten:['filii','filium','filio','filiorum'], richtig:'filii', hinweis:'2. Dekl. · Genitiv Sg.' },
+            { wort:'dominus', kasus:'Akkusativ Sg.', antworten:['dominum','domini','domino','dominos'], richtig:'dominum', hinweis:'2. Dekl. · Akkusativ Sg.' },
+            { wort:'bellum', kasus:'Genitiv Sg.', antworten:['belli','bellum','bello','bellorum'], richtig:'belli', hinweis:'2. Dekl. (neut.) · Genitiv Sg.' },
+            // Vokativ N1
+            { wort:'amicus', kasus:'Vokativ Sg.', antworten:['amice','amicus','amici','amicum'], richtig:'amice', hinweis:'2. Dekl. · Vokativ: -us → -e' },
+            { wort:'porta',  kasus:'Vokativ Sg.', antworten:['porta','portae','portam','portā'], richtig:'porta', hinweis:'1. Dekl. · Vokativ = Nominativ' },
+        ],
+        n2: [
+            // 3. Deklination (kons. Stämme)
+            { wort:'rex', kasus:'Genitiv Sg.', antworten:['regis','regem','regi','regum'], richtig:'regis', hinweis:'3. Dekl. · Genitiv Sg.' },
+            { wort:'miles', kasus:'Akkusativ Sg.', antworten:['militem','militis','militi','milites'], richtig:'militem', hinweis:'3. Dekl. · Akkusativ Sg.' },
+            { wort:'homo', kasus:'Dativ Sg.', antworten:['homini','hominem','hominis','hominibus'], richtig:'homini', hinweis:'3. Dekl. · Dativ Sg.' },
+            { wort:'pax', kasus:'Ablativ Sg.', antworten:['pace','pacis','pacem','paci'], richtig:'pace', hinweis:'3. Dekl. · Ablativ Sg.' },
+            // Vokativ N2 – der berühmteste aller Vokative!
+            { wort:'Brutus', kasus:'Vokativ Sg.', antworten:['Brute','Brutus','Bruti','Brutum'], richtig:'Brute', hinweis:'Et tu, Brute? · 2. Dekl. Vokativ' },
+            { wort:'filius', kasus:'Vokativ Sg.', antworten:['fili','filius','filii','filium'], richtig:'fili', hinweis:'2. Dekl. auf -ius → -i (Vokativ)' },
+        ],
+        n3: [
+            // Plural + Ablativ mit Präpositionen
+            { wort:'porta', kasus:'Genitiv Pl.', antworten:['portarum','portae','portas','portis'], richtig:'portarum', hinweis:'1. Dekl. · Genitiv Pl.' },
+            { wort:'filius', kasus:'Dativ/Abl. Pl.', antworten:['filiis','filii','filios','filiorum'], richtig:'filiis', hinweis:'2. Dekl. · Dat./Abl. Pl.' },
+            { wort:'rex', kasus:'Akkusativ Pl.', antworten:['reges','regis','regum','regibus'], richtig:'reges', hinweis:'3. Dekl. · Akkusativ Pl.' },
+            { wort:'cum amico', kasus:'Ablativ (Bedeutung)', antworten:['mit dem Freund','des Freundes','dem Freund','den Freund'], richtig:'mit dem Freund', hinweis:'cum + Ablativ = mit' },
+            { wort:'ex silva', kasus:'Ablativ (Bedeutung)', antworten:['aus dem Wald','in den Wald','des Waldes','im Wald'], richtig:'aus dem Wald', hinweis:'ex + Ablativ = aus' },
+            { wort:'sine aqua', kasus:'Ablativ (Bedeutung)', antworten:['ohne Wasser','mit Wasser','im Wasser','des Wassers'], richtig:'ohne Wasser', hinweis:'sine + Ablativ = ohne' },
+        ],
+    },
+    genus: {
+        // Latein hat 3 Genera: Mask./Fem./Neut.
+        n1: [
+            { wort:'porta',   genus:'f', emoji:'🚪', dekl:'1.' }, { wort:'aqua',    genus:'f', emoji:'💧', dekl:'1.' },
+            { wort:'silva',   genus:'f', emoji:'🌳', dekl:'1.' }, { wort:'luna',    genus:'f', emoji:'🌙', dekl:'1.' },
+            { wort:'dominus', genus:'m', emoji:'👨', dekl:'2.' }, { wort:'filius',  genus:'m', emoji:'👦', dekl:'2.' },
+            { wort:'equus',   genus:'m', emoji:'🐴', dekl:'2.' }, { wort:'bellum',  genus:'n', emoji:'⚔️', dekl:'2.' },
+            { wort:'templum', genus:'n', emoji:'🏛️', dekl:'2.' },
+        ],
+        n2: [
+            { wort:'rex',     genus:'m', emoji:'👑', dekl:'3.' }, { wort:'miles',   genus:'m', emoji:'⚔️', dekl:'3.' },
+            { wort:'homo',    genus:'m', emoji:'🧑', dekl:'3.' }, { wort:'pax',     genus:'f', emoji:'🕊️', dekl:'3.' },
+            { wort:'urbs',    genus:'f', emoji:'🏙️', dekl:'3.' }, { wort:'nomen',   genus:'n', emoji:'📝', dekl:'3.' },
+        ],
+        n3: [
+            { wort:'senatus', genus:'m', emoji:'🏛️', dekl:'4.' }, { wort:'manus',   genus:'f', emoji:'✋', dekl:'4.' },
+            { wort:'dies',    genus:'m', emoji:'☀️', dekl:'5.' }, { wort:'res',     genus:'f', emoji:'📦', dekl:'5.' },
+        ]
+    },
+    konjugation: null, // unten
+    tempus: {
+        n1: [
+            { verb:'amare',   pronomen:'ego',   zeit:'Imperfekt', richtig:'amabam',  falsch:['amo','amavi','amabo'] },
+            { verb:'videre',  pronomen:'tu',    zeit:'Perfekt',   richtig:'vidisti', falsch:['vides','videbas','videbis'] },
+            { verb:'esse',    pronomen:'is/ea', zeit:'Imperfekt', richtig:'erat',    falsch:['est','fuit','erit'] },
+        ],
+        n2: [
+            { verb:'dicere',  pronomen:'nos',   zeit:'Perfekt',   richtig:'diximus', falsch:['dicimus','dicebamus','dicemus'] },
+            { verb:'venire',  pronomen:'vos',   zeit:'Futur',     richtig:'venietis',falsch:['venitis','veniebatis','venistis'] },
+        ],
+        n3: [
+            { verb:'vincere', pronomen:'ei/eae',zeit:'Plusquamperf.',richtig:'vicerant',falsch:['vincunt','vicerunt','vincent'] },
+            { verb:'scribere',pronomen:'ego',   zeit:'Futur II',  richtig:'scripsero',falsch:['scribo','scripsi','scribam'] },
+        ]
+    }
+};
+
+// Konjugation: Präsens aktiv
+const verbForms = {
+    'esse':    ['sum','es','est','sumus','estis','sunt'],
+    'amare':   ['amo','amas','amat','amamus','amatis','amant'],
+    'habere':  ['habeo','habes','habet','habemus','habetis','habent'],
+    'videre':  ['video','vides','videt','videmus','videtis','vident'],
+    'dicere':  ['dico','dicis','dicit','dicimus','dicitis','dicunt'],
+    'facere':  ['facio','facis','facit','facimus','facitis','faciunt'],
+    'venire':  ['venio','venis','venit','venimus','venitis','veniunt'],
+    'audire':  ['audio','audis','audit','audimus','auditis','audiunt'],
+    'dare':    ['do','das','dat','damus','datis','dant'],
+    'ire':     ['eo','is','it','imus','itis','eunt'],
+    'legere':  ['lego','legis','legit','legimus','legitis','legunt'],
+    'scribere':['scribo','scribis','scribit','scribimus','scribitis','scribunt'],
+    'docere':  ['doceo','doces','docet','docemus','docetis','docent'],
+    'discere': ['disco','discis','discit','discimus','discitis','discunt'],
+    'vincere': ['vinco','vincis','vincit','vincimus','vincitis','vincunt'],
+};
+grammatikDaten.konjugation = verbForms;
+
+const pronouns    = ['ego','tu','is/ea/id','nos','vos','ei/eae/ea'];
+const verbGroups  = {
+    n1: ['esse','amare','habere','videre','dare'],
+    n2: ['dicere','facere','venire','audire','ire','legere'],
+    n3: ['scribere','docere','discere','vincere'],
+};
+
+// ── Diktat-Wortlisten ─────────────────────────────────────────────────
+const diktatWorteN1 = [
+    {wort:'aqua',audio:''},{wort:'terra',audio:''},{wort:'vita',audio:''},
+    {wort:'amor',audio:''},{wort:'pax',audio:''},{wort:'rex',audio:''},
+    {wort:'deus',audio:''},{wort:'homo',audio:''},{wort:'via',audio:''},
+    {wort:'luna',audio:''},{wort:'sol',audio:''},{wort:'canis',audio:''},
+    {wort:'mater',audio:''},{wort:'pater',audio:''},{wort:'liber',audio:''},
+];
+const diktatWorteN2 = [
+    {wort:'porta',audio:''},{wort:'villa',audio:''},{wort:'silva',audio:''},
+    {wort:'bellum',audio:''},{wort:'miles',audio:''},{wort:'gladius',audio:''},
+    {wort:'senator',audio:''},{wort:'consul',audio:''},{wort:'forum',audio:''},
+    {wort:'stella',audio:''},{wort:'aquila',audio:''},{wort:'equus',audio:''},
+];
+const diktatWorteN3 = [
+    {wort:'imperator',audio:''},{wort:'senator',audio:''},
+    {wort:'philosophia',audio:''},{wort:'grammatica',audio:''},
+    {wort:'rhetorica',audio:''},{wort:'mathēmatica',audio:''},
+    {wort:'astronomia',audio:''},{wort:'medicina',audio:''},
+    {wort:'iustitia',audio:''},{wort:'libertas',audio:''},
+];
+
+// ── Übersetzungssystem ────────────────────────────────────────────────
+const sprachen = [
+    { code:'de', flag:'🇩🇪', name:'Deutsch' },
+    { code:'en', flag:'🇬🇧', name:'English' },
+    { code:'it', flag:'🇮🇹', name:'Italiano' },
+    { code:'fr', flag:'🇫🇷', name:'Français' },
+];
+let uebersetzungAktiv = false;
+let userLang = 'de';
+try { userLang = localStorage.getItem('abcverbum_lang') || 'de'; } catch(e) {}
+const uebersetzungsCache = {};
+
+function sprachDropdownBauen() {
+    const sel = document.getElementById('sprachSelectControls'); if (!sel) return;
+    sel.innerHTML = '';
+    sprachen.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.code; opt.textContent = s.flag + ' ' + s.name;
+        if (s.code === userLang) opt.selected = true;
+        sel.appendChild(opt);
+    });
+}
+function sprachWechseln(code) {
+    userLang = code; try { localStorage.setItem('abcverbum_lang', code); } catch(e) {}
+    const wort = uebersetzungsAktuellesWort(); if (wort) uebersetzeUndZeige(wort);
+}
+function uebersetzungToggle() {
+    uebersetzungAktiv = document.getElementById('uebersetzungToggleSwitch').checked;
+    const dropdown = document.getElementById('sprachDropdownInControls');
+    const anzeige  = document.getElementById('uebersetzungAnzeige');
+    if (uebersetzungAktiv) {
+        if (dropdown) dropdown.style.display = 'block';
+        const wort = uebersetzungsAktuellesWort(); if (wort) uebersetzeUndZeige(wort);
+    } else { if (dropdown) dropdown.style.display = 'none'; anzeige.textContent = ''; }
+}
+function uebersetzungsAktuellesWort() {
+    if (diktatAktiv && diktatAktuell) return diktatAktuell;
+    if (grammatikAktiv && grammatikAktuell) return grammatikAktuell.wort || grammatikAktuell.verb || '';
+    return '';
+}
+async function uebersetzeAPI(text) {
+    if (!text) return '';
+    const key = 'la:' + userLang + ':' + text;
+    if (uebersetzungsCache[key]) return uebersetzungsCache[key];
+    if (userLang === 'de' && laDeDict[text]) { uebersetzungsCache[key] = laDeDict[text]; return laDeDict[text]; }
+    if (userLang === 'de' && laDeDict[text.toLowerCase()]) { const r = laDeDict[text.toLowerCase()]; uebersetzungsCache[key] = r; return r; }
+    try {
+        const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=la|' + userLang;
+        const res = await fetch(url); if (!res.ok) return '';
+        const data = await res.json();
+        const result = (data.responseData && data.responseData.translatedText) || '';
+        if (result) uebersetzungsCache[key] = result; return result;
+    } catch(e) { return ''; }
+}
+function uebersetzeUndZeige(text) {
+    if (!uebersetzungAktiv || !text) return;
+    const anzeige = document.getElementById('uebersetzungAnzeige');
+    const sprache = sprachen.find(s => s.code === userLang);
+    const flag    = sprache ? sprache.flag : '🌍';
+    // Lokales Dict zuerst
+    const lokalTreffer = laDeDict[text] || laDeDict[text.toLowerCase()];
+    if (lokalTreffer) { anzeige.textContent = flag + ' ' + lokalTreffer; return; }
+    anzeige.textContent = flag + ' …';
+    uebersetzeAPI(text).then(r => { anzeige.textContent = r ? flag + ' ' + r : ''; });
+}
+
+// ── TTS (Latein = kein nativer Code → it-IT + Google la) ─────────────
+function sprichLa(text) {
+    if (!text) return;
+    window.speechSynthesis.cancel();
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length === 0) {
+        window.speechSynthesis.addEventListener('voiceschanged', () => _sprichLaNow(text), { once: true });
+        return;
+    }
+    _sprichLaNow(text);
+}
+function _sprichLaNow(text) {
+    const voices = window.speechSynthesis.getVoices();
+    // Latein: erst it-IT, dann la falls vorhanden
+    const laVoice = voices.find(v => v.lang === 'la') ||
+                    voices.find(v => v.lang.startsWith('it')) ||
+                    voices.find(v => v.lang.startsWith('es')); // Spanisch als Not-Fallback
+    if (laVoice) {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = laVoice.lang.startsWith('la') ? 'la' : 'it-IT';
+        u.rate = 0.75; // Latein etwas langsamer für Würde 😄
+        u.voice = laVoice;
+        window.speechSynthesis.speak(u);
+    } else {
+        _sprichLaGoogle(text);
+    }
+}
+function _sprichLaGoogle(text) {
+    try {
+        // Google TTS hat tatsächlich `la` – klingt interessant!
+        const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=it&q=' +
+            encodeURIComponent(text) + '&client=tw-ob';
+        const audio = new Audio(url);
+        audio.play().catch(() => showToast('⚠️ Keine Lateinstimme – lingua mortua! 😄'));
+    } catch(e) { showToast('⚠️ Keine Lateinstimme – lingua mortua! 😄'); }
+}
+function sprichZeichenTTS(ch) { sprichLa(ch); }
+function sprichWort() { const s = currentWord.join(''); if (s) sprichLa(s); }
+
+// TTS-Hinweis
+let ttsPruefungErledigt = false;
+function pruefeTTSUndZeige() {
+    if (ttsPruefungErledigt) return;
+    ttsPruefungErledigt = true;
+    setTimeout(() => {
+        const voices = window.speechSynthesis.getVoices();
+        const laVoice = voices.find(v => v.lang === 'la') || voices.find(v => v.lang.startsWith('it'));
+        if (!laVoice) {
+            const status = document.getElementById('diktatStatus');
+            if (status) status.innerHTML =
+                'Audi et scribe! &nbsp;·&nbsp; <span style="color:#e67e22;font-size:0.85rem;">⚠️ Keine Lateinstimme – Italiano als Fallback</span>';
+        }
+    }, 800);
+}
+
+// ── Keyboard ──────────────────────────────────────────────────────────
+function renderKeyboard() {
+    const isLower = document.getElementById('caseToggle').checked;
+    document.getElementById('caseLabel').textContent = isLower ? 'a' : 'A';
+    const grid = document.getElementById('kbBase');
+    grid.innerHTML = '';
+    litteraeBase.forEach(ch => {
+        const c = isLower ? ch.toLowerCase() : ch;
+        const btn = document.createElement('div');
+        btn.className = 'key ' + (vokale.has(ch) ? 'vokal' : 'konsonant');
+        btn.textContent = c;
+        btn.addEventListener('click', () => addChar(c));
+        grid.appendChild(btn);
+    });
+}
+
+function macraToggleChange() {
+    const on = document.getElementById('macraToggle').checked;
+    document.getElementById('macraLabel').textContent = on ? 'an' : 'aus';
+    const grid = document.getElementById('kbMacra');
+    grid.style.display = on ? 'grid' : 'none';
+    if (on && !grid.children.length) {
+        macra.forEach(ch => {
+            const btn = document.createElement('div');
+            btn.className = 'key makron'; btn.textContent = ch;
+            btn.addEventListener('click', () => addChar(ch));
+            grid.appendChild(btn);
+        });
+    }
+}
+
+function spezialToggleChange() {
+    const on = document.getElementById('spezialToggle').checked;
+    document.getElementById('spezialLabel').textContent = on ? 'an' : 'aus';
+    const grid = document.getElementById('kbSpezial');
+    grid.style.display = on ? 'grid' : 'none';
+    if (on && !grid.children.length) {
+        speziales.forEach(ch => {
+            const btn = document.createElement('div');
+            btn.className = 'key spezial'; btn.textContent = ch;
+            btn.addEventListener('click', () => addChar(ch));
+            grid.appendChild(btn);
+        });
+        // Zahlen 1-10 auf Latein
+        const zahlen = [['I','1'],['II','2'],['III','3'],['IV','4'],['V','5'],['VI','6'],['VII','7'],['VIII','8'],['IX','9'],['X','10']];
+        zahlen.forEach(([rom, arab]) => {
+            const btn = document.createElement('div');
+            btn.className = 'key spezial';
+            btn.style.cssText = 'padding:8px 2px;display:flex;flex-direction:column;align-items:center;gap:1px;';
+            btn.innerHTML = `<span style="font-size:1rem;">${rom}</span><span style="font-size:0.55rem;color:#888;">${arab}</span>`;
+            btn.addEventListener('click', () => addChar(rom));
+            grid.appendChild(btn);
+        });
+    }
+}
+
+// ── State ─────────────────────────────────────────────────────────────
+let currentWord = [], savedWords = [];
+try { savedWords = JSON.parse(localStorage.getItem('abcverbum_saved')) || []; } catch(e) {}
+let diktatAktiv = false, grammatikAktiv = false, diktatRichtig = 0, diktatFalsch = 0;
+let diktatAktuell = '', diktatEingabe = '', diktatGesperrt = false, diktatHatFehler = false;
+let diktatBuzzerGespielt = false, diktatModus = 'hilfe', diktatNiveau = 'n1', diktatStumm = false;
+let grammatikModus = 'kasus', grammatikGesperrt = false, grammatikAktuell = null;
+const diktatVerlauf = []; let diktatVerlaufIdx = -1;
+
+function shuffle(arr) { const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+// ── Char / Display ────────────────────────────────────────────────────
+let _lastAddTime = 0;
+function addChar(ch) {
+    const now = Date.now(); if (now - _lastAddTime < 80) return; _lastAddTime = now;
+    if (diktatAktiv) { diktatAddChar(ch); return; }
+    currentWord.push(ch); updateDisplay(); if (!diktatStumm) sprichZeichenTTS(ch);
+}
+function backspace() {
+    if (diktatAktiv) { diktatEingabe = diktatEingabe.slice(0,-1); diktatRender(); return; }
+    currentWord.pop(); updateDisplay();
+}
+function updateDisplay() {
+    const display = document.getElementById('wordDisplay');
+    if (diktatAktiv) { diktatRender(); return; }
+    display.innerHTML = '';
+    if (currentWord.length === 0) { display.classList.add('empty'); display.textContent = 'Clicca litteras ut verbum aedifices'; return; }
+    display.classList.remove('empty');
+    currentWord.forEach((ch, i) => {
+        const span = document.createElement('div'); span.className = 'char-block'; span.textContent = ch;
+        span.onclick = () => { currentWord.splice(i,1); updateDisplay(); };
+        display.appendChild(span);
+    });
+}
+function randomWord() {
+    if (diktatAktiv && grammatikAktiv) { Math.random()>0.5 ? diktatNeuesWort() : grammatikNeueAufgabe(); }
+    else if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+    else { const w = wordList[Math.floor(Math.random()*wordList.length)]; currentWord = w.split(''); updateDisplay(); sprichWort(); }
+}
+function navigiereZurueck() {
+    if (diktatAktiv && diktatVerlaufIdx > 0) {
+        diktatVerlaufIdx--;
+        const e = diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell = e.wort; diktatEingabe = ''; diktatGesperrt = false;
+        diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
+        diktatRender(); document.getElementById('diktatStatus').textContent = 'Audi et scribe!';
+        diktatSprechen();
+    }
+}
+function wiederholenButton() { if (grammatikAktiv && !diktatAktiv) { grammatikSprechen(); return; } if (diktatAktiv) diktatNochmal(); else sprichWort(); }
+function updateModusUI() {
+    const beides = diktatAktiv || grammatikAktiv;
+    document.getElementById('scoreBereich').style.display       = beides ? 'block' : 'none';
+    document.getElementById('niveauSliderBereich').style.display= beides ? 'block' : 'none';
+    document.getElementById('diktatStatus').style.display       = beides ? 'block' : 'none';
+    document.getElementById('diktatModusBereich').style.display = diktatAktiv ? 'block' : 'none';
+    document.getElementById('grammatikZeile').style.display     = grammatikAktiv ? 'flex' : 'none';
+    if (!beides) { document.getElementById('diktatStatus').textContent = ''; updateDisplay(); }
+}
+function diktatToggle() {
+    diktatAktiv = document.getElementById('diktatToggleSwitch').checked; updateModusUI();
+    if (diktatAktiv) { if (!freiRundenCheck()) { diktatAktiv=false; document.getElementById('diktatToggleSwitch').checked=false; updateModusUI(); return; } diktatNeuesWort(); }
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
+function grammatikToggle() {
+    grammatikAktiv = document.getElementById('grammatikToggleSwitch').checked; updateModusUI();
+    if (grammatikAktiv) { if (!freiRundenCheck()) { grammatikAktiv=false; document.getElementById('grammatikToggleSwitch').checked=false; updateModusUI(); return; } grammatikNeueAufgabe(); }
+    else if (diktatAktiv) diktatNeuesWort();
+}
+function niveauSliderChange(val) {
+    diktatNiveau = ['n1','n2','n3'][val-1]; document.getElementById('niveauLabel').textContent = 'N'+val;
+    if (diktatAktiv) diktatNeuesWort(); if (grammatikAktiv) grammatikNeueAufgabe();
+}
+
+// ── Diktat ────────────────────────────────────────────────────────────
+function diktatGetListe() { if(diktatNiveau==='n2')return diktatWorteN2; if(diktatNiveau==='n3')return diktatWorteN3; return diktatWorteN1; }
+function diktatNeuesWort() {
+    const liste = diktatGetListe();
+    const e = liste[Math.floor(Math.random()*liste.length)];
+    diktatAktuell = e.wort; diktatEingabe = ''; diktatGesperrt = false;
+    diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
+    diktatVerlauf.splice(diktatVerlaufIdx+1); diktatVerlauf.push({wort:e.wort});
+    if (diktatVerlauf.length>50) diktatVerlauf.shift(); diktatVerlaufIdx = diktatVerlauf.length-1;
+    diktatRender(); document.getElementById('diktatStatus').textContent = 'Audi et scribe!';
+    setTimeout(() => diktatSprechen(), 300);
+    pruefeTTSUndZeige();
+    if (uebersetzungAktiv) uebersetzeUndZeige(diktatAktuell);
+}
+function diktatSprechen() { sprichLa(diktatAktuell); }
+function diktatNochmal() { if (diktatAktuell) diktatSprechen(); }
+function diktatRender() {
+    const display = document.getElementById('wordDisplay'); display.classList.remove('empty');
+    if (!diktatAktuell) return;
+    const ziel = diktatAktuell.toLowerCase(); const t = diktatEingabe.toLowerCase();
+    if (diktatModus === 'blind') { display.innerHTML = `<span style="font-size:1.5rem;color:#7f8c8d;">🙈 ${t.length} / ${ziel.length}</span>`; return; }
+    let html = '';
+    for (let i=0; i<ziel.length; i++) {
+        const entered = diktatEingabe[i];
+        if (diktatModus === 'striche') {
+            if (!entered) html += `<div class="char-block" style="min-width:24px;border-color:#ccc;background:#f8f9fa;">_</div>`;
+            else { const ok=entered.toLowerCase()===ziel[i]; html += `<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`; }
+        } else {
+            if (!entered) html += `<div class="char-block" style="min-width:24px;border-color:#ccc;background:#fafafa;">${diktatAktuell[i]}</div>`;
+            else { const ok=entered.toLowerCase()===ziel[i]; html += `<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`; }
+        }
+    }
+    display.innerHTML = html;
+}
+function diktatSetModus(m,btn) { diktatModus=m; document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv')); btn.classList.add('aktiv'); diktatRender(); }
+function diktatStummToggle(btn) { diktatStumm=!diktatStumm; btn.textContent=diktatStumm?'🔇':'🔊'; btn.classList.toggle('aktiv',diktatStumm); }
+
+let _lastDiktatAddTime = 0;
+function diktatAddChar(ch) {
+    const now=Date.now(); if(now-_lastDiktatAddTime<80)return; _lastDiktatAddTime=now;
+    if(diktatGesperrt)return;
+    const ziel=diktatAktuell.toLowerCase(); const idx=diktatEingabe.length; if(idx>=ziel.length)return;
+    diktatEingabe+=ch; if(!diktatStumm)sprichZeichenTTS(ch);
+    if(ch.toLowerCase()!==ziel[idx]){diktatHatFehler=true;if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}}
+    diktatRender();
+    if(diktatEingabe.toLowerCase()===ziel){
+        diktatGesperrt=true;
+        if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Optime! 🎉';}
+        else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='Recte — sed cum correctionibus.';}
+        setTimeout(diktatFanfare,300); setTimeout(diktatNeuesWort,2400);
+    } else { document.getElementById('diktatStatus').textContent=diktatEingabe.length<ziel.length?'Perge…':'Non iam…'; }
+}
+
+// ── Grammatik ─────────────────────────────────────────────────────────
+function grammatikSetModus(m,btn) {
+    grammatikModus=m; document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv')); btn.classList.add('aktiv'); grammatikNeueAufgabe();
+}
+function grammatikNeueAufgabe() {
+    const display=document.getElementById('wordDisplay'); display.classList.remove('empty'); grammatikGesperrt=false;
+
+    if (grammatikModus==='kasus') {
+        const pool=grammatikDaten.kasus[diktatNiveau]||grammatikDaten.kasus.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell=e;
+        const btns=shuffle(e.antworten);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.wort} → <em>${e.kasus}</em></div>
+            <div class="grammatik-hinweis">${e.hinweis}</div>
+            <div class="auswahl-grid">${btns.map(a=>`<button class="auswahl-btn" onclick="kasusAntwort('${a}',this)">${a}</button>`).join('')}</div>
+            <div id="grammatikStatus" style="font-size:0.9rem;color:#555;font-style:italic;min-height:1.2em;"></div>
+        </div>`; grammatikSprechen();
+
+    } else if (grammatikModus==='genus') {
+        const pool=grammatikDaten.genus[diktatNiveau]||grammatikDaten.genus.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell=e;
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div style="font-size:2rem;">${e.emoji}</div>
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div class="grammatik-hinweis">${e.dekl} Dekl. · Genus?</div>
+            <div class="artikel-buttons">
+                <button class="art-btn" onclick="genusAntwort('m',this)" style="color:#1565c0;border-color:#1565c0;">masc.</button>
+                <button class="art-btn" onclick="genusAntwort('f',this)" style="color:#c62828;border-color:#c62828;">fem.</button>
+                <button class="art-btn" onclick="genusAntwort('n',this)" style="color:#2e7d32;border-color:#2e7d32;">neut.</button>
+            </div>
+            <div id="grammatikStatus" style="font-size:0.9rem;color:#555;font-style:italic;min-height:1.2em;"></div>
+        </div>`; grammatikSprechen();
+
+    } else if (grammatikModus==='konjugation') {
+        const pool=verbGroups[diktatNiveau]||verbGroups.n1;
+        const verb=pool[Math.floor(Math.random()*pool.length)];
+        const formen=verbForms[verb]; if(!formen){grammatikNeueAufgabe();return;}
+        const pIdx=Math.floor(Math.random()*6); const richtig=formen[pIdx];
+        const falsch=shuffle(formen.filter((_,i)=>i!==pIdx)).slice(0,3);
+        const alle=shuffle([richtig,...falsch]); grammatikAktuell={verb,pIdx,richtig};
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe"><em>${pronouns[pIdx]}</em> ___ <span style="color:var(--primary)">${verb}</span></div>
+            <div class="grammatik-hinweis">Praesens actīvum</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a}',this)">${pronouns[pIdx]} ${a}</button>`).join('')}</div>
+            <div id="grammatikStatus" style="font-size:0.9rem;color:#555;font-style:italic;min-height:1.2em;"></div>
+        </div>`; grammatikSprechen();
+
+    } else if (grammatikModus==='tempus') {
+        const pool=[...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        const e=pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell=e;
+        const alle=shuffle([e.richtig,...e.falsch]);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe"><em>${e.pronomen}</em> ___ <span style="color:var(--primary)">${e.verb}</span></div>
+            <div class="grammatik-hinweis">${e.zeit}</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="tempusAntwort('${a}',this)">${a}</button>`).join('')}</div>
+            <div id="grammatikStatus" style="font-size:0.9rem;color:#555;font-style:italic;min-height:1.2em;"></div>
+        </div>`;
+    }
+    document.getElementById('diktatStatus').textContent='';
+    if (uebersetzungAktiv && grammatikAktuell) { const gw=grammatikAktuell.wort||grammatikAktuell.verb||''; if(gw) uebersetzeUndZeige(gw); }
+}
+
+function kasusAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.richtig; btn.classList.add(ok?'richtig':'falsch');
+    if(!ok) btn.closest('div').querySelectorAll('.auswahl-btn').forEach(b=>{if(b.textContent.trim()===grammatikAktuell.richtig)b.classList.add('richtig');});
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Optime! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Recte: ${grammatikAktuell.richtig}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function genusAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.genus; btn.classList.add(ok?'richtig':'falsch');
+    if(!ok) btn.closest('div').querySelectorAll('.art-btn').forEach(b=>{if(b.textContent.trim().startsWith(grammatikAktuell.genus))b.classList.add('richtig');});
+    const genusText = grammatikAktuell.genus==='m'?'masculinum':grammatikAktuell.genus==='f'?'femininum':'neutrum';
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Optime! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Recte: ${genusText}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function konjAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.richtig; btn.classList.add(ok?'richtig':'falsch');
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Optime! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Recte: ${grammatikAktuell.richtig}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function tempusAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.richtig; btn.classList.add(ok?'richtig':'falsch');
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Optime! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Recte: ${grammatikAktuell.richtig}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function grammatikSprechen() {
+    let text='';
+    if(grammatikModus==='kasus'&&grammatikAktuell)text=grammatikAktuell.wort;
+    else if(grammatikModus==='genus'&&grammatikAktuell)text=grammatikAktuell.wort;
+    else if(grammatikModus==='konjugation'&&grammatikAktuell)text=grammatikAktuell.verb;
+    else if(grammatikModus==='tempus'&&grammatikAktuell)text=grammatikAktuell.verb;
+    if(text) sprichLa(text);
+}
+
+// ── Audio ─────────────────────────────────────────────────────────────
+let _diktatCtx=null;
+function getDiktatCtx(){if(!_diktatCtx)_diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return _diktatCtx;}
+function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;[[523,0],[659,0.13],[784,0.26],[1047,0.39]].forEach(([f,d])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(0.2,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+d+0.3);o.connect(g);g.connect(ctx.destination);o.start(t+d);o.stop(t+d+0.3);});}catch(e){}}
+function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}}
+
+// ── Toast & Storage ───────────────────────────────────────────────────
+let toastTimer=null;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2500);}
+function openStorage(){const c=document.getElementById('storedWordsList');c.innerHTML='';if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;font-style:italic;">Nulla verba servata.</p>';}else savedWords.forEach((w,i)=>{const div=document.createElement('div');div.className='stored-word';div.innerHTML=`<span style="font-size:1.2rem;font-family:\'Palatino Linotype\',Georgia,serif;">${w}</span>`;const b=document.createElement('button');b.style.cssText='background:var(--danger);color:white;padding:5px 10px;font-size:0.8rem;border-radius:8px;border:none;cursor:pointer;';b.textContent='Dele';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abcverbum_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};div.appendChild(b);c.appendChild(div);});document.getElementById('storageModal').classList.add('open');}
+function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+
+// === PRO-SYSTEM ===
+const THIS_APP_ID = 'la';
+const APP_REGISTRY = [
+    { id:'de',  name:'ABC Wort',    flag:'🇩🇪', subtitle:'Deutsch lernen',      file:'index.html',       proCode:null,                  color:'#4a90e2' },
+    { id:'ru',  name:'АБВ Слово',   flag:'🇷🇺', subtitle:'Russisch lernen',     file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
+    { id:'en',  name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',     file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
+    { id:'el',  name:'ΑΒΓ Λέξη',   flag:'🇬🇷', subtitle:'Griechisch lernen',   file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
+    { id:'ar',  name:'أبت كلمة',   flag:'🇸🇦', subtitle:'Arabisch lernen',     file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
+    { id:'hi',  name:'एबीसी शब्द', flag:'🇮🇳', subtitle:'Hindi lernen',        file:'abc_shabd.html',   proCode:'ABCSHABD-PRO-2025',   color:'#e65100' },
+    { id:'ur',  name:'ابت لفظ',    flag:'🇵🇰', subtitle:'Farsi/Urdu lernen',   file:'abc_lafz.html',    proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a' },
+    { id:'fa',  name:'الفبا کلمه', flag:'🇦🇫', subtitle:'Dari lernen',         file:'abc_kalima.html',  proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e' },
+    { id:'la',  name:'ABC Verbum',  flag:'🏛️',  subtitle:'Latein lernen',       file:'abc_verbum.html',  proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2' },
+    { id:'egy', name:'Medu Netjer', flag:'𓇳',  subtitle:'Hieroglyphen lernen', file:'abc_medu.html',    proCode:'ABCMEDU-PRO-2025',    color:'#b8860b' },
+];
+const FREIE_RUNDEN = 10;
+
+function proIstAktiv(appId) {
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    if(!app||!app.proCode)return true;
+    try{return localStorage.getItem('abc_pro_'+appId)==='true';}catch(e){return false;}
+}
+function freiRundenCheck() {
+    if(proIstAktiv(THIS_APP_ID))return true;
+    let r=0;try{r=parseInt(localStorage.getItem('abc_runden_'+THIS_APP_ID)||'0');}catch(e){}
+    if(r<FREIE_RUNDEN){try{localStorage.setItem('abc_runden_'+THIS_APP_ID,r+1);}catch(e){}return true;}
+    proGateAnzeigen(THIS_APP_ID,'Dictatum & Grammatica');return false;
+}
+function proGateAnzeigen(appId,feature){
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    const display=document.getElementById('wordDisplay');if(!display)return;
+    display.classList.remove('empty');
+    display.innerHTML=`<div style="text-align:center;padding:1rem;width:100%;">
+        <div style="font-size:2.5rem;margin-bottom:8px;">${app.flag}</div>
+        <div style="font-size:1rem;font-weight:bold;color:#2c3e50;margin-bottom:6px;">Pro-Version</div>
+        <div style="font-size:0.85rem;color:#7f8c8d;margin-bottom:4px;font-style:italic;">${feature} · sine fine</div>
+        <div style="font-size:1.1rem;font-weight:bold;color:${app.color};margin-bottom:16px;">2,99 € – semel</div>
+        <button onclick="proKaufen('${appId}')" style="background:${app.color};padding:10px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-weight:bold;font-size:1rem;margin-bottom:8px;display:block;width:100%;">Pro eme ☕ – 2,99€</button>
+        <button onclick="proCodeEingeben('${appId}')" style="background:#27ae60;padding:8px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-size:0.85rem;width:100%;">Iam solvi ✓</button>
+    </div>`;
+}
+function proKaufen(appId){window.open('https://ko-fi.com/nickelfax','_blank');showToast('Post solutionem codicem per Ko-fi accipies!');}
+function proCodeEingeben(appId){
+    const code=prompt('Codicem Pro inscribe:');if(!code)return;
+    const app=APP_REGISTRY.find(a=>a.id===appId);if(!app)return;
+    if(code.toUpperCase()===app.proCode){
+        try{localStorage.setItem('abc_pro_'+appId,'true');localStorage.removeItem('abc_runden_'+appId);}catch(e){}
+        showToast('Pro activatum! Bene utere! 🎉');updateDisplay();
+    }else{showToast('Codex pravus – post solutionem a Ko-fi pete!');}
+}
+function crossSellBannerEinfuegen(currentAppId){
+    const andere=APP_REGISTRY.filter(a=>a.id!==currentAppId);
+    const container=document.createElement('div');container.id='crossSellBanner';
+    container.style.cssText='width:100%;max-width:700px;margin-top:24px;background:white;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.08);overflow:hidden;';
+    const header=document.createElement('div');header.style.cssText='padding:12px 16px;font-size:0.8rem;font-weight:bold;color:#7f8c8d;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f0f0f0;';
+    header.textContent='🌍 Auch verfügbar';container.appendChild(header);
+    andere.forEach(app=>{
+        const aktiv=proIstAktiv(app.id);const item=document.createElement('div');
+        item.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f8f8f8;cursor:pointer;transition:background 0.15s;';
+        item.onmouseenter=()=>item.style.background='#f8f9fa';item.onmouseleave=()=>item.style.background='white';
+        item.onclick=()=>window.location.href=app.file;
+        item.innerHTML=`<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:1.8rem;">${app.flag}</span>
+            <div><div style="font-weight:bold;color:#2c3e50;font-size:0.95rem;">${app.name}</div>
+            <div style="font-size:0.8rem;color:#7f8c8d;">${app.subtitle}</div></div></div>
+            <div style="display:flex;align-items:center;gap:8px;">
+            ${aktiv?'<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Activatum</span>':'<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">2,99 €</span>'}
+            <span style="color:#bdc3c7;font-size:1.2rem;">›</span></div>`;
+        container.appendChild(item);
+    });
+    const aktiviertePros=APP_REGISTRY.filter(a=>a.proCode&&proIstAktiv(a.id));
+    if(aktiviertePros.length>=2){const hub=document.createElement('div');hub.style.cssText='padding:12px 16px;background:linear-gradient(135deg,#667eea22,#764ba222);display:flex;align-items:center;justify-content:space-between;';hub.innerHTML='<div><div style="font-weight:bold;color:#2c3e50;font-size:0.9rem;">🏆 Pro Plus Hub</div><div style="font-size:0.75rem;color:#7f8c8d;font-style:italic;">Omnes linguae in una – mox</div></div><span style="background:#e8e8f5;color:#6c5ce7;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">Mox</span>';container.appendChild(hub);}
+    const kb=document.querySelector('.keyboard-container');
+    if(kb&&kb.parentNode)kb.parentNode.insertBefore(container,kb.nextSibling);else document.body.appendChild(container);
+}
+// === ENDE PRO-SYSTEM ===
+
+// ── Init ──────────────────────────────────────────────────────────────
+function init() {
+    renderKeyboard(); updateDisplay(); sprachDropdownBauen(); crossSellBannerEinfuegen(THIS_APP_ID);
+}
+window.addEventListener('DOMContentLoaded', init);
+(function(){if(!window.visualViewport)return;window.visualViewport.addEventListener('resize',function(){if((window.innerHeight-window.visualViewport.height)>100){var d=document.getElementById('wordDisplay');if(d)setTimeout(function(){d.scrollIntoView({behavior:'smooth',block:'start'});},150);}});})();
+</script>
+</body>
+</html>
