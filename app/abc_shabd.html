@@ -337,27 +337,13 @@ function sprichHi(text) {
 function _sprichHiNow(text) {
     const voices = window.speechSynthesis.getVoices();
     const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
-    if (hindiVoice) {
-        // Browser-TTS verfügbar → verwenden
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'hi-IN'; u.rate = 0.82; u.voice = hindiVoice;
-        window.speechSynthesis.speak(u);
-    } else {
-        // Fallback: Google TTS
-        _sprichHiGoogle(text);
-    }
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'hi-IN';
+    u.rate = 0.82;
+    if (hindiVoice) u.voice = hindiVoice;
+    window.speechSynthesis.speak(u);
 }
 
-function _sprichHiGoogle(text) {
-    try {
-        const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=hi&q=' +
-            encodeURIComponent(text) + '&client=tw-ob';
-        const audio = new Audio(url);
-        audio.play().catch(() => showToast('⚠️ Keine Hindi-Stimme verfügbar'));
-    } catch(e) {
-        showToast('⚠️ Keine Hindi-Stimme verfügbar');
-    }
-}
 
 function sprichZeichenTTS(ch) {
     // Zahl? → Zahlwort sprechen
