@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#c0392b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ABC Palabra">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC Palabra 🇪🇸</title>
+<style>
+:root {
+    --primary: #c0392b;
+    --secondary: #f39c12;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --purple: #8e44ad;
+    --bg: #fff5f5;
+    --card-bg: #ffffff;
+    --gold: #f1c40f;
+}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+h1 { color: var(--primary); margin-bottom: 4px; text-align: center; font-size: 1.8rem; }
+.subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; }
+.word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.5rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); box-sizing: border-box; }
+.word-display.empty { color: #bdc3c7; font-size: 1.2rem; font-weight: normal; font-style: italic; }
+.char-block { background: #fff5f5; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; }
+.char-block:hover { background: #fde8e8; border-color: var(--danger); transform: scale(1.05); }
+.char-block::after { content: '✕'; position: absolute; top: -8px; right: -8px; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+.char-block:hover::after { opacity: 1; }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; }
+button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+button:active { transform: scale(0.95); }
+.keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
+.keyboard-section { margin-bottom: 15px; }
+.section-title { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 8px; }
+.key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 14px 4px; text-align: center; font-size: 1.4rem; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s; user-select: none; }
+.key.vokal { background: #fff5f5; border-color: #f1948a; color: var(--primary); }
+.key.konsonant { background: #fef9e7; border-color: #f9e79f; color: #7d6608; }
+.key:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+.key.special { background: #fdf2f8; border-color: #d7bde2; color: #7d3c98; font-size: 1.2rem; }
+.key.special:hover { background: #8e44ad; color: white; border-color: #8e44ad; }
+.key.emoji-mode { padding: 8px 4px; font-size: 1.8rem; line-height: 1.2; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.key.emoji-mode .emoji-label { font-size: 0.6rem; font-weight: bold; color: #555; }
+.key.emoji-mode:hover .emoji-label { color: white; }
+.key.zahl { background: #e8eaf6; border-color: #9fa8da; color: #283593; }
+.key.zahl:hover { background: #3949ab; color: white; border-color: #3949ab; }
+.case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.case-toggle span { font-size: 0.85rem; color: #7f8c8d; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.toggle-switch { position: relative; width: 52px; height: 28px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+.toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+.toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+.case-label { font-size: 1.1rem; font-weight: bold; min-width: 20px; color: #2c3e50; }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+.modal-overlay.open { display: flex; }
+.modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+.btn-close-modal { background: #95a5a6; margin-top: 15px; width: 100%; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.diktat-modus-zeile { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+.diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+.grammatik-aufgabe { font-size: 1.5rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; }
+.grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; }
+.artikel-buttons { display: flex; gap: 10px; justify-content: center; width: 100%; flex-wrap: wrap; }
+.art-btn { padding: 12px 16px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 80px; max-width: 160px; }
+.art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+.art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+.auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.auswahl-btn { padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; }
+.auswahl-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+.auswahl-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+#uebersetzungAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em; margin-bottom: 4px; letter-spacing: 0.03em; transition: opacity 0.3s; }
+/* Spanish flag accent bar */
+.flag-bar { width: 100%; max-width: 700px; height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--primary) 33%, var(--gold) 33%, var(--gold) 66%, var(--primary) 66%); margin-bottom: 16px; }
+@media (max-width: 600px) {
+    body { padding: 8px; } h1 { font-size: 1.3rem; }
+    .word-display { min-height: 60px; font-size: 1.6rem; padding: 10px; margin-bottom: 10px; }
+    button { padding: 9px 12px; font-size: 0.82rem; }
+    .keyboard-container { padding: 10px 8px; }
+    .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 5px; }
+    .key { padding: 10px 2px; font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<h1>ABC Palabra 🇪🇸</h1>
+<p class="subtitle">Aprende Español · Dictado · Gramática · Constructor de Palabras</p>
+<div class="flag-bar"></div>
+
+<div id="scoreBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div style="display:flex; gap:20px; font-size:1rem; padding:8px 16px; background:#fff8e1; border:2px solid var(--secondary); border-radius:12px;">
+        <span>Correcto: <strong id="diktatRichtig">0</strong></span>
+        <span>Incorrecto: <strong id="diktatFalsch">0</strong></span>
+    </div>
+</div>
+
+<div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)" title="Con letras">🔤</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)" title="Solo guiones">➖</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)" title="Ciego">🙈</button>
+        <button class="diktat-modus-btn" id="btnDiktatStumm" onclick="diktatStummToggle(this)" title="Sonido activado/desactivado">🔊</button>
+    </div>
+</div>
+
+<div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" id="btnGArtikel" onclick="grammatikSetModus('artikel',this)">el / la</button>
+        <button class="diktat-modus-btn" id="btnGPronombre" onclick="grammatikSetModus('pronombre',this)">yo / tú</button>
+        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">ser / estar</button>
+        <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">⏰</button>
+    </div>
+</div>
+
+<div id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center; font-size:1rem; color:#555; min-height:1.4em;"></div>
+
+<div id="uebersetzungAnzeige"></div>
+
+<div id="wordDisplay" class="word-display empty">
+    Haz clic en las letras para construir una palabra
+</div>
+
+<div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; box-sizing:border-box; padding:0 4px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+        <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+        <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary); min-width:24px;">N1</span>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="wiederholenButton()" style="background:var(--primary); font-size:1.6rem;">🔁</button>
+    <button onclick="sprichWort()" style="background:var(--success); font-size:1.6rem;">🔊</button>
+    <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
+    <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
+    <button onclick="backspace()" style="font-size:1.6rem; background:#e74c3c;">⌫</button>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🖊️</span>
+        <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">Dict</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">❓</span>
+        <label class="toggle-switch"><input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">Grm</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🌍</span>
+        <label class="toggle-switch"><input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">DE</span>
+    </div>
+</div>
+
+<div class="keyboard-container">
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span style="font-size:1rem; font-weight:bold; color:#2c3e50;">A</span>
+            <label class="toggle-switch"><input type="checkbox" id="caseToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="caseLabel">a</span>
+            <label class="toggle-switch" style="margin-left:12px;"><input type="checkbox" id="emojiToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+            <span style="font-size:1.2rem; margin-left:4px;">🖼️</span>
+        </div>
+        <div class="keyboard-grid" id="alphabetGrid"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">ñ / á / é / ¿ / ¡</span>
+            <label class="toggle-switch"><input type="checkbox" id="specialToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="specialLabel">off</span>
+        </div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">🔢 (0–9)</span>
+            <label class="toggle-switch"><input type="checkbox" id="numberToggle"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="numberLabel">off</span>
+        </div>
+    </div>
+</div>
+
+<div id="storageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>📚 Palabras Guardadas</h2>
+        <div id="storedWordsList"></div>
+        <button class="btn-close-modal" onclick="closeStorage()">Cerrar</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+// Spanish alphabet (without K, W which are rare but included)
+const alphabet = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'.split(' ');
+const vokale = new Set(['A','E','I','O','U','a','e','i','o','u']);
+
+// Spanish special characters
+const specialChars = ['ñ','á','é','í','ó','ú','ü','¿','¡','Ñ','Á','É','Í','Ó','Ú'];
+
+const emojiMap = {
+    'A':{ emoji:'🥑', word:'Aguacate' }, 'B':{ emoji:'🎈', word:'Globo' },
+    'C':{ emoji:'🐴', word:'Caballo' },  'D':{ emoji:'🐉', word:'Dragón' },
+    'E':{ emoji:'⭐', word:'Estrella' }, 'F':{ emoji:'🍓', word:'Fresa' },
+    'G':{ emoji:'🐱', word:'Gato' },     'H':{ emoji:'🌺', word:'Hibisco' },
+    'I':{ emoji:'🏝️', word:'Isla' },     'J':{ emoji:'🦒', word:'Jirafa' },
+    'K':{ emoji:'🥝', word:'Kiwi' },     'L':{ emoji:'🌙', word:'Luna' },
+    'M':{ emoji:'🍎', word:'Manzana' },  'N':{ emoji:'🍊', word:'Naranja' },
+    'O':{ emoji:'🐑', word:'Oveja' },    'P':{ emoji:'🐠', word:'Pez' },
+    'Q':{ emoji:'🧀', word:'Queso' },    'R':{ emoji:'🌹', word:'Rosa' },
+    'S':{ emoji:'☀️', word:'Sol' },      'T':{ emoji:'🐢', word:'Tortuga' },
+    'U':{ emoji:'🦄', word:'Unicornio' },'V':{ emoji:'🍇', word:'Uva' },
+    'W':{ emoji:'🍉', word:'Sandia' },   'X':{ emoji:'🎅', word:'Xmas' },
+    'Y':{ emoji:'⚓', word:'Yate' },     'Z':{ emoji:'🦊', word:'Zorro' },
+};
+
+const wordList = ['gato','perro','sol','luna','árbol','libro','escuela','casa','pájaro','pez','lluvia','estrella','manzana','pan','agua'];
+
+// ES→DE Dictionary
+const esDeDikt = {
+    'gato':'Katze','perro':'Hund','sol':'Sonne','luna':'Mond','árbol':'Baum',
+    'libro':'Buch','escuela':'Schule','casa':'Haus','pájaro':'Vogel','pez':'Fisch',
+    'lluvia':'Regen','estrella':'Stern','manzana':'Apfel','pan':'Brot','agua':'Wasser',
+    'amigo':'Freund','grande':'groß','pequeño':'klein','rápido':'schnell','feliz':'glücklich',
+    'triste':'traurig','caliente':'heiß','frío':'kalt','nuevo':'neu','viejo':'alt',
+    'ir':'gehen','tener':'haben','hacer':'machen','jugar':'spielen','aprender':'lernen',
+    'ayudar':'helfen','ver':'sehen','correr':'laufen','comer':'essen','beber':'trinken',
+    'ciudad':'Stadt','país':'Land','familia':'Familie','tiempo':'Zeit/Wetter','niño':'Kind',
+    'mujer':'Frau','hombre':'Mann','mesa':'Tisch','silla':'Stuhl','coche':'Auto',
+};
+
+// Dictation word lists
+let diktatWorteN1 = [
+    { wort:'gato', audio:'' }, { wort:'perro', audio:'' }, { wort:'sol', audio:'' },
+    { wort:'pan', audio:'' }, { wort:'pez', audio:'' }, { wort:'luz', audio:'' },
+    { wort:'mar', audio:'' }, { wort:'flor', audio:'' }, { wort:'rey', audio:'' },
+    { wort:'ojo', audio:'' },
+];
+let diktatWorteN2 = [
+    { wort:'escuela', audio:'' }, { wort:'amigo', audio:'' }, { wort:'ciudad', audio:'' },
+    { wort:'familia', audio:'' }, { wort:'trabajo', audio:'' }, { wort:'tiempo', audio:'' },
+    { wort:'música', audio:'' }, { wort:'cultura', audio:'' }, { wort:'coche', audio:'' },
+    { wort:'dinero', audio:'' },
+];
+let diktatWorteN3 = [
+    { wort:'responsabilidad', audio:'' }, { wort:'comunicación', audio:'' },
+    { wort:'independencia', audio:'' }, { wort:'conocimiento', audio:'' },
+    { wort:'oportunidad', audio:'' }, { wort:'comprensión', audio:'' },
+    { wort:'extraordinario', audio:'' }, { wort:'administración', audio:'' },
+    { wort:'funcionamiento', audio:'' }, { wort:'establecimiento', audio:'' },
+];
+
+// Grammar data
+const grammatikDaten = {
+    artikel: {  // el / la
+        n1: [
+            { wort:'gato',    artikel:'el', plural:'los gatos',   emoji:'🐱' },
+            { wort:'casa',    artikel:'la', plural:'las casas',   emoji:'🏠' },
+            { wort:'libro',   artikel:'el', plural:'los libros',  emoji:'📚' },
+            { wort:'luna',    artikel:'la', plural:'las lunas',   emoji:'🌙' },
+            { wort:'árbol',   artikel:'el', plural:'los árboles', emoji:'🌳' },
+            { wort:'mesa',    artikel:'la', plural:'las mesas',   emoji:'🪑' },
+            { wort:'perro',   artikel:'el', plural:'los perros',  emoji:'🐕' },
+            { wort:'flor',    artikel:'la', plural:'las flores',  emoji:'🌸' },
+        ],
+        n2: [
+            { wort:'mano',   artikel:'la', plural:'las manos',   emoji:'✋' },
+            { wort:'ciudad', artikel:'la', plural:'las ciudades', emoji:'🏙️' },
+            { wort:'problema',artikel:'el',plural:'los problemas',emoji:'❗' },
+            { wort:'sistema', artikel:'el',plural:'los sistemas', emoji:'⚙️' },
+        ],
+        n3: [
+            { wort:'análisis', artikel:'el', plural:'los análisis', emoji:'🔬' },
+            { wort:'crisis',   artikel:'la', plural:'las crisis',   emoji:'⚠️' },
+        ]
+    },
+    pronombre: {
+        n1: [
+            { satz:'___ soy estudiante.', wort:'yo', antworten:['Yo','Tú','Él','Nosotros'], richtig:'Yo' },
+            { satz:'___ eres mi amigo.', wort:'tú', antworten:['Yo','Tú','Ella','Ellos'], richtig:'Tú' },
+            { satz:'___ somos familia.', wort:'nosotros', antworten:['Yo','Tú','Nosotros','Ellos'], richtig:'Nosotros' },
+            { satz:'___ es mi madre.', wort:'ella', antworten:['Él','Ella','Tú','Yo'], richtig:'Ella' },
+        ],
+        n2: [
+            { satz:'Lo veo a ___.', wort:'él/le', antworten:['él','le','lo','se'], richtig:'él' },
+            { satz:'___ hablan español.', wort:'ellos/ellas', antworten:['Ellos','Ellas','Ellos/Ellas','Ustedes'], richtig:'Ellos' },
+        ],
+        n3: [
+            { satz:'Entre tú y ___.', wort:'yo/mí', antworten:['yo','mí','me','mi'], richtig:'mí' },
+        ]
+    },
+    tempus: {
+        n1: [
+            { infinitiv:'ir',     pronomen:'yo',    zeit:'Pretérito',  richtig:'fui',     falsch:['iba','voy','fue'] },
+            { infinitiv:'ser',    pronomen:'ella',  zeit:'Pretérito',  richtig:'fue',     falsch:['era','es','sería'] },
+            { infinitiv:'tener',  pronomen:'ellos', zeit:'Pretérito',  richtig:'tuvieron',falsch:['tenían','tienen','tendrán'] },
+            { infinitiv:'hacer',  pronomen:'nosotros',zeit:'Pretérito',richtig:'hicimos', falsch:['hacíamos','hacemos','haríamos'] },
+        ],
+        n2: [
+            { infinitiv:'hablar', pronomen:'yo',   zeit:'Futuro',     richtig:'hablaré',  falsch:['hablo','hablé','hablaría'] },
+            { infinitiv:'comer',  pronomen:'tú',   zeit:'Imperfecto', richtig:'comías',   falsch:['comiste','comes','comerás'] },
+        ],
+        n3: [
+            { infinitiv:'haber',  pronomen:'ellos',zeit:'Pluscuamperfecto',richtig:'habían',falsch:['han','habían tenido','hubieron'] },
+            { infinitiv:'poder',  pronomen:'yo',   zeit:'Condicional',richtig:'podría',  falsch:['puedo','pude','podré'] },
+        ]
+    }
+};
+
+// Verb conjugation (Simple Present: yo,tú,él,nosotros,vosotros,ellos)
+const verbForms = {
+    'ser':    ['soy','eres','es','somos','sois','son'],
+    'estar':  ['estoy','estás','está','estamos','estáis','están'],
+    'tener':  ['tengo','tienes','tiene','tenemos','tenéis','tienen'],
+    'ir':     ['voy','vas','va','vamos','vais','van'],
+    'hacer':  ['hago','haces','hace','hacemos','hacéis','hacen'],
+    'querer': ['quiero','quieres','quiere','queremos','queréis','quieren'],
+    'poder':  ['puedo','puedes','puede','podemos','podéis','pueden'],
+    'decir':  ['digo','dices','dice','decimos','decís','dicen'],
+    'ver':    ['veo','ves','ve','vemos','veis','ven'],
+    'saber':  ['sé','sabes','sabe','sabemos','sabéis','saben'],
+    'hablar': ['hablo','hablas','habla','hablamos','habláis','hablan'],
+    'comer':  ['como','comes','come','comemos','coméis','comen'],
+    'vivir':  ['vivo','vives','vive','vivimos','vivís','viven'],
+    'llamar': ['llamo','llamas','llama','llamamos','llamáis','llaman'],
+    'jugar':  ['juego','juegas','juega','jugamos','jugáis','juegan'],
+};
+
+const pronouns    = ['👤 yo','👤 tú','👤 él/ella','👤👤 nosotros','👤👤 vosotros','👤👤 ellos'];
+const pronounsTTS = ['yo','tú','él','nosotros','vosotros','ellos'];
+const verbGroups  = {
+    n1: ['ser','estar','tener','ir','hacer'],
+    n2: ['querer','poder','decir','ver','saber'],
+    n3: ['hablar','comer','vivir','llamar','jugar']
+};
+
+// ── State ─────────────────────────────────────────────────────────────
+let currentWord=[], savedWords=[];
+try { savedWords=JSON.parse(localStorage.getItem('abcpalabra_saved'))||[]; } catch(e) {}
+let diktatAktiv=false, grammatikAktiv=false, diktatRichtig=0, diktatFalsch=0;
+let diktatAktuell='', diktatEingabe='', diktatGesperrt=false, diktatHatFehler=false;
+let diktatBuzzerGespielt=false, diktatModus='hilfe', diktatNiveau='n1', diktatStumm=false, diktatAudioSrc='';
+let grammatikModus='artikel', grammatikGesperrt=false, grammatikAktuell=null;
+let uebersetzungAktiv=false;
+const diktatVerlauf=[]; let diktatVerlaufIdx=-1;
+
+function init() {
+    renderAlphabet();
+    updateDisplay();
+    document.getElementById('specialToggle').addEventListener('change',function(){ document.getElementById('specialLabel').textContent=this.checked?'on':'off'; renderAlphabet(); });
+    document.getElementById('numberToggle').addEventListener('change',function(){ document.getElementById('numberLabel').textContent=this.checked?'on':'off'; renderAlphabet(); });
+}
+
+function renderAlphabet() {
+    const container = document.getElementById('alphabetGrid');
+    const isLower = document.getElementById('caseToggle').checked;
+    const useEmoji = document.getElementById('emojiToggle').checked;
+    const showSpecial = document.getElementById('specialToggle').checked;
+    const showNumbers = document.getElementById('numberToggle').checked;
+    document.getElementById('caseLabel').textContent = isLower ? 'a' : 'A';
+    container.innerHTML = '';
+
+    alphabet.forEach(upper => {
+        const ch = isLower ? upper.toLowerCase() : upper;
+        const btn = document.createElement('div');
+        btn.className = 'key ' + (vokale.has(upper) ? 'vokal' : 'konsonant');
+        if (useEmoji && emojiMap[upper]) {
+            btn.classList.add('emoji-mode');
+            btn.innerHTML = `<span>${emojiMap[upper].emoji}</span><span class="emoji-label">${emojiMap[upper].word}</span>`;
+        } else { btn.textContent = ch; }
+        btn.onclick = () => addChar(ch);
+        container.appendChild(btn);
+    });
+
+    if (showSpecial) {
+        const relevantSpecial = isLower
+            ? ['ñ','á','é','í','ó','ú','ü','¿','¡']
+            : ['Ñ','Á','É','Í','Ó','Ú','Ü','¿','¡'];
+        relevantSpecial.forEach(sp => {
+            const btn = document.createElement('div');
+            btn.className = 'key special';
+            btn.textContent = sp;
+            btn.onclick = () => addChar(sp);
+            container.appendChild(btn);
+        });
+    }
+
+    if (showNumbers) {
+        for (let i=0;i<=9;i++) {
+            const btn = document.createElement('div');
+            btn.className = 'key zahl'; btn.textContent = i;
+            btn.onclick = () => { if(diktatAktiv){diktatAddChar(String(i));return;} currentWord.push(String(i)); updateDisplay(); sprichZeichenTTS(String(i)); };
+            container.appendChild(btn);
+        }
+    }
+}
+
+let _lastAddTime=0;
+function addChar(ch) {
+    const now=Date.now(); if(now-_lastAddTime<80)return; _lastAddTime=now;
+    if(diktatAktiv){diktatAddChar(ch);return;}
+    currentWord.push(ch); updateDisplay(); sprichZeichenTTS(ch);
+}
+function backspace() {
+    if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
+    currentWord.pop(); updateDisplay();
+}
+function getVoiceForLang(lang) {
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find(v => v.lang && v.lang.startsWith(lang.split('-')[0])) || voices[0] || null;
+}
+function ttsSpeak(text, rate, lang) {
+    if (!window.speechSynthesis) { showToast('⚠️ TTS no disponible en este dispositivo'); return; }
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const voice = getVoiceForLang(lang);
+    if (voice) { u.voice = voice; u.lang = voice.lang; }
+    else { u.lang = lang; }
+    u.rate = rate;
+    window.speechSynthesis.speak(u);
+}
+function sprichZeichenTTS(ch) { ttsSpeak(ch.toLowerCase(), 0.7, 'es-ES'); }
+function sprichWort() {
+    const s=currentWord.join(''); if(!s)return;
+    ttsSpeak(s, 0.85, 'es-ES');
+}
+function updateDisplay() {
+    const display=document.getElementById('wordDisplay');
+    if(diktatAktiv){diktatRender();return;}
+    display.innerHTML='';
+    if(currentWord.length===0){display.classList.add('empty');display.textContent='Haz clic en las letras para construir una palabra';return;}
+    display.classList.remove('empty');
+    currentWord.forEach((ch,i)=>{
+        const span=document.createElement('div'); span.className='char-block'; span.textContent=ch;
+        span.onclick=()=>{currentWord.splice(i,1);updateDisplay();}; display.appendChild(span);
+    });
+}
+function randomWord() {
+    if(diktatAktiv&&grammatikAktiv){Math.random()>0.5?diktatNeuesWort():grammatikNeueAufgabe();}
+    else if(diktatAktiv){diktatNeuesWort();}
+    else if(grammatikAktiv){grammatikNeueAufgabe();}
+    else{const w=wordList[Math.floor(Math.random()*wordList.length)];currentWord=w.split('');updateDisplay();sprichWort();}
+}
+function navigiereZurueck() {
+    if(diktatAktiv&&diktatVerlaufIdx>0){
+        diktatVerlaufIdx--;
+        const e=diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell=e.wort;diktatAudioSrc=e.audio;
+        diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;
+        currentWord=[];diktatRender();
+        document.getElementById('diktatStatus').textContent='Escucha y escribe la palabra';
+        diktatSprechen();
+    }
+}
+function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;} if(diktatAktiv)diktatNochmal(); else sprichWort();}
+function updateModusUI(){
+    const beides=diktatAktiv||grammatikAktiv;
+    document.getElementById('scoreBereich').style.display=beides?'block':'none';
+    document.getElementById('niveauSliderBereich').style.display=beides?'block':'none';
+    document.getElementById('diktatStatus').style.display=beides?'block':'none';
+    document.getElementById('diktatModusBereich').style.display=diktatAktiv?'block':'none';
+    document.getElementById('grammatikZeile').style.display=grammatikAktiv?'flex':'none';
+    if(!beides){document.getElementById('diktatStatus').textContent='';updateDisplay();}
+}
+function diktatToggle(){diktatAktiv=document.getElementById('diktatToggleSwitch').checked;updateModusUI();if(diktatAktiv)diktatNeuesWort();else if(grammatikAktiv)grammatikNeueAufgabe();}
+function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikToggleSwitch').checked;updateModusUI();if(grammatikAktiv)grammatikNeueAufgabe();else if(diktatAktiv)diktatNeuesWort();}
+function niveauSliderChange(val){diktatNiveau=['n1','n2','n3'][val-1];document.getElementById('niveauLabel').textContent='N'+val;if(diktatAktiv)diktatNeuesWort();if(grammatikAktiv)grammatikNeueAufgabe();}
+function diktatGetListe(){if(diktatNiveau==='n1')return diktatWorteN1;if(diktatNiveau==='n2')return diktatWorteN2;if(diktatNiveau==='n3')return diktatWorteN3;return[...diktatWorteN1,...diktatWorteN2,...diktatWorteN3];}
+
+function diktatNeuesWort(){
+    const liste=diktatGetListe();
+    const e=liste[Math.floor(Math.random()*liste.length)];
+    diktatAktuell=e.wort;diktatAudioSrc=e.audio;
+    diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;currentWord=[];
+    diktatVerlauf.splice(diktatVerlaufIdx+1);diktatVerlauf.push({wort:e.wort,audio:e.audio});
+    if(diktatVerlauf.length>50)diktatVerlauf.shift();diktatVerlaufIdx=diktatVerlauf.length-1;
+    diktatRender();document.getElementById('diktatStatus').textContent='Escucha y escribe la palabra';
+    diktatSprechen();if(uebersetzungAktiv)zeigUebersetzung(diktatAktuell);
+}
+function diktatSprechen(){window.speechSynthesis.cancel();if(diktatAudioSrc){const a=new Audio(diktatAudioSrc);a.play().catch(()=>diktatSprechenTTS());}else diktatSprechenTTS();}
+function diktatSprechenTTS(){ ttsSpeak(diktatAktuell, 0.8, 'es-ES'); }
+function diktatNochmal(){if(diktatAktuell)diktatSprechen();}
+function diktatRender(){
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');
+    if(!diktatAktuell)return;
+    const ziel=diktatAktuell;
+    if(diktatModus==='blind'){display.innerHTML=`<span style="font-size:1.5rem;color:#7f8c8d;">🙈 ${diktatEingabe.length} / ${ziel.length}</span>`;return;}
+    let html='';
+    for(let i=0;i<ziel.length;i++){
+        const entered=diktatEingabe[i];
+        if(diktatModus==='striche'){
+            if(!entered)html+=`<div class="char-block" style="min-width:28px;border-color:#ccc;background:#f8f9fa;">_</div>`;
+            else{const ok=entered.toLowerCase()===ziel[i].toLowerCase();html+=`<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`;}
+        }else{
+            if(!entered)html+=`<div class="char-block" style="min-width:28px;border-color:#ccc;background:#fafafa;">${ziel[i]}</div>`;
+            else{const ok=entered.toLowerCase()===ziel[i].toLowerCase();html+=`<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`;}
+        }
+    }
+    display.innerHTML=html;
+}
+function diktatSetModus(m,btn){diktatModus=m;document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');diktatRender();}
+function diktatStummToggle(btn){diktatStumm=!diktatStumm;btn.textContent=diktatStumm?'🔇':'🔊';btn.classList.toggle('aktiv',diktatStumm);}
+
+let _lastDiktatAddTime=0;
+function diktatAddChar(ch){
+    const now=Date.now();if(now-_lastDiktatAddTime<80)return;_lastDiktatAddTime=now;
+    if(diktatGesperrt)return;
+    const ziel=diktatAktuell.toLowerCase();const idx=diktatEingabe.length;if(idx>=ziel.length)return;
+    diktatEingabe+=ch;
+    if(!diktatStumm)sprichZeichenTTS(ch);
+    if(ch.toLowerCase()!==ziel[idx]){diktatHatFehler=true;if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}}
+    diktatRender();
+    if(diktatEingabe.toLowerCase()===ziel){
+        diktatGesperrt=true;
+        if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='¡Correcto! 🎉';}
+        else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='Correcto — pero con correcciones.';}
+        setTimeout(diktatFanfare,300);setTimeout(diktatNeuesWort,2400);
+    }else{document.getElementById('diktatStatus').textContent=diktatEingabe.length<ziel.length?'Sigue escribiendo…':'Casi...';}
+}
+
+let _diktatCtx=null;
+function getDiktatCtx(){if(!_diktatCtx)_diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return _diktatCtx;}
+function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;[[523,0],[659,0.13],[784,0.26],[1047,0.39]].forEach(([f,d])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(0.2,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+d+0.3);o.connect(g);g.connect(ctx.destination);o.start(t+d);o.stop(t+d+0.3);});}catch(e){}}
+function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}}
+
+// ── Grammar ──────────────────────────────────────────────────────────
+function grammatikSetModus(m,btn){grammatikModus=m;document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');grammatikNeueAufgabe();}
+function grammatikNeueAufgabe(){
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');grammatikGesperrt=false;
+    if(grammatikModus==='artikel'){
+        const pool=grammatikDaten.artikel[diktatNiveau]||grammatikDaten.artikel.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div style="font-size:2rem;">${e.emoji}</div>
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div class="grammatik-hinweis">¿Qué artículo es correcto?</div>
+            <div class="artikel-buttons">
+                <button class="art-btn" onclick="artikelAntwort('el',this)">el</button>
+                <button class="art-btn" onclick="artikelAntwort('la',this)">la</button>
+            </div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='pronombre'){
+        const pool=grammatikDaten.pronombre[diktatNiveau]||grammatikDaten.pronombre.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const gemischt=[...e.antworten].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.satz}</div>
+            <div class="grammatik-hinweis">Forma correcta de „${e.wort}"</div>
+            <div class="auswahl-grid">${gemischt.map(a=>`<button class="auswahl-btn" onclick="pronAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='konjugation'){
+        const pool=verbGroups[diktatNiveau]||verbGroups.n1;
+        const verb=pool[Math.floor(Math.random()*pool.length)];
+        const formen=verbForms[verb];if(!formen){grammatikNeueAufgabe();return;}
+        const pIdx=Math.floor(Math.random()*6);const richtig=formen[pIdx];
+        const falschForms=formen.filter((_,i)=>i!==pIdx).filter(f=>f!==richtig).sort(()=>Math.random()-0.5).slice(0,3);
+        const alle=[richtig,...falschForms].sort(()=>Math.random()-0.5);
+        grammatikAktuell={verb,pIdx,richtig};
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${pronouns[pIdx]} ___ <span style="color:var(--primary)">${verb}</span></div>
+            <div class="grammatik-hinweis">Presente de indicativo</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='tempus'){
+        const pool=[...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const alle=[e.richtig,...e.falsch].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.pronomen} ___ <span style="color:var(--primary)">${e.infinitiv}</span></div>
+            <div class="grammatik-hinweis">${e.zeit}</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="tempusAntwort('${a.replace(/'/g,"\\'")}',this)">${a}</button>`).join('')}</div></div>`;
+    }
+    document.getElementById('diktatStatus').textContent='';
+}
+
+function artikelAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.artikel){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='¡Correcto! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Es "${grammatikAktuell.artikel} ${grammatikAktuell.wort}"`;}setTimeout(grammatikNeueAufgabe,1800);}
+function pronAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.richtig){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='¡Correcto! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Correcto: ${grammatikAktuell.richtig}`;}setTimeout(grammatikNeueAufgabe,1800);}
+function konjAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.richtig){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='¡Correcto! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Correcto: ${grammatikAktuell.richtig}`;}setTimeout(grammatikNeueAufgabe,1800);}
+function tempusAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.richtig){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='¡Correcto! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Correcto: ${grammatikAktuell.richtig}`;}setTimeout(grammatikNeueAufgabe,1800);}
+
+function grammatikSprechen(){
+    let text='';
+    if(grammatikModus==='artikel'&&grammatikAktuell)text=grammatikAktuell.wort;
+    else if(grammatikModus==='konjugation'&&grammatikAktuell)text=pronounsTTS[grammatikAktuell.pIdx]+' '+grammatikAktuell.verb;
+    if(!text)return;
+    ttsSpeak(text, 0.85, 'es-ES');
+}
+
+function uebersetzungToggle(){uebersetzungAktiv=document.getElementById('uebersetzungToggleSwitch').checked;if(!uebersetzungAktiv)document.getElementById('uebersetzungAnzeige').textContent='';}
+function zeigUebersetzung(wort){if(!uebersetzungAktiv)return;const ue=esDeDikt[wort.toLowerCase()];document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';}
+
+function openStorage(){
+    const c=document.getElementById('storedWordsList');c.innerHTML='';
+    if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">No hay palabras guardadas todavía.</p>';}
+    else savedWords.forEach((w,i)=>{
+        const div=document.createElement('div');div.className='stored-word';
+        div.innerHTML=`<span>${w}</span>`;
+        const b=document.createElement('button');b.style.background='var(--danger)';b.style.color='white';b.style.padding='5px 10px';b.style.fontSize='0.8rem';b.style.borderRadius='8px';b.style.border='none';b.textContent='Borrar';
+        b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abcpalabra_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};
+        div.appendChild(b);c.appendChild(div);
+    });
+    document.getElementById('storageModal').classList.add('open');
+}
+function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+
+let toastTimer=null;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800);}
+
+window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
