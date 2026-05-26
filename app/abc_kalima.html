@@ -390,22 +390,21 @@ function sprichFa(text) {
     if (!text) return;
     const gesprochen = [...text].map(ch => dariZahlen[ch] || ch).join('');
     window.speechSynthesis.cancel();
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length === 0) {
-        window.speechSynthesis.addEventListener('voiceschanged', () => _sprichFaNow(gesprochen), { once: true });
-        return;
-    }
-    _sprichFaNow(gesprochen);
-}
-function _sprichFaNow(text) {
-    const voices = window.speechSynthesis.getVoices();
-    const faVoice = voices.find(v => v.lang.startsWith('fa')) || voices.find(v => v.lang.startsWith('ur'));
-    if (faVoice) {
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'fa-AF'; u.rate = 0.82; u.voice = faVoice;
-        window.speechSynthesis.speak(u);
-    } else {
-        _sprichFaGoogle(text);
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const faVoice = voices.find(v => v.lang.startsWith('fa')) || voices.find(v => v.lang.startsWith('ur'));
+        if (faVoice) {
+            const u = new SpeechSynthesisUtterance(gesprochen);
+            u.lang = 'fa-AF'; u.rate = 0.82; u.voice = faVoice;
+            window.speechSynthesis.speak(u);
+        } else {
+            _sprichFaGoogle(gesprochen);
+        }
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
     }
 }
 function _sprichFaGoogle(text) {
@@ -418,7 +417,6 @@ function _sprichFaGoogle(text) {
 }
 function sprichZeichenTTS(ch) { sprichFa(dariZahlen[ch] || ch); }
 function sprichWort() { const s = currentWord.join(''); if (s) sprichFa(s); }
-
 // TTS-Hinweis beim ersten Diktat
 let ttsPruefungErledigt = false;
 function pruefeTTSUndZeige() {
@@ -434,7 +432,6 @@ function pruefeTTSUndZeige() {
         }
     }, 800);
 }
-
 // ── Keyboard ──────────────────────────────────────────────────────────
 function buildKeyboard() {
     const grid = document.getElementById('alphabetGrid');
