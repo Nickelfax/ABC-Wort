@@ -655,25 +655,27 @@
             const utterance = new SpeechSynthesisUtterance(char);
             utterance.lang = 'it-IT';
             utterance.rate = 0.75;
-            window.speechSynthesis.speak(utterance);
-        }
+         
 
-        function speakWord() {
-            const wordStr = currentWord.join('');
-            if (wordStr.length === 0) return;
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(wordStr);
-            utterance.lang = 'it-IT';
-            utterance.rate = 0.85;
-            const voices = window.speechSynthesis.getVoices();
-            const itVoice = voices.find(v => v.lang.startsWith('it'));
-            if (itVoice) utterance.voice = itVoice;
-            if (voices.length === 0) {
-                window.speechSynthesis.addEventListener('voiceschanged', () => window.speechSynthesis.speak(utterance), { once: true });
-            } else {
-                window.speechSynthesis.speak(utterance);
-            }
-        }
+      function speakWord() {
+    const wordStr = currentWord.join('');
+    if (wordStr.length === 0) return;
+    window.speechSynthesis.cancel();
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const utterance = new SpeechSynthesisUtterance(wordStr);
+        utterance.lang = 'it-IT';
+        utterance.rate = 0.85;
+        const itVoice = voices.find(v => v.lang.startsWith('it'));
+        if (itVoice) utterance.voice = itVoice;
+        window.speechSynthesis.speak(utterance);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
+    }
+}
 
         function renderAlphabet() {
             const container = document.getElementById('alphabetGrid');
