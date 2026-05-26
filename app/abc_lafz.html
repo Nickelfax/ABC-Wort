@@ -397,22 +397,21 @@ function sprichUr(text) {
     if (!text) return;
     const gesprochen = [...text].map(ch => urduZahlen[ch] || ch).join('');
     window.speechSynthesis.cancel();
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length === 0) {
-        window.speechSynthesis.addEventListener('voiceschanged', () => _sprichUrNow(gesprochen), { once: true });
-        return;
-    }
-    _sprichUrNow(gesprochen);
-}
-function _sprichUrNow(text) {
-    const voices = window.speechSynthesis.getVoices();
-    const urVoice = voices.find(v => v.lang.startsWith('ur'));
-    if (urVoice) {
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'ur-PK'; u.rate = 0.82; u.voice = urVoice;
-        window.speechSynthesis.speak(u);
-    } else {
-        _sprichUrGoogle(text);
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const urVoice = voices.find(v => v.lang.startsWith('ur'));
+        if (urVoice) {
+            const u = new SpeechSynthesisUtterance(gesprochen);
+            u.lang = 'ur-PK'; u.rate = 0.82; u.voice = urVoice;
+            window.speechSynthesis.speak(u);
+        } else {
+            _sprichUrGoogle(gesprochen);
+        }
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
     }
 }
 function _sprichUrGoogle(text) {
@@ -425,7 +424,6 @@ function _sprichUrGoogle(text) {
 }
 function sprichZeichenTTS(ch) { sprichUr(urduZahlen[ch] || ch); }
 function sprichWort() { const s = currentWord.join(''); if (s) sprichUr(s); }
-
 // ── Keyboard ──────────────────────────────────────────────────────────
 function buildKeyboard() {
     const grid = document.getElementById('alphabetGrid');
