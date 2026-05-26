@@ -312,37 +312,26 @@ const hindiZahlen = {
 };
 
 // ── TTS ───────────────────────────────────────────────────────────────
-let hindiTTSVerfuegbar = null; // null = unbekannt, true/false = geprüft
-
-function pruefeHindiTTS() {
-    if (hindiTTSVerfuegbar !== null) return hindiTTSVerfuegbar;
-    const voices = window.speechSynthesis.getVoices();
-    hindiTTSVerfuegbar = voices.some(v => v.lang.startsWith('hi'));
-    return hindiTTSVerfuegbar;
-}
-
 function sprichHi(text) {
     if (!text) return;
-    // Zahlzeichen → Zahlwort ersetzen
     const gesprochen = [...text].map(ch => hindiZahlen[ch] || ch).join(' ');
     window.speechSynthesis.cancel();
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length === 0) {
-        window.speechSynthesis.addEventListener('voiceschanged', () => _sprichHiNow(gesprochen), { once: true });
-        return;
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const u = new SpeechSynthesisUtterance(gesprochen);
+        u.lang = 'hi-IN';
+        u.rate = 0.82;
+        const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
+        if (hindiVoice) u.voice = hindiVoice;
+        window.speechSynthesis.speak(u);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
     }
-    _sprichHiNow(gesprochen);
 }
-
-function _sprichHiNow(text) {
-    const voices = window.speechSynthesis.getVoices();
-    const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'hi-IN';
-    u.rate = 0.82;
-    if (hindiVoice) u.voice = hindiVoice;
-    window.speechSynthesis.speak(u);
-}
+  
 
 
 function sprichZeichenTTS(ch) {
