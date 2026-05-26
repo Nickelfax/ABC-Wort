@@ -589,19 +589,24 @@ function uebersetzeUndZeige(text) {
 
 // ── TTS: Altägyptisch ist tot – wir sprechen Koptisch/Arabisch als Annäherung ──
 function sprichAegy(text) {
-    // Versuche Transliteration zu sprechen, nicht die Hieroglyphen selbst
     window.speechSynthesis.cancel();
-    const voices = window.speechSynthesis.getVoices();
-    // Koptisch existiert in keinem Browser-TTS → Arabisch als Annäherung
-    const voice = voices.find(v => v.lang.startsWith('ar')) ||
-                  voices.find(v => v.lang.startsWith('he')) ||
-                  voices.find(v => v.lang.startsWith('de'));
-    if (!voice) { _sprichAegyGoogle(text); return; }
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = voice.lang.startsWith('ar') ? 'ar-SA' : 'de-DE';
-    u.rate = 0.6; // Langsam und feierlich 🏺
-    u.voice = voice;
-    window.speechSynthesis.speak(u);
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const voice = voices.find(v => v.lang.startsWith('ar')) ||
+                      voices.find(v => v.lang.startsWith('he')) ||
+                      voices.find(v => v.lang.startsWith('de'));
+        if (!voice) { _sprichAegyGoogle(text); return true; }
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = voice.lang.startsWith('ar') ? 'ar-SA' : 'de-DE';
+        u.rate = 0.6; // Langsam und feierlich 🏺
+        u.voice = voice;
+        window.speechSynthesis.speak(u);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
+    }
 }
 function _sprichAegyGoogle(text) {
     try {
