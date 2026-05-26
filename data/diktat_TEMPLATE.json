@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "lang": "XX",
+    "langName": "Sprache",
+    "version": "1.0",
+    "total": 0,
+    "notes": "Kopiere diese Datei und benenne sie diktat_XX.json (z.B. diktat_de.json, diktat_it.json)"
+  },
+  "n1": {
+    "label": "Anfänger",
+    "worte": [
+      {"wort": "Beispiel", "de": "deutsche Übersetzung"},
+      {"wort": "Wort2",    "de": "Übersetzung2"}
+    ]
+  },
+  "n2": {
+    "label": "Mittelstufe",
+    "worte": [
+      {"wort": "Beispiel", "de": "deutsche Übersetzung"}
+    ]
+  },
+  "n3": {
+    "label": "Fortgeschritten",
+    "worte": [
+      {"wort": "Beispiel", "de": "deutsche Übersetzung"}
+    ]
+  }
+}
