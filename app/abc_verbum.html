@@ -434,32 +434,29 @@ function uebersetzeUndZeige(text) {
 function sprichLa(text) {
     if (!text) return;
     window.speechSynthesis.cancel();
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length === 0) {
-        window.speechSynthesis.addEventListener('voiceschanged', () => _sprichLaNow(text), { once: true });
-        return;
-    }
-    _sprichLaNow(text);
-}
-function _sprichLaNow(text) {
-    const voices = window.speechSynthesis.getVoices();
-    // Latein: erst it-IT, dann la falls vorhanden
-    const laVoice = voices.find(v => v.lang === 'la') ||
-                    voices.find(v => v.lang.startsWith('it')) ||
-                    voices.find(v => v.lang.startsWith('es')); // Spanisch als Not-Fallback
-    if (laVoice) {
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = laVoice.lang.startsWith('la') ? 'la' : 'it-IT';
-        u.rate = 0.75; // Latein etwas langsamer für Würde 😄
-        u.voice = laVoice;
-        window.speechSynthesis.speak(u);
-    } else {
-        _sprichLaGoogle(text);
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const laVoice = voices.find(v => v.lang === 'la') ||
+                        voices.find(v => v.lang.startsWith('it')) ||
+                        voices.find(v => v.lang.startsWith('es'));
+        if (laVoice) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = laVoice.lang.startsWith('la') ? 'la' : 'it-IT';
+            u.rate = 0.75; // Latein etwas langsamer für Würde 😄
+            u.voice = laVoice;
+            window.speechSynthesis.speak(u);
+        } else {
+            _sprichLaGoogle(text);
+        }
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
     }
 }
 function _sprichLaGoogle(text) {
     try {
-        // Google TTS hat tatsächlich `la` – klingt interessant!
         const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=it&q=' +
             encodeURIComponent(text) + '&client=tw-ob';
         const audio = new Audio(url);
@@ -468,7 +465,6 @@ function _sprichLaGoogle(text) {
 }
 function sprichZeichenTTS(ch) { sprichLa(ch); }
 function sprichWort() { const s = currentWord.join(''); if (s) sprichLa(s); }
-
 // TTS-Hinweis
 let ttsPruefungErledigt = false;
 function pruefeTTSUndZeige() {
@@ -484,7 +480,6 @@ function pruefeTTSUndZeige() {
         }
     }, 800);
 }
-
 // ── Keyboard ──────────────────────────────────────────────────────────
 function renderKeyboard() {
     const isLower = document.getElementById('caseToggle').checked;
