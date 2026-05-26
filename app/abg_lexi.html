@@ -422,56 +422,69 @@
         });
     }
 
-    // ── TTS ───────────────────────────────────────────────────────────
-    function speakEl(text) {
-        if (!text) return;
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text.split('/')[0].trim());
-        u.lang = 'el-GR'; u.rate = 0.82;
+// ── TTS ───────────────────────────────────────────────────────────
+function speakEl(text) {
+    if (!text) return;
+    window.speechSynthesis.cancel();
+    const clean = text.split('/')[0].trim();
+    const try_ = () => {
         const voices = window.speechSynthesis.getVoices();
-        if (voices.length === 0) {
-            window.speechSynthesis.addEventListener('voiceschanged', () => window.speechSynthesis.speak(u), { once: true });
-        } else {
-            window.speechSynthesis.speak(u);
-        }
+        if (voices.length === 0) return false;
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'el-GR'; u.rate = 0.82;
+        const elVoice = voices.find(v => v.lang.startsWith('el'));
+        if (elVoice) u.voice = elVoice;
+        window.speechSynthesis.speak(u);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
     }
-
-    function speakChar(char) {
-        window.speechSynthesis.cancel();
+}
+function speakChar(char) {
+    window.speechSynthesis.cancel();
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
         const u = new SpeechSynthesisUtterance(char);
         u.lang = 'el-GR'; u.rate = 0.75;
+        const elVoice = voices.find(v => v.lang.startsWith('el'));
+        if (elVoice) u.voice = elVoice;
         window.speechSynthesis.speak(u);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
     }
-
-    function speakWord() {
-        const wordStr = currentWord.join('');
-        if (!wordStr) return;
-        speakEl(wordStr);
-    }
-
-    // TTS-Button für Übersetzung
-    document.addEventListener('DOMContentLoaded', () => {
-        const speakBtn = document.getElementById('ttsSpeakBtn');
-        if (!speakBtn) return;
-        const ttsLangMap = {
-            'de':'de-DE','en':'en-GB','ru':'ru-RU','ar':'ar-SA',
-            'tr':'tr-TR','fr':'fr-FR','it':'it-IT','uk':'uk-UA'
-        };
-        speakBtn.addEventListener('click', () => {
-            const anzeige = document.getElementById('uebersetzungAnzeige');
-            if (!anzeige) return;
-            const raw  = anzeige.textContent.trim();
-            const text = raw.replace(/^[\u{1F1E0}-\u{1F1FF}]{2}\s*/u, '').trim();
-            if (!text || text === '…') return;
-            const bcp47 = ttsLangMap[userLang] || (userLang + '-' + userLang.toUpperCase());
-            window.speechSynthesis.cancel();
-            const u = new SpeechSynthesisUtterance(text);
-            u.lang = bcp47; u.rate = 0.85;
-            u.onstart = () => { speakBtn.textContent = '⏹'; };
-            u.onend   = () => { speakBtn.textContent = '🔊'; };
-            window.speechSynthesis.speak(u);
-        });
+}
+function speakWord() {
+    const wordStr = currentWord.join('');
+    if (!wordStr) return;
+    speakEl(wordStr);
+}
+// TTS-Button für Übersetzung
+document.addEventListener('DOMContentLoaded', () => {
+    const speakBtn = document.getElementById('ttsSpeakBtn');
+    if (!speakBtn) return;
+    const ttsLangMap = {
+        'de':'de-DE','en':'en-GB','ru':'ru-RU','ar':'ar-SA',
+        'tr':'tr-TR','fr':'fr-FR','it':'it-IT','uk':'uk-UA'
+    };
+    speakBtn.addEventListener('click', () => {
+        const anzeige = document.getElementById('uebersetzungAnzeige');
+        if (!anzeige) return;
+        const raw  = anzeige.textContent.trim();
+        const text = raw.replace(/^[\u{1F1E0}-\u{1F1FF}]{2}\s*/u, '').trim();
+        if (!text || text === '…') return;
+        const bcp47 = ttsLangMap[userLang] || (userLang + '-' + userLang.toUpperCase());
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = bcp47; u.rate = 0.85;
+        u.onstart = () => { speakBtn.textContent = '⏹'; };
+        u.onend   = () => { speakBtn.textContent = '🔊'; };
+        window.speechSynthesis.speak(u);
     });
+});
 
     // ── Keyboard bauen ────────────────────────────────────────────────
     function buildKeyboard() {
