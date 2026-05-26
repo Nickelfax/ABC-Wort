@@ -506,19 +506,23 @@ function crossSellBannerEinfuegen(currentAppId) {
 }
 
 // ── TTS ────────────────────────────────────────────────────────────────
-function getVoiceForLang(lang) {
-    const voices = window.speechSynthesis.getVoices();
-    return voices.find(v => v.lang && v.lang.startsWith(lang.split('-')[0])) || voices[0] || null;
-}
 function ttsSpeak(text, rate, lang) {
     if (!window.speechSynthesis) { showToast('⚠️ Kein TTS auf diesem Gerät verfügbar'); return; }
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    const voice = getVoiceForLang(lang);
-    if (voice) { u.voice = voice; u.lang = voice.lang; }
-    else { u.lang = lang; showToast('⚠️ Keine chinesische Stimme gefunden – Systemstimme wird verwendet'); }
-    u.rate = rate;
-    window.speechSynthesis.speak(u);
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const u = new SpeechSynthesisUtterance(text);
+        const voice = voices.find(v => v.lang && v.lang.startsWith(lang.split('-')[0])) || voices[0] || null;
+        if (voice) { u.voice = voice; u.lang = voice.lang; }
+        else { u.lang = lang; showToast('⚠️ Keine chinesische Stimme gefunden – Systemstimme wird verwendet'); }
+        u.rate = rate;
+        window.speechSynthesis.speak(u);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
+    }
 }
 function sprichZeichenTTS(ch) { ttsSpeak(ch, 0.7, 'zh-CN'); }
 function sprichWort() {
@@ -536,7 +540,6 @@ function grammatikSprechen() {
     if (!text) return;
     ttsSpeak(text, 0.85, 'zh-CN');
 }
-window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
 
 // ── Keyboard Rendering ─────────────────────────────────────────────────
 function renderKeyboard() {
