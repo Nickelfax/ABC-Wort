@@ -242,6 +242,7 @@
     <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
     <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
     <button onclick="backspace()" style="font-size:1.6rem; background:var(--danger);">⌫</button>
+   <button onclick="openStorage()" style="font-size:1.6rem; background:#16a085;">📚</button>
     <div class="case-toggle" style="justify-content:center;">
         <span style="font-size:1.2rem;">🖊️</span>
         <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
