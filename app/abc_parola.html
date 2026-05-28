@@ -589,7 +589,23 @@
         let savedWords = [];
         try { savedWords = JSON.parse(localStorage.getItem('abcparola_saved')) || []; } catch(e) {}
 
-        function init() {
+      // ── Dark Mode ─────────────────────────────────────────────────────────
+function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    try { localStorage.setItem('abcparola_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+}
+function initTheme() {
+    try {
+        if (localStorage.getItem('abcparola_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            const btn = document.getElementById('themeBtn');
+            if (btn) btn.textContent = '☀️';
+        }
+    } catch(e) {}
+} 
+       function init() {
+            initTheme();
             renderAlphabet();
             renderColors();
             updateDisplay();
