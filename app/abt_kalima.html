@@ -106,13 +106,9 @@ button:active { transform: scale(0.95); }
 </style>
 </head>
 <body>
-
-   }
-</style>
-</head>
-<body>
-<h1>أبت كلمة 🇸🇦</h1>
-
+<div class="theme-toggle-wrap">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+</div>
 <h1>أبت كلمة 🇸🇦</h1>
 <p class="subtitle" style="direction:ltr;">Arabisch lernen · Diktat · Grammatik · Wortbau</p>
 
@@ -164,6 +160,7 @@ button:active { transform: scale(0.95); }
     <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
     <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
     <button onclick="backspace()" style="font-size:1.6rem; background:#e74c3c;">⌫</button>
+    <button onclick="openStorage()" style="font-size:1.6rem; background:#16a085;">📚</button>
     <div class="case-toggle">
         <span style="font-size:1.2rem;">🖊️</span>
         <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
@@ -459,7 +456,23 @@ function crossSellBannerEinfuegen(currentAppId) {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────
-function init() {
+// ── Dark Mode ─────────────────────────────────────────────────────────
+function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    try { localStorage.setItem('abtkalima_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+}
+function initTheme() {
+    try {
+        if (localStorage.getItem('abtkalima_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            const btn = document.getElementById('themeBtn');
+            if (btn) btn.textContent = '☀️';
+        }
+    } catch(e) {}
+}
+   function init() {
+      initTheme();
     renderAlphabet();
     updateDisplay();
     ladeExterneDaten();
