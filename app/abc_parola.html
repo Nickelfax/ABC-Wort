@@ -930,7 +930,7 @@ function initTheme() {
         const grammatikVerlauf = [];
         let grammatikVerlaufIdx = -1;
 
-        function navigiereZurueck() {
+function navigiereZurueck() {
             if (diktatAktiv) {
                 if (diktatVerlaufIdx > 0) {
                     diktatVerlaufIdx--;
@@ -949,11 +949,7 @@ function initTheme() {
                 return;
             }
             if (grammatikAktiv) {
-                if (grammatikVerlaufIdx > 0) {
-                    grammatikVerlaufIdx--;
-                    grammatikAktuell = grammatikVerlauf[grammatikVerlaufIdx];
-                    grammatikRender();
-                }
+                grammatikNeueAufgabe();
             }
         }
 
