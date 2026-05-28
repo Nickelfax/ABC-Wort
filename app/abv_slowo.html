@@ -784,8 +784,16 @@ function grammatikSetModus(m, btn) {
 }
 
 function zeigGrammatikUebersetzung(text) {
-    if (!uebersetzungAktiv) return;
-    document.getElementById('uebersetzungAnzeige').textContent = text ? '🇩🇪 ' + text : '';
+    if (!uebersetzungAktiv || !text) return;
+    const sprache = sprachen.find(s => s.code === userLang);
+    const flag = sprache ? sprache.flag : '🌍';
+    const anzeige = document.getElementById('uebersetzungAnzeige');
+    if (userLang === 'de') {
+        anzeige.textContent = flag + ' ' + text;
+    } else {
+        anzeige.textContent = flag + ' …';
+        uebersetzeAPI(text).then(r => { anzeige.textContent = r ? flag + ' ' + r : ''; });
+    }
 }
 function grammatikNeueAufgabe() {
     if (!proCheck(THIS_APP_ID, 'Grammatik unbegrenzt')) return;
