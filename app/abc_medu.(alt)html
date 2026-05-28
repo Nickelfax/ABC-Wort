@@ -188,6 +188,9 @@
     </style>
 </head>
 <body>
+<div class="theme-toggle-wrap">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+</div>
 
 <h1>𓌀𓅱𓂧 Medu Netjer</h1>
 <p class="subtitle">𓇋𓂧𓅱𓏏 · Gottesworte · Altägyptische Hieroglyphen</p>
