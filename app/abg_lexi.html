@@ -735,7 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (grammatikAktiv) grammatikNeueAufgabe();
     }
 
-    function navigiereZurueck() {
+   function navigiereZurueck() {
         if (diktatAktiv) {
             if (diktatVerlaufIdx > 0) {
                 diktatVerlaufIdx--;
@@ -752,14 +752,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (grammatikAktiv) {
-            if (grammatikVerlaufIdx > 0) {
-                grammatikVerlaufIdx--;
-                grammatikAktuell = grammatikVerlauf[grammatikVerlaufIdx];
-                grammatikRender();
-            }
+            grammatikNeueAufgabe();
         }
-    }
-
+}
+         
     function diktatNeuesWort() {
         const liste = diktatGetListe();
         const eintrag = liste[Math.floor(Math.random() * liste.length)];
