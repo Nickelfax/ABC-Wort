@@ -526,6 +526,8 @@ function navigiereZurueck() {
         diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
         diktatRender(); document.getElementById('diktatStatus').textContent = 'سنیں اور لکھیں';
         diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
     }
 }
 function wiederholenButton() { if (grammatikAktiv && !diktatAktiv) { grammatikSprechen(); return; } if (diktatAktiv) diktatNochmal(); else sprichWort(); }
