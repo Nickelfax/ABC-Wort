@@ -1098,6 +1098,7 @@ function initTheme() {
     } catch(e) {}
 }
 function init() {
+initTheme();
     buildKeyboard(); updateDisplay(); sprachDropdownBauen(); crossSellBannerEinfuegen(THIS_APP_ID);
     // Willkommens-Info
     setTimeout(() => {
