@@ -494,9 +494,11 @@ function navigiereZurueck() {
         currentWord=[];diktatRender();
         document.getElementById('diktatStatus').textContent='Listen and type the word';
         diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
     }
 }
-function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;} if(diktatAktiv)diktatNochmal(); else sprichWort();}
+   function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;} if(diktatAktiv)diktatNochmal(); else sprichWort();}
 function updateModusUI(){
     const beides=diktatAktiv||grammatikAktiv;
     document.getElementById('scoreBereich').style.display=beides?'block':'none';
