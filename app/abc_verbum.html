@@ -584,6 +584,8 @@ function navigiereZurueck() {
         diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
         diktatRender(); document.getElementById('diktatStatus').textContent = 'Audi et scribe!';
         diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
     }
 }
 function wiederholenButton() { if (grammatikAktiv && !diktatAktiv) { grammatikSprechen(); return; } if (diktatAktiv) diktatNochmal(); else sprichWort(); }
