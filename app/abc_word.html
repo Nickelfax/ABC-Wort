@@ -359,7 +359,22 @@ let diktatBuzzerGespielt=false,diktatModus='hilfe',diktatNiveau='n1',diktatStumm
 let grammatikModus='plural',grammatikGesperrt=false,grammatikAktuell=null;
 let uebersetzungAktiv=false;
 const diktatVerlauf=[]; let diktatVerlaufIdx=-1;
-
+// ── Dark Mode ─────────────────────────────────────────────────────────
+function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    try { localStorage.setItem('abcword_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+}
+function initTheme() {
+    try {
+        if (localStorage.getItem('abcword_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            const btn = document.getElementById('themeBtn');
+            if (btn) btn.textContent = '☀️';
+        }
+    } catch(e) {}
+}
+   
 function init() {
     renderAlphabet();
     updateDisplay();
