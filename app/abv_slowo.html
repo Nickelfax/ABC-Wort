@@ -611,9 +611,10 @@ function navigiereZurueck() {
         currentWord = []; diktatRender();
         document.getElementById('diktatStatus').textContent = 'Hör zu und tippe das Wort';
         diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
     }
 }
-
 function wiederholenButton() {
     if (grammatikAktiv && !diktatAktiv) { grammatikSprechen(); return; }
     if (diktatAktiv) diktatNochmal();
