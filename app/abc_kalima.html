@@ -550,6 +550,8 @@ function navigiereZurueck() {
         diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
         diktatRender(); document.getElementById('diktatStatus').textContent = 'گوش دهید و بنویسید';
         diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
     }
 }
 function wiederholenButton() { if (grammatikAktiv && !diktatAktiv) { grammatikSprechen(); return; } if (diktatAktiv) diktatNochmal(); else sprichWort(); }
