@@ -602,6 +602,14 @@ function renderAlphabet() {
             container.appendChild(btn);
         });
     }
+    // Leerzeichen-Button
+const spaceBtn = document.createElement('div');
+spaceBtn.className = 'key special';
+spaceBtn.textContent = '␣';
+spaceBtn.title = 'Leerzeichen';
+spaceBtn.style.gridColumn = 'span 2';
+spaceBtn.onclick = () => addChar(' ');
+container.appendChild(spaceBtn);
 
     if (showNikud) {
         nikudList.forEach(n => {
