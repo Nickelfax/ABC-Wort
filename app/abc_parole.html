@@ -920,7 +920,7 @@ function crossSellBannerEinfuegen(currentAppId) {
         item.onclick = () => window.location.href = app.file;
         const aktiv = proIstAktiv(app.id);
         item.innerHTML = `<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:1.8rem;">${app.flag}</span><div><div style="font-weight:bold;color:var(--text);font-size:0.95rem;">${app.name}</div><div style="font-size:0.8rem;color:#7f8c8d;">${app.subtitle}</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;">${aktiv?'<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Activé</span>':'<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">2,99 €</span>'}<span style="color:#bdc3c7;font-size:1.2rem;">›</span></div>`;
+        <div style="display:flex;align-items:center;gap:8px;">${aktiv?'<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Activé</span>':'<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✨ Entdecken</span>'}<span style="color:#bdc3c7;font-size:1.2rem;">›</span></div>`;
         container.appendChild(item);
     });
     const kb = document.querySelector('.keyboard-container');
