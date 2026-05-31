@@ -2500,7 +2500,15 @@ function initTheme() {
                 renderAlphabet();
             });
         });
-
+       
+        function saveCurrentWord() {
+         if (currentWord.length === 0) return;
+         const wort = currentWord.join('');
+        if (savedWords.includes(wort)) { showToast('Bereits gespeichert!'); return; }
+        savedWords.push(wort);
+        try { localStorage.setItem('wordBuilderSavedWords', JSON.stringify(savedWords)); } catch(e) {}
+        showToast('✅ Gespeichert!');
+        }
         /* Diktat */
         let diktatAktuell = '', diktatGesperrt = false, diktatHatFehler = false;
         let diktatEingabe = '';
