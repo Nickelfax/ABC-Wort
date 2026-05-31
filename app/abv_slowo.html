@@ -196,13 +196,17 @@ button:active { transform: scale(0.95); }
         </label>
         <span class="case-label" style="font-size:0.85rem;">Грм</span>
     </div>
-    <div class="case-toggle" style="justify-content:center;">
-        <span style="font-size:1.2rem;">🌍</span>
-        <label class="toggle-switch" title="Deutsche Übersetzung">
-            <input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()">
-            <span class="toggle-slider"></span>
-        </label>
-        <span class="case-label" style="font-size:0.85rem;">DE</span>
+    <div class="case-toggle" style="justify-content:center; gap:4px;">
+    <span style="font-size:1.2rem;">🌍</span>
+    <label class="toggle-switch" title="Übersetzung">
+        <input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()">
+        <span class="toggle-slider"></span>
+    </label>
+    <div id="sprachDropdownInControls" style="display:none;">
+        <select id="sprachSelectControls" onchange="sprachWechseln(this.value)"
+            style="border-radius:8px; border:2px solid #e9ecef; padding:4px 8px;
+                   font-size:0.95rem; background:white; color:#2c3e50; cursor:pointer;">
+        </select>
     </div>
 </div>
 
