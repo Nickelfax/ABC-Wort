@@ -1060,12 +1060,18 @@ function grammatikSprechen() {
     if (!text) return;
     ttsSpeak(text, 0.85, 'ru-RU');
 }
-
-// ── Übersetzung (RU → DE) ─────────────────────────────────────────────
 function uebersetzungToggle() {
     uebersetzungAktiv = document.getElementById('uebersetzungToggleSwitch').checked;
     const anzeige = document.getElementById('uebersetzungAnzeige');
-    if (!uebersetzungAktiv) { anzeige.textContent = ''; }
+    const dropdown = document.getElementById('sprachDropdownInControls');
+    if (uebersetzungAktiv) {
+        if (dropdown) dropdown.style.display = 'block';
+        const wort = diktatAktiv ? diktatAktuell : (grammatikAktuell ? (grammatikAktuell.wort || grammatikAktuell.verb || '') : '');
+        if (wort) uebersetzeUndZeige(wort);
+    } else {
+        if (dropdown) dropdown.style.display = 'none';
+        anzeige.textContent = '';
+    }
 }
 
 async function uebersetzeAPI(text) {
