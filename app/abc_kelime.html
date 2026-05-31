@@ -568,16 +568,24 @@ function randomWord() {
     else{const w=wordList[Math.floor(Math.random()*wordList.length)];currentWord=w.split('');updateDisplay();sprichWort();}
 }
 function navigiereZurueck() {
-    if(diktatAktiv&&diktatVerlaufIdx>0){
+    if(diktatAktiv && diktatVerlaufIdx > 0) {
         diktatVerlaufIdx--;
-        const e=diktatVerlauf[diktatVerlaufIdx];
-        diktatAktuell=e.wort;diktatAudioSrc=e.audio;
-        diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;
-        currentWord=[];diktatRender();
-        document.getElementById('diktatStatus').textContent='Dinle ve kelimeyi yaz';
+        const e = diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell = e.wort; diktatAudioSrc = e.audio;
+        diktatEingabe = ''; diktatGesperrt = false; diktatHatFehler = false; diktatBuzzerGespielt = false;
+        currentWord = []; diktatRender();
+        document.getElementById('diktatStatus').textContent = 'Dinle ve kelimeyi yaz';
         diktatSprechen();
     } else if (grammatikAktiv) {
         grammatikNeueAufgabe();
+    } else {
+        if (wordList.length > 0) {
+            const idx = wordList.indexOf(currentWord.join(''));
+            const prev = wordList[(idx - 1 + wordList.length) % wordList.length];
+            currentWord = prev.split('');
+            updateDisplay();
+            sprichWort();
+        }
     }
 }
 function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;} if(diktatAktiv)diktatNochmal(); else sprichWort();}
