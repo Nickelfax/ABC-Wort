@@ -2410,7 +2410,7 @@ function initTheme() {
             if (diktatAktiv) { diktatRender(); return; }
             if (currentWord.length === 0) {
                 display.classList.add('empty');
-                display.textContent = 'Klicke auf Buchstaben, um ein Wort zu bauen';
+                display.innerHTML = '<span class="hint-blink">_ _ _</span> <span class="hint-arrow">🔊 ↓</span> <span class="hint-question">❓ → 🖊️ Dkt</span>';
                 return;
             }
             display.classList.remove('empty');
