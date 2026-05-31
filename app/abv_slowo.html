@@ -1068,11 +1068,50 @@ function uebersetzungToggle() {
     if (!uebersetzungAktiv) { anzeige.textContent = ''; }
 }
 
-function zeigUebersetzung(wort) {
-    if (!uebersetzungAktiv) return;
+async function uebersetzeAPI(text) {
+    if (!text) return '';
+    const key = 'ru:' + userLang + ':' + text;
+    if (uebersetzungsCache[key]) return uebersetzungsCache[key];
+    const lower = text.toLowerCase();
+    const eintrag = lokalDict[lower] || lokalDict[text];
+    if (eintrag && eintrag[userLang]) {
+        const result = eintrag[userLang];
+        uebersetzungsCache[key] = result;
+        return result;
+    }
+    try {
+        const url = 'https://api.mymemory.translated.net/get?q=' +
+            encodeURIComponent(text) + '&langpair=ru|' + userLang;
+        const res = await fetch(url);
+        if (!res.ok) return '';
+        const data = await res.json();
+        const result = (data.responseData && data.responseData.translatedText) || '';
+        if (result) uebersetzungsCache[key] = result;
+        return result;
+    } catch(e) { return ''; }
+}
+
+function uebersetzeUndZeige(text) {
+    if (!uebersetzungAktiv || !text) return;
     const anzeige = document.getElementById('uebersetzungAnzeige');
-    const ue = ruDeDict[wort.toLowerCase()];
-    anzeige.textContent = ue ? '🇩🇪 ' + ue : '';
+    const sprache = sprachen.find(s => s.code === userLang);
+    const flag = sprache ? sprache.flag : '🌍';
+    const key = 'ru:' + userLang + ':' + text.toLowerCase();
+    if (uebersetzungsCache[key]) {
+        anzeige.textContent = flag + ' ' + uebersetzungsCache[key];
+        anzeige.classList.remove('laden');
+        return;
+    }
+    anzeige.textContent = flag + ' …';
+    anzeige.classList.add('laden');
+    uebersetzeAPI(text).then(result => {
+        anzeige.textContent = result ? flag + ' ' + result : '';
+        anzeige.classList.remove('laden');
+    });
+}
+
+function zeigGrammatikUebersetzung(text) {
+    uebersetzeUndZeige(text);
 }
 
 // ── Toast ─────────────────────────────────────────────────────────────
