@@ -864,7 +864,15 @@ function grammatikSprechen(){let text='';if(grammatikModus==='genus'&&grammatikA
 function uebersetzungToggle(){uebersetzungAktiv=document.getElementById('uebersetzungToggleSwitch').checked;if(!uebersetzungAktiv)document.getElementById('uebersetzungAnzeige').textContent='';}
 function zeigUebersetzung(wort){if(!uebersetzungAktiv)return;const ue=arDeDict[wort];document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';}
 function openStorage(){const c=document.getElementById('storedWordsList');c.innerHTML='';if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">لا توجد كلمات محفوظة.</p>';}else savedWords.forEach((w,i)=>{const div=document.createElement('div');div.className='stored-word';div.innerHTML=`<span style="font-size:1.3rem;">${w}</span>`;const b=document.createElement('button');b.style.cssText='background:var(--danger);color:white;padding:5px 10px;font-size:0.8rem;border-radius:8px;border:none;cursor:pointer;';b.textContent='حذف';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abt_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};div.appendChild(b);c.appendChild(div);});document.getElementById('storageModal').classList.add('open');}
-function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ محفوظ!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abt_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ محفوظ!');
+}
+   function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
 let toastTimer=null;
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800);}
 window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
