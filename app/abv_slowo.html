@@ -311,6 +311,25 @@ const lokalDict = {
     'грустный':{ de:'traurig',    en:'sad',         fr:'triste',    es:'triste',    tr:'üzgün',  ar:'حزين',   zh:'悲伤' },
     'весёлый': { de:'fröhlich',   en:'cheerful',    fr:'joyeux',    es:'alegre',    tr:'neşeli', ar:'مرح',    zh:'快乐' },
 };
+ const sprachen = [
+    { code: 'de', flag: '🇩🇪', name: 'Deutsch' },
+    { code: 'en', flag: '🇬🇧', name: 'English' },
+    { code: 'fr', flag: '🇫🇷', name: 'Français' },
+    { code: 'es', flag: '🇪🇸', name: 'Español' },
+    { code: 'tr', flag: '🇹🇷', name: 'Türkçe' },
+    { code: 'ar', flag: '🇸🇦', name: 'العربية' },
+    { code: 'zh', flag: '🇨🇳', name: '中文' },
+    { code: 'hi', flag: '🇮🇳', name: 'हिन्दी' },
+    { code: 'ur', flag: '🇵🇰', name: 'اردو' },
+    { code: 'uk', flag: '🇺🇦', name: 'Українська' },
+];
+
+let userLang = 'de';
+try { userLang = localStorage.getItem('abvslowo_lang') || 'de'; } catch(e) {}
+const uebersetzungsCache = {};
+
+// ── Audio (Platzhalter → später aus ../audio_ru/ laden) ───────────────
+const audioData = {};
 
 // ── Audio (Platzhalter → später aus ../audio_ru/ laden) ───────────────
 const audioData = {}; // wird durch externe JSON befüllt
