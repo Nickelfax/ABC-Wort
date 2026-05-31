@@ -331,6 +331,25 @@ const lokalDict = {
 let userLang = 'de';
 try { userLang = localStorage.getItem('abvslowo_lang') || 'de'; } catch(e) {}
 const uebersetzungsCache = {};
+ function sprachDropdownBauen() {
+    const sel = document.getElementById('sprachSelectControls');
+    if (!sel) return;
+    sel.innerHTML = '';
+    sprachen.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.code;
+        opt.textContent = s.flag + ' ' + s.name;
+        if (s.code === userLang) opt.selected = true;
+        sel.appendChild(opt);
+    });
+}
+
+function sprachWechseln(code) {
+    userLang = code;
+    try { localStorage.setItem('abvslowo_lang', code); } catch(e) {}
+    const wort = diktatAktiv ? diktatAktuell : (grammatikAktuell ? (grammatikAktuell.wort || grammatikAktuell.verb || '') : '');
+    if (wort) uebersetzeUndZeige(wort);
+}
 
 // ── Audio (Platzhalter → später aus ../audio_ru/ laden) ───────────────
 const audioData = {};
