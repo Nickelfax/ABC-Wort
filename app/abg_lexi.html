@@ -1363,7 +1363,14 @@ const diktatWorteN3 = [
         try { localStorage.setItem('abglexi_savedWords', JSON.stringify(savedWords)); } catch(e) {}
         openStorage();
     }
-
+function saveCurrentWord() {
+        if (currentWord.length === 0) return;
+        const wort = currentWord.join('');
+        if (savedWords.includes(wort)) { showToast('✅ Αποθηκεύτηκε!'); return; }
+        savedWords.push(wort);
+        try { localStorage.setItem('abglexi_savedWords', JSON.stringify(savedWords)); } catch(e) {}
+        showToast('✅ Αποθηκεύτηκε!');
+    }
     // ── APP-REGISTRY + CROSS-SELL ─────────────────────────────────────
     const THIS_APP_ID = 'el';
     const APP_REGISTRY = [
