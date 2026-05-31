@@ -775,6 +775,35 @@ function randomWord() {
     else if (grammatikAktiv) { grammatikNeueAufgabe(); }
     else { const w = wordList[Math.floor(Math.random()*wordList.length)]; currentWord = w.split(''); updateDisplay(); sprichWort(); }
 }
+    });
+            document.getElementById('colorToggle').addEventListener('change', function() {
+                document.getElementById('colorGrid').style.display = this.checked ? '' : 'none';
+                document.getElementById('colorLabel').textContent = this.checked ? 'an' : 'aus';
+            });
+            document.getElementById('diphthongToggle').addEventListener('change', function() {
+                document.getElementById('diphthongLabel').textContent = this.checked ? 'an' : 'aus';
+                renderAlphabet();
+            });
+            document.getElementById('numberToggle').addEventListener('change', function() {
+                document.getElementById('numberLabel').textContent = this.checked ? 'an' : 'aus';
+                renderAlphabet();
+            });
+        });
+       
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('Bereits gespeichert!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('wordBuilderSavedWords', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ Gespeichert!');
+}
+        /* Diktat */
+        let diktatAktuell = '', diktatGesperrt = false, diktatHatFehler = false;
+        let diktatEingabe = '';
+        let diktatBuzzerGespielt = false, diktatModus = 'hilfe';
+        let diktatListe = 'worte';
+     
 
 function navigiereZurueck() {
     if (diktatAktiv && diktatVerlaufIdx > 0) {
