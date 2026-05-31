@@ -607,8 +607,9 @@ function initTheme() {
   initTheme();
     renderAlphabet();
     updateDisplay();
-    ladeExterneDaten();
-    crossSellBannerEinfuegen(THIS_APP_ID);
+     ladeExterneDaten();
+   sprachDropdownBauen();
+  crossSellBannerEinfuegen(THIS_APP_ID);
     document.getElementById('numberToggle').addEventListener('change', function() {
         document.getElementById('numberLabel').textContent = this.checked ? 'an' : 'aus';
         renderAlphabet();
