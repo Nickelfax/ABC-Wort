@@ -522,7 +522,14 @@ const verbGroups  = {
     n2: ['querer','poder','decir','ver','saber'],
     n3: ['hablar','comer','vivir','llamar','jugar']
 };
-
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ Ya guardado!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abcpalabra_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ Guardado!');
+}
 // ── PRO-SYSTEM ────────────────────────────────────────────────────────
 const THIS_APP_ID = 'es';
 const APP_REGISTRY = [
