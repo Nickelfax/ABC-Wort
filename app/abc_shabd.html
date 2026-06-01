@@ -957,6 +957,14 @@ function openStorage() {
     document.getElementById('storageModal').classList.add('open');
 }
 function closeStorage() { document.getElementById('storageModal').classList.remove('open'); }
+    function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ पहले से सहेजा!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abcshabd_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ सहेजा गया!');
+} 
 
 // === PRO-SYSTEM ===
 const THIS_APP_ID = 'hi';
