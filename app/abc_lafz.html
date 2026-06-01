@@ -853,7 +853,15 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
 // ── Storage ───────────────────────────────────────────────────────────
 function openStorage(){const c=document.getElementById('storedWordsList');c.innerHTML='';if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">کوئی لفظ نہیں۔</p>';}else savedWords.forEach((w,i)=>{const div=document.createElement('div');div.className='stored-word';div.innerHTML=`<span style="font-size:1.3rem;">${w}</span>`;const b=document.createElement('button');b.style.cssText='background:var(--danger);color:white;padding:5px 10px;font-size:0.8rem;border-radius:8px;border:none;cursor:pointer;';b.textContent='ہٹائیں';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abclafz_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};div.appendChild(b);c.appendChild(div);});document.getElementById('storageModal').classList.add('open');}
 function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
-
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ ذخیره شد!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abclafz_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ ذخیره شد!');
+}
+     
 // === PRO-SYSTEM ===
 const THIS_APP_ID = 'ur';
 const APP_REGISTRY = [
