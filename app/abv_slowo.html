@@ -795,7 +795,7 @@ function saveCurrentWord() {
     const wort = currentWord.join('');
     if (savedWords.includes(wort)) { showToast('Bereits gespeichert!'); return; }
     savedWords.push(wort);
-    try { localStorage.setItem('wordBuilderSavedWords', JSON.stringify(savedWords)); } catch(e) {}
+    try { localStorage.setItem('abvslowo_saved', JSON.stringify(savedWords)); } catch(e) {}
     showToast('✅ Gespeichert!');
 }
         /* Diktat */
