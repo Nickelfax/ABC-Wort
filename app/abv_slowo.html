@@ -768,6 +768,16 @@ function openStorage() {
 }
 function closeStorage() { document.getElementById('storageModal').classList.remove('open'); }
 
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ Bereits gespeichert!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abvslowo_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ Gespeichert!');
+}
+// ── Random / Navigation ───────────────────────────────────────────────
+
 // ── Random / Navigation ───────────────────────────────────────────────
 function randomWord() {
     if (diktatAktiv && grammatikAktiv) { Math.random()>0.5 ? diktatNeuesWort() : grammatikNeueAufgabe(); }
