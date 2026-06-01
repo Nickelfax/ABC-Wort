@@ -421,7 +421,14 @@ function uebersetzeUndZeige(text) {
     anzeige.textContent = flag + ' …';
     uebersetzeAPI(text).then(r => { anzeige.textContent = r ? flag + ' ' + r : ''; });
 }
-
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ 保存済み!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abckotoba_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ 保存済み!');
+}
 // ── PRO-SYSTEM ────────────────────────────────────────────────────────
 const THIS_APP_ID = 'ja';
 const APP_REGISTRY = [
