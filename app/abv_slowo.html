@@ -774,7 +774,6 @@ function randomWord() {
     else if (diktatAktiv) { diktatNeuesWort(); }
     else if (grammatikAktiv) { grammatikNeueAufgabe(); }
     else { const w = wordList[Math.floor(Math.random()*wordList.length)]; currentWord = w.split(''); updateDisplay(); sprichWort(); }
-}
     });
             document.getElementById('colorToggle').addEventListener('change', function() {
                 document.getElementById('colorGrid').style.display = this.checked ? '' : 'none';
