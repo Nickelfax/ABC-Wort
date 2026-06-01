@@ -744,6 +744,14 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
 // PRO-SYSTEM + CROSS-SELL — gemeinsame Logik für alle ABC-Apps
 // ═══════════════════════════════════════════════════════════════════════
 
+   function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ Already saved!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abcword_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ Saved!');
+}
 // ── App-Registry (einfach erweiterbar) ───────────────────────────────
 const APP_REGISTRY = [
     {
