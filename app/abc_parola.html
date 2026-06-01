@@ -1686,7 +1686,15 @@ const diktatWorteN3 = [
                 window.speechSynthesis.speak(u);
             });
         });
-
+       function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ Già salvato!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abcparola_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ Salvato!');
+}
+       
         // === APP-REGISTRY + CROSS-SELL ===
         const THIS_APP_ID = 'it';
         // PATCH 6: fr-Eintrag ergänzt, alle 14 Apps vorhanden
