@@ -492,6 +492,8 @@ async function uebersetzeAPI(text) {
     const key = 'fa:' + userLang + ':' + text;
     if (uebersetzungsCache[key]) return uebersetzungsCache[key];
     if (userLang === 'de' && faDeDict[text]) { uebersetzungsCache[key] = faDeDict[text]; return faDeDict[text]; }
+     const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
     try {
         const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=fa|' + userLang;
         const res = await fetch(url); if (!res.ok) return '';
