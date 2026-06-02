@@ -1116,6 +1116,8 @@ async function uebersetzeAPI(text) {
         uebersetzungsCache[key] = result;
         return result;
     }
+ const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
     try {
         const url = 'https://api.mymemory.translated.net/get?q=' +
             encodeURIComponent(text) + '&langpair=ru|' + userLang;
