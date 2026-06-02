@@ -2025,7 +2025,10 @@
                 uebersetzungsCache[key] = result;
                 return result;
             }
-            // 2) Fallback: MyMemory API
+           const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
+           
+           // 2) Fallback: MyMemory API
             try {
                 const url = 'https://api.mymemory.translated.net/get?q=' +
                     encodeURIComponent(text) + '&langpair=de|' + userLang;
