@@ -281,6 +281,8 @@ async function uebersetzeAPI(text) {
         uebersetzungsCache[key] = hiDeDict[text];
         return hiDeDict[text];
     }
+     const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
     try {
         const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=hi|' + userLang;
         const res = await fetch(url);
