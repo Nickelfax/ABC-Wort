@@ -517,6 +517,8 @@ async function uebersetzeAPI(text) {
     if (uebersetzungsCache[key]) return uebersetzungsCache[key];
     if (userLang === 'de' && laDeDict[text]) { uebersetzungsCache[key] = laDeDict[text]; return laDeDict[text]; }
     if (userLang === 'de' && laDeDict[text.toLowerCase()]) { const r = laDeDict[text.toLowerCase()]; uebersetzungsCache[key] = r; return r; }
+    const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; } 
     try {
         const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=la|' + userLang;
         const res = await fetch(url); if (!res.ok) return '';
