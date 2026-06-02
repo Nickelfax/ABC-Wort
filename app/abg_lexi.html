@@ -390,6 +390,8 @@
                 return deKey;
             }
         }
+        const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
         // 2) MyMemory fallback
         try {
             const url = 'https://api.mymemory.translated.net/get?q=' +
