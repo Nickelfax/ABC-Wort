@@ -670,7 +670,7 @@ function updateDisplay(){
 // ── Toggles ────────────────────────────────────────────────────────────
 function pinyinToggle(){pinyinAktiv=document.getElementById('pinyinToggleSwitch').checked;renderKeyboard();updateDisplay();}
 function uebersetzungToggle(){uebersetzungAktiv=document.getElementById('uebersetzungToggleSwitch').checked;if(!uebersetzungAktiv)document.getElementById('uebersetzungAnzeige').textContent='';else updateDisplay();}
-function zeigUebersetzung(wort){if(!uebersetzungAktiv)return;const ue=zhDeDict[wort];document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';}
+function zeigUebersetzung(wort){if(!uebersetzungAktiv)return;const eintrag=Object.values(GLOBAL_DICT).find(e=>e.zh&&e.zh===wort);const ue=eintrag?eintrag.de:undefined;document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';}
 
 // ── Navigation ─────────────────────────────────────────────────────────
 function randomWord(){
