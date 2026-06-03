@@ -12,6 +12,12 @@
     <link rel="apple-touch-icon" href="icon-512-hi.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="dict.js"></script>
+     <script>
+function globalDictLookup(wort, zielSprache) {
+    const eintrag = Object.values(GLOBAL_DICT).find(e => e.hi && e.hi === wort);
+    return eintrag ? eintrag[zielSprache] || eintrag.de : null;
+}
+</script>
     <title>एबीसी शब्द</title>
     <style>
         :root {
