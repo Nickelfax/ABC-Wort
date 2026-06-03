@@ -2285,6 +2285,34 @@ function initTheme() {
                 window.speechSynthesis.speak(utterance);
             }
         }
+       function aussprachCheck() {
+    const ziel = currentWord.join('').toLowerCase().trim();
+    if (!ziel) { showToast('⚠️ Kein Wort zum Prüfen'); return; }
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+        showToast('⚠️ Spracherkennung nicht verfügbar'); return; }
+    const btn = document.getElementById('aussprachBtn');
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const r = new SR();
+    r.lang = 'de-DE'; r.interimResults = false; r.maxAlternatives = 3;
+    btn.textContent = '⏺️'; btn.style.background = '#e74c3c';
+    r.onresult = (e) => {
+        btn.textContent = '🎤'; btn.style.background = '#8e44ad';
+        const alternativen = Array.from(e.results[0]).map(a => a.transcript.toLowerCase().trim());
+        const treffer = alternativen.some(a => levenshtein(a, ziel) <= Math.max(1, Math.floor(ziel.length * 0.2)));
+        if (treffer) showToast('✅ Aussprache korrekt!');
+        else showToast('❌ Gehört: "' + alternativen[0] + '"');
+    };
+    r.onerror = () => { btn.textContent = '🎤'; btn.style.background = '#8e44ad'; showToast('⚠️ Mikrofon-Fehler'); };
+    r.onend = () => { btn.textContent = '🎤'; btn.style.background = '#8e44ad'; };
+    r.start();
+}
+function levenshtein(a, b) {
+    const m = a.length, n = b.length;
+    const dp = Array.from({length: m+1}, (_, i) => Array.from({length: n+1}, (_, j) => i===0?j:j===0?i:0));
+    for (let i=1;i<=m;i++) for (let j=1;j<=n;j++)
+        dp[i][j] = a[i-1]===b[j-1] ? dp[i-1][j-1] : 1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+    return dp[m][n];
+}
 
         const rIndex = alphabet.indexOf('R');
 
