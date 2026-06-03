@@ -12,6 +12,13 @@
     <link rel="apple-touch-icon" href="../icon-512.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="dict.js"></script>
+   <script>
+const lokalDict = GLOBAL_DICT;
+function globalDictLookup(wort, zielSprache) {
+    const eintrag = Object.values(GLOBAL_DICT).find(e => e.cs && e.cs.toLowerCase() === wort.toLowerCase());
+    return eintrag ? eintrag[zielSprache] || eintrag.de : null;
+}
+</script>
     <title>ABC Slovo 🇨🇿</title>
     <style>
         :root {
