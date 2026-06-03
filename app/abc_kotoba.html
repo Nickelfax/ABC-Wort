@@ -409,7 +409,9 @@ async function uebersetzeAPI(text) {
     if (!text) return '';
     const key = 'ja:' + userLang + ':' + text;
     if (uebersetzungsCache[key]) return uebersetzungsCache[key];
-    if (userLang === 'de' && jaDeDict[text]) { uebersetzungsCache[key] = jaDeDict[text]; return jaDeDict[text]; }
+   if (userLang === 'de' && jaDeDict[text]) { uebersetzungsCache[key] = jaDeDict[text]; return jaDeDict[text]; }
+    const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
     try {
         const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=ja|' + userLang;
         const res = await fetch(url); if (!res.ok) return '';
