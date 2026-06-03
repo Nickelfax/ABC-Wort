@@ -794,8 +794,7 @@ function uebersetzungToggle() {
 }
 function zeigUebersetzung(wort) {
     if (!uebersetzungAktiv) return;
-    const ue = frDeDict[wort.toLowerCase()];
-    document.getElementById('uebersetzungAnzeige').textContent = ue ? '🇩🇪 ' + ue : '';
+    const eintrag=Object.values(GLOBAL_DICT).find(e=>e.fr&&e.fr.toLowerCase()===wort.toLowerCase());const ue=eintrag?eintrag.de:undefined;document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';
 }
 
 // ── Sound ─────────────────────────────────────────────────────────────
