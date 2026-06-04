@@ -3026,8 +3026,11 @@ function levenshtein(a, b) {
             const verb = pool[Math.floor(Math.random() * pool.length)];
             const pronIdx = Math.floor(Math.random() * 6);
             const richtig = verbForms[verb][pronIdx];
-            const anderen = verbForms[verb].filter((_,i) => i !== pronIdx);
-            const falsche = shuffle(anderen).slice(0,3);
+            const anderen = verbForms[verb]
+    .      filter((_,i) => i !== pronIdx)
+    .      filter((v,i,arr) => arr.indexOf(v) === i)
+    .      filter(v => v !== richtig);
+           const falsche = shuffle(anderen).slice(0,3);
             return { verb, pronomen: pronouns[pronIdx], pronomenTTS: pronounsTTS[pronIdx], richtig, antworten: shuffle([richtig, ...falsche]) };
         }
 
