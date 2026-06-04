@@ -477,12 +477,12 @@
         }
 
         function uebersetzungsAktuellesWort() {
-            if (diktatAktiv && diktatAktuell) return diktatAktuell;
-            if (grammatikAktiv && grammatikAktuell)
-                return grammatikAktuell.wort || grammatikAktuell.verb || '';
-            return '';
-        }
-
+    if (diktatAktiv && diktatAktuell) return diktatAktuell;
+    if (grammatikAktiv && grammatikAktuell)
+        return grammatikAktuell.wort || grammatikAktuell.verb || '';
+    if (currentWord.length > 0) return currentWord.join('');
+    return '';
+}
         // === Lokales Übersetzungs-Dictionary (alle App-Wörter, offline) ===
         const lokalDict = {
             "Essen": {
