@@ -797,16 +797,33 @@ function randomWord() {
 }
 
 function navigiereZurueck() {
-    if (diktatAktiv && diktatVerlaufIdx > 0) {
-        diktatVerlaufIdx--;
-        const e = diktatVerlauf[diktatVerlaufIdx];
-        diktatAktuell = e.wort; diktatAudioSrc = e.audio;
-        diktatEingabe = ''; diktatGesperrt = false; diktatHatFehler = false; diktatBuzzerGespielt = false;
-        currentWord = []; diktatRender();
-        document.getElementById('diktatStatus').textContent = 'Hör zu und tippe das Wort';
-        diktatSprechen();
-    } else if (grammatikAktiv) {
-        grammatikNeueAufgabe();
+    if (diktatAktiv) {
+        if (diktatVerlaufIdx > 0) {
+            diktatVerlaufIdx--;
+            const e = diktatVerlauf[diktatVerlaufIdx];
+            diktatAktuell = e.wort; diktatAudioSrc = e.audio;
+            diktatEingabe = ''; diktatGesperrt = false; diktatHatFehler = false; diktatBuzzerGespielt = false;
+            currentWord = []; diktatRender();
+            document.getElementById('diktatStatus').textContent = 'Hör zu und tippe das Wort';
+            diktatSprechen();
+            if (uebersetzungAktiv) uebersetzeUndZeige(diktatAktuell);
+        }
+        return;
+    }
+    if (grammatikAktiv) {
+        if (grammatikVerlaufIdx > 0) {
+            grammatikVerlaufIdx--;
+            grammatikAktuell = grammatikVerlauf[grammatikVerlaufIdx];
+            grammatikNeueAufgabe();
+        }
+        return;
+    }
+    if (normalVerlaufIdx > 0) {
+        normalVerlaufIdx--;
+        currentWord = normalVerlauf[normalVerlaufIdx].split('');
+        updateDisplay();
+        sprichWort();
+        if (uebersetzungAktiv) uebersetzeUndZeige(normalVerlauf[normalVerlaufIdx]);
     }
 }
 function wiederholenButton() {
