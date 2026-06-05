@@ -2586,13 +2586,13 @@ function levenshtein(a, b) {
                 }
                 return;
             }
-        }
+        
             // normaler Modus: letzten Buchstaben entfernen
             if (currentWord.length > 0) {
                 currentWord.pop();
                 updateDisplay();
-            }
-
+               }
+       }
         function backspaceZeichen() {
             if (diktatAktiv) {
                 if (diktatEingabe.length > 0 && !diktatGesperrt) {
