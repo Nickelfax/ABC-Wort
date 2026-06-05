@@ -613,6 +613,9 @@ let grammatikModus = 'genus', grammatikGesperrt = false, grammatikAktuell = null
 let uebersetzungAktiv = false;
 const diktatVerlauf = []; let diktatVerlaufIdx = -1;
 const grammatikVerlauf = []; let grammatikVerlaufIdx = -1;
+ const normalVerlauf = [];
+let normalVerlaufIdx = -1;
+let _nachGrammatikCallback = null;
 
 // ── Init ──────────────────────────────────────────────────────────────
 // ── Dark Mode ─────────────────────────────────────────────────────────
