@@ -1106,7 +1106,7 @@ function grammatikNeueAufgabe() {
         cb();
         return;
     }
-    if (diktatAktiv) return;
+    if (diktatAktiv && !_nachGrammatikCallback) return;
     if (!proCheck(THIS_APP_ID, 'Grammatik unbegrenzt')) return;
     const display = document.getElementById('wordDisplay');
     display.classList.remove('empty');
