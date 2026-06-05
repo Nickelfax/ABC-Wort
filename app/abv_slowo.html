@@ -702,7 +702,14 @@ function initTheme() {
 
 async function ladeExterneDaten() {
     try {
-        const [dRes] = await Promise.all([fetch('../data/diktat_ru.json')]);
+        const [dRes, gRes] = await Promise.all([fetch('../data/diktat_ru.json'), fetch('../data/grammatik_ru.json')]);
+if (gRes.ok) {
+    const gData = await gRes.json();
+    if (gData.genus)  grammatikDaten.genus  = gData.genus;
+    if (gData.kasus)  grammatikDaten.kasus  = gData.kasus;
+    if (gData.tempus) grammatikDaten.tempus = gData.tempus;
+    console.log('Grammatik-RU geladen ✓');
+}
         if (dRes.ok) {
             const dData = await dRes.json();
             const fix = arr => arr.map(e => ({ ...e, audio: '../' + e.audio }));
