@@ -2594,12 +2594,15 @@ function levenshtein(a, b) {
                 return;
             }
         
-            // normaler Modus: letzten Buchstaben entfernen
-            if (currentWord.length > 0) {
-                currentWord.pop();
+           // normaler Modus: vorheriges Wort
+            if (normalVerlaufIdx > 0) {
+                normalVerlaufIdx--;
+                currentWord = normalVerlauf[normalVerlaufIdx].split('');
                 updateDisplay();
-               }
-       }
+                speakWord();
+                if (uebersetzungAktiv) uebersetzeUndZeige(normalVerlauf[normalVerlaufIdx]);
+            }
+        }
         function backspaceZeichen() {
             if (diktatAktiv) {
                 if (diktatEingabe.length > 0 && !diktatGesperrt) {
