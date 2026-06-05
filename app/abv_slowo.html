@@ -1091,6 +1091,11 @@ function zeigGrammatikUebersetzung(text) {
         uebersetzeAPI(text).then(r => { anzeige.textContent = r ? flag + ' ' + r : ''; });
     }
 }
+// ══════════════════════════════════════════════════════════════
+// PATCH: grammatikNeueAufgabe + grammatikRender für АБВ Слово
+// Ersetzt die bisherigen Funktionen komplett
+// ══════════════════════════════════════════════════════════════
+
 function grammatikNeueAufgabe() {
     if (_nachGrammatikCallback) {
         const cb = _nachGrammatikCallback;
@@ -1098,81 +1103,149 @@ function grammatikNeueAufgabe() {
         cb();
         return;
     }
-    if (diktatAktiv && !_nachGrammatikCallback) return;
+    if (diktatAktiv) return;
     if (!proCheck(THIS_APP_ID, 'Grammatik unbegrenzt')) return;
-    const display = document.getElementById('wordDisplay');
-    display.classList.remove('empty');
+
     grammatikGesperrt = false;
     document.getElementById('uebersetzungAnzeige').textContent = '';
 
     if (grammatikModus === 'genus') {
         const pool = grammatikDaten.genus[diktatNiveau] || grammatikDaten.genus.n1;
-        const e = pool[Math.floor(Math.random() * pool.length)];
+        const letztes = grammatikAktuell;
+        let e;
+        let versuche = 0;
+        do { e = pool[Math.floor(Math.random() * pool.length)]; versuche++; }
+        while (letztes && e.wort === letztes.wort && pool.length > 1 && versuche < 5);
         grammatikAktuell = e;
         grammatikVerlauf.push(e); grammatikVerlaufIdx = grammatikVerlauf.length - 1;
-        display.innerHTML = `
-            <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
-                <div style="font-size:2rem;">${e.emoji}</div>
-                <div class="grammatik-aufgabe">${e.wort}</div>
-                <div class="grammatik-hinweis">Welches Genus?</div>
-                <div class="artikel-buttons">
-                   <button class="art-btn" onclick="genusAntwort('м',this)" style="color:#1565c0; border-color:#1565c0;">🚹 он</button>
-                   <button class="art-btn" onclick="genusAntwort('ж',this)" style="color:#c62828; border-color:#c62828;">🚺 она</button>
-                   <button class="art-btn" onclick="genusAntwort('с',this)" style="color:#2e7d32; border-color:#2e7d32;">🧒 оно</button>
-                   </div>
-            </div>`;
-        zeigGrammatikUebersetzung(e.deutsch);
-        grammatikSprechen();
+
     } else if (grammatikModus === 'kasus') {
         const pool = grammatikDaten.kasus[diktatNiveau] || grammatikDaten.kasus.n1;
-        const e = pool[Math.floor(Math.random() * pool.length)];
+        const letztes = grammatikAktuell;
+        let e;
+        let versuche = 0;
+        do { e = pool[Math.floor(Math.random() * pool.length)]; versuche++; }
+        while (letztes && e === letztes && pool.length > 1 && versuche < 5);
         grammatikAktuell = e;
-        const gemischt = [...e.antworten].sort(() => Math.random() - 0.5);
-        display.innerHTML = `
-            <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
-                <div class="grammatik-aufgabe">${e.satz}</div>
-                <div class="grammatik-hinweis">${e.kasus} von „${e.wort}"</div>
-                <div class="auswahl-grid">${gemischt.map(a => `<button class="auswahl-btn" onclick="kasusAntwort('${a}',this)">${a}</button>`).join('')}</div>
-            </div>`;
-        zeigGrammatikUebersetzung(e.deutsch);
-        grammatikSprechen();
-   } else if (grammatikModus === 'konjugation') {
-        const verb = grammatikAktuell ? grammatikAktuell.verb : (() => {
-            const niveau = diktatNiveau === 'n1' ? 'n1' : diktatNiveau === 'n2' ? 'n2' : 'n3';
-            const pool = verbGroups[niveau] || verbGroups.n1;
-            return pool[Math.floor(Math.random() * pool.length)];
-        })();
+
+    } else if (grammatikModus === 'konjugation') {
+        const niveau = diktatNiveau;
+        const pool = verbGroups[niveau] || verbGroups.n1;
+        const verb = pool[Math.floor(Math.random() * pool.length)];
         const formen = verbForms[verb];
         if (!formen) { grammatikNeueAufgabe(); return; }
-        const pIdx = grammatikAktuell ? grammatikAktuell.pIdx : Math.floor(Math.random() * 6);
-        const richtig = grammatikAktuell ? grammatikAktuell.richtig : formen[pIdx];
-        const falschForms = grammatikAktuell ? grammatikAktuell.antworten.filter(a => a !== richtig) : formen.filter((_,i)=>i!==pIdx).sort(()=>Math.random()-0.5).slice(0,3);
-        const alle = grammatikAktuell ? [...grammatikAktuell.antworten] : [richtig,...falschForms].sort(()=>Math.random()-0.5);
-        grammatikAktuell = { verb, pIdx, richtig };
-        const verbDe = ruDeDict[verb] || verb;
-        const pronounDE = ['ich','du','er/sie','wir','ihr','sie'][pIdx] || '';
-        zeigGrammatikUebersetzung(`${pronounDE} ___ ${verbDe}`);
-        display.innerHTML = `
-            <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
-                <div class="grammatik-aufgabe">${pronouns[pIdx]} ___ <span style="color:var(--primary)">${verb}</span></div>
-                <div class="grammatik-hinweis">Konjugation Präsens</div>
-                <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a}',this)">${a}</button>`).join('')}</div>
-            </div>`;
-        grammatikSprechen();
+        const pIdx = Math.floor(Math.random() * 6);
+        const richtig = formen[pIdx];
+        const anderen = formen
+            .filter((_,i) => i !== pIdx)
+            .filter((v,i,arr) => arr.indexOf(v) === i)
+            .filter(v => v !== richtig);
+        const falsche = [...anderen].sort(() => Math.random()-0.5).slice(0,3);
+        grammatikAktuell = { verb, pIdx, richtig, antworten: [richtig, ...falsche].sort(() => Math.random()-0.5) };
+
     } else if (grammatikModus === 'tempus') {
         const pool = [...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
-        const e = pool[Math.floor(Math.random() * pool.length)];
-        grammatikAktuell = e;
-        const alle = [e.richtig, ...e.falsch].sort(()=>Math.random()-0.5);
-        zeigGrammatikUebersetzung(e.deutsch);
+        grammatikAktuell = pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    grammatikRender();
+    grammatikSprechen();
+    document.getElementById('diktatStatus').textContent = '';
+}
+
+function grammatikRender() {
+    const display = document.getElementById('wordDisplay');
+    display.classList.remove('empty');
+    display.innerHTML = '';
+    const d = grammatikAktuell;
+    if (!d) return;
+
+    if (grammatikModus === 'genus') {
         display.innerHTML = `
             <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
-                <div class="grammatik-aufgabe">${e.pronomen} ___ <span style="color:var(--primary)">${e.infinitiv}</span></div>
-                <div class="grammatik-hinweis">${e.zeit}</div>
-                <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="tempusAntwort('${a}',this)">${a}</button>`).join('')}</div>
+                <div style="font-size:2rem;">${d.emoji}</div>
+                <div class="grammatik-aufgabe">${d.wort}</div>
+                <div class="grammatik-hinweis">Какой род?</div>
+                <div class="artikel-buttons">
+                    <button class="art-btn" onclick="genusAntwort('м',this)" style="color:#1565c0; border-color:#1565c0;">🚹 он</button>
+                    <button class="art-btn" onclick="genusAntwort('ж',this)" style="color:#c62828; border-color:#c62828;">🚺 она</button>
+                    <button class="art-btn" onclick="genusAntwort('с',this)" style="color:#2e7d32; border-color:#2e7d32;">🧒 оно</button>
+                </div>
+                <div id="grammatikStatus" class="diktat-status"></div>
             </div>`;
+        zeigGrammatikUebersetzung(d.deutsch);
+
+    } else if (grammatikModus === 'kasus') {
+        const gemischt = [...d.antworten].sort(() => Math.random() - 0.5);
+        display.innerHTML = `
+            <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+                <div class="grammatik-aufgabe">${d.satz}</div>
+                <div class="grammatik-hinweis">${d.kasus} · ${d.wort}</div>
+                <div class="auswahl-grid">
+                    ${gemischt.map(a => `<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${a}</button>`).join('')}
+                </div>
+                <div id="grammatikStatus" class="diktat-status"></div>
+            </div>`;
+        zeigGrammatikUebersetzung(d.deutsch);
+
+    } else if (grammatikModus === 'konjugation') {
+        const pColor = ['#0097a7','#f57c00','#ab47bc','#0097a7','#f57c00','#ab47bc'][d.pIdx] || '#2c3e50';
+        display.innerHTML = `
+            <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+                <div class="grammatik-aufgabe" style="color:${pColor};">${pronouns[d.pIdx]}</div>
+                <div class="grammatik-hinweis">___ (${d.verb}) · Präsens</div>
+                <div class="auswahl-grid">
+                    ${d.antworten.map(a => `<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)" style="border-left:4px solid ${pColor};">${pronouns[d.pIdx]} ${a}</button>`).join('')}
+                </div>
+                <div id="grammatikStatus" class="diktat-status"></div>
+            </div>`;
+        const verbDe = lokalDict[d.verb] ? lokalDict[d.verb]['de'] : d.verb;
+        const pronDE = ['ich','du','er/sie','wir','ihr','sie'][d.pIdx] || '';
+        zeigGrammatikUebersetzung(`${pronDE} ___ ${verbDe}`);
+
+    } else if (grammatikModus === 'tempus') {
+        const alle = [d.richtig, ...d.falsch].sort(() => Math.random()-0.5);
+        display.innerHTML = `
+            <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+                <div class="grammatik-aufgabe">${d.pronomen} ___ <span style="color:var(--primary)">${d.infinitiv}</span></div>
+                <div class="grammatik-hinweis">${d.zeit}</div>
+                <div class="auswahl-grid">
+                    ${alle.map(a => `<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${a}</button>`).join('')}
+                </div>
+                <div id="grammatikStatus" class="diktat-status"></div>
+            </div>`;
+        zeigGrammatikUebersetzung(d.deutsch);
     }
-    document.getElementById('diktatStatus').textContent = '';
+}
+
+// Einheitliche Check-Funktion für kasus, konjugation, tempus
+function grammatikCheck(antwort, btn) {
+    if (grammatikGesperrt) return;
+    grammatikGesperrt = true;
+    const d = grammatikAktuell;
+    let richtig = false;
+    if (grammatikModus === 'kasus') richtig = antwort === d.richtig;
+    else if (grammatikModus === 'konjugation') richtig = antwort === d.richtig;
+    else if (grammatikModus === 'tempus') richtig = antwort === d.richtig;
+
+    btn.classList.add(richtig ? 'richtig' : 'falsch');
+    if (!richtig) {
+        const alleBtn = btn.closest('div').querySelectorAll('.auswahl-btn');
+        const sollText = grammatikModus === 'konjugation' ? `${pronouns[d.pIdx]} ${d.richtig}` : d.richtig;
+        alleBtn.forEach(b => { if (b.textContent.trim() === sollText) b.classList.add('richtig'); });
+    }
+    if (richtig) {
+        diktatRichtig++;
+        document.getElementById('diktatRichtig').textContent = diktatRichtig;
+        document.getElementById('diktatStatus').textContent = '✓ Richtig! 🎉';
+        setTimeout(diktatFanfare, 200);
+    } else {
+        diktatFalsch++;
+        document.getElementById('diktatFalsch').textContent = diktatFalsch;
+        document.getElementById('diktatStatus').textContent = `✗ Richtig: ${d.richtig}`;
+        diktatBuzzer();
+    }
+    setTimeout(grammatikNeueAufgabe, 1800);
 }
 
 
