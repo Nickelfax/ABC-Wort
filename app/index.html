@@ -3393,7 +3393,15 @@ function levenshtein(a, b) {
             const wrap = document.getElementById('grBtnWrap');
             if (wrap) wrap.style.display = (diktatAktiv && grammatikAktiv && grammatikFuerWort(diktatAktuell).length > 0) ? 'block' : 'none';
         }
-
+       
+function grBtnKlick() {
+            document.getElementById('grBtnWrap').style.display = 'none';
+            const aufgaben = grammatikFuerWort(diktatAktuell);
+            if (aufgaben.length) {
+                const modus = aufgaben[Math.floor(Math.random() * aufgaben.length)];
+                diktatGrammatikAufgabeZeigen(modus);
+            }
+        }
         function diktatLoeschen(ab) { diktatEingabe = diktatEingabe.substring(0, ab); diktatRender(); }
 
         let _lastDiktatAddTime = 0;
