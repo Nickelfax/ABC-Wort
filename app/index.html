@@ -3003,6 +3003,72 @@ function levenshtein(a, b) {
                 ]
             }
         };
+       // === Diktat + Grammatik Verknüpfung ===
+        let _nachGrammatikCallback = null;
+
+        function grammatikFuerWort(wort) {
+            const aufgaben = [];
+            const w = wort.charAt(0).toUpperCase() + wort.slice(1).toLowerCase();
+            const wLower = wort.toLowerCase();
+            const alleArtikel = [...(grammatikDaten.artikel.n1||[]), ...(grammatikDaten.artikel.n2||[]), ...(grammatikDaten.artikel.n3||[])];
+            if (alleArtikel.find(e => e.wort === w || e.wort === wort)) aufgaben.push('artikel');
+            const alleKasus = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
+            if (alleKasus.find(e => e.wort === w || e.wort === wort || e.wort === wLower)) aufgaben.push('kasus');
+            if (verbForms[wLower]) aufgaben.push('konjugation');
+            const alleTempus = [...(grammatikDaten.tempus.n1||[]), ...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
+            if (alleTempus.find(e => e.verb === wLower)) aufgaben.push('tempus');
+            return aufgaben;
+        }
+
+        function diktatGrammatikHinweisZeigen(aufgaben) {
+            const display = document.getElementById('wordDisplay');
+            const blinker = document.createElement('div');
+            blinker.style.cssText = 'cursor:pointer; font-size:1.4rem; font-weight:bold; color:var(--purple); animation:blinken 1s infinite; padding:8px 16px; background:#f3e5f5; border-radius:12px; border:2px solid var(--purple); margin-top:8px;';
+            blinker.textContent = '❓ Gr.?';
+            blinker.onclick = () => {
+                const modus = aufgaben[Math.floor(Math.random() * aufgaben.length)];
+                diktatGrammatikAufgabeZeigen(modus);
+            };
+            display.appendChild(blinker);
+            document.getElementById('diktatStatus').textContent = 'Tippe Gr.? für Grammatik oder ▶ für weiter';
+        }
+
+        function diktatGrammatikAufgabeZeigen(modus) {
+            const w = diktatAktuell.charAt(0).toUpperCase() + diktatAktuell.slice(1).toLowerCase();
+            const wLower = diktatAktuell.toLowerCase();
+            grammatikGesperrt = false;
+            if (modus === 'artikel') {
+                const alle = [...(grammatikDaten.artikel.n1||[]), ...(grammatikDaten.artikel.n2||[]), ...(grammatikDaten.artikel.n3||[])];
+                grammatikAktuell = alle.find(e => e.wort === w || e.wort === diktatAktuell);
+            } else if (modus === 'kasus') {
+                const alle = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
+                const treffer = alle.filter(e => e.wort === w || e.wort === diktatAktuell || e.wort === wLower);
+                grammatikAktuell = treffer[Math.floor(Math.random() * treffer.length)];
+            } else if (modus === 'konjugation') {
+                grammatikAktuell = grammatikGetVerbFuerWort(wLower);
+            } else if (modus === 'tempus') {
+                const alle = [...(grammatikDaten.tempus.n1||[]), ...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
+                grammatikAktuell = alle.find(e => e.verb === wLower);
+            }
+            if (!grammatikAktuell) { diktatNeuesWort(); return; }
+            grammatikModus = modus;
+            grammatikRender();
+            grammatikSprechen();
+            _nachGrammatikCallback = () => diktatNeuesWort();
+        }
+
+        function grammatikGetVerbFuerWort(verb) {
+            if (!verbForms[verb]) return null;
+            const pronIdx = Math.floor(Math.random() * 6);
+            const richtig = verbForms[verb][pronIdx];
+            const anderen = verbForms[verb]
+                .filter((_,i) => i !== pronIdx)
+                .filter((v,i,arr) => arr.indexOf(v) === i)
+                .filter(v => v !== richtig);
+            const falsche = shuffle(anderen).slice(0,3);
+            return { verb, pronomen: pronouns[pronIdx], pronomenTTS: pronounsTTS[pronIdx], richtig, antworten: shuffle([richtig, ...falsche]) };
+        }
+        // === Ende Diktat + Grammatik Verknüpfung ===
 
         function grammatikSetModus(modus, btn) {
             grammatikModus = modus;
