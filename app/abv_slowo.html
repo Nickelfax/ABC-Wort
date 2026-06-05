@@ -639,12 +639,10 @@ grammatikDaten.konjugation = verbForms;
                 grammatikAktuell = { verb: wLower, pIdx, richtig, antworten: [richtig, ...falsche].sort(() => Math.random()-0.5) };
             }
             if (!grammatikAktuell) { diktatNeuesWort(); return; }
-            grammatikModus = modus;
             _nachGrammatikCallback = () => diktatNeuesWort();
-            const warDiktatAktiv = diktatAktiv;
             diktatAktiv = false;
             grammatikNeueAufgabe();
-            diktatAktiv = warDiktatAktiv;
+            diktatAktiv = true;
         }
         // === Ende Diktat + Grammatik Verknüpfung ===
 const pronouns    = ['👤 я','👤 ты','👤 он/она','👤👤 мы','👤👤 вы','👤👤 они'];
