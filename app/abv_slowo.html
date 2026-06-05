@@ -589,7 +589,61 @@ const verbForms = {
     'любить':    ['люблю','любишь','любит','любим','любите','любят'],
 };
 grammatikDaten.konjugation = verbForms;
+grammatikDaten.konjugation = verbForms;
 
+        // === Diktat + Grammatik Verknüpfung ===
+        function grammatikFuerWort(wort) {
+            const aufgaben = [];
+            const wLower = wort.toLowerCase();
+            const alleGenus = [...(grammatikDaten.genus.n1||[]), ...(grammatikDaten.genus.n2||[]), ...(grammatikDaten.genus.n3||[])];
+            if (alleGenus.find(e => e.wort === wort || e.wort === wLower)) aufgaben.push('genus');
+            const alleKasus = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
+            if (alleKasus.find(e => e.wort === wort || e.wort === wLower)) aufgaben.push('kasus');
+            if (verbForms[wLower]) aufgaben.push('konjugation');
+            return aufgaben;
+        }
+
+        function diktatGrammatikHinweisZeigen(aufgaben) {
+            const display = document.getElementById('wordDisplay');
+            const blinker = document.createElement('div');
+            blinker.style.cssText = 'cursor:pointer; font-size:1.4rem; font-weight:bold; color:var(--purple); animation:blinken 1s infinite; padding:8px 16px; background:#f3e5f5; border-radius:12px; border:2px solid var(--purple); margin-top:8px;';
+            blinker.textContent = '❓ Грм.?';
+            blinker.onclick = () => {
+                const modus = aufgaben[Math.floor(Math.random() * aufgaben.length)];
+                diktatGrammatikAufgabeZeigen(modus);
+            };
+            display.appendChild(blinker);
+            document.getElementById('diktatStatus').textContent = 'Грм.? для грамматики или ▶ дальше';
+        }
+
+        function diktatGrammatikAufgabeZeigen(modus) {
+            const wLower = diktatAktuell.toLowerCase();
+            grammatikGesperrt = false;
+            grammatikModus = modus;
+            if (modus === 'genus') {
+                const alle = [...(grammatikDaten.genus.n1||[]), ...(grammatikDaten.genus.n2||[]), ...(grammatikDaten.genus.n3||[])];
+                grammatikAktuell = alle.find(e => e.wort === diktatAktuell || e.wort === wLower);
+            } else if (modus === 'kasus') {
+                const alle = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
+                const treffer = alle.filter(e => e.wort === diktatAktuell || e.wort === wLower);
+                grammatikAktuell = treffer[Math.floor(Math.random() * treffer.length)];
+            } else if (modus === 'konjugation') {
+                if (!verbForms[wLower]) { diktatNeuesWort(); return; }
+                const pIdx = Math.floor(Math.random() * 6);
+                const richtig = verbForms[wLower][pIdx];
+                const anderen = verbForms[wLower]
+                    .filter((_,i) => i !== pIdx)
+                    .filter((v,i,arr) => arr.indexOf(v) === i)
+                    .filter(v => v !== richtig);
+                const falsche = [...anderen].sort(() => Math.random()-0.5).slice(0,3);
+                grammatikAktuell = { verb: wLower, pIdx, richtig, antworten: [richtig, ...falsche].sort(() => Math.random()-0.5) };
+            }
+            if (!grammatikAktuell) { diktatNeuesWort(); return; }
+            grammatikModus = modus;
+            grammatikNeueAufgabe();
+            _nachGrammatikCallback = () => diktatNeuesWort();
+        }
+        // === Ende Diktat + Grammatik Verknüpfung ===
 const pronouns    = ['👤 я','👤 ты','👤 он/она','👤👤 мы','👤👤 вы','👤👤 они'];
 const pronounsTTS = ['я','ты','он','мы','вы','они'];
 
