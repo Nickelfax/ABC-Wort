@@ -2181,11 +2181,16 @@ function initTheme() {
                 diktatNeuesWort();
             } else if (grammatikAktiv) {
                 grammatikNeueAufgabe();
-            } else {
+           } else {
                 const word = wordList[Math.floor(Math.random() * wordList.length)];
                 currentWord = word.split('');
+                normalVerlauf.splice(normalVerlaufIdx + 1);
+                normalVerlauf.push(word);
+                if (normalVerlauf.length > 50) normalVerlauf.shift();
+                normalVerlaufIdx = normalVerlauf.length - 1;
                 updateDisplay();
                 speakWord();
+                if (uebersetzungAktiv) uebersetzeUndZeige(word);
             }
         }
 
