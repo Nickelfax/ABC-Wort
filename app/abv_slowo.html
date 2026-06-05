@@ -788,12 +788,21 @@ function saveCurrentWord() {
 }
 // ── Random / Navigation ───────────────────────────────────────────────
 
-// ── Random / Navigation ───────────────────────────────────────────────
 function randomWord() {
     if (diktatAktiv && grammatikAktiv) { Math.random()>0.5 ? diktatNeuesWort() : grammatikNeueAufgabe(); }
     else if (diktatAktiv) { diktatNeuesWort(); }
     else if (grammatikAktiv) { grammatikNeueAufgabe(); }
-    else { const w = wordList[Math.floor(Math.random()*wordList.length)]; currentWord = w.split(''); updateDisplay(); sprichWort(); }
+    else {
+        const w = wordList[Math.floor(Math.random()*wordList.length)];
+        currentWord = w.split('');
+        normalVerlauf.splice(normalVerlaufIdx + 1);
+        normalVerlauf.push(w);
+        if (normalVerlauf.length > 50) normalVerlauf.shift();
+        normalVerlaufIdx = normalVerlauf.length - 1;
+        updateDisplay();
+        sprichWort();
+        if (uebersetzungAktiv) uebersetzeUndZeige(w);
+    }
 }
 
 function navigiereZurueck() {
