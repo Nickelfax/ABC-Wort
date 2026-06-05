@@ -944,6 +944,7 @@ function diktatGetListe() {
 }
 
 function diktatNeuesWort() {
+    document.getElementById('grBtn')?.remove();
     if (!proCheck(THIS_APP_ID, 'Diktat unbegrenzt')) return;
     const liste = diktatGetListe();
     const e = liste[Math.floor(Math.random() * liste.length)];
