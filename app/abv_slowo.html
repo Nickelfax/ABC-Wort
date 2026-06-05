@@ -992,10 +992,12 @@ function diktatRender() {
     if (wrap) wrap.style.display = (diktatAktiv && grammatikAktiv && grammatikFuerWort(diktatAktuell).length > 0) ? 'block' : 'none';
 }
 function diktatStatusSetzen(text) {
-    const el = document.getElementById('diktatStatus');
-    const btn = document.getElementById('grBtn');
-    el.textContent = text;
-    if (btn) el.appendChild(btn);
+    document.getElementById('diktatStatus').textContent = text;
+}
+function grBtnKlick() {
+    document.getElementById('grBtnWrap').style.display = 'none';
+    const aufgaben = grammatikFuerWort(diktatAktuell);
+    if (aufgaben.length) diktatGrammatikAufgabeZeigen(aufgaben[Math.floor(Math.random() * aufgaben.length)]);
 }
 function diktatSetModus(m, btn) {
     diktatModus = m;
