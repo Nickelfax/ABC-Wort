@@ -1025,7 +1025,6 @@ function diktatStummToggle(btn) {
     btn.textContent = diktatStumm ? '🔇' : '🔊';
     btn.classList.toggle('aktiv', diktatStumm);
 }
-
 let _lastDiktatAddTime = 0;
 function diktatAddChar(ch) {
     const now = Date.now();
@@ -1047,19 +1046,18 @@ function diktatAddChar(ch) {
         if (!diktatHatFehler) {
             diktatRichtig++;
             document.getElementById('diktatRichtig').textContent = diktatRichtig;
-            document.getElementById('diktatStatus').textContent = 'Richtig! 🎉';
+            diktatStatusSetzen('Richtig! 🎉');
         } else {
             diktatFalsch++;
             document.getElementById('diktatFalsch').textContent = diktatFalsch;
-            document.getElementById('diktatStatus').textContent = 'Richtig — aber mit Korrekturen.';
+            diktatStatusSetzen('Richtig — aber mit Korrekturen.');
         }
-    setTimeout(diktatFanfare, 300);
-        setTimeout(diktatNeuesWort, 2400); 
+        setTimeout(diktatFanfare, 300);
+        setTimeout(diktatNeuesWort, 2400);
     } else {
-        document.getElementById('diktatStatus').textContent = diktatEingabe.length < ziel.length ? 'Weiter tippen…' : 'Noch nicht ganz…';
+        diktatStatusSetzen(diktatEingabe.length < ziel.length ? 'Weiter tippen…' : 'Noch nicht ganz…');
     }
 }
-
 function diktatZeichenEingeben(ch) { diktatAddChar(ch); }
 
 let _diktatCtx = null;
