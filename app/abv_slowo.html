@@ -645,9 +645,8 @@ grammatikDaten.konjugation = verbForms;
             }
             if (!grammatikAktuell) { diktatNeuesWort(); return; }
             _nachGrammatikCallback = () => diktatNeuesWort();
-            diktatAktiv = false;
-            grammatikNeueAufgabe();
-            diktatAktiv = true;
+            grammatikRender();
+            grammatikSprechen();
         }
         // === Ende Diktat + Grammatik Verknüpfung ===
 const pronouns    = ['👤 я','👤 ты','👤 он/она','👤👤 мы','👤👤 вы','👤👤 они'];
