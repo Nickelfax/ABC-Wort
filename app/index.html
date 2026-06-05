@@ -3110,13 +3110,16 @@ function levenshtein(a, b) {
            const falsche = shuffle(anderen).slice(0,3);
             return { verb, pronomen: pronouns[pronIdx], pronomenTTS: pronounsTTS[pronIdx], richtig, antworten: shuffle([richtig, ...falsche]) };
         }
-function grammatikNeueAufgabe() {
+
+   function grammatikNeueAufgabe() {
             if (_nachGrammatikCallback) {
                 const cb = _nachGrammatikCallback;
                 _nachGrammatikCallback = null;
                 cb();
                 return;
             }
+            // wenn Diktat aktiv ist, nicht selbstständig starten
+            if (diktatAktiv) return;
             grammatikGesperrt = false;
        
             const letztes = grammatikAktuell;
