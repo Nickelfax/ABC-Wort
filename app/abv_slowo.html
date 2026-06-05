@@ -1131,16 +1131,18 @@ function grammatikNeueAufgabe() {
             </div>`;
         zeigGrammatikUebersetzung(e.deutsch);
         grammatikSprechen();
-    } else if (grammatikModus === 'konjugation') {
-        const niveau = diktatNiveau === 'n1' ? 'n1' : diktatNiveau === 'n2' ? 'n2' : 'n3';
-        const pool = verbGroups[niveau] || verbGroups.n1;
-        const verb = pool[Math.floor(Math.random() * pool.length)];
+   } else if (grammatikModus === 'konjugation') {
+        const verb = grammatikAktuell ? grammatikAktuell.verb : (() => {
+            const niveau = diktatNiveau === 'n1' ? 'n1' : diktatNiveau === 'n2' ? 'n2' : 'n3';
+            const pool = verbGroups[niveau] || verbGroups.n1;
+            return pool[Math.floor(Math.random() * pool.length)];
+        })();
         const formen = verbForms[verb];
         if (!formen) { grammatikNeueAufgabe(); return; }
-        const pIdx = Math.floor(Math.random() * 6);
-        const richtig = formen[pIdx];
-        const falschForms = formen.filter((_,i)=>i!==pIdx).sort(()=>Math.random()-0.5).slice(0,3);
-        const alle = [richtig,...falschForms].sort(()=>Math.random()-0.5);
+        const pIdx = grammatikAktuell ? grammatikAktuell.pIdx : Math.floor(Math.random() * 6);
+        const richtig = grammatikAktuell ? grammatikAktuell.richtig : formen[pIdx];
+        const falschForms = grammatikAktuell ? grammatikAktuell.antworten.filter(a => a !== richtig) : formen.filter((_,i)=>i!==pIdx).sort(()=>Math.random()-0.5).slice(0,3);
+        const alle = grammatikAktuell ? [...grammatikAktuell.antworten] : [richtig,...falschForms].sort(()=>Math.random()-0.5);
         grammatikAktuell = { verb, pIdx, richtig };
         const verbDe = ruDeDict[verb] || verb;
         const pronounDE = ['ich','du','er/sie','wir','ihr','sie'][pIdx] || '';
