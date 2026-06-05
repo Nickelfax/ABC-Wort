@@ -3321,7 +3321,8 @@ function levenshtein(a, b) {
             diktatRender();
         }
 
-        function diktatNeuesWort() {
+           function diktatNeuesWort() {
+            document.getElementById('grBtnWrap').style.display = 'none';
             const liste = diktatGetListe();
             const eintrag = liste[Math.floor(Math.random() * liste.length)];
             diktatAktuell = eintrag.wort;
