@@ -3412,7 +3412,14 @@ function levenshtein(a, b) {
                     document.getElementById('diktatFalsch').textContent = diktatFalsch;
                     document.getElementById('diktatStatus').textContent = 'Richtig — aber mit Korrekturen.';
                 }
-                setTimeout(diktatFanfare, 300);
+               setTimeout(diktatFanfare, 300);
+                if (diktatAktiv && grammatikAktiv) {
+                    const aufgaben = grammatikFuerWort(diktatAktuell);
+                    if (aufgaben.length > 0) {
+                        setTimeout(() => diktatGrammatikHinweisZeigen(aufgaben), 800);
+                        return;
+                    }
+                }
                 setTimeout(diktatNeuesWort, 2400);
             } else {
                 document.getElementById('diktatStatus').textContent =
