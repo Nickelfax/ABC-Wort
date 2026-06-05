@@ -987,24 +987,9 @@ function diktatRender() {
         }
     }
     display.innerHTML = html;
-   // Grammatik-Button im Status-Bereich anzeigen
-    const statusEl = document.getElementById('diktatStatus');
-    if (diktatAktiv && grammatikAktiv) {
-        const aufgaben = grammatikFuerWort(diktatAktuell);
-        if (aufgaben.length > 0 && !document.getElementById('grBtn')) {
-            const blinker = document.createElement('button');
-            blinker.id = 'grBtn';
-            blinker.style.cssText = 'cursor:pointer; font-size:1.2rem; font-weight:bold; color:white; background:var(--purple); padding:6px 14px; border-radius:10px; border:none; margin-left:8px;';
-            blinker.textContent = '❓ Грм.?';
-            blinker.onclick = () => {
-                document.getElementById('grBtn')?.remove();
-                diktatGrammatikAufgabeZeigen(aufgaben[Math.floor(Math.random() * aufgaben.length)]);
-            };
-            statusEl.appendChild(blinker);
-        }
-    } else {
-        document.getElementById('grBtn')?.remove();
-    }
+   // Grammatik-Button ein/ausblenden
+    const wrap = document.getElementById('grBtnWrap');
+    if (wrap) wrap.style.display = (diktatAktiv && grammatikAktiv && grammatikFuerWort(diktatAktuell).length > 0) ? 'block' : 'none';
 }
 function diktatStatusSetzen(text) {
     const el = document.getElementById('diktatStatus');
