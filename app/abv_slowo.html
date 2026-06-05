@@ -1008,7 +1008,12 @@ function diktatRender() {
         document.getElementById('grBtn')?.remove();
     }
 }
-
+function diktatStatusSetzen(text) {
+    const el = document.getElementById('diktatStatus');
+    const btn = document.getElementById('grBtn');
+    el.textContent = text;
+    if (btn) el.appendChild(btn);
+}
 function diktatSetModus(m, btn) {
     diktatModus = m;
     document.querySelectorAll('.diktat-modus-btn').forEach(b => b.classList.remove('aktiv'));
