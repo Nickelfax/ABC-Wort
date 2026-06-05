@@ -988,16 +988,23 @@ function diktatRender() {
         }
     }
     display.innerHTML = html;
-    // Grammatik-Button anzeigen wenn Einträge vorhanden
+   // Grammatik-Button im Status-Bereich anzeigen
+    const statusEl = document.getElementById('diktatStatus');
     if (diktatAktiv && grammatikAktiv) {
         const aufgaben = grammatikFuerWort(diktatAktuell);
-        if (aufgaben.length > 0) {
-            const blinker = document.createElement('div');
-            blinker.style.cssText = 'cursor:pointer; font-size:1.4rem; font-weight:bold; color:var(--purple); animation:blinken 1s infinite; padding:8px 16px; background:#f3e5f5; border-radius:12px; border:2px solid var(--purple); margin-top:8px;';
+        if (aufgaben.length > 0 && !document.getElementById('grBtn')) {
+            const blinker = document.createElement('button');
+            blinker.id = 'grBtn';
+            blinker.style.cssText = 'cursor:pointer; font-size:1.2rem; font-weight:bold; color:white; background:var(--purple); padding:6px 14px; border-radius:10px; border:none; margin-left:8px;';
             blinker.textContent = '❓ Грм.?';
-            blinker.onclick = () => diktatGrammatikAufgabeZeigen(aufgaben[Math.floor(Math.random() * aufgaben.length)]);
-            display.appendChild(blinker);
+            blinker.onclick = () => {
+                document.getElementById('grBtn')?.remove();
+                diktatGrammatikAufgabeZeigen(aufgaben[Math.floor(Math.random() * aufgaben.length)]);
+            };
+            statusEl.appendChild(blinker);
         }
+    } else {
+        document.getElementById('grBtn')?.remove();
     }
 }
 
