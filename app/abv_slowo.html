@@ -1023,6 +1023,13 @@ function zeigGrammatikUebersetzung(text) {
     }
 }
 function grammatikNeueAufgabe() {
+    if (_nachGrammatikCallback) {
+        const cb = _nachGrammatikCallback;
+        _nachGrammatikCallback = null;
+        cb();
+        return;
+    }
+    if (diktatAktiv) return;
     if (!proCheck(THIS_APP_ID, 'Grammatik unbegrenzt')) return;
     const display = document.getElementById('wordDisplay');
     display.classList.remove('empty');
