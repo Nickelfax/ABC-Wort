@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "дом",     "genus": "м", "emoji": "🏠", "deutsch": "Haus" },
+      { "wort": "кот",     "genus": "м", "emoji": "🐱", "deutsch": "Kater" },
+      { "wort": "мяч",     "genus": "м", "emoji": "⚽", "deutsch": "Ball" },
+      { "wort": "нос",     "genus": "м", "emoji": "👃", "deutsch": "Nase" },
+      { "wort": "поезд",   "genus": "м", "emoji": "🚂", "deutsch": "Zug" },
+      { "wort": "глаз",    "genus": "м", "emoji": "👁️", "deutsch": "Auge" },
+      { "wort": "друг",    "genus": "м", "emoji": "🤝", "deutsch": "Freund" },
+      { "wort": "рука",    "genus": "ж", "emoji": "✋", "deutsch": "Hand" },
+      { "wort": "луна",    "genus": "ж", "emoji": "🌙", "deutsch": "Mond" },
+      { "wort": "рыба",    "genus": "ж", "emoji": "🐟", "deutsch": "Fisch" },
+      { "wort": "книга",   "genus": "ж", "emoji": "📖", "deutsch": "Buch" },
+      { "wort": "кошка",   "genus": "ж", "emoji": "🐈", "deutsch": "Katze" },
+      { "wort": "собака",  "genus": "ж", "emoji": "🐕", "deutsch": "Hund" },
+      { "wort": "солнце",  "genus": "с", "emoji": "☀️", "deutsch": "Sonne" },
+      { "wort": "дерево",  "genus": "с", "emoji": "🌳", "deutsch": "Baum" },
+      { "wort": "яйцо",    "genus": "с", "emoji": "🥚", "deutsch": "Ei" },
+      { "wort": "молоко",  "genus": "с", "emoji": "🥛", "deutsch": "Milch" }
+    ],
+    "n2": [
+      { "wort": "школа",    "genus": "ж", "emoji": "🏫", "deutsch": "Schule" },
+      { "wort": "стол",     "genus": "м", "emoji": "🪑", "deutsch": "Tisch" },
+      { "wort": "окно",     "genus": "с", "emoji": "🪟", "deutsch": "Fenster" },
+      { "wort": "улица",    "genus": "ж", "emoji": "🛣️", "deutsch": "Straße" },
+      { "wort": "сад",      "genus": "м", "emoji": "🌿", "deutsch": "Garten" },
+      { "wort": "комната",  "genus": "ж", "emoji": "🛋️", "deutsch": "Zimmer" },
+      { "wort": "мост",     "genus": "м", "emoji": "🌉", "deutsch": "Brücke" },
+      { "wort": "чемодан",  "genus": "м", "emoji": "🧳", "deutsch": "Koffer" },
+      { "wort": "куртка",   "genus": "ж", "emoji": "🧥", "deutsch": "Jacke" },
+      { "wort": "лестница", "genus": "ж", "emoji": "🪜", "deutsch": "Treppe" },
+      { "wort": "цветок",   "genus": "м", "emoji": "🌸", "deutsch": "Blume" },
+      { "wort": "светофор", "genus": "м", "emoji": "🚦", "deutsch": "Ampel" }
+    ],
+    "n3": [
+      { "wort": "дружба",          "genus": "ж", "emoji": "💛", "deutsch": "Freundschaft" },
+      { "wort": "решение",         "genus": "с", "emoji": "🎯", "deutsch": "Entscheidung" },
+      { "wort": "влияние",         "genus": "с", "emoji": "💡", "deutsch": "Einfluss" },
+      { "wort": "ответственность", "genus": "ж", "emoji": "🎖️", "deutsch": "Verantwortung" },
+      { "wort": "возможность",     "genus": "ж", "emoji": "🔓", "deutsch": "Möglichkeit" },
+      { "wort": "восторг",         "genus": "м", "emoji": "🌟", "deutsch": "Begeisterung" },
+      { "wort": "понимание",       "genus": "с", "emoji": "🤔", "deutsch": "Verständnis" },
+      { "wort": "сотрудничество",  "genus": "с", "emoji": "🤲", "deutsch": "Zusammenarbeit" },
+      { "wort": "справедливость",  "genus": "ж", "emoji": "⚖️", "deutsch": "Gerechtigkeit" },
+      { "wort": "соседство",       "genus": "с", "emoji": "🏘️", "deutsch": "Nachbarschaft" },
+      { "wort": "сюрприз",         "genus": "м", "emoji": "🎁", "deutsch": "Überraschung" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "satz": "Я вижу ___", "deutsch": "Ich sehe ___ (Hund)", "wort": "собака", "kasus": "Akkusativ", "antworten": ["собака","собаку","собаке","собакой"], "richtig": "собаку" },
+      { "satz": "Я помогаю ___", "deutsch": "Ich helfe ___ (Freund)", "wort": "друг", "kasus": "Dativ", "antworten": ["друга","другу","друг","другом"], "richtig": "другу" },
+      { "satz": "Это ___ мяч", "deutsch": "Das ist ein Ball", "wort": "мяч", "kasus": "Nominativ", "antworten": ["мяч","мяча","мячу","мячом"], "richtig": "мяч" },
+      { "satz": "Цвет ___", "deutsch": "Die Farbe ___ (Katze)", "wort": "кошка", "kasus": "Genitiv", "antworten": ["кошка","кошки","кошке","кошку"], "richtig": "кошки" },
+      { "satz": "Я играю с ___", "deutsch": "Ich spiele mit ___ (Ball)", "wort": "мяч", "kasus": "Instrumental", "antworten": ["мяч","мячом","мячу","мяча"], "richtig": "мячом" },
+      { "satz": "Я глажу ___", "deutsch": "Ich streichle ___ (Hund)", "wort": "собака", "kasus": "Akkusativ", "antworten": ["собака","собаку","собаке","собакой"], "richtig": "собаку" },
+      { "satz": "Шерсть ___", "deutsch": "Das Fell ___ (Hund)", "wort": "собака", "kasus": "Genitiv", "antworten": ["собака","собаки","собаке","собакой"], "richtig": "собаки" },
+      { "satz": "Я даю ___ книгу", "deutsch": "Ich gebe ___ ein Buch (Kind)", "wort": "ребёнок", "kasus": "Dativ", "antworten": ["ребёнка","ребёнку","ребёнок","ребёнком"], "richtig": "ребёнку" },
+      { "satz": "___ светит ярко", "deutsch": "___ scheint hell (Sonne)", "wort": "солнце", "kasus": "Nominativ", "antworten": ["солнце","солнца","солнцу","солнцем"], "richtig": "солнце" },
+      { "satz": "Я вижу ___", "deutsch": "Ich sehe ___ (Vogel)", "wort": "птица", "kasus": "Akkusativ", "antworten": ["птица","птицу","птице","птицей"], "richtig": "птицу" },
+      { "satz": "Я мою ___", "deutsch": "Ich wasche ___ (Hand)", "wort": "рука", "kasus": "Akkusativ", "antworten": ["рука","руку","руке","рукой"], "richtig": "руку" },
+      { "satz": "___ светит ночью", "deutsch": "___ leuchtet nachts (Mond)", "wort": "луна", "kasus": "Nominativ", "antworten": ["луна","луны","луне","луной"], "richtig": "луна" }
+    ],
+    "n2": [
+      { "satz": "Я иду в ___", "deutsch": "Ich gehe in ___ (Schule)", "wort": "школа", "kasus": "Akkusativ", "antworten": ["школа","школу","школе","школой"], "richtig": "школу" },
+      { "satz": "Я думаю о ___", "deutsch": "Ich denke an ___ (Freund)", "wort": "друг", "kasus": "Präpositional", "antworten": ["друга","другу","друге","другом"], "richtig": "друге" },
+      { "satz": "Книга ___", "deutsch": "Das Buch ___ (Kind)", "wort": "ребёнок", "kasus": "Genitiv", "antworten": ["ребёнка","ребёнку","ребёнок","ребёнком"], "richtig": "ребёнка" },
+      { "satz": "Я сижу за ___", "deutsch": "Ich sitze an ___ (Tisch)", "wort": "стол", "kasus": "Instrumental", "antworten": ["стол","столом","столе","стола"], "richtig": "столом" },
+      { "satz": "Он стоит на ___", "deutsch": "Er steht auf ___ (Treppe)", "wort": "лестница", "kasus": "Präpositional", "antworten": ["лестницу","лестнице","лестницей","лестницы"], "richtig": "лестнице" },
+      { "satz": "Я вешаю куртку в ___", "deutsch": "Ich hänge die Jacke in ___ (Zimmer)", "wort": "комната", "kasus": "Akkusativ", "antworten": ["комната","комнату","комнате","комнатой"], "richtig": "комнату" },
+      { "satz": "Я жду у ___", "deutsch": "Ich warte an ___ (Ampel)", "wort": "светофор", "kasus": "Genitiv", "antworten": ["светофора","светофору","светофор","светофором"], "richtig": "светофора" },
+      { "satz": "Мы идём через ___", "deutsch": "Wir gehen über ___ (Brücke)", "wort": "мост", "kasus": "Akkusativ", "antworten": ["мост","моста","мосту","мостом"], "richtig": "мост" }
+    ],
+    "n3": [
+      { "satz": "Я горжусь ___", "deutsch": "Ich bin stolz auf ___ (Arbeit)", "wort": "работа", "kasus": "Instrumental", "antworten": ["работа","работой","работе","работу"], "richtig": "работой" },
+      { "satz": "Он думает о ___", "deutsch": "Er denkt über ___ (Entscheidung) nach", "wort": "решение", "kasus": "Präpositional", "antworten": ["решения","решению","решении","решением"], "richtig": "решении" },
+      { "satz": "Важность ___", "deutsch": "Die Wichtigkeit ___ (Freundschaft)", "wort": "дружба", "kasus": "Genitiv", "antworten": ["дружба","дружбы","дружбе","дружбой"], "richtig": "дружбы" },
+      { "satz": "Он несёт ___", "deutsch": "Er trägt ___ (Verantwortung)", "wort": "ответственность", "kasus": "Akkusativ", "antworten": ["ответственность","ответственности","ответственностью","ответственного"], "richtig": "ответственность" }
+    ]
+  },
+  "tempus": {
+    "n2": [
+      { "infinitiv": "читать", "pronomen": "я", "zeit": "Präteritum", "richtig": "читал", "falsch": ["читаю","читает","читали"], "deutsch": "ich las" },
+      { "infinitiv": "идти",   "pronomen": "она", "zeit": "Präteritum", "richtig": "шла", "falsch": ["шёл","шли","идёт"], "deutsch": "sie ging" },
+      { "infinitiv": "делать", "pronomen": "мы", "zeit": "Futur", "richtig": "будем делать", "falsch": ["делаем","делали","делает"], "deutsch": "wir werden machen" },
+      { "infinitiv": "играть", "pronomen": "он", "zeit": "Präteritum", "richtig": "играл", "falsch": ["играет","играли","играю"], "deutsch": "er spielte" },
+      { "infinitiv": "учиться", "pronomen": "я", "zeit": "Präteritum", "richtig": "учился", "falsch": ["учусь","учился бы","учились"], "deutsch": "ich lernte" },
+      { "infinitiv": "помогать", "pronomen": "она", "zeit": "Präteritum", "richtig": "помогала", "falsch": ["помогает","помогал","помогали"], "deutsch": "sie half" },
+      { "infinitiv": "покупать", "pronomen": "мы", "zeit": "Präteritum", "richtig": "покупали", "falsch": ["покупаем","покупал","покупает"], "deutsch": "wir kauften" },
+      { "infinitiv": "спать", "pronomen": "он", "zeit": "Präteritum", "richtig": "спал", "falsch": ["спит","спали","сплю"], "deutsch": "er schlief" }
+    ],
+    "n3": [
+      { "infinitiv": "говорить", "pronomen": "он", "zeit": "Präteritum", "richtig": "говорил", "falsch": ["говорит","говорили","говорю"], "deutsch": "er sprach" },
+      { "infinitiv": "понять",   "pronomen": "я", "zeit": "Perfektiv Futur", "richtig": "пойму", "falsch": ["понимаю","понял","поймёт"], "deutsch": "ich werde verstehen" },
+      { "infinitiv": "наблюдать", "pronomen": "она", "zeit": "Präteritum", "richtig": "наблюдала", "falsch": ["наблюдает","наблюдали","наблюдаю"], "deutsch": "sie beobachtete" },
+      { "infinitiv": "развивать", "pronomen": "мы", "zeit": "Präteritum", "richtig": "развивали", "falsch": ["развиваем","развивал","развивает"], "deutsch": "wir entwickelten" },
+      { "infinitiv": "понимать", "pronomen": "он", "zeit": "Präteritum", "richtig": "понимал", "falsch": ["понимает","понимали","понимаю"], "deutsch": "er verstand" },
+      { "infinitiv": "создавать", "pronomen": "я", "zeit": "Präteritum", "richtig": "создавал", "falsch": ["создаю","создавали","создаёт"], "deutsch": "ich gestaltete" }
+    ]
+  }
+}
