@@ -1,0 +1,931 @@
+{
+  "version": "1.1",
+  "artikel": {
+    "n1": [
+      {
+        "wort": "gatto",
+        "artikel": "il",
+        "emoji": "🐱",
+        "deutsch": "Katze"
+      },
+      {
+        "wort": "cane",
+        "artikel": "il",
+        "emoji": "🐕",
+        "deutsch": "Hund"
+      },
+      {
+        "wort": "libro",
+        "artikel": "il",
+        "emoji": "📖",
+        "deutsch": "Buch"
+      },
+      {
+        "wort": "sole",
+        "artikel": "il",
+        "emoji": "☀️",
+        "deutsch": "Sonne"
+      },
+      {
+        "wort": "luna",
+        "artikel": "la",
+        "emoji": "🌙",
+        "deutsch": "Mond"
+      },
+      {
+        "wort": "acqua",
+        "artikel": "l'",
+        "emoji": "💧",
+        "deutsch": "Wasser"
+      },
+      {
+        "wort": "albero",
+        "artikel": "l'",
+        "emoji": "🌳",
+        "deutsch": "Baum"
+      },
+      {
+        "wort": "pane",
+        "artikel": "il",
+        "emoji": "🍞",
+        "deutsch": "Brot"
+      },
+      {
+        "wort": "mano",
+        "artikel": "la",
+        "emoji": "✋",
+        "deutsch": "Hand"
+      },
+      {
+        "wort": "naso",
+        "artikel": "il",
+        "emoji": "👃",
+        "deutsch": "Nase"
+      },
+      {
+        "wort": "occhio",
+        "artikel": "l'",
+        "emoji": "👁️",
+        "deutsch": "Auge"
+      },
+      {
+        "wort": "treno",
+        "artikel": "il",
+        "emoji": "🚂",
+        "deutsch": "Zug"
+      },
+      {
+        "wort": "palla",
+        "artikel": "la",
+        "emoji": "⚽",
+        "deutsch": "Ball"
+      },
+      {
+        "wort": "uovo",
+        "artikel": "l'",
+        "emoji": "🥚",
+        "deutsch": "Ei"
+      },
+      {
+        "wort": "pesce",
+        "artikel": "il",
+        "emoji": "🐟",
+        "deutsch": "Fisch"
+      },
+      {
+        "wort": "scuola",
+        "artikel": "la",
+        "emoji": "🏫",
+        "deutsch": "Schule"
+      }
+    ],
+    "n2": [
+      {
+        "wort": "ponte",
+        "artikel": "il",
+        "emoji": "🌉",
+        "deutsch": "Brücke"
+      },
+      {
+        "wort": "fiore",
+        "artikel": "il",
+        "emoji": "🌸",
+        "deutsch": "Blume"
+      },
+      {
+        "wort": "giacca",
+        "artikel": "la",
+        "emoji": "🧥",
+        "deutsch": "Jacke"
+      },
+      {
+        "wort": "valigia",
+        "artikel": "la",
+        "emoji": "🧳",
+        "deutsch": "Koffer"
+      },
+      {
+        "wort": "giardino",
+        "artikel": "il",
+        "emoji": "🌿",
+        "deutsch": "Garten"
+      },
+      {
+        "wort": "strada",
+        "artikel": "la",
+        "emoji": "🛣️",
+        "deutsch": "Straße"
+      },
+      {
+        "wort": "semaforo",
+        "artikel": "il",
+        "emoji": "🚦",
+        "deutsch": "Ampel"
+      },
+      {
+        "wort": "stanza",
+        "artikel": "la",
+        "emoji": "🛋️",
+        "deutsch": "Zimmer"
+      },
+      {
+        "wort": "scala",
+        "artikel": "la",
+        "emoji": "🪜",
+        "deutsch": "Treppe"
+      },
+      {
+        "wort": "finestra",
+        "artikel": "la",
+        "emoji": "🪟",
+        "deutsch": "Fenster"
+      }
+    ],
+    "n3": [
+      {
+        "wort": "amicizia",
+        "artikel": "l'",
+        "emoji": "💛",
+        "deutsch": "Freundschaft"
+      },
+      {
+        "wort": "responsabilità",
+        "artikel": "la",
+        "emoji": "🎖️",
+        "deutsch": "Verantwortung"
+      },
+      {
+        "wort": "possibilità",
+        "artikel": "la",
+        "emoji": "🔓",
+        "deutsch": "Möglichkeit"
+      },
+      {
+        "wort": "decisione",
+        "artikel": "la",
+        "emoji": "🎯",
+        "deutsch": "Entscheidung"
+      },
+      {
+        "wort": "sorpresa",
+        "artikel": "la",
+        "emoji": "🎁",
+        "deutsch": "Überraschung"
+      },
+      {
+        "wort": "giustizia",
+        "artikel": "la",
+        "emoji": "⚖️",
+        "deutsch": "Gerechtigkeit"
+      },
+      {
+        "wort": "entusiasmo",
+        "artikel": "l'",
+        "emoji": "🌟",
+        "deutsch": "Begeisterung"
+      },
+      {
+        "wort": "comprensione",
+        "artikel": "la",
+        "emoji": "🤔",
+        "deutsch": "Verständnis"
+      }
+    ]
+  },
+  "konjugation": {
+    "n1": [
+      {
+        "infinitiv": "essere",
+        "formes": [
+          "sono",
+          "sei",
+          "è",
+          "siamo",
+          "siete",
+          "sono"
+        ]
+      },
+      {
+        "infinitiv": "avere",
+        "formes": [
+          "ho",
+          "hai",
+          "ha",
+          "abbiamo",
+          "avete",
+          "hanno"
+        ]
+      },
+      {
+        "infinitiv": "fare",
+        "formes": [
+          "faccio",
+          "fai",
+          "fa",
+          "facciamo",
+          "fate",
+          "fanno"
+        ]
+      },
+      {
+        "infinitiv": "andare",
+        "formes": [
+          "vado",
+          "vai",
+          "va",
+          "andiamo",
+          "andate",
+          "vanno"
+        ]
+      },
+      {
+        "infinitiv": "mangiare",
+        "formes": [
+          "mangio",
+          "mangi",
+          "mangia",
+          "mangiamo",
+          "mangiate",
+          "mangiano"
+        ]
+      },
+      {
+        "infinitiv": "vedere",
+        "formes": [
+          "vedo",
+          "vedi",
+          "vede",
+          "vediamo",
+          "vedete",
+          "vedono"
+        ]
+      },
+      {
+        "infinitiv": "portare",
+        "formes": [
+          "porto",
+          "porti",
+          "porta",
+          "portiamo",
+          "portate",
+          "portano"
+        ]
+      },
+      {
+        "infinitiv": "lavare",
+        "formes": [
+          "lavo",
+          "lavi",
+          "lava",
+          "laviamo",
+          "lavate",
+          "lavano"
+        ]
+      },
+      {
+        "infinitiv": "chiamare",
+        "formes": [
+          "chiamo",
+          "chiami",
+          "chiama",
+          "chiamiamo",
+          "chiamate",
+          "chiamano"
+        ]
+      },
+      {
+        "infinitiv": "correre",
+        "formes": [
+          "corro",
+          "corri",
+          "corre",
+          "corriamo",
+          "correte",
+          "corrono"
+        ]
+      }
+    ],
+    "n2": [
+      {
+        "infinitiv": "potere",
+        "formes": [
+          "posso",
+          "puoi",
+          "può",
+          "possiamo",
+          "potete",
+          "possono"
+        ]
+      },
+      {
+        "infinitiv": "volere",
+        "formes": [
+          "voglio",
+          "vuoi",
+          "vuole",
+          "vogliamo",
+          "volete",
+          "vogliono"
+        ]
+      },
+      {
+        "infinitiv": "dormire",
+        "formes": [
+          "dormo",
+          "dormi",
+          "dorme",
+          "dormiamo",
+          "dormite",
+          "dormono"
+        ]
+      },
+      {
+        "infinitiv": "aiutare",
+        "formes": [
+          "aiuto",
+          "aiuti",
+          "aiuta",
+          "aiutiamo",
+          "aiutate",
+          "aiutano"
+        ]
+      },
+      {
+        "infinitiv": "giocare",
+        "formes": [
+          "gioco",
+          "giochi",
+          "gioca",
+          "giochiamo",
+          "giocate",
+          "giocano"
+        ]
+      },
+      {
+        "infinitiv": "pensare",
+        "formes": [
+          "penso",
+          "pensi",
+          "pensa",
+          "pensiamo",
+          "pensate",
+          "pensano"
+        ]
+      },
+      {
+        "infinitiv": "comprare",
+        "formes": [
+          "compro",
+          "compri",
+          "compra",
+          "compriamo",
+          "comprate",
+          "comprano"
+        ]
+      },
+      {
+        "infinitiv": "cercare",
+        "formes": [
+          "cerco",
+          "cerchi",
+          "cerca",
+          "cerchiamo",
+          "cercate",
+          "cercano"
+        ]
+      },
+      {
+        "infinitiv": "aspettare",
+        "formes": [
+          "aspetto",
+          "aspetti",
+          "aspetta",
+          "aspettiamo",
+          "aspettate",
+          "aspettano"
+        ]
+      },
+      {
+        "infinitiv": "imparare",
+        "formes": [
+          "imparo",
+          "impari",
+          "impara",
+          "impariamo",
+          "imparate",
+          "imparano"
+        ]
+      }
+    ],
+    "n3": [
+      {
+        "infinitiv": "capire",
+        "formes": [
+          "capisco",
+          "capisci",
+          "capisce",
+          "capiamo",
+          "capite",
+          "capiscono"
+        ]
+      },
+      {
+        "infinitiv": "osservare",
+        "formes": [
+          "osservo",
+          "osservi",
+          "osserva",
+          "osserviamo",
+          "osservate",
+          "osservano"
+        ]
+      },
+      {
+        "infinitiv": "decidere",
+        "formes": [
+          "decido",
+          "decidi",
+          "decide",
+          "decidiamo",
+          "decidete",
+          "decidono"
+        ]
+      },
+      {
+        "infinitiv": "distinguere",
+        "formes": [
+          "distinguo",
+          "distingui",
+          "distingue",
+          "distinguiamo",
+          "distinguete",
+          "distinguono"
+        ]
+      },
+      {
+        "infinitiv": "riflettere",
+        "formes": [
+          "rifletto",
+          "rifletti",
+          "riflette",
+          "riflettiamo",
+          "riflettete",
+          "riflettono"
+        ]
+      },
+      {
+        "infinitiv": "raccontare",
+        "formes": [
+          "racconto",
+          "racconti",
+          "racconta",
+          "raccontiamo",
+          "raccontate",
+          "raccontano"
+        ]
+      }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      {
+        "satz": "Vado ___ scuola",
+        "deutsch": "Ich gehe in die Schule",
+        "wort": "scuola",
+        "kasus": "a",
+        "antworten": [
+          "a",
+          "di",
+          "da",
+          "in"
+        ],
+        "richtig": "a"
+      },
+      {
+        "satz": "Il libro ___ bambino",
+        "deutsch": "Das Buch des Kindes",
+        "wort": "bambino",
+        "kasus": "del",
+        "antworten": [
+          "del",
+          "al",
+          "dal",
+          "nel"
+        ],
+        "richtig": "del"
+      },
+      {
+        "satz": "Vengo ___ Italia",
+        "deutsch": "Ich komme aus Italien",
+        "wort": "Italia",
+        "kasus": "dall'",
+        "antworten": [
+          "dall'",
+          "all'",
+          "nell'",
+          "sull'"
+        ],
+        "richtig": "dall'"
+      },
+      {
+        "satz": "Il cane è ___ giardino",
+        "deutsch": "Der Hund ist im Garten",
+        "wort": "giardino",
+        "kasus": "nel",
+        "antworten": [
+          "nel",
+          "del",
+          "al",
+          "dal"
+        ],
+        "richtig": "nel"
+      },
+      {
+        "satz": "Sono ___ casa",
+        "deutsch": "Ich bin zu Hause",
+        "wort": "casa",
+        "kasus": "a",
+        "antworten": [
+          "a",
+          "di",
+          "da",
+          "in"
+        ],
+        "richtig": "a"
+      },
+      {
+        "satz": "Il pesce è ___ acqua",
+        "deutsch": "Der Fisch ist im Wasser",
+        "wort": "acqua",
+        "kasus": "nell'",
+        "antworten": [
+          "nell'",
+          "all'",
+          "dall'",
+          "sull'"
+        ],
+        "richtig": "nell'"
+      }
+    ],
+    "n2": [
+      {
+        "satz": "Il treno viene ___ Roma",
+        "deutsch": "Der Zug kommt aus Rom",
+        "wort": "Roma",
+        "kasus": "da",
+        "antworten": [
+          "da",
+          "a",
+          "di",
+          "in"
+        ],
+        "richtig": "da"
+      },
+      {
+        "satz": "Metto il libro ___ tavolo",
+        "deutsch": "Ich lege das Buch auf den Tisch",
+        "wort": "tavolo",
+        "kasus": "sul",
+        "antworten": [
+          "sul",
+          "dal",
+          "del",
+          "nel"
+        ],
+        "richtig": "sul"
+      },
+      {
+        "wort": "famiglia",
+        "satz": "Penso ___ mia famiglia",
+        "deutsch": "Ich denke an meine Familie",
+        "kasus": "alla",
+        "antworten": [
+          "alla",
+          "della",
+          "dalla",
+          "nella"
+        ],
+        "richtig": "alla"
+      },
+      {
+        "wort": "scuola",
+        "satz": "Esco ___ scuola alle 3",
+        "deutsch": "Ich gehe um 3 aus der Schule",
+        "kasus": "dalla",
+        "antworten": [
+          "dalla",
+          "alla",
+          "nella",
+          "sulla"
+        ],
+        "richtig": "dalla"
+      }
+    ],
+    "n3": [
+      {
+        "satz": "Sono orgoglioso ___ mio lavoro",
+        "deutsch": "Ich bin stolz auf meine Arbeit",
+        "wort": "lavoro",
+        "kasus": "del",
+        "antworten": [
+          "del",
+          "al",
+          "dal",
+          "nel"
+        ],
+        "richtig": "del"
+      },
+      {
+        "satz": "Dipende ___ situazione",
+        "deutsch": "Es hängt von der Situation ab",
+        "wort": "situazione",
+        "kasus": "dalla",
+        "antworten": [
+          "dalla",
+          "alla",
+          "nella",
+          "della"
+        ],
+        "richtig": "dalla"
+      }
+    ]
+  },
+  "tempus": {
+    "n2": [
+      {
+        "infinitiv": "mangiare",
+        "pronomen": "io",
+        "zeit": "Passato prossimo",
+        "richtig": "ho mangiato",
+        "falsch": [
+          "mangio",
+          "mangiavo",
+          "mangerò"
+        ],
+        "deutsch": "ich habe gegessen"
+      },
+      {
+        "infinitiv": "andare",
+        "pronomen": "lei",
+        "zeit": "Passato prossimo",
+        "richtig": "è andata",
+        "falsch": [
+          "va",
+          "andava",
+          "andrà"
+        ],
+        "deutsch": "sie ist gegangen"
+      },
+      {
+        "infinitiv": "fare",
+        "pronomen": "noi",
+        "zeit": "Passato prossimo",
+        "richtig": "abbiamo fatto",
+        "falsch": [
+          "facciamo",
+          "facevamo",
+          "faremo"
+        ],
+        "deutsch": "wir haben gemacht"
+      },
+      {
+        "infinitiv": "vedere",
+        "pronomen": "io",
+        "zeit": "Passato prossimo",
+        "richtig": "ho visto",
+        "falsch": [
+          "vedo",
+          "vedevo",
+          "vedrò"
+        ],
+        "deutsch": "ich habe gesehen"
+      },
+      {
+        "infinitiv": "dormire",
+        "pronomen": "lui",
+        "zeit": "Passato prossimo",
+        "richtig": "ha dormito",
+        "falsch": [
+          "dorme",
+          "dormiva",
+          "dormirà"
+        ],
+        "deutsch": "er hat geschlafen"
+      },
+      {
+        "infinitiv": "aiutare",
+        "pronomen": "tu",
+        "zeit": "Passato prossimo",
+        "richtig": "hai aiutato",
+        "falsch": [
+          "aiuti",
+          "aiutavi",
+          "aiuterai"
+        ],
+        "deutsch": "du hast geholfen"
+      },
+      {
+        "infinitiv": "comprare",
+        "pronomen": "noi",
+        "zeit": "Passato prossimo",
+        "richtig": "abbiamo comprato",
+        "falsch": [
+          "compriamo",
+          "compravamo",
+          "compreremo"
+        ],
+        "deutsch": "wir haben gekauft"
+      },
+      {
+        "infinitiv": "correre",
+        "pronomen": "io",
+        "zeit": "Passato prossimo",
+        "richtig": "ho corso",
+        "falsch": [
+          "corro",
+          "correvo",
+          "correrò"
+        ],
+        "deutsch": "ich bin gelaufen"
+      },
+      {
+        "infinitiv": "portare",
+        "pronomen": "lui",
+        "zeit": "Passato prossimo",
+        "richtig": "ha portato",
+        "falsch": [
+          "porta",
+          "portava",
+          "porterà"
+        ],
+        "deutsch": "er hat getragen"
+      },
+      {
+        "infinitiv": "lavare",
+        "pronomen": "lei",
+        "zeit": "Passato prossimo",
+        "richtig": "ha lavato",
+        "falsch": [
+          "lava",
+          "lavava",
+          "laverà"
+        ],
+        "deutsch": "sie hat gewaschen"
+      },
+      {
+        "infinitiv": "cercare",
+        "pronomen": "noi",
+        "zeit": "Passato prossimo",
+        "richtig": "abbiamo cercato",
+        "falsch": [
+          "cerchiamo",
+          "cercavamo",
+          "cercheremo"
+        ],
+        "deutsch": "wir haben gesucht"
+      },
+      {
+        "infinitiv": "aspettare",
+        "pronomen": "tu",
+        "zeit": "Passato prossimo",
+        "richtig": "hai aspettato",
+        "falsch": [
+          "aspetti",
+          "aspettavi",
+          "aspetterai"
+        ],
+        "deutsch": "du hast gewartet"
+      },
+      {
+        "infinitiv": "giocare",
+        "pronomen": "loro",
+        "zeit": "Passato prossimo",
+        "richtig": "hanno giocato",
+        "falsch": [
+          "giocano",
+          "giocavano",
+          "giocheranno"
+        ],
+        "deutsch": "sie haben gespielt"
+      },
+      {
+        "infinitiv": "imparare",
+        "pronomen": "io",
+        "zeit": "Passato prossimo",
+        "richtig": "ho imparato",
+        "falsch": [
+          "imparo",
+          "imparavo",
+          "imparerò"
+        ],
+        "deutsch": "ich habe gelernt"
+      }
+    ],
+    "n3": [
+      {
+        "infinitiv": "capire",
+        "pronomen": "lui",
+        "zeit": "Passato prossimo",
+        "richtig": "ha capito",
+        "falsch": [
+          "capisce",
+          "capiva",
+          "capirà"
+        ],
+        "deutsch": "er hat verstanden"
+      },
+      {
+        "infinitiv": "osservare",
+        "pronomen": "noi",
+        "zeit": "Passato prossimo",
+        "richtig": "abbiamo osservato",
+        "falsch": [
+          "osserviamo",
+          "osservavamo",
+          "osserveremo"
+        ],
+        "deutsch": "wir haben beobachtet"
+      },
+      {
+        "infinitiv": "decidere",
+        "pronomen": "lei",
+        "zeit": "Passato prossimo",
+        "richtig": "ha deciso",
+        "falsch": [
+          "decide",
+          "decideva",
+          "deciderà"
+        ],
+        "deutsch": "sie hat entschieden"
+      },
+      {
+        "infinitiv": "raccontare",
+        "pronomen": "tu",
+        "zeit": "Passato prossimo",
+        "richtig": "hai raccontato",
+        "falsch": [
+          "racconti",
+          "raccontavi",
+          "racconterai"
+        ],
+        "deutsch": "du hast erzählt"
+      },
+      {
+        "infinitiv": "distinguere",
+        "pronomen": "noi",
+        "zeit": "Passato prossimo",
+        "richtig": "abbiamo distinto",
+        "falsch": [
+          "distinguiamo",
+          "distinguevamo",
+          "distingueremo"
+        ],
+        "deutsch": "wir haben unterschieden"
+      },
+      {
+        "infinitiv": "riflettere",
+        "pronomen": "lui",
+        "zeit": "Passato prossimo",
+        "richtig": "ha riflettuto",
+        "falsch": [
+          "riflette",
+          "rifletteva",
+          "rifletterà"
+        ],
+        "deutsch": "er hat nachgedacht"
+      },
+      {
+        "infinitiv": "raccontare",
+        "pronomen": "lei",
+        "zeit": "Passato prossimo",
+        "richtig": "ha raccontato",
+        "falsch": [
+          "racconta",
+          "raccontava",
+          "racconterà"
+        ],
+        "deutsch": "sie hat erzählt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,772 @@
+{
+  "version": "1.1",
+  "artikel": {
+    "n1": [
+      {
+        "wort": "gato",
+        "artikel": "el",
+        "plural": "los gatos",
+        "emoji": "🐱",
+        "deutsch": "Katze"
+      },
+      {
+        "wort": "perro",
+        "artikel": "el",
+        "plural": "los perros",
+        "emoji": "🐕",
+        "deutsch": "Hund"
+      },
+      {
+        "wort": "libro",
+        "artikel": "el",
+        "plural": "los libros",
+        "emoji": "📖",
+        "deutsch": "Buch"
+      },
+      {
+        "wort": "sol",
+        "artikel": "el",
+        "plural": "los soles",
+        "emoji": "☀️",
+        "deutsch": "Sonne"
+      },
+      {
+        "wort": "luna",
+        "artikel": "la",
+        "plural": "las lunas",
+        "emoji": "🌙",
+        "deutsch": "Mond"
+      },
+      {
+        "wort": "mano",
+        "artikel": "la",
+        "plural": "las manos",
+        "emoji": "✋",
+        "deutsch": "Hand"
+      },
+      {
+        "wort": "nariz",
+        "artikel": "la",
+        "plural": "las narices",
+        "emoji": "👃",
+        "deutsch": "Nase"
+      },
+      {
+        "wort": "tren",
+        "artikel": "el",
+        "plural": "los trenes",
+        "emoji": "🚂",
+        "deutsch": "Zug"
+      },
+      {
+        "wort": "pelota",
+        "artikel": "la",
+        "plural": "las pelotas",
+        "emoji": "⚽",
+        "deutsch": "Ball"
+      },
+      {
+        "wort": "huevo",
+        "artikel": "el",
+        "plural": "los huevos",
+        "emoji": "🥚",
+        "deutsch": "Ei"
+      },
+      {
+        "wort": "pez",
+        "artikel": "el",
+        "plural": "los peces",
+        "emoji": "🐟",
+        "deutsch": "Fisch"
+      },
+      {
+        "wort": "pan",
+        "artikel": "el",
+        "plural": "los panes",
+        "emoji": "🍞",
+        "deutsch": "Brot"
+      }
+    ],
+    "n2": [
+      {
+        "wort": "puente",
+        "artikel": "el",
+        "plural": "los puentes",
+        "emoji": "🌉",
+        "deutsch": "Brücke"
+      },
+      {
+        "wort": "flor",
+        "artikel": "la",
+        "plural": "las flores",
+        "emoji": "🌸",
+        "deutsch": "Blume"
+      },
+      {
+        "wort": "chaqueta",
+        "artikel": "la",
+        "plural": "las chaquetas",
+        "emoji": "🧥",
+        "deutsch": "Jacke"
+      },
+      {
+        "wort": "maleta",
+        "artikel": "la",
+        "plural": "las maletas",
+        "emoji": "🧳",
+        "deutsch": "Koffer"
+      },
+      {
+        "wort": "jardín",
+        "artikel": "el",
+        "plural": "los jardines",
+        "emoji": "🌿",
+        "deutsch": "Garten"
+      },
+      {
+        "wort": "calle",
+        "artikel": "la",
+        "plural": "las calles",
+        "emoji": "🛣️",
+        "deutsch": "Straße"
+      },
+      {
+        "wort": "semáforo",
+        "artikel": "el",
+        "plural": "los semáforos",
+        "emoji": "🚦",
+        "deutsch": "Ampel"
+      },
+      {
+        "wort": "habitación",
+        "artikel": "la",
+        "plural": "las habitaciones",
+        "emoji": "🛋️",
+        "deutsch": "Zimmer"
+      },
+      {
+        "wort": "escuela",
+        "artikel": "la",
+        "plural": "las escuelas",
+        "emoji": "🏫",
+        "deutsch": "Schule"
+      },
+      {
+        "wort": "escalera",
+        "artikel": "la",
+        "plural": "las escaleras",
+        "emoji": "🪜",
+        "deutsch": "Treppe"
+      }
+    ],
+    "n3": [
+      {
+        "wort": "amistad",
+        "artikel": "la",
+        "plural": "las amistades",
+        "emoji": "💛",
+        "deutsch": "Freundschaft"
+      },
+      {
+        "wort": "responsabilidad",
+        "artikel": "la",
+        "plural": "las responsabilidades",
+        "emoji": "🎖️",
+        "deutsch": "Verantwortung"
+      },
+      {
+        "wort": "posibilidad",
+        "artikel": "la",
+        "plural": "las posibilidades",
+        "emoji": "🔓",
+        "deutsch": "Möglichkeit"
+      },
+      {
+        "wort": "decisión",
+        "artikel": "la",
+        "plural": "las decisiones",
+        "emoji": "🎯",
+        "deutsch": "Entscheidung"
+      },
+      {
+        "wort": "sorpresa",
+        "artikel": "la",
+        "plural": "las sorpresas",
+        "emoji": "🎁",
+        "deutsch": "Überraschung"
+      },
+      {
+        "wort": "justicia",
+        "artikel": "la",
+        "plural": "las justicias",
+        "emoji": "⚖️",
+        "deutsch": "Gerechtigkeit"
+      },
+      {
+        "wort": "entusiasmo",
+        "artikel": "el",
+        "plural": "los entusiasmos",
+        "emoji": "🌟",
+        "deutsch": "Begeisterung"
+      },
+      {
+        "wort": "comprensión",
+        "artikel": "la",
+        "plural": "las comprensiones",
+        "emoji": "🤔",
+        "deutsch": "Verständnis"
+      }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      {
+        "infinitiv": "comer",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "comí",
+        "falsch": [
+          "como",
+          "comía",
+          "comeré"
+        ],
+        "deutsch": "ich aß"
+      },
+      {
+        "infinitiv": "ir",
+        "pronomen": "ella",
+        "zeit": "Pretérito",
+        "richtig": "fue",
+        "falsch": [
+          "va",
+          "iba",
+          "irá"
+        ],
+        "deutsch": "sie ging"
+      },
+      {
+        "infinitiv": "hacer",
+        "pronomen": "nosotros",
+        "zeit": "Pretérito",
+        "richtig": "hicimos",
+        "falsch": [
+          "hacemos",
+          "hacíamos",
+          "haremos"
+        ],
+        "deutsch": "wir machten"
+      },
+      {
+        "infinitiv": "ver",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "vi",
+        "falsch": [
+          "veo",
+          "veía",
+          "veré"
+        ],
+        "deutsch": "ich sah"
+      },
+      {
+        "infinitiv": "tener",
+        "pronomen": "él",
+        "zeit": "Pretérito",
+        "richtig": "tuvo",
+        "falsch": [
+          "tiene",
+          "tenía",
+          "tendrá"
+        ],
+        "deutsch": "er hatte"
+      },
+      {
+        "infinitiv": "correr",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "corrí",
+        "falsch": [
+          "corro",
+          "corría",
+          "correré"
+        ],
+        "deutsch": "ich lief"
+      },
+      {
+        "infinitiv": "llevar",
+        "pronomen": "ella",
+        "zeit": "Pretérito",
+        "richtig": "llevó",
+        "falsch": [
+          "lleva",
+          "llevaba",
+          "llevará"
+        ],
+        "deutsch": "sie trug"
+      },
+      {
+        "infinitiv": "lavar",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "lavé",
+        "falsch": [
+          "lavo",
+          "lavaba",
+          "lavaré"
+        ],
+        "deutsch": "ich wusch"
+      }
+    ],
+    "n2": [
+      {
+        "infinitiv": "aprender",
+        "pronomen": "nosotros",
+        "zeit": "Pretérito",
+        "richtig": "aprendimos",
+        "falsch": [
+          "aprendemos",
+          "aprendíamos",
+          "aprenderemos"
+        ],
+        "deutsch": "wir lernten"
+      },
+      {
+        "infinitiv": "dormir",
+        "pronomen": "él",
+        "zeit": "Pretérito",
+        "richtig": "durmió",
+        "falsch": [
+          "duerme",
+          "dormía",
+          "dormirá"
+        ],
+        "deutsch": "er schlief"
+      },
+      {
+        "infinitiv": "ayudar",
+        "pronomen": "tú",
+        "zeit": "Pretérito",
+        "richtig": "ayudaste",
+        "falsch": [
+          "ayudas",
+          "ayudabas",
+          "ayudarás"
+        ],
+        "deutsch": "du halfst"
+      },
+      {
+        "infinitiv": "comprar",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "compré",
+        "falsch": [
+          "compro",
+          "compraba",
+          "compraré"
+        ],
+        "deutsch": "ich kaufte"
+      },
+      {
+        "infinitiv": "buscar",
+        "pronomen": "ella",
+        "zeit": "Pretérito",
+        "richtig": "buscó",
+        "falsch": [
+          "busca",
+          "buscaba",
+          "buscará"
+        ],
+        "deutsch": "sie suchte"
+      },
+      {
+        "infinitiv": "esperar",
+        "pronomen": "nosotros",
+        "zeit": "Pretérito",
+        "richtig": "esperamos",
+        "falsch": [
+          "esperamos",
+          "esperábamos",
+          "esperaremos"
+        ],
+        "deutsch": "wir warteten"
+      }
+    ],
+    "n3": [
+      {
+        "infinitiv": "observar",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "observé",
+        "falsch": [
+          "observo",
+          "observaba",
+          "observaré"
+        ],
+        "deutsch": "ich beobachtete"
+      },
+      {
+        "infinitiv": "decidir",
+        "pronomen": "ella",
+        "zeit": "Pretérito",
+        "richtig": "decidió",
+        "falsch": [
+          "decide",
+          "decidía",
+          "decidirá"
+        ],
+        "deutsch": "sie entschied"
+      },
+      {
+        "infinitiv": "distinguir",
+        "pronomen": "yo",
+        "zeit": "Pretérito",
+        "richtig": "distinguí",
+        "falsch": [
+          "distingo",
+          "distinguía",
+          "distinguiré"
+        ],
+        "deutsch": "ich unterschied"
+      },
+      {
+        "infinitiv": "entender",
+        "pronomen": "él",
+        "zeit": "Pretérito",
+        "richtig": "entendió",
+        "falsch": [
+          "entiende",
+          "entendía",
+          "entenderá"
+        ],
+        "deutsch": "er verstand"
+      }
+    ]
+  },
+  "pronombre": {
+    "n1": [
+      {
+        "satz": "___ como manzanas",
+        "wort": "comer",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Nosotros"
+        ],
+        "richtig": "Yo",
+        "deutsch": "Ich esse Äpfel"
+      },
+      {
+        "satz": "___ corres muy rápido",
+        "wort": "correr",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Nosotros"
+        ],
+        "richtig": "Tú",
+        "deutsch": "Du läufst sehr schnell"
+      },
+      {
+        "satz": "___ tiene un perro",
+        "wort": "tener",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Tú",
+          "Él",
+          "Nosotros",
+          "Ellos"
+        ],
+        "richtig": "Él",
+        "deutsch": "Er hat einen Hund"
+      },
+      {
+        "satz": "___ vamos a la escuela",
+        "wort": "ir",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Nosotros"
+        ],
+        "richtig": "Nosotros",
+        "deutsch": "Wir gehen zur Schule"
+      },
+      {
+        "satz": "___ ve el sol",
+        "wort": "ver",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Ellos"
+        ],
+        "richtig": "Él",
+        "deutsch": "Er sieht die Sonne"
+      },
+      {
+        "satz": "___ hacen los deberes",
+        "wort": "hacer",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Él",
+          "Ella",
+          "Ellos",
+          "Nosotros"
+        ],
+        "richtig": "Ellos",
+        "deutsch": "Sie machen die Hausaufgaben"
+      }
+    ],
+    "n2": [
+      {
+        "satz": "___ aprendemos juntos",
+        "wort": "aprender",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Nosotros",
+          "Ellos"
+        ],
+        "richtig": "Nosotros",
+        "deutsch": "Wir lernen zusammen"
+      },
+      {
+        "satz": "___ busca las llaves",
+        "wort": "buscar",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Ellos"
+        ],
+        "richtig": "Él",
+        "deutsch": "Er sucht die Schlüssel"
+      },
+      {
+        "satz": "___ compras en el mercado",
+        "wort": "comprar",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Nosotros"
+        ],
+        "richtig": "Tú",
+        "deutsch": "Du kaufst auf dem Markt"
+      }
+    ],
+    "n3": [
+      {
+        "satz": "___ observan los pájaros",
+        "wort": "observar",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Él",
+          "Ella",
+          "Ellos",
+          "Nosotros"
+        ],
+        "richtig": "Ellos",
+        "deutsch": "Sie beobachten die Vögel"
+      },
+      {
+        "satz": "___ distingues los colores",
+        "wort": "distinguir",
+        "kasus": "Sujeto",
+        "antworten": [
+          "Yo",
+          "Tú",
+          "Él",
+          "Ellos"
+        ],
+        "richtig": "Tú",
+        "deutsch": "Du unterscheidest die Farben"
+      }
+    ]
+  },
+  "perfecto": {
+    "n1": [
+      {
+        "infinitiv": "comer",
+        "pronomen": "yo",
+        "zeit": "Pretérito perfecto",
+        "richtig": "he comido",
+        "falsch": [
+          "como",
+          "comí",
+          "comeré"
+        ],
+        "deutsch": "ich habe gegessen"
+      },
+      {
+        "infinitiv": "ir",
+        "pronomen": "ella",
+        "zeit": "Pretérito perfecto",
+        "richtig": "ha ido",
+        "falsch": [
+          "va",
+          "fue",
+          "irá"
+        ],
+        "deutsch": "sie ist gegangen"
+      },
+      {
+        "infinitiv": "hacer",
+        "pronomen": "tú",
+        "zeit": "Pretérito perfecto",
+        "richtig": "has hecho",
+        "falsch": [
+          "haces",
+          "hiciste",
+          "harás"
+        ],
+        "deutsch": "du hast gemacht"
+      },
+      {
+        "infinitiv": "ver",
+        "pronomen": "nosotros",
+        "zeit": "Pretérito perfecto",
+        "richtig": "hemos visto",
+        "falsch": [
+          "vemos",
+          "vimos",
+          "veremos"
+        ],
+        "deutsch": "wir haben gesehen"
+      },
+      {
+        "infinitiv": "correr",
+        "pronomen": "yo",
+        "zeit": "Pretérito perfecto",
+        "richtig": "he corrido",
+        "falsch": [
+          "corro",
+          "corrí",
+          "correré"
+        ],
+        "deutsch": "ich habe gelaufen"
+      },
+      {
+        "infinitiv": "tener",
+        "pronomen": "él",
+        "zeit": "Pretérito perfecto",
+        "richtig": "ha tenido",
+        "falsch": [
+          "tiene",
+          "tuvo",
+          "tendrá"
+        ],
+        "deutsch": "er hat gehabt"
+      }
+    ],
+    "n2": [
+      {
+        "infinitiv": "aprender",
+        "pronomen": "tú",
+        "zeit": "Pretérito perfecto",
+        "richtig": "has aprendido",
+        "falsch": [
+          "aprendes",
+          "aprendiste",
+          "aprenderás"
+        ],
+        "deutsch": "du hast gelernt"
+      },
+      {
+        "infinitiv": "dormir",
+        "pronomen": "ella",
+        "zeit": "Pretérito perfecto",
+        "richtig": "ha dormido",
+        "falsch": [
+          "duerme",
+          "durmió",
+          "dormirá"
+        ],
+        "deutsch": "sie hat geschlafen"
+      },
+      {
+        "infinitiv": "comprar",
+        "pronomen": "nosotros",
+        "zeit": "Pretérito perfecto",
+        "richtig": "hemos comprado",
+        "falsch": [
+          "compramos",
+          "compramos",
+          "compraremos"
+        ],
+        "deutsch": "wir haben gekauft"
+      },
+      {
+        "infinitiv": "buscar",
+        "pronomen": "yo",
+        "zeit": "Pretérito perfecto",
+        "richtig": "he buscado",
+        "falsch": [
+          "busco",
+          "busqué",
+          "buscaré"
+        ],
+        "deutsch": "ich habe gesucht"
+      },
+      {
+        "infinitiv": "ayudar",
+        "pronomen": "él",
+        "zeit": "Pretérito perfecto",
+        "richtig": "ha ayudado",
+        "falsch": [
+          "ayuda",
+          "ayudó",
+          "ayudará"
+        ],
+        "deutsch": "er hat geholfen"
+      }
+    ],
+    "n3": [
+      {
+        "infinitiv": "observar",
+        "pronomen": "nosotros",
+        "zeit": "Pretérito perfecto",
+        "richtig": "hemos observado",
+        "falsch": [
+          "observamos",
+          "observamos",
+          "observaremos"
+        ],
+        "deutsch": "wir haben beobachtet"
+      },
+      {
+        "infinitiv": "decidir",
+        "pronomen": "ella",
+        "zeit": "Pretérito perfecto",
+        "richtig": "ha decidido",
+        "falsch": [
+          "decide",
+          "decidió",
+          "decidirá"
+        ],
+        "deutsch": "sie hat entschieden"
+      },
+      {
+        "infinitiv": "distinguir",
+        "pronomen": "yo",
+        "zeit": "Pretérito perfecto",
+        "richtig": "he distinguido",
+        "falsch": [
+          "distingo",
+          "distinguí",
+          "distinguiré"
+        ],
+        "deutsch": "ich habe unterschieden"
+      }
+    ]
+  }
+}
