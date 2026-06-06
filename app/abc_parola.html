@@ -610,13 +610,28 @@ function initTheme() {
         }
     } catch(e) {}
 } 
-       function init() {
+       async function ladeExterneDaten() {
+            try {
+                const gRes = await fetch('../data/grammatik_it.json');
+                if (gRes.ok) {
+                    const gData = await gRes.json();
+                    if (gData.artikel)    grammatikDaten.artikel    = gData.artikel;
+                    if (gData.konjugation) grammatikDaten.konjugation = gData.konjugation;
+                    if (gData.kasus)      grammatikDaten.kasus      = gData.kasus;
+                    if (gData.tempus)     grammatikDaten.tempus     = gData.tempus;
+                    console.log('Grammatik-IT geladen ✓');
+                }
+            } catch(e) { console.log('Offline'); }
+        }
+
+        function init() {
             initTheme();
             renderAlphabet();
             renderColors();
             updateDisplay();
             sprachDropdownBauen();
             crossSellBannerEinfuegen(THIS_APP_ID);
+            ladeExterneDaten();
         }
 
         let diktatAktiv    = false;
