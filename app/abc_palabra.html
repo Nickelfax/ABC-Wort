@@ -1068,10 +1068,24 @@ function openStorage() {
 function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
 
 // ── Init ──────────────────────────────────────────────────────────────
+async function ladeExterneDaten() {
+    try {
+        const gRes = await fetch('../data/grammatik_es.json');
+        if (gRes.ok) {
+            const gData = await gRes.json();
+            if (gData.artikel)   grammatikDaten.artikel   = gData.artikel;
+            if (gData.tempus)    grammatikDaten.tempus    = gData.tempus;
+            if (gData.pronombre) grammatikDaten.pronombre = gData.pronombre;
+            console.log('Grammatik-ES geladen ✓');
+        }
+    } catch(e) { console.log('Offline'); }
+}
+
 function init() {
     renderAlphabet(); updateDisplay(); sprachDropdownBauen(); crossSellBannerEinfuegen(THIS_APP_ID);
     document.getElementById('specialToggle').addEventListener('change', renderAlphabet);
     document.getElementById('numberToggle').addEventListener('change', numberToggleChange);
+    ladeExterneDaten();
 }
 window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
 window.addEventListener('DOMContentLoaded', init);
