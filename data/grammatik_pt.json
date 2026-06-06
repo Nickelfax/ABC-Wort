@@ -1,0 +1,113 @@
+{
+  "version": "1.0",
+  "artikel": {
+    "n1": [
+      { "wort": "gato",    "artikel": "o",  "unbestimmt": "um",  "emoji": "🐱", "deutsch": "Katze" },
+      { "wort": "cão",     "artikel": "o",  "unbestimmt": "um",  "emoji": "🐕", "deutsch": "Hund" },
+      { "wort": "sol",     "artikel": "o",  "unbestimmt": "um",  "emoji": "☀️", "deutsch": "Sonne" },
+      { "wort": "livro",   "artikel": "o",  "unbestimmt": "um",  "emoji": "📖", "deutsch": "Buch" },
+      { "wort": "lua",     "artikel": "a",  "unbestimmt": "uma", "emoji": "🌙", "deutsch": "Mond" },
+      { "wort": "mão",     "artikel": "a",  "unbestimmt": "uma", "emoji": "✋", "deutsch": "Hand" },
+      { "wort": "escola",  "artikel": "a",  "unbestimmt": "uma", "emoji": "🏫", "deutsch": "Schule" },
+      { "wort": "rua",     "artikel": "a",  "unbestimmt": "uma", "emoji": "🛣️", "deutsch": "Straße" },
+      { "wort": "casa",    "artikel": "a",  "unbestimmt": "uma", "emoji": "🏠", "deutsch": "Haus" },
+      { "wort": "nariz",   "artikel": "o",  "unbestimmt": "um",  "emoji": "👃", "deutsch": "Nase" },
+      { "wort": "comboio", "artikel": "o",  "unbestimmt": "um",  "emoji": "🚂", "deutsch": "Zug" },
+      { "wort": "bola",    "artikel": "a",  "unbestimmt": "uma", "emoji": "⚽", "deutsch": "Ball" },
+      { "wort": "ovo",     "artikel": "o",  "unbestimmt": "um",  "emoji": "🥚", "deutsch": "Ei" },
+      { "wort": "peixe",   "artikel": "o",  "unbestimmt": "um",  "emoji": "🐟", "deutsch": "Fisch" },
+      { "wort": "água",    "artikel": "a",  "unbestimmt": "uma", "emoji": "💧", "deutsch": "Wasser" },
+      { "wort": "árvore",  "artikel": "a",  "unbestimmt": "uma", "emoji": "🌳", "deutsch": "Baum" }
+    ],
+    "n2": [
+      { "wort": "ponte",   "artikel": "a",  "unbestimmt": "uma", "emoji": "🌉", "deutsch": "Brücke" },
+      { "wort": "flor",    "artikel": "a",  "unbestimmt": "uma", "emoji": "🌸", "deutsch": "Blume" },
+      { "wort": "casaco",  "artikel": "o",  "unbestimmt": "um",  "emoji": "🧥", "deutsch": "Jacke" },
+      { "wort": "mala",    "artikel": "a",  "unbestimmt": "uma", "emoji": "🧳", "deutsch": "Koffer" },
+      { "wort": "jardim",  "artikel": "o",  "unbestimmt": "um",  "emoji": "🌿", "deutsch": "Garten" },
+      { "wort": "escada",  "artikel": "a",  "unbestimmt": "uma", "emoji": "🪜", "deutsch": "Treppe" },
+      { "wort": "quarto",  "artikel": "o",  "unbestimmt": "um",  "emoji": "🛋️", "deutsch": "Zimmer" },
+      { "wort": "janela",  "artikel": "a",  "unbestimmt": "uma", "emoji": "🪟", "deutsch": "Fenster" },
+      { "wort": "carro",   "artikel": "o",  "unbestimmt": "um",  "emoji": "🚗", "deutsch": "Auto" },
+      { "wort": "semáforo","artikel": "o",  "unbestimmt": "um",  "emoji": "🚦", "deutsch": "Ampel" }
+    ],
+    "n3": [
+      { "wort": "amizade",       "artikel": "a",  "unbestimmt": "uma", "emoji": "💛", "deutsch": "Freundschaft" },
+      { "wort": "responsabilidade","artikel":"a", "unbestimmt": "uma", "emoji": "🎖️", "deutsch": "Verantwortung" },
+      { "wort": "possibilidade",  "artikel": "a",  "unbestimmt": "uma", "emoji": "🔓", "deutsch": "Möglichkeit" },
+      { "wort": "decisão",        "artikel": "a",  "unbestimmt": "uma", "emoji": "🎯", "deutsch": "Entscheidung" },
+      { "wort": "surpresa",       "artikel": "a",  "unbestimmt": "uma", "emoji": "🎁", "deutsch": "Überraschung" },
+      { "wort": "compreensão",    "artikel": "a",  "unbestimmt": "uma", "emoji": "🤔", "deutsch": "Verständnis" },
+      { "wort": "justiça",        "artikel": "a",  "unbestimmt": "uma", "emoji": "⚖️", "deutsch": "Gerechtigkeit" },
+      { "wort": "entusiasmo",     "artikel": "o",  "unbestimmt": "um",  "emoji": "🌟", "deutsch": "Begeisterung" }
+    ]
+  },
+  "konjugation": {
+    "n1": [
+      { "infinitiv": "ser",    "formes": ["sou","és","é","somos","sois","são"] },
+      { "infinitiv": "ter",    "formes": ["tenho","tens","tem","temos","tendes","têm"] },
+      { "infinitiv": "ir",     "formes": ["vou","vais","vai","vamos","ides","vão"] },
+      { "infinitiv": "fazer",  "formes": ["faço","fazes","faz","fazemos","fazeis","fazem"] },
+      { "infinitiv": "ver",    "formes": ["vejo","vês","vê","vemos","vedes","veem"] },
+      { "infinitiv": "comer",  "formes": ["como","comes","come","comemos","comeis","comem"] },
+      { "infinitiv": "correr", "formes": ["corro","corres","corre","corremos","correis","correm"] },
+      { "infinitiv": "chamar", "formes": ["chamo","chamas","chama","chamamos","chamais","chamam"] }
+    ],
+    "n2": [
+      { "infinitiv": "poder",   "formes": ["posso","podes","pode","podemos","podeis","podem"] },
+      { "infinitiv": "querer",  "formes": ["quero","queres","quer","queremos","quereis","querem"] },
+      { "infinitiv": "saber",   "formes": ["sei","sabes","sabe","sabemos","sabeis","sabem"] },
+      { "infinitiv": "ajudar",  "formes": ["ajudo","ajudas","ajuda","ajudamos","ajudais","ajudam"] },
+      { "infinitiv": "aprender","formes": ["aprendo","aprendes","aprende","aprendemos","aprendeis","aprendem"] },
+      { "infinitiv": "dormir",  "formes": ["durmo","dormes","dorme","dormimos","dormis","dormem"] },
+      { "infinitiv": "comprar", "formes": ["compro","compras","compra","compramos","comprais","compram"] },
+      { "infinitiv": "levar",   "formes": ["levo","levas","leva","levamos","leváis","levam"] }
+    ],
+    "n3": [
+      { "infinitiv": "observar",  "formes": ["observo","observas","observa","observamos","observais","observam"] },
+      { "infinitiv": "decidir",   "formes": ["decido","decides","decide","decidimos","decidis","decidem"] },
+      { "infinitiv": "distinguir","formes": ["distingo","distingues","distingue","distinguimos","distinguis","distinguem"] },
+      { "infinitiv": "compreender","formes":["compreendo","compreendes","compreende","compreendemos","compreendeis","compreendem"] }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "satz": "Vou ___ escola",          "kasus": "Preposição", "wort": "escola",  "antworten": ["à","da","na","pela"], "richtig": "à",  "deutsch": "Ich gehe zur Schule" },
+      { "satz": "O livro ___ menino",      "kasus": "Preposição", "wort": "menino",  "antworten": ["do","ao","pelo","no"], "richtig": "do", "deutsch": "Das Buch des Jungen" },
+      { "satz": "Venho ___ Portugal",      "kasus": "Preposição", "wort": "Portugal","antworten": ["de","a","em","para"], "richtig": "de", "deutsch": "Ich komme aus Portugal" },
+      { "satz": "O gato está ___ casa",    "kasus": "Preposição", "wort": "casa",    "antworten": ["em","de","a","para"], "richtig": "em", "deutsch": "Die Katze ist zu Hause" },
+      { "satz": "Falo ___ meu amigo",      "kasus": "Preposição", "wort": "amigo",   "antworten": ["com","de","a","para"],"richtig": "com","deutsch": "Ich spreche mit meinem Freund" }
+    ],
+    "n2": [
+      { "satz": "O comboio vem ___ Lisboa","kasus": "Preposição", "wort": "Lisboa",  "antworten": ["de","a","em","para"], "richtig": "de", "deutsch": "Der Zug kommt aus Lissabon" },
+      { "satz": "Penso ___ minha família", "kasus": "Preposição", "wort": "família", "antworten": ["na","da","pela","para a"],"richtig": "na","deutsch": "Ich denke an meine Familie" },
+      { "satz": "Saio ___ escola às 3",    "kasus": "Preposição", "wort": "escola",  "antworten": ["da","à","na","pela"],  "richtig": "da", "deutsch": "Ich verlasse die Schule um 3" }
+    ],
+    "n3": [
+      { "satz": "Depende ___ situação",    "kasus": "Preposição", "wort": "situação","antworten": ["da","à","na","pela"],  "richtig": "da", "deutsch": "Es hängt von der Situation ab" },
+      { "satz": "Estou orgulhoso ___ trabalho","kasus":"Preposição","wort":"trabalho","antworten":["do","ao","no","pelo"],"richtig":"do",  "deutsch": "Ich bin stolz auf meine Arbeit" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "verb": "comer",   "hilfsverb": "ter", "bewegung": false, "antworten": ["comeu","tem comido","é comido","foi comido"], "richtig": "tem comido",  "deutsch": "hat gegessen (Perfekt)" },
+      { "verb": "ir",      "hilfsverb": "ter", "bewegung": true,  "antworten": ["foi","tem ido","é ido","será"], "richtig": "tem ido",       "deutsch": "ist gegangen (Perfekt)" },
+      { "verb": "fazer",   "hilfsverb": "ter", "bewegung": false, "antworten": ["fez","tem feito","é feito","será feito"], "richtig": "tem feito",    "deutsch": "hat gemacht (Perfekt)" },
+      { "verb": "ver",     "hilfsverb": "ter", "bewegung": false, "antworten": ["viu","tem visto","é visto","será visto"], "richtig": "tem visto",    "deutsch": "hat gesehen (Perfekt)" },
+      { "verb": "correr",  "hilfsverb": "ter", "bewegung": true,  "antworten": ["correu","tem corrido","é corrido","corria"], "richtig": "tem corrido","deutsch": "ist gelaufen (Perfekt)" },
+      { "verb": "ter",     "hilfsverb": "ter", "bewegung": false, "antworten": ["teve","tem tido","é tido","terá"], "richtig": "tem tido",      "deutsch": "hat gehabt (Perfekt)" }
+    ],
+    "n2": [
+      { "verb": "aprender","hilfsverb": "ter", "bewegung": false, "antworten": ["aprendeu","tem aprendido","é aprendido","aprenderá"], "richtig": "tem aprendido","deutsch": "hat gelernt (Perfekt)" },
+      { "verb": "dormir",  "hilfsverb": "ter", "bewegung": false, "antworten": ["dormiu","tem dormido","é dormido","dormia"], "richtig": "tem dormido",  "deutsch": "hat geschlafen (Perfekt)" },
+      { "verb": "comprar", "hilfsverb": "ter", "bewegung": false, "antworten": ["comprou","tem comprado","é comprado","comprará"], "richtig": "tem comprado","deutsch": "hat gekauft (Perfekt)" },
+      { "verb": "ajudar",  "hilfsverb": "ter", "bewegung": false, "antworten": ["ajudou","tem ajudado","é ajudado","ajudará"], "richtig": "tem ajudado",  "deutsch": "hat geholfen (Perfekt)" },
+      { "verb": "levar",   "hilfsverb": "ter", "bewegung": false, "antworten": ["levou","tem levado","é levado","levará"], "richtig": "tem levado",    "deutsch": "hat getragen (Perfekt)" }
+    ],
+    "n3": [
+      { "verb": "observar",   "hilfsverb": "ter", "bewegung": false, "antworten": ["observou","tem observado","é observado","observará"], "richtig": "tem observado",   "deutsch": "hat beobachtet (Perfekt)" },
+      { "verb": "decidir",    "hilfsverb": "ter", "bewegung": false, "antworten": ["decidiu","tem decidido","é decidido","decidirá"], "richtig": "tem decidido",     "deutsch": "hat entschieden (Perfekt)" },
+      { "verb": "compreender","hilfsverb": "ter", "bewegung": false, "antworten": ["compreendeu","tem compreendido","é compreendido","compreenderá"], "richtig": "tem compreendido","deutsch": "hat verstanden (Perfekt)" }
+    ]
+  }
+}
