@@ -962,9 +962,20 @@ function crossSellBannerEinfuegen(currentAppId) {
 // ── Init ──────────────────────────────────────────────────────────────
 async function ladeExterneDaten() {
     try {
-        const r = await fetch('../data/diktat_fr.json');
-        if (!r.ok) return;
-        const d = await r.json();
+        const [dRes, gRes] = await Promise.all([
+            fetch('../data/diktat_fr.json'),
+            fetch('../data/grammatik_fr.json')
+        ]);
+        if (gRes.ok) {
+            const gData = await gRes.json();
+            if (gData.artikel)     grammatikDaten.artikel     = gData.artikel;
+            if (gData.konjugation) grammatikDaten.konjugation = gData.konjugation;
+            if (gData.passe)       grammatikDaten.passe       = gData.passe;
+            if (gData.negation)    grammatikDaten.negation    = gData.negation;
+            console.log('Grammatik-FR geladen ✓');
+        }
+        if (!dRes.ok) return;
+        const d = await dRes.json();
         if (d.n1 && d.n1.worte) {
             diktatWorteN1.splice(0, diktatWorteN1.length, ...d.n1.worte.map(e => ({wort: e.wort, audio: ''})));
             d.n1.worte.forEach(e => { if (e.de) frDeDict[e.wort.toLowerCase()] = e.de; });
@@ -977,11 +988,8 @@ async function ladeExterneDaten() {
             diktatWorteN3.splice(0, diktatWorteN3.length, ...d.n3.worte.map(e => ({wort: e.wort, audio: ''})));
             d.n3.worte.forEach(e => { if (e.de) frDeDict[e.wort.toLowerCase()] = e.de; });
         }
-    } catch(e) {
-        console.log('Offline – liste intégrée utilisée');
-    }
+    } catch(e) { console.log('Offline – liste intégrée utilisée'); }
 }
-
 function init() {
     initTheme();
     renderAlphabet();
