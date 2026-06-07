@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "pila",    "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "⚽", "deutsch": "Ball (fem.)" },
+      { "wort": "luna",    "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "🌙", "deutsch": "Mond (fem.)" },
+      { "wort": "felis",   "genus": "f", "hinweis": "3. Dekl. · fem.", "emoji": "🐱", "deutsch": "Katze (fem.)" },
+      { "wort": "manus",   "genus": "f", "hinweis": "4. Dekl. · fem.", "emoji": "✋", "deutsch": "Hand (fem.)" },
+      { "wort": "via",     "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "🛣️", "deutsch": "Weg (fem.)" },
+      { "wort": "scala",   "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "🪜", "deutsch": "Treppe (fem.)" },
+      { "wort": "schola",  "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "🏫", "deutsch": "Schule (fem.)" },
+      { "wort": "paenula", "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "🧥", "deutsch": "Mantel (fem.)" },
+      { "wort": "liber",   "genus": "m", "hinweis": "2. Dekl. · mask.", "emoji": "📖", "deutsch": "Buch (mask.)" },
+      { "wort": "canis",   "genus": "m", "hinweis": "3. Dekl. · mask.", "emoji": "🐕", "deutsch": "Hund (mask.)" },
+      { "wort": "nasus",   "genus": "m", "hinweis": "2. Dekl. · mask.", "emoji": "👃", "deutsch": "Nase (mask.)" },
+      { "wort": "sol",     "genus": "m", "hinweis": "3. Dekl. · mask.", "emoji": "☀️", "deutsch": "Sonne (mask.)" },
+      { "wort": "pons",    "genus": "m", "hinweis": "3. Dekl. · mask.", "emoji": "🌉", "deutsch": "Brücke (mask.)" },
+      { "wort": "hortus",  "genus": "m", "hinweis": "2. Dekl. · mask.", "emoji": "🌿", "deutsch": "Garten (mask.)" },
+      { "wort": "flos",    "genus": "m", "hinweis": "3. Dekl. · mask.", "emoji": "🌸", "deutsch": "Blume (mask.)" },
+      { "wort": "currus",  "genus": "m", "hinweis": "4. Dekl. · mask.", "emoji": "🚂", "deutsch": "Wagen (mask.)" }
+    ],
+    "n2": [
+      { "wort": "cubiculum","genus": "n", "hinweis": "2. Dekl. · neutr.", "emoji": "🛋️", "deutsch": "Zimmer (neutr.)" },
+      { "wort": "ovum",    "genus": "n", "hinweis": "2. Dekl. · neutr.", "emoji": "🥚", "deutsch": "Ei (neutr.)" },
+      { "wort": "studium", "genus": "n", "hinweis": "2. Dekl. · neutr.", "emoji": "📚", "deutsch": "Eifer (neutr.)" },
+      { "wort": "sarcina", "genus": "f", "hinweis": "1. Dekl. · fem.",  "emoji": "🧳", "deutsch": "Gepäck (fem.)" },
+      { "wort": "intellectus","genus":"m","hinweis": "4. Dekl. · mask.", "emoji": "🤔", "deutsch": "Verstand (mask.)" }
+    ],
+    "n3": [
+      { "wort": "decisio",       "genus": "f", "hinweis": "3. Dekl. · fem.", "emoji": "🎯", "deutsch": "Entscheidung (fem.)" },
+      { "wort": "amicitia",      "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "💛", "deutsch": "Freundschaft (fem.)" },
+      { "wort": "iustitia",      "genus": "f", "hinweis": "1. Dekl. · fem.", "emoji": "⚖️", "deutsch": "Gerechtigkeit (fem.)" },
+      { "wort": "possibilitas",  "genus": "f", "hinweis": "3. Dekl. · fem.", "emoji": "🔓", "deutsch": "Möglichkeit (fem.)" },
+      { "wort": "admiratio",     "genus": "f", "hinweis": "3. Dekl. · fem.", "emoji": "🎁", "deutsch": "Bewunderung (fem.)" },
+      { "wort": "responsabilitas","genus":"f", "hinweis": "3. Dekl. · fem.", "emoji": "🎖️", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "cooperatio",    "genus": "f", "hinweis": "3. Dekl. · fem.", "emoji": "🤲", "deutsch": "Zusammenarbeit (fem.)" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "wort": "pila",   "kasus": "Genitiv Sg.",   "antworten": ["pilae","pilam","pilā","pilarum"],  "richtig": "pilae",   "hinweis": "1. Dekl. · Gen. Sg.", "deutsch": "des Balls (Gen.)" },
+      { "wort": "pila",   "kasus": "Akkusativ Sg.",  "antworten": ["pilam","pilae","pilā","pilas"],   "richtig": "pilam",   "hinweis": "1. Dekl. · Akk. Sg.", "deutsch": "den Ball (Akk.)" },
+      { "wort": "luna",   "kasus": "Genitiv Sg.",   "antworten": ["lunae","lunam","lunā","lunarum"],  "richtig": "lunae",   "hinweis": "1. Dekl. · Gen. Sg.", "deutsch": "des Mondes (Gen.)" },
+      { "wort": "manus",  "kasus": "Genitiv Sg.",   "antworten": ["manus","manui","manum","manuum"],  "richtig": "manus",   "hinweis": "4. Dekl. · Gen. Sg.", "deutsch": "der Hand (Gen.)" },
+      { "wort": "liber",  "kasus": "Genitiv Sg.",   "antworten": ["libri","librum","libro","librorum"],"richtig": "libri",  "hinweis": "2. Dekl. · Gen. Sg.", "deutsch": "des Buches (Gen.)" },
+      { "wort": "canis",  "kasus": "Akkusativ Sg.", "antworten": ["canem","canis","cani","canum"],    "richtig": "canem",   "hinweis": "3. Dekl. · Akk. Sg.", "deutsch": "den Hund (Akk.)" }
+    ],
+    "n2": [
+      { "wort": "hortus", "kasus": "Genitiv Sg.",   "antworten": ["horti","hortum","horto","hortorum"],"richtig": "horti", "hinweis": "2. Dekl. · Gen. Sg.", "deutsch": "des Gartens (Gen.)" },
+      { "wort": "pons",   "kasus": "Akkusativ Sg.", "antworten": ["pontem","pontis","ponti","pontium"],"richtig": "pontem","hinweis": "3. Dekl. · Akk. Sg.", "deutsch": "die Brücke (Akk.)" },
+      { "wort": "ovum",   "kasus": "Genitiv Sg.",   "antworten": ["ovi","ovum","ovo","ovorum"],       "richtig": "ovi",    "hinweis": "2. Dekl. · Gen. Sg.", "deutsch": "des Eies (Gen.)" },
+      { "wort": "schola", "kasus": "Akkusativ Sg.", "antworten": ["scholam","scholae","scholā","scholas"],"richtig": "scholam","hinweis": "1. Dekl. · Akk. Sg.", "deutsch": "die Schule (Akk.)" }
+    ],
+    "n3": [
+      { "wort": "amicitia", "kasus": "Genitiv Sg.", "antworten": ["amicitiae","amicitiam","amicitiā","amicitiarum"],"richtig": "amicitiae","hinweis": "1. Dekl. · Gen. Sg.", "deutsch": "der Freundschaft (Gen.)" },
+      { "wort": "decisio",  "kasus": "Akkusativ Sg.","antworten": ["decisionem","decisionis","decisioni","decisionum"],"richtig": "decisionem","hinweis": "3. Dekl. · Akk. Sg.", "deutsch": "die Entscheidung (Akk.)" }
+    ]
+  },
+  "konjugation": {
+    "n1": [
+      { "infinitiv": "esse",   "formes": ["sum","es","est","sumus","estis","sunt"] },
+      { "infinitiv": "habeo",  "formes": ["habeo","habes","habet","habemus","habetis","habent"] },
+      { "infinitiv": "edo",    "formes": ["edo","edis","edit","edimus","editis","edunt"] },
+      { "infinitiv": "eo",     "formes": ["eo","is","it","imus","itis","eunt"] },
+      { "infinitiv": "video",  "formes": ["video","vides","videt","videmus","videtis","vident"] },
+      { "infinitiv": "facio",  "formes": ["facio","facis","facit","facimus","facitis","faciunt"] },
+      { "infinitiv": "curro",  "formes": ["curro","curris","currit","currimus","curritis","currunt"] },
+      { "infinitiv": "porto",  "formes": ["porto","portas","portat","portamus","portatis","portant"] }
+    ],
+    "n2": [
+      { "infinitiv": "voco",    "formes": ["voco","vocas","vocat","vocamus","vocatis","vocant"] },
+      { "infinitiv": "sedeo",   "formes": ["sedeo","sedes","sedet","sedemus","sedetis","sedent"] },
+      { "infinitiv": "lavo",    "formes": ["lavo","lavas","lavat","lavamus","lavatis","lavant"] },
+      { "infinitiv": "adiuvo",  "formes": ["adiuvo","adiuvas","adiuvat","adiuvamus","adiuvatis","adiuvant"] },
+      { "infinitiv": "emo",     "formes": ["emo","emis","emit","emimus","emitis","emunt"] },
+      { "infinitiv": "disco",   "formes": ["disco","discis","discit","discimus","discitis","discunt"] },
+      { "infinitiv": "dormio",  "formes": ["dormio","dormis","dormit","dormimus","dormitis","dormiunt"] },
+      { "infinitiv": "ludo",    "formes": ["ludo","ludis","ludit","ludimus","luditis","ludunt"] }
+    ],
+    "n3": [
+      { "infinitiv": "observo",  "formes": ["observo","observas","observat","observamus","observatis","observant"] },
+      { "infinitiv": "decido",   "formes": ["decido","decidis","decidit","decidimus","deciditis","decidunt"] },
+      { "infinitiv": "cognosco", "formes": ["cognosco","cognoscis","cognoscit","cognoscimus","cognoscitis","cognoscunt"] },
+      { "infinitiv": "narro",    "formes": ["narro","narras","narrat","narramus","narratis","narrant"] },
+      { "infinitiv": "distinguo","formes": ["distinguo","distinguis","distinguit","distinguimus","distinguitis","distinguunt"] }
+    ]
+  },
+  "tempus": {
+    "n2": [
+      { "infinitiv": "edo",    "pronomen": "ego",  "zeit": "Perfectum", "richtig": "edi",      "falsch": ["edo","edebam","edam"],         "deutsch": "ich aß" },
+      { "infinitiv": "eo",     "pronomen": "is",   "zeit": "Perfectum", "richtig": "ivit",     "falsch": ["it","ibat","ibit"],            "deutsch": "er ging" },
+      { "infinitiv": "video",  "pronomen": "ego",  "zeit": "Perfectum", "richtig": "vidi",     "falsch": ["video","videbam","videbo"],    "deutsch": "ich sah" },
+      { "infinitiv": "facio",  "pronomen": "nos",  "zeit": "Perfectum", "richtig": "fecimus",  "falsch": ["facimus","faciebamus","faciemus"],"deutsch": "wir machten" },
+      { "infinitiv": "curro",  "pronomen": "ego",  "zeit": "Perfectum", "richtig": "cucurri",  "falsch": ["curro","currebam","currebo"],  "deutsch": "ich lief" }
+    ],
+    "n3": [
+      { "infinitiv": "observo","pronomen": "nos",  "zeit": "Perfectum", "richtig": "observavimus","falsch": ["observamus","observabamus","observabimus"],"deutsch": "wir beobachteten" },
+      { "infinitiv": "decido", "pronomen": "ea",   "zeit": "Perfectum", "richtig": "decidit",  "falsch": ["decidit","decidebat","decidet"],"deutsch": "sie entschied" },
+      { "infinitiv": "narro",  "pronomen": "tu",   "zeit": "Perfectum", "richtig": "narrasti", "falsch": ["narras","narrabas","narrabis"], "deutsch": "du erzähltest" }
+    ]
+  }
+}
