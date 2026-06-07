@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<!-- © 2026 nickelfax. All rights reserved.
+     Unauthorized copying or distribution prohibited. -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#1a5e2a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ابت لفظ">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="icon-512-ur.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="dict.js"></script>
+     <script>
+function globalDictLookup(wort, zielSprache) {
+    const eintrag = Object.values(GLOBAL_DICT).find(e => e.ur && e.ur === wort);
+    return eintrag ? eintrag[zielSprache] || eintrag.de : null;
+}
+</script>
+    <title>ابت لفظ</title>
+    <style>
+        :root {
+            --primary: #1a5e2a;
+            --secondary: #f9a825;
+            --success: #2e7d32;
+            --danger: #c62828;
+            --purple: #6a1b9a;
+            --bg: #f0f7f0;
+            --card-bg: #ffffff;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Noto Nastaliq Urdu', Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; direction: rtl; }
+        h1 { color: #1a5e2a; margin-bottom: 5px; text-align: center; font-size: 1.8rem; }
+        .subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; direction: ltr; }
+        .word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.2rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); direction: rtl; }
+        .word-display.empty { color: #bdc3c7; font-size: 1.1rem; font-weight: normal; font-style: italic; direction: rtl; }
+        .char-block { background: #e8f5e9; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; }
+        .char-block:hover { background: #ffcdd2; border-color: var(--danger); transform: scale(1.05); }
+        .char-block::after { content: '✕'; position: absolute; top: -8px; left: -8px; right: auto; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+        .char-block:hover::after { opacity: 1; }
+        .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; direction: ltr; }
+        button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        button:active { transform: scale(0.95); }
+        .keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); direction: rtl; }
+        .keyboard-section { margin-bottom: 15px; }
+        .section-title { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; letter-spacing: 1px; direction: ltr; }
+        .keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 8px; direction: rtl; }
+        .key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 14px 4px; text-align: center; font-size: 1.6rem; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s; user-select: none; font-family: 'Noto Nastaliq Urdu', Arial, sans-serif; }
+        .key:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+        .key.spezial { background: #fff8e1; border-color: #ffe082; color: #7d6608; font-size: 0.9rem; }
+        .key.spezial:hover { background: var(--secondary); color: white; }
+        .key.zahl { background: #e8eaf6; border-color: #9fa8da; color: #283593; direction: ltr; font-size: 1.2rem; }
+        .key.zahl:hover { background: #3949ab; color: white; }
+        .case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; direction: ltr; }
+        .toggle-switch { position: relative; width: 52px; height: 28px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+        .toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+        .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+        .case-label { font-size: 1rem; font-weight: bold; min-width: 20px; color: #2c3e50; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-overlay.open { display: flex; }
+        .modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; direction: rtl; }
+        .stored-word { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+        .btn-close-modal { background: #95a5a6; margin-top: 15px; width: 100%; }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; direction: ltr; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .diktat-modus-zeile { display: flex; gap: 8px; margin-bottom: 8px; direction: ltr; flex-wrap: wrap; }
+        .diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+        .diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+        .grammatik-aufgabe { font-size: 1.8rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; font-family: 'Noto Nastaliq Urdu', Arial, sans-serif; }
+        .grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; direction: ltr; }
+        .artikel-buttons { display: flex; gap: 10px; justify-content: center; width: 100%; flex-wrap: wrap; direction: ltr; }
+        .art-btn { padding: 12px 16px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 80px; max-width: 180px; }
+        .art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+        .art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+        .auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; direction: ltr; }
+        .auswahl-btn { padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; font-family: 'Noto Nastaliq Urdu', Arial, sans-serif; }
+        .auswahl-btn:hover { background: var(--primary); color: white; }
+        .auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+        .auswahl-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+        #uebersetzungAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em; margin-bottom: 4px; direction: ltr; }
+        #crossSellBanner { direction: ltr !important; }
+        @media (max-width: 600px) {
+            body { padding: 8px; } h1 { font-size: 1.3rem; }
+            .word-display { min-height: 60px; font-size: 1.6rem; padding: 10px; margin-bottom: 10px; }
+            button { padding: 9px 12px; font-size: 0.82rem; }
+            .keyboard-container { padding: 10px 8px; }
+            .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 5px; }
+            .key { padding: 10px 2px; font-size: 1.4rem; }
+            .toast { white-space: normal; max-width: 85vw; text-align: center; }
+        }
+@keyframes blinken { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+    </style>
+</head>
+<body>
+
+<h1>🇵🇰 ابت لفظ</h1>
+<p class="subtitle" style="direction:ltr;">Urdu lernen · Diktat · Grammatik · Wortbau</p>
+
+<div id="scoreBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box; direction:ltr;">
+    <div style="display:flex; gap:20px; font-size:1rem; padding:8px 16px; background:#fff8e1; border:2px solid var(--secondary); border-radius:12px;">
+        <span>درست: <strong id="diktatRichtig">0</strong></span>
+        <span>غلط: <strong id="diktatFalsch">0</strong></span>
+    </div>
+</div>
+
+<div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)">🔤</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)">➖</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)">🙈</button>
+        <button class="diktat-modus-btn" id="btnDiktatStumm" onclick="diktatStummToggle(this)">🔊</button>
+    </div>
+</div>
+
+<div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" id="btnGGenus" onclick="grammatikSetModus('genus',this)">م ف</button>
+        <button class="diktat-modus-btn" id="btnGKasus" onclick="grammatikSetModus('kasus',this)">اعراب</button>
+        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">میں / تم</button>
+        <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">⏰</button>
+    </div>
+</div>
+
+<div id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center; font-size:1rem; color:#555; min-height:1.4em; direction:ltr;"></div>
+<div id="grBtnWrap" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center;">
+    <button onclick="grBtnKlick()" style="font-size:1.2rem; font-weight:bold; color:white; background:var(--purple); padding:8px 18px; border-radius:10px; border:none; cursor:pointer; animation:blinken 2.5s infinite;">❓ Gr.?</button>
+</div>
+
+<div id="uebersetzungAnzeige"></div>
+
+<div id="wordDisplay" class="word-display empty">
+    حروف پر کلک کریں اور لفظ بنائیں
+</div>
+
+<div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; box-sizing:border-box; padding:0 4px; direction:ltr;">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+        <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+        <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary);">N1</span>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="wiederholenButton()" style="background:var(--primary); font-size:1.6rem;">🔁</button>
+    <button onclick="sprichWort()" style="background:var(--success); font-size:1.6rem;">🔊</button>
+    <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
+    <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
+    <button onclick="backspace()" style="font-size:1.6rem; background:#e74c3c;">⌫</button>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🖊️</span>
+        <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">دکت</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">❓</span>
+        <label class="toggle-switch"><input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">گرم</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🌍</span>
+        <label class="toggle-switch"><input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()"><span class="toggle-slider"></span></label>
+        <div id="sprachDropdownInControls" style="display:none;">
+            <select id="sprachSelectControls" onchange="sprachWechseln(this.value)"
+                style="border-radius:8px; border:2px solid #e9ecef; padding:4px 8px; font-size:0.95rem; background:white; color:#2c3e50; cursor:pointer;"></select>
+        </div>
+    </div>
+</div>
+
+<div class="keyboard-container">
+    <div class="keyboard-section">
+        <div class="section-title">🇵🇰 اردو حروف تہجی</div>
+        <div class="keyboard-grid" id="alphabetGrid"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">اعراب (Harakat)</span>
+            <label class="toggle-switch"><input type="checkbox" id="harakatToggle" onchange="harakatToggleChange()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="harakatLabel">aus</span>
+        </div>
+        <div class="keyboard-grid" id="harakatGrid" style="display:none;"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">🔢 اعداد (Zahlen)</span>
+            <label class="toggle-switch"><input type="checkbox" id="numberToggle" onchange="numberToggleChange()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="numberLabel">aus</span>
+        </div>
+        <div class="keyboard-grid" id="numberGrid" style="display:none;"></div>
+    </div>
+</div>
+
+<div id="storageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>📚 محفوظ الفاظ</h2>
+        <div id="storedWordsList"></div>
+        <button class="btn-close-modal" onclick="closeStorage()">بند کریں</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+// ── Urdu Alphabet (اردو حروف تہجی) ───────────────────────────────────
+const alphabet = ['ا','ب','پ','ت','ٹ','ث','ج','چ','ح','خ','د','ڈ','ذ','ر','ڑ','ز','ژ','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ک','گ','ل','م','ن','ں','و','ہ','ھ','ء','ی','ے'];
+const harakat  = ['َ','ِ','ُ','ً','ٍ','ٌ','ْ','ّ','ٰ'];
+const harakatNames = ['Zabar','Zer','Pesh','Tanwin Z','Tanwin K','Tanwin P','Jazm','Tashdid','Khari Z'];
+
+// Urdu Zahlwörter (östliche arabische Ziffern + westliche)
+const urduZahlen = {
+    '۰':'صفر','۱':'ایک','۲':'دو','۳':'تین','۴':'چار',
+    '۵':'پانچ','۶':'چھ','۷':'سات','۸':'آٹھ','۹':'نو',
+    '0':'صفر','1':'ایک','2':'دو','3':'تین','4':'چار',
+    '5':'پانچ','6':'چھ','7':'سات','8':'آٹھ','9':'نو',
+};
+const urduZahlZeichen = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+
+// ── Wortliste ─────────────────────────────────────────────────────────
+const wordList = ['ماں','گھر','پانی','روٹی','کتاب','اسکول','سورج','چاند','کتا','بلی','دوست','ہاتھ','ناک','آنکھ','درخت'];
+
+// ── UR→DE Dictionary ─────────────────────────────────────────────────
+const urDeDict = {
+    'ماں':'Mutter','گھر':'Haus','پانی':'Wasser','روٹی':'Brot',
+    'کتاب':'Buch','اسکول':'Schule','سورج':'Sonne','چاند':'Mond',
+    'کتا':'Hund','بلی':'Katze','دوست':'Freund','ہاتھ':'Hand',
+    'ناک':'Nase','آنکھ':'Auge','درخت':'Baum','کھانا':'Essen',
+    'جانا':'gehen','بڑا':'groß','چھوٹا':'klein','تیز':'schnell',
+    'خوش':'glücklich','اداس':'traurig','گرم':'heiß','ٹھنڈا':'kalt',
+    'نیا':'neu','پرانا':'alt','بچہ':'Kind','گیند':'Ball',
+    'آم':'Mango','دودھ':'Milch','چائے':'Tee','چاول':'Reis',
+    'سبزی':'Gemüse','پھل':'Frucht','رات':'Nacht','دن':'Tag',
+    'آسمان':'Himmel','زمین':'Erde','دریا':'Fluss','پہاڑ':'Berg',
+};
+
+// ── Grammatik-Daten ───────────────────────────────────────────────────
+const grammatikDaten = {
+    genus: { // مذکر (m) / مؤنث (f)
+        n1: [
+            { wort:'لڑکا',   genus:'م', emoji:'👦', deutsch:'Junge (mask.)' },
+            { wort:'لڑکی',   genus:'ف', emoji:'👧', deutsch:'Mädchen (fem.)' },
+            { wort:'کتا',    genus:'م', emoji:'🐕', deutsch:'Hund (mask.)' },
+            { wort:'بلی',    genus:'ف', emoji:'🐈', deutsch:'Katze (fem.)' },
+            { wort:'گھر',    genus:'م', emoji:'🏠', deutsch:'Haus (mask.)' },
+            { wort:'کتاب',   genus:'ف', emoji:'📖', deutsch:'Buch (fem.)' },
+            { wort:'درخت',   genus:'م', emoji:'🌳', deutsch:'Baum (mask.)' },
+            { wort:'ندی',    genus:'ف', emoji:'🌊', deutsch:'Fluss (fem.)' },
+            { wort:'سورج',   genus:'م', emoji:'☀️', deutsch:'Sonne (mask.)' },
+            { wort:'رات',    genus:'ف', emoji:'🌙', deutsch:'Nacht (fem.)' },
+            { wort:'پھل',    genus:'م', emoji:'🍎', deutsch:'Frucht (mask.)' },
+            { wort:'سبزی',   genus:'ف', emoji:'🥦', deutsch:'Gemüse (fem.)' },
+        ],
+        n2: [
+            { wort:'اسکول',  genus:'م', emoji:'🏫', deutsch:'Schule (mask.)' },
+            { wort:'دوستی',  genus:'ف', emoji:'🤝', deutsch:'Freundschaft (fem.)' },
+            { wort:'آسمان',  genus:'م', emoji:'🌤️', deutsch:'Himmel (mask.)' },
+            { wort:'زبان',   genus:'ف', emoji:'💬', deutsch:'Sprache (fem.)' },
+        ],
+        n3: [
+            { wort:'معاشرہ',    genus:'م', emoji:'👥', deutsch:'Gesellschaft (mask.)' },
+            { wort:'ذمہ داری', genus:'ف', emoji:'🎖️', deutsch:'Verantwortung (fem.)' },
+        ]
+    },
+    kasus: {
+        n1: [
+            { satz:'میں ___ دیکھتا ہوں', deutsch:'Ich sehe ___ (Hund)', wort:'کتا (Obj.)', antworten:['کتا','کتے کو','کتے سے','کتے کا'], richtig:'کتے کو' },
+            { satz:'___ کتاب ہے', deutsch:'___ ist ein Buch', wort:'یہ/وہ', antworten:['یہ','اس','اسے','اسکا'], richtig:'یہ' },
+            { satz:'میں ___ جاتا ہوں', deutsch:'Ich gehe ___ (Schule)', wort:'اسکول (Richt.)', antworten:['اسکول','اسکول کو','اسکول میں','اسکول سے'], richtig:'اسکول کو' },
+            { satz:'کتاب ___ ہے', deutsch:'Das Buch ist ___ (Tisch)', wort:'میز (Ort)', antworten:['میز','میز پر','میز سے','میز کو'], richtig:'میز پر' },
+        ],
+        n2: [
+            { satz:'یہ ___ گھر ہے', deutsch:'Das ist ___ Haus', wort:'میرا/میری', antworten:['میرا','میری','مجھے','مجھ سے'], richtig:'میرا' },
+            { satz:'وہ ___ آیا', deutsch:'Er kam ___ (Lahore)', wort:'لاہور (Herk.)', antworten:['لاہور','لاہور میں','لاہور سے','لاہور کو'], richtig:'لاہور سے' },
+        ],
+        n3: [
+            { satz:'___ کے بغیر زندگی نہیں', deutsch:'Ohne ___ kein Leben (Wasser)', wort:'پانی (ohne)', antworten:['پانی','پانی کو','پانی سے','پانی کا'], richtig:'پانی' },
+        ]
+    },
+    tempus: {
+        n1: [
+            { verb:'جانا',   pronomen:'میں', zeit:'Vergangenheit', richtig:'گیا/گئی',     falsch:['جاتا ہوں','جاؤں گا','جا رہا ہوں'],   deutsch:'ich ging' },
+            { verb:'کھانا',  pronomen:'وہ',  zeit:'Vergangenheit', richtig:'کھایا/کھائی', falsch:['کھاتا ہے','کھائے گا','کھا رہا ہے'], deutsch:'er/sie aß' },
+            { verb:'پڑھنا',  pronomen:'ہم',  zeit:'Gegenwart',     richtig:'پڑھتے ہیں',   falsch:['پڑھے','پڑھیں گے','پڑھ رہے تھے'],   deutsch:'wir lesen' },
+        ],
+        n2: [
+            { verb:'کرنا',  pronomen:'تم',  zeit:'Zukunft',      richtig:'کرو گے',       falsch:['کرتے ہو','کیا','کر رہے ہو'],        deutsch:'du wirst machen' },
+            { verb:'آنا',   pronomen:'وہ',  zeit:'Vergangenheit', richtig:'آئے/آئیں',    falsch:['آتے ہیں','آئیں گے','آ رہے ہیں'],   deutsch:'sie kamen' },
+        ],
+        n3: [
+            { verb:'سمجھنا', pronomen:'میں', zeit:'Zukunft',     richtig:'سمجھوں گا/گی', falsch:['سمجھتا ہوں','سمجھا','سمجھ رہا ہوں'], deutsch:'ich werde verstehen' },
+        ]
+    }
+};
+
+const verbForms = {
+    'ہونا':    ['ہوں','ہے','ہے','ہیں','ہو','ہیں'],
+    'جانا':    ['جاتا ہوں','جاتا ہے','جاتا ہے','جاتے ہیں','جاتے ہو','جاتے ہیں'],
+    'کھانا':   ['کھاتا ہوں','کھاتا ہے','کھاتا ہے','کھاتے ہیں','کھاتے ہو','کھاتے ہیں'],
+    'پڑھنا':   ['پڑھتا ہوں','پڑھتا ہے','پڑھتا ہے','پڑھتے ہیں','پڑھتے ہو','پڑھتے ہیں'],
+    'کرنا':    ['کرتا ہوں','کرتا ہے','کرتا ہے','کرتے ہیں','کرتے ہو','کرتے ہیں'],
+    'دیکھنا':  ['دیکھتا ہوں','دیکھتا ہے','دیکھتا ہے','دیکھتے ہیں','دیکھتے ہو','دیکھتے ہیں'],
+    'بولنا':   ['بولتا ہوں','بولتا ہے','بولتا ہے','بولتے ہیں','بولتے ہو','بولتے ہیں'],
+    'سننا':    ['سنتا ہوں','سنتا ہے','سنتا ہے','سنتے ہیں','سنتے ہو','سنتے ہیں'],
+    'لکھنا':   ['لکھتا ہوں','لکھتا ہے','لکھتا ہے','لکھتے ہیں','لکھتے ہو','لکھتے ہیں'],
+    'آنا':     ['آتا ہوں','آتا ہے','آتا ہے','آتے ہیں','آتے ہو','آتے ہیں'],
+    'چاہنا':   ['چاہتا ہوں','چاہتا ہے','چاہتا ہے','چاہتے ہیں','چاہتے ہو','چاہتے ہیں'],
+    'سیکھنا':  ['سیکھتا ہوں','سیکھتا ہے','سیکھتا ہے','سیکھتے ہیں','سیکھتے ہو','سیکھتے ہیں'],
+};
+
+const pronouns   = ['👤 میں','👤 تو','👤 وہ','👤👤 ہم','👤👤 تم','👤👤 وہ'];
+const verbGroups = {
+    n1: ['ہونا','جانا','کھانا','پڑھنا','کرنا'],
+    n2: ['دیکھنا','بولنا','سننا','لکھنا','آنا'],
+    n3: ['چاہنا','سیکھنا'],
+};
+
+// ── Diktat-Wortlisten ─────────────────────────────────────────────────
+const diktatWorteN1 = [
+    { wort: 'کھانا', audio: '' },
+    { wort: 'گیند', audio: '' },
+    { wort: 'کتاب', audio: '' },
+    { wort: 'انڈا', audio: '' },
+    { wort: 'مچھلی', audio: '' },
+    { wort: 'جانا', audio: '' },
+    { wort: 'بڑا', audio: '' },
+    { wort: 'ہونا', audio: '' },
+    { wort: 'ہاتھ', audio: '' },
+    { wort: 'گرم', audio: '' },
+    { wort: 'کتا', audio: '' },
+    { wort: 'ٹھنڈا', audio: '' },
+    { wort: 'چھوٹا', audio: '' },
+    { wort: 'دوڑنا', audio: '' },
+    { wort: 'تیز', audio: '' },
+    { wort: 'کرنا', audio: '' },
+    { wort: 'چاند', audio: '' },
+    { wort: 'ناک', audio: '' },
+    { wort: 'گیلا', audio: '' },
+    { wort: 'نیا', audio: '' },
+    { wort: 'بلانا', audio: '' },
+    { wort: 'دیکھنا', audio: '' },
+    { wort: 'بیٹھنا', audio: '' },
+    { wort: 'سورج', audio: '' },
+    { wort: 'اٹھانا', audio: '' },
+    { wort: 'گرم', audio: '' },
+    { wort: 'دھونا', audio: '' },
+    { wort: 'ریل گاڑی', audio: '' },
+    { wort: 'اوپر', audio: '' },
+    { wort: 'باہر', audio: '' },
+    { wort: 'ساتھ', audio: '' },
+    { wort: 'میں', audio: '' },
+    { wort: 'بعد', audio: '' },
+    { wort: 'نیچے', audio: '' },
+    { wort: 'پہلے', audio: '' },
+    { wort: 'کے اوپر', audio: '' },
+    { wort: 'پرانا', audio: '' },
+    { wort: 'بلی', audio: '' },
+    { wort: 'لال', audio: '' },
+    { wort: 'نیلا', audio: '' },
+];
+
+const diktatWorteN2 = [
+    { wort: 'ٹریفک لائٹ', audio: '' },
+    { wort: 'بنانا', audio: '' },
+    { wort: 'پھول', audio: '' },
+    { wort: 'غصہ', audio: '' },
+    { wort: 'پل', audio: '' },
+    { wort: 'سوچنا', audio: '' },
+    { wort: 'اندھیرا', audio: '' },
+    { wort: 'گاڑی چلانا', audio: '' },
+    { wort: 'محنتی', audio: '' },
+    { wort: 'خوش', audio: '' },
+    { wort: 'باغ', audio: '' },
+    { wort: 'مدد کرنا', audio: '' },
+    { wort: 'بھوکا', audio: '' },
+    { wort: 'جیکٹ', audio: '' },
+    { wort: 'خریدنا', audio: '' },
+    { wort: 'سوٹ کیس', audio: '' },
+    { wort: 'سیکھنا', audio: '' },
+    { wort: 'مزاحیہ', audio: '' },
+    { wort: 'تھکا', audio: '' },
+    { wort: 'صاف', audio: '' },
+    { wort: 'سونا', audio: '' },
+    { wort: 'تیز', audio: '' },
+    { wort: 'اسکول', audio: '' },
+    { wort: 'کھیلنا', audio: '' },
+    { wort: 'سڑک', audio: '' },
+    { wort: 'ڈھونڈنا', audio: '' },
+    { wort: 'اداس', audio: '' },
+    { wort: 'سیڑھی', audio: '' },
+    { wort: 'انتظار', audio: '' },
+    { wort: 'کمرہ', audio: '' },
+    { wort: 'سوائے', audio: '' },
+    { wort: 'کے ذریعے', audio: '' },
+    { wort: 'کے خلاف', audio: '' },
+    { wort: 'پیچھے', audio: '' },
+    { wort: 'بغیر', audio: '' },
+    { wort: 'سے', audio: '' },
+    { wort: 'باوجود', audio: '' },
+    { wort: 'کیونکہ', audio: '' },
+    { wort: 'دوران', audio: '' },
+    { wort: 'درمیان', audio: '' },
+];
+
+const diktatWorteN3 = [
+    { wort: 'جوش', audio: '' },
+    { wort: 'فیصلہ', audio: '' },
+    { wort: 'دوستی', audio: '' },
+    { wort: 'انصاف', audio: '' },
+    { wort: 'امکان', audio: '' },
+    { wort: 'پڑوس', audio: '' },
+    { wort: 'حیرت', audio: '' },
+    { wort: 'ذمہ داری', audio: '' },
+    { wort: 'سمجھ', audio: '' },
+    { wort: 'تعاون', audio: '' },
+    { wort: 'مشاہدہ کرنا', audio: '' },
+    { wort: 'بیان کرنا', audio: '' },
+    { wort: 'فیصلہ کرنا', audio: '' },
+    { wort: 'ترقی کرنا', audio: '' },
+    { wort: 'پہچاننا', audio: '' },
+    { wort: 'بتانا', audio: '' },
+    { wort: 'ڈیزائن کرنا', audio: '' },
+    { wort: 'سوچنا', audio: '' },
+    { wort: 'فرق کرنا', audio: '' },
+    { wort: 'سمجھنا', audio: '' },
+    { wort: 'توجہ دینے والا', audio: '' },
+    { wort: 'پرجوش', audio: '' },
+    { wort: 'انوکھا', audio: '' },
+    { wort: 'حیرت انگیز', audio: '' },
+    { wort: 'خطرناک', audio: '' },
+    { wort: 'مددگار', audio: '' },
+    { wort: 'سوچنے والا', audio: '' },
+    { wort: 'خود مختار', audio: '' },
+    { wort: 'قابل اعتماد', audio: '' },
+    { wort: 'بھروسہ مند', audio: '' },
+    { wort: 'کی وجہ سے', audio: '' },
+    { wort: 'کے بارے میں', audio: '' },
+    { wort: 'سمیت', audio: '' },
+    { wort: 'کے سامنے', audio: '' },
+    { wort: 'کے متعلق', audio: '' },
+    { wort: 'نتیجتاً', audio: '' },
+    { wort: 'کے اندر', audio: '' },
+    { wort: 'کی مدد سے', audio: '' },
+    { wort: 'کے اوپر', audio: '' },
+    { wort: 'کے مطابق', audio: '' },
+];
+
+// ── Übersetzungssystem ────────────────────────────────────────────────
+const sprachen = [
+    { code:'de', flag:'🇩🇪', name:'Deutsch' },
+    { code:'en', flag:'🇬🇧', name:'English' },
+    { code:'hi', flag:'🇮🇳', name:'हिन्दी' },
+    { code:'ar', flag:'🇸🇦', name:'العربية' },
+];
+let uebersetzungAktiv = false;
+let userLang = 'de';
+try { userLang = localStorage.getItem('abclafz_lang') || 'de'; } catch(e) {}
+const uebersetzungsCache = {};
+
+function sprachDropdownBauen() {
+    const sel = document.getElementById('sprachSelectControls'); if (!sel) return;
+    sel.innerHTML = '';
+    sprachen.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.code; opt.textContent = s.flag + ' ' + s.name;
+        if (s.code === userLang) opt.selected = true;
+        sel.appendChild(opt);
+    });
+}
+function sprachWechseln(code) {
+    userLang = code; try { localStorage.setItem('abclafz_lang', code); } catch(e) {}
+    const wort = uebersetzungsAktuellesWort(); if (wort) uebersetzeUndZeige(wort);
+}
+function uebersetzungToggle() {
+    uebersetzungAktiv = document.getElementById('uebersetzungToggleSwitch').checked;
+    const dropdown = document.getElementById('sprachDropdownInControls');
+    const anzeige  = document.getElementById('uebersetzungAnzeige');
+    if (uebersetzungAktiv) {
+        if (dropdown) dropdown.style.display = 'block';
+        const wort = uebersetzungsAktuellesWort(); if (wort) uebersetzeUndZeige(wort);
+    } else { if (dropdown) dropdown.style.display = 'none'; anzeige.textContent = ''; }
+}
+function uebersetzungsAktuellesWort() {
+    if (diktatAktiv && diktatAktuell) return diktatAktuell;
+    if (grammatikAktiv && grammatikAktuell) return grammatikAktuell.wort || grammatikAktuell.verb || '';
+    return '';
+}
+async function uebersetzeAPI(text) {
+    if (!text) return '';
+    const key = 'ur:' + userLang + ':' + text;
+    if (uebersetzungsCache[key]) return uebersetzungsCache[key];
+    if (userLang === 'de' && urDeDict[text]) { uebersetzungsCache[key] = urDeDict[text]; return urDeDict[text]; }
+     const global = globalDictLookup(text, userLang);
+    if (global) { uebersetzungsCache[key] = global; return global; }
+    try {
+        const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=ur|' + userLang;
+        const res = await fetch(url); if (!res.ok) return '';
+        const data = await res.json();
+        const result = (data.responseData && data.responseData.translatedText) || '';
+        if (result) uebersetzungsCache[key] = result; return result;
+    } catch(e) { return ''; }
+}
+function uebersetzeUndZeige(text) {
+    if (!uebersetzungAktiv || !text) return;
+    const anzeige = document.getElementById('uebersetzungAnzeige');
+    const sprache = sprachen.find(s => s.code === userLang);
+    const flag    = sprache ? sprache.flag : '🌍';
+    const key     = 'ur:' + userLang + ':' + text;
+    if (uebersetzungsCache[key]) { anzeige.textContent = flag + ' ' + uebersetzungsCache[key]; return; }
+    anzeige.textContent = flag + ' …';
+    uebersetzeAPI(text).then(r => { anzeige.textContent = r ? flag + ' ' + r : ''; });
+}
+
+// ── TTS (ur-PK + Google Fallback) ────────────────────────────────────
+function sprichUr(text) {
+    if (!text) return;
+    const gesprochen = [...text].map(ch => urduZahlen[ch] || ch).join('');
+    window.speechSynthesis.cancel();
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const urVoice = voices.find(v => v.lang.startsWith('ur'));
+        if (urVoice) {
+            const u = new SpeechSynthesisUtterance(gesprochen);
+            u.lang = 'ur-PK'; u.rate = 0.82; u.voice = urVoice;
+            window.speechSynthesis.speak(u);
+        } else {
+            _sprichUrGoogle(gesprochen);
+        }
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
+    }
+}
+function _sprichUrGoogle(text) {
+    try {
+        const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=ur&q=' +
+            encodeURIComponent(text) + '&client=tw-ob';
+        const audio = new Audio(url);
+        audio.play().catch(() => showToast('⚠️ Keine Urdu-Stimme verfügbar'));
+    } catch(e) { showToast('⚠️ Keine Urdu-Stimme verfügbar'); }
+}
+function sprichZeichenTTS(ch) { sprichUr(urduZahlen[ch] || ch); }
+function sprichWort() { const s = currentWord.join(''); if (s) sprichUr(s); }
+// ── Keyboard ──────────────────────────────────────────────────────────
+function buildKeyboard() {
+    const grid = document.getElementById('alphabetGrid');
+    alphabet.forEach(ch => {
+        const btn = document.createElement('div');
+        btn.className = 'key'; btn.textContent = ch;
+        btn.addEventListener('click', () => addChar(ch));
+        grid.appendChild(btn);
+    });
+    // Sonderzeichen
+    ['ء','ئ','ؤ','ی','ے','ۃ','لا'].forEach(ch => {
+        const btn = document.createElement('div');
+        btn.className = 'key spezial'; btn.textContent = ch;
+        btn.addEventListener('click', () => addChar(ch));
+        grid.appendChild(btn);
+    });
+}
+
+function harakatToggleChange() {
+    const on = document.getElementById('harakatToggle').checked;
+    document.getElementById('harakatLabel').textContent = on ? 'an' : 'aus';
+    const grid = document.getElementById('harakatGrid');
+    grid.style.display = on ? 'grid' : 'none';
+    if (on && !grid.children.length) {
+        harakat.forEach((h, i) => {
+            const btn = document.createElement('div');
+            btn.className = 'key spezial';
+            btn.style.cssText = 'font-size:1.2rem;';
+            btn.innerHTML = `<span>ب${h}</span><span style="font-size:0.55rem;display:block;color:#888;">${harakatNames[i]}</span>`;
+            btn.addEventListener('click', () => addChar(h));
+            grid.appendChild(btn);
+        });
+    }
+}
+
+function numberToggleChange() {
+    const on = document.getElementById('numberToggle').checked;
+    document.getElementById('numberLabel').textContent = on ? 'an' : 'aus';
+    const grid = document.getElementById('numberGrid');
+    grid.style.display = on ? 'grid' : 'none';
+    if (on && !grid.children.length) {
+        urduZahlZeichen.forEach((ch, i) => {
+            const btn = document.createElement('div');
+            btn.className = 'key zahl';
+            btn.style.cssText = 'padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:1px;';
+            btn.innerHTML = `<span style="font-size:1.3rem;">${ch}</span><span style="font-size:0.55rem;font-weight:bold;color:#888;">${urduZahlen[ch]}</span>`;
+            btn.addEventListener('click', () => addChar(ch));
+            grid.appendChild(btn);
+        });
+    }
+}
+
+// ── State ─────────────────────────────────────────────────────────────
+let currentWord = [], savedWords = [];
+try { savedWords = JSON.parse(localStorage.getItem('abclafz_saved')) || []; } catch(e) {}
+let diktatAktiv = false, grammatikAktiv = false, diktatRichtig = 0, diktatFalsch = 0;
+let diktatAktuell = '', diktatEingabe = '', diktatGesperrt = false, diktatHatFehler = false;
+let diktatBuzzerGespielt = false, diktatModus = 'hilfe', diktatNiveau = 'n1', diktatStumm = false;
+let grammatikModus = 'genus', grammatikGesperrt = false, grammatikAktuell = null;
+const diktatVerlauf = []; let diktatVerlaufIdx = -1;
+const normalVerlauf = []; let normalVerlaufIdx = -1;
+let _nachGrammatikCallback = null;
+
+function shuffle(arr) { const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+// ── Char / Display ────────────────────────────────────────────────────
+let _lastAddTime = 0;
+function addChar(ch) {
+    const now = Date.now(); if (now - _lastAddTime < 80) return; _lastAddTime = now;
+    if (diktatAktiv) { diktatAddChar(ch); return; }
+    currentWord.push(ch); updateDisplay(); if (!diktatStumm) sprichZeichenTTS(ch);
+}
+function backspace() {
+    if (diktatAktiv) { diktatEingabe = diktatEingabe.slice(0,-1); diktatRender(); return; }
+    currentWord.pop(); updateDisplay();
+}
+function updateDisplay() {
+    const display = document.getElementById('wordDisplay');
+    if (diktatAktiv) { diktatRender(); return; }
+    display.innerHTML = '';
+    if (currentWord.length === 0) { display.classList.add('empty'); display.textContent = 'حروف پر کلک کریں اور لفظ بنائیں'; return; }
+    display.classList.remove('empty');
+    display.style.flexDirection = 'row';
+    display.style.direction = 'rtl';
+    currentWord.forEach((ch, i) => {
+        const span = document.createElement('div'); span.className = 'char-block'; span.textContent = ch;
+        span.onclick = () => { currentWord.splice(i,1); updateDisplay(); };
+        display.appendChild(span);
+    });
+}
+function randomWord() {
+    if (diktatAktiv && grammatikAktiv) { Math.random()>0.5 ? diktatNeuesWort() : grammatikNeueAufgabe(); }
+    else if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+    else { const w = wordList[Math.floor(Math.random()*wordList.length)]; currentWord = w.split(''); updateDisplay(); sprichWort(); }
+}
+function navigiereZurueck() {
+    if (diktatAktiv && diktatVerlaufIdx > 0) {
+        diktatVerlaufIdx--;
+        const e = diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell = e.wort; diktatEingabe = ''; diktatGesperrt = false;
+        diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
+        diktatRender(); document.getElementById('diktatStatus').textContent = 'سنیں اور لکھیں';
+        diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
+    }
+}
+function wiederholenButton() { if (grammatikAktiv && !diktatAktiv) { grammatikSprechen(); return; } if (diktatAktiv) diktatNochmal(); else sprichWort(); }
+function updateModusUI() {
+    const beides = diktatAktiv || grammatikAktiv;
+    document.getElementById('scoreBereich').style.display       = beides ? 'block' : 'none';
+    document.getElementById('niveauSliderBereich').style.display= beides ? 'block' : 'none';
+    document.getElementById('diktatStatus').style.display       = beides ? 'block' : 'none';
+    document.getElementById('diktatModusBereich').style.display = diktatAktiv ? 'block' : 'none';
+    document.getElementById('grammatikZeile').style.display     = grammatikAktiv ? 'flex' : 'none';
+    if (!beides) { document.getElementById('diktatStatus').textContent = ''; updateDisplay(); }
+}
+function diktatToggle() {
+    diktatAktiv = document.getElementById('diktatToggleSwitch').checked; updateModusUI();
+    if (diktatAktiv) { if (!freiRundenCheck()) { diktatAktiv=false; document.getElementById('diktatToggleSwitch').checked=false; updateModusUI(); return; } diktatNeuesWort(); }
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
+function grammatikToggle() {
+    grammatikAktiv = document.getElementById('grammatikToggleSwitch').checked; updateModusUI();
+    if (grammatikAktiv) { if (!freiRundenCheck()) { grammatikAktiv=false; document.getElementById('grammatikToggleSwitch').checked=false; updateModusUI(); return; } grammatikNeueAufgabe(); }
+    else if (diktatAktiv) diktatNeuesWort();
+}
+function niveauSliderChange(val) {
+    diktatNiveau = ['n1','n2','n3'][val-1]; document.getElementById('niveauLabel').textContent = 'N'+val;
+    if (diktatAktiv) diktatNeuesWort(); if (grammatikAktiv) grammatikNeueAufgabe();
+}
+
+// ── Diktat ────────────────────────────────────────────────────────────
+function diktatGetListe() { if(diktatNiveau==='n2')return diktatWorteN2; if(diktatNiveau==='n3')return diktatWorteN3; return diktatWorteN1; }
+function diktatNeuesWort() {
+    document.getElementById('grBtnWrap').style.display = 'none';
+    const liste = diktatGetListe();
+    const e = liste[Math.floor(Math.random()*liste.length)];
+    diktatAktuell = e.wort; diktatEingabe = ''; diktatGesperrt = false;
+    diktatHatFehler = false; diktatBuzzerGespielt = false; currentWord = [];
+    diktatVerlauf.splice(diktatVerlaufIdx+1); diktatVerlauf.push({wort:e.wort});
+    if (diktatVerlauf.length>50) diktatVerlauf.shift(); diktatVerlaufIdx = diktatVerlauf.length-1;
+    diktatRender(); document.getElementById('diktatStatus').textContent = 'سنیں اور لفظ لکھیں';
+    setTimeout(() => diktatSprechen(), 300);
+    pruefeTTSUndZeige();
+    if (uebersetzungAktiv) uebersetzeUndZeige(diktatAktuell);
+}
+function diktatSprechen() { sprichUr(diktatAktuell); }
+function diktatNochmal() { if (diktatAktuell) diktatSprechen(); }
+
+// TTS-Verfügbarkeit beim ersten Diktat prüfen und Hinweis zeigen
+let ttsPruefungErledigt = false;
+function pruefeTTSUndZeige() {
+    if (ttsPruefungErledigt) return;
+    ttsPruefungErledigt = true;
+    setTimeout(() => {
+        const voices = window.speechSynthesis.getVoices();
+        const urVoice = voices.find(v => v.lang.startsWith('ur'));
+        if (!urVoice) {
+            const status = document.getElementById('diktatStatus');
+            if (status) status.innerHTML =
+                'سنیں اور لفظ لکھیں &nbsp;·&nbsp; <span style="color:#e67e22;font-size:0.85rem;">⚠️ Keine Urdu-Stimme im Browser – Google TTS wird versucht</span>';
+        }
+    }, 800);
+}
+function diktatRender() {
+    const display = document.getElementById('wordDisplay'); display.classList.remove('empty');
+    if (!diktatAktuell) return;
+    const zielArr = [...diktatAktuell]; const eingArr = [...diktatEingabe];
+    if (diktatModus === 'blind') { display.innerHTML = `<span style="font-size:1.5rem;color:#7f8c8d;direction:ltr;">🙈 ${eingArr.length} / ${zielArr.length}</span>`; return; }
+    let html = '<div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:6px;justify-content:center;direction:rtl;">';
+    zielArr.forEach((ch, i) => {
+        const entered = eingArr[i];
+        if (diktatModus === 'striche') {
+            if (!entered) html += `<div class="char-block" style="min-width:28px;border-color:#ccc;background:#f8f9fa;">_</div>`;
+            else { const ok = entered===ch; html += `<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`; }
+        } else {
+            if (!entered) html += `<div class="char-block" style="min-width:28px;border-color:#ccc;background:#fafafa;">${ch}</div>`;
+            else { const ok = entered===ch; html += `<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`; }
+        }
+    });
+    html += '</div>'; display.innerHTML = html;
+    const wrap = document.getElementById('grBtnWrap');
+    if (wrap) wrap.style.display = (diktatAktiv && grammatikAktiv && grammatikFuerWort(diktatAktuell).length > 0) ? 'block' : 'none';
+}
+function diktatSetModus(m,btn) { diktatModus=m; document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv')); btn.classList.add('aktiv'); diktatRender(); }
+function diktatStummToggle(btn) { diktatStumm=!diktatStumm; btn.textContent=diktatStumm?'🔇':'🔊'; btn.classList.toggle('aktiv',diktatStumm); }
+
+let _lastDiktatAddTime = 0;
+function diktatAddChar(ch) {
+    const now=Date.now(); if(now-_lastDiktatAddTime<80)return; _lastDiktatAddTime=now;
+    if(diktatGesperrt)return;
+    const zielArr=[...diktatAktuell]; const eingArr=[...diktatEingabe]; const idx=eingArr.length; if(idx>=zielArr.length)return;
+    diktatEingabe+=ch; if(!diktatStumm)sprichZeichenTTS(ch);
+    if(ch!==zielArr[idx]){diktatHatFehler=true;if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}}
+    diktatRender();
+    const neueArr=[...diktatEingabe];
+    if(neueArr.length===zielArr.length&&neueArr.every((c,i)=>c===zielArr[i])){
+        diktatGesperrt=true;
+        if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='شاباش! 🎉';}
+        else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='درست — لیکن اصلاح کے ساتھ۔';}
+        setTimeout(diktatFanfare,300); setTimeout(diktatNeuesWort,2400);
+    } else { document.getElementById('diktatStatus').textContent=neueArr.length<zielArr.length?'جاری رکھیں…':'ابھی نہیں…'; }
+}
+
+// ── Grammatik ─────────────────────────────────────────────────────────
+function grammatikFuerWort(wort) {
+    if (!wort || !grammatikDaten) return [];
+    const aufgaben = [];
+    const w = wort;
+    if (grammatikDaten.genus) {
+        const alle = [...(grammatikDaten.genus.n1||[]), ...(grammatikDaten.genus.n2||[]), ...(grammatikDaten.genus.n3||[])];
+        if (alle.find(e => e.wort === w)) aufgaben.push('genus');
+    }
+    if (verbForms && verbForms[w]) aufgaben.push('konjugation');
+    if (grammatikDaten.kasus) {
+        const alle = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
+        if (alle.find(e => e.wort === w)) aufgaben.push('kasus');
+    }
+    return aufgaben;
+}
+function grammatikRender() {
+    const display = document.getElementById('wordDisplay');
+    display.classList.remove('empty');
+    const d = grammatikAktuell;
+    if (!d) return;
+    if (grammatikModus === 'genus') {
+        display.innerHTML = '<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            + '<div style="font-size:2rem;">' + (d.emoji||'') + '</div>'
+            + '<div class="grammatik-aufgabe" style="direction:rtl;">' + d.wort + '</div>'
+            + '<div class="grammatik-hinweis">مذکر یا مؤنث؟</div>'
+            + '<div class="artikel-buttons">'
+            + '<button class="art-btn" onclick="genusAntwort(this.dataset.v,this)" data-v="م" style="font-size:2rem;">👦</button>'
+            + '<button class="art-btn" onclick="genusAntwort(this.dataset.v,this)" data-v="م" style="font-size:2rem;">👦</button>'
+            + '<button class="art-btn" onclick="genusAntwort(this.dataset.v,this)" data-v="ف" style="font-size:2rem;">👧</button>'
+            + '</div></div>';
+    } else if (grammatikModus === 'konjugation') {
+        const alle = d.antworten || [];
+        let btns = '';
+        for (let i = 0; i < alle.length; i++) { btns += '<button class="auswahl-btn" onclick="konjAntwort(this.dataset.v,this)" data-v="' + alle[i] + '" style="direction:rtl;">' + alle[i] + '</button>'; }
+        display.innerHTML = '<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            + '<div class="grammatik-aufgabe" style="direction:rtl;">' + d.verb + '</div>'
+            + '<div class="grammatik-hinweis">' + (pronouns[d.pIdx]||'') + '</div>'
+            + '<div class="auswahl-grid">' + btns + '</div></div>';
+    } else if (grammatikModus === 'kasus') {
+        const alle = shuffle([...(d.antworten||[])]);
+        let btns = '';
+        for (let i = 0; i < alle.length; i++) { btns += '<button class="auswahl-btn" onclick="kasusAntwort(this.dataset.v,this)" data-v="' + alle[i] + '" style="direction:rtl;">' + alle[i] + '</button>'; }
+        display.innerHTML = '<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            + '<div class="grammatik-aufgabe" style="direction:rtl;">' + d.satz + '</div>'
+            + '<div class="grammatik-hinweis">' + (d.hinweis||'') + '</div>'
+            + '<div class="auswahl-grid">' + btns + '</div></div>';
+    }
+    document.getElementById('diktatStatus').textContent = '';
+}
+function diktatGrammatikAufgabeZeigen(modus) {
+    const w = diktatAktuell;
+    grammatikGesperrt = false; grammatikAktuell = null;
+    if (modus === 'genus') {
+        const alle = [...(grammatikDaten.genus.n1||[]), ...(grammatikDaten.genus.n2||[]), ...(grammatikDaten.genus.n3||[])];
+        grammatikAktuell = alle.find(e => e.wort === w);
+    } else if (modus === 'konjugation') {
+        if (verbForms && verbForms[w]) {
+            const formen = verbForms[w];
+            const pIdx = Math.floor(Math.random() * formen.length);
+            const richtig = formen[pIdx];
+            const falsch = formen.filter((_,i) => i !== pIdx).filter(f => f !== richtig).sort(() => Math.random()-0.5).slice(0,3);
+            grammatikAktuell = { verb: w, pIdx, richtig, antworten: shuffle([richtig, ...falsch]) };
+        }
+    } else if (modus === 'kasus') {
+        const alle = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
+        grammatikAktuell = alle.find(e => e.wort === w);
+    }
+    if (!grammatikAktuell) { diktatNeuesWort(); return; }
+    grammatikModus = modus;
+    grammatikRender();
+    _nachGrammatikCallback = () => diktatNeuesWort();
+}
+function grBtnKlick() {
+    document.getElementById('grBtnWrap').style.display = 'none';
+    const aufgaben = grammatikFuerWort(diktatAktuell);
+    if (!aufgaben.length) return;
+    diktatGrammatikAufgabeZeigen(aufgaben[Math.floor(Math.random() * aufgaben.length)]);
+}
+function grammatikSetModus(m,btn) {
+    grammatikModus=m; document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv')); btn.classList.add('aktiv'); grammatikNeueAufgabe();
+}
+function grammatikNeueAufgabe() {
+    if (_nachGrammatikCallback) { const cb = _nachGrammatikCallback; _nachGrammatikCallback = null; cb(); return; }
+    if (diktatAktiv) return;
+    const display=document.getElementById('wordDisplay'); display.classList.remove('empty'); grammatikGesperrt=false;
+    if (grammatikModus==='genus') {
+        const pool=grammatikDaten.genus[diktatNiveau]||grammatikDaten.genus.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell=e;
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;direction:ltr;">
+            <div style="font-size:2rem;">${e.emoji}</div>
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div class="grammatik-hinweis">جنس کیا ہے؟ (Welches Genus?)</div>
+            <div class="artikel-buttons">
+                <button class="art-btn" onclick="genusAntwort('م',this)" style="color:#1565c0;border-color:#1565c0;">مذکر (م)</button>
+                <button class="art-btn" onclick="genusAntwort('ف',this)" style="color:#c62828;border-color:#c62828;">مؤنث (ف)</button>
+            </div>
+            <div id="grammatikStatus" class="diktat-status"></div>
+        </div>`; grammatikSprechen();
+    } else if (grammatikModus==='kasus') {
+        const pool=grammatikDaten.kasus[diktatNiveau]||grammatikDaten.kasus.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell=e;
+        const btns=shuffle(e.antworten);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;direction:ltr;">
+            <div class="grammatik-aufgabe">${e.satz}</div>
+            <div class="grammatik-hinweis">${e.wort}</div>
+            <div class="auswahl-grid">${btns.map(a=>`<button class="auswahl-btn" onclick="kasusAntwort('${a.replace(/'/g,"\\'")}',this)">${a}</button>`).join('')}</div>
+            <div id="grammatikStatus" class="diktat-status"></div>
+        </div>`; grammatikSprechen();
+    } else if (grammatikModus==='konjugation') {
+        const pool=verbGroups[diktatNiveau]||verbGroups.n1;
+        const verb=pool[Math.floor(Math.random()*pool.length)];
+        const formen=verbForms[verb]; if(!formen){grammatikNeueAufgabe();return;}
+        const pIdx=Math.floor(Math.random()*6); const richtig=formen[pIdx];
+        const falsch=shuffle(formen.filter((_,i)=>i!==pIdx)).slice(0,3);
+        const alle=shuffle([richtig,...falsch]); grammatikAktuell={verb,pIdx,richtig};
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;direction:ltr;">
+            <div class="grammatik-aufgabe">${pronouns[pIdx]} ___ <span style="color:var(--primary)">${verb}</span></div>
+            <div class="grammatik-hinweis">حال (Präsens)</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a.replace(/'/g,"\\'")}',this)">${pronouns[pIdx]} ${a}</button>`).join('')}</div>
+            <div id="grammatikStatus" class="diktat-status"></div>
+        </div>`; grammatikSprechen();
+    } else if (grammatikModus==='tempus') {
+        const pool=[...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        const e=pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell=e;
+        const alle=shuffle([e.richtig,...e.falsch]);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;direction:ltr;">
+            <div class="grammatik-aufgabe">${e.pronomen} ___ <span style="color:var(--primary)">${e.verb}</span></div>
+            <div class="grammatik-hinweis">${e.zeit}</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="tempusAntwort('${a.replace(/'/g,"\\'")}',this)">${a}</button>`).join('')}</div>
+            <div id="grammatikStatus" class="diktat-status"></div>
+        </div>`;
+    }
+    document.getElementById('diktatStatus').textContent='';
+    if (uebersetzungAktiv && grammatikAktuell) {
+        const anzeige = document.getElementById('uebersetzungAnzeige');
+        let de = '';
+        if (grammatikAktuell.deutsch) {
+            de = grammatikAktuell.deutsch;
+        } else if (grammatikModus === 'konjugation') {
+            const pronounDE = ['ich','du','er/sie','wir','ihr','sie'][grammatikAktuell.pIdx] || '';
+            const verbDe = urDeDict[grammatikAktuell.verb] || grammatikAktuell.verb;
+            de = pronounDE + ' ___ ' + verbDe;
+        }
+        if (de) anzeige.textContent = '🇩🇪 ' + de;
+        else { const gw = grammatikAktuell.wort || grammatikAktuell.verb || ''; if (gw) uebersetzeUndZeige(gw); }
+    }
+}
+
+function genusAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.genus; btn.classList.add(ok?'richtig':'falsch');
+    if(!ok) btn.closest('div').querySelectorAll('.art-btn').forEach(b=>{if(b.textContent.includes(grammatikAktuell.genus==='م'?'مذکر':'مؤنث'))b.classList.add('richtig');});
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='شاباش! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`درست: ${grammatikAktuell.genus==='م'?'مذکر':'مؤنث'}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function kasusAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.richtig; btn.classList.add(ok?'richtig':'falsch');
+    if(!ok) btn.closest('div').querySelectorAll('.auswahl-btn').forEach(b=>{if(b.textContent.trim()===grammatikAktuell.richtig)b.classList.add('richtig');});
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='شاباش! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`درست: ${grammatikAktuell.richtig}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function konjAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.richtig; btn.classList.add(ok?'richtig':'falsch');
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='شاباش! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`درست: ${grammatikAktuell.richtig}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function tempusAntwort(g,btn) {
+    if(grammatikGesperrt)return; grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.richtig; btn.classList.add(ok?'richtig':'falsch');
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='شاباش! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`درست: ${grammatikAktuell.richtig}`;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function grammatikSprechen() {
+    let text='';
+    if(grammatikModus==='genus'&&grammatikAktuell)text=grammatikAktuell.wort;
+    else if(grammatikModus==='konjugation'&&grammatikAktuell)text=grammatikAktuell.verb;
+    else if(grammatikModus==='tempus'&&grammatikAktuell)text=grammatikAktuell.verb;
+    if(text) sprichUr(text);
+}
+
+// ── Audio ─────────────────────────────────────────────────────────────
+let _diktatCtx=null;
+function getDiktatCtx(){if(!_diktatCtx)_diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return _diktatCtx;}
+function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;[[523,0],[659,0.13],[784,0.26],[1047,0.39]].forEach(([f,d])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(0.2,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+d+0.3);o.connect(g);g.connect(ctx.destination);o.start(t+d);o.stop(t+d+0.3);});}catch(e){}}
+function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}}
+
+// ── Toast ─────────────────────────────────────────────────────────────
+let toastTimer=null;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000);}
+
+// ── Storage ───────────────────────────────────────────────────────────
+function openStorage(){const c=document.getElementById('storedWordsList');c.innerHTML='';if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">کوئی لفظ نہیں۔</p>';}else savedWords.forEach((w,i)=>{const div=document.createElement('div');div.className='stored-word';div.innerHTML=`<span style="font-size:1.3rem;">${w}</span>`;const b=document.createElement('button');b.style.cssText='background:var(--danger);color:white;padding:5px 10px;font-size:0.8rem;border-radius:8px;border:none;cursor:pointer;';b.textContent='ہٹائیں';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abclafz_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};div.appendChild(b);c.appendChild(div);});document.getElementById('storageModal').classList.add('open');}
+function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+function saveCurrentWord() {
+    if (currentWord.length === 0) return;
+    const wort = currentWord.join('');
+    if (savedWords.includes(wort)) { showToast('✅ ذخیره شد!'); return; }
+    savedWords.push(wort);
+    try { localStorage.setItem('abclafz_saved', JSON.stringify(savedWords)); } catch(e) {}
+    showToast('✅ ذخیره شد!');
+}
+     
+// === PRO-SYSTEM ===
+const THIS_APP_ID = 'ur';
+const APP_REGISTRY = [
+    { id:'de', name:'ABC Wort',    flag:'🇩🇪', subtitle:'Deutsch lernen',    file:'index.html',       proCode:null,                  color:'#4a90e2' },
+    { id:'ru', name:'АБВ Слово',   flag:'🇷🇺', subtitle:'Russisch lernen',   file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
+    { id:'en', name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',   file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
+    { id:'el', name:'ΑΒΓ Λέξη',   flag:'🇬🇷', subtitle:'Griechisch lernen', file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
+    { id:'ar', name:'أبت كلمة',   flag:'🇸🇦', subtitle:'Arabisch lernen',   file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
+    { id:'hi', name:'एबीसी शब्द', flag:'🇮🇳', subtitle:'Hindi lernen',      file:'abc_shabd.html',   proCode:'ABCSHABD-PRO-2025',   color:'#e65100' },
+    { id:'ur', name:'ابت لفظ',    flag:'🇵🇰', subtitle:'Urdu lernen',       file:'abc_lafz.html',    proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a' },
+    { id:'fa',  name:'الفبا کلمه', flag:'🇦🇫', subtitle:'Dari lernen',         file:'abc_kalima.html',  proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e' },
+    { id:'la',  name:'ABC Verbum',  flag:'🏛️',  subtitle:'Latein lernen',       file:'abc_verbum.html',  proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2' },
+    { id:'egy', name:'Medu Netjer', flag:'𓇳',  subtitle:'Hieroglyphen lernen', file:'abc_medu.html',    proCode:'ABCMEDU-PRO-2025',    color:'#b8860b' },
+    { id:'zh',  name:'汉字词',      flag:'🇨🇳', subtitle:'Mandarin lernen',     file:'abc_hanzi.html',   proCode:'ABCHANZI-PRO-2025',   color:'#c0392b' },
+     { id:'it', name:'ABC Parola', flag:'🇮🇹', subtitle:'Italienisch lernen', file:'abc_parola.html', proCode:'ABCPAROLA-PRO-2025', color:'#009246' },
+     { id:'es',  name:'ABC Palabra', flag:'🇪🇸', subtitle:'Spanisch lernen',     file:'abc_palabra.html', proCode:'ABCPALABRA-PRO-2025', color:'#c0392b' },
+     { id:'fr',  name:'ABC Parole',    flag:'🇫🇷', subtitle:'Französisch lernen',file:'abc_parole.html',  proCode:'ABCPAROLE-PRO-2025',  color:'#002395' },
+     { id:'he', name:'אבג מילים', flag:'🇮🇱', subtitle:'Hebräisch lernen', file:'abc_milim.html', proCode:'ABCMILIM-PRO-2025', color:'#1a5276' },
+];
+const FREIE_RUNDEN = 10;
+
+function proIstAktiv(appId) {
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    if(!app||!app.proCode)return true;
+    try{return localStorage.getItem('abc_pro_'+appId)==='true';}catch(e){return false;}
+}
+function freiRundenCheck() {
+    if(proIstAktiv(THIS_APP_ID))return true;
+    let r=0;try{r=parseInt(localStorage.getItem('abc_runden_'+THIS_APP_ID)||'0');}catch(e){}
+    if(r<FREIE_RUNDEN){try{localStorage.setItem('abc_runden_'+THIS_APP_ID,r+1);}catch(e){}return true;}
+    proGateAnzeigen(THIS_APP_ID,'Diktat & Grammatik');return false;
+}
+function proGateAnzeigen(appId,feature){
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    const display=document.getElementById('wordDisplay');if(!display)return;
+    display.classList.remove('empty');
+    display.innerHTML=`<div style="text-align:center;padding:1rem;width:100%;direction:ltr;">
+        <div style="font-size:2.5rem;margin-bottom:8px;">${app.flag}</div>
+        <div style="font-size:1rem;font-weight:bold;color:#2c3e50;margin-bottom:6px;">Pro-Version</div>
+        <div style="font-size:0.85rem;color:#7f8c8d;margin-bottom:4px;">${feature} · لامحدود</div>
+        <div style="font-size:1.1rem;font-weight:bold;color:${app.color};margin-bottom:16px;">2,99 € – ایک بار</div>
+        <button onclick="proKaufen('${appId}')" style="background:${app.color};padding:10px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-weight:bold;font-size:1rem;margin-bottom:8px;display:block;width:100%;">Pro خریدیں ☕ – 2,99€</button>
+        <button onclick="proCodeEingeben('${appId}')" style="background:#27ae60;padding:8px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-size:0.85rem;width:100%;">میں نے ادائیگی کر دی ✓</button>
+    </div>`;
+}
+function proKaufen(appId){window.open('https://ko-fi.com/nickelfax','_blank');showToast('ادائیگی کے بعد Ko-fi پیغام میں کوڈ ملے گا!');}
+function proCodeEingeben(appId){
+    const code=prompt('Pro کوڈ درج کریں:');if(!code)return;
+    const app=APP_REGISTRY.find(a=>a.id===appId);if(!app)return;
+    if(code.toUpperCase()===app.proCode){
+        try{localStorage.setItem('abc_pro_'+appId,'true');localStorage.removeItem('abc_runden_'+appId);}catch(e){}
+        showToast('Pro فعال! مزہ کریں! 🎉');updateDisplay();
+    }else{showToast('غلط کوڈ – Ko-fi سے ادائیگی کے بعد پوچھیں!');}
+}
+function crossSellBannerEinfuegen(currentAppId){
+    const andere=APP_REGISTRY.filter(a=>a.id!==currentAppId);
+    const container=document.createElement('div');container.id='crossSellBanner';
+    container.style.cssText='width:100%;max-width:700px;margin-top:24px;background:white;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.08);overflow:hidden;direction:ltr;';
+    const header=document.createElement('div');header.style.cssText='padding:12px 16px;font-size:0.8rem;font-weight:bold;color:#7f8c8d;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f0f0f0;';
+    header.textContent='🌍 Auch verfügbar';container.appendChild(header);
+    andere.forEach(app=>{
+        const aktiv=proIstAktiv(app.id);const item=document.createElement('div');
+        item.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f8f8f8;cursor:pointer;transition:background 0.15s;';
+        item.onmouseenter=()=>item.style.background='#f8f9fa';item.onmouseleave=()=>item.style.background='white';
+        item.onclick=()=>window.location.href=app.file;
+        item.innerHTML=`<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:1.8rem;">${app.flag}</span>
+            <div><div style="font-weight:bold;color:#2c3e50;font-size:0.95rem;">${app.name}</div>
+            <div style="font-size:0.8rem;color:#7f8c8d;">${app.subtitle}</div></div></div>
+            <div style="display:flex;align-items:center;gap:8px;">
+            ${aktiv?'<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Aktiviert</span>':'<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✨ Entdecken</span>'}
+            <span style="color:#bdc3c7;font-size:1.2rem;">›</span></div>`;
+        container.appendChild(item);
+    });
+    const aktiviertePros=APP_REGISTRY.filter(a=>a.proCode&&proIstAktiv(a.id));
+    if(aktiviertePros.length>=2){const hub=document.createElement('div');hub.style.cssText='padding:12px 16px;background:linear-gradient(135deg,#667eea22,#764ba222);display:flex;align-items:center;justify-content:space-between;';hub.innerHTML='<div><div style="font-weight:bold;color:#2c3e50;font-size:0.9rem;">🏆 Pro Plus Hub</div><div style="font-size:0.75rem;color:#7f8c8d;">Alle Sprachen in einer App — bald verfügbar</div></div><span style="background:#e8e8f5;color:#6c5ce7;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">Bald</span>';container.appendChild(hub);}
+    const kb=document.querySelector('.keyboard-container');
+    if(kb&&kb.parentNode)kb.parentNode.insertBefore(container,kb.nextSibling);else document.body.appendChild(container);
+}
+// === ENDE PRO-SYSTEM ===
+
+// ── Init ──────────────────────────────────────────────────────────────
+async function ladeExterneDaten() {
+    try {
+        const gRes = await fetch('../data/grammatik_ur.json');
+        if (gRes.ok) {
+            const gData = await gRes.json();
+            if (gData.genus)  grammatikDaten.genus  = gData.genus;
+            if (gData.kasus)  grammatikDaten.kasus  = gData.kasus;
+            if (gData.tempus) grammatikDaten.tempus = gData.tempus;
+            console.log('Grammatik-UR geladen ✓');
+        }
+    } catch(e) { console.log('Offline'); }
+}
+function init() {
+    buildKeyboard(); updateDisplay(); sprachDropdownBauen(); crossSellBannerEinfuegen(THIS_APP_ID);
+    ladeExterneDaten();
+}
+window.addEventListener('DOMContentLoaded', init);
+
+(function(){if(!window.visualViewport)return;window.visualViewport.addEventListener('resize',function(){if((window.innerHeight-window.visualViewport.height)>100){var d=document.getElementById('wordDisplay');if(d)setTimeout(function(){d.scrollIntoView({behavior:'smooth',block:'start'});},150);}});})();
+</script>
+    <div style="text-align:center; margin-top:20px; font-size:0.8rem; color:#bdc3c7;">
+    <a href="impressum.html" style="color:#bdc3c7;">Impressum</a> · 
+    <a href="datenschutz.html" style="color:#bdc3c7;">Datenschutz</a>
+</div> 
+</body>
+</html>
