@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "собака",  "genus": "м", "emoji": "🐕", "deutsch": "Hund (mask.)" },
+      { "wort": "кішка",   "genus": "ж", "emoji": "🐱", "deutsch": "Katze (fem.)" },
+      { "wort": "місяць",  "genus": "м", "emoji": "🌙", "deutsch": "Mond (mask.)" },
+      { "wort": "ніс",     "genus": "м", "emoji": "👃", "deutsch": "Nase (mask.)" },
+      { "wort": "рука",    "genus": "ж", "emoji": "✋", "deutsch": "Hand (fem.)" },
+      { "wort": "сонце",   "genus": "с", "emoji": "☀️", "deutsch": "Sonne (neutr.)" },
+      { "wort": "книга",   "genus": "ж", "emoji": "📖", "deutsch": "Buch (fem.)" },
+      { "wort": "яйце",    "genus": "с", "emoji": "🥚", "deutsch": "Ei (neutr.)" },
+      { "wort": "риба",    "genus": "ж", "emoji": "🐟", "deutsch": "Fisch (fem.)" },
+      { "wort": "потяг",   "genus": "м", "emoji": "🚂", "deutsch": "Zug (mask.)" }
+    ],
+    "n2": [
+      { "wort": "квітка",  "genus": "ж", "emoji": "🌸", "deutsch": "Blume (fem.)" },
+      { "wort": "міст",    "genus": "м", "emoji": "🌉", "deutsch": "Brücke (mask.)" },
+      { "wort": "куртка",  "genus": "ж", "emoji": "🧥", "deutsch": "Jacke (fem.)" },
+      { "wort": "валіза",  "genus": "ж", "emoji": "🧳", "deutsch": "Koffer (fem.)" },
+      { "wort": "сад",     "genus": "м", "emoji": "🌿", "deutsch": "Garten (mask.)" },
+      { "wort": "вулиця",  "genus": "ж", "emoji": "🛣️", "deutsch": "Straße (fem.)" },
+      { "wort": "сходи",   "genus": "м", "emoji": "🪜", "deutsch": "Treppe (mask.)" },
+      { "wort": "кімната", "genus": "ж", "emoji": "🛋️", "deutsch": "Zimmer (fem.)" },
+      { "wort": "школа",   "genus": "ж", "emoji": "🏫", "deutsch": "Schule (fem.)" }
+    ],
+    "n3": [
+      { "wort": "дружба",        "genus": "ж", "emoji": "💛", "deutsch": "Freundschaft (fem.)" },
+      { "wort": "відповідальність","genus":"ж", "emoji": "🎖️", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "можливість",    "genus": "ж", "emoji": "🔓", "deutsch": "Möglichkeit (fem.)" },
+      { "wort": "рішення",       "genus": "с", "emoji": "🎯", "deutsch": "Entscheidung (neutr.)" },
+      { "wort": "сюрприз",       "genus": "м", "emoji": "🎁", "deutsch": "Überraschung (mask.)" },
+      { "wort": "розуміння",     "genus": "с", "emoji": "🤔", "deutsch": "Verständnis (neutr.)" },
+      { "wort": "справедливість","genus": "ж", "emoji": "⚖️", "deutsch": "Gerechtigkeit (fem.)" },
+      { "wort": "захоплення",    "genus": "с", "emoji": "🌟", "deutsch": "Begeisterung (neutr.)" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "wort": "собака",  "satz": "Я бачу ___.",         "antworten": ["собаку","собака","собаки","собакою"], "richtig": "собаку",  "hinweis": "Знахідний відмінок (Akk.)" },
+      { "wort": "школа",   "satz": "Я йду до ___.",       "antworten": ["школи","школу","школі","школою"],   "richtig": "школи",   "hinweis": "Родовий відмінок (Gen.)" },
+      { "wort": "книга",   "satz": "Я читаю ___.",        "antworten": ["книгу","книга","книги","книгою"],   "richtig": "книгу",   "hinweis": "Знахідний відмінок (Akk.)" },
+      { "wort": "рука",    "satz": "Я мию ___.",          "antworten": ["руку","рука","руки","рукою"],       "richtig": "руку",    "hinweis": "Знахідний відмінок (Akk.)" },
+      { "wort": "кішка",   "satz": "___ п'є молоко.",     "antworten": ["кішка","кішку","кішки","кішці"],    "richtig": "кішка",   "hinweis": "Називний відмінок (Nom.)" }
+    ],
+    "n2": [
+      { "wort": "школа",   "satz": "Я навчаюся у ___.",   "antworten": ["школі","школу","школи","школою"],   "richtig": "школі",   "hinweis": "Місцевий відмінок (Lok.)" },
+      { "wort": "вулиця",  "satz": "Я йду по ___.",       "antworten": ["вулиці","вулицю","вулиці","вулицею"],"richtig": "вулиці", "hinweis": "Давальний відмінок (Dat.)" },
+      { "wort": "міст",    "satz": "Я бачу ___.",         "antworten": ["міст","моста","мосту","мостом"],    "richtig": "міст",    "hinweis": "Знахідний відмінок (Akk.)" }
+    ],
+    "n3": [
+      { "wort": "дружба",  "satz": "___ дуже важлива.",   "antworten": ["дружба","дружбу","дружби","дружбою"],"richtig": "дружба", "hinweis": "Називний відмінок (Nom.)" },
+      { "wort": "рішення", "satz": "Я прийняв ___.",      "antworten": ["рішення","рішенню","рішення","рішенням"],"richtig": "рішення","hinweis": "Знахідний відмінок (Akk.)" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "wort": "їсти",    "pronomen": "я",   "zeit": "Минулий час", "richtig": "їв",        "falsch": ["їм","буду їсти","їдять"],          "deutsch": "ich aß" },
+      { "wort": "іти",     "pronomen": "він", "zeit": "Минулий час", "richtig": "йшов",      "falsch": ["іде","піде","ідуть"],              "deutsch": "er ging" },
+      { "wort": "робити",  "pronomen": "ми",  "zeit": "Минулий час", "richtig": "робили",    "falsch": ["робимо","будемо робити","роблять"], "deutsch": "wir machten" },
+      { "wort": "бачити",  "pronomen": "я",   "zeit": "Минулий час", "richtig": "бачив",     "falsch": ["бачу","побачу","бачать"],           "deutsch": "ich sah" },
+      { "wort": "бігти",   "pronomen": "він", "zeit": "Минулий час", "richtig": "біг",       "falsch": ["біжить","побіжить","біжать"],       "deutsch": "er lief" },
+      { "wort": "мити",    "pronomen": "вона","zeit": "Минулий час", "richtig": "мила",      "falsch": ["миє","помиє","миють"],              "deutsch": "sie wusch" }
+    ],
+    "n2": [
+      { "wort": "вчитися", "pronomen": "ми",  "zeit": "Минулий час", "richtig": "вчилися",   "falsch": ["вчимося","будемо вчитися","вчаться"],"deutsch": "wir lernten" },
+      { "wort": "купувати","pronomen": "я",   "zeit": "Минулий час", "richtig": "купував",   "falsch": ["купую","куплю","купують"],           "deutsch": "ich kaufte" },
+      { "wort": "спати",   "pronomen": "вона","zeit": "Минулий час", "richtig": "спала",     "falsch": ["спить","поспить","сплять"],          "deutsch": "sie schlief" },
+      { "wort": "допомагати","pronomen":"він","zeit": "Минулий час", "richtig": "допомагав", "falsch": ["допомагає","допоможе","допомагають"],"deutsch": "er half" }
+    ],
+    "n3": [
+      { "wort": "спостерігати","pronomen":"ми","zeit":"Минулий час","richtig": "спостерігали","falsch": ["спостерігаємо","будемо спостерігати","спостерігають"],"deutsch": "wir beobachteten" },
+      { "wort": "вирішувати","pronomen":"вона","zeit":"Минулий час","richtig": "вирішувала", "falsch": ["вирішує","вирішить","вирішують"],     "deutsch": "sie entschied" },
+      { "wort": "розуміти","pronomen": "я",   "zeit": "Минулий час", "richtig": "розумів",   "falsch": ["розумію","зрозумію","розуміють"],   "deutsch": "ich verstand" }
+    ]
+  }
+}
