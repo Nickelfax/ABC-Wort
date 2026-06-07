@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "कुत्ता",    "genus": "पु",    "emoji": "🐕", "deutsch": "Hund (mask.)" },
+      { "wort": "बिल्ली",   "genus": "स्त्री","emoji": "🐱", "deutsch": "Katze (fem.)" },
+      { "wort": "चाँद",     "genus": "पु",    "emoji": "🌙", "deutsch": "Mond (mask.)" },
+      { "wort": "नाक",      "genus": "स्त्री","emoji": "👃", "deutsch": "Nase (fem.)" },
+      { "wort": "हाथ",      "genus": "पु",    "emoji": "✋", "deutsch": "Hand (mask.)" },
+      { "wort": "सूरज",     "genus": "पु",    "emoji": "☀️", "deutsch": "Sonne (mask.)" },
+      { "wort": "किताब",    "genus": "स्त्री","emoji": "📖", "deutsch": "Buch (fem.)" },
+      { "wort": "गेंद",     "genus": "स्त्री","emoji": "⚽", "deutsch": "Ball (fem.)" },
+      { "wort": "अंडा",     "genus": "पु",    "emoji": "🥚", "deutsch": "Ei (mask.)" },
+      { "wort": "मछली",     "genus": "स्त्री","emoji": "🐟", "deutsch": "Fisch (fem.)" },
+      { "wort": "रेलगाड़ी", "genus": "स्त्री","emoji": "🚂", "deutsch": "Zug (fem.)" }
+    ],
+    "n2": [
+      { "wort": "फूल",      "genus": "पु",    "emoji": "🌸", "deutsch": "Blume (mask.)" },
+      { "wort": "पुल",      "genus": "पु",    "emoji": "🌉", "deutsch": "Brücke (mask.)" },
+      { "wort": "जैकेट",    "genus": "स्त्री","emoji": "🧥", "deutsch": "Jacke (fem.)" },
+      { "wort": "सूटकेस",   "genus": "पु",    "emoji": "🧳", "deutsch": "Koffer (mask.)" },
+      { "wort": "बगीचा",    "genus": "पु",    "emoji": "🌿", "deutsch": "Garten (mask.)" },
+      { "wort": "सड़क",     "genus": "स्त्री","emoji": "🛣️", "deutsch": "Straße (fem.)" },
+      { "wort": "सीढ़ी",    "genus": "स्त्री","emoji": "🪜", "deutsch": "Treppe (fem.)" },
+      { "wort": "कमरा",     "genus": "पु",    "emoji": "🛋️", "deutsch": "Zimmer (mask.)" },
+      { "wort": "स्कूल",    "genus": "पु",    "emoji": "🏫", "deutsch": "Schule (mask.)" }
+    ],
+    "n3": [
+      { "wort": "दोस्ती",       "genus": "स्त्री","emoji": "💛", "deutsch": "Freundschaft (fem.)" },
+      { "wort": "ज़िम्मेदारी",  "genus": "स्त्री","emoji": "🎖️", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "संभावना",      "genus": "स्त्री","emoji": "🔓", "deutsch": "Möglichkeit (fem.)" },
+      { "wort": "निर्णय",       "genus": "पु",    "emoji": "🎯", "deutsch": "Entscheidung (mask.)" },
+      { "wort": "आश्चर्य",      "genus": "पु",    "emoji": "🎁", "deutsch": "Überraschung (mask.)" },
+      { "wort": "समझ",          "genus": "स्त्री","emoji": "🤔", "deutsch": "Verständnis (fem.)" },
+      { "wort": "न्याय",        "genus": "पु",    "emoji": "⚖️", "deutsch": "Gerechtigkeit (mask.)" },
+      { "wort": "उत्साह",       "genus": "पु",    "emoji": "🌟", "deutsch": "Begeisterung (mask.)" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "wort": "कुत्ता",  "satz": "मैं ___ देख रहा हूँ।",    "antworten": ["कुत्ते को","कुत्ता","कुत्ते का","कुत्ते से"], "richtig": "कुत्ते को", "hinweis": "Akkusativ को" },
+      { "wort": "स्कूल",   "satz": "मैं ___ जाता हूँ।",       "antworten": ["स्कूल को","स्कूल में","स्कूल से","स्कूल का"], "richtig": "स्कूल को", "hinweis": "Richtung को" },
+      { "wort": "किताब",   "satz": "यह ___ है।",               "antworten": ["किताब","किताब को","किताब से","किताब में"],    "richtig": "किताब",    "hinweis": "Nominativ" },
+      { "wort": "हाथ",     "satz": "___ धोना ज़रूरी है।",     "antworten": ["हाथ","हाथ को","हाथ से","हाथ में"],           "richtig": "हाथ",      "hinweis": "Nominativ" },
+      { "wort": "बिल्ली",  "satz": "___ दूध पीती है।",        "antworten": ["बिल्ली","बिल्ली को","बिल्ली से","बिल्ली का"],"richtig": "बिल्ली",  "hinweis": "Nominativ" }
+    ],
+    "n2": [
+      { "wort": "बगीचा",   "satz": "मैं ___ खेलता हूँ।",      "antworten": ["बगीचे में","बगीचे को","बगीचे से","बगीचे का"], "richtig": "बगीचे में","hinweis": "Lokativ में" },
+      { "wort": "सड़क",    "satz": "वह ___ चलती है।",         "antworten": ["सड़क पर","सड़क को","सड़क से","सड़क में"],    "richtig": "सड़क पर",  "hinweis": "Lokativ पर" },
+      { "wort": "स्कूल",   "satz": "मैं ___ पढ़ता हूँ।",      "antworten": ["स्कूल में","स्कूल को","स्कूल से","स्कूल का"],"richtig": "स्कूल में","hinweis": "Lokativ में" }
+    ],
+    "n3": [
+      { "wort": "दोस्ती",  "satz": "___ बहुत ज़रूरी है।",     "antworten": ["दोस्ती","दोस्ती को","दोस्ती से","दोस्ती में"],"richtig": "दोस्ती",  "hinweis": "Nominativ" },
+      { "wort": "निर्णय",  "satz": "मैंने ___ लिया।",         "antworten": ["निर्णय","निर्णय को","निर्णय से","निर्णय का"], "richtig": "निर्णय",  "hinweis": "Nominativ" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "wort": "खाना",  "pronomen": "मैं",  "zeit": "भूतकाल", "richtig": "खाया",     "falsch": ["खाता हूँ","खाऊँगा","खा रहा हूँ"],  "deutsch": "ich aß" },
+      { "wort": "जाना",  "pronomen": "वह",   "zeit": "भूतकाल", "richtig": "गया",      "falsch": ["जाता है","जाएगा","जा रहा है"],      "deutsch": "er ging" },
+      { "wort": "करना",  "pronomen": "हमने", "zeit": "भूतकाल", "richtig": "किया",     "falsch": ["करते हैं","करेंगे","कर रहे हैं"],   "deutsch": "wir machten" },
+      { "wort": "देखना", "pronomen": "मैंने","zeit": "भूतकाल", "richtig": "देखा",     "falsch": ["देखता हूँ","देखूँगा","देख रहा हूँ"],"deutsch": "ich sah" },
+      { "wort": "दौड़ना","pronomen": "वह",   "zeit": "भूतकाल", "richtig": "दौड़ा",    "falsch": ["दौड़ता है","दौड़ेगा","दौड़ रहा है"], "deutsch": "er lief" },
+      { "wort": "धोना",  "pronomen": "उसने", "zeit": "भूतकाल", "richtig": "धोया",     "falsch": ["धोता है","धोएगा","धो रहा है"],      "deutsch": "er wusch" }
+    ],
+    "n2": [
+      { "wort": "सीखना",     "pronomen": "हमने","zeit": "भूतकाल", "richtig": "सीखा",     "falsch": ["सीखते हैं","सीखेंगे","सीख रहे हैं"],   "deutsch": "wir lernten" },
+      { "wort": "खरीदना",    "pronomen": "मैंने","zeit": "भूतकाल","richtig": "खरीदा",    "falsch": ["खरीदता हूँ","खरीदूँगा","खरीद रहा हूँ"],"deutsch": "ich kaufte" },
+      { "wort": "सोना",      "pronomen": "वह",   "zeit": "भूतकाल","richtig": "सोया",     "falsch": ["सोता है","सोएगा","सो रहा है"],           "deutsch": "er schlief" },
+      { "wort": "मदद करना",  "pronomen": "उसने", "zeit": "भूतकाल","richtig": "मदद की",   "falsch": ["मदद करता है","मदद करेगा","मदद कर रहा है"],"deutsch": "er half" }
+    ],
+    "n3": [
+      { "wort": "देखना",         "pronomen": "हमने","zeit": "भूतकाल","richtig": "देखा",        "falsch": ["देखते हैं","देखेंगे","देख रहे हैं"],          "deutsch": "wir beobachteten" },
+      { "wort": "फ़ैसला करना",   "pronomen": "उसने","zeit": "भूतकाल","richtig": "फ़ैसला किया","falsch": ["फ़ैसला करता है","फ़ैसला करेगा","फ़ैसला कर रहा है"],"deutsch": "er entschied" },
+      { "wort": "समझना",         "pronomen": "मैंने","zeit": "भूतकाल","richtig": "समझा",        "falsch": ["समझता हूँ","समझूँगा","समझ रहा हूँ"],            "deutsch": "ich verstand" }
+    ]
+  }
+}
