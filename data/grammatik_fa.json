@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "سگ",     "genus": "م", "emoji": "🐕", "deutsch": "Hund" },
+      { "wort": "گربه",   "genus": "ف", "emoji": "🐱", "deutsch": "Katze" },
+      { "wort": "ماه",    "genus": "م", "emoji": "🌙", "deutsch": "Mond" },
+      { "wort": "بینی",   "genus": "ف", "emoji": "👃", "deutsch": "Nase" },
+      { "wort": "دست",    "genus": "م", "emoji": "✋", "deutsch": "Hand" },
+      { "wort": "آفتاب",  "genus": "م", "emoji": "☀️", "deutsch": "Sonne" },
+      { "wort": "کتاب",   "genus": "م", "emoji": "📖", "deutsch": "Buch" },
+      { "wort": "توپ",    "genus": "م", "emoji": "⚽", "deutsch": "Ball" },
+      { "wort": "تخم",    "genus": "م", "emoji": "🥚", "deutsch": "Ei" },
+      { "wort": "ماهی",   "genus": "ف", "emoji": "🐟", "deutsch": "Fisch" },
+      { "wort": "قطار",   "genus": "م", "emoji": "🚂", "deutsch": "Zug" }
+    ],
+    "n2": [
+      { "wort": "گل",     "genus": "م", "emoji": "🌸", "deutsch": "Blume" },
+      { "wort": "پل",     "genus": "م", "emoji": "🌉", "deutsch": "Brücke" },
+      { "wort": "جاکت",   "genus": "م", "emoji": "🧥", "deutsch": "Jacke" },
+      { "wort": "چمدان",  "genus": "م", "emoji": "🧳", "deutsch": "Koffer" },
+      { "wort": "باغ",    "genus": "م", "emoji": "🌿", "deutsch": "Garten" },
+      { "wort": "جاده",   "genus": "ف", "emoji": "🛣️", "deutsch": "Straße" },
+      { "wort": "پله",    "genus": "ف", "emoji": "🪜", "deutsch": "Treppe" },
+      { "wort": "اتاق",   "genus": "م", "emoji": "🛋️", "deutsch": "Zimmer" },
+      { "wort": "مکتب",   "genus": "م", "emoji": "🏫", "deutsch": "Schule" }
+    ],
+    "n3": [
+      { "wort": "دوستی",     "genus": "ف", "emoji": "💛", "deutsch": "Freundschaft" },
+      { "wort": "مسئولیت",   "genus": "ف", "emoji": "🎖️", "deutsch": "Verantwortung" },
+      { "wort": "امکان",     "genus": "م", "emoji": "🔓", "deutsch": "Möglichkeit" },
+      { "wort": "تصمیم",     "genus": "م", "emoji": "🎯", "deutsch": "Entscheidung" },
+      { "wort": "تعجب",      "genus": "م", "emoji": "🎁", "deutsch": "Überraschung" },
+      { "wort": "عدالت",     "genus": "ف", "emoji": "⚖️", "deutsch": "Gerechtigkeit" },
+      { "wort": "اشتیاق",    "genus": "م", "emoji": "🌟", "deutsch": "Begeisterung" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "wort": "سگ",    "satz": "من ___ می‌بینم۔",        "antworten": ["سگ را","سگ","از سگ","به سگ"],   "richtig": "سگ را",  "hinweis": "Akkusativ را" },
+      { "wort": "مکتب",  "satz": "من به ___ می‌روم۔",      "antworten": ["مکتب","مکتب را","از مکتب","در مکتب"],"richtig": "مکتب",  "hinweis": "Richtung به" },
+      { "wort": "کتاب",  "satz": "این ___ است۔",            "antworten": ["کتاب","کتاب را","از کتاب","به کتاب"],"richtig": "کتاب",  "hinweis": "Nominativ" },
+      { "wort": "دست",   "satz": "___ شستن لازم است۔",     "antworten": ["دست","دست را","از دست","به دست"], "richtig": "دست",    "hinweis": "Nominativ" },
+      { "wort": "گربه",  "satz": "___ شیر می‌خورد۔",       "antworten": ["گربه","گربه را","از گربه","به گربه"],"richtig": "گربه", "hinweis": "Nominativ" }
+    ],
+    "n2": [
+      { "wort": "باغ",   "satz": "من در ___ بازی می‌کنم۔", "antworten": ["باغ","باغ را","از باغ","به باغ"], "richtig": "باغ",    "hinweis": "Lokativ در" },
+      { "wort": "جاده",  "satz": "او در ___ راه می‌رود۔",  "antworten": ["جاده","جاده را","از جاده","به جاده"],"richtig": "جاده", "hinweis": "Lokativ در" },
+      { "wort": "مکتب",  "satz": "من در ___ درس می‌خوانم۔","antworten": ["مکتب","مکتب را","از مکتب","به مکتب"],"richtig": "مکتب","hinweis": "Lokativ در" }
+    ],
+    "n3": [
+      { "wort": "دوستی", "satz": "___ خیلی مهم است۔",      "antworten": ["دوستی","دوستی را","از دوستی","به دوستی"],"richtig": "دوستی","hinweis": "Nominativ" },
+      { "wort": "تصمیم", "satz": "من ___ گرفتم۔",          "antworten": ["تصمیم","تصمیم را","از تصمیم","به تصمیم"],"richtig": "تصمیم","hinweis": "Nominativ" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "wort": "خوردن",    "pronomen": "من",   "zeit": "گذشته", "richtig": "خوردم",      "falsch": ["می‌خورم","خواهم خورد","می‌خوردم"],     "deutsch": "ich aß" },
+      { "wort": "رفتن",     "pronomen": "او",   "zeit": "گذشته", "richtig": "رفت",         "falsch": ["می‌رود","خواهد رفت","می‌رفت"],         "deutsch": "er ging" },
+      { "wort": "کردن",     "pronomen": "ما",   "zeit": "گذشته", "richtig": "کردیم",       "falsch": ["می‌کنیم","خواهیم کرد","می‌کردیم"],     "deutsch": "wir machten" },
+      { "wort": "دیدن",     "pronomen": "من",   "zeit": "گذشته", "richtig": "دیدم",        "falsch": ["می‌بینم","خواهم دید","می‌دیدم"],       "deutsch": "ich sah" },
+      { "wort": "دویدن",    "pronomen": "او",   "zeit": "گذشته", "richtig": "دوید",        "falsch": ["می‌دود","خواهد دوید","می‌دوید"],       "deutsch": "er lief" },
+      { "wort": "شستن",     "pronomen": "او",   "zeit": "گذشته", "richtig": "شست",         "falsch": ["می‌شوید","خواهد شست","می‌شست"],        "deutsch": "er wusch" }
+    ],
+    "n2": [
+      { "wort": "یاد گرفتن","pronomen": "ما",   "zeit": "گذشته", "richtig": "یاد گرفتیم", "falsch": ["یاد می‌گیریم","یاد خواهیم گرفت","یاد می‌گرفتیم"],"deutsch": "wir lernten" },
+      { "wort": "خریدن",    "pronomen": "من",   "zeit": "گذشته", "richtig": "خریدم",       "falsch": ["می‌خرم","خواهم خرید","می‌خریدم"],      "deutsch": "ich kaufte" },
+      { "wort": "خوابیدن",  "pronomen": "او",   "zeit": "گذشته", "richtig": "خوابید",      "falsch": ["می‌خوابد","خواهد خوابید","می‌خوابید"], "deutsch": "er schlief" },
+      { "wort": "کمک کردن", "pronomen": "او",   "zeit": "گذشته", "richtig": "کمک کرد",     "falsch": ["کمک می‌کند","کمک خواهد کرد","کمک می‌کرد"],"deutsch": "er half" }
+    ],
+    "n3": [
+      { "wort": "مشاهده کردن","pronomen": "ما", "zeit": "گذشته", "richtig": "مشاهده کردیم","falsch": ["مشاهده می‌کنیم","مشاهده خواهیم کرد","مشاهده می‌کردیم"],"deutsch": "wir beobachteten" },
+      { "wort": "تصمیم گرفتن","pronomen": "او","zeit": "گذشته", "richtig": "تصمیم گرفت",  "falsch": ["تصمیم می‌گیرد","تصمیم خواهد گرفت","تصمیم می‌گرفت"],"deutsch": "er entschied" },
+      { "wort": "درک کردن",  "pronomen": "من",  "zeit": "گذشته", "richtig": "درک کردم",    "falsch": ["درک می‌کنم","درک خواهم کرد","درک می‌کردم"],"deutsch": "ich verstand" }
+    ]
+  }
+}
