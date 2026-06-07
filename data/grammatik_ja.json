@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "bedeutung": {
+    "n1": [
+      { "wort": "たべる", "antworten": ["essen","trinken","schlafen","laufen"],   "richtig": "essen",   "hinweis": "動詞" },
+      { "wort": "ほん",   "antworten": ["Buch","Stift","Tisch","Stuhl"],          "richtig": "Buch",    "hinweis": "名詞" },
+      { "wort": "さかな", "antworten": ["Fisch","Vogel","Hund","Katze"],          "richtig": "Fisch",   "hinweis": "名詞" },
+      { "wort": "いぬ",   "antworten": ["Hund","Katze","Pferd","Vogel"],          "richtig": "Hund",    "hinweis": "名詞" },
+      { "wort": "ねこ",   "antworten": ["Katze","Hund","Maus","Vogel"],           "richtig": "Katze",   "hinweis": "名詞" },
+      { "wort": "つき",   "antworten": ["Mond","Sonne","Stern","Wolke"],          "richtig": "Mond",    "hinweis": "名詞" },
+      { "wort": "て",     "antworten": ["Hand","Fuß","Auge","Nase"],              "richtig": "Hand",    "hinweis": "名詞" },
+      { "wort": "いく",   "antworten": ["gehen","kommen","sehen","essen"],        "richtig": "gehen",   "hinweis": "動詞" },
+      { "wort": "はしる", "antworten": ["laufen","gehen","springen","schwimmen"], "richtig": "laufen",  "hinweis": "動詞" },
+      { "wort": "みる",   "antworten": ["sehen","hören","riechen","schmecken"],   "richtig": "sehen",   "hinweis": "動詞" },
+      { "wort": "おおきい","antworten": ["groß","klein","alt","neu"],             "richtig": "groß",    "hinweis": "形容詞" },
+      { "wort": "あつい", "antworten": ["heiß","kalt","warm","kühl"],             "richtig": "heiß",    "hinweis": "形容詞" },
+      { "wort": "あらう", "antworten": ["waschen","kochen","kaufen","schlafen"],  "richtig": "waschen", "hinweis": "動詞" },
+      { "wort": "たいよう","antworten": ["Sonne","Mond","Stern","Wolke"],         "richtig": "Sonne",   "hinweis": "名詞" }
+    ],
+    "n2": [
+      { "wort": "はな",     "antworten": ["Blume","Baum","Gras","Pilz"],          "richtig": "Blume",    "hinweis": "名詞" },
+      { "wort": "はし",     "antworten": ["Brücke","Straße","Tunnel","Treppe"],   "richtig": "Brücke",   "hinweis": "名詞" },
+      { "wort": "かう",     "antworten": ["kaufen","verkaufen","finden","suchen"], "richtig": "kaufen",   "hinweis": "動詞" },
+      { "wort": "たすける", "antworten": ["helfen","fragen","antworten","warten"], "richtig": "helfen",   "hinweis": "動詞" },
+      { "wort": "まなぶ",   "antworten": ["lernen","spielen","arbeiten","schlafen"],"richtig": "lernen",  "hinweis": "動詞" },
+      { "wort": "ねる",     "antworten": ["schlafen","essen","trinken","laufen"],  "richtig": "schlafen", "hinweis": "動詞" },
+      { "wort": "がっこう", "antworten": ["Schule","Haus","Garten","Park"],        "richtig": "Schule",   "hinweis": "名詞" },
+      { "wort": "にわ",     "antworten": ["Garten","Zimmer","Küche","Bad"],        "richtig": "Garten",   "hinweis": "名詞" },
+      { "wort": "かいだん", "antworten": ["Treppe","Aufzug","Tür","Fenster"],      "richtig": "Treppe",   "hinweis": "名詞" },
+      { "wort": "へや",     "antworten": ["Zimmer","Küche","Bad","Garten"],        "richtig": "Zimmer",   "hinweis": "名詞" }
+    ],
+    "n3": [
+      { "wort": "ゆうじょう","antworten": ["Freundschaft","Feindschaft","Liebe","Hass"],   "richtig": "Freundschaft",  "hinweis": "名詞" },
+      { "wort": "けってい", "antworten": ["Entscheidung","Frage","Antwort","Problem"],     "richtig": "Entscheidung",  "hinweis": "名詞" },
+      { "wort": "りかい",   "antworten": ["Verständnis","Missverständnis","Wissen","Gefühl"],"richtig": "Verständnis","hinweis": "名詞" },
+      { "wort": "かんさつする","antworten": ["beobachten","verstehen","erklären","beschreiben"],"richtig": "beobachten","hinweis": "動詞" },
+      { "wort": "せきにん", "antworten": ["Verantwortung","Freiheit","Pflicht","Recht"],   "richtig": "Verantwortung","hinweis": "名詞" },
+      { "wort": "きめる",   "antworten": ["entscheiden","fragen","antworten","warten"],    "richtig": "entscheiden",  "hinweis": "動詞" }
+    ]
+  },
+  "zaehler": {
+    "n1": [
+      { "wort": "ほん",   "antworten": ["一冊","一個","一枚","一匹"], "richtig": "一冊", "hinweis": "Bücher → ～冊" },
+      { "wort": "たまご", "antworten": ["一個","一冊","一匹","一枚"], "richtig": "一個", "hinweis": "Eier → ～個" },
+      { "wort": "さかな", "antworten": ["一匹","一個","一冊","一枚"], "richtig": "一匹", "hinweis": "Fische → ～匹" },
+      { "wort": "いぬ",   "antworten": ["一匹","一個","一冊","一枚"], "richtig": "一匹", "hinweis": "Hunde → ～匹" },
+      { "wort": "ねこ",   "antworten": ["一匹","一個","一冊","一枚"], "richtig": "一匹", "hinweis": "Katzen → ～匹" },
+      { "wort": "ボール", "antworten": ["一個","一冊","一匹","一枚"], "richtig": "一個", "hinweis": "Bälle → ～個" }
+    ],
+    "n2": [
+      { "wort": "はな",     "antworten": ["一本","一枚","一個","一匹"], "richtig": "一本", "hinweis": "Blumen → ～本" },
+      { "wort": "ジャケット","antworten": ["一着","一個","一枚","一本"], "richtig": "一着", "hinweis": "Kleidung → ～着" },
+      { "wort": "スーツケース","antworten": ["一個","一本","一着","一匹"],"richtig": "一個","hinweis": "Koffer → ～個" }
+    ],
+    "n3": [
+      { "wort": "けってい", "antworten": ["一つ","一個","一本","一枚"], "richtig": "一つ", "hinweis": "abstrakt → ～つ" },
+      { "wort": "ゆうじょう","antworten": ["一つ","一個","一本","一匹"], "richtig": "一つ","hinweis": "abstrakt → ～つ" }
+    ]
+  },
+  "partikel": {
+    "n1": [
+      { "satz": "わたし___ がくせいです。", "richtig": "は", "antworten": ["は","が","を","に"], "hinweis": "Thema-Partikel は" },
+      { "satz": "りんご___ たべます。",     "richtig": "を", "antworten": ["は","が","を","に"], "hinweis": "Objekt-Partikel を" },
+      { "satz": "がっこう___ いきます。",   "richtig": "に", "antworten": ["は","が","を","に"], "hinweis": "Richtungs-Partikel に" },
+      { "satz": "いぬ___ います。",         "richtig": "が", "antworten": ["は","が","を","に"], "hinweis": "Subjekt-Partikel が" },
+      { "satz": "でんしゃ___ きます。",     "richtig": "で", "antworten": ["で","に","を","は"], "hinweis": "Mittel-Partikel で" },
+      { "satz": "にわ___ はしります。",     "richtig": "を", "antworten": ["は","が","を","で"], "hinweis": "Objekt-Partikel を" }
+    ],
+    "n2": [
+      { "satz": "はし___ わたります。",     "richtig": "を", "antworten": ["は","が","を","に"], "hinweis": "Objekt-Partikel を" },
+      { "satz": "ともだち___ たすけます。", "richtig": "を", "antworten": ["は","が","を","に"], "hinweis": "Objekt-Partikel を" },
+      { "satz": "がっこう___ まなびます。", "richtig": "で", "antworten": ["で","に","を","は"], "hinweis": "Ort-Partikel で" },
+      { "satz": "へや___ ねます。",         "richtig": "で", "antworten": ["で","に","を","は"], "hinweis": "Ort-Partikel で" }
+    ],
+    "n3": [
+      { "satz": "けってい___ します。",     "richtig": "を", "antworten": ["は","が","を","に"], "hinweis": "Objekt-Partikel を" },
+      { "satz": "ゆうじょう___ たいせつです。","richtig": "は","antworten": ["は","が","を","に"],"hinweis": "Thema-Partikel は" }
+    ]
+  },
+  "konjugation": {
+    "n1": [
+      { "infinitiv": "たべる", "formes": ["たべます","たべません","たべました","たべませんでした","たべます"], "hinweis": "食べる (Gruppe 2)" },
+      { "infinitiv": "いく",   "formes": ["いきます","いきません","いきました","いきませんでした","いきます"], "hinweis": "行く (Gruppe 1)" },
+      { "infinitiv": "みる",   "formes": ["みます","みません","みました","みませんでした","みます"], "hinweis": "見る (Gruppe 2)" },
+      { "infinitiv": "する",   "formes": ["します","しません","しました","しませんでした","します"], "hinweis": "する (unregelmäßig)" }
+    ],
+    "n2": [
+      { "infinitiv": "まなぶ", "formes": ["まなびます","まなびません","まなびました","まなびませんでした","まなびます"], "hinweis": "学ぶ (Gruppe 1)" },
+      { "infinitiv": "ねる",   "formes": ["ねます","ねません","ねました","ねませんでした","ねます"], "hinweis": "寝る (Gruppe 2)" },
+      { "infinitiv": "かう",   "formes": ["かいます","かいません","かいました","かいませんでした","かいます"], "hinweis": "買う (Gruppe 1)" }
+    ],
+    "n3": [
+      { "infinitiv": "かんさつする","formes": ["かんさつします","かんさつしません","かんさつしました","かんさつしませんでした","かんさつします"], "hinweis": "観察する (する-Verb)" },
+      { "infinitiv": "きめる",     "formes": ["きめます","きめません","きめました","きめませんでした","きめます"], "hinweis": "決める (Gruppe 2)" }
+    ]
+  }
+}
