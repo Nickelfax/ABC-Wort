@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "rodzaj": {
+    "n1": [
+      { "wort": "dom",     "artikel": "on",  "emoji": "🏠", "rodzaj": "m", "deutsch": "Haus (mask.)" },
+      { "wort": "kot",     "artikel": "on",  "emoji": "🐱", "rodzaj": "m", "deutsch": "Katze (mask.)" },
+      { "wort": "pies",    "artikel": "on",  "emoji": "🐕", "rodzaj": "m", "deutsch": "Hund (mask.)" },
+      { "wort": "księżyc", "artikel": "on",  "emoji": "🌙", "rodzaj": "m", "deutsch": "Mond (mask.)" },
+      { "wort": "nos",     "artikel": "on",  "emoji": "👃", "rodzaj": "m", "deutsch": "Nase (mask.)" },
+      { "wort": "ptak",    "artikel": "on",  "emoji": "🐦", "rodzaj": "m", "deutsch": "Vogel (mask.)" },
+      { "wort": "kwiat",   "artikel": "on",  "emoji": "🌸", "rodzaj": "m", "deutsch": "Blume (mask.)" },
+      { "wort": "chleb",   "artikel": "on",  "emoji": "🍞", "rodzaj": "m", "deutsch": "Brot (mask.)" },
+      { "wort": "woda",    "artikel": "ona", "emoji": "💧", "rodzaj": "f", "deutsch": "Wasser (fem.)" },
+      { "wort": "ryba",    "artikel": "ona", "emoji": "🐟", "rodzaj": "f", "deutsch": "Fisch (fem.)" },
+      { "wort": "ręka",    "artikel": "ona", "emoji": "✋", "rodzaj": "f", "deutsch": "Hand (fem.)" },
+      { "wort": "góra",    "artikel": "ona", "emoji": "⛰️", "rodzaj": "f", "deutsch": "Berg (fem.)" },
+      { "wort": "rzeka",   "artikel": "ona", "emoji": "🌊", "rodzaj": "f", "deutsch": "Fluss (fem.)" },
+      { "wort": "głowa",   "artikel": "ona", "emoji": "🧠", "rodzaj": "f", "deutsch": "Kopf (fem.)" },
+      { "wort": "oko",     "artikel": "ono", "emoji": "👁️", "rodzaj": "n", "deutsch": "Auge (neutr.)" },
+      { "wort": "serce",   "artikel": "ono", "emoji": "❤️", "rodzaj": "n", "deutsch": "Herz (neutr.)" },
+      { "wort": "słońce",  "artikel": "ono", "emoji": "☀️", "rodzaj": "n", "deutsch": "Sonne (neutr.)" },
+      { "wort": "drzewo",  "artikel": "ono", "emoji": "🌳", "rodzaj": "n", "deutsch": "Baum (neutr.)" },
+      { "wort": "jabłko",  "artikel": "ono", "emoji": "🍎", "rodzaj": "n", "deutsch": "Apfel (neutr.)" },
+      { "wort": "mleko",   "artikel": "ono", "emoji": "🥛", "rodzaj": "n", "deutsch": "Milch (neutr.)" }
+    ],
+    "n2": [
+      { "wort": "szkoła",    "artikel": "ona", "emoji": "🏫", "rodzaj": "f", "deutsch": "Schule (fem.)" },
+      { "wort": "książka",   "artikel": "ona", "emoji": "📖", "rodzaj": "f", "deutsch": "Buch (fem.)" },
+      { "wort": "rodzina",   "artikel": "ona", "emoji": "👨‍👩‍👧", "rodzaj": "f", "deutsch": "Familie (fem.)" },
+      { "wort": "ulica",     "artikel": "ona", "emoji": "🛣️", "rodzaj": "f", "deutsch": "Straße (fem.)" },
+      { "wort": "miasto",    "artikel": "ono", "emoji": "🏙️", "rodzaj": "n", "deutsch": "Stadt (neutr.)" },
+      { "wort": "okno",      "artikel": "ono", "emoji": "🪟", "rodzaj": "n", "deutsch": "Fenster (neutr.)" },
+      { "wort": "krzesło",   "artikel": "ono", "emoji": "🪑", "rodzaj": "n", "deutsch": "Stuhl (neutr.)" },
+      { "wort": "przyjaciel","artikel": "on",  "emoji": "👫", "rodzaj": "m", "deutsch": "Freund (mask.)" },
+      { "wort": "stolik",    "artikel": "on",  "emoji": "🍽️", "rodzaj": "m", "deutsch": "Tisch (mask.)" }
+    ],
+    "n3": [
+      { "wort": "wolność",        "artikel": "ona", "emoji": "🕊️", "rodzaj": "f", "deutsch": "Freiheit (fem.)" },
+      { "wort": "miłość",         "artikel": "ona", "emoji": "❤️", "rodzaj": "f", "deutsch": "Liebe (fem.)" },
+      { "wort": "przyjaźń",       "artikel": "ona", "emoji": "💛", "rodzaj": "f", "deutsch": "Freundschaft (fem.)" },
+      { "wort": "sprawiedliwość", "artikel": "ona", "emoji": "⚖️", "rodzaj": "f", "deutsch": "Gerechtigkeit (fem.)" },
+      { "wort": "nadzieja",       "artikel": "ona", "emoji": "🌟", "rodzaj": "f", "deutsch": "Hoffnung (fem.)" },
+      { "wort": "odpowiedzialność","artikel":"ona", "emoji": "🎖️", "rodzaj": "f", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "szczęście",      "artikel": "ono", "emoji": "🍀", "rodzaj": "n", "deutsch": "Glück (neutr.)" },
+      { "wort": "zrozumienie",    "artikel": "ono", "emoji": "🤔", "rodzaj": "n", "deutsch": "Verständnis (neutr.)" },
+      { "wort": "możliwość",      "artikel": "ona", "emoji": "🔓", "rodzaj": "f", "deutsch": "Möglichkeit (fem.)" }
+    ]
+  },
+  "przypadek": {
+    "n1": [
+      { "wort": "dom",    "satz": "Idę do ___.",         "antworten": ["domu","dom","domem","domie"],   "richtig": "domu",  "hinweis": "Dopełniacz (Gen.)" },
+      { "wort": "kot",    "satz": "Widzę ___.",           "antworten": ["kota","kot","kotem","kocie"],   "richtig": "kota",  "hinweis": "Biernik (Akk.)" },
+      { "wort": "woda",   "satz": "Piję ___.",            "antworten": ["wodę","woda","wody","wodzie"],  "richtig": "wodę",  "hinweis": "Biernik (Akk.)" },
+      { "wort": "pies",   "satz": "Nie ma ___.",          "antworten": ["psa","pies","psem","psie"],     "richtig": "psa",   "hinweis": "Dopełniacz (Gen.)" },
+      { "wort": "ręka",   "satz": "Myję ___.",            "antworten": ["rękę","ręka","ręki","ręką"],   "richtig": "rękę",  "hinweis": "Biernik (Akk.)" },
+      { "wort": "ryba",   "satz": "Jem ___.",             "antworten": ["rybę","ryba","ryby","rybą"],   "richtig": "rybę",  "hinweis": "Biernik (Akk.)" }
+    ],
+    "n2": [
+      { "wort": "szkoła",  "satz": "Idę do ___.",        "antworten": ["szkoły","szkołę","szkole","szkołą"],  "richtig": "szkoły",  "hinweis": "Dopełniacz (Gen.)" },
+      { "wort": "książka", "satz": "Czytam ___.",         "antworten": ["książkę","książka","książki","książką"],"richtig": "książkę","hinweis": "Biernik (Akk.)" },
+      { "wort": "miasto",  "satz": "Mieszkam w ___.",     "antworten": ["mieście","miasto","miasta","miastem"], "richtig": "mieście","hinweis": "Miejscownik (Lok.)" },
+      { "wort": "ulica",   "satz": "Idę po ___.",         "antworten": ["ulicy","ulica","ulicę","ulicą"],      "richtig": "ulicy",   "hinweis": "Miejscownik (Lok.)" }
+    ],
+    "n3": [
+      { "wort": "wolność",   "satz": "Walczę o ___.",    "antworten": ["wolność","wolności","wolnością","wolności"],"richtig": "wolność","hinweis": "Biernik (Akk.)" },
+      { "wort": "przyjaźń",  "satz": "Cenię ___.",       "antworten": ["przyjaźń","przyjaźni","przyjaźnią","przyjaźni"],"richtig": "przyjaźń","hinweis": "Biernik (Akk.)" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "infinitiv": "czytać",    "pronomen": "ja",  "zeit": "Czas przeszły", "richtig": "czytałem",   "falsch": ["czytam","będę czytać","czytałbym"],     "deutsch": "ich las" },
+      { "infinitiv": "biegać",    "pronomen": "on",  "zeit": "Czas przeszły", "richtig": "biegał",     "falsch": ["biega","będzie biegać","biegałby"],     "deutsch": "er lief" },
+      { "infinitiv": "pić",       "pronomen": "my",  "zeit": "Czas przeszły", "richtig": "piliśmy",    "falsch": ["pijemy","będziemy pić","pilibyśmy"],    "deutsch": "wir tranken" },
+      { "infinitiv": "spać",      "pronomen": "ona", "zeit": "Czas przeszły", "richtig": "spała",      "falsch": ["śpi","będzie spać","spałaby"],          "deutsch": "sie schlief" },
+      { "infinitiv": "mówić",     "pronomen": "ja",  "zeit": "Czas przeszły", "richtig": "mówiłem",    "falsch": ["mówię","będę mówić","mówiłbym"],        "deutsch": "ich sprach" }
+    ],
+    "n2": [
+      { "infinitiv": "uczyć się", "pronomen": "my",  "zeit": "Czas przeszły", "richtig": "uczyliśmy się","falsch": ["uczymy się","będziemy się uczyć","uczylibyśmy się"],"deutsch": "wir lernten" },
+      { "infinitiv": "kupować",   "pronomen": "ja",  "zeit": "Czas przeszły", "richtig": "kupowałem",  "falsch": ["kupuję","będę kupować","kupowałbym"],   "deutsch": "ich kaufte" },
+      { "infinitiv": "pracować",  "pronomen": "on",  "zeit": "Czas przeszły", "richtig": "pracował",   "falsch": ["pracuje","będzie pracować","pracowałby"],"deutsch": "er arbeitete" },
+      { "infinitiv": "słuchać",   "pronomen": "ona", "zeit": "Czas przeszły", "richtig": "słuchała",   "falsch": ["słucha","będzie słuchać","słuchałaby"], "deutsch": "sie hörte zu" }
+    ],
+    "n3": [
+      { "infinitiv": "obserwować","pronomen": "my",  "zeit": "Czas przeszły", "richtig": "obserwowaliśmy","falsch": ["obserwujemy","będziemy obserwować","obserwowalibyśmy"],"deutsch": "wir beobachteten" },
+      { "infinitiv": "decydować", "pronomen": "ona", "zeit": "Czas przeszły", "richtig": "decydowała", "falsch": ["decyduje","będzie decydować","decydowałaby"],"deutsch": "sie entschied" },
+      { "infinitiv": "rozumieć",  "pronomen": "ja",  "zeit": "Czas przeszły", "richtig": "rozumiałem", "falsch": ["rozumiem","będę rozumieć","rozumiałbym"],"deutsch": "ich verstand" }
+    ]
+  }
+}
