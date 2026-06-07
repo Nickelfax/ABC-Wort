@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "כלב",    "genus": "ז", "emoji": "🐕", "deutsch": "Hund (mask.)" },
+      { "wort": "חתול",   "genus": "ז", "emoji": "🐱", "deutsch": "Katze (mask.)" },
+      { "wort": "ירח",    "genus": "ז", "emoji": "🌙", "deutsch": "Mond (mask.)" },
+      { "wort": "אף",     "genus": "ז", "emoji": "👃", "deutsch": "Nase (mask.)" },
+      { "wort": "יד",     "genus": "נ", "emoji": "✋", "deutsch": "Hand (fem.)" },
+      { "wort": "שמש",    "genus": "נ", "emoji": "☀️", "deutsch": "Sonne (fem.)" },
+      { "wort": "ספר",    "genus": "ז", "emoji": "📖", "deutsch": "Buch (mask.)" },
+      { "wort": "כדור",   "genus": "ז", "emoji": "⚽", "deutsch": "Ball (mask.)" },
+      { "wort": "ביצה",   "genus": "נ", "emoji": "🥚", "deutsch": "Ei (fem.)" },
+      { "wort": "דג",     "genus": "ז", "emoji": "🐟", "deutsch": "Fisch (mask.)" },
+      { "wort": "רכבת",   "genus": "נ", "emoji": "🚂", "deutsch": "Zug (fem.)" }
+    ],
+    "n2": [
+      { "wort": "פרח",    "genus": "ז", "emoji": "🌸", "deutsch": "Blume (mask.)" },
+      { "wort": "גשר",    "genus": "ז", "emoji": "🌉", "deutsch": "Brücke (mask.)" },
+      { "wort": "מעיל",   "genus": "ז", "emoji": "🧥", "deutsch": "Mantel (mask.)" },
+      { "wort": "מזוודה", "genus": "נ", "emoji": "🧳", "deutsch": "Koffer (fem.)" },
+      { "wort": "גינה",   "genus": "נ", "emoji": "🌿", "deutsch": "Garten (fem.)" },
+      { "wort": "רחוב",   "genus": "ז", "emoji": "🛣️", "deutsch": "Straße (mask.)" },
+      { "wort": "מדרגות", "genus": "נ", "emoji": "🪜", "deutsch": "Treppe (fem.)" },
+      { "wort": "חדר",    "genus": "ז", "emoji": "🛋️", "deutsch": "Zimmer (mask.)" },
+      { "wort": "בית ספר","genus": "ז", "emoji": "🏫", "deutsch": "Schule (mask.)" }
+    ],
+    "n3": [
+      { "wort": "ידידות",      "genus": "נ", "emoji": "💛", "deutsch": "Freundschaft (fem.)" },
+      { "wort": "אחריות",      "genus": "נ", "emoji": "🎖️", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "אפשרות",      "genus": "נ", "emoji": "🔓", "deutsch": "Möglichkeit (fem.)" },
+      { "wort": "החלטה",       "genus": "נ", "emoji": "🎯", "deutsch": "Entscheidung (fem.)" },
+      { "wort": "הפתעה",       "genus": "נ", "emoji": "🎁", "deutsch": "Überraschung (fem.)" },
+      { "wort": "הבנה",        "genus": "נ", "emoji": "🤔", "deutsch": "Verständnis (fem.)" },
+      { "wort": "צדק",         "genus": "ז", "emoji": "⚖️", "deutsch": "Gerechtigkeit (mask.)" },
+      { "wort": "התלהבות",     "genus": "נ", "emoji": "🌟", "deutsch": "Begeisterung (fem.)" }
+    ]
+  },
+  "konjugation": {
+    "n1": [
+      { "infinitiv": "לאכול",  "formes": ["אני אוכל","אתה אוכל","הוא אוכל","אנחנו אוכלים","אתם אוכלים","הם אוכלים"] },
+      { "infinitiv": "ללכת",   "formes": ["אני הולך","אתה הולך","הוא הולך","אנחנו הולכים","אתם הולכים","הם הולכים"] },
+      { "infinitiv": "לראות",  "formes": ["אני רואה","אתה רואה","הוא רואה","אנחנו רואים","אתם רואים","הם רואים"] },
+      { "infinitiv": "לעשות",  "formes": ["אני עושה","אתה עושה","הוא עושה","אנחנו עושים","אתם עושים","הם עושים"] },
+      { "infinitiv": "לרוץ",   "formes": ["אני רץ","אתה רץ","הוא רץ","אנחנו רצים","אתם רצים","הם רצים"] },
+      { "infinitiv": "לשטוף",  "formes": ["אני שוטף","אתה שוטף","הוא שוטף","אנחנו שוטפים","אתם שוטפים","הם שוטפים"] }
+    ],
+    "n2": [
+      { "infinitiv": "ללמוד",  "formes": ["אני לומד","אתה לומד","הוא לומד","אנחנו לומדים","אתם לומדים","הם לומדים"] },
+      { "infinitiv": "לעזור",  "formes": ["אני עוזר","אתה עוזר","הוא עוזר","אנחנו עוזרים","אתם עוזרים","הם עוזרים"] },
+      { "infinitiv": "לקנות",  "formes": ["אני קונה","אתה קונה","הוא קונה","אנחנו קונים","אתם קונים","הם קונים"] },
+      { "infinitiv": "לישון",  "formes": ["אני ישן","אתה ישן","הוא ישן","אנחנו ישנים","אתם ישנים","הם ישנים"] },
+      { "infinitiv": "לחפש",   "formes": ["אני מחפש","אתה מחפש","הוא מחפש","אנחנו מחפשים","אתם מחפשים","הם מחפשים"] },
+      { "infinitiv": "לחכות",  "formes": ["אני מחכה","אתה מחכה","הוא מחכה","אנחנו מחכים","אתם מחכים","הם מחכים"] }
+    ],
+    "n3": [
+      { "infinitiv": "להתבונן","formes": ["אני מתבונן","אתה מתבונן","הוא מתבונן","אנחנו מתבוננים","אתם מתבוננים","הם מתבוננים"] },
+      { "infinitiv": "להחליט", "formes": ["אני מחליט","אתה מחליט","הוא מחליט","אנחנו מחליטים","אתם מחליטים","הם מחליטים"] },
+      { "infinitiv": "להבין",  "formes": ["אני מבין","אתה מבין","הוא מבין","אנחנו מבינים","אתם מבינים","הם מבינים"] }
+    ]
+  },
+  "binyan": {
+    "n1": [
+      { "satz": "אני ___ ספר.", "wort": "קרא",  "antworten": ["קורא","קרא","קרוא","יקרא"],    "richtig": "קורא",  "hinweis": "Pa'al · הווה" },
+      { "satz": "הוא ___ מהר.", "wort": "רוץ",  "antworten": ["רץ","ירוץ","ריצה","רוצה"],     "richtig": "רץ",    "hinweis": "Pa'al · הווה" },
+      { "satz": "אני ___ אוכל.","wort": "אכל",  "antworten": ["אוכל","אכל","יאכל","אכלתי"],  "richtig": "אוכל",  "hinweis": "Pa'al · הווה" }
+    ],
+    "n2": [
+      { "satz": "הם ___ ביחד.", "wort": "למד",  "antworten": ["לומדים","למדו","ילמדו","לומד"],"richtig": "לומדים","hinweis": "Pa'al · הווה רבים" },
+      { "satz": "היא ___ לו.",  "wort": "עזר",  "antworten": ["עוזרת","עזרה","תעזור","עוזר"], "richtig": "עוזרת", "hinweis": "Pa'al · הווה נקבה" }
+    ],
+    "n3": [
+      { "satz": "אנחנו ___ את הבעיה.", "wort": "הבין","antworten": ["מבינים","הבנו","נבין","מבין"],"richtig": "מבינים","hinweis": "Pa'al · הווה רבים" }
+    ]
+  }
+}
