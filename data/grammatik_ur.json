@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "genus": {
+    "n1": [
+      { "wort": "کتا",      "genus": "م", "emoji": "🐕", "deutsch": "Hund (mask.)" },
+      { "wort": "بلی",      "genus": "م", "emoji": "🐱", "deutsch": "Katze (fem. aber mask. Genus)" },
+      { "wort": "چاند",     "genus": "م", "emoji": "🌙", "deutsch": "Mond (mask.)" },
+      { "wort": "ناک",      "genus": "ف", "emoji": "👃", "deutsch": "Nase (fem.)" },
+      { "wort": "ہاتھ",     "genus": "م", "emoji": "✋", "deutsch": "Hand (mask.)" },
+      { "wort": "سورج",     "genus": "م", "emoji": "☀️", "deutsch": "Sonne (mask.)" },
+      { "wort": "کتاب",     "genus": "ف", "emoji": "📖", "deutsch": "Buch (fem.)" },
+      { "wort": "گیند",     "genus": "ف", "emoji": "⚽", "deutsch": "Ball (fem.)" },
+      { "wort": "انڈا",     "genus": "م", "emoji": "🥚", "deutsch": "Ei (mask.)" },
+      { "wort": "مچھلی",    "genus": "ف", "emoji": "🐟", "deutsch": "Fisch (fem.)" },
+      { "wort": "ریل گاڑی", "genus": "ف", "emoji": "🚂", "deutsch": "Zug (fem.)" }
+    ],
+    "n2": [
+      { "wort": "پھول",     "genus": "م", "emoji": "🌸", "deutsch": "Blume (mask.)" },
+      { "wort": "پل",       "genus": "م", "emoji": "🌉", "deutsch": "Brücke (mask.)" },
+      { "wort": "جیکٹ",     "genus": "ف", "emoji": "🧥", "deutsch": "Jacke (fem.)" },
+      { "wort": "سوٹ کیس",  "genus": "م", "emoji": "🧳", "deutsch": "Koffer (mask.)" },
+      { "wort": "باغ",      "genus": "م", "emoji": "🌿", "deutsch": "Garten (mask.)" },
+      { "wort": "سڑک",      "genus": "ف", "emoji": "🛣️", "deutsch": "Straße (fem.)" },
+      { "wort": "سیڑھی",    "genus": "ف", "emoji": "🪜", "deutsch": "Treppe (fem.)" },
+      { "wort": "کمرہ",     "genus": "م", "emoji": "🛋️", "deutsch": "Zimmer (mask.)" },
+      { "wort": "اسکول",    "genus": "م", "emoji": "🏫", "deutsch": "Schule (mask.)" }
+    ],
+    "n3": [
+      { "wort": "دوستی",      "genus": "ف", "emoji": "💛", "deutsch": "Freundschaft (fem.)" },
+      { "wort": "ذمہ داری",   "genus": "ف", "emoji": "🎖️", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "امکان",      "genus": "م", "emoji": "🔓", "deutsch": "Möglichkeit (mask.)" },
+      { "wort": "فیصلہ",      "genus": "م", "emoji": "🎯", "deutsch": "Entscheidung (mask.)" },
+      { "wort": "حیرت",       "genus": "ف", "emoji": "🎁", "deutsch": "Überraschung (fem.)" },
+      { "wort": "سمجھ",       "genus": "ف", "emoji": "🤔", "deutsch": "Verständnis (fem.)" },
+      { "wort": "انصاف",      "genus": "م", "emoji": "⚖️", "deutsch": "Gerechtigkeit (mask.)" },
+      { "wort": "جوش",        "genus": "م", "emoji": "🌟", "deutsch": "Begeisterung (mask.)" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "wort": "کتا",    "satz": "میں ___ دیکھ رہا ہوں۔",  "antworten": ["کتے کو","کتا","کتے کا","کتے سے"], "richtig": "کتے کو", "hinweis": "Akkusativ کو" },
+      { "wort": "اسکول",  "satz": "میں ___ جاتا ہوں۔",      "antworten": ["اسکول کو","اسکول میں","اسکول سے","اسکول کا"], "richtig": "اسکول کو", "hinweis": "Richtung کو" },
+      { "wort": "کتاب",   "satz": "یہ ___ ہے۔",              "antworten": ["کتاب","کتاب کو","کتاب سے","کتاب میں"], "richtig": "کتاب", "hinweis": "Nominativ" },
+      { "wort": "ہاتھ",   "satz": "___ دھونا ضروری ہے۔",    "antworten": ["ہاتھ","ہاتھ کو","ہاتھ سے","ہاتھ میں"], "richtig": "ہاتھ", "hinweis": "Nominativ" },
+      { "wort": "بلی",    "satz": "___ دودھ پیتی ہے۔",      "antworten": ["بلی","بلی کو","بلی سے","بلی کا"], "richtig": "بلی", "hinweis": "Nominativ" }
+    ],
+    "n2": [
+      { "wort": "باغ",    "satz": "میں ___ کھیلتا ہوں۔",    "antworten": ["باغ میں","باغ کو","باغ سے","باغ کا"], "richtig": "باغ میں", "hinweis": "Lokativ میں" },
+      { "wort": "سڑک",   "satz": "وہ ___ چلتی ہے۔",         "antworten": ["سڑک پر","سڑک کو","سڑک سے","سڑک میں"], "richtig": "سڑک پر", "hinweis": "Lokativ پر" },
+      { "wort": "اسکول", "satz": "میں ___ پڑھتا ہوں۔",      "antworten": ["اسکول میں","اسکول کو","اسکول سے","اسکول کا"], "richtig": "اسکول میں", "hinweis": "Lokativ میں" }
+    ],
+    "n3": [
+      { "wort": "دوستی",  "satz": "___ بہت ضروری ہے۔",      "antworten": ["دوستی","دوستی کو","دوستی سے","دوستی میں"], "richtig": "دوستی", "hinweis": "Nominativ" },
+      { "wort": "فیصلہ",  "satz": "میں نے ___ لیا۔",        "antworten": ["فیصلہ","فیصلہ کو","فیصلہ سے","فیصلہ کا"], "richtig": "فیصلہ", "hinweis": "Nominativ" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "wort": "کھانا",  "pronomen": "میں",  "zeit": "ماضی", "richtig": "کھایا",    "falsch": ["کھاتا ہوں","کھاؤں گا","کھا رہا ہوں"],   "deutsch": "ich aß" },
+      { "wort": "جانا",   "pronomen": "وہ",   "zeit": "ماضی", "richtig": "گیا",      "falsch": ["جاتا ہے","جائے گا","جا رہا ہے"],         "deutsch": "er ging" },
+      { "wort": "کرنا",   "pronomen": "ہم نے","zeit": "ماضی", "richtig": "کیا",      "falsch": ["کرتے ہیں","کریں گے","کر رہے ہیں"],        "deutsch": "wir machten" },
+      { "wort": "دیکھنا", "pronomen": "میں نے","zeit": "ماضی","richtig": "دیکھا",    "falsch": ["دیکھتا ہوں","دیکھوں گا","دیکھ رہا ہوں"],  "deutsch": "ich sah" },
+      { "wort": "دوڑنا",  "pronomen": "وہ",   "zeit": "ماضی", "richtig": "دوڑا",     "falsch": ["دوڑتا ہے","دوڑے گا","دوڑ رہا ہے"],        "deutsch": "er lief" },
+      { "wort": "دھونا",  "pronomen": "اس نے","zeit": "ماضی", "richtig": "دھویا",    "falsch": ["دھوتا ہے","دھوئے گا","دھو رہا ہے"],       "deutsch": "er wusch" }
+    ],
+    "n2": [
+      { "wort": "سیکھنا",   "pronomen": "ہم نے","zeit": "ماضی","richtig": "سیکھا",    "falsch": ["سیکھتے ہیں","سیکھیں گے","سیکھ رہے ہیں"],  "deutsch": "wir lernten" },
+      { "wort": "خریدنا",   "pronomen": "میں نے","zeit": "ماضی","richtig": "خریدا",   "falsch": ["خریدتا ہوں","خریدوں گا","خرید رہا ہوں"],  "deutsch": "ich kaufte" },
+      { "wort": "سونا",     "pronomen": "وہ",   "zeit": "ماضی","richtig": "سویا",     "falsch": ["سوتا ہے","سوئے گا","سو رہا ہے"],          "deutsch": "er schlief" },
+      { "wort": "مدد کرنا", "pronomen": "اس نے","zeit": "ماضی","richtig": "مدد کی",   "falsch": ["مدد کرتا ہے","مدد کرے گا","مدد کر رہا ہے"],"deutsch": "er half" }
+    ],
+    "n3": [
+      { "wort": "مشاہدہ کرنا","pronomen": "ہم نے","zeit": "ماضی","richtig": "مشاہدہ کیا","falsch": ["مشاہدہ کرتے ہیں","مشاہدہ کریں گے","مشاہدہ کر رہے ہیں"],"deutsch": "wir beobachteten" },
+      { "wort": "فیصلہ کرنا","pronomen": "اس نے","zeit": "ماضی","richtig": "فیصلہ کیا","falsch": ["فیصلہ کرتا ہے","فیصلہ کرے گا","فیصلہ کر رہا ہے"],"deutsch": "er entschied" },
+      { "wort": "سمجھنا",   "pronomen": "میں نے","zeit": "ماضی","richtig": "سمجھا",   "falsch": ["سمجھتا ہوں","سمجھوں گا","سمجھ رہا ہوں"],  "deutsch": "ich verstand" }
+    ]
+  }
+}
