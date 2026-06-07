@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "ton": {
+    "n1": [
+      { "wort": "吃", "pinyin": "chī", "ton": 1, "falsch": ["chí","chǐ","chì"], "deutsch": "essen" },
+      { "wort": "书", "pinyin": "shū", "ton": 1, "falsch": ["shú","shǔ","shù"], "deutsch": "Buch" },
+      { "wort": "鱼", "pinyin": "yú",  "ton": 2, "falsch": ["yū","yǔ","yù"],   "deutsch": "Fisch" },
+      { "wort": "月", "pinyin": "yuè", "ton": 4, "falsch": ["yuē","yué","yuě"], "deutsch": "Mond" },
+      { "wort": "去", "pinyin": "qù",  "ton": 4, "falsch": ["qū","qú","qǔ"],   "deutsch": "gehen" },
+      { "wort": "大", "pinyin": "dà",  "ton": 4, "falsch": ["dā","dá","dǎ"],   "deutsch": "groß" },
+      { "wort": "小", "pinyin": "xiǎo","ton": 3, "falsch": ["xiāo","xiáo","xiào"],"deutsch": "klein" },
+      { "wort": "手", "pinyin": "shǒu","ton": 3, "falsch": ["shōu","shou","shòu"],"deutsch": "Hand" },
+      { "wort": "狗", "pinyin": "gǒu", "ton": 3, "falsch": ["gōu","góu","gòu"], "deutsch": "Hund" },
+      { "wort": "猫", "pinyin": "māo", "ton": 1, "falsch": ["máo","mǎo","mào"], "deutsch": "Katze" },
+      { "wort": "热", "pinyin": "rè",  "ton": 4, "falsch": ["rē","ré","rě"],   "deutsch": "heiß" },
+      { "wort": "冷", "pinyin": "lěng","ton": 3, "falsch": ["lēng","léng","lèng"],"deutsch": "kalt" },
+      { "wort": "跑", "pinyin": "pǎo", "ton": 3, "falsch": ["pāo","páo","pào"], "deutsch": "laufen" },
+      { "wort": "做", "pinyin": "zuò", "ton": 4, "falsch": ["zuō","zuó","zuǒ"], "deutsch": "machen" },
+      { "wort": "看", "pinyin": "kàn", "ton": 4, "falsch": ["kān","kán","kǎn"], "deutsch": "sehen" },
+      { "wort": "洗", "pinyin": "xǐ",  "ton": 3, "falsch": ["xī","xí","xì"],   "deutsch": "waschen" }
+    ],
+    "n2": [
+      { "wort": "花",  "pinyin": "huā",  "ton": 1, "falsch": ["huá","huǎ","huà"], "deutsch": "Blume" },
+      { "wort": "桥",  "pinyin": "qiáo", "ton": 2, "falsch": ["qiāo","qiǎo","qiào"],"deutsch": "Brücke" },
+      { "wort": "买",  "pinyin": "mǎi",  "ton": 3, "falsch": ["māi","mái","mài"], "deutsch": "kaufen" },
+      { "wort": "快乐","pinyin": "kuàilè","ton": 4, "falsch": ["kuāilē","kuáilé","kuǎilě"],"deutsch": "glücklich" },
+      { "wort": "帮助","pinyin": "bāngzhù","ton": 1,"falsch": ["bángzhú","bǎngzhǔ","bàngzhù"],"deutsch": "helfen" },
+      { "wort": "学习","pinyin": "xuéxí","ton": 2, "falsch": ["xuēxī","xuěxǐ","xuèxì"],"deutsch": "lernen" },
+      { "wort": "睡觉","pinyin": "shuìjiào","ton": 4,"falsch": ["shuījiāo","shuíjiáo","shuǐjiǎo"],"deutsch": "schlafen" },
+      { "wort": "学校","pinyin": "xuéxiào","ton": 2,"falsch": ["xuēxiāo","xuěxiǎo","xuèxiao"],"deutsch": "Schule" }
+    ],
+    "n3": [
+      { "wort": "友谊","pinyin": "yǒuyì", "ton": 3, "falsch": ["yōuyī","yóuyí","yòuyì"],"deutsch": "Freundschaft" },
+      { "wort": "决定","pinyin": "juédìng","ton": 2,"falsch": ["juēdīng","juědǐng","juèding"],"deutsch": "Entscheidung" },
+      { "wort": "理解","pinyin": "lǐjiě", "ton": 3, "falsch": ["lī jiē","líjié","lìjiè"],"deutsch": "Verständnis" },
+      { "wort": "观察","pinyin": "guānchá","ton": 1,"falsch": ["guánchǎ","guǎnchà","guàncha"],"deutsch": "beobachten" }
+    ]
+  },
+  "klassifikator": {
+    "n1": [
+      { "wort": "书",   "klass": "本", "emoji": "📖", "falsch": ["个","张","条","只"], "deutsch": "Buch → 一本书" },
+      { "wort": "狗",   "klass": "只", "emoji": "🐕", "falsch": ["本","张","个","条"], "deutsch": "Hund → 一只狗" },
+      { "wort": "猫",   "klass": "只", "emoji": "🐱", "falsch": ["本","张","个","条"], "deutsch": "Katze → 一只猫" },
+      { "wort": "鱼",   "klass": "条", "emoji": "🐟", "falsch": ["只","本","个","张"], "deutsch": "Fisch → 一条鱼" },
+      { "wort": "球",   "klass": "个", "emoji": "⚽", "falsch": ["本","只","张","条"], "deutsch": "Ball → 一个球" },
+      { "wort": "蛋",   "klass": "个", "emoji": "🥚", "falsch": ["本","只","张","条"], "deutsch": "Ei → 一个蛋" },
+      { "wort": "月",   "klass": "个", "emoji": "🌙", "falsch": ["本","只","张","条"], "deutsch": "Mond → 一个月" },
+      { "wort": "太阳", "klass": "个", "emoji": "☀️", "falsch": ["本","只","张","条"], "deutsch": "Sonne → 一个太阳" }
+    ],
+    "n2": [
+      { "wort": "花",   "klass": "朵", "emoji": "🌸", "falsch": ["个","本","条","只"], "deutsch": "Blume → 一朵花" },
+      { "wort": "桥",   "klass": "座", "emoji": "🌉", "falsch": ["个","本","条","只"], "deutsch": "Brücke → 一座桥" },
+      { "wort": "学校", "klass": "所", "emoji": "🏫", "falsch": ["个","本","条","座"], "deutsch": "Schule → 一所学校" },
+      { "wort": "行李箱","klass": "个","emoji": "🧳", "falsch": ["本","只","张","条"], "deutsch": "Koffer → 一个行李箱" },
+      { "wort": "夹克", "klass": "件", "emoji": "🧥", "falsch": ["个","本","条","只"], "deutsch": "Jacke → 一件夹克" }
+    ],
+    "n3": [
+      { "wort": "友谊", "klass": "段", "emoji": "💛", "falsch": ["个","本","条","只"], "deutsch": "Freundschaft → 一段友谊" },
+      { "wort": "决定", "klass": "个", "emoji": "🎯", "falsch": ["本","段","条","只"], "deutsch": "Entscheidung → 一个决定" }
+    ]
+  },
+  "bedeutung": {
+    "n1": [
+      { "wort": "吃", "bedeutung": "essen",   "falsch": ["trinken","schlafen","laufen"],  "deutsch": "essen" },
+      { "wort": "书", "bedeutung": "Buch",    "falsch": ["Stift","Tisch","Stuhl"],        "deutsch": "Buch" },
+      { "wort": "鱼", "bedeutung": "Fisch",   "falsch": ["Vogel","Hund","Katze"],         "deutsch": "Fisch" },
+      { "wort": "狗", "bedeutung": "Hund",    "falsch": ["Katze","Pferd","Vogel"],        "deutsch": "Hund" },
+      { "wort": "月", "bedeutung": "Mond",    "falsch": ["Sonne","Stern","Wolke"],        "deutsch": "Mond" },
+      { "wort": "手", "bedeutung": "Hand",    "falsch": ["Fuß","Auge","Nase"],            "deutsch": "Hand" },
+      { "wort": "大", "bedeutung": "groß",    "falsch": ["klein","alt","neu"],            "deutsch": "groß" },
+      { "wort": "去", "bedeutung": "gehen",   "falsch": ["kommen","sehen","essen"],       "deutsch": "gehen" },
+      { "wort": "跑", "bedeutung": "laufen",  "falsch": ["gehen","springen","schwimmen"], "deutsch": "laufen" },
+      { "wort": "洗", "bedeutung": "waschen", "falsch": ["kochen","kaufen","schlafen"],   "deutsch": "waschen" }
+    ],
+    "n2": [
+      { "wort": "花",   "bedeutung": "Blume",    "falsch": ["Baum","Gras","Pilz"],          "deutsch": "Blume" },
+      { "wort": "桥",   "bedeutung": "Brücke",   "falsch": ["Straße","Tunnel","Treppe"],    "deutsch": "Brücke" },
+      { "wort": "买",   "bedeutung": "kaufen",   "falsch": ["verkaufen","finden","suchen"], "deutsch": "kaufen" },
+      { "wort": "帮助", "bedeutung": "helfen",   "falsch": ["fragen","antworten","warten"], "deutsch": "helfen" },
+      { "wort": "学习", "bedeutung": "lernen",   "falsch": ["spielen","arbeiten","schlafen"],"deutsch": "lernen" },
+      { "wort": "睡觉", "bedeutung": "schlafen", "falsch": ["essen","trinken","laufen"],    "deutsch": "schlafen" }
+    ],
+    "n3": [
+      { "wort": "友谊", "bedeutung": "Freundschaft",  "falsch": ["Feindschaft","Liebe","Hass"],         "deutsch": "Freundschaft" },
+      { "wort": "决定", "bedeutung": "Entscheidung",  "falsch": ["Frage","Antwort","Problem"],          "deutsch": "Entscheidung" },
+      { "wort": "理解", "bedeutung": "Verständnis",   "falsch": ["Missverständnis","Wissen","Gefühl"],  "deutsch": "Verständnis" },
+      { "wort": "观察", "bedeutung": "beobachten",    "falsch": ["verstehen","erklären","beschreiben"], "deutsch": "beobachten" },
+      { "wort": "责任", "bedeutung": "Verantwortung", "falsch": ["Freiheit","Pflicht","Recht"],         "deutsch": "Verantwortung" }
+    ]
+  }
+}
