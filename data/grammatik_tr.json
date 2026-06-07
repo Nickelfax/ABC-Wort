@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "plural": {
+    "n1": [
+      { "wort": "ev",     "plural": "evler",    "emoji": "🏠", "deutsch": "Haus" },
+      { "wort": "kedi",   "plural": "kediler",   "emoji": "🐱", "deutsch": "Katze" },
+      { "wort": "elma",   "plural": "elmalar",   "emoji": "🍎", "deutsch": "Apfel" },
+      { "wort": "balık",  "plural": "balıklar",  "emoji": "🐟", "deutsch": "Fisch" },
+      { "wort": "kitap",  "plural": "kitaplar",  "emoji": "📖", "deutsch": "Buch" },
+      { "wort": "okul",   "plural": "okullar",   "emoji": "🏫", "deutsch": "Schule" },
+      { "wort": "göz",    "plural": "gözler",    "emoji": "👁️", "deutsch": "Auge" },
+      { "wort": "güneş",  "plural": "güneşler",  "emoji": "☀️", "deutsch": "Sonne" },
+      { "wort": "ekmek",  "plural": "ekmekler",  "emoji": "🍞", "deutsch": "Brot" },
+      { "wort": "anne",   "plural": "anneler",   "emoji": "👩", "deutsch": "Mutter" }
+    ],
+    "n2": [
+      { "wort": "çiçek",    "plural": "çiçekler",   "emoji": "🌸", "deutsch": "Blume" },
+      { "wort": "köpek",    "plural": "köpekler",   "emoji": "🐕", "deutsch": "Hund" },
+      { "wort": "pencere",  "plural": "pencereler", "emoji": "🪟", "deutsch": "Fenster" },
+      { "wort": "kapı",     "plural": "kapılar",    "emoji": "🚪", "deutsch": "Tür" },
+      { "wort": "çanta",    "plural": "çantalar",   "emoji": "👜", "deutsch": "Tasche" },
+      { "wort": "ağaç",     "plural": "ağaçlar",    "emoji": "🌳", "deutsch": "Baum" },
+      { "wort": "arkadaş",  "plural": "arkadaşlar", "emoji": "👫", "deutsch": "Freund" },
+      { "wort": "şehir",    "plural": "şehirler",   "emoji": "🏙️", "deutsch": "Stadt" },
+      { "wort": "renk",     "plural": "renkler",    "emoji": "🎨", "deutsch": "Farbe" }
+    ],
+    "n3": [
+      { "wort": "kardeşlik",  "plural": "kardeşlikler",  "emoji": "💛", "deutsch": "Geschwisterlichkeit" },
+      { "wort": "özgürlük",   "plural": "özgürlükler",   "emoji": "🕊️", "deutsch": "Freiheit" },
+      { "wort": "sorumluluk", "plural": "sorumluluklar", "emoji": "🎖️", "deutsch": "Verantwortung" },
+      { "wort": "kültür",     "plural": "kültürler",     "emoji": "🎭", "deutsch": "Kultur" }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      { "wort": "ev",    "satz": "Ben ___ gidiyorum.",   "antworten": ["eve","evi","evde","evden"],   "richtig": "eve",   "hinweis": "Dativ -e (Richtung)" },
+      { "wort": "okul",  "satz": "Ben ___ gidiyorum.",   "antworten": ["okula","okulu","okulda","okuldan"], "richtig": "okula","hinweis": "Dativ -a (Richtung)" },
+      { "wort": "kitap", "satz": "Ben ___ okuyorum.",    "antworten": ["kitabı","kitap","kitaba","kitapta"],"richtig": "kitabı","hinweis": "Akkusativ -ı" },
+      { "wort": "kedi",  "satz": "___ bakıyorum.",       "antworten": ["kediye","kedi","kediyi","kedide"], "richtig": "kediye","hinweis": "Dativ -e" },
+      { "wort": "elma",  "satz": "Ben ___ yedim.",       "antworten": ["elmayı","elma","elmaya","elmadan"],"richtig": "elmayı","hinweis": "Akkusativ -yı" }
+    ],
+    "n2": [
+      { "wort": "şehir",   "satz": "Ben ___ geliyorum.", "antworten": ["şehirden","şehire","şehirde","şehri"],"richtig": "şehirden","hinweis": "Ablativ -den" },
+      { "wort": "arkadaş", "satz": "___ konuşuyorum.",   "antworten": ["arkadaşla","arkadaşı","arkadaşa","arkadaştan"],"richtig": "arkadaşla","hinweis": "Komitativ -la" },
+      { "wort": "pencere", "satz": "___ bakıyorum.",     "antworten": ["pencereden","pencereye","pencerede","pencereyi"],"richtig": "pencereden","hinweis": "Ablativ -den" }
+    ],
+    "n3": [
+      { "wort": "özgürlük",   "satz": "Ben ___ inanıyorum.", "antworten": ["özgürlüğe","özgürlüğü","özgürlükten","özgürlükte"],"richtig": "özgürlüğe","hinweis": "Dativ -e" },
+      { "wort": "sorumluluk", "satz": "___ taşımak zor.",    "antworten": ["sorumluluk","sorumluluğu","sorumluluğa","sorumluluktan"],"richtig": "sorumluluk","hinweis": "Nominativ" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "infinitiv": "gelmek",  "pronomen": "Ben",  "zeit": "Geçmiş zaman", "richtig": "geldim",     "falsch": ["geliyorum","geleceğim","gelirdim"],    "deutsch": "ich kam" },
+      { "infinitiv": "gitmek",  "pronomen": "O",    "zeit": "Geçmiş zaman", "richtig": "gitti",      "falsch": ["gidiyor","gidecek","giderdi"],         "deutsch": "er ging" },
+      { "infinitiv": "yapmak",  "pronomen": "Biz",  "zeit": "Geçmiş zaman", "richtig": "yaptık",     "falsch": ["yapıyoruz","yapacağız","yapardık"],    "deutsch": "wir machten" },
+      { "infinitiv": "okumak",  "pronomen": "Ben",  "zeit": "Geçmiş zaman", "richtig": "okudum",     "falsch": ["okuyorum","okuyacağım","okurdum"],     "deutsch": "ich las" },
+      { "infinitiv": "yemek",   "pronomen": "O",    "zeit": "Geçmiş zaman", "richtig": "yedi",       "falsch": ["yiyor","yiyecek","yerdi"],             "deutsch": "er aß" },
+      { "infinitiv": "gel",     "pronomen": "Ben",  "zeit": "Gelecek zaman","richtig": "geleceğim",  "falsch": ["geldim","geliyorum","gelirdim"],       "deutsch": "ich werde kommen" }
+    ],
+    "n2": [
+      { "infinitiv": "anlamak",    "pronomen": "Ben",  "zeit": "Geçmiş zaman", "richtig": "anladım",    "falsch": ["anlıyorum","anlayacağım","anlardım"],  "deutsch": "ich verstand" },
+      { "infinitiv": "düşünmek",   "pronomen": "O",    "zeit": "Geçmiş zaman", "richtig": "düşündü",    "falsch": ["düşünüyor","düşünecek","düşünürdü"],   "deutsch": "er dachte" },
+      { "infinitiv": "geliştirmek","pronomen": "Biz",  "zeit": "Geçmiş zaman", "richtig": "geliştirdik","falsch": ["geliştiriyoruz","geliştireceğiz","geliştirirdik"],"deutsch": "wir entwickelten" }
+    ],
+    "n3": [
+      { "infinitiv": "tanımlamak", "pronomen": "Ben",  "zeit": "Geçmiş zaman", "richtig": "tanımladım", "falsch": ["tanımlıyorum","tanımlayacağım","tanımlardım"],"deutsch": "ich definierte" },
+      { "infinitiv": "anlamak",    "pronomen": "Onlar","zeit": "Gelecek zaman", "richtig": "anlayacaklar","falsch": ["anladılar","anlıyorlar","anlarlardı"],  "deutsch": "sie werden verstehen" }
+    ]
+  }
+}
