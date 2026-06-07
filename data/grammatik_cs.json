@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "rod": {
+    "n1": [
+      { "wort": "pes",    "rod": "ten", "emoji": "🐕", "deutsch": "Hund (mask.)" },
+      { "wort": "dům",    "rod": "ten", "emoji": "🏠", "deutsch": "Haus (mask.)" },
+      { "wort": "vlak",   "rod": "ten", "emoji": "🚂", "deutsch": "Zug (mask.)" },
+      { "wort": "stůl",   "rod": "ten", "emoji": "🍽️", "deutsch": "Tisch (mask.)" },
+      { "wort": "strom",  "rod": "ten", "emoji": "🌳", "deutsch": "Baum (mask.)" },
+      { "wort": "nos",    "rod": "ten", "emoji": "👃", "deutsch": "Nase (mask.)" },
+      { "wort": "kočka",  "rod": "ta",  "emoji": "🐱", "deutsch": "Katze (fem.)" },
+      { "wort": "voda",   "rod": "ta",  "emoji": "💧", "deutsch": "Wasser (fem.)" },
+      { "wort": "kniha",  "rod": "ta",  "emoji": "📖", "deutsch": "Buch (fem.)" },
+      { "wort": "škola",  "rod": "ta",  "emoji": "🏫", "deutsch": "Schule (fem.)" },
+      { "wort": "ulice",  "rod": "ta",  "emoji": "🛣️", "deutsch": "Straße (fem.)" },
+      { "wort": "hora",   "rod": "ta",  "emoji": "⛰️", "deutsch": "Berg (fem.)" },
+      { "wort": "ruka",   "rod": "ta",  "emoji": "✋", "deutsch": "Hand (fem.)" },
+      { "wort": "slunce", "rod": "to",  "emoji": "☀️", "deutsch": "Sonne (neutr.)" },
+      { "wort": "moře",   "rod": "to",  "emoji": "🌊", "deutsch": "Meer (neutr.)" },
+      { "wort": "vejce",  "rod": "to",  "emoji": "🥚", "deutsch": "Ei (neutr.)" },
+      { "wort": "oko",    "rod": "to",  "emoji": "👁️", "deutsch": "Auge (neutr.)" },
+      { "wort": "srdce",  "rod": "to",  "emoji": "❤️", "deutsch": "Herz (neutr.)" },
+      { "wort": "okno",   "rod": "to",  "emoji": "🪟", "deutsch": "Fenster (neutr.)" },
+      { "wort": "mléko",  "rod": "to",  "emoji": "🥛", "deutsch": "Milch (neutr.)" },
+      { "wort": "jablko", "rod": "to",  "emoji": "🍎", "deutsch": "Apfel (neutr.)" }
+    ],
+    "n2": [
+      { "wort": "přítel",   "rod": "ten", "emoji": "👫", "deutsch": "Freund (mask.)" },
+      { "wort": "měsíc",    "rod": "ten", "emoji": "🌙", "deutsch": "Mond (mask.)" },
+      { "wort": "příroda",  "rod": "ta",  "emoji": "🌿", "deutsch": "Natur (fem.)" },
+      { "wort": "láska",    "rod": "ta",  "emoji": "❤️", "deutsch": "Liebe (fem.)" }
+    ],
+    "n3": [
+      { "wort": "svoboda",      "rod": "ta",  "emoji": "🕊️", "deutsch": "Freiheit (fem.)" },
+      { "wort": "přátelství",   "rod": "to",  "emoji": "💛", "deutsch": "Freundschaft (neutr.)" },
+      { "wort": "spravedlnost", "rod": "ta",  "emoji": "⚖️", "deutsch": "Gerechtigkeit (fem.)" },
+      { "wort": "odpovědnost",  "rod": "ta",  "emoji": "🎖️", "deutsch": "Verantwortung (fem.)" },
+      { "wort": "příležitost",  "rod": "ta",  "emoji": "🔓", "deutsch": "Möglichkeit (fem.)" },
+      { "wort": "spolupráce",   "rod": "ta",  "emoji": "🤲", "deutsch": "Zusammenarbeit (fem.)" },
+      { "wort": "porozumění",   "rod": "to",  "emoji": "🤔", "deutsch": "Verständnis (neutr.)" },
+      { "wort": "rozhodnutí",   "rod": "to",  "emoji": "🎯", "deutsch": "Entscheidung (neutr.)" },
+      { "wort": "vzdělání",     "rod": "to",  "emoji": "📚", "deutsch": "Bildung (neutr.)" },
+      { "wort": "budoucnost",   "rod": "ta",  "emoji": "🌟", "deutsch": "Zukunft (fem.)" }
+    ]
+  },
+  "pady": {
+    "n1": [
+      { "wort": "pes",   "satz": "Nevidím ___.",      "antworten": ["psa","pes","psem","psovi"],    "richtig": "psa",   "hinweis": "Akuzativ (4. pád)" },
+      { "wort": "dům",   "satz": "Jdu do ___.",       "antworten": ["domu","dům","domem","domě"],   "richtig": "domu",  "hinweis": "Genitiv (2. pád)" },
+      { "wort": "voda",  "satz": "Piju ___.",         "antworten": ["vodu","voda","vody","vodě"],   "richtig": "vodu",  "hinweis": "Akuzativ (4. pád)" },
+      { "wort": "kniha", "satz": "Čtu ___.",          "antworten": ["knihu","kniha","knihy","knize"],"richtig": "knihu", "hinweis": "Akuzativ (4. pád)" },
+      { "wort": "škola", "satz": "Jdu do ___.",       "antworten": ["školy","školu","škole","školou"],"richtig": "školy","hinweis": "Genitiv (2. pád)" },
+      { "wort": "ruka",  "satz": "Myji si ___.",      "antworten": ["ruku","ruka","ruky","ruce"],   "richtig": "ruku",  "hinweis": "Akuzativ (4. pád)" }
+    ],
+    "n2": [
+      { "wort": "město",  "satz": "Bydlím ve ___.",   "antworten": ["městě","město","města","městem"],"richtig": "městě","hinweis": "Lokál (6. pád)" },
+      { "wort": "příroda","satz": "Jdu do ___.",      "antworten": ["přírody","přírodu","přírodě","přírodou"],"richtig": "přírody","hinweis": "Genitiv (2. pád)" },
+      { "wort": "přítel", "satz": "Mluvím s ___.",    "antworten": ["přítelem","přítel","přítele","příteli"],"richtig": "přítelem","hinweis": "Instrumentál (7. pád)" }
+    ],
+    "n3": [
+      { "wort": "svoboda",    "satz": "Bojuji za ___.", "antworten": ["svobodu","svobody","svobodě","svobodou"],"richtig": "svobodu","hinweis": "Akuzativ (4. pád)" },
+      { "wort": "přátelství", "satz": "Cenám si ___.",  "antworten": ["přátelství","přátelstvím","přátelství","přátelstvím"],"richtig": "přátelství","hinweis": "Genitiv (2. pád)" }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      { "infinitiv": "jíst",   "pronomen": "já",  "zeit": "Minulý čas", "richtig": "jedl jsem",   "falsch": ["jím","budu jíst","jídal jsem"],       "deutsch": "ich aß" },
+      { "infinitiv": "pít",    "pronomen": "on",  "zeit": "Minulý čas", "richtig": "pil",          "falsch": ["pije","bude pít","píval"],             "deutsch": "er trank" },
+      { "infinitiv": "spát",   "pronomen": "ona", "zeit": "Minulý čas", "richtig": "spala",        "falsch": ["spí","bude spát","spávala"],           "deutsch": "sie schlief" },
+      { "infinitiv": "běžet",  "pronomen": "já",  "zeit": "Minulý čas", "richtig": "běžel jsem",   "falsch": ["běžím","budu běžet","běhal jsem"],     "deutsch": "ich lief" },
+      { "infinitiv": "vidět",  "pronomen": "my",  "zeit": "Minulý čas", "richtig": "viděli jsme",  "falsch": ["vidíme","budeme vidět","vídali jsme"], "deutsch": "wir sahen" }
+    ],
+    "n2": [
+      { "infinitiv": "mluvit", "pronomen": "já",  "zeit": "Minulý čas", "richtig": "mluvil jsem",  "falsch": ["mluvím","budu mluvit","mluvíval jsem"],"deutsch": "ich sprach" },
+      { "infinitiv": "číst",   "pronomen": "ona", "zeit": "Minulý čas", "richtig": "četla",        "falsch": ["čte","bude číst","čítala"],            "deutsch": "sie las" },
+      { "infinitiv": "psát",   "pronomen": "my",  "zeit": "Minulý čas", "richtig": "psali jsme",   "falsch": ["píšeme","budeme psát","psávali jsme"], "deutsch": "wir schrieben" },
+      { "infinitiv": "přijít", "pronomen": "on",  "zeit": "Minulý čas", "richtig": "přišel",       "falsch": ["přijde","bude přicházet","přicházel"], "deutsch": "er kam" }
+    ],
+    "n3": [
+      { "infinitiv": "rozhodnutí","pronomen": "ona","zeit": "Minulý čas","richtig": "rozhodla",    "falsch": ["rozhoduje","bude rozhodovat","rozhodovala"],"deutsch": "sie entschied" },
+      { "infinitiv": "spolupráce","pronomen": "my", "zeit": "Minulý čas","richtig": "spolupracovali jsme","falsch": ["spolupracujeme","budeme spolupracovat","spolupracovávali jsme"],"deutsch": "wir arbeiteten zusammen" }
+    ]
+  }
+}
