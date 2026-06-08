@@ -1139,6 +1139,7 @@ function globalDictLookup(wort, zielSprache) {
         }
 
         function grammatikNeueAufgabe() {
+           if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
             grammatikGesperrt = false;
             const letztes = grammatikAktuell;
             if (grammatikModus === 'konjugation') {
@@ -1474,7 +1475,8 @@ function globalDictLookup(wort, zielSprache) {
         const APP_REGISTRY = [
             { id:'de',  name:'ABC Wort',    flag:'🇩🇪', subtitle:'Deutsch lernen',       file:'index.html',       proCode:null,                  color:'#4a90e2' },
             { id:'ru',  name:'АБВ Слово',   flag:'🇷🇺', subtitle:'Russisch lernen',      file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
-            { id:'en',  name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',      file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
+            { id:'uk', name:'АБВ Слово', flag:'🇺🇦', subtitle:'Ukrainisch lernen', file:'abc_slovo_uk.html', proCode:'ABCSLOVO-UK-2025', color:'#005BBB' },
+           { id:'en',  name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',      file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
             { id:'el',  name:'ΑΒΓ Λέξη',   flag:'🇬🇷', subtitle:'Griechisch lernen',    file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
             { id:'ar',  name:'أبت كلمة',   flag:'🇸🇦', subtitle:'Arabisch lernen',      file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
             { id:'hi',  name:'एबीसी शब्द', flag:'🇮🇳', subtitle:'Hindi lernen',         file:'abc_shabd.html',   proCode:'ABCSHABD-PRO-2025',   color:'#e65100' },
