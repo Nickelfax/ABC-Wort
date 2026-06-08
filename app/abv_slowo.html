@@ -803,8 +803,10 @@ function addChar(ch) {
 
 function backspace() {
     if (diktatAktiv) { diktatEingabe = diktatEingabe.slice(0, -1); diktatRender(); return; }
-    currentWord.pop();
-    updateDisplay();
+ // Wortbau-Modus: letzten Buchstaben löschen
+            if (currentWord.length > 0) {
+                currentWord.pop();
+                updateDisplay();
 }
 
 function ttsSpeak(text, rate, lang) {
