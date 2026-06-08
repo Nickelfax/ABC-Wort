@@ -827,6 +827,8 @@ function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.
 function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}}
 function grammatikSetModus(m,btn){grammatikModus=m;document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');grammatikNeueAufgabe();}
 function grammatikNeueAufgabe(){
+    if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
+   // Bei N1 kein Tempus — auf Konjugation wechseln
     if(!proCheck(THIS_APP_ID,'Grammatik unbegrenzt'))return;
     const display=document.getElementById('wordDisplay');display.classList.remove('empty');grammatikGesperrt=false;
     if(grammatikModus==='genus'){
