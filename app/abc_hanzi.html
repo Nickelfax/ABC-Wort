@@ -695,8 +695,13 @@ function addChar(ch){
 }
 function backspace(){
     if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
-    currentWord.pop();updateDisplay();
-}
+    function backspace() {
+    // Wortbau-Modus: letzten Buchstaben löschen
+    if (currentWord.length > 0) {
+        currentWord.pop();
+        updateDisplay();
+    }
+} 
 function saveCurrentWord(){
     const w=currentWord.join('');
     if(!w){showToast('先造一个词！');return;}
