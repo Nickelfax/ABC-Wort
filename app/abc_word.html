@@ -801,6 +801,7 @@ function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillato
 
 function grammatikSetModus(m,btn){grammatikModus=m;document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');grammatikNeueAufgabe();}
 function grammatikNeueAufgabe(){
+   if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
     if (_nachGrammatikCallback) { const cb = _nachGrammatikCallback; _nachGrammatikCallback = null; cb(); return; }
     // Bei N1 kein Tempus — auf Konjugation (Präsens) wechseln
     if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
