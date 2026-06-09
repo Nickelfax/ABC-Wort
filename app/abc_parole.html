@@ -717,6 +717,7 @@ function grammatikSetModus(m, btn) {
 }
 
 function grammatikNeueAufgabe() {
+ if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
     const display = document.getElementById('wordDisplay');
     display.classList.remove('empty');
     grammatikGesperrt = false;
