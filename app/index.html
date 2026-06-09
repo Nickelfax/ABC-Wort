@@ -3170,6 +3170,7 @@ function levenshtein(a, b) {
         }
 
    function grammatikNeueAufgabe() {
+      if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
             if (_nachGrammatikCallback) {
                 const cb = _nachGrammatikCallback;
                 _nachGrammatikCallback = null;
