@@ -2501,25 +2501,19 @@ function levenshtein(a, b) {
             const getipptesLower = getipptes.toLowerCase();
             const imDict = lokalDict[getipptes] || lokalDict[getipptesLower] ||
                            lokalDict[getipptes.charAt(0).toUpperCase() + getipptes.slice(1).toLowerCase()];
-            if (imDict && getipptes.length > 1) {
-                display.style.borderColor = 'var(--success)';
-                display.style.boxShadow = '0 0 0 3px rgba(46,204,113,0.3)';
-                if (!document.getElementById('wortCheckMark')) {
-                    const mark = document.createElement('div');
-                    mark.id = 'wortCheckMark';
-                    mark.style.cssText = 'position:absolute;top:-12px;right:8px;background:var(--success);color:white;font-size:0.75rem;font-weight:bold;padding:1px 7px;border-radius:10px;';
-                    mark.textContent = '✓ Wort';
-                    display.style.position = 'relative';
-                    display.appendChild(mark);
-                }
-            } else {
-                display.style.borderColor = '';
-                display.style.boxShadow = '';
-                const mark = document.getElementById('wortCheckMark');
-                if (mark) mark.remove();
-            }
+           const anzeige = document.getElementById('wortCheckAnzeige');
+    if (anzeige) {
+        if (imDict && getipptes.length > 1) {
+            anzeige.textContent = '✓ ' + getipptes + ' = ' + (imDict[userLang] || imDict['de'] || '');
+            display.style.borderColor = 'var(--success)';
+            display.style.boxShadow = '0 0 0 3px rgba(46,204,113,0.3)';
+        } else {
+            anzeige.textContent = '';
+            display.style.borderColor = '';
+            display.style.boxShadow = '';
         }
-
+    }
+}
         function saveWord() {
             if (currentWord.length === 0) { showToast('Bitte erstelle zuerst ein Wort!'); return; }
             const wordStr = currentWord.join('');
