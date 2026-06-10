@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<!-- © 2026 nickelfax. All rights reserved.
+     Unauthorized copying or distribution prohibited. -->
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#c0392b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="汉字词">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" href="icon-512-zh.png">
+     <script src="dict.js"></script>
+<title>汉字词</title>
+<style>
+:root {
+    --primary: #c0392b; --secondary: #e67e22; --success: #27ae60;
+    --danger: #e74c3c; --purple: #6c3483; --bg: #fdf5f0; --card-bg: #ffffff; --gold: #b8860b;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+h1 { color: var(--primary); margin-bottom: 4px; text-align: center; font-size: 1.8rem; }
+.subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; }
+.word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.5rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'PingFang SC', 'Microsoft YaHei', serif; }
+.word-display.empty { color: #bdc3c7; font-size: 1.1rem; font-weight: normal; font-style: italic; font-family: 'Segoe UI', sans-serif; }
+.char-block { background: #fef9f9; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; display: flex; flex-direction: column; align-items: center; }
+.char-block:hover { background: #fce4e4; border-color: var(--danger); transform: scale(1.05); }
+.char-block::after { content: "✕"; position: absolute; top: -8px; right: -8px; left: auto; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+.char-block:hover::after { opacity: 1; }
+.char-pinyin { font-size: 0.6rem; color: #e74c3c; font-family: sans-serif; line-height: 1; margin-bottom: 2px; }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; }
+button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+button:active { transform: scale(0.95); }
+.keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.keyboard-section { margin-bottom: 15px; }
+.section-title { font-size: 0.85rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 8px; }
+.key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 8px 4px; text-align: center; cursor: pointer; transition: all 0.2s; user-select: none; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.key:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+.key:hover .key-pinyin { color: rgba(255,255,255,0.8); }
+.key:hover .key-de { color: rgba(255,255,255,0.7); }
+.key:active { transform: scale(0.95); }
+.key-char { font-size: 1.5rem; font-weight: bold; color: #2c3e50; font-family: 'PingFang SC', 'Microsoft YaHei', serif; line-height: 1; }
+.key-pinyin { font-size: 0.55rem; color: #e74c3c; line-height: 1; }
+.key-de { font-size: 0.5rem; color: #7f8c8d; line-height: 1; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.toggle-switch { position: relative; width: 52px; height: 28px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+.toggle-slider::before { content: ""; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+.toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+.case-label { font-size: 0.9rem; font-weight: bold; color: #2c3e50; }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+.modal-overlay.open { display: flex; }
+.modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+.btn-close-modal { background: #95a5a6; margin-top: 15px; width: 100%; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.diktat-modus-zeile { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+.diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+.grammatik-aufgabe { font-size: 2rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; font-family: "PingFang SC", "Microsoft YaHei", serif; }
+.grammatik-pinyin { font-size: 1rem; color: #e74c3c; text-align: center; margin-top: -8px; }
+.grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; }
+.artikel-buttons { display: flex; gap: 10px; justify-content: center; width: 100%; flex-wrap: wrap; }
+.art-btn { padding: 12px 16px; font-size: 1rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 90px; max-width: 200px; }
+.art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+.art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+.auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.auswahl-btn { padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; font-family: "PingFang SC", "Microsoft YaHei", serif; }
+.auswahl-btn:hover { background: var(--primary); color: white; }
+.auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+.auswahl-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+#uebersetzungAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em; margin-bottom: 4px; }
+#pinyinAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1rem; color: #e74c3c; min-height: 1.4em; margin-bottom: 2px; letter-spacing: 2px; }
+#crossSellBanner { direction: ltr !important; }
+@media (max-width: 600px) {
+    body { padding: 8px; } h1 { font-size: 1.3rem; }
+    .word-display { min-height: 60px; font-size: 1.8rem; padding: 10px; margin-bottom: 10px; }
+    button { padding: 9px 12px; font-size: 0.82rem; }
+    .keyboard-container { padding: 10px 8px; }
+    .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 5px; }
+    .key { padding: 6px 2px; } .key-char { font-size: 1.3rem; }
+    .toast { white-space: normal; max-width: 85vw; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<h1>汉字词 🇨🇳</h1>
+<p class="subtitle">Mandarin lernen · Diktat · Grammatik · Wortbau</p>
+
+<div id="ttsWarning" style="display:none; width:100%; max-width:700px; margin-bottom:12px; background:#fff3cd; border:2px solid #f39c12; border-radius:12px; padding:14px 16px; box-sizing:border-box;">
+    <div style="font-weight:bold; color:#856404; margin-bottom:6px;">🔇 Keine chinesische Stimme gefunden</div>
+    <div style="font-size:0.85rem; color:#6d5100; line-height:1.6;">
+        Mandarin-TTS muss einmalig aktiviert werden:<br>
+        <strong>📱 iOS:</strong> Einstellungen → Allgemein → Sprache & Region → Chinesisch (Vereinfacht) hinzufügen<br>
+        <strong>🤖 Android:</strong> Einstellungen → Allgemein → Eingabehilfe → Text-zu-Sprache → Google TTS → Sprachen → 中文 installieren<br>
+        <strong>💻 Desktop:</strong> funktioniert meist automatisch in Chrome/Edge
+    </div>
+    <button onclick="ttsNochmalPruefen()" style="margin-top:10px; background:#f39c12; color:white; border:none; border-radius:8px; padding:6px 14px; font-size:0.85rem; cursor:pointer; font-weight:bold;">🔄 Nochmal prüfen</button>
+</div>
+
+<div id="scoreBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div style="display:flex; gap:20px; font-size:1rem; padding:8px 16px; background:#fff8e1; border:2px solid var(--secondary); border-radius:12px;">
+        <span>Richtig: <strong id="diktatRichtig">0</strong></span>
+        <span>Falsch: <strong id="diktatFalsch">0</strong></span>
+    </div>
+</div>
+
+<div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)">🔤</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)">➖</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)">🙈</button>
+        <button class="diktat-modus-btn" id="btnDiktatStumm" onclick="diktatStummToggle(this)">🔊</button>
+    </div>
+</div>
+
+<div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" id="btnGTon" onclick="grammatikSetModus('ton',this)">声调</button>
+        <button class="diktat-modus-btn" id="btnGKlass" onclick="grammatikSetModus('klassifikator',this)">量词</button>
+        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">我你他</button>
+        <button class="diktat-modus-btn" id="btnGBedeutung" onclick="grammatikSetModus('bedeutung',this)">意思</button>
+    </div>
+</div>
+
+<div id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center; font-size:1rem; color:#555; min-height:1.4em;"></div>
+
+<div id="pinyinAnzeige"></div>
+<div id="uebersetzungAnzeige"></div>
+
+<div id="wordDisplay" class="word-display empty">点击汉字来造词</div>
+<div id="wortCheckAnzeige" style="height:1.4em; text-align:center; font-size:0.85rem; font-weight:bold; color:var(--success); margin-bottom:4px;"></div>
+
+<div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; box-sizing:border-box; padding:0 4px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+        <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+        <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary);">N1</span>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="wiederholenButton()" style="background:var(--primary); font-size:1.6rem;">🔁</button>
+    <button onclick="sprichWort()" style="background:var(--success); font-size:1.6rem;">🔊</button>
+    <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
+    <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
+    <button onclick="backspace()" style="font-size:1.6rem; background:#e74c3c;">⌫</button>
+    <button onclick="openStorage()" style="font-size:1.6rem; background:#16a085;">📚</button>
+    <div class="case-toggle">
+        <span style="font-size:1.2rem;">🖊️</span>
+        <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">听写</span>
+    </div>
+    <div class="case-toggle">
+        <span style="font-size:1.2rem;">❓</span>
+        <label class="toggle-switch"><input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">语法</span>
+    </div>
+    <div class="case-toggle">
+        <span style="font-size:1.2rem;">🌍</span>
+        <label class="toggle-switch"><input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">DE</span>
+    </div>
+    <div class="case-toggle">
+        <span style="font-size:1.2rem;">🔤</span>
+        <label class="toggle-switch"><input type="checkbox" id="pinyinToggleSwitch" onchange="pinyinToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">拼音</span>
+    </div>
+</div>
+
+<div class="keyboard-container">
+    <div class="keyboard-section">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+            <span style="font-size:1rem; font-weight:bold; color:var(--primary);">基础汉字 · Grundzeichen</span>
+        </div>
+        <div class="section-title">N1 — 人物 · Menschen & Familie</div>
+        <div class="keyboard-grid" id="gridN1Person"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">N1 — 常用词 · Häufige Wörter</div>
+        <div class="keyboard-grid" id="gridN1Common"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">N1 — 数字 · Zahlen</div>
+        <div class="keyboard-grid" id="gridNumbers"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">N2 — 动词 · Verben</div>
+        <div class="keyboard-grid" id="gridN2Verbs"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">N2 — 形容词 · Adjektive</div>
+        <div class="keyboard-grid" id="gridN2Adj"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">N3 — 高级 · Fortgeschritten</div>
+        <div class="keyboard-grid" id="gridN3"></div>
+    </div>
+</div>
+
+<div id="storageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>📚 已保存的词</h2>
+        <button onclick="saveCurrentWord()" style="background:var(--secondary);width:100%;margin-bottom:12px;font-size:1rem;">💾 当前词语保存</button>
+        <div id="storedWordsList"></div>
+        <button class="btn-close-modal" onclick="closeStorage()">关闭</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+const zeichen = {
+    n1Person: [
+        ['人','rén','Mensch'],['我','wǒ','ich'],['你','nǐ','du'],['他','tā','er'],
+        ['她','tā','sie'],['我们','wǒmen','wir'],['你们','nǐmen','ihr'],['他们','tāmen','sie(pl)'],
+        ['爸','bà','Vater'],['妈','mā','Mutter'],['哥','gē','Bruder(ä)'],['姐','jiě','Schwester(ä)'],
+        ['弟','dì','Bruder(j)'],['妹','mèi','Schwester(j)'],['子','zǐ','Kind/Sohn'],['女','nǚ','Frau/Tochter'],
+    ],
+    n1Common: [
+        ['水','shuǐ','Wasser'],['火','huǒ','Feuer'],['山','shān','Berg'],['木','mù','Holz/Baum'],
+        ['日','rì','Sonne/Tag'],['月','yuè','Mond/Monat'],['年','nián','Jahr'],['天','tiān','Himmel/Tag'],
+        ['大','dà','groß'],['小','xiǎo','klein'],['好','hǎo','gut'],['多','duō','viel'],
+        ['少','shǎo','wenig'],['上','shàng','oben'],['下','xià','unten'],['中','zhōng','Mitte'],
+        ['家','jiā','Zuhause'],['国','guó','Land'],['门','mén','Tür'],['口','kǒu','Mund'],
+    ],
+    numbers: [
+        ['一','yī','eins'],['二','èr','zwei'],['三','sān','drei'],['四','sì','vier'],
+        ['五','wǔ','fünf'],['六','liù','sechs'],['七','qī','sieben'],['八','bā','acht'],
+        ['九','jiǔ','neun'],['十','shí','zehn'],['百','bǎi','hundert'],['千','qiān','tausend'],
+    ],
+    n2Verbs: [
+        ['吃','chī','essen'],['喝','hē','trinken'],['说','shuō','sprechen'],['看','kàn','sehen/schauen'],
+        ['听','tīng','hören'],['写','xiě','schreiben'],['读','dú','lesen'],['学','xué','lernen'],
+        ['去','qù','gehen'],['来','lái','kommen'],['买','mǎi','kaufen'],['卖','mài','verkaufen'],
+        ['爱','ài','lieben'],['有','yǒu','haben'],['是','shì','sein'],['想','xiǎng','denken/wollen'],
+        ['做','zuò','machen/tun'],['工作','gōngzuò','arbeiten'],['睡','shuì','schlafen'],['跑','pǎo','rennen'],
+    ],
+    n2Adj: [
+        ['快','kuài','schnell'],['慢','màn','langsam'],['高','gāo','hoch/groß'],['矮','ǎi','niedrig/klein'],
+        ['热','rè','heiß'],['冷','lěng','kalt'],['新','xīn','neu'],['旧','jiù','alt(Sache)'],
+        ['美','měi','schön'],['丑','chǒu','hässlich'],['贵','guì','teuer'],['便宜','piányí','günstig'],
+        ['累','lèi','müde'],['忙','máng','beschäftigt'],['对','duì','richtig'],['错','cuò','falsch'],
+    ],
+    n3: [
+        ['文化','wénhuà','Kultur'],['历史','lìshǐ','Geschichte'],['经济','jīngjì','Wirtschaft'],
+        ['政治','zhèngzhì','Politik'],['科学','kēxué','Wissenschaft'],['技术','jìshù','Technik'],
+        ['环境','huánjìng','Umwelt'],['社会','shèhuì','Gesellschaft'],['发展','fāzhǎn','Entwicklung'],
+        ['问题','wèntí','Problem/Frage'],['机会','jīhuì','Chance'],['影响','yǐngxiǎng','Einfluss'],
+    ],
+};
+
+const zeichenMap = {};
+Object.values(zeichen).forEach(g => { g.forEach(([z,p,d]) => { zeichenMap[z] = [p,d]; }); });
+const zhDeDict = {};
+Object.values(zeichen).forEach(g => { g.forEach(([z,p,d]) => { zhDeDict[z] = d; }); });
+Object.assign(zhDeDict, {
+    '你好':'Hallo','谢谢':'Danke','再见':'Auf Wiedersehen','对不起':'Entschuldigung',
+    '没关系':'Kein Problem','中国':'China','中文':'Chinesisch','汉字':'Schriftzeichen',
+    '学生':'Student','老师':'Lehrer','朋友':'Freund','今天':'heute','明天':'morgen',
+    '昨天':'gestern','现在':'jetzt','时间':'Zeit','地方':'Ort','东西':'Ding/Sache',
+});
+const pinyinDict = {};
+Object.values(zeichen).forEach(g => { g.forEach(([z,p]) => { pinyinDict[z] = p; }); });
+Object.assign(pinyinDict, {
+    '你好':'nǐ hǎo','谢谢':'xiè xiè','再见':'zài jiàn','对不起':'duì bu qǐ',
+    '没关系':'méi guān xi','中国':'zhōng guó','中文':'zhōng wén','汉字':'hàn zì',
+    '学生':'xué shēng','老师':'lǎo shī','朋友':'péng yǒu','今天':'jīn tiān',
+    '明天':'míng tiān','昨天':'zuó tiān','现在':'xiàn zài','时间':'shí jiān',
+});
+
+const diktatWorteN1 = [
+    { wort: '吃', audio: '' },
+    { wort: '球', audio: '' },
+    { wort: '书', audio: '' },
+    { wort: '蛋', audio: '' },
+    { wort: '鱼', audio: '' },
+    { wort: '去', audio: '' },
+    { wort: '大', audio: '' },
+    { wort: '有', audio: '' },
+    { wort: '手', audio: '' },
+    { wort: '热', audio: '' },
+    { wort: '狗', audio: '' },
+    { wort: '冷', audio: '' },
+    { wort: '小', audio: '' },
+    { wort: '跑', audio: '' },
+    { wort: '响', audio: '' },
+    { wort: '做', audio: '' },
+    { wort: '月', audio: '' },
+    { wort: '鼻子', audio: '' },
+    { wort: '湿', audio: '' },
+    { wort: '新', audio: '' },
+    { wort: '叫', audio: '' },
+    { wort: '看', audio: '' },
+    { wort: '坐', audio: '' },
+    { wort: '太阳', audio: '' },
+    { wort: '拿', audio: '' },
+    { wort: '暖', audio: '' },
+    { wort: '洗', audio: '' },
+    { wort: '火车', audio: '' },
+    { wort: '上', audio: '' },
+    { wort: '外', audio: '' },
+    { wort: '和', audio: '' },
+    { wort: '在', audio: '' },
+    { wort: '后', audio: '' },
+    { wort: '下', audio: '' },
+    { wort: '前', audio: '' },
+    { wort: '以上', audio: '' },
+    { wort: '旧', audio: '' },
+    { wort: '猫', audio: '' },
+    { wort: '红', audio: '' },
+    { wort: '蓝', audio: '' },
+];
+
+const diktatWorteN2 = [
+    { wort: '红绿灯', audio: '' },
+    { wort: '制作', audio: '' },
+    { wort: '花', audio: '' },
+    { wort: '生气', audio: '' },
+    { wort: '桥', audio: '' },
+    { wort: '思考', audio: '' },
+    { wort: '黑暗', audio: '' },
+    { wort: '开车', audio: '' },
+    { wort: '勤奋', audio: '' },
+    { wort: '快乐', audio: '' },
+    { wort: '花园', audio: '' },
+    { wort: '帮助', audio: '' },
+    { wort: '饿', audio: '' },
+    { wort: '夹克', audio: '' },
+    { wort: '买', audio: '' },
+    { wort: '行李箱', audio: '' },
+    { wort: '学习', audio: '' },
+    { wort: '有趣', audio: '' },
+    { wort: '累', audio: '' },
+    { wort: '干净', audio: '' },
+    { wort: '睡觉', audio: '' },
+    { wort: '快', audio: '' },
+    { wort: '学校', audio: '' },
+    { wort: '玩', audio: '' },
+    { wort: '街道', audio: '' },
+    { wort: '寻找', audio: '' },
+    { wort: '难过', audio: '' },
+    { wort: '楼梯', audio: '' },
+    { wort: '等待', audio: '' },
+    { wort: '房间', audio: '' },
+    { wort: '除了', audio: '' },
+    { wort: '通过', audio: '' },
+    { wort: '反对', audio: '' },
+    { wort: '后面', audio: '' },
+    { wort: '没有', audio: '' },
+    { wort: '从', audio: '' },
+    { wort: '尽管', audio: '' },
+    { wort: '因为', audio: '' },
+    { wort: '期间', audio: '' },
+    { wort: '之间', audio: '' },
+];
+
+const diktatWorteN3 = [
+    { wort: '热情', audio: '' },
+    { wort: '决定', audio: '' },
+    { wort: '友谊', audio: '' },
+    { wort: '正义', audio: '' },
+    { wort: '可能性', audio: '' },
+    { wort: '邻居', audio: '' },
+    { wort: '惊喜', audio: '' },
+    { wort: '责任', audio: '' },
+    { wort: '理解', audio: '' },
+    { wort: '合作', audio: '' },
+    { wort: '观察', audio: '' },
+    { wort: '描述', audio: '' },
+    { wort: '决定', audio: '' },
+    { wort: '发展', audio: '' },
+    { wort: '认识', audio: '' },
+    { wort: '讲述', audio: '' },
+    { wort: '设计', audio: '' },
+    { wort: '反思', audio: '' },
+    { wort: '区分', audio: '' },
+    { wort: '理解', audio: '' },
+    { wort: '专注', audio: '' },
+    { wort: '热情', audio: '' },
+    { wort: '独特', audio: '' },
+    { wort: '惊人', audio: '' },
+    { wort: '危险', audio: '' },
+    { wort: '乐于助人', audio: '' },
+    { wort: '深思熟虑', audio: '' },
+    { wort: '独立', audio: '' },
+    { wort: '可靠', audio: '' },
+    { wort: '值得信赖', audio: '' },
+    { wort: '由于', audio: '' },
+    { wort: '关于', audio: '' },
+    { wort: '包括', audio: '' },
+    { wort: '对面', audio: '' },
+    { wort: '关于', audio: '' },
+    { wort: '因此', audio: '' },
+    { wort: '在内', audio: '' },
+    { wort: '借助', audio: '' },
+    { wort: '以上', audio: '' },
+    { wort: '根据', audio: '' },
+];
+
+const grammatikDaten = {
+    ton: {
+        n1: [
+            {wort:'妈',pinyin:'mā',ton:1,falsch:['mǎ','mà','má']},{wort:'麻',pinyin:'má',ton:2,falsch:['mā','mǎ','mà']},
+            {wort:'马',pinyin:'mǎ',ton:3,falsch:['mā','má','mà']},{wort:'骂',pinyin:'mà',ton:4,falsch:['mā','má','mǎ']},
+            {wort:'水',pinyin:'shuǐ',ton:3,falsch:['shuī','shuí','shuì']},{wort:'大',pinyin:'dà',ton:4,falsch:['dā','dá','dǎ']},
+            {wort:'好',pinyin:'hǎo',ton:3,falsch:['hāo','háo','hào']},{wort:'你',pinyin:'nǐ',ton:3,falsch:['nī','ní','nì']},
+        ],
+        n2: [
+            {wort:'朋友',pinyin:'péng yǒu',ton:2,falsch:['pēng yōu','pěng yǒu','pèng yòu']},
+            {wort:'学习',pinyin:'xué xí',ton:2,falsch:['xuē xī','xuě xǐ','xuè xì']},
+            {wort:'老师',pinyin:'lǎo shī',ton:3,falsch:['láo shí','lāo shì','lào shǐ']},
+        ],
+        n3: [
+            {wort:'文化',pinyin:'wén huà',ton:2,falsch:['wēn huā','wěn huǎ','wèn huà']},
+            {wort:'历史',pinyin:'lì shǐ',ton:4,falsch:['lī shī','lí shí','lǐ shǐ']},
+        ],
+    },
+    klassifikator: {
+        n1: [
+            {wort:'书',deutsch:'Buch',richtig:'本',falsch:['个','只','条'],hinweis:'书 (Buch) → ___本书'},
+            {wort:'人',deutsch:'Mensch',richtig:'个',falsch:['本','只','条'],hinweis:'人 (Mensch) → ___个人'},
+            {wort:'猫',deutsch:'Katze',richtig:'只',falsch:['个','本','条'],hinweis:'猫 (Katze) → ___只猫'},
+            {wort:'鱼',deutsch:'Fisch',richtig:'条',falsch:['个','本','只'],hinweis:'鱼 (Fisch) → ___条鱼'},
+            {wort:'车',deutsch:'Auto',richtig:'辆',falsch:['个','本','只'],hinweis:'车 (Auto) → ___辆车'},
+            {wort:'花',deutsch:'Blume',richtig:'朵',falsch:['个','条','本'],hinweis:'花 (Blume) → ___朵花'},
+        ],
+        n2: [
+            {wort:'桌子',deutsch:'Tisch',richtig:'张',falsch:['个','本','条'],hinweis:'桌子 (Tisch) → ___张桌子'},
+            {wort:'纸',deutsch:'Papier',richtig:'张',falsch:['个','本','只'],hinweis:'纸 (Papier) → ___张纸'},
+            {wort:'房子',deutsch:'Haus',richtig:'栋',falsch:['个','张','条'],hinweis:'房子 (Haus) → ___栋房子'},
+        ],
+        n3: [
+            {wort:'消息',deutsch:'Nachricht',richtig:'条',falsch:['个','本','张'],hinweis:'消息 (Nachricht) → ___条消息'},
+        ],
+    },
+    konjugation: {
+        n1: [
+            {pronomen:'我',deutsch:'ich',verb:'吃',verbDeutsch:'essen',satz:'___ 吃饭',richtig:'我吃饭',falsch:['你吃饭','他吃饭','她吃饭']},
+            {pronomen:'你',deutsch:'du',verb:'喝',verbDeutsch:'trinken',satz:'___ 喝水',richtig:'你喝水',falsch:['我喝水','他喝水','我们喝水']},
+            {pronomen:'他',deutsch:'er',verb:'看',verbDeutsch:'schauen',satz:'___ 看书',richtig:'他看书',falsch:['她看书','我看书','你看书']},
+            {pronomen:'我们',deutsch:'wir',verb:'学',verbDeutsch:'lernen',satz:'___ 学习',richtig:'我们学习',falsch:['你们学习','他们学习','我学习']},
+        ],
+        n2: [
+            {pronomen:'你们',deutsch:'ihr',verb:'工作',verbDeutsch:'arbeiten',satz:'___ 工作',richtig:'你们工作',falsch:['我们工作','他们工作','你工作']},
+            {pronomen:'他们',deutsch:'sie(pl)',verb:'说',verbDeutsch:'sprechen',satz:'___ 说中文',richtig:'他们说中文',falsch:['我们说中文','你们说中文','他说中文']},
+        ],
+        n3: [
+            {pronomen:'她们',deutsch:'sie(pl,w)',verb:'发展',verbDeutsch:'entwickeln',satz:'___ 发展',richtig:'她们发展',falsch:['他们发展','我们发展','你们发展']},
+        ],
+    },
+    bedeutung: {
+        n1: [
+            {wort:'水',pinyin:'shuǐ',richtig:'Wasser',falsch:['Feuer','Erde','Luft']},
+            {wort:'火',pinyin:'huǒ',richtig:'Feuer',falsch:['Wasser','Wind','Eis']},
+            {wort:'山',pinyin:'shān',richtig:'Berg',falsch:['Tal','Fluss','Meer']},
+            {wort:'大',pinyin:'dà',richtig:'groß',falsch:['klein','gut','schlecht']},
+            {wort:'小',pinyin:'xiǎo',richtig:'klein',falsch:['groß','viel','neu']},
+            {wort:'好',pinyin:'hǎo',richtig:'gut',falsch:['schlecht','groß','schön']},
+            {wort:'爱',pinyin:'ài',richtig:'lieben',falsch:['hassen','sehen','gehen']},
+            {wort:'吃',pinyin:'chī',richtig:'essen',falsch:['trinken','schlafen','rennen']},
+        ],
+        n2: [
+            {wort:'朋友',pinyin:'péng yǒu',richtig:'Freund',falsch:['Feind','Familie','Lehrer']},
+            {wort:'学生',pinyin:'xué shēng',richtig:'Student',falsch:['Lehrer','Arzt','Schüler']},
+            {wort:'今天',pinyin:'jīn tiān',richtig:'heute',falsch:['morgen','gestern','jetzt']},
+            {wort:'谢谢',pinyin:'xiè xiè',richtig:'Danke',falsch:['Hallo','Tschüss','Entschuldigung']},
+        ],
+        n3: [
+            {wort:'文化',pinyin:'wén huà',richtig:'Kultur',falsch:['Geschichte','Wirtschaft','Technik']},
+            {wort:'发展',pinyin:'fāzhǎn',richtig:'Entwicklung',falsch:['Problem','Chance','Einfluss']},
+        ],
+    },
+};
+
+const wordList = ['水','火','山','大','小','好','天','日','月','人','家','门'];
+
+// ── State ──────────────────────────────────────────────────────────────
+let currentWord=[], savedWords=[];
+try { savedWords=JSON.parse(localStorage.getItem('abc_hanzi_saved'))||[]; } catch(e) {}
+let diktatAktiv=false, grammatikAktiv=false, diktatRichtig=0, diktatFalsch=0;
+let diktatAktuell='', diktatEingabe='', diktatGesperrt=false, diktatHatFehler=false;
+let diktatBuzzerGespielt=false, diktatModus='hilfe', diktatNiveau='n1', diktatStumm=false, diktatAudioSrc='';
+let grammatikModus='ton', grammatikGesperrt=false, grammatikAktuell=null;
+let uebersetzungAktiv=false, pinyinAktiv=false;
+const diktatVerlauf=[]; let diktatVerlaufIdx=-1;
+
+// ── Pro-System ─────────────────────────────────────────────────────────
+const THIS_APP_ID = 'zh';
+const APP_REGISTRY = [
+    { id:'de',  name:'ABC Wort',     flag:'🇩🇪', subtitle:'Deutsch lernen',      file:'index.html',       proCode:null,                  color:'#4a90e2' },
+    { id:'ru',  name:'АБВ Слово',    flag:'🇷🇺', subtitle:'Russisch lernen',     file:'abv_slowo.html',   proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b' },
+    { id:'en',  name:'ABC Word',     flag:'🇬🇧', subtitle:'Englisch lernen',     file:'abc_word.html',    proCode:'ABCWORD-PRO-2025',    color:'#1a5276' },
+    { id:'el',  name:'ΑΒΓ Λέξη',    flag:'🇬🇷', subtitle:'Griechisch lernen',   file:'abg_lexi.html',    proCode:'ABGLEXI-PRO-2025',    color:'#1565c0' },
+    { id:'ar',  name:'أبت كلمة',    flag:'🇸🇦', subtitle:'Arabisch lernen',     file:'abt_kalima.html',  proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449' },
+    { id:'hi',  name:'एबीसी शब्द',  flag:'🇮🇳', subtitle:'Hindi lernen',        file:'abc_shabd.html',   proCode:'ABCSHABD-PRO-2025',   color:'#e65100' },
+    { id:'ur',  name:'ابت لفظ',     flag:'🇵🇰', subtitle:'Urdu lernen',         file:'abc_lafz.html',    proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a' },
+    { id:'fa',  name:'الفبا کلمه',  flag:'🇦🇫', subtitle:'Dari lernen',         file:'abc_kalima.html',  proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e' },
+    { id:'la',  name:'ABC Verbum',   flag:'🏛️',  subtitle:'Latein lernen',       file:'abc_verbum.html',  proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2' },
+    { id:'egy', name:'Medu Netjer',  flag:'𓇳',  subtitle:'Hieroglyphen lernen', file:'abc_medu.html',    proCode:'ABCMEDU-PRO-2025',    color:'#b8860b' },
+    { id:'zh',  name:'汉字词',       flag:'🇨🇳', subtitle:'Mandarin lernen',     file:'abc_hanzi.html',   proCode:'ABCHANZI-PRO-2025',   color:'#c0392b' },
+    { id:'it',  name:'ABC Parola',   flag:'🇮🇹', subtitle:'Italienisch lernen',  file:'abc_parola.html',  proCode:'ABCPAROLA-PRO-2025',  color:'#009246' },
+    { id:'es',  name:'ABC Palabra',  flag:'🇪🇸', subtitle:'Spanisch lernen',     file:'abc_palabra.html', proCode:'ABCPALABRA-PRO-2025', color:'#c0392b' },
+    { id:'fr',  name:'ABC Parole',   flag:'🇫🇷', subtitle:'Französisch lernen',  file:'abc_parole.html',  proCode:'ABCPAROLE-PRO-2025',  color:'#002395' },
+    { id:'he', name:'אבג מילים', flag:'🇮🇱', subtitle:'Hebräisch lernen', file:'abc_milim.html', proCode:'ABCMILIM-PRO-2025', color:'#1a5276' }, 
+     { id:'pl', name:'ABC Słowo', flag:'🇵🇱', subtitle:'Polnisch lernen', file:'abc_slowo_pl.html', proCode:'ABCSLOWO-PRO-2025', color:'#dc143c' },
+];
+const FREIE_RUNDEN = 10;
+
+function proIstAktiv(appId) {
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    if(!app||!app.proCode)return true;
+    try{return localStorage.getItem('abc_pro_'+appId)==='true';}catch(e){return false;}
+}
+function getFreeLangs(){try{return JSON.parse(localStorage.getItem('abc_free_langs')||'[]');}catch(e){return[];}}
+function addFreeLang(appId){const langs=getFreeLangs();if(!langs.includes(appId)){langs.push(appId);try{localStorage.setItem('abc_free_langs',JSON.stringify(langs));}catch(e){}}}
+function proCheck(appId, feature) {
+    if(proIstAktiv(appId))return true;
+    if(diktatNiveau==='n1'||typeof diktatNiveau==='undefined'){
+        const fl=getFreeLangs();
+        if(fl.includes(appId))return true;
+        if(fl.length<3){addFreeLang(appId);return true;}
+    }
+    let r=0;try{r=parseInt(localStorage.getItem('abc_runden_'+appId)||'0');}catch(e){}
+    if(r<FREIE_RUNDEN){try{localStorage.setItem('abc_runden_'+appId,r+1);}catch(e){}return true;}
+    proGateAnzeigen(appId,feature);return false;
+}
+function proGateAnzeigen(appId,feature){
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');
+    display.innerHTML=`<div style="text-align:center;padding:1rem;width:100%;">
+        <div style="font-size:2.5rem;margin-bottom:8px;">${app.flag}</div>
+        <div style="font-size:1rem;font-weight:bold;color:#2c3e50;margin-bottom:6px;">Pro-Version</div>
+        <div style="font-size:0.85rem;color:#7f8c8d;margin-bottom:4px;">${feature} · unbegrenzt</div>
+        <div style="font-size:1.1rem;font-weight:bold;color:${app.color};margin-bottom:16px;">2,99 € – einmalig</div>
+        <button onclick="proKaufen('${appId}')" style="background:${app.color};padding:10px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-weight:bold;font-size:1rem;margin-bottom:8px;display:block;width:100%;">Pro freischalten ☕ – 2,99€</button>
+        <button onclick="proCodeEingeben('${appId}')" style="background:#27ae60;padding:8px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-size:0.85rem;width:100%;">Ich habe bereits bezahlt ✓</button>
+    </div>`;
+}
+function proKaufen(appId){window.open('https://ko-fi.com/nickelfax','_blank');showToast('Nach der Zahlung erhältst du deinen Code per Ko-fi Nachricht!');}
+function proCodeEingeben(appId){
+    const code=prompt('Pro-Code eingeben:');if(!code)return;
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    if(code.toUpperCase()===app.proCode){
+        try{localStorage.setItem('abc_pro_'+appId,'true');localStorage.removeItem('abc_runden_'+appId);}catch(e){}
+        showToast('Pro aktiviert! 🎉');updateDisplay();
+    }else{showToast('Falscher Code – nach Zahlung per Ko-fi Nachricht anfragen!');}
+}
+function crossSellBannerEinfuegen(currentAppId){
+    const andere=APP_REGISTRY.filter(a=>a.id!==currentAppId);
+    const container=document.createElement('div');container.id='crossSellBanner';
+    container.style.cssText='width:100%;max-width:700px;margin-top:24px;background:white;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.08);overflow:hidden;direction:ltr;';
+    const header=document.createElement('div');
+    header.style.cssText='padding:12px 16px;font-size:0.8rem;font-weight:bold;color:#7f8c8d;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f0f0f0;';
+    header.textContent='🌍 Auch verfügbar';container.appendChild(header);
+    andere.forEach(app=>{
+        const aktiv=proIstAktiv(app.id);
+        const item=document.createElement('div');
+        item.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f8f8f8;cursor:pointer;transition:background 0.15s;';
+        item.onmouseenter=()=>item.style.background='#f8f9fa';item.onmouseleave=()=>item.style.background='white';
+        item.onclick=()=>window.location.href=app.file;
+        item.innerHTML=`<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:1.8rem;">${app.flag}</span>
+            <div><div style="font-weight:bold;color:#2c3e50;font-size:0.95rem;">${app.name}</div>
+            <div style="font-size:0.8rem;color:#7f8c8d;">${app.subtitle}</div></div></div>
+            <div style="display:flex;align-items:center;gap:8px;">
+            ${aktiv?'<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Aktiviert</span>':'<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✨ Entdecken</span>'}
+            <span style="color:#bdc3c7;font-size:1.2rem;">›</span></div>`;
+        container.appendChild(item);
+    });
+    const aktiviertePros=APP_REGISTRY.filter(a=>a.proCode&&proIstAktiv(a.id));
+    if(aktiviertePros.length>=2){
+        const hub=document.createElement('div');
+        hub.style.cssText='padding:12px 16px;background:linear-gradient(135deg,#667eea22,#764ba222);display:flex;align-items:center;justify-content:space-between;';
+        hub.innerHTML='<div><div style="font-weight:bold;color:#2c3e50;font-size:0.9rem;">🏆 Pro Plus Hub</div><div style="font-size:0.75rem;color:#7f8c8d;">Alle Sprachen in einer App — bald verfügbar</div></div><span style="background:#e8e8f5;color:#6c5ce7;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">Bald</span>';
+        container.appendChild(hub);
+    }
+    const kb=document.querySelector('.keyboard-container');
+    if(kb&&kb.parentNode)kb.parentNode.insertBefore(container,kb.nextSibling);else document.body.appendChild(container);
+}
+
+// ── TTS ────────────────────────────────────────────────────────────────
+function ttsSpeak(text,rate,lang){
+    if(!window.speechSynthesis){showToast('⚠️ Kein TTS auf diesem Gerät verfügbar');return;}
+    window.speechSynthesis.cancel();
+    const try_=()=>{
+        const voices=window.speechSynthesis.getVoices();if(voices.length===0)return false;
+        const u=new SpeechSynthesisUtterance(text);
+        const voice=voices.find(v=>v.lang&&v.lang.startsWith(lang.split('-')[0]))||voices[0]||null;
+        if(voice){u.voice=voice;u.lang=voice.lang;}else{u.lang=lang;showToast('⚠️ Keine chinesische Stimme gefunden – Systemstimme wird verwendet');}
+        u.rate=rate;window.speechSynthesis.speak(u);return true;
+    };
+    if(!try_()){window.speechSynthesis.onvoiceschanged=()=>{try_();};}
+}
+function sprichZeichenTTS(ch){ttsSpeak(ch,0.7,'zh-CN');}
+function sprichWort(){const s=currentWord.join('');if(!s)return;ttsSpeak(s,0.85,'zh-CN');}
+function diktatSprechenTTS(){ttsSpeak(diktatAktuell,0.8,'zh-CN');}
+function grammatikSprechen(){
+    let text='';
+    if(grammatikAktuell){
+        if(grammatikModus==='ton'||grammatikModus==='bedeutung')text=grammatikAktuell.wort;
+        else if(grammatikModus==='klassifikator')text=grammatikAktuell.wort;
+        else if(grammatikModus==='konjugation')text=grammatikAktuell.richtig;
+    }
+    if(!text)return;ttsSpeak(text,0.85,'zh-CN');
+}
+
+// ── Keyboard ───────────────────────────────────────────────────────────
+function renderKeyboard(){
+    const showPinyin=document.getElementById('pinyinToggleSwitch').checked;
+    const groups=[['gridN1Person',zeichen.n1Person],['gridN1Common',zeichen.n1Common],['gridNumbers',zeichen.numbers],['gridN2Verbs',zeichen.n2Verbs],['gridN2Adj',zeichen.n2Adj],['gridN3',zeichen.n3]];
+    groups.forEach(([id,data])=>{
+        const grid=document.getElementById(id);grid.innerHTML='';
+        data.forEach(([z,p,d])=>{
+            const btn=document.createElement('div');btn.className='key';
+            btn.innerHTML=`<span class="key-char">${z}</span><span class="key-pinyin">${showPinyin?p:''}</span><span class="key-de">${d}</span>`;
+            btn.onclick=()=>addChar(z);grid.appendChild(btn);
+        });
+    });
+}
+function getPinyinForWord(word){
+    if(pinyinDict[word])return pinyinDict[word];
+    return word.split('').map(c=>{const e=zeichenMap[c];return e?e[0]:c;}).join(' ');
+}
+
+// ── Char / Display ─────────────────────────────────────────────────────
+let _lastAddTime=0;
+function addChar(ch){
+    const now=Date.now();if(now-_lastAddTime<80)return;_lastAddTime=now;
+    if(diktatAktiv){diktatAddChar(ch);return;}
+    currentWord.push(ch);updateDisplay();sprichZeichenTTS(ch);
+}
+function backspace(){
+    if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
+    // Wortbau-Modus
+    if(currentWord.length>0){currentWord.pop();updateDisplay();}
+}
+function saveCurrentWord(){
+    const w=currentWord.join('');
+    if(!w){showToast('先造一个词！');return;}
+    if(savedWords.includes(w)){showToast('已经保存过了！');return;}
+    savedWords.push(w);
+    try{localStorage.setItem('abc_hanzi_saved',JSON.stringify(savedWords));}catch(e){}
+    showToast('✅ 已保存: '+w);
+    if(document.getElementById('storageModal').classList.contains('open'))openStorage();
+}
+function updateDisplay(){
+    const display=document.getElementById('wordDisplay');
+    if(diktatAktiv){diktatRender();return;}
+    display.innerHTML='';
+    if(currentWord.length===0){
+        display.classList.add('empty');display.textContent='点击汉字来造词';
+        document.getElementById('pinyinAnzeige').textContent='';
+        document.getElementById('uebersetzungAnzeige').textContent='';return;
+    }
+    display.classList.remove('empty');
+    const showPinyin=document.getElementById('pinyinToggleSwitch').checked;
+    currentWord.forEach((ch,i)=>{
+        const block=document.createElement('div');block.className='char-block';
+        const py=zeichenMap[ch]?zeichenMap[ch][0]:'';
+        block.innerHTML=showPinyin?`<span class="char-pinyin">${py}</span><span>${ch}</span>`:`<span>${ch}</span>`;
+        block.onclick=()=>{currentWord.splice(i,1);updateDisplay();};
+        display.appendChild(block);
+    });
+    const wort=currentWord.join('');
+    document.getElementById('pinyinAnzeige').textContent=pinyinAktiv?getPinyinForWord(wort):'';
+    if(uebersetzungAktiv)zeigUebersetzung(wort);
+    // Wörterbuch-Check
+    const anzeige = document.getElementById('wortCheckAnzeige');
+    if(anzeige){
+        const imDict = zhDeDict[wort];
+        if(imDict && wort.length > 0){
+            anzeige.textContent = '✓ ' + wort + ' = ' + imDict;
+            display.style.borderColor = 'var(--success)';
+            display.style.boxShadow = '0 0 0 3px rgba(46,204,113,0.3)';
+        } else {
+            anzeige.textContent = '';
+            display.style.borderColor = '';
+            display.style.boxShadow = '';
+        }
+    }
+}
+
+// ── Toggles ────────────────────────────────────────────────────────────
+function pinyinToggle(){pinyinAktiv=document.getElementById('pinyinToggleSwitch').checked;renderKeyboard();updateDisplay();}
+function uebersetzungToggle(){uebersetzungAktiv=document.getElementById('uebersetzungToggleSwitch').checked;if(!uebersetzungAktiv)document.getElementById('uebersetzungAnzeige').textContent='';else updateDisplay();}
+function zeigUebersetzung(wort){if(!uebersetzungAktiv)return;const eintrag=Object.values(GLOBAL_DICT).find(e=>e.zh&&e.zh===wort);const ue=eintrag?eintrag.de:undefined;document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';}
+
+// ── Navigation ─────────────────────────────────────────────────────────
+function randomWord(){
+    if(diktatAktiv&&grammatikAktiv){Math.random()>0.5?diktatNeuesWort():grammatikNeueAufgabe();}
+    else if(diktatAktiv)diktatNeuesWort();
+    else if(grammatikAktiv)grammatikNeueAufgabe();
+    else{const w=wordList[Math.floor(Math.random()*wordList.length)];currentWord=w.split('');updateDisplay();sprichWort();}
+}
+function navigiereZurueck(){
+    if(diktatAktiv&&diktatVerlaufIdx>0){
+        diktatVerlaufIdx--;
+        const e=diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell=e.wort;diktatAudioSrc=e.audio;
+        diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;
+        currentWord=[];diktatRender();
+        document.getElementById('diktatStatus').textContent='Hör zu und tippe das Zeichen';
+        diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
+    }
+}
+function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;}if(diktatAktiv)diktatNochmal();else sprichWort();}
+
+// ── Modi UI ────────────────────────────────────────────────────────────
+function updateModusUI(){
+    const beides=diktatAktiv||grammatikAktiv;
+    document.getElementById('scoreBereich').style.display=beides?'block':'none';
+    document.getElementById('niveauSliderBereich').style.display=beides?'block':'none';
+    document.getElementById('diktatStatus').style.display=beides?'block':'none';
+    document.getElementById('diktatModusBereich').style.display=diktatAktiv?'block':'none';
+    document.getElementById('grammatikZeile').style.display=grammatikAktiv?'flex':'none';
+    if(!beides){document.getElementById('diktatStatus').textContent='';updateDisplay();}
+}
+function diktatToggle(){diktatAktiv=document.getElementById('diktatToggleSwitch').checked;updateModusUI();if(diktatAktiv)diktatNeuesWort();else if(grammatikAktiv)grammatikNeueAufgabe();}
+function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikToggleSwitch').checked;updateModusUI();if(grammatikAktiv)grammatikNeueAufgabe();else if(diktatAktiv)diktatNeuesWort();}
+function niveauSliderChange(val){diktatNiveau=['n1','n2','n3'][val-1];document.getElementById('niveauLabel').textContent='N'+val;if(diktatAktiv)diktatNeuesWort();if(grammatikAktiv)grammatikNeueAufgabe();}
+
+// ── Diktat ─────────────────────────────────────────────────────────────
+function diktatGetListe(){if(diktatNiveau==='n1')return diktatWorteN1;if(diktatNiveau==='n2')return diktatWorteN2;return diktatWorteN3;}
+function diktatNeuesWort(){
+    if(!proCheck(THIS_APP_ID,'Diktat unbegrenzt'))return;
+    const liste=diktatGetListe();const e=liste[Math.floor(Math.random()*liste.length)];
+    diktatAktuell=e.wort;diktatAudioSrc=e.audio;
+    diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;currentWord=[];
+    diktatVerlauf.splice(diktatVerlaufIdx+1);diktatVerlauf.push({wort:e.wort,audio:e.audio});
+    if(diktatVerlauf.length>50)diktatVerlauf.shift();diktatVerlaufIdx=diktatVerlauf.length-1;
+    diktatRender();document.getElementById('diktatStatus').textContent='Hör zu und tippe das Zeichen';
+    diktatSprechen();
+    if(uebersetzungAktiv)zeigUebersetzung(diktatAktuell);
+    if(pinyinAktiv)document.getElementById('pinyinAnzeige').textContent=getPinyinForWord(diktatAktuell);
+}
+function diktatSprechen(){window.speechSynthesis.cancel();if(diktatAudioSrc){const a=new Audio(diktatAudioSrc);a.play().catch(()=>diktatSprechenTTS());}else diktatSprechenTTS();}
+function diktatNochmal(){if(diktatAktuell)diktatSprechen();}
+function diktatRender(){
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');
+    if(!diktatAktuell)return;
+    const ziel=diktatAktuell;const showPinyin=document.getElementById('pinyinToggleSwitch').checked;
+    if(diktatModus==='blind'){display.innerHTML=`<span style="font-size:1.5rem;color:#7f8c8d;font-family:monospace;">🙈 ${diktatEingabe.length} / ${ziel.length}</span>`;return;}
+    let html='<div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:6px;justify-content:center;">';
+    for(let i=0;i<ziel.length;i++){
+        const entered=diktatEingabe[i];
+        const py=zeichenMap[ziel[i]]?zeichenMap[ziel[i]][0]:'';
+        const pinyinHtml=showPinyin?`<span style="font-size:0.55rem;color:#e74c3c;display:block;">${py}</span>`:'';
+        if(diktatModus==='striche'){
+            if(!entered)html+=`<div class="char-block" style="min-width:36px;border-color:#ccc;background:#f8f9fa;">${pinyinHtml}_</div>`;
+            else{const ok=entered===ziel[i];html+=`<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${pinyinHtml}${entered}</div>`;}
+        }else{
+            if(!entered)html+=`<div class="char-block" style="min-width:36px;border-color:#ccc;background:#fafafa;">${pinyinHtml}${ziel[i]}</div>`;
+            else{const ok=entered===ziel[i];html+=`<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${pinyinHtml}${entered}</div>`;}
+        }
+    }
+    html+='</div>';display.innerHTML=html;
+}
+function diktatSetModus(m,btn){diktatModus=m;document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');diktatRender();}
+function diktatStummToggle(btn){diktatStumm=!diktatStumm;btn.textContent=diktatStumm?'🔇':'🔊';btn.classList.toggle('aktiv',diktatStumm);}
+let _lastDiktatAddTime=0;
+function diktatAddChar(ch){
+    const now=Date.now();if(now-_lastDiktatAddTime<80)return;_lastDiktatAddTime=now;
+    if(diktatGesperrt)return;
+    const ziel=diktatAktuell;const idx=diktatEingabe.length;if(idx>=ziel.length)return;
+    diktatEingabe+=ch;if(!diktatStumm)sprichZeichenTTS(ch);
+    if(ch!==ziel[idx]){diktatHatFehler=true;if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}}
+    diktatRender();
+    if(diktatEingabe===ziel){
+        diktatGesperrt=true;
+        if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='棒极了! 🎉';}
+        else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='正确 — 有改正。';}
+        setTimeout(diktatFanfare,300);setTimeout(diktatNeuesWort,2400);
+    }else{document.getElementById('diktatStatus').textContent=diktatEingabe.length<ziel.length?'继续输入…':'不太对…';}
+}
+
+// ── Audio ──────────────────────────────────────────────────────────────
+let _diktatCtx=null;
+function getDiktatCtx(){if(!_diktatCtx)_diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return _diktatCtx;}
+function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;[[523,0],[659,0.13],[784,0.26],[1047,0.39]].forEach(([f,d])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(0.2,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+d+0.3);o.connect(g);g.connect(ctx.destination);o.start(t+d);o.stop(t+d+0.3);});}catch(e){}}
+function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}}
+
+// ── Grammatik ──────────────────────────────────────────────────────────
+function grammatikSetModus(m,btn){grammatikModus=m;document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');grammatikNeueAufgabe();}
+function grammatikNeueAufgabe(){
+    if(!proCheck(THIS_APP_ID,'Grammatik unbegrenzt'))return;
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');grammatikGesperrt=false;
+    if(grammatikModus==='ton'){
+        const pool=grammatikDaten.ton[diktatNiveau]||grammatikDaten.ton.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const alle=[e.pinyin,...e.falsch].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div class="grammatik-hinweis">Welches Pinyin (mit richtigem Ton)?</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="tonAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='klassifikator'){
+        const pool=grammatikDaten.klassifikator[diktatNiveau]||grammatikDaten.klassifikator.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const alle=[e.richtig,...e.falsch].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div style="font-size:0.9rem;color:#7f8c8d;text-align:center;">🇩🇪 ${e.deutsch}</div>
+            <div class="grammatik-hinweis">${e.hinweis} — welches 量词?</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="klassAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='konjugation'){
+        const pool=grammatikDaten.konjugation[diktatNiveau]||grammatikDaten.konjugation.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const alle=[e.richtig,...e.falsch].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.satz}</div>
+            <div style="font-size:0.9rem;color:#7f8c8d;text-align:center;">${e.pronomen} (${e.deutsch}) + ${e.verb} (${e.verbDeutsch})</div>
+            <div class="grammatik-hinweis">Welcher Satz ist richtig?</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='bedeutung'){
+        const pool=grammatikDaten.bedeutung[diktatNiveau]||grammatikDaten.bedeutung.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const alle=[e.richtig,...e.falsch].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div class="grammatik-pinyin">${e.pinyin}</div>
+            <div class="grammatik-hinweis">Was bedeutet dieses Zeichen?</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="bedeutungAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }
+    document.getElementById('diktatStatus').textContent='';
+}
+function grammatikRichtig(btn){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='棒极了! 🎉';setTimeout(diktatFanfare,200);setTimeout(grammatikNeueAufgabe,1800);}
+function grammatikFalsch(btn,richtig){btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`正确答案: ${richtig}`;setTimeout(grammatikNeueAufgabe,1800);}
+function tonAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;g===grammatikAktuell.pinyin?grammatikRichtig(btn):grammatikFalsch(btn,grammatikAktuell.pinyin);}
+function klassAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;g===grammatikAktuell.richtig?grammatikRichtig(btn):grammatikFalsch(btn,grammatikAktuell.richtig);}
+function konjAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;g===grammatikAktuell.richtig?grammatikRichtig(btn):grammatikFalsch(btn,grammatikAktuell.richtig);}
+function bedeutungAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;g===grammatikAktuell.richtig?grammatikRichtig(btn):grammatikFalsch(btn,grammatikAktuell.richtig);}
+
+// ── Storage ────────────────────────────────────────────────────────────
+function openStorage(){
+    const c=document.getElementById('storedWordsList');c.innerHTML='';
+    if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">没有保存的词。</p>';}
+    else savedWords.forEach((w,i)=>{
+        const div=document.createElement('div');div.style.cssText='display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid #eee;';
+        div.innerHTML=`<span style="font-size:1.5rem;font-family:serif;">${w}</span>`;
+        const b=document.createElement('button');b.style.cssText='background:var(--danger);color:white;padding:5px 10px;font-size:0.8rem;border-radius:8px;border:none;cursor:pointer;';
+        b.textContent='删除';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abc_hanzi_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};
+        div.appendChild(b);c.appendChild(div);
+    });
+    document.getElementById('storageModal').classList.add('open');
+}
+function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+let toastTimer=null;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ── Init ───────────────────────────────────────────────────────────────
+function checkZhVoice(){
+    const voices=window.speechSynthesis.getVoices();
+    const hasZh=voices.some(v=>v.lang&&v.lang.startsWith('zh'));
+    document.getElementById('ttsWarning').style.display=hasZh?'none':'block';return hasZh;
+}
+function ttsNochmalPruefen(){
+    window.speechSynthesis.getVoices();
+    setTimeout(()=>{const ok=checkZhVoice();if(ok)showToast('✅ Chinesische Stimme gefunden!');else showToast('⚠️ Noch keine Stimme gefunden – bitte Anleitung folgen');},300);
+}
+function init(){renderKeyboard();updateDisplay();crossSellBannerEinfuegen(THIS_APP_ID);setTimeout(checkZhVoice,500);}
+window.speechSynthesis.onvoiceschanged=function(){window.speechSynthesis.getVoices();checkZhVoice();};
+window.addEventListener('DOMContentLoaded',init);
+</script>
+     <script>
+document.body.insertAdjacentHTML('beforeend',
+'<div style="text-align:center;margin-top:20px;font-size:0.8rem;color:#bdc3c7;">'+
+'<a href="impressum.html" style="color:#bdc3c7;">Impressum</a> · '+
+'<a href="datenschutz.html" style="color:#bdc3c7;">Datenschutz</a></div>');
+</script>
+</body>
+</html>
