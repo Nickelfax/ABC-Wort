@@ -803,7 +803,6 @@ function grammatikSetModus(m,btn){grammatikModus=m;document.querySelectorAll('#g
 function grammatikNeueAufgabe(){
    if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
     if (_nachGrammatikCallback) { const cb = _nachGrammatikCallback; _nachGrammatikCallback = null; cb(); return; }
-    // Bei N1 kein Tempus — auf Konjugation (Präsens) wechseln
     if (diktatNiveau === 'n1' && grammatikModus === 'tempus') { grammatikModus = 'konjugation'; }
     if(!proCheck(THIS_APP_ID,'Grammar unlimited'))return;
     const display=document.getElementById('wordDisplay');display.classList.remove('empty');grammatikGesperrt=false;
