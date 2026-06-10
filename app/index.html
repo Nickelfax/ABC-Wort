@@ -3073,12 +3073,15 @@ function levenshtein(a, b) {
             const alleKasus = [...(grammatikDaten.kasus.n1||[]), ...(grammatikDaten.kasus.n2||[]), ...(grammatikDaten.kasus.n3||[])];
             if (alleKasus.find(e => e.wort === w || e.wort === wort || e.wort === wLower)) aufgaben.push('kasus');
             if (verbForms[wLower]) aufgaben.push('konjugation');
+           // Tempus nur ab N2
+           if (diktatNiveau !== 'n1') {
             const alleTempus = [...(grammatikDaten.tempus.n1||[]), ...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
-            if (alleTempus.find(e => e.verb === wLower)) aufgaben.push('tempus');
-            return aufgaben;
+            if (alleTempus.find(e => e.verb === wLower)) aufgaben.push('tempus'); 
+           }
+               return aufgaben;     
         }
 
-        function diktatGrammatikHinweisZeigen(aufgaben) {
+       function diktatGrammatikHinweisZeigen(aufgaben) {
             const display = document.getElementById('wordDisplay');
             const blinker = document.createElement('div');
             blinker.style.cssText = 'cursor:pointer; font-size:1.4rem; font-weight:bold; color:var(--purple); animation:blinken 1s infinite; padding:8px 16px; background:#f3e5f5; border-radius:12px; border:2px solid var(--purple); margin-top:8px;';
