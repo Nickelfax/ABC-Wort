@@ -1160,11 +1160,10 @@ function grammatikNeueAufgabe() {
         const falsche = [...anderen].sort(() => Math.random()-0.5).slice(0,3);
         grammatikAktuell = { verb, pIdx, richtig, antworten: [richtig, ...falsche].sort(() => Math.random()-0.5) };
 
-    } else if (grammatikModus === 'tempus') {
-        const pool = [...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
+   } else if (grammatikModus === 'tempus') {
+        const pool = [...(grammatikDaten.tempus.n1||[]), ...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
         grammatikAktuell = pool[Math.floor(Math.random() * pool.length)];
     }
-
     grammatikRender();
     grammatikSprechen();
     document.getElementById('diktatStatus').textContent = '';
