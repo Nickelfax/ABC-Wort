@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="de">
+<!-- © 2025 nickelfax. All rights reserved. -->
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#c0392b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Diktator">
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../icon-512.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diktator</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root {
+    --primary: #c0392b;
+    --secondary: #e67e22;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --purple: #8e44ad;
+    --bg: #f5f0f0;
+    --card-bg: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg); margin: 0; padding: 20px;
+    display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+}
+h1 { color: #2c3e50; margin-bottom: 5px; text-align: center; }
+.subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; }
+
+@keyframes flagGlanz {
+    0%   { transform: translateX(-100%) skewX(-20deg); }
+    100% { transform: translateX(400%) skewX(-20deg); }
+}
+.flag-header {
+    width: 100%; max-width: 700px; border-radius: 14px;
+    overflow: hidden; margin-bottom: 16px;
+    border: 3px solid #d4af37;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    position: relative;
+}
+.flag-header::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 30%; height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    animation: flagGlanz 3s ease-in-out infinite;
+    pointer-events: none; z-index: 2;
+}
+.flag-header-title { text-align: center; padding: 18px 0 8px 0; position: relative; z-index: 3; }
+.flag-header-title h1 {
+    margin: 0; color: #2c3e50; display: inline-block;
+    background: white; padding: 2px 18px;
+    border-radius: 8px; border: 2px solid #d4af37;
+}
+.flag-header-title .subtitle { margin: 6px 0 6px 0; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+.game-header {
+    width: 100%; max-width: 700px; margin-bottom: 16px;
+    border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.game-header svg { display: block; width: 100%; height: auto; }
+
+.card {
+    width: 100%; max-width: 700px; background: var(--card-bg);
+    border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 24px; margin-bottom: 16px; box-sizing: border-box;
+}
+.btn {
+    padding: 14px 24px; font-size: 1.1rem; border: none; border-radius: 12px;
+    cursor: pointer; font-weight: bold; color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.1s;
+    width: 100%; margin-bottom: 10px;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--primary); }
+.btn-secondary { background: var(--secondary); }
+.btn-purple { background: var(--purple); }
+.btn-success { background: var(--success); }
+.btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); }
+.btn-row { display: flex; gap: 10px; }
+.btn-row .btn { margin-bottom: 0; }
+
+.menu-grid { display: flex; flex-direction: column; gap: 12px; }
+
+input[type="text"] {
+    width: 100%; padding: 14px; font-size: 1.2rem; border-radius: 10px;
+    border: 2px solid #e9ecef; box-sizing: border-box; text-align: center;
+    margin-bottom: 12px;
+}
+input[type="text"]:focus { border-color: var(--primary); outline: none; }
+
+.select-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+.select-chip {
+    padding: 10px 18px; border-radius: 20px; border: 2px solid #e9ecef;
+    background: #f8f9fa; cursor: pointer; font-weight: bold; font-size: 1rem;
+    transition: all 0.2s;
+}
+.select-chip.aktiv { background: var(--primary); color: white; border-color: var(--primary); }
+.leerfeld-toggle.aktiv { background: var(--purple); color: white; border-color: var(--purple); }
+
+.word-display.word-display-lang { font-size: 1.4rem; letter-spacing: 0.04em; }
+.word-display {
+    width: 100%; text-align: center; font-size: 2.2rem; font-weight: bold;
+    letter-spacing: 0.1em; padding: 20px; border-radius: 14px;
+    background: #fdf6f6; border: 3px dashed var(--primary); margin-bottom: 16px;
+    min-height: 70px; display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+}
+.char-ok { color: var(--success); }
+.char-fail { color: var(--danger); }
+.char-pending { color: #bdc3c7; }
+
+.progress-bar-bg {
+    width: 100%; height: 14px; background: #eee; border-radius: 8px;
+    overflow: hidden; margin-bottom: 4px;
+}
+.progress-bar-fill {
+    height: 100%; background: var(--success); transition: width 0.1s linear; border-radius: 8px;
+}
+.player-row { margin-bottom: 12px; }
+.player-name { font-size: 0.9rem; font-weight: bold; color: #2c3e50; margin-bottom: 2px; display: flex; justify-content: space-between; }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.stat-box { background: #fdf6f6; border-radius: 12px; padding: 16px; text-align: center; }
+.stat-value { font-size: 2rem; font-weight: bold; color: var(--primary); }
+.stat-label { font-size: 0.8rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; }
+
+.countdown-display {
+    font-size: 5rem; font-weight: bold; color: var(--primary); text-align: center; padding: 40px 0;
+}
+
+.room-code-display {
+    font-size: 2.5rem; font-weight: bold; letter-spacing: 0.3em; text-align: center;
+    background: #fdf6f6; border: 3px dashed var(--primary); border-radius: 14px;
+    padding: 16px; margin-bottom: 16px; color: var(--primary);
+}
+
+.scoreboard-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; background: #f8f9fa;
+}
+.scoreboard-row.winner { background: linear-gradient(135deg, #fff8e1, #ffe082); border: 2px solid var(--secondary); }
+.scoreboard-rank { font-size: 1.3rem; font-weight: bold; color: var(--primary); width: 30px; }
+
+.toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px);
+    background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px;
+    font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.hidden { display: none !important; }
+
+@media (max-width: 600px) {
+    body { padding: 12px; }
+    .word-display { font-size: 1.6rem; padding: 14px; }
+    .room-code-display { font-size: 1.8rem; }
+    .countdown-display { font-size: 3.5rem; padding: 24px 0; }
+}
+
+/* Dark Mode */
+:root.dark { --bg: #12131a; --card-bg: #1e2030; }
+* { transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+.dark body { background: var(--bg); color: #e8eaf6; }
+.dark h1 { color: #e8eaf6; }
+.dark .card { background: var(--card-bg); }
+.dark .word-display { background: #2a2030; }
+.dark .select-chip { background: #2a2d3e; border-color: #3a3d50; color: #e8eaf6; }
+.dark .scoreboard-row { background: #2a2d3e; }
+.dark .player-name { color: #e8eaf6; }
+.dark .stat-box { background: #2a2030; }
+.dark .room-code-display { background: #2a2030; }
+.theme-toggle-wrap { position: fixed; top: 12px; right: 12px; z-index: 999; }
+.home-toggle-wrap { position: fixed; top: 12px; left: 12px; z-index: 999; }
+.theme-btn { background: #2c3e50; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+</style>
+</head>
+<body>
+
+<div class="home-toggle-wrap">
+    <button class="theme-btn" onclick="zurueckZuABCWort()" title="Zurück zu ABC-Wort">🏠</button>
+</div>
+
+<div class="theme-toggle-wrap">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="game-header">
+<svg width="100%" viewBox="0 0 680 480" role="img">
+<title>Diktator</title>
+<desc>ABC-Wort Logo oben links, Redner mit Frisur und offenem Mund hinter einem Pult mit Sprechblase, fuenf Zuhoerer, Titel Diktator</desc>
+
+<rect x="4" y="4" width="672" height="472" rx="16" fill="#fdfaf0" stroke="#d4af37" stroke-width="4"/>
+
+<defs>
+<clipPath id="logoClip"><rect x="15" y="15" width="290" height="189" rx="15"/></clipPath>
+</defs>
+
+<g clip-path="url(#logoClip)">
+<rect x="15" y="15" width="290" height="189" fill="#bfe1f0"/>
+<circle cx="233" cy="48" r="15" fill="#fdf0a0"/>
+<rect x="15" y="121" width="290" height="39" fill="#5a8bb5"/>
+<rect x="19" y="85" width="17" height="36" fill="#34495e"/>
+<rect x="41" y="70" width="17" height="51" fill="#34495e"/>
+<rect x="63" y="92" width="17" height="29" fill="#34495e"/>
+<rect x="85" y="66" width="17" height="55" fill="#34495e"/>
+<rect x="106" y="80" width="17" height="41" fill="#34495e"/>
+<rect x="128" y="69" width="17" height="52" fill="#34495e"/>
+<rect x="150" y="89" width="17" height="32" fill="#34495e"/>
+<rect x="172" y="74" width="17" height="46" fill="#34495e"/>
+<rect x="193" y="85" width="17" height="36" fill="#34495e"/>
+<rect x="215" y="72" width="17" height="49" fill="#34495e"/>
+<rect x="237" y="89" width="17" height="32" fill="#34495e"/>
+<rect x="259" y="77" width="17" height="44" fill="#34495e"/>
+<rect x="15" y="160" width="290" height="44" fill="#fdfaf0"/>
+<text x="22" y="131" font-size="84" font-weight="900" fill="#f4c20d" font-family="sans-serif">A</text>
+<text x="115" y="127" font-size="73" font-weight="900" fill="#e67e22" font-family="sans-serif">B</text>
+<text x="202" y="118" font-size="58" font-weight="900" fill="none" stroke="#c0392b" stroke-width="4" font-family="sans-serif">C</text>
+<text x="160" y="195" text-anchor="middle" font-size="44" font-weight="900" fill="#2c2c2a" font-family="sans-serif">Wort</text>
+</g>
+<rect x="15" y="15" width="290" height="189" rx="15" fill="none" stroke="#d4af37" stroke-width="2"/>
+
+<circle cx="283" cy="90" r="8" fill="#2c2c2a"/>
+<circle cx="387" cy="90" r="8" fill="#2c2c2a"/>
+<circle cx="335" cy="85" r="48" fill="#2c2c2a"/>
+<path d="M288,58 Q300,18 340,22 Q380,26 388,58 Q365,40 340,46 Q315,40 288,58 Z" fill="#2c2c2a"/>
+<path d="M285,130 L385,130 L410,200 L260,200 Z" fill="#2c2c2a"/>
+<circle cx="320" cy="76" r="5" fill="#fdfaf0"/>
+<circle cx="352" cy="76" r="5" fill="#fdfaf0"/>
+<ellipse cx="335" cy="100" rx="12.6" ry="16.2" fill="#fdfaf0"/>
+
+<ellipse cx="520" cy="70" rx="75" ry="48" fill="#2c2c2a"/>
+<path d="M455,95 L425,135 L470,100 Z" fill="#2c2c2a"/>
+<rect x="512" y="42" width="16" height="38" rx="8" fill="#fdfaf0"/>
+<circle cx="520" cy="96" r="9" fill="#fdfaf0"/>
+
+<path d="M250,150 L420,150 L465,300 L235,300 Z" fill="#2c2c2a"/>
+<rect x="250" y="146" width="170" height="8" rx="3" fill="#d4af37"/>
+
+<circle cx="100" cy="300" r="28" fill="#2c2c2a"/>
+<path d="M55,330 Q55,400 100,400 Q145,400 145,330 Z" fill="#2c2c2a"/>
+
+<circle cx="220" cy="300" r="28" fill="#2c2c2a"/>
+<path d="M175,330 Q175,400 220,400 Q265,400 265,330 Z" fill="#2c2c2a"/>
+
+<circle cx="340" cy="295" r="32" fill="#fdfaf0" stroke="#2c2c2a" stroke-width="6"/>
+<path d="M290,330 Q290,405 340,405 Q390,405 390,330 Z" fill="#fdfaf0" stroke="#2c2c2a" stroke-width="6"/>
+
+<circle cx="460" cy="300" r="28" fill="#2c2c2a"/>
+<path d="M415,330 Q415,400 460,400 Q505,400 505,330 Z" fill="#2c2c2a"/>
+
+<circle cx="580" cy="300" r="28" fill="#2c2c2a"/>
+<path d="M535,330 Q535,400 580,400 Q625,400 625,330 Z" fill="#2c2c2a"/>
+
+<rect x="40" y="412" width="600" height="8" rx="4" fill="#d4af37"/>
+
+<text x="340" y="462" text-anchor="middle" font-size="56" font-weight="bold" fill="#c0392b" font-family="sans-serif">Diktator</text>
+</svg>
+</div>
+
+<!-- ============ HAUPTMENÜ ============ -->
+<div id="screenMenu" class="card">
+    <div class="menu-grid">
+        <button class="btn btn-primary" onclick="zeigeScreen('solo-setup')">🏃 Solo — gegen die Uhr</button>
+        <button class="btn btn-secondary" onclick="zeigeScreen('multi-create')">➕ Raum erstellen</button>
+        <button class="btn btn-purple" onclick="zeigeScreen('multi-join')">🔑 Raum beitreten</button>
+        <button class="btn btn-outline" onclick="zurueckZuABCWort()">🏠 Zurück zu ABC-Wort</button>
+    </div>
+</div>
+
+<!-- ============ SOLO: SETUP ============ -->
+<div id="screen-solo-setup" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">🏃 Solo-Modus</h2>
+    <p style="text-align:center; color:#7f8c8d;">Wähle deine Sprache</p>
+    <div class="select-row" id="soloSprachAuswahl"></div>
+    <p style="text-align:center; color:#7f8c8d;">Niveau</p>
+    <div class="select-row" id="soloNiveauAuswahl"></div>
+    <p style="text-align:center; color:#7f8c8d;">Anzeige</p>
+    <div class="select-row">
+        <div class="select-chip leerfeld-toggle" onclick="leerfeldToggle(this)">➖ Leerfeld (nur hören)</div>
+    </div>
+    <button class="btn btn-primary" onclick="soloStarten()">▶️ Start (10 Wörter)</button>
+    <button class="btn btn-outline" onclick="zeigeScreen('menu')">← Zurück</button>
+</div>
+
+<!-- ============ SOLO: SPIEL ============ -->
+<div id="screen-solo-spiel" class="card hidden">
+    <div style="text-align:center; margin-bottom:8px; color:#7f8c8d;">Wort <span id="soloAktuellNr">1</span> / <span id="soloGesamtNr">10</span></div>
+    <div class="word-display" id="soloWordDisplay"></div>
+    <button class="btn btn-outline" style="width:auto; padding:8px 16px; margin:0 auto 12px; display:block;" onclick="sprichWort(solo.woerter[solo.idx], aktuelleSprache)">🔁 Nochmal hören</button>
+    <input type="text" id="soloInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Hier tippen…">
+</div>
+
+<!-- ============ SOLO: ERGEBNIS ============ -->
+<div id="screen-solo-ergebnis" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">🏁 Ergebnis</h2>
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div class="stat-value" id="soloStatZeit">0.0s</div>
+            <div class="stat-label">Gesamtzeit</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value" id="soloStatWpm">0</div>
+            <div class="stat-label">Zeichen/Min</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value" id="soloStatGenauigkeit">100%</div>
+            <div class="stat-label">Genauigkeit</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value" id="soloStatFehler">0</div>
+            <div class="stat-label">Fehler</div>
+        </div>
+    </div>
+    <button class="btn btn-primary" onclick="zeigeScreen('solo-setup')">🔄 Nochmal</button>
+    <button class="btn btn-outline" onclick="zeigeScreen('menu')">← Hauptmenü</button>
+</div>
+
+<!-- ============ MULTI: RAUM ERSTELLEN ============ -->
+<div id="screen-multi-create" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">➕ Raum erstellen</h2>
+    <p style="text-align:center; color:#7f8c8d;">Dein Name</p>
+    <input type="text" id="hostName" placeholder="Spielername" maxlength="16">
+    <p style="text-align:center; color:#7f8c8d;">Sprache</p>
+    <div class="select-row" id="multiCreateSprachAuswahl"></div>
+    <p style="text-align:center; color:#7f8c8d;">Niveau</p>
+    <div class="select-row" id="multiCreateNiveauAuswahl"></div>
+    <p style="text-align:center; color:#7f8c8d;">Anzeige</p>
+    <div class="select-row">
+        <div class="select-chip leerfeld-toggle" onclick="leerfeldToggle(this)">➖ Leerfeld (nur hören)</div>
+    </div>
+    <button class="btn btn-primary" onclick="raumErstellen()">🚀 Raum erstellen</button>
+    <button class="btn btn-outline" onclick="zeigeScreen('menu')">← Zurück</button>
+</div>
+
+<!-- ============ MULTI: RAUM BEITRETEN ============ -->
+<div id="screen-multi-join" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">🔑 Raum beitreten</h2>
+    <p style="text-align:center; color:#7f8c8d;">Dein Name</p>
+    <input type="text" id="joinName" placeholder="Spielername" maxlength="16">
+    <p style="text-align:center; color:#7f8c8d;">Raumcode</p>
+    <input type="text" id="joinCode" placeholder="ABCD" maxlength="4" style="text-transform:uppercase; letter-spacing:0.3em; font-size:1.6rem;">
+    <button class="btn btn-purple" onclick="raumBeitreten()">▶️ Beitreten</button>
+    <button class="btn btn-outline" onclick="zeigeScreen('menu')">← Zurück</button>
+</div>
+
+<!-- ============ MULTI: LOBBY ============ -->
+<div id="screen-multi-lobby" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">🎮 Lobby</h2>
+    <div class="room-code-display" id="lobbyCode">----</div>
+    <p style="text-align:center; color:#7f8c8d; margin-bottom:16px;">Teile diesen Code mit anderen Spielern</p>
+    <div id="lobbySprachInfo" style="text-align:center; margin-bottom:16px; font-weight:bold;"></div>
+    <p style="font-weight:bold; margin-bottom:8px;">👥 Spieler im Raum</p>
+    <div id="lobbySpieler" style="margin-bottom:16px;"></div>
+    <button class="btn btn-success hidden" id="btnSpielStarten" onclick="multiSpielStarten()">▶️ Spiel starten</button>
+    <div id="lobbyWarten" style="text-align:center; color:#7f8c8d;">Warte auf Spielstart durch den Host…</div>
+    <button class="btn btn-outline" onclick="raumVerlassen()">← Raum verlassen</button>
+</div>
+
+<!-- ============ MULTI: COUNTDOWN ============ -->
+<div id="screen-multi-countdown" class="card hidden">
+    <div class="countdown-display" id="countdownAnzeige">3</div>
+    <div style="text-align:center; color:#7f8c8d;">Das Spiel beginnt…</div>
+</div>
+
+<!-- ============ MULTI: ANSAGE (Diktator-Phase) ============ -->
+<div id="screen-multi-ansage" class="card hidden">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; color:#7f8c8d;">
+        <span>Runde <span id="ansageRundeNr">1</span> / <span id="multiRundeGesamt">5</span></span>
+    </div>
+    <div id="ansageRolleInfo" style="text-align:center; font-size:1.2rem; font-weight:bold; margin-bottom:16px;"></div>
+    <div class="word-display hidden" id="ansageWortAnzeige"></div>
+    <div id="ansageWarten" style="text-align:center; padding:30px 0; color:#7f8c8d;">
+        <div style="font-size:2.5rem; margin-bottom:8px;">🎙️</div>
+        Warte auf Ansage…
+    </div>
+    <button class="btn btn-secondary hidden" id="btnAnsagen" onclick="multiAnsagen()" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+        <svg width="22" height="22" viewBox="0 0 100 100" style="flex-shrink:0;">
+            <ellipse cx="50" cy="42" rx="42" ry="28" fill="#fdfaf0"/>
+            <path d="M28,64 L20,86 L42,68 Z" fill="#fdfaf0"/>
+            <rect x="45" y="22" width="10" height="24" rx="5" fill="#2c2c2a"/>
+            <circle cx="50" cy="54" r="5.5" fill="#2c2c2a"/>
+        </svg>
+        <span id="btnAnsagenText">Jetzt vorlesen!</span>
+    </button>
+</div>
+
+<!-- ============ MULTI: SPIEL ============ -->
+<div id="screen-multi-spiel" class="card hidden">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; color:#7f8c8d;">
+        <span>Runde <span id="multiRundeNr">1</span> / <span id="multiRundeGesamt2">5</span></span>
+        <span id="multiTimer" style="font-weight:bold; font-size:1.2rem; color:var(--primary);">20</span>
+    </div>
+    <div class="word-display" id="multiWordDisplay"></div>
+    <div id="multiDiktatorHinweis" class="hidden" style="text-align:center; background:#fdf6f6; border:2px solid var(--primary); border-radius:12px; padding:12px; margin-bottom:12px; font-weight:bold;">
+        🎙️ Du bist Diktator — die anderen tippen jetzt!
+    </div>
+    <button class="btn btn-outline" style="width:auto; padding:8px 16px; margin:0 auto 12px; display:block;" onclick="sprichWort(multi.wortfolge[multi.currentRound], multi.lang)">🔁 Nochmal hören</button>
+    <input type="text" id="multiInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Hier tippen…">
+    <div id="multiSpielerListe" style="margin-top:16px;"></div>
+</div>
+
+<!-- ============ MULTI: RUNDENERGEBNIS ============ -->
+<div id="screen-multi-rundenergebnis" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">⏱️ Runde <span id="rundenErgNr">1</span> beendet</h2>
+    <div id="rundenErgListe" style="margin-bottom:16px;"></div>
+    <div style="text-align:center; color:#7f8c8d;" id="rundenErgWeiter">Nächste Runde startet…</div>
+</div>
+
+<!-- ============ MULTI: GESAMTERGEBNIS ============ -->
+<div id="screen-multi-gesamt" class="card hidden">
+    <h2 style="text-align:center; margin-top:0;">🏆 Der Diktator ist…</h2>
+    <div id="gesamtErgListe" style="margin-bottom:16px;"></div>
+    <button class="btn btn-primary" onclick="raumVerlassen()">🏠 Hauptmenü</button>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// === Wortlisten (N1) ===
+const wordLists = {
+    de: {
+        flag:'🇩🇪', name:'Deutsch',
+        n1: ['Essen','Ball','Buch','Fisch','Gehen','Groß','Haben','Hand','Heiß','Hund','Kalt','Klein','Laufen','Laut','Machen','Mond','Nase','Nass','Neu','Rufen','Sehen','Sitzen','Sonne','Tragen','Warm','Waschen','Zug','Alt'],
+        n2: ['Hausaufgabe','Sonnenblume','Fingernagel','Wasserflasche','Schreibtisch','Kindergarten','Apfelbaum','Fußball','Geburtstag','Handtuch','Zahnbürste','Regenschirm','Schlafzimmer','Straßenbahn','Lieblingsfarbe'],
+        n3: ['Ich gehe heute in die Schule','Das Wetter ist heute sehr schön','Meine Katze schläft auf dem Sofa','Wir essen gemeinsam Abendessen','Er liest jeden Tag ein Buch','Die Kinder spielen im Garten','Sie trinkt morgens einen Kaffee','Mein Bruder fährt mit dem Zug']
+    },
+    en: {
+        flag:'🇬🇧', name:'English',
+        n1: ['eat','ball','book','egg','fish','go','big','have','hand','hot','dog','cold','small','run','loud','make','moon','nose','wet','new','call','see','sit','sun','carry','warm','wash','train','old'],
+        n2: ['homework','sunflower','toothbrush','basketball','notebook','raincoat','bedroom','birthday','fingernail','backpack','snowman','butterfly','grandmother','weekend'],
+        n3: ['I go to school every day','The weather is very nice today','My cat sleeps on the sofa','We eat dinner together','He reads a book every day','The children play in the garden','She drinks coffee in the morning','My brother travels by train']
+    },
+    ru: {
+        flag:'🇷🇺', name:'Русский',
+        n1: ['дом','кот','мяч','нос','поезд','глаз','друг','хлеб','цветок','мост','сад','стол','чемодан','рука','луна','рыба','книга','кошка','собака','школа','улица','комната','куртка','лестница','солнце','дерево','окно'],
+        n2: ['самолёт','пешеход','листопад','снегопад','водопад','носорог','вертолёт','паровоз','полдень','новостройка'],
+        n3: ['Я иду в школу каждый день','Сегодня очень хорошая погода','Моя кошка спит на диване','Мы вместе ужинаем','Он читает книгу каждый день','Дети играют в саду','Она пьёт кофе утром','Мой брат едет на поезде']
+    }
+};
+
+let aktuelleSprache = 'de';
+
+const APP_FUER_SPRACHE = { de: 'index.html', en: 'abc_word.html', ru: 'abv_slowo.html' };
+
+function zurueckZuABCWort() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    const ziel = APP_FUER_SPRACHE[lang] || 'index.html';
+    window.location.href = ziel;
+}
+let aktuellesNiveau = 'n1';
+
+function niveauAuswahlBauen(containerId, onSelect) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    const niveaus = [
+        { code:'n1', label:'N1 · Wörter' },
+        { code:'n2', label:'N2 · Komposita' },
+        { code:'n3', label:'N3 · Sätze' }
+    ];
+    niveaus.forEach(niv => {
+        const chip = document.createElement('div');
+        chip.className = 'select-chip' + (niv.code === aktuellesNiveau ? ' aktiv' : '');
+        chip.textContent = niv.label;
+        chip.onclick = () => {
+            aktuellesNiveau = niv.code;
+            container.querySelectorAll('.select-chip').forEach(c2 => c2.classList.remove('aktiv'));
+            chip.classList.add('aktiv');
+            if (onSelect) onSelect(niv.code);
+        };
+        container.appendChild(chip);
+    });
+}
+let leerfeldModus = false;
+try { leerfeldModus = localStorage.getItem('diktator_leerfeld') === 'true'; } catch(e) {}
+
+function leerfeldToggle(btn) {
+    leerfeldModus = !leerfeldModus;
+    try { localStorage.setItem('diktator_leerfeld', leerfeldModus); } catch(e) {}
+    document.querySelectorAll('.leerfeld-toggle').forEach(b => b.classList.toggle('aktiv', leerfeldModus));
+}
+
+const ttsLangMap = { de: 'de-DE', en: 'en-GB', ru: 'ru-RU' };
+
+function sprichWort(text, lang) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = ttsLangMap[lang] || 'de-DE';
+    u.rate = 0.85;
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length === 0) {
+        window.speechSynthesis.addEventListener('voiceschanged', () => window.speechSynthesis.speak(u), { once: true });
+    } else {
+        window.speechSynthesis.speak(u);
+    }
+}
+
+function sprachAuswahlBauen(containerId, onSelect) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    Object.entries(wordLists).forEach(([code, data]) => {
+        const chip = document.createElement('div');
+        chip.className = 'select-chip' + (code === aktuelleSprache ? ' aktiv' : '');
+        chip.textContent = data.flag + ' ' + data.name;
+        chip.onclick = () => {
+            aktuelleSprache = code;
+            container.querySelectorAll('.select-chip').forEach(c => c.classList.remove('aktiv'));
+            chip.classList.add('aktiv');
+            if (onSelect) onSelect(code);
+        };
+        container.appendChild(chip);
+    });
+}
+
+// === Theme ===
+function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    try { localStorage.setItem('diktator_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+}
+function initTheme() {
+    try {
+        if (localStorage.getItem('diktator_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.getElementById('themeBtn').textContent = '☀️';
+        }
+    } catch(e) {}
+}
+
+// === Toast ===
+let toastTimer = null;
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// === Screen-Management ===
+function zeigeScreen(name) {
+    document.querySelectorAll('[id^="screen"]').forEach(el => el.classList.add('hidden'));
+    const el = document.getElementById('screen-' + name);
+    if (el) el.classList.remove('hidden');
+    else document.getElementById('screenMenu').classList.remove('hidden');
+}
+
+// === Wortfolge: seeded RNG für reproduzierbare Reihenfolge (Multiplayer) ===
+function seedFromString(str) {
+    let h = 1779033703 ^ str.length;
+    for (let i = 0; i < str.length; i++) {
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+        h = (h << 13) | (h >>> 19);
+    }
+    return h >>> 0;
+}
+function mulberry32(seed) {
+    return function() {
+        seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+}
+function wortfolgeFuerRaum(seedStr, lang, niveau, anzahl) {
+    const liste = wordLists[lang][niveau];
+    const rng = mulberry32(seedFromString(seedStr + ':' + lang + ':' + niveau));
+    const folge = [];
+    const verwendet = new Set();
+    for (let i = 0; i < anzahl; i++) {
+        let idx, versuche = 0;
+        do { idx = Math.floor(rng() * liste.length); versuche++; }
+        while (verwendet.has(idx) && versuche < 20 && verwendet.size < liste.length);
+        verwendet.add(idx);
+        folge.push(liste[idx]);
+    }
+    return folge;
+}
+
+// === Wort-Anzeige rendern (mit Zeichen-Feedback) ===
+function renderWordDisplay(container, ziel, eingabe, leerfeld) {
+    container.classList.toggle('word-display-lang', ziel.length > 18);
+    let html = '';
+    for (let i = 0; i < ziel.length; i++) {
+        let cls = 'char-pending';
+        let ch = leerfeld ? '_' : ziel[i];
+        if (i < eingabe.length) {
+            cls = (eingabe[i] === ziel[i]) ? 'char-ok' : 'char-fail';
+            ch = eingabe[i];
+        }
+        html += `<span class="${cls}">${ch === ' ' ? '&nbsp;' : ch}</span>`;
+    }
+    container.innerHTML = html;
+}
+
+// === SOLO-MODUS ===
+let solo = {
+    woerter: [], idx: 0, eingabe: '', fehler: 0, gesamtZeichen: 0,
+    startZeit: 0, fertig: false
+};
+
+function soloStarten() {
+    // Bei Solo: echte Zufallsauswahl (mehr Abwechslung)
+    const liste = [...wordLists[aktuelleSprache][aktuellesNiveau]];
+    solo.woerter = [];
+    const pool = [...liste];
+    for (let i = 0; i < 10; i++) {
+        if (pool.length === 0) pool.push(...liste);
+        const idx = Math.floor(Math.random() * pool.length);
+        solo.woerter.push(pool.splice(idx, 1)[0]);
+    }
+    solo.idx = 0;
+    solo.eingabe = '';
+    solo.fehler = 0;
+    solo.gesamtZeichen = 0;
+    solo.fertig = false;
+    document.getElementById('soloGesamtNr').textContent = solo.woerter.length;
+    zeigeScreen('solo-spiel');
+    soloNeuesWort();
+    solo.startZeit = Date.now();
+}
+
+function soloNeuesWort() {
+    solo.eingabe = '';
+    document.getElementById('soloAktuellNr').textContent = solo.idx + 1;
+    const ziel = solo.woerter[solo.idx];
+    renderWordDisplay(document.getElementById('soloWordDisplay'), ziel, '', leerfeldModus);
+    const input = document.getElementById('soloInput');
+    input.value = '';
+    input.focus();
+    sprichWort(ziel, aktuelleSprache);
+}
+
+function soloEingabeHandler(e) {
+    const ziel = solo.woerter[solo.idx];
+    let val = e.target.value;
+    if (val.length > ziel.length) val = val.slice(0, ziel.length);
+    // Fehlerzählung: neue Zeichen prüfen
+    if (val.length > solo.eingabe.length) {
+        const neuesZeichen = val[val.length - 1];
+        const sollZeichen = ziel[val.length - 1];
+        if (neuesZeichen.toLowerCase() !== sollZeichen.toLowerCase()) solo.fehler++;
+    }
+    solo.eingabe = val;
+    renderWordDisplay(document.getElementById('soloWordDisplay'), ziel, val, leerfeldModus);
+
+    if (val.toLowerCase() === ziel.toLowerCase()) {
+        solo.gesamtZeichen += ziel.length;
+        solo.idx++;
+        if (solo.idx >= solo.woerter.length) {
+            soloFertig();
+        } else {
+            setTimeout(soloNeuesWort, 250);
+        }
+    }
+}
+
+function soloFertig() {
+    const dauerSek = (Date.now() - solo.startZeit) / 1000;
+    const zpm = Math.round((solo.gesamtZeichen / dauerSek) * 60);
+    const gesamtAnschlaege = solo.gesamtZeichen + solo.fehler;
+    const genauigkeit = gesamtAnschlaege > 0 ? Math.round((solo.gesamtZeichen / gesamtAnschlaege) * 100) : 100;
+
+    document.getElementById('soloStatZeit').textContent = dauerSek.toFixed(1) + 's';
+    document.getElementById('soloStatWpm').textContent = zpm;
+    document.getElementById('soloStatGenauigkeit').textContent = genauigkeit + '%';
+    document.getElementById('soloStatFehler').textContent = solo.fehler;
+    zeigeScreen('solo-ergebnis');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+
+    // === URL-Parameter: ?lang=de&niveau=n1&mode=solo ===
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
+    const urlNiveau = params.get('niveau');
+    const urlMode = params.get('mode');
+    if (urlLang && wordLists[urlLang]) aktuelleSprache = urlLang;
+    if (urlNiveau && ['n1','n2','n3'].includes(urlNiveau)) aktuellesNiveau = urlNiveau;
+
+    sprachAuswahlBauen('soloSprachAuswahl');
+    sprachAuswahlBauen('multiCreateSprachAuswahl', code => { multi.lang = code; });
+    niveauAuswahlBauen('soloNiveauAuswahl');
+    niveauAuswahlBauen('multiCreateNiveauAuswahl', code => { multi.niveau = code; });
+    document.getElementById('soloInput').addEventListener('input', soloEingabeHandler);
+    document.getElementById('multiInput').addEventListener('input', multiEingabeHandler);
+    document.querySelectorAll('.leerfeld-toggle').forEach(b => b.classList.toggle('aktiv', leerfeldModus));
+    document.getElementById('joinCode').addEventListener('input', e => {
+        e.target.value = e.target.value.toUpperCase();
+    });
+
+    if (urlMode === 'solo') {
+        soloStarten();
+    }
+});
+
+// =====================================================================
+// === MULTIPLAYER (Supabase Realtime) ===
+// =====================================================================
+
+// HIER EINTRAGEN — nach Supabase-Projekt-Erstellung unter Project Settings → API:
+const SUPABASE_URL = 'https://aavadrsafvxqazpadtxk.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_sz8Y4bTlRodV0uHzPc_o3w_Xb3MHZkb';
+
+const ROUND_DURATIONS = { n1: 20, n2: 25, n3: 45 }; // Sekunden je Niveau (Tippzeit nach Ansage)
+const PAUSE_DURATION = 4;  // Sekunden Pause zwischen Runden
+const ROUNDS = 5;
+const DIKTATOR_BONUS = 2;  // Punkte für die Diktator-Rolle dieser Runde
+
+let multi = {
+    client: null,
+    channel: null,
+    roomCode: '',
+    playerId: '',
+    playerName: '',
+    isHost: false,
+    lang: 'de',
+    niveau: 'n1',
+    roundDuration: 20,
+    wortfolge: [],
+    playerOrder: [],       // feste Reihenfolge für Diktator-Rotation
+    aktuellerDiktator: null,
+    phase: 'idle',         // idle | countdown | waiting-announce | round | roundresult | final
+    currentRound: 0,
+    scores: {},          // playerId -> Punkte gesamt
+    roundFinishes: {},   // round -> { playerId: ms }
+    roundProgress: {},   // playerId -> {round, percent}
+    players: {},         // playerId -> {name}
+    countdownInterval: null,
+    roundTimerInterval: null,
+    eingabe: '',
+    fehler: 0,
+    roundStartTime: 0,
+    finishedThisRound: false
+};
+
+function supabaseBereit() {
+    if (!SUPABASE_URL || SUPABASE_URL.startsWith('HIER_') || !window.supabase) {
+        showToast('⚠️ Supabase noch nicht eingerichtet (siehe Anleitung)');
+        return false;
+    }
+    if (!multi.client) {
+        multi.client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+    return true;
+}
+
+function erzeugeRaumcode() {
+    const zeichen = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) code += zeichen[Math.floor(Math.random() * zeichen.length)];
+    return code;
+}
+
+function erzeugePlayerId() {
+    if (window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID();
+    return 'p-' + Math.random().toString(36).slice(2) + Date.now();
+}
+
+// === Raum erstellen ===
+function raumErstellen() {
+    if (!supabaseBereit()) return;
+    const name = document.getElementById('hostName').value.trim();
+    if (!name) { showToast('Bitte Namen eingeben'); return; }
+    multi.playerName = name;
+    multi.playerId = erzeugePlayerId();
+    multi.roomCode = erzeugeRaumcode();
+    multi.isHost = true;
+    multi.lang = aktuelleSprache || multi.lang;
+    multi.niveau = aktuellesNiveau || multi.niveau;
+
+    kanalVerbinden();
+    document.getElementById('lobbyCode').textContent = multi.roomCode;
+    document.getElementById('lobbySprachInfo').textContent = wordLists[multi.lang].flag + ' ' + wordLists[multi.lang].name + ' · ' + multi.niveau.toUpperCase();
+    document.getElementById('btnSpielStarten').classList.remove('hidden');
+    document.getElementById('lobbyWarten').classList.add('hidden');
+    zeigeScreen('multi-lobby');
+}
+
+// === Raum beitreten ===
+function raumBeitreten() {
+    if (!supabaseBereit()) return;
+    const name = document.getElementById('joinName').value.trim();
+    const code = document.getElementById('joinCode').value.trim().toUpperCase();
+    if (!name) { showToast('Bitte Namen eingeben'); return; }
+    if (code.length !== 4) { showToast('Raumcode muss 4 Zeichen haben'); return; }
+    multi.playerName = name;
+    multi.playerId = erzeugePlayerId();
+    multi.roomCode = code;
+    multi.isHost = false;
+
+    kanalVerbinden();
+    document.getElementById('lobbyCode').textContent = multi.roomCode;
+    document.getElementById('lobbySprachInfo').textContent = '⏳ Warte auf Host…';
+    document.getElementById('btnSpielStarten').classList.add('hidden');
+    document.getElementById('lobbyWarten').classList.remove('hidden');
+    zeigeScreen('multi-lobby');
+}
+
+// === Kanal verbinden (Presence + Broadcast) ===
+function kanalVerbinden() {
+    multi.channel = multi.client.channel('diktator-room-' + multi.roomCode, {
+        config: { presence: { key: multi.playerId }, broadcast: { self: true } }
+    });
+
+    multi.channel
+        .on('presence', { event: 'sync' }, () => {
+            const state = multi.channel.presenceState();
+            multi.players = {};
+            Object.entries(state).forEach(([pid, metas]) => {
+                if (metas && metas[0]) multi.players[pid] = { name: metas[0].name };
+            });
+            lobbyListeAktualisieren();
+        })
+        .on('broadcast', { event: 'game-start' }, ({ payload }) => {
+            multi.lang = payload.lang;
+            multi.niveau = payload.niveau;
+            multi.roundDuration = ROUND_DURATIONS[multi.niveau] || 20;
+            multi.playerOrder = payload.playerOrder;
+            multi.wortfolge = wortfolgeFuerRaum(multi.roomCode, multi.lang, multi.niveau, ROUNDS);
+            multi.scores = {};
+            multi.roundFinishes = {};
+            multi.roundProgress = {};
+            multi.currentRound = -1;
+            multi.phase = 'countdown';
+            document.getElementById('lobbySprachInfo').textContent = wordLists[multi.lang].flag + ' ' + wordLists[multi.lang].name + ' · ' + multi.niveau.toUpperCase();
+            document.getElementById('multiRundeGesamt').textContent = ROUNDS;
+            document.getElementById('multiRundeGesamt2').textContent = ROUNDS;
+            zeigeScreen('multi-countdown');
+            const waitMs = payload.startAt - Date.now();
+            countdownDannStarten(waitMs, () => multiRundeVorbereiten(0));
+        })
+        .on('broadcast', { event: 'announce' }, ({ payload }) => {
+            if (multi.phase !== 'waiting-announce') return;
+            if (payload.round !== multi.currentRound) return;
+            multiRundeStarten(multi.currentRound);
+        })
+        .on('broadcast', { event: 'progress' }, ({ payload }) => {
+            if (payload.playerId === multi.playerId) return;
+            multi.roundProgress[payload.playerId] = { round: payload.round, percent: payload.percent };
+            multiSpielerlisteAktualisieren();
+        })
+        .on('broadcast', { event: 'finish' }, ({ payload }) => {
+            if (!multi.roundFinishes[payload.round]) multi.roundFinishes[payload.round] = {};
+            multi.roundFinishes[payload.round][payload.playerId] = payload.ms;
+            multiSpielerlisteAktualisieren();
+        })
+        .subscribe((status) => {
+            if (status === 'SUBSCRIBED') {
+                multi.channel.track({ name: multi.playerName });
+            }
+        });
+}
+
+function lobbyListeAktualisieren() {
+    const container = document.getElementById('lobbySpieler');
+    container.innerHTML = '';
+    Object.entries(multi.players).forEach(([pid, p]) => {
+        const row = document.createElement('div');
+        row.className = 'scoreboard-row';
+        row.innerHTML = `<span>${p.name}${pid === multi.playerId ? ' (du)' : ''}</span>`;
+        container.appendChild(row);
+    });
+}
+
+// === Raum verlassen ===
+function raumVerlassen() {
+    if (multi.channel) {
+        multi.client.removeChannel(multi.channel);
+        multi.channel = null;
+    }
+    if (multi.countdownInterval) { clearInterval(multi.countdownInterval); multi.countdownInterval = null; }
+    if (multi.roundTimerInterval) { clearInterval(multi.roundTimerInterval); multi.roundTimerInterval = null; }
+    multi.phase = 'idle';
+    multi.players = {};
+    multi.roundProgress = {};
+    multi.roundFinishes = {};
+    multi.aktuellerDiktator = null;
+    zeigeScreen('menu');
+}
+
+// === Host: Spiel starten ===
+function multiSpielStarten() {
+    if (!multi.channel) return;
+    const playerOrder = Object.keys(multi.players).sort();
+    const startAt = Date.now() + 3000; // 3 Sek. Vorlauf
+    multi.channel.send({
+        type: 'broadcast',
+        event: 'game-start',
+        payload: { lang: multi.lang, niveau: multi.niveau, startAt, playerOrder }
+    });
+}
+
+// === Countdown vor Rundenstart ===
+function countdownDannStarten(waitMs, callback) {
+    const ende = Date.now() + Math.max(0, waitMs);
+    if (multi.countdownInterval) clearInterval(multi.countdownInterval);
+    const tick = () => {
+        const rest = Math.ceil((ende - Date.now()) / 1000);
+        document.getElementById('countdownAnzeige').textContent = rest > 0 ? rest : '🚀';
+        if (Date.now() >= ende) {
+            clearInterval(multi.countdownInterval);
+            multi.countdownInterval = null;
+            callback();
+        }
+    };
+    multi.countdownInterval = setInterval(tick, 100);
+    tick();
+}
+
+// === Runde vorbereiten: Diktator bestimmen, Ansage-Phase zeigen ===
+function multiRundeVorbereiten(r) {
+    multi.currentRound = r;
+    multi.eingabe = '';
+    multi.fehler = 0;
+    multi.finishedThisRound = false;
+    document.getElementById('multiRundeNr').textContent = r + 1;
+    document.getElementById('ansageRundeNr').textContent = r + 1;
+
+    // Solo-Test (nur 1 Spieler im Raum): Ansage-Phase überspringen
+    if (multi.playerOrder.length < 2) {
+        multi.aktuellerDiktator = null;
+        multi.phase = 'waiting-announce';
+        multiRundeStarten(r);
+        return;
+    }
+
+    multi.phase = 'waiting-announce';
+    const diktatorId = multi.playerOrder[r % multi.playerOrder.length];
+    multi.aktuellerDiktator = diktatorId;
+    const diktatorName = (multi.players[diktatorId] && multi.players[diktatorId].name) || '?';
+    const ziel = multi.wortfolge[r];
+    const istDiktator = diktatorId === multi.playerId;
+
+    const wortAnzeige = document.getElementById('ansageWortAnzeige');
+    const btn = document.getElementById('btnAnsagen');
+    const warte = document.getElementById('ansageWarten');
+    const rolleInfo = document.getElementById('ansageRolleInfo');
+
+    if (istDiktator) {
+        rolleInfo.textContent = '📢 Du bist diese Runde der Diktator!';
+        renderWordDisplay(wortAnzeige, ziel, '', false);
+        wortAnzeige.classList.remove('hidden');
+        btn.classList.remove('hidden');
+        document.getElementById('btnAnsagenText').textContent = 'Jetzt vorlesen!';
+        warte.classList.add('hidden');
+    } else {
+        rolleInfo.textContent = '🎙️ ' + diktatorName + ' ist diese Runde Diktator';
+        wortAnzeige.classList.add('hidden');
+        btn.classList.add('hidden');
+        warte.classList.remove('hidden');
+    }
+    zeigeScreen('multi-ansage');
+}
+
+// === Diktator klickt "Jetzt vorlesen!" ===
+function multiAnsagen() {
+    if (!multi.channel) return;
+    multi.channel.send({
+        type: 'broadcast', event: 'announce',
+        payload: { round: multi.currentRound }
+    });
+    document.getElementById('btnAnsagenText').textContent = 'Erneut senden';
+}
+
+// === Runde starten: Wort zeigen, TTS, Timer ===
+function multiRundeStarten(r) {
+    multi.phase = 'round';
+    multi.roundStartTime = Date.now();
+    const ziel = multi.wortfolge[r];
+    const istDiktator = multi.aktuellerDiktator === multi.playerId;
+
+    renderWordDisplay(document.getElementById('multiWordDisplay'), ziel, '', istDiktator ? false : leerfeldModus);
+    const input = document.getElementById('multiInput');
+    input.value = '';
+    input.disabled = istDiktator;
+    document.getElementById('multiDiktatorHinweis').classList.toggle('hidden', !istDiktator);
+    document.getElementById('multiTimer').textContent = multi.roundDuration;
+
+    multiSpielerlisteAktualisieren();
+    zeigeScreen('multi-spiel');
+    sprichWort(ziel, multi.lang);
+    if (!istDiktator) input.focus();
+
+    if (multi.roundTimerInterval) clearInterval(multi.roundTimerInterval);
+    const ende = multi.roundStartTime + multi.roundDuration * 1000;
+    multi.roundTimerInterval = setInterval(() => {
+        const rest = Math.ceil((ende - Date.now()) / 1000);
+        document.getElementById('multiTimer').textContent = rest > 0 ? rest : 0;
+        if (Date.now() >= ende) {
+            clearInterval(multi.roundTimerInterval);
+            multi.roundTimerInterval = null;
+            if (multi.phase === 'round') multiRundenergebnisZeigen(r);
+        }
+    }, 200);
+}
+
+function multiEingabeHandler(e) {
+    if (multi.phase !== 'round' || multi.finishedThisRound) return;
+    if (multi.aktuellerDiktator === multi.playerId) return; // Diktator tippt nicht
+
+    const ziel = multi.wortfolge[multi.currentRound];
+    let val = e.target.value;
+    if (val.length > ziel.length) val = val.slice(0, ziel.length);
+
+    if (val.length > multi.eingabe.length) {
+        const neuesZeichen = val[val.length - 1];
+        const sollZeichen = ziel[val.length - 1];
+        if (neuesZeichen.toLowerCase() !== sollZeichen.toLowerCase()) multi.fehler++;
+    }
+    multi.eingabe = val;
+    renderWordDisplay(document.getElementById('multiWordDisplay'), ziel, val, leerfeldModus);
+
+    const percent = Math.round((val.length / ziel.length) * 100);
+    multi.channel.send({
+        type: 'broadcast', event: 'progress',
+        payload: { playerId: multi.playerId, round: multi.currentRound, percent }
+    });
+
+    if (val.toLowerCase() === ziel.toLowerCase()) {
+        multi.finishedThisRound = true;
+        const ms = Date.now() - multi.roundStartTime;
+        e.target.disabled = true;
+        multi.channel.send({
+            type: 'broadcast', event: 'finish',
+            payload: { playerId: multi.playerId, round: multi.currentRound, ms }
+        });
+        showToast('✅ Fertig! ' + (ms / 1000).toFixed(2) + 's');
+    }
+}
+
+function multiSpielerlisteAktualisieren() {
+    const container = document.getElementById('multiSpielerListe');
+    container.innerHTML = '';
+    Object.entries(multi.players).forEach(([pid, p]) => {
+        const istDiktator = pid === multi.aktuellerDiktator;
+        if (istDiktator) {
+            const row = document.createElement('div');
+            row.className = 'player-row';
+            row.innerHTML = `<div class="player-name"><span>🎙️ ${p.name}${pid === multi.playerId ? ' (du)' : ''}</span><span>liest vor</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:100%; background:var(--purple);"></div></div>`;
+            container.appendChild(row);
+            return;
+        }
+        const fertig = multi.roundFinishes[multi.currentRound] && multi.roundFinishes[multi.currentRound][pid] !== undefined;
+        const prog = pid === multi.playerId
+            ? Math.round((multi.eingabe.length / (multi.wortfolge[multi.currentRound] || ' ').length) * 100)
+            : (multi.roundProgress[pid] && multi.roundProgress[pid].round === multi.currentRound ? multi.roundProgress[pid].percent : 0);
+        const percent = fertig ? 100 : prog;
+        const row = document.createElement('div');
+        row.className = 'player-row';
+        row.innerHTML = `
+            <div class="player-name"><span>${p.name}${pid === multi.playerId ? ' (du)' : ''} ${fertig ? '✅' : ''}</span><span>${percent}%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${percent}%; background:${fertig ? 'var(--success)' : 'var(--secondary)'};"></div></div>
+        `;
+        container.appendChild(row);
+    });
+}
+
+// === Rundenergebnis anzeigen + Punkte vergeben ===
+function multiRundenergebnisZeigen(r) {
+    multi.phase = 'roundresult';
+    document.getElementById('multiInput').disabled = true;
+
+    const finishes = multi.roundFinishes[r] || {};
+    const diktatorId = multi.aktuellerDiktator;
+
+    // Tipper (alle außer Diktator) nach Zeit sortieren
+    const tipper = Object.entries(multi.players)
+        .filter(([pid]) => pid !== diktatorId)
+        .map(([pid, p]) => ({ pid, name: p.name, ms: finishes[pid] !== undefined ? finishes[pid] : null }))
+        .sort((a, b) => {
+            if (a.ms === null && b.ms === null) return 0;
+            if (a.ms === null) return 1;
+            if (b.ms === null) return -1;
+            return a.ms - b.ms;
+        });
+
+    const punkteVerteilung = [3, 2, 1];
+    tipper.forEach((entry, i) => {
+        const punkte = entry.ms !== null && i < punkteVerteilung.length ? punkteVerteilung[i] : 0;
+        multi.scores[entry.pid] = (multi.scores[entry.pid] || 0) + punkte;
+        entry.punkte = punkte;
+    });
+
+    // Diktator-Bonus
+    if (diktatorId && multi.players[diktatorId]) {
+        multi.scores[diktatorId] = (multi.scores[diktatorId] || 0) + DIKTATOR_BONUS;
+    }
+
+    document.getElementById('rundenErgNr').textContent = r + 1;
+    const liste = document.getElementById('rundenErgListe');
+    liste.innerHTML = '';
+
+    if (diktatorId && multi.players[diktatorId]) {
+        const row = document.createElement('div');
+        row.className = 'scoreboard-row';
+        row.innerHTML = `<span class="scoreboard-rank">🎙️</span><span style="flex:1;">${multi.players[diktatorId].name}${diktatorId === multi.playerId ? ' (du)' : ''}</span><span>Diktator</span><span style="margin-left:12px; font-weight:bold; color:var(--primary);">+${DIKTATOR_BONUS}</span>`;
+        liste.appendChild(row);
+    }
+
+    tipper.forEach((entry, i) => {
+        const row = document.createElement('div');
+        row.className = 'scoreboard-row' + (i === 0 && entry.ms !== null ? ' winner' : '');
+        const zeitText = entry.ms !== null ? (entry.ms / 1000).toFixed(2) + 's' : '–';
+        row.innerHTML = `<span class="scoreboard-rank">${i + 1}.</span><span style="flex:1;">${entry.name}${entry.pid === multi.playerId ? ' (du)' : ''}</span><span>${zeitText}</span><span style="margin-left:12px; font-weight:bold; color:var(--primary);">+${entry.punkte}</span>`;
+        liste.appendChild(row);
+    });
+
+    const istLetzte = r === ROUNDS - 1;
+    document.getElementById('rundenErgWeiter').textContent = istLetzte ? 'Gesamtergebnis…' : 'Nächste Runde startet…';
+    zeigeScreen('multi-rundenergebnis');
+
+    setTimeout(() => {
+        if (istLetzte) {
+            multiGesamtergebnisZeigen();
+        } else {
+            multiRundeVorbereiten(r + 1);
+        }
+    }, PAUSE_DURATION * 1000);
+}
+
+// === Gesamtergebnis ===
+function multiGesamtergebnisZeigen() {
+    multi.phase = 'final';
+
+    const reihenfolge = Object.entries(multi.players).map(([pid, p]) => ({
+        pid, name: p.name, punkte: multi.scores[pid] || 0
+    })).sort((a, b) => b.punkte - a.punkte);
+
+    const liste = document.getElementById('gesamtErgListe');
+    liste.innerHTML = '';
+    reihenfolge.forEach((entry, i) => {
+        const row = document.createElement('div');
+        row.className = 'scoreboard-row' + (i === 0 ? ' winner' : '');
+        const medaille = i === 0 ? '👑' : (i + 1) + '.';
+        row.innerHTML = `<span class="scoreboard-rank">${medaille}</span><span style="flex:1;">${entry.name}${entry.pid === multi.playerId ? ' (du)' : ''}</span><span style="font-weight:bold; color:var(--primary);">${entry.punkte} Pkt.</span>`;
+        liste.appendChild(row);
+    });
+
+    zeigeScreen('multi-gesamt');
+}
+</script>
+
+
+</body>
+</html>
