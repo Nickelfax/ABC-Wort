@@ -1,0 +1,3017 @@
+{
+  "version": "1.4",
+  "artikel": {
+    "n1": [
+      {
+        "wort": "Hund",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🐕"
+      },
+      {
+        "wort": "Katze",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🐈"
+      },
+      {
+        "wort": "Kind",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "👦"
+      },
+      {
+        "wort": "Ball",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "⚽"
+      },
+      {
+        "wort": "Sonne",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "☀️"
+      },
+      {
+        "wort": "Buch",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "📖"
+      },
+      {
+        "wort": "Baum",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🌳"
+      },
+      {
+        "wort": "Blume",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🌸"
+      },
+      {
+        "wort": "Haus",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "🏠"
+      },
+      {
+        "wort": "Vogel",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🐦"
+      },
+      {
+        "wort": "Mond",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🌙"
+      },
+      {
+        "wort": "Nase",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "👃"
+      },
+      {
+        "wort": "Hand",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "✋"
+      },
+      {
+        "wort": "Fisch",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🐟"
+      },
+      {
+        "wort": "Ei",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "🥚"
+      },
+      {
+        "wort": "Zug",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🚂"
+      }
+    ],
+    "n2": [
+      {
+        "wort": "Schule",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🏫"
+      },
+      {
+        "wort": "Tisch",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🪑"
+      },
+      {
+        "wort": "Fenster",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "🪟"
+      },
+      {
+        "wort": "Straße",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🛣️"
+      },
+      {
+        "wort": "Garten",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🌿"
+      },
+      {
+        "wort": "Zimmer",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "🛋️"
+      },
+      {
+        "wort": "Brücke",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🌉"
+      },
+      {
+        "wort": "Koffer",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🧳"
+      },
+      {
+        "wort": "Ampel",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🚦"
+      },
+      {
+        "wort": "Jacke",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🧥"
+      },
+      {
+        "wort": "Treppe",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🪜"
+      },
+      {
+        "wort": "Blume",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🌸"
+      },
+      {
+        "wort": "Regen",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🌧️"
+      },
+      {
+        "wort": "Freund",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "🤝"
+      }
+    ],
+    "n3": [
+      {
+        "wort": "Abenteuer",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "🗺️"
+      },
+      {
+        "wort": "Gerechtigkeit",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "⚖️"
+      },
+      {
+        "wort": "Beschluss",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "📋"
+      },
+      {
+        "wort": "Ergebnis",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "📊"
+      },
+      {
+        "wort": "Freundschaft",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🤝"
+      },
+      {
+        "wort": "Einfluss",
+        "artikel": "der",
+        "unbestimmt": "ein",
+        "emoji": "💡"
+      },
+      {
+        "wort": "Begeisterung",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🌟"
+      },
+      {
+        "wort": "Entscheidung",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🎯"
+      },
+      {
+        "wort": "Möglichkeit",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🔓"
+      },
+      {
+        "wort": "Verantwortung",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🎖️"
+      },
+      {
+        "wort": "Verständnis",
+        "artikel": "das",
+        "unbestimmt": "ein",
+        "emoji": "🤔"
+      },
+      {
+        "wort": "Nachbarschaft",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🏘️"
+      },
+      {
+        "wort": "Zusammenarbeit",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🤲"
+      },
+      {
+        "wort": "Überraschung",
+        "artikel": "die",
+        "unbestimmt": "eine",
+        "emoji": "🎁"
+      }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      {
+        "satz": "Ich sehe ___",
+        "wort": "Hund",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Hund",
+          "den Hund",
+          "dem Hund",
+          "des Hundes"
+        ],
+        "richtig": "den Hund"
+      },
+      {
+        "satz": "Ich helfe ___",
+        "wort": "Kind",
+        "kasus": "Dativ",
+        "antworten": [
+          "das Kind",
+          "den Kind",
+          "dem Kind",
+          "des Kindes"
+        ],
+        "richtig": "dem Kind"
+      },
+      {
+        "satz": "Das ist ___ Ball",
+        "wort": "Ball",
+        "kasus": "Nominativ",
+        "antworten": [
+          "der Ball",
+          "den Ball",
+          "dem Ball",
+          "des Balls"
+        ],
+        "richtig": "der Ball"
+      },
+      {
+        "satz": "Die Farbe ___ Katze",
+        "wort": "Katze",
+        "kasus": "Genitiv",
+        "antworten": [
+          "die Katze",
+          "der Katze",
+          "den Katze",
+          "dem Katze"
+        ],
+        "richtig": "der Katze"
+      },
+      {
+        "satz": "Ich streichle ___",
+        "wort": "Hund",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Hund",
+          "den Hund",
+          "dem Hund",
+          "des Hundes"
+        ],
+        "richtig": "den Hund"
+      },
+      {
+        "satz": "Das Fell ___ Hundes ist weich",
+        "wort": "Hund",
+        "kasus": "Genitiv",
+        "antworten": [
+          "der Hund",
+          "den Hund",
+          "dem Hund",
+          "des Hundes"
+        ],
+        "richtig": "des Hundes"
+      },
+      {
+        "satz": "Ich gebe ___ Kind ein Buch",
+        "wort": "Kind",
+        "kasus": "Dativ",
+        "antworten": [
+          "das Kind",
+          "den Kind",
+          "dem Kind",
+          "des Kindes"
+        ],
+        "richtig": "dem Kind"
+      },
+      {
+        "satz": "___ Sonne scheint",
+        "wort": "Sonne",
+        "kasus": "Nominativ",
+        "antworten": [
+          "die Sonne",
+          "der Sonne",
+          "den Sonne",
+          "dem Sonne"
+        ],
+        "richtig": "die Sonne"
+      },
+      {
+        "satz": "Ich sehe ___",
+        "wort": "Vogel",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Vogel",
+          "den Vogel",
+          "dem Vogel",
+          "des Vogels"
+        ],
+        "richtig": "den Vogel"
+      },
+      {
+        "satz": "Das Lied ___ Vogels",
+        "wort": "Vogel",
+        "kasus": "Genitiv",
+        "antworten": [
+          "der Vogel",
+          "den Vogel",
+          "dem Vogel",
+          "des Vogels"
+        ],
+        "richtig": "des Vogels"
+      },
+      {
+        "satz": "Ich wasche ___ Hand",
+        "wort": "Hand",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "die Hand",
+          "der Hand",
+          "den Hand",
+          "dem Hand"
+        ],
+        "richtig": "die Hand"
+      },
+      {
+        "satz": "___ Mond scheint hell",
+        "wort": "Mond",
+        "kasus": "Nominativ",
+        "antworten": [
+          "der Mond",
+          "den Mond",
+          "dem Mond",
+          "des Mondes"
+        ],
+        "richtig": "der Mond"
+      },
+      {
+        "satz": "Das Cover ___ Buches ist schön",
+        "wort": "Buch",
+        "kasus": "Genitiv",
+        "antworten": [
+          "das Buch",
+          "dem Buch",
+          "des Buches",
+          "den Buches"
+        ],
+        "richtig": "des Buches"
+      },
+      {
+        "satz": "Ich lese ___",
+        "wort": "Buch",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "das Buch",
+          "dem Buch",
+          "des Buches",
+          "den Buch"
+        ],
+        "richtig": "das Buch"
+      },
+      {
+        "satz": "Der Ast ___ Baumes ist dick",
+        "wort": "Baum",
+        "kasus": "Genitiv",
+        "antworten": [
+          "der Baum",
+          "den Baum",
+          "dem Baum",
+          "des Baumes"
+        ],
+        "richtig": "des Baumes"
+      },
+      {
+        "satz": "Ich schenke ___ Nase einen Tropfen",
+        "wort": "Nase",
+        "kasus": "Dativ",
+        "antworten": [
+          "die Nase",
+          "der Nase",
+          "den Nase",
+          "dem Nase"
+        ],
+        "richtig": "der Nase"
+      },
+      {
+        "satz": "Ich esse ___",
+        "wort": "Ei",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "das Ei",
+          "dem Ei",
+          "des Eies",
+          "den Ei"
+        ],
+        "richtig": "das Ei"
+      },
+      {
+        "satz": "Er wartet auf ___",
+        "wort": "Zug",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Zug",
+          "den Zug",
+          "dem Zug",
+          "des Zuges"
+        ],
+        "richtig": "den Zug"
+      },
+      {
+        "satz": "Die Farbe ___ Fisches",
+        "wort": "Fisch",
+        "kasus": "Genitiv",
+        "antworten": [
+          "der Fisch",
+          "den Fisch",
+          "dem Fisch",
+          "des Fisches"
+        ],
+        "richtig": "des Fisches"
+      }
+    ],
+    "n2": [
+      {
+        "satz": "Ich schenke ___ Freund etwas",
+        "wort": "Freund",
+        "kasus": "Dativ",
+        "antworten": [
+          "der Freund",
+          "den Freund",
+          "dem Freund",
+          "des Freundes"
+        ],
+        "richtig": "dem Freund"
+      },
+      {
+        "satz": "Wir besuchen ___",
+        "wort": "Schule",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "die Schule",
+          "der Schule",
+          "den Schule",
+          "dem Schule"
+        ],
+        "richtig": "die Schule"
+      },
+      {
+        "satz": "Das Dach ___ Hauses",
+        "wort": "Haus",
+        "kasus": "Genitiv",
+        "antworten": [
+          "das Haus",
+          "dem Haus",
+          "des Hauses",
+          "den Hauses"
+        ],
+        "richtig": "des Hauses"
+      },
+      {
+        "satz": "Ich hänge die Jacke in ___",
+        "wort": "Zimmer",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "das Zimmer",
+          "dem Zimmer",
+          "des Zimmers",
+          "den Zimmer"
+        ],
+        "richtig": "das Zimmer"
+      },
+      {
+        "satz": "Er steht auf ___ Treppe",
+        "wort": "Treppe",
+        "kasus": "Dativ",
+        "antworten": [
+          "die Treppe",
+          "der Treppe",
+          "den Treppe",
+          "dem Treppe"
+        ],
+        "richtig": "der Treppe"
+      },
+      {
+        "satz": "Er sitzt an ___",
+        "wort": "Tisch",
+        "kasus": "Dativ",
+        "antworten": [
+          "der Tisch",
+          "den Tisch",
+          "dem Tisch",
+          "des Tisches"
+        ],
+        "richtig": "dem Tisch"
+      },
+      {
+        "satz": "Ich stelle es auf ___",
+        "wort": "Tisch",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Tisch",
+          "den Tisch",
+          "dem Tisch",
+          "des Tisches"
+        ],
+        "richtig": "den Tisch"
+      },
+      {
+        "satz": "Die Scheibe ___ Fensters ist klar",
+        "wort": "Fenster",
+        "kasus": "Genitiv",
+        "antworten": [
+          "das Fenster",
+          "dem Fenster",
+          "des Fensters",
+          "den Fenster"
+        ],
+        "richtig": "des Fensters"
+      },
+      {
+        "wort": "Garten",
+        "satz": "Ich gehe in ___",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Garten",
+          "den Garten",
+          "dem Garten",
+          "des Gartens"
+        ],
+        "richtig": "den Garten"
+      },
+      {
+        "wort": "Brücke",
+        "satz": "Wir gehen über ___",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "die Brücke",
+          "der Brücke",
+          "den Brücke",
+          "dem Brücke"
+        ],
+        "richtig": "die Brücke"
+      },
+      {
+        "wort": "Jacke",
+        "satz": "Ich ziehe ___ an",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "die Jacke",
+          "der Jacke",
+          "den Jacke",
+          "dem Jacke"
+        ],
+        "richtig": "die Jacke"
+      },
+      {
+        "wort": "Ampel",
+        "satz": "Er wartet an ___",
+        "kasus": "Dativ",
+        "antworten": [
+          "die Ampel",
+          "der Ampel",
+          "den Ampel",
+          "dem Ampel"
+        ],
+        "richtig": "der Ampel"
+      },
+      {
+        "wort": "Koffer",
+        "satz": "Ich packe ___",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "der Koffer",
+          "den Koffer",
+          "dem Koffer",
+          "des Koffers"
+        ],
+        "richtig": "den Koffer"
+      },
+      {
+        "wort": "Straße",
+        "satz": "Sie läuft über ___",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "die Straße",
+          "der Straße",
+          "den Straße",
+          "dem Straße"
+        ],
+        "richtig": "die Straße"
+      },
+      {
+        "wort": "Regen",
+        "satz": "Er läuft trotz ___ draußen",
+        "kasus": "Genitiv",
+        "antworten": [
+          "der Regen",
+          "den Regen",
+          "dem Regen",
+          "des Regens"
+        ],
+        "richtig": "des Regens"
+      }
+    ],
+    "n3": [
+      {
+        "satz": "Trotz ___ Regens blieben wir draußen",
+        "wort": "Regen",
+        "kasus": "Genitiv",
+        "antworten": [
+          "der Regen",
+          "den Regen",
+          "dem Regen",
+          "des Regens"
+        ],
+        "richtig": "des Regens"
+      },
+      {
+        "satz": "Gegenüber ___ Schule gibt es einen Park",
+        "wort": "Schule",
+        "kasus": "Dativ",
+        "antworten": [
+          "die Schule",
+          "der Schule",
+          "den Schule",
+          "das Schule"
+        ],
+        "richtig": "der Schule"
+      },
+      {
+        "satz": "Innerhalb ___ Gebäudes ist es warm",
+        "wort": "Gebäude",
+        "kasus": "Genitiv",
+        "antworten": [
+          "das Gebäude",
+          "dem Gebäude",
+          "des Gebäudes",
+          "den Gebäudes"
+        ],
+        "richtig": "des Gebäudes"
+      },
+      {
+        "satz": "Der ___ Mann schläft",
+        "wort": "alt",
+        "kasus": "Adjektiv Nom.",
+        "antworten": [
+          "alte Mann",
+          "alten Mann",
+          "altem Mann",
+          "alter Mann"
+        ],
+        "richtig": "alte Mann",
+        "adjektiv": true
+      },
+      {
+        "satz": "Ich sehe den ___ Mann",
+        "wort": "alt",
+        "kasus": "Adjektiv Akk.",
+        "antworten": [
+          "alte Mann",
+          "alten Mann",
+          "altem Mann",
+          "alter Mann"
+        ],
+        "richtig": "alten Mann",
+        "adjektiv": true
+      },
+      {
+        "satz": "Ich helfe dem ___ Mann",
+        "wort": "alt",
+        "kasus": "Adjektiv Dat.",
+        "antworten": [
+          "alte Mann",
+          "alten Mann",
+          "altem Mann",
+          "alter Mann"
+        ],
+        "richtig": "alten Mann",
+        "adjektiv": true
+      },
+      {
+        "satz": "Die ___ Frau lacht",
+        "wort": "jung",
+        "kasus": "Adjektiv Nom.",
+        "antworten": [
+          "junge Frau",
+          "jungen Frau",
+          "junger Frau",
+          "jungem Frau"
+        ],
+        "richtig": "junge Frau",
+        "adjektiv": true
+      },
+      {
+        "satz": "Ich sehe eine ___ Katze",
+        "wort": "klein",
+        "kasus": "Adjektiv Akk.",
+        "antworten": [
+          "kleine Katze",
+          "kleinen Katze",
+          "kleiner Katze",
+          "kleinem Katze"
+        ],
+        "richtig": "kleine Katze",
+        "adjektiv": true
+      },
+      {
+        "satz": "Ein ___ Kind spielt",
+        "wort": "klein",
+        "kasus": "Adjektiv Nom.",
+        "antworten": [
+          "kleines Kind",
+          "kleinen Kind",
+          "kleinem Kind",
+          "kleiner Kind"
+        ],
+        "richtig": "kleines Kind",
+        "adjektiv": true
+      },
+      {
+        "satz": "Die Bedeutung ___ Freundschaft ist groß",
+        "wort": "Freundschaft",
+        "kasus": "Genitiv",
+        "antworten": [
+          "die Freundschaft",
+          "der Freundschaft",
+          "den Freundschaft",
+          "dem Freundschaft"
+        ],
+        "richtig": "der Freundschaft"
+      },
+      {
+        "satz": "Er trägt ___ Verantwortung",
+        "wort": "Verantwortung",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "die Verantwortung",
+          "der Verantwortung",
+          "den Verantwortung",
+          "dem Verantwortung"
+        ],
+        "richtig": "die Verantwortung"
+      },
+      {
+        "satz": "Wegen ___ Entscheidung gab es Probleme",
+        "wort": "Entscheidung",
+        "kasus": "Genitiv",
+        "antworten": [
+          "die Entscheidung",
+          "der Entscheidung",
+          "den Entscheidung",
+          "dem Entscheidung"
+        ],
+        "richtig": "der Entscheidung"
+      },
+      {
+        "satz": "Das Ergebnis ___ Zusammenarbeit war gut",
+        "wort": "Zusammenarbeit",
+        "kasus": "Genitiv",
+        "antworten": [
+          "die Zusammenarbeit",
+          "der Zusammenarbeit",
+          "den Zusammenarbeit",
+          "dem Zusammenarbeit"
+        ],
+        "richtig": "der Zusammenarbeit"
+      }
+    ]
+  },
+  "tempus": {
+    "n1": [
+      {
+        "verb": "gehen",
+        "hilfsverb": "sein",
+        "bewegung": true,
+        "antworten": [
+          "hat gegangen",
+          "ist gegangen",
+          "haben gegangen",
+          "sind gegangen"
+        ],
+        "richtig": "ist gegangen"
+      },
+      {
+        "verb": "essen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gegessen",
+          "hat gegessen",
+          "sind gegessen",
+          "haben gegessen"
+        ],
+        "richtig": "hat gegessen"
+      },
+      {
+        "verb": "laufen",
+        "hilfsverb": "sein",
+        "bewegung": true,
+        "antworten": [
+          "hat gelaufen",
+          "ist gelaufen",
+          "haben gelaufen",
+          "sind gelaufen"
+        ],
+        "richtig": "ist gelaufen"
+      },
+      {
+        "verb": "machen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gemacht",
+          "hat gemacht",
+          "sind gemacht",
+          "haben gemacht"
+        ],
+        "richtig": "hat gemacht"
+      },
+      {
+        "verb": "sehen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gesehen",
+          "hat gesehen",
+          "sind gesehen",
+          "haben gesehen"
+        ],
+        "richtig": "hat gesehen"
+      },
+      {
+        "verb": "rufen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gerufen",
+          "hat gerufen",
+          "sind gerufen",
+          "haben gerufen"
+        ],
+        "richtig": "hat gerufen"
+      },
+      {
+        "verb": "sitzen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gesessen",
+          "hat gesessen",
+          "sind gesessen",
+          "haben gesessen"
+        ],
+        "richtig": "hat gesessen"
+      },
+      {
+        "verb": "waschen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gewaschen",
+          "hat gewaschen",
+          "sind gewaschen",
+          "haben gewaschen"
+        ],
+        "richtig": "hat gewaschen"
+      },
+      {
+        "verb": "haben",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gehabt",
+          "hat gehabt",
+          "sind gehabt",
+          "haben gehabt"
+        ],
+        "richtig": "hat gehabt"
+      },
+      {
+        "verb": "tragen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist getragen",
+          "hat getragen",
+          "sind getragen",
+          "haben getragen"
+        ],
+        "richtig": "hat getragen"
+      },
+      {
+        "verb": "essen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gegessen",
+          "ist gegessen",
+          "haben gegessen",
+          "sind gegessen"
+        ],
+        "richtig": "hat gegessen"
+      },
+      {
+        "verb": "sehen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gesehen",
+          "ist gesehen",
+          "haben gesehen",
+          "sind gesehen"
+        ],
+        "richtig": "hat gesehen"
+      },
+      {
+        "verb": "laufen",
+        "hilfsverb": "sein",
+        "bewegung": true,
+        "antworten": [
+          "hat gelaufen",
+          "ist gelaufen",
+          "haben gelaufen",
+          "sind gelaufen"
+        ],
+        "richtig": "ist gelaufen"
+      },
+      {
+        "verb": "waschen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gewaschen",
+          "ist gewaschen",
+          "haben gewaschen",
+          "sind gewaschen"
+        ],
+        "richtig": "hat gewaschen"
+      },
+      {
+        "verb": "tragen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat getragen",
+          "ist getragen",
+          "haben getragen",
+          "sind getragen"
+        ],
+        "richtig": "hat getragen"
+      }
+    ],
+    "n2": [
+      {
+        "verb": "fahren",
+        "hilfsverb": "sein",
+        "bewegung": true,
+        "antworten": [
+          "hat gefahren",
+          "ist gefahren",
+          "haben gefahren",
+          "sind gefahren"
+        ],
+        "richtig": "ist gefahren"
+      },
+      {
+        "verb": "schreiben",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist geschrieben",
+          "hat geschrieben",
+          "sind geschrieben",
+          "haben geschrieben"
+        ],
+        "richtig": "hat geschrieben"
+      },
+      {
+        "verb": "kommen",
+        "hilfsverb": "sein",
+        "bewegung": true,
+        "antworten": [
+          "hat gekommen",
+          "ist gekommen",
+          "haben gekommen",
+          "sind gekommen"
+        ],
+        "richtig": "ist gekommen"
+      },
+      {
+        "verb": "kaufen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gekauft",
+          "hat gekauft",
+          "sind gekauft",
+          "haben gekauft"
+        ],
+        "richtig": "hat gekauft"
+      },
+      {
+        "verb": "schlafen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist geschlafen",
+          "hat geschlafen",
+          "sind geschlafen",
+          "haben geschlafen"
+        ],
+        "richtig": "hat geschlafen"
+      },
+      {
+        "verb": "helfen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist geholfen",
+          "hat geholfen",
+          "sind geholfen",
+          "haben geholfen"
+        ],
+        "richtig": "hat geholfen"
+      },
+      {
+        "verb": "lernen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gelernt",
+          "hat gelernt",
+          "sind gelernt",
+          "haben gelernt"
+        ],
+        "richtig": "hat gelernt"
+      },
+      {
+        "verb": "spielen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gespielt",
+          "hat gespielt",
+          "sind gespielt",
+          "haben gespielt"
+        ],
+        "richtig": "hat gespielt"
+      },
+      {
+        "verb": "suchen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gesucht",
+          "hat gesucht",
+          "sind gesucht",
+          "haben gesucht"
+        ],
+        "richtig": "hat gesucht"
+      },
+      {
+        "verb": "aufwachen",
+        "hilfsverb": "sein",
+        "bewegung": false,
+        "antworten": [
+          "hat aufgewacht",
+          "ist aufgewacht",
+          "haben aufgewacht",
+          "sind aufgewacht"
+        ],
+        "richtig": "ist aufgewacht"
+      },
+      {
+        "verb": "basteln",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gebastelt",
+          "hat gebastelt",
+          "sind gebastelt",
+          "haben gebastelt"
+        ],
+        "richtig": "hat gebastelt"
+      },
+      {
+        "verb": "denken",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gedacht",
+          "hat gedacht",
+          "sind gedacht",
+          "haben gedacht"
+        ],
+        "richtig": "hat gedacht"
+      },
+      {
+        "verb": "warten",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gewartet",
+          "hat gewartet",
+          "sind gewartet",
+          "haben gewartet"
+        ],
+        "richtig": "hat gewartet"
+      },
+      {
+        "verb": "schlafen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat geschlafen",
+          "ist geschlafen",
+          "haben geschlafen",
+          "sind geschlafen"
+        ],
+        "richtig": "hat geschlafen"
+      },
+      {
+        "verb": "helfen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat geholfen",
+          "ist geholfen",
+          "haben geholfen",
+          "sind geholfen"
+        ],
+        "richtig": "hat geholfen"
+      },
+      {
+        "verb": "kaufen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gekauft",
+          "ist gekauft",
+          "haben gekauft",
+          "sind gekauft"
+        ],
+        "richtig": "hat gekauft"
+      },
+      {
+        "verb": "spielen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gespielt",
+          "ist gespielt",
+          "haben gespielt",
+          "sind gespielt"
+        ],
+        "richtig": "hat gespielt"
+      },
+      {
+        "verb": "lernen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gelernt",
+          "ist gelernt",
+          "haben gelernt",
+          "sind gelernt"
+        ],
+        "richtig": "hat gelernt"
+      },
+      {
+        "verb": "warten",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat gewartet",
+          "ist gewartet",
+          "haben gewartet",
+          "sind gewartet"
+        ],
+        "richtig": "hat gewartet"
+      }
+    ],
+    "n3": [
+      {
+        "verb": "einschlafen",
+        "hilfsverb": "sein",
+        "bewegung": false,
+        "antworten": [
+          "hat eingeschlafen",
+          "ist eingeschlafen",
+          "haben eingeschlafen",
+          "sind eingeschlafen"
+        ],
+        "richtig": "ist eingeschlafen"
+      },
+      {
+        "verb": "verstehen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist verstanden",
+          "hat verstanden",
+          "sind verstanden",
+          "haben verstanden"
+        ],
+        "richtig": "hat verstanden"
+      },
+      {
+        "verb": "aufwachsen",
+        "hilfsverb": "sein",
+        "bewegung": false,
+        "antworten": [
+          "hat aufgewachsen",
+          "ist aufgewachsen",
+          "haben aufgewachsen",
+          "sind aufgewachsen"
+        ],
+        "richtig": "ist aufgewachsen"
+      },
+      {
+        "verb": "nachdenken",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist nachgedacht",
+          "hat nachgedacht",
+          "sind nachgedacht",
+          "haben nachgedacht"
+        ],
+        "richtig": "hat nachgedacht"
+      },
+      {
+        "verb": "erkennen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist erkannt",
+          "hat erkannt",
+          "sind erkannt",
+          "haben erkannt"
+        ],
+        "richtig": "hat erkannt"
+      },
+      {
+        "verb": "entwickeln",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist entwickelt",
+          "hat entwickelt",
+          "sind entwickelt",
+          "haben entwickelt"
+        ],
+        "richtig": "hat entwickelt"
+      },
+      {
+        "verb": "erzählen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist erzählt",
+          "hat erzählt",
+          "sind erzählt",
+          "haben erzählt"
+        ],
+        "richtig": "hat erzählt"
+      },
+      {
+        "verb": "beobachten",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist beobachtet",
+          "hat beobachtet",
+          "sind beobachtet",
+          "haben beobachtet"
+        ],
+        "richtig": "hat beobachtet"
+      },
+      {
+        "verb": "beschreiben",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist beschrieben",
+          "hat beschrieben",
+          "sind beschrieben",
+          "haben beschrieben"
+        ],
+        "richtig": "hat beschrieben"
+      },
+      {
+        "verb": "entscheiden",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist entschieden",
+          "hat entschieden",
+          "sind entschieden",
+          "haben entschieden"
+        ],
+        "richtig": "hat entschieden"
+      },
+      {
+        "verb": "gestalten",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist gestaltet",
+          "hat gestaltet",
+          "sind gestaltet",
+          "haben gestaltet"
+        ],
+        "richtig": "hat gestaltet"
+      },
+      {
+        "verb": "unterscheiden",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "ist unterschieden",
+          "hat unterschieden",
+          "sind unterschieden",
+          "haben unterschieden"
+        ],
+        "richtig": "hat unterschieden"
+      },
+      {
+        "verb": "beobachten",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat beobachtet",
+          "ist beobachtet",
+          "haben beobachtet",
+          "sind beobachtet"
+        ],
+        "richtig": "hat beobachtet"
+      },
+      {
+        "verb": "entscheiden",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat entschieden",
+          "ist entschieden",
+          "haben entschieden",
+          "sind entschieden"
+        ],
+        "richtig": "hat entschieden"
+      },
+      {
+        "verb": "entwickeln",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat entwickelt",
+          "ist entwickelt",
+          "haben entwickelt",
+          "sind entwickelt"
+        ],
+        "richtig": "hat entwickelt"
+      },
+      {
+        "verb": "verstehen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat verstanden",
+          "ist verstanden",
+          "haben verstanden",
+          "sind verstanden"
+        ],
+        "richtig": "hat verstanden"
+      },
+      {
+        "verb": "erzählen",
+        "hilfsverb": "haben",
+        "bewegung": false,
+        "antworten": [
+          "hat erzählt",
+          "ist erzählt",
+          "haben erzählt",
+          "sind erzählt"
+        ],
+        "richtig": "hat erzählt"
+      }
+    ]
+  },
+  "konjugation": {
+    "pronomen": [
+      "ich",
+      "du",
+      "er/sie/es",
+      "wir",
+      "ihr",
+      "sie"
+    ],
+    "verben": {
+      "sein": [
+        "bin",
+        "bist",
+        "ist",
+        "sind",
+        "seid",
+        "sind"
+      ],
+      "haben": [
+        "habe",
+        "hast",
+        "hat",
+        "haben",
+        "habt",
+        "haben"
+      ],
+      "machen": [
+        "mache",
+        "machst",
+        "macht",
+        "machen",
+        "macht",
+        "machen"
+      ],
+      "spielen": [
+        "spiele",
+        "spielst",
+        "spielt",
+        "spielen",
+        "spielt",
+        "spielen"
+      ],
+      "hören": [
+        "höre",
+        "hörst",
+        "hört",
+        "hören",
+        "hört",
+        "hören"
+      ],
+      "kaufen": [
+        "kaufe",
+        "kaufst",
+        "kauft",
+        "kaufen",
+        "kauft",
+        "kaufen"
+      ],
+      "lernen": [
+        "lerne",
+        "lernst",
+        "lernt",
+        "lernen",
+        "lernt",
+        "lernen"
+      ],
+      "wohnen": [
+        "wohne",
+        "wohnst",
+        "wohnt",
+        "wohnen",
+        "wohnt",
+        "wohnen"
+      ],
+      "sagen": [
+        "sage",
+        "sagst",
+        "sagt",
+        "sagen",
+        "sagt",
+        "sagen"
+      ],
+      "fragen": [
+        "frage",
+        "fragst",
+        "fragt",
+        "fragen",
+        "fragt",
+        "fragen"
+      ],
+      "arbeiten": [
+        "arbeite",
+        "arbeitest",
+        "arbeitet",
+        "arbeiten",
+        "arbeitet",
+        "arbeiten"
+      ],
+      "leben": [
+        "lebe",
+        "lebst",
+        "lebt",
+        "leben",
+        "lebt",
+        "leben"
+      ],
+      "denken": [
+        "denke",
+        "denkst",
+        "denkt",
+        "denken",
+        "denkt",
+        "denken"
+      ],
+      "glauben": [
+        "glaube",
+        "glaubst",
+        "glaubt",
+        "glauben",
+        "glaubt",
+        "glauben"
+      ],
+      "heißen": [
+        "heiße",
+        "heißt",
+        "heißt",
+        "heißen",
+        "heißt",
+        "heißen"
+      ],
+      "reden": [
+        "rede",
+        "redest",
+        "redet",
+        "reden",
+        "redet",
+        "reden"
+      ],
+      "fahren": [
+        "fahre",
+        "fährst",
+        "fährt",
+        "fahren",
+        "fahrt",
+        "fahren"
+      ],
+      "laufen": [
+        "laufe",
+        "läufst",
+        "läuft",
+        "laufen",
+        "lauft",
+        "laufen"
+      ],
+      "schlafen": [
+        "schlafe",
+        "schläfst",
+        "schläft",
+        "schlafen",
+        "schlaft",
+        "schlafen"
+      ],
+      "essen": [
+        "esse",
+        "isst",
+        "isst",
+        "essen",
+        "esst",
+        "essen"
+      ],
+      "nehmen": [
+        "nehme",
+        "nimmst",
+        "nimmt",
+        "nehmen",
+        "nehmt",
+        "nehmen"
+      ],
+      "geben": [
+        "gebe",
+        "gibst",
+        "gibt",
+        "geben",
+        "gebt",
+        "geben"
+      ],
+      "sehen": [
+        "sehe",
+        "siehst",
+        "sieht",
+        "sehen",
+        "seht",
+        "sehen"
+      ],
+      "lesen": [
+        "lese",
+        "liest",
+        "liest",
+        "lesen",
+        "lest",
+        "lesen"
+      ],
+      "tragen": [
+        "trage",
+        "trägst",
+        "trägt",
+        "tragen",
+        "tragt",
+        "tragen"
+      ],
+      "waschen": [
+        "wasche",
+        "wäschst",
+        "wäscht",
+        "waschen",
+        "wascht",
+        "waschen"
+      ],
+      "wissen": [
+        "weiß",
+        "weißt",
+        "weiß",
+        "wissen",
+        "wisst",
+        "wissen"
+      ],
+      "kennen": [
+        "kenne",
+        "kennst",
+        "kennt",
+        "kennen",
+        "kennt",
+        "kennen"
+      ],
+      "verstehen": [
+        "verstehe",
+        "verstehst",
+        "versteht",
+        "verstehen",
+        "versteht",
+        "verstehen"
+      ],
+      "vergessen": [
+        "vergesse",
+        "vergisst",
+        "vergisst",
+        "vergessen",
+        "vergesst",
+        "vergessen"
+      ],
+      "einkaufen": [
+        "kaufe ein",
+        "kaufst ein",
+        "kauft ein",
+        "kaufen ein",
+        "kauft ein",
+        "kaufen ein"
+      ],
+      "abholen": [
+        "hole ab",
+        "holst ab",
+        "holt ab",
+        "holen ab",
+        "holt ab",
+        "holen ab"
+      ],
+      "aufräumen": [
+        "räume auf",
+        "räumst auf",
+        "räumt auf",
+        "räumen auf",
+        "räumt auf",
+        "räumen auf"
+      ],
+      "aufwachen": [
+        "wache auf",
+        "wachst auf",
+        "wacht auf",
+        "wachen auf",
+        "wacht auf",
+        "wachen auf"
+      ],
+      "einsteigen": [
+        "steige ein",
+        "steigst ein",
+        "steigt ein",
+        "steigen ein",
+        "steigt ein",
+        "steigen ein"
+      ],
+      "können": [
+        "kann",
+        "kannst",
+        "kann",
+        "können",
+        "könnt",
+        "können"
+      ],
+      "müssen": [
+        "muss",
+        "musst",
+        "muss",
+        "müssen",
+        "müsst",
+        "müssen"
+      ],
+      "dürfen": [
+        "darf",
+        "darfst",
+        "darf",
+        "dürfen",
+        "dürft",
+        "dürfen"
+      ],
+      "wollen": [
+        "will",
+        "willst",
+        "will",
+        "wollen",
+        "wollt",
+        "wollen"
+      ],
+      "sollen": [
+        "soll",
+        "sollst",
+        "soll",
+        "sollen",
+        "sollt",
+        "sollen"
+      ],
+      "mögen": [
+        "mag",
+        "magst",
+        "mag",
+        "mögen",
+        "mögt",
+        "mögen"
+      ],
+      "gehen": [
+        "gehe",
+        "gehst",
+        "geht",
+        "gehen",
+        "geht",
+        "gehen"
+      ],
+      "rufen": [
+        "rufe",
+        "rufst",
+        "ruft",
+        "rufen",
+        "ruft",
+        "rufen"
+      ],
+      "sitzen": [
+        "sitze",
+        "sitzt",
+        "sitzt",
+        "sitzen",
+        "sitzt",
+        "sitzen"
+      ],
+      "helfen": [
+        "helfe",
+        "hilfst",
+        "hilft",
+        "helfen",
+        "helft",
+        "helfen"
+      ],
+      "suchen": [
+        "suche",
+        "suchst",
+        "sucht",
+        "suchen",
+        "sucht",
+        "suchen"
+      ],
+      "warten": [
+        "warte",
+        "wartest",
+        "wartet",
+        "warten",
+        "wartet",
+        "warten"
+      ],
+      "basteln": [
+        "bastle",
+        "bastelst",
+        "bastelt",
+        "basteln",
+        "bastelt",
+        "basteln"
+      ],
+      "beobachten": [
+        "beobachte",
+        "beobachtest",
+        "beobachtet",
+        "beobachten",
+        "beobachtet",
+        "beobachten"
+      ],
+      "beschreiben": [
+        "beschreibe",
+        "beschreibst",
+        "beschreibt",
+        "beschreiben",
+        "beschreibt",
+        "beschreiben"
+      ],
+      "entscheiden": [
+        "entscheide",
+        "entscheidest",
+        "entscheidet",
+        "entscheiden",
+        "entscheidet",
+        "entscheiden"
+      ],
+      "entwickeln": [
+        "entwickle",
+        "entwickelst",
+        "entwickelt",
+        "entwickeln",
+        "entwickelt",
+        "entwickeln"
+      ],
+      "erkennen": [
+        "erkenne",
+        "erkennst",
+        "erkennt",
+        "erkennen",
+        "erkennt",
+        "erkennen"
+      ],
+      "erzählen": [
+        "erzähle",
+        "erzählst",
+        "erzählt",
+        "erzählen",
+        "erzählt",
+        "erzählen"
+      ],
+      "gestalten": [
+        "gestalte",
+        "gestaltest",
+        "gestaltet",
+        "gestalten",
+        "gestaltet",
+        "gestalten"
+      ],
+      "nachdenken": [
+        "denke nach",
+        "denkst nach",
+        "denkt nach",
+        "denken nach",
+        "denkt nach",
+        "denken nach"
+      ],
+      "unterscheiden": [
+        "unterscheide",
+        "unterscheidest",
+        "unterscheidet",
+        "unterscheiden",
+        "unterscheidet",
+        "unterscheiden"
+      ]
+    }
+  },
+  "praefixverben": {
+    "stellen": {
+      "praesens": [
+        "stelle",
+        "stellst",
+        "stellt",
+        "stellen",
+        "stellt",
+        "stellen"
+      ],
+      "praeteritum": [
+        "stellte",
+        "stelltest",
+        "stellte",
+        "stellten",
+        "stelltet",
+        "stellten"
+      ],
+      "partizip2Stamm": "stellt",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "ein",
+          "trennbar": true
+        },
+        {
+          "p": "her",
+          "trennbar": true
+        },
+        {
+          "p": "hin",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "weg",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "zurück",
+          "trennbar": true
+        },
+        {
+          "p": "zusammen",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        },
+        {
+          "p": "ent",
+          "trennbar": false
+        },
+        {
+          "p": "er",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "gehen": {
+      "praesens": [
+        "gehe",
+        "gehst",
+        "geht",
+        "gehen",
+        "geht",
+        "gehen"
+      ],
+      "praeteritum": [
+        "ging",
+        "gingst",
+        "ging",
+        "gingen",
+        "gingt",
+        "gingen"
+      ],
+      "partizip2Stamm": "gangen",
+      "hilfsverb": "sein",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "ein",
+          "trennbar": true
+        },
+        {
+          "p": "fort",
+          "trennbar": true
+        },
+        {
+          "p": "hin",
+          "trennbar": true
+        },
+        {
+          "p": "los",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "weg",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "zurück",
+          "trennbar": true
+        },
+        {
+          "p": "zusammen",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false,
+          "hilfsverb": "haben"
+        },
+        {
+          "p": "ent",
+          "trennbar": false
+        },
+        {
+          "p": "er",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        },
+        {
+          "p": "zer",
+          "trennbar": false
+        }
+      ]
+    },
+    "fahren": {
+      "praesens": [
+        "fahre",
+        "fährst",
+        "fährt",
+        "fahren",
+        "fahrt",
+        "fahren"
+      ],
+      "praeteritum": [
+        "fuhr",
+        "fuhrst",
+        "fuhr",
+        "fuhren",
+        "fuhrt",
+        "fuhren"
+      ],
+      "partizip2Stamm": "fahren",
+      "hilfsverb": "sein",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "ein",
+          "trennbar": true
+        },
+        {
+          "p": "fort",
+          "trennbar": true
+        },
+        {
+          "p": "los",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "weg",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "zurück",
+          "trennbar": true
+        },
+        {
+          "p": "zusammen",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false,
+          "hilfsverb": "haben"
+        },
+        {
+          "p": "er",
+          "trennbar": false,
+          "hilfsverb": "haben"
+        },
+        {
+          "p": "ver",
+          "trennbar": false,
+          "hilfsverb": "haben"
+        }
+      ]
+    },
+    "laufen": {
+      "praesens": [
+        "laufe",
+        "läufst",
+        "läuft",
+        "laufen",
+        "lauft",
+        "laufen"
+      ],
+      "praeteritum": [
+        "lief",
+        "liefst",
+        "lief",
+        "liefen",
+        "lieft",
+        "liefen"
+      ],
+      "partizip2Stamm": "laufen",
+      "hilfsverb": "sein",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "ein",
+          "trennbar": true
+        },
+        {
+          "p": "fort",
+          "trennbar": true
+        },
+        {
+          "p": "los",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "weg",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "zurück",
+          "trennbar": true
+        },
+        {
+          "p": "zusammen",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false,
+          "hilfsverb": "haben"
+        },
+        {
+          "p": "ent",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "tragen": {
+      "praesens": [
+        "trage",
+        "trägst",
+        "trägt",
+        "tragen",
+        "tragt",
+        "tragen"
+      ],
+      "praeteritum": [
+        "trug",
+        "trugst",
+        "trug",
+        "trugen",
+        "trugt",
+        "trugen"
+      ],
+      "partizip2Stamm": "tragen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "bei",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "weg",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "zusammen",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        },
+        {
+          "p": "er",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "sehen": {
+      "praesens": [
+        "sehe",
+        "siehst",
+        "sieht",
+        "sehen",
+        "seht",
+        "sehen"
+      ],
+      "praeteritum": [
+        "sah",
+        "sahst",
+        "sah",
+        "sahen",
+        "saht",
+        "sahen"
+      ],
+      "partizip2Stamm": "sehen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "ein",
+          "trennbar": true
+        },
+        {
+          "p": "fern",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        },
+        {
+          "p": "er",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "essen": {
+      "praesens": [
+        "esse",
+        "isst",
+        "isst",
+        "essen",
+        "esst",
+        "essen"
+      ],
+      "praeteritum": [
+        "aß",
+        "aßt",
+        "aß",
+        "aßen",
+        "aßt",
+        "aßen"
+      ],
+      "partizip2Stamm": "gessen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "weg",
+          "trennbar": true
+        }
+      ]
+    },
+    "denken": {
+      "praesens": [
+        "denke",
+        "denkst",
+        "denkt",
+        "denken",
+        "denkt",
+        "denken"
+      ],
+      "praeteritum": [
+        "dachte",
+        "dachtest",
+        "dachte",
+        "dachten",
+        "dachtet",
+        "dachten"
+      ],
+      "partizip2Stamm": "dacht",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        }
+      ]
+    },
+    "lernen": {
+      "praesens": [
+        "lerne",
+        "lernst",
+        "lernt",
+        "lernen",
+        "lernt",
+        "lernen"
+      ],
+      "praeteritum": [
+        "lernte",
+        "lerntest",
+        "lernte",
+        "lernten",
+        "lerntet",
+        "lernten"
+      ],
+      "partizip2Stamm": "lernt",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "er",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "sitzen": {
+      "praesens": [
+        "sitze",
+        "sitzt",
+        "sitzt",
+        "sitzen",
+        "sitzt",
+        "sitzen"
+      ],
+      "praeteritum": [
+        "saß",
+        "saßt",
+        "saß",
+        "saßen",
+        "saßt",
+        "saßen"
+      ],
+      "partizip2Stamm": "sessen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        }
+      ]
+    },
+    "machen": {
+      "praesens": [
+        "mache",
+        "machst",
+        "macht",
+        "machen",
+        "macht",
+        "machen"
+      ],
+      "praeteritum": [
+        "machte",
+        "machtest",
+        "machte",
+        "machten",
+        "machtet",
+        "machten"
+      ],
+      "partizip2Stamm": "macht",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "kaufen": {
+      "praesens": [
+        "kaufe",
+        "kaufst",
+        "kauft",
+        "kaufen",
+        "kauft",
+        "kaufen"
+      ],
+      "praeteritum": [
+        "kaufte",
+        "kauftest",
+        "kaufte",
+        "kauften",
+        "kauftet",
+        "kauften"
+      ],
+      "partizip2Stamm": "kauft",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "zurück",
+          "trennbar": true
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "helfen": {
+      "praesens": [
+        "helfe",
+        "hilfst",
+        "hilft",
+        "helfen",
+        "helft",
+        "helfen"
+      ],
+      "praeteritum": [
+        "half",
+        "halfst",
+        "half",
+        "halfen",
+        "halft",
+        "halfen"
+      ],
+      "partizip2Stamm": "holfen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "nach",
+          "trennbar": true
+        },
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "rufen": {
+      "praesens": [
+        "rufe",
+        "rufst",
+        "ruft",
+        "rufen",
+        "ruft",
+        "rufen"
+      ],
+      "praeteritum": [
+        "rief",
+        "riefst",
+        "rief",
+        "riefen",
+        "rieft",
+        "riefen"
+      ],
+      "partizip2Stamm": "rufen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "zu",
+          "trennbar": true
+        },
+        {
+          "p": "zurück",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        }
+      ]
+    },
+    "schlafen": {
+      "praesens": [
+        "schlafe",
+        "schläfst",
+        "schläft",
+        "schlafen",
+        "schlaft",
+        "schlafen"
+      ],
+      "praeteritum": [
+        "schlief",
+        "schliefst",
+        "schlief",
+        "schliefen",
+        "schlieft",
+        "schliefen"
+      ],
+      "partizip2Stamm": "schlafen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        }
+      ]
+    },
+    "spielen": {
+      "praesens": [
+        "spiele",
+        "spielst",
+        "spielt",
+        "spielen",
+        "spielt",
+        "spielen"
+      ],
+      "praeteritum": [
+        "spielte",
+        "spieltest",
+        "spielte",
+        "spielten",
+        "spieltet",
+        "spielten"
+      ],
+      "partizip2Stamm": "spielt",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        },
+        {
+          "p": "mit",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        },
+        {
+          "p": "zusammen",
+          "trennbar": true
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "suchen": {
+      "praesens": [
+        "suche",
+        "suchst",
+        "sucht",
+        "suchen",
+        "sucht",
+        "suchen"
+      ],
+      "praeteritum": [
+        "suchte",
+        "suchtest",
+        "suchte",
+        "suchten",
+        "suchtet",
+        "suchten"
+      ],
+      "partizip2Stamm": "sucht",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "be",
+          "trennbar": false
+        },
+        {
+          "p": "ver",
+          "trennbar": false
+        }
+      ]
+    },
+    "warten": {
+      "praesens": [
+        "warte",
+        "wartest",
+        "wartet",
+        "warten",
+        "wartet",
+        "warten"
+      ],
+      "praeteritum": [
+        "wartete",
+        "wartetest",
+        "wartete",
+        "warteten",
+        "wartetet",
+        "warteten"
+      ],
+      "partizip2Stamm": "wartet",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "er",
+          "trennbar": false
+        }
+      ]
+    },
+    "waschen": {
+      "praesens": [
+        "wasche",
+        "wäschst",
+        "wäscht",
+        "waschen",
+        "wascht",
+        "waschen"
+      ],
+      "praeteritum": [
+        "wusch",
+        "wuschst",
+        "wusch",
+        "wuschen",
+        "wuscht",
+        "wuschen"
+      ],
+      "partizip2Stamm": "waschen",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "ab",
+          "trennbar": true
+        },
+        {
+          "p": "aus",
+          "trennbar": true
+        }
+      ]
+    },
+    "basteln": {
+      "praesens": [
+        "bastle",
+        "bastelst",
+        "bastelt",
+        "basteln",
+        "bastelt",
+        "basteln"
+      ],
+      "praeteritum": [
+        "bastelte",
+        "basteltest",
+        "bastelte",
+        "bastelten",
+        "basteltet",
+        "bastelten"
+      ],
+      "partizip2Stamm": "bastelt",
+      "hilfsverb": "haben",
+      "praefixe": []
+    },
+    "haben": {
+      "praesens": [
+        "habe",
+        "hast",
+        "hat",
+        "haben",
+        "habt",
+        "haben"
+      ],
+      "praeteritum": [
+        "hatte",
+        "hattest",
+        "hatte",
+        "hatten",
+        "hattet",
+        "hatten"
+      ],
+      "partizip2Stamm": "habt",
+      "hilfsverb": "haben",
+      "praefixe": [
+        {
+          "p": "an",
+          "trennbar": true
+        },
+        {
+          "p": "auf",
+          "trennbar": true
+        },
+        {
+          "p": "vor",
+          "trennbar": true
+        }
+      ]
+    }
+  }
+}
