@@ -2970,6 +2970,248 @@ function levenshtein(a, b) {
             'mögen':       ['mag','magst','mag','mögen','mögt','mögen'],
         };
 
+       // Präteritum – 3. Person Singular (er/sie/es)
+        // Nur unregelmäßige/starke Verben + Modalverben
+        // Regelmäßige Verben werden automatisch gebildet: Stamm + te
+        const praeteritumForms = {
+            // ── Sein / Haben ──────────────────────────────────────────
+            'sein':          { prät:'war',          hilfsverb:'sein',  partizip:'gewesen' },
+            'haben':         { prät:'hatte',         hilfsverb:'haben', partizip:'gehabt' },
+
+            // ── Modalverben ───────────────────────────────────────────
+            'können':        { prät:'konnte',        hilfsverb:'haben', partizip:'gekonnt' },
+            'müssen':        { prät:'musste',        hilfsverb:'haben', partizip:'gemusst' },
+            'dürfen':        { prät:'durfte',        hilfsverb:'haben', partizip:'gedurft' },
+            'wollen':        { prät:'wollte',        hilfsverb:'haben', partizip:'gewollt' },
+            'sollen':        { prät:'sollte',        hilfsverb:'haben', partizip:'gesollt' },
+            'mögen':         { prät:'mochte',        hilfsverb:'haben', partizip:'gemocht' },
+
+            // ── Unregelmäßige mit haben ───────────────────────────────
+            'backen':        { prät:'buk',           hilfsverb:'haben', partizip:'gebacken' },
+            'befehlen':      { prät:'befahl',        hilfsverb:'haben', partizip:'befohlen' },
+            'beginnen':      { prät:'begann',        hilfsverb:'haben', partizip:'begonnen' },
+            'beißen':        { prät:'biss',          hilfsverb:'haben', partizip:'gebissen' },
+            'beraten':       { prät:'beriet',        hilfsverb:'haben', partizip:'beraten' },
+            'beschreiben':   { prät:'beschrieb',     hilfsverb:'haben', partizip:'beschrieben' },
+            'biegen':        { prät:'bog',           hilfsverb:'haben', partizip:'gebogen' },
+            'bieten':        { prät:'bot',           hilfsverb:'haben', partizip:'geboten' },
+            'binden':        { prät:'band',          hilfsverb:'haben', partizip:'gebunden' },
+            'bitten':        { prät:'bat',           hilfsverb:'haben', partizip:'gebeten' },
+            'blasen':        { prät:'blies',         hilfsverb:'haben', partizip:'geblasen' },
+            'braten':        { prät:'briet',         hilfsverb:'haben', partizip:'gebraten' },
+            'brechen':       { prät:'brach',         hilfsverb:'haben', partizip:'gebrochen' },
+            'bringen':       { prät:'brachte',       hilfsverb:'haben', partizip:'gebracht' },
+            'denken':        { prät:'dachte',        hilfsverb:'haben', partizip:'gedacht' },
+            'dreschen':      { prät:'drosch',        hilfsverb:'haben', partizip:'gedroschen' },
+            'dringen':       { prät:'drang',         hilfsverb:'haben', partizip:'gedrungen' },
+            'empfehlen':     { prät:'empfahl',       hilfsverb:'haben', partizip:'empfohlen' },
+            'erschrecken':   { prät:'erschrak',      hilfsverb:'haben', partizip:'erschrocken' },
+            'essen':         { prät:'aß',            hilfsverb:'haben', partizip:'gegessen' },
+            'fangen':        { prät:'fing',          hilfsverb:'haben', partizip:'gefangen' },
+            'fechten':       { prät:'focht',         hilfsverb:'haben', partizip:'gefochten' },
+            'finden':        { prät:'fand',          hilfsverb:'haben', partizip:'gefunden' },
+            'flechten':      { prät:'flocht',        hilfsverb:'haben', partizip:'geflochten' },
+            'fressen':       { prät:'fraß',          hilfsverb:'haben', partizip:'gefressen' },
+            'frieren':       { prät:'fror',          hilfsverb:'haben', partizip:'gefroren' },
+            'geben':         { prät:'gab',           hilfsverb:'haben', partizip:'gegeben' },
+            'gelten':        { prät:'galt',          hilfsverb:'haben', partizip:'gegolten' },
+            'genießen':      { prät:'genoss',        hilfsverb:'haben', partizip:'genossen' },
+            'geschehen':     { prät:'geschah',       hilfsverb:'sein',  partizip:'geschehen' },
+            'gewinnen':      { prät:'gewann',        hilfsverb:'haben', partizip:'gewonnen' },
+            'graben':        { prät:'grub',          hilfsverb:'haben', partizip:'gegraben' },
+            'greifen':       { prät:'griff',         hilfsverb:'haben', partizip:'gegriffen' },
+            'halten':        { prät:'hielt',         hilfsverb:'haben', partizip:'gehalten' },
+            'hängen':        { prät:'hing',          hilfsverb:'haben', partizip:'gehangen' },
+            'hauen':         { prät:'hieb',          hilfsverb:'haben', partizip:'gehauen' },
+            'heben':         { prät:'hob',           hilfsverb:'haben', partizip:'gehoben' },
+            'heißen':        { prät:'hieß',          hilfsverb:'haben', partizip:'geheißen' },
+            'helfen':        { prät:'half',          hilfsverb:'haben', partizip:'geholfen' },
+            'kennen':        { prät:'kannte',        hilfsverb:'haben', partizip:'gekannt' },
+            'klingen':       { prät:'klang',         hilfsverb:'haben', partizip:'geklungen' },
+            'kneifen':       { prät:'kniff',         hilfsverb:'haben', partizip:'gekniffen' },
+            'kommen':        { prät:'kam',           hilfsverb:'sein',  partizip:'gekommen' },
+            'laden':         { prät:'lud',           hilfsverb:'haben', partizip:'geladen' },
+            'lassen':        { prät:'ließ',          hilfsverb:'haben', partizip:'gelassen' },
+            'laufen':        { prät:'lief',          hilfsverb:'sein',  partizip:'gelaufen' },
+            'leiden':        { prät:'litt',          hilfsverb:'haben', partizip:'gelitten' },
+            'leihen':        { prät:'lieh',          hilfsverb:'haben', partizip:'geliehen' },
+            'lesen':         { prät:'las',           hilfsverb:'haben', partizip:'gelesen' },
+            'liegen':        { prät:'lag',           hilfsverb:'haben', partizip:'gelegen' },
+            'lügen':         { prät:'log',           hilfsverb:'haben', partizip:'gelogen' },
+            'mahlen':        { prät:'mahlte',        hilfsverb:'haben', partizip:'gemahlen' },
+            'messen':        { prät:'maß',           hilfsverb:'haben', partizip:'gemessen' },
+            'nehmen':        { prät:'nahm',          hilfsverb:'haben', partizip:'genommen' },
+            'nennen':        { prät:'nannte',        hilfsverb:'haben', partizip:'genannt' },
+            'pfeifen':       { prät:'pfiff',         hilfsverb:'haben', partizip:'gepfiffen' },
+            'preisen':       { prät:'pries',         hilfsverb:'haben', partizip:'gepriesen' },
+            'quellen':       { prät:'quoll',         hilfsverb:'sein',  partizip:'gequollen' },
+            'raten':         { prät:'riet',          hilfsverb:'haben', partizip:'geraten' },
+            'reiben':        { prät:'rieb',          hilfsverb:'haben', partizip:'gerieben' },
+            'reißen':        { prät:'riss',          hilfsverb:'haben', partizip:'gerissen' },
+            'reiten':        { prät:'ritt',          hilfsverb:'sein',  partizip:'geritten' },
+            'rennen':        { prät:'rannte',        hilfsverb:'sein',  partizip:'gerannt' },
+            'riechen':       { prät:'roch',          hilfsverb:'haben', partizip:'gerochen' },
+            'ringen':        { prät:'rang',          hilfsverb:'haben', partizip:'gerungen' },
+            'rinnen':        { prät:'rann',          hilfsverb:'sein',  partizip:'geronnen' },
+            'rufen':         { prät:'rief',          hilfsverb:'haben', partizip:'gerufen' },
+            'salzen':        { prät:'salzte',        hilfsverb:'haben', partizip:'gesalzen' },
+            'saufen':        { prät:'soff',          hilfsverb:'haben', partizip:'gesoffen' },
+            'saugen':        { prät:'sog',           hilfsverb:'haben', partizip:'gesogen' },
+            'schaffen':      { prät:'schuf',         hilfsverb:'haben', partizip:'geschaffen' },
+            'scheiden':      { prät:'schied',        hilfsverb:'haben', partizip:'geschieden' },
+            'scheinen':      { prät:'schien',        hilfsverb:'haben', partizip:'geschienen' },
+            'schelten':      { prät:'schalt',        hilfsverb:'haben', partizip:'gescholten' },
+            'schieben':      { prät:'schob',         hilfsverb:'haben', partizip:'geschoben' },
+            'schießen':      { prät:'schoss',        hilfsverb:'haben', partizip:'geschossen' },
+            'schlafen':      { prät:'schlief',       hilfsverb:'haben', partizip:'geschlafen' },
+            'schlagen':      { prät:'schlug',        hilfsverb:'haben', partizip:'geschlagen' },
+            'schleichen':    { prät:'schlich',       hilfsverb:'sein',  partizip:'geschlichen' },
+            'schleifen':     { prät:'schliff',       hilfsverb:'haben', partizip:'geschliffen' },
+            'schließen':     { prät:'schloss',       hilfsverb:'haben', partizip:'geschlossen' },
+            'schmelzen':     { prät:'schmolz',       hilfsverb:'sein',  partizip:'geschmolzen' },
+            'schneiden':     { prät:'schnitt',       hilfsverb:'haben', partizip:'geschnitten' },
+            'schreiben':     { prät:'schrieb',       hilfsverb:'haben', partizip:'geschrieben' },
+            'schreien':      { prät:'schrie',        hilfsverb:'haben', partizip:'geschrien' },
+            'schweigen':     { prät:'schwieg',       hilfsverb:'haben', partizip:'geschwiegen' },
+            'schwimmen':     { prät:'schwamm',       hilfsverb:'sein',  partizip:'geschwommen' },
+            'schwingen':     { prät:'schwang',       hilfsverb:'haben', partizip:'geschwungen' },
+            'schwören':      { prät:'schwor',        hilfsverb:'haben', partizip:'geschworen' },
+            'sehen':         { prät:'sah',           hilfsverb:'haben', partizip:'gesehen' },
+            'senden':        { prät:'sandte',        hilfsverb:'haben', partizip:'gesandt' },
+            'singen':        { prät:'sang',          hilfsverb:'haben', partizip:'gesungen' },
+            'sinken':        { prät:'sank',          hilfsverb:'sein',  partizip:'gesunken' },
+            'sitzen':        { prät:'saß',           hilfsverb:'haben', partizip:'gesessen' },
+            'spinnen':       { prät:'spann',         hilfsverb:'haben', partizip:'gesponnen' },
+            'sprechen':      { prät:'sprach',        hilfsverb:'haben', partizip:'gesprochen' },
+            'springen':      { prät:'sprang',        hilfsverb:'sein',  partizip:'gesprungen' },
+            'stechen':       { prät:'stach',         hilfsverb:'haben', partizip:'gestochen' },
+            'stehen':        { prät:'stand',         hilfsverb:'haben', partizip:'gestanden' },
+            'stehlen':       { prät:'stahl',         hilfsverb:'haben', partizip:'gestohlen' },
+            'steigen':       { prät:'stieg',         hilfsverb:'sein',  partizip:'gestiegen' },
+            'sterben':       { prät:'starb',         hilfsverb:'sein',  partizip:'gestorben' },
+            'stoßen':        { prät:'stieß',         hilfsverb:'haben', partizip:'gestoßen' },
+            'streichen':     { prät:'strich',        hilfsverb:'haben', partizip:'gestrichen' },
+            'streiten':      { prät:'stritt',        hilfsverb:'haben', partizip:'gestritten' },
+            'tragen':        { prät:'trug',          hilfsverb:'haben', partizip:'getragen' },
+            'treffen':       { prät:'traf',          hilfsverb:'haben', partizip:'getroffen' },
+            'treiben':       { prät:'trieb',         hilfsverb:'haben', partizip:'getrieben' },
+            'treten':        { prät:'trat',          hilfsverb:'sein',  partizip:'getreten' },
+            'trinken':       { prät:'trank',         hilfsverb:'haben', partizip:'getrunken' },
+            'tun':           { prät:'tat',           hilfsverb:'haben', partizip:'getan' },
+            'verbergen':     { prät:'verbarg',       hilfsverb:'haben', partizip:'verborgen' },
+            'verbieten':     { prät:'verbot',        hilfsverb:'haben', partizip:'verboten' },
+            'vergessen':     { prät:'vergaß',        hilfsverb:'haben', partizip:'vergessen' },
+            'vergleichen':   { prät:'verglich',      hilfsverb:'haben', partizip:'verglichen' },
+            'verlieren':     { prät:'verlor',        hilfsverb:'haben', partizip:'verloren' },
+            'verschwinden':  { prät:'verschwand',    hilfsverb:'sein',  partizip:'verschwunden' },
+            'verstehen':     { prät:'verstand',      hilfsverb:'haben', partizip:'verstanden' },
+            'verzeihen':     { prät:'verzieh',       hilfsverb:'haben', partizip:'verziehen' },
+            'wachsen':       { prät:'wuchs',         hilfsverb:'sein',  partizip:'gewachsen' },
+            'waschen':       { prät:'wusch',         hilfsverb:'haben', partizip:'gewaschen' },
+            'weichen':       { prät:'wich',          hilfsverb:'sein',  partizip:'gewichen' },
+            'weisen':        { prät:'wies',          hilfsverb:'haben', partizip:'gewiesen' },
+            'wenden':        { prät:'wandte',        hilfsverb:'haben', partizip:'gewandt' },
+            'werben':        { prät:'warb',          hilfsverb:'haben', partizip:'geworben' },
+            'werden':        { prät:'wurde',         hilfsverb:'sein',  partizip:'geworden' },
+            'werfen':        { prät:'warf',          hilfsverb:'haben', partizip:'geworfen' },
+            'wiegen':        { prät:'wog',           hilfsverb:'haben', partizip:'gewogen' },
+            'wissen':        { prät:'wusste',        hilfsverb:'haben', partizip:'gewusst' },
+            'wringen':       { prät:'wrang',         hilfsverb:'haben', partizip:'gewrungen' },
+            'ziehen':        { prät:'zog',           hilfsverb:'haben', partizip:'gezogen' },
+            'zwingen':       { prät:'zwang',         hilfsverb:'haben', partizip:'gezwungen' },
+
+            // ── Trennbare starke Verben ───────────────────────────────
+            'abfahren':      { prät:'fuhr ab',       hilfsverb:'sein',  partizip:'abgefahren' },
+            'abholen':       { prät:'holte ab',      hilfsverb:'haben', partizip:'abgeholt' },
+            'abschreiben':   { prät:'schrieb ab',    hilfsverb:'haben', partizip:'abgeschrieben' },
+            'anfangen':      { prät:'fing an',       hilfsverb:'haben', partizip:'angefangen' },
+            'anhalten':      { prät:'hielt an',      hilfsverb:'haben', partizip:'angehalten' },
+            'ankommen':      { prät:'kam an',        hilfsverb:'sein',  partizip:'angekommen' },
+            'anrufen':       { prät:'rief an',       hilfsverb:'haben', partizip:'angerufen' },
+            'ansehen':       { prät:'sah an',        hilfsverb:'haben', partizip:'angesehen' },
+            'anziehen':      { prät:'zog an',        hilfsverb:'haben', partizip:'angezogen' },
+            'aufgeben':      { prät:'gab auf',       hilfsverb:'haben', partizip:'aufgegeben' },
+            'aufmachen':     { prät:'machte auf',    hilfsverb:'haben', partizip:'aufgemacht' },
+            'aufräumen':     { prät:'räumte auf',    hilfsverb:'haben', partizip:'aufgeräumt' },
+            'aufschreiben':  { prät:'schrieb auf',   hilfsverb:'haben', partizip:'aufgeschrieben' },
+            'aufstehen':     { prät:'stand auf',     hilfsverb:'sein',  partizip:'aufgestanden' },
+            'aufwachen':     { prät:'wachte auf',    hilfsverb:'sein',  partizip:'aufgewacht' },
+            'ausschlafen':   { prät:'schlief aus',   hilfsverb:'haben', partizip:'ausgeschlafen' },
+            'aussehen':      { prät:'sah aus',       hilfsverb:'haben', partizip:'ausgesehen' },
+            'aussteigen':    { prät:'stieg aus',     hilfsverb:'sein',  partizip:'ausgestiegen' },
+            'ausziehen':     { prät:'zog aus',       hilfsverb:'sein',  partizip:'ausgezogen' },
+            'durchfahren':   { prät:'fuhr durch',    hilfsverb:'sein',  partizip:'durchgefahren' },
+            'einfahren':     { prät:'fuhr ein',      hilfsverb:'sein',  partizip:'eingefahren' },
+            'einladen':      { prät:'lud ein',       hilfsverb:'haben', partizip:'eingeladen' },
+            'einschlafen':   { prät:'schlief ein',   hilfsverb:'sein',  partizip:'eingeschlafen' },
+            'einkaufen':     { prät:'kaufte ein',    hilfsverb:'haben', partizip:'eingekauft' },
+            'einsteigen':    { prät:'stieg ein',     hilfsverb:'sein',  partizip:'eingestiegen' },
+            'fernsehen':     { prät:'sah fern',      hilfsverb:'haben', partizip:'ferngesehen' },
+            'herausfinden':  { prät:'fand heraus',   hilfsverb:'haben', partizip:'herausgefunden' },
+            'mitnehmen':     { prät:'nahm mit',      hilfsverb:'haben', partizip:'mitgenommen' },
+            'nachdenken':    { prät:'dachte nach',   hilfsverb:'haben', partizip:'nachgedacht' },
+            'nachschlagen':  { prät:'schlug nach',   hilfsverb:'haben', partizip:'nachgeschlagen' },
+            'stattfinden':   { prät:'fand statt',    hilfsverb:'haben', partizip:'stattgefunden' },
+            'umziehen':      { prät:'zog um',        hilfsverb:'sein',  partizip:'umgezogen' },
+            'vorlesen':      { prät:'las vor',       hilfsverb:'haben', partizip:'vorgelesen' },
+            'vorschlagen':   { prät:'schlug vor',    hilfsverb:'haben', partizip:'vorgeschlagen' },
+            'weitergehen':   { prät:'ging weiter',   hilfsverb:'sein',  partizip:'weitergegangen' },
+            'zumachen':      { prät:'machte zu',     hilfsverb:'haben', partizip:'zugemacht' },
+            'zurückfahren':  { prät:'fuhr zurück',   hilfsverb:'sein',  partizip:'zurückgefahren' },
+            'zurückkommen':  { prät:'kam zurück',    hilfsverb:'sein',  partizip:'zurückgekommen' },
+        };
+
+       function getPraeteritum(inf) {
+            // Bekanntes Verb?
+            if (praeteritumForms[inf]) return praeteritumForms[inf];
+            // Trennbares Verb mit bekanntem Basisverb?
+            const trennPräfix = PRAEFIXE_TRENNBAR.find(p => inf.startsWith(p) && inf.length > p.length + 1);
+            if (trennPräfix) {
+                const basis = inf.slice(trennPräfix.length);
+                if (praeteritumForms[basis]) {
+                    const b = praeteritumForms[basis];
+                    // Partizip: ge zwischen Präfix und Basis einfügen
+                    const partBasis = b.partizip.startsWith('ge') ? b.partizip.slice(2) : b.partizip;
+                    return {
+                        prät:     b.prät + ' ' + trennPräfix,
+                        hilfsverb: b.hilfsverb,
+                        partizip:  trennPräfix + 'ge' + partBasis,
+                    };
+                }
+            }
+            // Regelmäßig bilden
+            const stamm = inf.endsWith('eln') ? inf.slice(0,-3)+'el' :
+                          inf.endsWith('ern') ? inf.slice(0,-3)+'er' :
+                          inf.endsWith('en')  ? inf.slice(0,-2) :
+                          inf.endsWith('n')   ? inf.slice(0,-1) : inf;
+            const brauchtE = /[dt]$/.test(stamm) || /[^aeiouäöü][mn]$/.test(stamm);
+            const e = brauchtE ? 'e' : '';
+            // Trennbares Verb regelmäßig?
+            if (trennPräfix) {
+                const basis = inf.slice(trennPräfix.length);
+                const bStamm = basis.endsWith('en') ? basis.slice(0,-2) : basis.slice(0,-1);
+                const bE = /[dt]$/.test(bStamm) ? 'e' : '';
+                return {
+                    prät:      `${bStamm}${bE}te ${trennPräfix}`,
+                    hilfsverb: 'haben',
+                    partizip:  `${trennPräfix}ge${bStamm}${bE}t`,
+                };
+            }
+            // Nicht-trennbares Präfix?
+            const nichtTrenn = PRAEFIXE_NICHT_TRENNBAR.find(p => inf.startsWith(p));
+            if (nichtTrenn) {
+                return {
+                    prät:      `${stamm}${e}te`,
+                    hilfsverb: 'haben',
+                    partizip:  `${stamm}${e}t`,   // kein ge-
+                };
+            }
+            return {
+                prät:      `${stamm}${e}te`,
+                hilfsverb: 'haben',
+                partizip:  `ge${stamm}${e}t`,
+            };
+        }
         const pronouns    = ['👤 ich','👤 du','👤 er','👤👤 wir','👤👤 ihr','👤👤 sie'];
         const pronounsTTS = ['ich','du','er','wir','ihr','sie'];
 
