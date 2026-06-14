@@ -3197,7 +3197,82 @@ function levenshtein(a, b) {
             return { verb, pronomen: pronouns[pronIdx], pronomenTTS: pronounsTTS[pronIdx], richtig, antworten: shuffle([richtig, ...falsche]) };
         }
 
-   function grammatikNeueAufgabe() {
+  // Präfix-Listen für Trennbarkeits-Erkennung
+        const PRAEFIXE_NICHT_TRENNBAR = [
+            'be','er','ver','zer','ent','ge','miss',
+            'durch','über','unter','hinter','wider','um'
+        ];
+        const PRAEFIXE_TRENNBAR = [
+            'ab','an','auf','aus','bei','ein','mit','nach',
+            'vor','zu','weg','los','her','hin','zurück','fort',
+            'fern','fest','frei','gleich','klar','krank','leer',
+            'voll','wach','weiter'
+        ];
+
+        function konjugiereRegelmaessig(inf) {
+            const nichtTrennPräfix = PRAEFIXE_NICHT_TRENNBAR.find(p => inf.startsWith(p));
+            if (nichtTrennPräfix) {
+                return konjugiereStamm(inf, null);
+            }
+            const trennPräfix = PRAEFIXE_TRENNBAR.find(p => inf.startsWith(p) && inf.length > p.length + 1);
+            if (trennPräfix) {
+                const basis = inf.slice(trennPräfix.length);
+                return konjugiereStamm(basis, trennPräfix);
+            }
+            return konjugiereStamm(inf, null);
+        }
+
+        function konjugiereStamm(verb, trennPräfix) {
+            let stamm = verb.endsWith('eln') ? verb.slice(0,-3) + 'el' :
+                        verb.endsWith('ern') ? verb.slice(0,-3) + 'er' :
+                        verb.endsWith('en')  ? verb.slice(0,-2) :
+                        verb.endsWith('n')   ? verb.slice(0,-1) : verb;
+            const brauchtE = /[dt]$/.test(stamm) || /[^aeiouäöü][mn]$/.test(stamm);
+            const e = brauchtE ? 'e' : '';
+            const suf = trennPräfix ? ` ${trennPräfix}` : '';
+            return [
+                `${stamm}e${suf}`,
+                `${stamm}${e}st${suf}`,
+                `${stamm}${e}t${suf}`,
+                `${stamm}en${suf}`,
+                `${stamm}${e}t${suf}`,
+                `${stamm}en${suf}`,
+            ];
+        }
+
+        function eigenesVerbStarten() {
+            const feld = document.getElementById('eigenesVerbFeld');
+            if (!feld) return;
+            const inf = feld.value.trim().toLowerCase();
+            if (!inf) return;
+            feld.value = '';
+            const pronIdx = Math.floor(Math.random() * 6);
+            let formen, regelmaessig;
+            if (verbForms[inf]) {
+                formen = verbForms[inf];
+                regelmaessig = false;
+            } else {
+                formen = konjugiereRegelmaessig(inf);
+                regelmaessig = true;
+            }
+            const richtig = formen[pronIdx];
+            const anderen = formen
+                .filter((_,i) => i !== pronIdx)
+                .filter((v,i,arr) => arr.indexOf(v) === i)
+                .filter(v => v !== richtig);
+            const falsche = shuffle(anderen).slice(0,3);
+            grammatikAktuell = {
+                verb: inf,
+                pronomen: pronouns[pronIdx],
+                pronomenTTS: pronounsTTS[pronIdx],
+                richtig,
+                antworten: shuffle([richtig, ...falsche]),
+                regelmaessig,
+            };
+            grammatikGesperrt = false;
+            grammatikRender();
+            grammatikSprechen();
+        } function grammatikNeueAufgabe() {
             if (_nachGrammatikCallback) {
                 const cb = _nachGrammatikCallback;
                 _nachGrammatikCallback = null;
