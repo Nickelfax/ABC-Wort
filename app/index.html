@@ -3526,6 +3526,48 @@ function levenshtein(a, b) {
             grammatikRender();
             grammatikSprechen();
         } 
+      function verbkarteAnzeigen(inf) {
+            if (!inf) return;
+            const p = getPraeteritum(inf.toLowerCase());
+            if (!p) return;
+            // Kurz aufblinken lassen
+            const karte = document.createElement('div');
+            karte.style.cssText = `
+                position:fixed; top:50%; left:50%;
+                transform:translate(-50%,-50%) scale(0.8);
+                background:white; border-radius:16px;
+                box-shadow:0 8px 30px rgba(0,0,0,0.2);
+                padding:24px 32px; text-align:center;
+                z-index:3000; opacity:0;
+                transition:all 0.25s ease;
+                border: 3px solid var(--primary);
+                min-width:220px;
+            `;
+            karte.innerHTML = `
+                <div style="font-size:0.85rem;color:#7f8c8d;margin-bottom:4px;">Stammformen</div>
+                <div style="font-size:1.6rem;font-weight:bold;color:#2c3e50;margin-bottom:8px;">${inf}</div>
+                <div style="font-size:1.3rem;color:var(--primary);font-weight:bold;">
+                    ${p.prät} &nbsp;·&nbsp; ${p.partizip}
+                </div>
+            `;
+            document.body.appendChild(karte);
+            // Einblenden
+            setTimeout(() => {
+                karte.style.opacity = '1';
+                karte.style.transform = 'translate(-50%,-50%) scale(1)';
+            }, 10);
+            // Nach 2.5s ausblenden
+            setTimeout(() => {
+                karte.style.opacity = '0';
+                karte.style.transform = 'translate(-50%,-50%) scale(0.8)';
+                setTimeout(() => karte.remove(), 300);
+            }, 2500);
+            // Auch bei Antippen schließen
+            karte.addEventListener('click', () => {
+                karte.style.opacity = '0';
+                setTimeout(() => karte.remove(), 300);
+            });
+        }
        function grammatikNeueAufgabe() {
             if (_nachGrammatikCallback) {
                 const cb = _nachGrammatikCallback;
