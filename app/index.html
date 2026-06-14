@@ -2489,11 +2489,17 @@ function levenshtein(a, b) {
             });
         }
 
-        let _lastAddCharTime = 0;
+       let _lastAddCharTime = 0;
         function addChar(char) {
             const now = Date.now();
             if (now - _lastAddCharTime < 80) return; // Touch-Debounce
             _lastAddCharTime = now;
+            // Eigenes-Verb-Feld aktiv? → dort reinschreiben
+            const verbFeld = document.getElementById('eigenesVerbFeld');
+            if (verbFeld && document.activeElement === verbFeld) {
+                verbFeld.value += char;
+                return;
+            }
             if (diktatAktiv) { diktatAddChar(char); return; }
             currentWord.push(char);
             updateDisplay();
