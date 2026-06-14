@@ -3693,7 +3693,11 @@ function levenshtein(a, b) {
                             ${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)" style="border-left:4px solid ${pColor};">${grammatikAktuell.pronomen} ${a}</button>`).join('')}
                         </div>
                        <div id="grammatikStatus" class="diktat-status"></div>
-                        ${regelHint}
+                       ${regelHint}
+                        <div style="text-align:center;margin-top:6px;">
+                            <button onclick="verbkarteAnzeigen(grammatikAktuell.verb)"
+                                style="background:none;border:none;font-size:1.4rem;cursor:pointer;opacity:0.6;" title="Stammformen">⏰</button>
+                        </div>
                         <div class="verbeingabe-zeile">
                             <input class="verbeingabe-feld" id="eigenesVerbFeld"
                                 type="text" placeholder="eigenes Verb…"
