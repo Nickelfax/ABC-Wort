@@ -181,6 +181,21 @@
 }
 .flag-header-title .subtitle { margin: 0 0 6px 0; text-shadow: 0 1px 2px rgba(255,255,255,0.9); color: #333; }
 
+ .verbeingabe-zeile {
+    display: flex; gap: 8px; align-items: center;
+    margin-top: 10px; width: 100%; justify-content: center;
+}
+.verbeingabe-feld {
+    border: 2px solid #e9ecef; border-radius: 10px;
+    padding: 8px 14px; font-size: 1rem; color: #2c3e50;
+    outline: none; width: 160px; transition: border-color 0.2s;
+}
+.verbeingabe-feld:focus { border-color: var(--primary); }
+.verbhint {
+    font-size: 0.78rem; color: #e67e22; text-align: center;
+    margin-top: 4px; min-height: 1.2em;
+}      
+
 </style>
 </head>
 <body>
