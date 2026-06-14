@@ -2686,6 +2686,11 @@ function levenshtein(a, b) {
             }
         }
         function backspaceZeichen() {
+            const verbFeld = document.getElementById('eigenesVerbFeld');
+            if (verbFeld && document.activeElement === verbFeld) {
+                verbFeld.value = verbFeld.value.slice(0, -1);
+                return;
+            }
             if (diktatAktiv) {
                 if (diktatEingabe.length > 0 && !diktatGesperrt) {
                     diktatEingabe = diktatEingabe.slice(0, -1);
