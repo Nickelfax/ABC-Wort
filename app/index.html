@@ -3312,6 +3312,8 @@ function levenshtein(a, b) {
             } else if (grammatikModus === 'konjugation') {
                 const btns = shuffle([...grammatikAktuell.antworten]);
                 const pColor = personColor(grammatikAktuell.pronomen);
+               const regelHint = grammatikAktuell.regelmaessig
+                    ? `<div class="verbhint">📝 Regelmäßige Konjugation</div>` : '';
                 display.innerHTML = `
                     <div class="grammatik-display">
                         <div class="grammatik-aufgabe" style="color:${pColor};">${grammatikAktuell.pronomen}</div>
@@ -3319,8 +3321,20 @@ function levenshtein(a, b) {
                         <div class="auswahl-grid">
                             ${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)" style="border-left:4px solid ${pColor};">${grammatikAktuell.pronomen} ${a}</button>`).join('')}
                         </div>
-                        <div id="grammatikStatus" class="diktat-status"></div>
+                       <div id="grammatikStatus" class="diktat-status"></div>
+                        ${regelHint}
+                        <div class="verbeingabe-zeile">
+                            <input class="verbeingabe-feld" id="eigenesVerbFeld"
+                                type="text" placeholder="eigenes Verb…"
+                                onkeydown="if(event.key==='Enter')eigenesVerbStarten()">
+                            <button onclick="eigenesVerbStarten()"
+                                style="background:var(--primary);padding:8px 14px;border-radius:10px;font-size:0.9rem;color:white;border:none;cursor:pointer;">▶</button>
+                        </div>
                     </div>`;
+                setTimeout(() => {
+                    const f = document.getElementById('eigenesVerbFeld');
+                    if (f) f.addEventListener('focus', () => f.select());
+                }, 50);
             } else if (grammatikModus === 'tempus') {
                 const btns = shuffle(d.antworten);
                 const bewegungHint = d.bewegung ? `<span class="bewegung-hint">🏃</span> Bewegungsverb → ` : '';
