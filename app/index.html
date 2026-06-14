@@ -3721,11 +3721,14 @@ function levenshtein(a, b) {
                             ${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${a}</button>`).join('')}
                         </div>
                         <div id="grammatikStatus" class="diktat-status"></div>
+                        <div style="text-align:center;margin-top:6px;">
+                            <button onclick="verbkarteAnzeigen('${d.verb}')"
+                                style="background:none;border:none;font-size:1.4rem;cursor:pointer;opacity:0.6;" title="Stammformen">⏰</button>
+                        </div>
                     </div>`;
             }
         }
-
-        function grammatikCheckArtikel(antwort, richtig, btn) {
+        function grammatikCheckArtikel
             if (grammatikGesperrt) return;
             grammatikGesperrt = true;
             const korrekt = antwort === richtig;
