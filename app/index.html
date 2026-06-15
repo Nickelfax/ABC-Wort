@@ -3424,8 +3424,8 @@ function levenshtein(a, b) {
                 if (b) b.classList.remove('aktiv');
             });
             btn.classList.add('aktiv');
-            const uz = document.getElementById('tempusUnterzeile');
-            if (uz) uz.style.display = modus === 'tempus' ? 'block' : 'none';
+           const btnP = document.getElementById('btnGPraeteritum');
+            if (btnP) btnP.style.display = modus === 'tempus' ? 'inline-block' : 'none';
             grammatikNeueAufgabe();
         }
 
