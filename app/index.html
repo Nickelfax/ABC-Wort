@@ -3430,14 +3430,17 @@ function levenshtein(a, b) {
         }
 
         let tempusModus = 'perfekt';
-
         function tempusSetModus(modus, btn) {
             tempusModus = modus;
-            ['btnTPerfekt','btnTPraeteritum'].forEach(id => {
+            ['btnGTempus','btnGPraeteritum'].forEach(id => {
                 const b = document.getElementById(id);
                 if (b) b.classList.remove('aktiv');
             });
             btn.classList.add('aktiv');
+            if (modus === 'perfekt') {
+                const bt = document.getElementById('btnGTempus');
+                if (bt) bt.classList.add('aktiv');
+            }
             grammatikNeueAufgabe();
         }
         function grammatikGetListe() {
