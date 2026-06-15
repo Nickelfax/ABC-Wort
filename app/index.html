@@ -2180,7 +2180,8 @@ function initTheme() {
                     const gData = await gRes.json();
                     if (gData.artikel) grammatikDaten.artikel = gData.artikel;
                     if (gData.kasus)   grammatikDaten.kasus   = gData.kasus;
-                    if (gData.tempus)  grammatikDaten.tempus  = gData.tempus;
+                    if (gData.tempus)       grammatikDaten.tempus       = gData.tempus;
+                    if (gData.praefixverben) grammatikDaten.praefixverben = gData.praefixverben;
                     console.log('Grammatik-Daten geladen ✓');
                 }
                 if (dRes.ok) {
