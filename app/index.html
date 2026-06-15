@@ -3411,16 +3411,29 @@ function levenshtein(a, b) {
         }
         // === Ende Diktat + Grammatik Verknüpfung ===
 
-        function grammatikSetModus(modus, btn) {
+       function grammatikSetModus(modus, btn) {
             grammatikModus = modus;
             ['btnGArtikel','btnGKasus','btnGKonj','btnGTempus'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.remove('aktiv');
+                const b = document.getElementById(id);
+                if (b) b.classList.remove('aktiv');
+            });
+            btn.classList.add('aktiv');
+            const uz = document.getElementById('tempusUnterzeile');
+            if (uz) uz.style.display = modus === 'tempus' ? 'block' : 'none';
+            grammatikNeueAufgabe();
+        }
+
+        let tempusModus = 'perfekt';
+
+        function tempusSetModus(modus, btn) {
+            tempusModus = modus;
+            ['btnTPerfekt','btnTPraeteritum'].forEach(id => {
+                const b = document.getElementById(id);
+                if (b) b.classList.remove('aktiv');
             });
             btn.classList.add('aktiv');
             grammatikNeueAufgabe();
         }
-
         function grammatikGetListe() {
             const niv = diktatNiveau === 'alle' ? 'n1' : diktatNiveau;
             if (grammatikModus === 'konjugation') return null;
