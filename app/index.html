@@ -3712,22 +3712,57 @@ function levenshtein(a, b) {
                     const f = document.getElementById('eigenesVerbFeld');
                     if (f) f.addEventListener('focus', () => f.select());
                 }, 50);
-            } else if (grammatikModus === 'tempus') {
-                const btns = shuffle(d.antworten);
-                const bewegungHint = d.bewegung ? `<span class="bewegung-hint">🏃</span> Bewegungsverb → ` : '';
-                display.innerHTML = `
-                    <div class="grammatik-display">
-                        <div class="grammatik-aufgabe">er ___ (${d.verb}, Perfekt)</div>
-                        <div class="grammatik-hinweis">${bewegungHint}haben oder sein?</div>
-                        <div class="auswahl-grid">
-                            ${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${a}</button>`).join('')}
-                        </div>
-                        <div id="grammatikStatus" class="diktat-status"></div>
-                        <div style="text-align:center;margin-top:6px;">
-                            <button onclick="verbkarteAnzeigen('${d.verb}')"
-                                style="background:none;border:none;font-size:1.4rem;cursor:pointer;opacity:0.6;" title="Stammformen">⏰</button>
-                        </div>
-                    </div>`;
+          } else if (grammatikModus === 'tempus') {
+                if (tempusModus === 'praeteritum') {
+                    // Präteritum-Konjugation aus praefixverben
+                    const praefixDaten = grammatikDaten.praefixverben;
+                    const verfuegbar = Object.keys(praefixDaten);
+                    const verb = verfuegbar[Math.floor(Math.random() * verfuegbar.length)];
+                    const vDaten = praefixDaten[verb];
+                    const pronIdx = Math.floor(Math.random() * 6);
+                    const pronomen = ['ich','du','er/sie/es','wir','ihr','sie'][pronIdx];
+                    const richtig = vDaten.praeteritum[pronIdx];
+                    // Falsche Antworten: Präsensform + regelmäßige Falschform + andere Verb-Präteritum
+                    const praesensForm = vDaten.praesens[pronIdx];
+                    const stammRegelm = verb.endsWith('en') ? verb.slice(0,-2) : verb.slice(0,-1);
+                    const regelForm = stammRegelm + (pronIdx===0||pronIdx===2 ? 'te' : pronIdx===1 ? 'test' : pronIdx===4 ? 'tet' : 'ten');
+                    const anderesVerb = verfuegbar.filter(v=>v!==verb)[Math.floor(Math.random()*(verfuegbar.length-1))];
+                    const andereForm = praefixDaten[anderesVerb].praeteritum[pronIdx];
+                    const falsche = shuffle([praesensForm, regelForm, andereForm]
+                        .filter((v,i,a) => v !== richtig && a.indexOf(v)===i)).slice(0,3);
+                    const alle = shuffle([richtig, ...falsche]);
+                    grammatikAktuell = { verb, richtig, antworten: alle, regelmaessig: false };
+                    display.innerHTML = `
+                        <div class="grammatik-display">
+                            <div class="grammatik-aufgabe">${pronomen} ___ (${verb}, Präteritum)</div>
+                            <div class="grammatik-hinweis">Welche Form ist richtig?</div>
+                            <div class="auswahl-grid">
+                                ${alle.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a.replace(/'/g,"\\'")}',this)">${pronomen} ${a}</button>`).join('')}
+                            </div>
+                            <div id="grammatikStatus" class="diktat-status"></div>
+                            <div style="text-align:center;margin-top:6px;">
+                                <button onclick="verbkarteAnzeigen('${verb}')"
+                                    style="background:none;border:none;font-size:1.4rem;cursor:pointer;opacity:0.6;" title="Stammformen">⏰</button>
+                            </div>
+                        </div>`;
+                } else {
+                    // Perfekt (wie bisher)
+                    const btns = shuffle(d.antworten);
+                    const bewegungHint = d.bewegung ? `<span class="bewegung-hint">🏃</span> Bewegungsverb → ` : '';
+                    display.innerHTML = `
+                        <div class="grammatik-display">
+                            <div class="grammatik-aufgabe">er ___ (${d.verb}, Perfekt)</div>
+                            <div class="grammatik-hinweis">${bewegungHint}haben oder sein?</div>
+                            <div class="auswahl-grid">
+                                ${btns.map(a=>`<button class="auswahl-btn" onclick="grammatikCheck('${a}',this)">${a}</button>`).join('')}
+                            </div>
+                            <div id="grammatikStatus" class="diktat-status"></div>
+                            <div style="text-align:center;margin-top:6px;">
+                                <button onclick="verbkarteAnzeigen('${d.verb}')"
+                                    style="background:none;border:none;font-size:1.4rem;cursor:pointer;opacity:0.6;" title="Stammformen">⏰</button>
+                            </div>
+                        </div>`;
+                }
             }
         }
         function grammatikCheckArtikel(antwort, richtig, btn) {
