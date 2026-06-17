@@ -329,7 +329,16 @@
         </div>
     </div>
 
-    <div class="keyboard-container">
+   <div id="grammatikModusBtn" style="width:100%; max-width:800px; margin-bottom:10px; box-sizing:border-box;">
+        <button id="btnGrammatikModus" onclick="grammatikModusToggle()"
+            style="width:100%; padding:10px; border-radius:12px; border:2px solid #e9ecef;
+                   background:#f8f9fa; color:#7f8c8d; font-size:1rem; font-weight:bold;
+                   cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+                   justify-content:center; gap:8px;">
+            <span>❓</span><span id="grammatikBtnLabel">Grammatik-Modus</span>
+        </button>
+    </div>
+    <div class="keyboard-container" id="tastaturContainer">
         <div class="keyboard-section">
             <div class="case-toggle">
                 <span style="font-size:1rem; font-weight:bold; color:#2c3e50;">A</span>
