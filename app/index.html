@@ -2225,7 +2225,7 @@ function initTheme() {
             if (diktatAktiv) { diktatNeuesWort(); }
             else if (grammatikAktiv) { grammatikNeueAufgabe(); }
         }
-function grammatikToggle() {
+    function grammatikToggle() {
             grammatikAktiv = document.getElementById('grammatikToggleSwitch') ?
                 document.getElementById('grammatikToggleSwitch').checked : grammatikAktiv;
             updateModusUI();
