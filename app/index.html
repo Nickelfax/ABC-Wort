@@ -298,7 +298,7 @@
         <button class="btn-random" onclick="randomWord()" title="Nächstes Wort / Neue Aufgabe" style="font-size:1.6rem;">▶</button>
         <button class="btn-random" onclick="backspaceZeichen()" title="Letzten Buchstaben löschen" style="font-size:1.6rem; background:#e74c3c; color:white;">⌫</button>
         <button onclick="openStorage()" style="font-size:1.6rem; background:#16a085;">📚</button>
-        <button onclick="window.location.href='abc_diktator.html?lang=de&niveau=n1&mode=solo'" style="padding:7px 9px; background:#2c2c2a; display:flex; align-items:center; justify-content:center;" title="Diktator-Tippspiel">
+        <button id="btnDiktatModus" onclick="diktatModusToggle()" style="padding:7px 9px; background:#2c2c2a; display:flex; align-items:center; justify-content:center;" title="Diktator-Tippspiel">
             <svg width="36" height="36" viewBox="0 0 100 100">
                 <ellipse cx="50" cy="42" rx="42" ry="28" fill="#fdfaf0"/>
                 <path d="M28,64 L20,86 L42,68 Z" fill="#fdfaf0"/>
@@ -306,6 +306,8 @@
                 <circle cx="50" cy="54" r="5.5" fill="#2c2c2a"/>
             </svg>
         </button>
+       <a href="abc_diktator.html?lang=de&niveau=n1&mode=solo" 
+            style="font-size:1.4rem; text-decoration:none; padding:8px 6px;" title="Multiplayer-Spiel">🎮</a>
        
       
         <div class="case-toggle" style="justify-content:center; gap:4px;">
