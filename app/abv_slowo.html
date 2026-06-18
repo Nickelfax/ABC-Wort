@@ -1591,6 +1591,48 @@ function ttsNochmalPruefen() {
 }
 window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); checkRuVoice(); };
 window.addEventListener('DOMContentLoaded', function() { init(); setTimeout(checkRuVoice, 500); });
+
+function diktatModusToggle() {
+    diktatAktiv = !diktatAktiv;
+    const btn = document.getElementById('btnDiktatModus');
+    const lbl = document.getElementById('diktatBtnLabel');
+    const tastatur = document.getElementById('tastaturContainer');
+    if (diktatAktiv) {
+        btn.style.background = '#c0392b';
+        btn.style.borderColor = '#c0392b';
+        if (lbl) lbl.textContent = 'Диктант активен';
+        if (tastatur) tastatur.style.display = 'block';
+    } else {
+        btn.style.background = '#2c2c2a';
+        btn.style.borderColor = '#2c2c2a';
+        if (lbl) lbl.textContent = 'Диктант';
+    }
+    diktatToggle();
+    if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
+
+function grammatikModusToggle() {
+    grammatikAktiv = !grammatikAktiv;
+    const btn = document.getElementById('btnGrammatikModus');
+    const tastatur = document.getElementById('tastaturContainer');
+    if (grammatikAktiv) {
+        btn.style.background = 'var(--primary)';
+        btn.style.color = 'white';
+        btn.style.borderColor = 'var(--primary)';
+        document.getElementById('grammatikBtnLabel').textContent = 'Грамматика активна';
+        if (tastatur && !diktatAktiv) tastatur.style.display = 'none';
+    } else {
+        btn.style.background = '#f8f9fa';
+        btn.style.color = '#7f8c8d';
+        btn.style.borderColor = '#e9ecef';
+        document.getElementById('grammatikBtnLabel').textContent = 'Грамматика';
+        if (tastatur) tastatur.style.display = 'block';
+    }
+    grammatikToggle();
+    if (grammatikAktiv) grammatikNeueAufgabe();
+    else if (diktatAktiv) diktatNeuesWort();
+}
 </script>
 </body>
 </html>
