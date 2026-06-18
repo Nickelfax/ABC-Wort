@@ -1604,8 +1604,10 @@ function checkElVoice() {
         checkElVoice();
     };
         
-    window.addEventListener('DOMContentLoaded', init);
-
+   window.addEventListener('DOMContentLoaded', function() {
+        init();
+        setTimeout(checkElVoice, 500);
+    });
     // Viewport-Fix für Mobile
     (function() {
         if (!window.visualViewport) return;
