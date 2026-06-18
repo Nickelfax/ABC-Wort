@@ -799,8 +799,8 @@ function updateModusUI(){
     document.getElementById('grammatikZeile').style.display=grammatikAktiv?'flex':'none';
     if(!beides){document.getElementById('diktatStatus').textContent='';updateDisplay();}
 }
-function diktatToggle(){diktatAktiv=document.getElementById('diktatToggleSwitch').checked;updateModusUI();if(diktatAktiv)diktatNeuesWort();else if(grammatikAktiv)grammatikNeueAufgabe();}
-function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikToggleSwitch').checked;updateModusUI();if(grammatikAktiv&&!diktatAktiv)grammatikNeueAufgabe();else if(diktatAktiv)diktatNeuesWort();}
+function diktatToggle(){diktatAktiv=document.getElementById('diktatToggleSwitch')?document.getElementById('diktatToggleSwitch').checked:diktatAktiv;updateModusUI();if(diktatAktiv)diktatNeuesWort();else if(grammatikAktiv)grammatikNeueAufgabe();}
+function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikToggleSwitch')?document.getElementById('grammatikToggleSwitch').checked:grammatikAktiv;updateModusUI();if(grammatikAktiv&&!diktatAktiv)grammatikNeueAufgabe();else if(diktatAktiv)diktatNeuesWort();}
 function niveauSliderChange(val){diktatNiveau=['n1','n2','n3'][val-1];document.getElementById('niveauLabel').textContent='N'+val;if(diktatAktiv)diktatNeuesWort();else if(grammatikAktiv)grammatikNeueAufgabe();}
 function diktatGetListe(){if(diktatNiveau==='n1')return diktatWorteN1;if(diktatNiveau==='n2')return diktatWorteN2;if(diktatNiveau==='n3')return diktatWorteN3;return[...diktatWorteN1,...diktatWorteN2,...diktatWorteN3];}
 function diktatNeuesWort(){
