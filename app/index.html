@@ -4215,6 +4215,8 @@ const APP_REGISTRY = [
             btn.style.background = '#c0392b';
             btn.style.borderColor = '#c0392b';
             if (lbl) lbl.textContent = 'Diktat aktiv';
+           const tastatur = document.getElementById('tastaturContainer');
+            if (tastatur) tastatur.style.display = 'block';
         } else {
             btn.style.background = '#2c2c2a';
             btn.style.borderColor = '#2c2c2a';
