@@ -725,19 +725,34 @@ function backspace() {
     if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
     currentWord.pop(); updateDisplay();
 }
-function getVoiceForLang(lang) {
+   function getVoiceForLang(lang) {
     const voices = window.speechSynthesis.getVoices();
+    if (lang.startsWith('en')) {
+        // Bevorzuge en-GB, dann en-US, dann beliebig Englisch
+        return voices.find(v => v.lang === 'en-GB') ||
+               voices.find(v => v.lang === 'en-US') ||
+               voices.find(v => v.lang.startsWith('en')) ||
+               voices[0] || null;
+    }
     return voices.find(v => v.lang && v.lang.startsWith(lang.split('-')[0])) || voices[0] || null;
 }
 function ttsSpeak(text, rate, lang) {
-    if (!window.speechSynthesis) { showToast('⚠️ Kein TTS auf diesem Gerät verfügbar'); return; }
+    if (!window.speechSynthesis) { showToast('⚠️ No TTS available on this device'); return; }
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    const voice = getVoiceForLang(lang);
-    if (voice) { u.voice = voice; u.lang = voice.lang; }
-    else { u.lang = lang; showToast('⚠️ Keine passende Stimme gefunden'); }
-    u.rate = rate;
-    window.speechSynthesis.speak(u);
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const u = new SpeechSynthesisUtterance(text);
+        const voice = getVoiceForLang(lang);
+        if (voice) { u.voice = voice; u.lang = voice.lang; }
+        else { u.lang = lang; }
+        u.rate = rate;
+        window.speechSynthesis.speak(u);
+        return true;
+    };
+    if (!try_()) {
+        window.speechSynthesis.onvoiceschanged = () => { try_(); };
+    }
 }
 function sprichZeichenTTS(ch) { ttsSpeak(ch.toLowerCase(), 0.7, 'en-GB'); }
 function sprichWort() {
