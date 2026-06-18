@@ -4207,15 +4207,18 @@ const APP_REGISTRY = [
 })();
 
     // Globale Toggle-Funktionen (außerhalb IIFE für onclick-Zugriff)
-    window.diktatModusToggle = function() {
+   window.diktatModusToggle = function() {
         diktatAktiv = !diktatAktiv;
         const btn = document.getElementById('btnDiktatModus');
+        const lbl = document.getElementById('diktatBtnLabel');
         if (diktatAktiv) {
             btn.style.background = '#c0392b';
             btn.style.borderColor = '#c0392b';
+            if (lbl) lbl.textContent = 'Diktat aktiv';
         } else {
             btn.style.background = '#2c2c2a';
             btn.style.borderColor = '#2c2c2a';
+            if (lbl) lbl.textContent = 'Diktat';
         }
         updateModusUI();
         if (diktatAktiv) { diktatNeuesWort(); }
