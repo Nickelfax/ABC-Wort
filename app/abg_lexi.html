@@ -1582,7 +1582,28 @@ function saveCurrentWord() {
         document.body.insertBefore(sub, document.body.firstChild);
         document.body.insertBefore(h1, sub);
     }
+function checkElVoice() {
+        const voices = window.speechSynthesis.getVoices();
+        const hasEl = voices.some(v => v.lang && v.lang.startsWith('el'));
+        const el = document.getElementById('ttsWarning');
+        if (el) el.style.display = hasEl ? 'none' : 'block';
+        return hasEl;
+    }
 
+    function ttsNochmalPruefen() {
+        window.speechSynthesis.getVoices();
+        setTimeout(() => {
+            const ok = checkElVoice();
+            if (ok) showToast('✅ Griechische Stimme gefunden!');
+            else showToast('⚠️ Noch keine Stimme gefunden – bitte Anleitung folgen');
+        }, 300);
+    }
+
+    window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+        checkElVoice();
+    };
+        
     window.addEventListener('DOMContentLoaded', init);
 
     // Viewport-Fix für Mobile
