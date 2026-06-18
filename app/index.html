@@ -2215,7 +2215,23 @@ function initTheme() {
         }
 
         function diktatToggle() {
-            diktatAktiv = document.getElementById('diktatToggleSwitch').checked;
+            diktatAktiv = document.getElementById('diktatToggleSwitch') ?
+                document.getElementById('diktatToggleSwitch').checked : diktatAktiv;
+            updateModusUI();
+            if (diktatAktiv) { diktatNeuesWort(); }
+            else if (grammatikAktiv) { grammatikNeueAufgabe(); }
+        }
+
+        function diktatModusToggle() {
+            diktatAktiv = !diktatAktiv;
+            const btn = document.getElementById('btnDiktatModus');
+            if (diktatAktiv) {
+                btn.style.background = '#c0392b';
+                btn.style.borderColor = '#c0392b';
+            } else {
+                btn.style.background = '#2c2c2a';
+                btn.style.borderColor = '#2c2c2a';
+            }
             updateModusUI();
             if (diktatAktiv) { diktatNeuesWort(); }
             else if (grammatikAktiv) { grammatikNeueAufgabe(); }
