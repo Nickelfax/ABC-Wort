@@ -947,7 +947,8 @@ function updateModusUI() {
 }
 
 function diktatToggle() {
-    diktatAktiv = document.getElementById('diktatToggleSwitch').checked;
+    diktatAktiv = document.getElementById('diktatToggleSwitch') ?
+        document.getElementById('diktatToggleSwitch').checked : diktatAktiv;
     updateModusUI();
     if (diktatAktiv) diktatNeuesWort();
     else if (grammatikAktiv) grammatikNeueAufgabe();
