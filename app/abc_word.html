@@ -230,7 +230,31 @@ button:active { transform: scale(0.95); }
     </div>
 </div>
 
-<div class="keyboard-container">
+<div style="width:100%; max-width:800px; margin-bottom:10px; box-sizing:border-box; display:flex; gap:8px; align-items:center;">
+    <button id="btnDiktatModus" onclick="diktatModusToggle()"
+        style="flex:1; padding:10px; border-radius:12px; border:2px solid #2c2c2a;
+               background:#2c2c2a; color:white; font-size:1rem; font-weight:bold;
+               cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+               justify-content:center; gap:8px;">
+        <svg width="24" height="24" viewBox="0 0 100 100">
+            <ellipse cx="50" cy="42" rx="42" ry="28" fill="#fdfaf0"/>
+            <path d="M28,64 L20,86 L42,68 Z" fill="#fdfaf0"/>
+            <rect x="45" y="22" width="10" height="24" rx="5" fill="#2c2c2a"/>
+            <circle cx="50" cy="54" r="5.5" fill="#2c2c2a"/>
+        </svg>
+        <span id="diktatBtnLabel">Dictation</span>
+    </button>
+    <a href="abc_diktator.html?lang=en&niveau=n1"
+        style="font-size:1.4rem; text-decoration:none; padding:8px 4px;" title="Multiplayer game">🎮</a>
+    <button id="btnGrammatikModus" onclick="grammatikModusToggle()"
+        style="flex:1; padding:10px; border-radius:12px; border:2px solid #e9ecef;
+               background:#f8f9fa; color:#7f8c8d; font-size:1rem; font-weight:bold;
+               cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+               justify-content:center; gap:8px;">
+        <span>❓</span><span id="grammatikBtnLabel">Grammar</span>
+    </button>
+</div>
+<div class="keyboard-container" id="tastaturContainer">
     <div class="keyboard-section">
         <div class="case-toggle">
             <span style="font-size:1rem; font-weight:bold; color:#2c3e50;">A</span>
