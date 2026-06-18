@@ -2257,7 +2257,7 @@ function initTheme() {
                 btn.style.color = 'white';
                 btn.style.borderColor = 'var(--primary)';
                 document.getElementById('grammatikBtnLabel').textContent = 'Grammatik aktiv – Tastatur ausblenden';
-                if (tastatur) tastatur.style.display = 'none';
+                if (tastatur && !diktatAktiv) tastatur.style.display = 'none';
             } else {
                 btn.style.background = '#f8f9fa';
                 btn.style.color = '#7f8c8d';
