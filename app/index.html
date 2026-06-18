@@ -4198,8 +4198,47 @@ const APP_REGISTRY = [
                 var display = document.getElementById('wordDisplay');
                 if (display) setTimeout(function() { display.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
             }
-        });
-    })();
+
+       });
+})();
+
+    // Globale Toggle-Funktionen (außerhalb IIFE für onclick-Zugriff)
+    window.diktatModusToggle = function() {
+        diktatAktiv = !diktatAktiv;
+        const btn = document.getElementById('btnDiktatModus');
+        if (diktatAktiv) {
+            btn.style.background = '#c0392b';
+            btn.style.borderColor = '#c0392b';
+        } else {
+            btn.style.background = '#2c2c2a';
+            btn.style.borderColor = '#2c2c2a';
+        }
+        updateModusUI();
+        if (diktatAktiv) { diktatNeuesWort(); }
+        else if (grammatikAktiv) { grammatikNeueAufgabe(); }
+    };
+
+    window.grammatikModusToggle = function() {
+        grammatikAktiv = !grammatikAktiv;
+        const btn = document.getElementById('btnGrammatikModus');
+        const tastatur = document.getElementById('tastaturContainer');
+        if (grammatikAktiv) {
+            btn.style.background = 'var(--primary)';
+            btn.style.color = 'white';
+            btn.style.borderColor = 'var(--primary)';
+            document.getElementById('grammatikBtnLabel').textContent = 'Grammatik aktiv – Tastatur ausblenden';
+            if (tastatur) tastatur.style.display = 'none';
+        } else {
+            btn.style.background = '#f8f9fa';
+            btn.style.color = '#7f8c8d';
+            btn.style.borderColor = '#e9ecef';
+            document.getElementById('grammatikBtnLabel').textContent = 'Grammatik-Modus';
+            if (tastatur) tastatur.style.display = 'block';
+        }
+        updateModusUI();
+        if (grammatikAktiv) { grammatikNeueAufgabe(); }
+        else if (diktatAktiv) { diktatNeuesWort(); }
+    };
     </script>
 
     <script>
