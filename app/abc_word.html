@@ -1214,9 +1214,50 @@ function crossSellBannerEinfuegen(currentAppId) {
 // ═══════════════════════════════════════════════════════════════════════
 
         // === ENDE PRO-SYSTEM ===
-
-        window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
+window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
 window.addEventListener('DOMContentLoaded',init);
+
+function diktatModusToggle() {
+    diktatAktiv = !diktatAktiv;
+    const btn = document.getElementById('btnDiktatModus');
+    const lbl = document.getElementById('diktatBtnLabel');
+    const tastatur = document.getElementById('tastaturContainer');
+    if (diktatAktiv) {
+        btn.style.background = '#c0392b';
+        btn.style.borderColor = '#c0392b';
+        if (lbl) lbl.textContent = 'Dictation active';
+        if (tastatur) tastatur.style.display = 'block';
+    } else {
+        btn.style.background = '#2c2c2a';
+        btn.style.borderColor = '#2c2c2a';
+        if (lbl) lbl.textContent = 'Dictation';
+    }
+    diktatToggle();
+    if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
+
+function grammatikModusToggle() {
+    grammatikAktiv = !grammatikAktiv;
+    const btn = document.getElementById('btnGrammatikModus');
+    const tastatur = document.getElementById('tastaturContainer');
+    if (grammatikAktiv) {
+        btn.style.background = 'var(--primary)';
+        btn.style.color = 'white';
+        btn.style.borderColor = 'var(--primary)';
+        document.getElementById('grammatikBtnLabel').textContent = 'Grammar active';
+        if (tastatur && !diktatAktiv) tastatur.style.display = 'none';
+    } else {
+        btn.style.background = '#f8f9fa';
+        btn.style.color = '#7f8c8d';
+        btn.style.borderColor = '#e9ecef';
+        document.getElementById('grammatikBtnLabel').textContent = 'Grammar';
+        if (tastatur) tastatur.style.display = 'block';
+    }
+    grammatikToggle();
+    if (grammatikAktiv) grammatikNeueAufgabe();
+    else if (diktatAktiv) diktatNeuesWort();
+}
 </script>
    <div style="text-align:center; margin-top:20px; font-size:0.8rem; color:#bdc3c7;">
     <a href="impressum.html" style="color:#bdc3c7;">Impressum</a> · 
