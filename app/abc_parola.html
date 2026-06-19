@@ -677,15 +677,17 @@ function initTheme() {
             }
         }
 
-        function diktatToggle() {
-            diktatAktiv = document.getElementById('diktatToggleSwitch').checked;
+    function diktatToggle() {
+            diktatAktiv = document.getElementById('diktatToggleSwitch') ?
+                document.getElementById('diktatToggleSwitch').checked : diktatAktiv;
             updateModusUI();
             if (diktatAktiv) { diktatNeuesWort(); }
             else if (grammatikAktiv) { grammatikNeueAufgabe(); }
         }
 
         function grammatikToggle() {
-            grammatikAktiv = document.getElementById('grammatikToggleSwitch').checked;
+            grammatikAktiv = document.getElementById('grammatikToggleSwitch') ?
+                document.getElementById('grammatikToggleSwitch').checked : grammatikAktiv;
             updateModusUI();
             if (grammatikAktiv) { grammatikNeueAufgabe(); }
             else if (diktatAktiv) { diktatNeuesWort(); }
