@@ -659,9 +659,9 @@ function updateModusUI() {
     document.getElementById('grammatikZeile').style.display = grammatikAktiv ? 'flex' : 'none';
     if (!beides) { document.getElementById('diktatStatus').textContent = ''; updateDisplay(); }
 }
-function diktatToggle() { diktatAktiv = document.getElementById('diktatToggleSwitch').checked; updateModusUI(); if (diktatAktiv) diktatNeuesWort(); else if (grammatikAktiv) grammatikNeueAufgabe(); }
-function grammatikToggle() { grammatikAktiv = document.getElementById('grammatikToggleSwitch').checked; updateModusUI(); if (grammatikAktiv) grammatikNeueAufgabe(); else if (diktatAktiv) diktatNeuesWort(); }
-function niveauSliderChange(val) { diktatNiveau = ['n1','n2','n3'][val-1]; document.getElementById('niveauLabel').textContent = 'N'+val; if (diktatAktiv) diktatNeuesWort(); if (grammatikAktiv) grammatikNeueAufgabe(); }
+function diktatToggle() { diktatAktiv = document.getElementById('diktatToggleSwitch') ? document.getElementById('diktatToggleSwitch').checked : diktatAktiv; updateModusUI(); if (diktatAktiv) diktatNeuesWort(); else if (grammatikAktiv) grammatikNeueAufgabe(); }
+function grammatikToggle() { grammatikAktiv = document.getElementById('grammatikToggleSwitch') ? document.getElementById('grammatikToggleSwitch').checked : grammatikAktiv; updateModusUI(); if (grammatikAktiv) grammatikNeueAufgabe(); else if (diktatAktiv) diktatNeuesWort(); }
+ function niveauSliderChange(val) { diktatNiveau = ['n1','n2','n3'][val-1]; document.getElementById('niveauLabel').textContent = 'N'+val; if (diktatAktiv) diktatNeuesWort(); if (grammatikAktiv) grammatikNeueAufgabe(); }
 
 // ── Diktat ────────────────────────────────────────────────────────────
 function diktatGetListe() {
