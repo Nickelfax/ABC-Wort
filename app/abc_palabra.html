@@ -839,16 +839,16 @@ function updateModusUI() {
     if (!beides) { document.getElementById('diktatStatus').textContent = ''; updateDisplay(); }
 }
 function diktatToggle() {
-    diktatAktiv = document.getElementById('diktatToggleSwitch').checked; updateModusUI();
+    diktatAktiv = document.getElementById('diktatToggleSwitch') ? document.getElementById('diktatToggleSwitch').checked : diktatAktiv; updateModusUI();
     if (diktatAktiv) {
-        if (!freiRundenCheck()) { diktatAktiv = false; document.getElementById('diktatToggleSwitch').checked = false; updateModusUI(); return; }
+        if (!freiRundenCheck()) { diktatAktiv = false; updateModusUI(); return; }
         diktatNeuesWort();
     } else if (grammatikAktiv) grammatikNeueAufgabe();
 }
 function grammatikToggle() {
-    grammatikAktiv = document.getElementById('grammatikToggleSwitch').checked; updateModusUI();
+    grammatikAktiv = document.getElementById('grammatikToggleSwitch') ? document.getElementById('grammatikToggleSwitch').checked : grammatikAktiv; updateModusUI();
     if (grammatikAktiv) {
-        if (!freiRundenCheck()) { grammatikAktiv = false; document.getElementById('grammatikToggleSwitch').checked = false; updateModusUI(); return; }
+        if (!freiRundenCheck()) { grammatikAktiv = false; updateModusUI(); return; }
         grammatikNeueAufgabe();
     } else if (diktatAktiv) diktatNeuesWort();
 }
