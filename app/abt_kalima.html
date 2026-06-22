@@ -650,6 +650,18 @@ function initTheme() {
         }
     });
 }
+   function checkArVoice() {
+    const check = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices.length) return false;
+        const hat = voices.some(v => v.lang && v.lang.startsWith('ar'));
+        document.getElementById('arVoiceBanner').style.display = hat ? 'none' : 'block';
+        return true;
+    };
+    if (!check()) {
+        window.speechSynthesis.onvoiceschanged = () => { check(); };
+    }
+}
    function init() {
       initTheme();
     renderAlphabet();
