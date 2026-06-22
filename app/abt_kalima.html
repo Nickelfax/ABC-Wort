@@ -807,7 +807,7 @@ function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikTogg
 function niveauSliderChange(val){diktatNiveau=['n1','n2','n3'][val-1];document.getElementById('niveauLabel').textContent='N'+val;if(diktatAktiv)diktatNeuesWort();if(grammatikAktiv)grammatikNeueAufgabe();}
 function diktatGetListe(){if(diktatNiveau==='n1')return diktatWorteN1;if(diktatNiveau==='n2')return diktatWorteN2;if(diktatNiveau==='n3')return diktatWorteN3;return[...diktatWorteN1,...diktatWorteN2,...diktatWorteN3];}
 function diktatNeuesWort(){
-    if(!proCheck(THIS_APP_ID,'Diktat unbegrenzt'))return;
+    if(diktatNiveau !== 'n1' && !proCheck(THIS_APP_ID,'Diktat unbegrenzt'))return;
     const liste=diktatGetListe();
     const e=liste[Math.floor(Math.random()*liste.length)];
     diktatAktuell=e.wort;diktatAudioSrc=e.audio;
