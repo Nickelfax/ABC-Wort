@@ -738,15 +738,29 @@ function sprichWort() {
     const s=currentWord.join(''); if(!s)return;
     ttsSpeak(s, 0.85, 'ar-SA');
 }
-function updateDisplay() {
+function istHarakatZeichen(ch) {
+    return harakat.includes(ch);
+}
+  function updateDisplay() {
     const display=document.getElementById('wordDisplay');
     if(diktatAktiv){diktatRender();return;}
     display.innerHTML='';
     if(currentWord.length===0){display.classList.add('empty');display.textContent='اضغط على الحروف لبناء كلمة';return;}
     display.classList.remove('empty');
+    // Basisbuchstabe + folgende Harakat zu einem Cluster gruppieren
+    const cluster = [];
     currentWord.forEach((ch,i)=>{
-        const span=document.createElement('div'); span.className='char-block'; span.textContent=ch;
-        span.onclick=()=>{currentWord.splice(i,1);updateDisplay();}; display.appendChild(span);
+        if (istHarakatZeichen(ch) && cluster.length > 0) {
+            cluster[cluster.length-1].text += ch;
+            cluster[cluster.length-1].endIdx = i;
+        } else {
+            cluster.push({ text: ch, startIdx: i, endIdx: i });
+        }
+    });
+    cluster.forEach(c=>{
+        const span=document.createElement('div'); span.className='char-block'; span.textContent=c.text;
+        span.onclick=()=>{ currentWord.splice(c.startIdx, c.endIdx-c.startIdx+1); updateDisplay(); };
+        display.appendChild(span);
     });
 }
 function randomWord() {
