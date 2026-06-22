@@ -668,6 +668,7 @@ function initTheme() {
     updateDisplay();
     ladeExterneDaten();
     ergaenzeDiktatAusGlobalDict(); 
+    checkArVoice();
     crossSellBannerEinfuegen(THIS_APP_ID);
     document.getElementById('harakatToggle').addEventListener('change', function() {
         document.getElementById('harakatLabel').textContent = this.checked ? 'an' : 'aus';
