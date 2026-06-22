@@ -629,11 +629,22 @@ function initTheme() {
         }
     } catch(e) {}
 }
+   function ergaenzeDiktatAusGlobalDict() {
+    if (typeof GLOBAL_DICT === 'undefined') return;
+    const vorhandene = new Set(diktatWorteN1.map(e => e.wort));
+    Object.values(GLOBAL_DICT).forEach(e => {
+        if (e.ar && !vorhandene.has(e.ar)) {
+            diktatWorteN1.push({ wort: e.ar, audio: '' });
+            vorhandene.add(e.ar);
+        }
+    });
+}
    function init() {
       initTheme();
     renderAlphabet();
     updateDisplay();
     ladeExterneDaten();
+    ergaenzeDiktatAusGlobalDict(); 
     crossSellBannerEinfuegen(THIS_APP_ID);
     document.getElementById('harakatToggle').addEventListener('change', function() {
         document.getElementById('harakatLabel').textContent = this.checked ? 'an' : 'aus';
