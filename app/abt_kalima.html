@@ -709,7 +709,17 @@ let _lastAddTime=0;
 function addChar(ch) {
     const now=Date.now(); if(now-_lastAddTime<80)return; _lastAddTime=now;
     if(diktatAktiv){diktatAddChar(ch);return;}
-    currentWord.push(ch); updateDisplay(); sprichZeichenTTS(ch);
+    currentWord.push(ch); updateDisplay();
+    if (istHarakatZeichen(ch) && currentWord.length > 1) {
+        let cluster = ch;
+        for (let i = currentWord.length - 2; i >= 0; i--) {
+            cluster = currentWord[i] + cluster;
+            if (!istHarakatZeichen(currentWord[i])) break;
+        }
+        sprichZeichenTTS(cluster);
+    } else {
+        sprichZeichenTTS(ch);
+    }
 }
 function backspace() {
     if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
