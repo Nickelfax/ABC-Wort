@@ -3853,7 +3853,7 @@ function initTheme() {
                 document.getElementById('diktatStatus').textContent = '✗ Nicht ganz!';
                 diktatBuzzer();
             }
-            setTimeout(grammatikNeueAufgabe, 1800);
+         setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
         }
 
         function diktatSetModus(m, btn) {
