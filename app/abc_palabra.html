@@ -574,6 +574,16 @@ const verbForms = {
     'llamar': ['llamo','llamas','llama','llamamos','llamáis','llaman'],
     'jugar':  ['juego','juegas','juega','jugamos','jugáis','juegan'],
 };
+ const participioIrreg = {
+    'ser':'sido', 'ir':'ido', 'hacer':'hecho', 'ver':'visto',
+    'decir':'dicho', 'poder':'podido', 'querer':'querido', 'saber':'sabido'
+};
+function getParticipio(verb) {
+    if (participioIrreg[verb]) return participioIrreg[verb];
+    if (verb.endsWith('ar')) return verb.slice(0,-2)+'ado';
+    return verb.slice(0,-2)+'ido';
+}
+const haberForms = ['he','has','ha','hemos','habéis','han'];
 
 const pronouns    = ['👤 yo','👤 tú','👤 él/ella','👤👤 nosotros','👤👤 vosotros','👤👤 ellos'];
 const pronounsTTS = ['yo','tú','él','nosotros','vosotros','ellos'];
