@@ -1073,8 +1073,15 @@ function grammatikNeueAufgabe() {
         const alleP = shuffle([ep.richtig,...ep.falsch]);
         display.innerHTML = '<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;"><div class="grammatik-aufgabe">' + ep.pronomen + ' ___ <span style="color:var(--primary)">' + ep.infinitiv + '</span></div><div class="grammatik-hinweis">' + ep.zeit + '</div><div class="auswahl-grid">' + alleP.map(a=>'<button class="auswahl-btn" onclick="tempusAntwort(\'' + a.replace(/'/g,"\'") + '\',this)">' + a + '</button>').join('') + '</div></div>';
     } else if (grammatikModus === 'tempus') {
-        const pool = [...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[]),...(grammatikDaten.perfecto.n1||[]),...(grammatikDaten.perfecto.n2||[]),...(grammatikDaten.perfecto.n3||[])];
-        const e = pool[Math.floor(Math.random()*pool.length)]; grammatikAktuell = e;
+      const staticPool = [...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        if (Math.random() < 0.5 && staticPool.length) {
+            const e = staticPool[Math.floor(Math.random()*staticPool.length)]; grammatikAktuell = e;
+        } else {
+            const vPool = verbGroups[diktatNiveau] || verbGroups.n1;
+            const ep = generierePerfectoAufgabe(vPool[Math.floor(Math.random()*vPool.length)]);
+            if (!ep) { grammatikNeueAufgabe(); return; }
+            grammatikAktuell = ep;
+        }
         const alle = shuffle([e.richtig,...e.falsch]);
         display.innerHTML = `<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
             <div class="grammatik-aufgabe">${e.pronomen} ___ <span style="color:var(--primary)">${e.infinitiv}</span></div>
