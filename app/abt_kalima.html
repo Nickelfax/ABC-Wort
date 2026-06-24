@@ -517,7 +517,7 @@ try { savedWords=JSON.parse(localStorage.getItem('abt_saved'))||[]; } catch(e) {
 let diktatAktiv=false, grammatikAktiv=false, diktatRichtig=0, diktatFalsch=0;
 let diktatAktuell='', diktatEingabe='', diktatGesperrt=false, diktatHatFehler=false;
 let diktatBuzzerGespielt=false, diktatModus='hilfe', diktatNiveau='n1', diktatStumm=false, diktatAudioSrc='';
-let grammatikModus='genus', grammatikGesperrt=false, grammatikAktuell=null;
+let grammatikModus = 'konjugation', grammatikGesperrt = false, grammatikAktuell = null;
 let uebersetzungAktiv=false;
 const diktatVerlauf=[]; let diktatVerlaufIdx=-1;
 
