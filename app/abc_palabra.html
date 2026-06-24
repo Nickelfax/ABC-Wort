@@ -1015,6 +1015,21 @@ function grammatikRender() {
 function grammatikSetModus(m,btn) {
     grammatikModus=m; document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv')); btn.classList.add('aktiv'); grammatikNeueAufgabe();
 }
+ function generierePerfectoAufgabe(verb) {
+    const formen = verbForms[verb]; if (!formen) return null;
+    const pIdx = Math.floor(Math.random()*6);
+    const part = getParticipio(verb);
+    const richtig = haberForms[pIdx] + ' ' + part;
+    const falsch = [
+        // Indefinido als Ablenkung
+        formen[pIdx],
+        // falsches Partizip
+        haberForms[pIdx] + ' ' + verb + (verb.endsWith('ar')?'ido':'ado'),
+        // falsches Haber
+        haberForms[(pIdx+1)%6] + ' ' + part,
+    ].filter((v,i,a) => v !== richtig && a.indexOf(v)===i);
+    return { infinitiv: verb, pronomen: pronounsTTS[pIdx], zeit: 'Pretérito Perfecto Compuesto', richtig, falsch };
+}
 function grammatikNeueAufgabe() {
     if (_nachGrammatikCallback) { const cb = _nachGrammatikCallback; _nachGrammatikCallback = null; cb(); return; }
     if (diktatAktiv) return;
