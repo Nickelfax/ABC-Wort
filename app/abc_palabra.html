@@ -936,10 +936,7 @@ function grammatikFuerWort(wort) {
     if (verbForms && verbForms[w]) aufgaben.push('konjugation');
     const alleTempus = [...(grammatikDaten.tempus.n1||[]), ...(grammatikDaten.tempus.n2||[]), ...(grammatikDaten.tempus.n3||[])];
     if (alleTempus.find(e => e.infinitiv && e.infinitiv.toLowerCase() === w)) aufgaben.push('tempus');
-    if (grammatikDaten.perfecto) {
-        const allePerfecto = [...(grammatikDaten.perfecto.n1||[]), ...(grammatikDaten.perfecto.n2||[]), ...(grammatikDaten.perfecto.n3||[])];
-        if (allePerfecto.find(e => e.infinitiv && e.infinitiv.toLowerCase() === w)) aufgaben.push('perfecto');
-    }
+   if (verbForms && verbForms[w]) aufgaben.push('perfecto');
     return aufgaben;
 }
 
