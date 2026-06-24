@@ -1274,7 +1274,7 @@ function grammatikCheck(antwort, btn) {
         document.getElementById('diktatStatus').textContent = `✗ Richtig: ${d.richtig}`;
         diktatBuzzer();
     }
-    setTimeout(grammatikNeueAufgabe, 1800);
+    setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
 }
 
 
@@ -1283,28 +1283,28 @@ function genusAntwort(gewählt, btn) {
     const richtig = grammatikAktuell.genus;
     if (gewählt === richtig) { btn.classList.add('richtig'); diktatRichtig++; document.getElementById('diktatRichtig').textContent = diktatRichtig; document.getElementById('diktatStatus').textContent = 'Richtig! 🎉'; setTimeout(diktatFanfare,200); }
     else { btn.classList.add('falsch'); diktatFalsch++; document.getElementById('diktatFalsch').textContent = diktatFalsch; document.getElementById('diktatStatus').textContent = `Falsch — es ist ${richtig === 'м' ? 'мужской' : richtig === 'ж' ? 'женский' : 'средний'}`; }
-    setTimeout(grammatikNeueAufgabe, 1800);
+    setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
 }
 
 function kasusAntwort(gewählt, btn) {
     if (grammatikGesperrt) return; grammatikGesperrt = true;
     if (gewählt === grammatikAktuell.richtig) { btn.classList.add('richtig'); diktatRichtig++; document.getElementById('diktatRichtig').textContent = diktatRichtig; document.getElementById('diktatStatus').textContent = 'Richtig! 🎉'; setTimeout(diktatFanfare,200); }
     else { btn.classList.add('falsch'); diktatFalsch++; document.getElementById('diktatFalsch').textContent = diktatFalsch; document.getElementById('diktatStatus').textContent = `Richtig: ${grammatikAktuell.richtig}`; }
-    setTimeout(grammatikNeueAufgabe, 1800);
+   setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
 }
 
 function konjAntwort(gewählt, btn) {
     if (grammatikGesperrt) return; grammatikGesperrt = true;
     if (gewählt === grammatikAktuell.richtig) { btn.classList.add('richtig'); diktatRichtig++; document.getElementById('diktatRichtig').textContent = diktatRichtig; document.getElementById('diktatStatus').textContent = 'Richtig! 🎉'; setTimeout(diktatFanfare,200); }
     else { btn.classList.add('falsch'); diktatFalsch++; document.getElementById('diktatFalsch').textContent = diktatFalsch; document.getElementById('diktatStatus').textContent = `Richtig: ${grammatikAktuell.richtig}`; }
-    setTimeout(grammatikNeueAufgabe, 1800);
+    setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
 }
 
 function tempusAntwort(gewählt, btn) {
     if (grammatikGesperrt) return; grammatikGesperrt = true;
     if (gewählt === grammatikAktuell.richtig) { btn.classList.add('richtig'); diktatRichtig++; document.getElementById('diktatRichtig').textContent = diktatRichtig; document.getElementById('diktatStatus').textContent = 'Richtig! 🎉'; setTimeout(diktatFanfare,200); }
     else { btn.classList.add('falsch'); diktatFalsch++; document.getElementById('diktatFalsch').textContent = diktatFalsch; document.getElementById('diktatStatus').textContent = `Richtig: ${grammatikAktuell.richtig}`; }
-    setTimeout(grammatikNeueAufgabe, 1800);
+    setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
 }
 
 function grammatikSprechen() {
