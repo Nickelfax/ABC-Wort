@@ -1068,10 +1068,11 @@ function grammatikNeueAufgabe() {
             <div class="grammatik-hinweis">Presente de indicativo</div>
             <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a.replace(/'/g,"\\'")}',this)">${a}</button>`).join('')}</div></div>`;
         grammatikSprechen();
-    } else if (grammatikModus === 'perfecto') {
-        const poolP = [...(grammatikDaten.perfecto.n1||[]),...(grammatikDaten.perfecto.n2||[]),...(grammatikDaten.perfecto.n3||[])];
-        if (!poolP.length) { grammatikNeueAufgabe(); return; }
-        const ep = poolP[Math.floor(Math.random()*poolP.length)]; grammatikAktuell = ep;
+   } else if (grammatikModus === 'perfecto') {
+        const pool = verbGroups[diktatNiveau] || verbGroups.n1;
+        const verb = pool[Math.floor(Math.random()*pool.length)];
+        const ep = generierePerfectoAufgabe(verb); if (!ep) { grammatikNeueAufgabe(); return; }
+        grammatikAktuell = ep;
         const alleP = shuffle([ep.richtig,...ep.falsch]);
         display.innerHTML = '<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;"><div class="grammatik-aufgabe">' + ep.pronomen + ' ___ <span style="color:var(--primary)">' + ep.infinitiv + '</span></div><div class="grammatik-hinweis">' + ep.zeit + '</div><div class="auswahl-grid">' + alleP.map(a=>'<button class="auswahl-btn" onclick="tempusAntwort(\'' + a.replace(/'/g,"\'") + '\',this)">' + a + '</button>').join('') + '</div></div>';
     } else if (grammatikModus === 'tempus') {
