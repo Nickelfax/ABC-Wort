@@ -234,22 +234,7 @@ function globalDictLookup(wort, zielSprache) {
         <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
         <button onclick="backspaceZeichen()" style="font-size:1.6rem; background:#e74c3c; color:white;">⌫</button>
         <button onclick="openStorage()" style="font-size:1.6rem; background:#16a085;">📚</button>
-        <div class="case-toggle" style="justify-content:center;">
-            <span style="font-size:1.2rem;">🖊️</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()">
-                <span class="toggle-slider"></span>
-            </label>
-            <span class="case-label" id="diktatLabel" style="font-size:0.85rem;">Dkt</span>
-        </div>
-        <div class="case-toggle" style="justify-content:center;">
-            <span style="font-size:1.2rem;">❓</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()">
-                <span class="toggle-slider"></span>
-            </label>
-            <span class="case-label" id="grammatikLabel" style="font-size:0.85rem;">Grm</span>
-        </div>
+       
         <div class="case-toggle" style="justify-content:center; gap:4px;">
             <span style="font-size:1.2rem;">🌍</span>
             <label class="toggle-switch">
@@ -263,7 +248,29 @@ function globalDictLookup(wort, zielSprache) {
         </div>
     </div>
 
-    <div class="keyboard-container">
+    <div style="width:100%; max-width:800px; margin-bottom:10px; box-sizing:border-box; display:flex; gap:8px; align-items:center;">
+        <button id="btnDiktatModus" onclick="diktatModusToggle()"
+            style="flex:1; padding:10px; border-radius:12px; border:2px solid #2c2c2a;
+                   background:#2c2c2a; color:white; font-size:1rem; font-weight:bold;
+                   cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+                   justify-content:center; gap:8px;">
+            <svg width="24" height="24" viewBox="0 0 100 100">
+                <ellipse cx="50" cy="42" rx="42" ry="28" fill="#fdfaf0"/>
+                <path d="M28,64 L20,86 L42,68 Z" fill="#fdfaf0"/>
+                <rect x="45" y="22" width="10" height="24" rx="5" fill="#2c2c2a"/>
+                <circle cx="50" cy="54" r="5.5" fill="#2c2c2a"/>
+            </svg>
+            <span id="diktatBtnLabel">Diktát</span>
+        </button>
+        <button id="btnGrammatikModus" onclick="grammatikModusToggle()"
+            style="flex:1; padding:10px; border-radius:12px; border:2px solid #e9ecef;
+                   background:#f8f9fa; color:#7f8c8d; font-size:1rem; font-weight:bold;
+                   cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+                   justify-content:center; gap:8px;">
+            <span>❓</span><span id="grammatikBtnLabel">Gramatika</span>
+        </button>
+    </div>
+    <div class="keyboard-container" id="tastaturContainer">
         <div class="keyboard-section">
             <div class="case-toggle">
                 <span style="font-size:1rem; font-weight:bold; color:#2c3e50;">A</span>
