@@ -3851,10 +3851,9 @@ function initTheme() {
                 diktatFalsch++;
                 document.getElementById('diktatFalsch').textContent = diktatFalsch;
                 document.getElementById('diktatStatus').textContent = '✗ Nicht ganz!';
-                diktatBuzzer();
+        setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';setTimeout(()=>grammatikNeueAufgabe(),50);},1800);        diktatBuzzer();
             }
-         setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';grammatikNeueAufgabe();},1800);
-        }
+        
 
         function diktatSetModus(m, btn) {
             diktatModus = m;
