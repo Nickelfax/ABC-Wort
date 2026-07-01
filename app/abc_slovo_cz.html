@@ -567,7 +567,47 @@ function globalDictLookup(wort, zielSprache) {
                 }
             } catch(e) {}
         }
+function diktatModusToggle() {
+    diktatAktiv = !diktatAktiv;
+    const btn = document.getElementById('btnDiktatModus');
+    const lbl = document.getElementById('diktatBtnLabel');
+    const tastatur = document.getElementById('tastaturContainer');
+    if (diktatAktiv) {
+        btn.style.background = '#d7141a';
+        btn.style.borderColor = '#d7141a';
+        if (lbl) lbl.textContent = 'Diktát aktivní';
+        if (tastatur) tastatur.style.display = 'block';
+    } else {
+        btn.style.background = '#2c2c2a';
+        btn.style.borderColor = '#2c2c2a';
+        if (lbl) lbl.textContent = 'Diktát';
+    }
+    updateModusUI();
+    if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
 
+function grammatikModusToggle() {
+    grammatikAktiv = !grammatikAktiv;
+    const btn = document.getElementById('btnGrammatikModus');
+    const tastatur = document.getElementById('tastaturContainer');
+    if (grammatikAktiv) {
+        btn.style.background = 'var(--primary)';
+        btn.style.color = 'white';
+        btn.style.borderColor = 'var(--primary)';
+        document.getElementById('grammatikBtnLabel').textContent = 'Gramatika aktivní';
+        if (tastatur && !diktatAktiv) tastatur.style.display = 'none';
+    } else {
+        btn.style.background = '#f8f9fa';
+        btn.style.color = '#7f8c8d';
+        btn.style.borderColor = '#e9ecef';
+        document.getElementById('grammatikBtnLabel').textContent = 'Gramatika';
+        if (tastatur) tastatur.style.display = 'block';
+    }
+    updateModusUI();
+    if (grammatikAktiv) grammatikNeueAufgabe();
+    else if (diktatAktiv) diktatNeuesWort();
+}
         function init() {
             initTheme();
             renderAlphabet();
