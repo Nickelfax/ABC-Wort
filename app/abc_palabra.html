@@ -156,10 +156,24 @@ button:active { transform: scale(0.95); }
 
 <div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
     <div class="diktat-modus-zeile">
-        <button class="diktat-modus-btn aktiv" id="btnGArtikel" onclick="grammatikSetModus('artikel',this)">el / la</button>
-        <button class="diktat-modus-btn" id="btnGPronombre" onclick="grammatikSetModus('pronombre',this)">yo / tú</button>
-        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">ser / estar</button>
-        <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">⏰</button>
+    <button class="diktat-modus-btn aktiv" id="btnGArtikel" onclick="grammatikSetModus('artikel',this)">👦👧🏠</button>
+        <button class="diktat-modus-btn" id="btnGPronombre" onclick="grammatikSetModus('pronombre',this)" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 8px;">
+            <span style="display:flex;align-items:center;gap:1px;">
+                <span style="font-size:0.75rem;transform:rotate(-90deg);display:inline-block;">👉</span>
+                <span style="font-size:0.95rem;">🧒🏼</span>
+            </span>
+        </button>
+        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)" style="display:flex;align-items:center;gap:1px;">
+            <span>👧🏾</span>
+            <span style="font-size:0.75rem;transform:rotate(-90deg);display:inline-block;">👉</span>
+            <span style="display:flex;flex-direction:column;align-items:center;gap:0px;">
+                <span style="font-size:0.7rem;transform:rotate(-90deg);display:inline-block;">☝️</span>
+                <span style="font-size:0.95rem;">🧒🏼</span>
+            </span>
+            <span style="font-size:0.75rem;transform:rotate(90deg);display:inline-block;">👉</span>
+            <span>👦🏻</span>
+        </button>
+        <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">⏰</button>   
     </div>
 </div>
 
