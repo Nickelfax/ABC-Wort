@@ -3817,7 +3817,7 @@ function initTheme() {
                 document.getElementById('diktatStatus').textContent = `✗ Falsch! Es heißt: ${richtig} ${grammatikAktuell.wort}`;
                 diktatBuzzer();
             }
-            setTimeout(grammatikNeueAufgabe, 1800);
+           setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';setTimeout(()=>grammatikNeueAufgabe(),50);},1800);
         }
 
         function grammatikCheck(antwort, btn) {
