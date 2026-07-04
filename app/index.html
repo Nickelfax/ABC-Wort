@@ -227,9 +227,21 @@
 
     <div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
         <div class="diktat-modus-zeile">
-            <button class="diktat-modus-btn aktiv" id="btnGArtikel" onclick="grammatikSetModus('artikel',this)">der die das</button>
-            <button class="diktat-modus-btn" id="btnGKasus" onclick="grammatikSetModus('kasus',this)">der den...</button>
-            <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">ich du...</button>
+           <button class="diktat-modus-btn aktiv" id="btnGArtikel" onclick="grammatikSetModus('artikel',this)" style="display:flex;align-items:center;gap:4px;">
+                <span>👦👧🏠</span>
+                <span style="font-size:0.8rem;"><span style="color:#1565c0;">der</span> <span style="color:#c62828;">die</span> <span style="color:#2e7d32;">das</span></span>
+            </button>
+            <button class="diktat-modus-btn" id="btnGKasus" onclick="grammatikSetModus('kasus',this)" style="font-size:0.95rem;">
+                <span style="color:#2c2c2a;font-weight:bold;">der</span>
+                <span style="color:#7b1fa2;font-weight:bold;"> den</span>
+                <span style="color:#c2185b;font-weight:bold;"> dem</span>
+            </button>
+            <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)" style="display:flex;align-items:center;gap:2px;">
+                <span style="opacity:0.25;font-size:1rem;">🧒</span>
+                <span style="font-size:1rem;">🧒</span>
+                <span style="font-size:0.85rem;" title="zeigt auf andere">👉</span>
+                <span style="font-size:0.85rem;">👉</span>
+            </button>
             <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)" title="Tempus" style="padding:4px 8px;">
                 <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" style="width:28px; height:37px; display:block;">
                   <path d="M 60 18 C 55 8 45 4 40 8 C 35 12 38 20 44 18 C 50 16 52 10 48 8" fill="none" stroke="#b8860b" stroke-width="2.5" stroke-linecap="round"/>
