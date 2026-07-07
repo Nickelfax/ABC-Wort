@@ -3255,6 +3255,151 @@ function initTheme() {
             n3_modal: ['können','müssen','dürfen','wollen','sollen','mögen'],
         };
 
+       // ============================================================
+// KASUS-GENERATOR
+// ============================================================
+
+const kasusSubstantive = [
+    // Maskulinum
+    { wort:'Mann',    genus:'m', dekl:'stark'   },
+    { wort:'Hund',    genus:'m', dekl:'stark'   },
+    { wort:'Tisch',   genus:'m', dekl:'stark'   },
+    { wort:'Baum',    genus:'m', dekl:'stark'   },
+    { wort:'Koffer',  genus:'m', dekl:'stark'   },
+    { wort:'Zug',     genus:'m', dekl:'stark'   },
+    { wort:'Arzt',    genus:'m', dekl:'stark'   },
+    { wort:'Lehrer',  genus:'m', dekl:'stark'   },
+    { wort:'Student', genus:'m', dekl:'schwach'  },
+    { wort:'Mensch',  genus:'m', dekl:'schwach'  },
+    { wort:'Junge',   genus:'m', dekl:'schwach'  },
+    // Femininum
+    { wort:'Frau',    genus:'f', dekl:'stark'   },
+    { wort:'Katze',   genus:'f', dekl:'stark'   },
+    { wort:'Schule',  genus:'f', dekl:'stark'   },
+    { wort:'Küche',   genus:'f', dekl:'stark'   },
+    { wort:'Stadt',   genus:'f', dekl:'stark'   },
+    { wort:'Hand',    genus:'f', dekl:'stark'   },
+    { wort:'Tasche',  genus:'f', dekl:'stark'   },
+    { wort:'Straße',  genus:'f', dekl:'stark'   },
+    // Neutrum
+    { wort:'Haus',    genus:'n', dekl:'stark'   },
+    { wort:'Kind',    genus:'n', dekl:'stark'   },
+    { wort:'Buch',    genus:'n', dekl:'stark'   },
+    { wort:'Auto',    genus:'n', dekl:'stark'   },
+    { wort:'Bett',    genus:'n', dekl:'stark'   },
+    { wort:'Fenster', genus:'n', dekl:'stark'   },
+    { wort:'Zimmer',  genus:'n', dekl:'stark'   },
+];
+
+function getArtikel(genus, kasus, bestimmt) {
+    const best = {
+        m: { nom:'der', akk:'den', dat:'dem', gen:'des' },
+        f: { nom:'die', akk:'die', dat:'der', gen:'der' },
+        n: { nom:'das', akk:'das', dat:'dem', gen:'des' },
+    };
+    const unbest = {
+        m: { nom:'ein',  akk:'einen', dat:'einem', gen:'eines' },
+        f: { nom:'eine', akk:'eine',  dat:'einer', gen:'einer' },
+        n: { nom:'ein',  akk:'ein',   dat:'einem', gen:'eines' },
+    };
+    return (bestimmt ? best : unbest)[genus][kasus];
+}
+
+function getWortform(sub, kasus) {
+    if (sub.dekl === 'schwach' && kasus !== 'nom') return sub.wort + 'en';
+    return sub.wort;
+}
+
+const praepDativ     = ['aus','bei','mit','nach','seit','von','zu','gegenüber'];
+const praepAkkusativ = ['durch','für','gegen','ohne','um'];
+const praepGenitiv   = ['wegen','trotz','während','statt'];
+const praepWechsel   = ['an','auf','in','vor','hinter','über','unter','neben','zwischen'];
+
+const kasusSchablonen = {
+    dativ: [
+        'Ich komme {P} {A}.',
+        'Er wohnt {P} {A}.',
+        'Sie geht {P} {A}.',
+        'Das Paket ist {P} {A}.',
+        'Wir fahren {P} {A}.',
+    ],
+    akkusativ: [
+        'Wir gehen {P} {A}.',
+        'Er kauft es {P} {A}.',
+        'Sie läuft {P} {A}.',
+        'Er fährt {P} {A}.',
+    ],
+    wechsel_dat: [
+        'Das Buch liegt {P} {A}.',
+        'Die Katze sitzt {P} {A}.',
+        'Er steht {P} {A}.',
+        'Sie wohnt {P} {A}.',
+    ],
+    wechsel_akk: [
+        'Er legt das Buch {P} {A}.',
+        'Sie stellt die Vase {P} {A}.',
+        'Wir gehen {P} {A}.',
+        'Er hängt das Bild {P} {A}.',
+    ],
+    genitiv: [
+        '{P} {A} bleiben wir zuhause.',
+        '{P} {A} ist er gegangen.',
+        'Er kommt {P} {A}.',
+        '{P} {A} war es schön.',
+    ],
+};
+
+function generiereKasusAufgabe(niveau) {
+    const sub = kasusSubstantive[Math.floor(Math.random() * kasusSubstantive.length)];
+    const bestimmt = Math.random() > 0.4;
+    const verfuegbar = niveau === 'n1'
+        ? ['dativ','akkusativ','wechsel']
+        : ['dativ','akkusativ','wechsel','genitiv'];
+    const typ = verfuegbar[Math.floor(Math.random() * verfuegbar.length)];
+    let kasus, praep, schablone, hinweis;
+    if (typ === 'dativ') {
+        praep = praepDativ[Math.floor(Math.random() * praepDativ.length)];
+        kasus = 'dat';
+        schablone = kasusSchablonen.dativ[Math.floor(Math.random() * kasusSchablonen.dativ.length)];
+        hinweis = `"${praep}" → immer Dativ`;
+    } else if (typ === 'akkusativ') {
+        praep = praepAkkusativ[Math.floor(Math.random() * praepAkkusativ.length)];
+        kasus = 'akk';
+        schablone = kasusSchablonen.akkusativ[Math.floor(Math.random() * kasusSchablonen.akkusativ.length)];
+        hinweis = `"${praep}" → immer Akkusativ`;
+    } else if (typ === 'wechsel') {
+        praep = praepWechsel[Math.floor(Math.random() * praepWechsel.length)];
+        const richtung = Math.random() > 0.5;
+        kasus = richtung ? 'akk' : 'dat';
+        schablone = richtung
+            ? kasusSchablonen.wechsel_akk[Math.floor(Math.random() * kasusSchablonen.wechsel_akk.length)]
+            : kasusSchablonen.wechsel_dat[Math.floor(Math.random() * kasusSchablonen.wechsel_dat.length)];
+        hinweis = richtung ? `"${praep}" + Wohin? → Akkusativ` : `"${praep}" + Wo? → Dativ`;
+    } else {
+        praep = praepGenitiv[Math.floor(Math.random() * praepGenitiv.length)];
+        kasus = 'gen';
+        schablone = kasusSchablonen.genitiv[Math.floor(Math.random() * kasusSchablonen.genitiv.length)];
+        hinweis = `"${praep}" → immer Genitiv`;
+    }
+    const richtigerArtikel = getArtikel(sub.genus, kasus, bestimmt);
+    const richtigeWortform = getWortform(sub, kasus);
+    const richtig = richtigerArtikel + ' ' + richtigeWortform;
+    const falsch = ['nom','akk','dat','gen']
+        .filter(k => k !== kasus)
+        .map(k => getArtikel(sub.genus, k, bestimmt) + ' ' + getWortform(sub, k))
+        .filter((v,i,a) => v !== richtig && a.indexOf(v) === i)
+        .slice(0,3);
+    const satz = schablone.replace('{P}', praep).replace('{A}', '___');
+    return {
+        satz,
+        wort: sub.wort,
+        kasus: kasus==='nom'?'Nominativ':kasus==='akk'?'Akkusativ':kasus==='dat'?'Dativ':'Genitiv',
+        richtig,
+        antworten: shuffle([richtig, ...falsch]),
+        hinweis,
+        generiert: true
+    };
+}
         const grammatikDaten = {
             artikel: {
                 n1: [
