@@ -3468,15 +3468,18 @@ function initTheme() {
             }
             grammatikNeueAufgabe();
         }
-        function grammatikGetListe() {
+       function grammatikGetListe() {
             const niv = diktatNiveau === 'alle' ? 'n1' : diktatNiveau;
             if (grammatikModus === 'konjugation') return null;
             const data = grammatikDaten[grammatikModus];
             if (!data) return [];
             if (diktatNiveau === 'alle') return [...(data.n1||[]), ...(data.n2||[]), ...(data.n3||[])];
+            // Kasus N1: nur Nominativ, Akkusativ, Dativ – kein Genitiv
+            if (grammatikModus === 'kasus' && niv === 'n1') {
+                return (data.n1||[]).filter(e => e.kasus !== 'Genitiv');
+            }
             return data[niv] || data.n1 || [];
         }
-
         function grammatikGetVerb() {
             const niv = diktatNiveau;
             let pool = [...verbGroups.n1];
