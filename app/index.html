@@ -3620,8 +3620,12 @@ function generiereKasusAufgabe(niveau) {
             if (!data) return [];
             if (diktatNiveau === 'alle') return [...(data.n1||[]), ...(data.n2||[]), ...(data.n3||[])];
             // Kasus N1: nur Nominativ, Akkusativ, Dativ – kein Genitiv
-            if (grammatikModus === 'kasus' && niv === 'n1') {
-                return (data.n1||[]).filter(e => e.kasus !== 'Genitiv');
+           if (grammatikModus === 'kasus') {
+                const statisch = niv === 'n1'
+                    ? (data.n1||[]).filter(e => e.kasus !== 'Genitiv')
+                    : [...(data[niv]||[])];
+                const dynamisch = Array.from({length:5}, () => generiereKasusAufgabe(niv));
+                return shuffle([...statisch, ...dynamisch]);
             }
             return data[niv] || data.n1 || [];
         }
