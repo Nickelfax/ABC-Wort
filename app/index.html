@@ -3254,43 +3254,51 @@ function initTheme() {
             n2_trenn: ['einkaufen','abholen','aufräumen','aufwachen','einsteigen'],
             n3_modal: ['können','müssen','dürfen','wollen','sollen','mögen'],
         };
-
-       // ============================================================
-// KASUS-GENERATOR
+// ============================================================
+// KASUS-GENERATOR v2 – semantisch sinnvolle Kombinationen
+// Einbauen direkt vor const grammatikDaten = {
 // ============================================================
 
 const kasusSubstantive = [
-    // Maskulinum
-    { wort:'Mann',    genus:'m', dekl:'stark'   },
-    { wort:'Hund',    genus:'m', dekl:'stark'   },
-    { wort:'Tisch',   genus:'m', dekl:'stark'   },
-    { wort:'Baum',    genus:'m', dekl:'stark'   },
-    { wort:'Koffer',  genus:'m', dekl:'stark'   },
-    { wort:'Zug',     genus:'m', dekl:'stark'   },
-    { wort:'Arzt',    genus:'m', dekl:'stark'   },
-    { wort:'Lehrer',  genus:'m', dekl:'stark'   },
-    { wort:'Student', genus:'m', dekl:'schwach'  },
-    { wort:'Mensch',  genus:'m', dekl:'schwach'  },
-    { wort:'Junge',   genus:'m', dekl:'schwach'  },
-    // Femininum
-    { wort:'Frau',    genus:'f', dekl:'stark'   },
-    { wort:'Katze',   genus:'f', dekl:'stark'   },
-    { wort:'Schule',  genus:'f', dekl:'stark'   },
-    { wort:'Küche',   genus:'f', dekl:'stark'   },
-    { wort:'Stadt',   genus:'f', dekl:'stark'   },
-    { wort:'Hand',    genus:'f', dekl:'stark'   },
-    { wort:'Tasche',  genus:'f', dekl:'stark'   },
-    { wort:'Straße',  genus:'f', dekl:'stark'   },
-    // Neutrum
-    { wort:'Haus',    genus:'n', dekl:'stark'   },
-    { wort:'Kind',    genus:'n', dekl:'stark'   },
-    { wort:'Buch',    genus:'n', dekl:'stark'   },
-    { wort:'Auto',    genus:'n', dekl:'stark'   },
-    { wort:'Bett',    genus:'n', dekl:'stark'   },
-    { wort:'Fenster', genus:'n', dekl:'stark'   },
-    { wort:'Zimmer',  genus:'n', dekl:'stark'   },
+    // Personen
+    { wort:'Mann',     genus:'m', dekl:'stark',   kat:['person'] },
+    { wort:'Frau',     genus:'f', dekl:'stark',   kat:['person'] },
+    { wort:'Kind',     genus:'n', dekl:'stark',   kat:['person'] },
+    { wort:'Arzt',     genus:'m', dekl:'stark',   kat:['person','beruf'] },
+    { wort:'Lehrerin', genus:'f', dekl:'stark',   kat:['person','beruf'] },
+    { wort:'Freund',   genus:'m', dekl:'stark',   kat:['person'] },
+    { wort:'Freundin', genus:'f', dekl:'stark',   kat:['person'] },
+    { wort:'Student',  genus:'m', dekl:'schwach', kat:['person'] },
+    { wort:'Junge',    genus:'m', dekl:'schwach', kat:['person'] },
+    // Orte / Gebäude
+    { wort:'Haus',     genus:'n', dekl:'stark',   kat:['ort','gebaeude'] },
+    { wort:'Schule',   genus:'f', dekl:'stark',   kat:['ort','gebaeude'] },
+    { wort:'Küche',    genus:'f', dekl:'stark',   kat:['ort','gebaeude','raum'] },
+    { wort:'Zimmer',   genus:'n', dekl:'stark',   kat:['ort','gebaeude','raum'] },
+    { wort:'Stadt',    genus:'f', dekl:'stark',   kat:['ort'] },
+    { wort:'Straße',   genus:'f', dekl:'stark',   kat:['ort'] },
+    { wort:'Bahnhof',  genus:'m', dekl:'stark',   kat:['ort','gebaeude'] },
+    { wort:'Markt',    genus:'m', dekl:'stark',   kat:['ort'] },
+    // Gegenstände (legbar/stellbar)
+    { wort:'Buch',     genus:'n', dekl:'stark',   kat:['gegenstand','legbar'] },
+    { wort:'Tasse',    genus:'f', dekl:'stark',   kat:['gegenstand','stellbar'] },
+    { wort:'Tasche',   genus:'f', dekl:'stark',   kat:['gegenstand','legbar'] },
+    { wort:'Koffer',   genus:'m', dekl:'stark',   kat:['gegenstand','stellbar'] },
+    { wort:'Schlüssel',genus:'m', dekl:'stark',   kat:['gegenstand','legbar'] },
+    { wort:'Tisch',    genus:'m', dekl:'stark',   kat:['moebel'] },
+    { wort:'Stuhl',    genus:'m', dekl:'stark',   kat:['moebel'] },
+    { wort:'Bett',     genus:'n', dekl:'stark',   kat:['moebel'] },
+    // Fahrzeuge
+    { wort:'Auto',     genus:'n', dekl:'stark',   kat:['fahrzeug'] },
+    { wort:'Zug',      genus:'m', dekl:'stark',   kat:['fahrzeug'] },
+    { wort:'Bus',      genus:'m', dekl:'stark',   kat:['fahrzeug'] },
+    // Natur
+    { wort:'Baum',     genus:'m', dekl:'stark',   kat:['natur','ort'] },
+    { wort:'Fluss',    genus:'m', dekl:'stark',   kat:['natur','ort'] },
+    { wort:'Park',     genus:'m', dekl:'stark',   kat:['natur','ort'] },
 ];
 
+// Artikelformen
 function getArtikel(genus, kasus, bestimmt) {
     const best = {
         m: { nom:'der', akk:'den', dat:'dem', gen:'des' },
@@ -3310,96 +3318,125 @@ function getWortform(sub, kasus) {
     return sub.wort;
 }
 
-const praepDativ     = ['aus','bei','mit','nach','seit','von','zu','gegenüber'];
-const praepAkkusativ = ['durch','für','gegen','ohne','um'];
-const praepGenitiv   = ['wegen','trotz','während','statt'];
-const praepWechsel   = ['an','auf','in','vor','hinter','über','unter','neben','zwischen'];
-
+// Schablonen: text, subKat (erlaubte Substantiv-Kategorien), praep (erlaubte Präpositionen)
+// {P} = Präposition, {A} = Lücke (Artikel + Substantiv)
 const kasusSchablonen = {
+
     dativ: [
-        'Ich komme {P} {A}.',
-        'Er wohnt {P} {A}.',
-        'Sie geht {P} {A}.',
-        'Das Paket ist {P} {A}.',
-        'Wir fahren {P} {A}.',
+        { text:'Ich komme {P} {A}.',         subKat:['ort','gebaeude'],         praep:['aus','von','nach','zu'] },
+        { text:'Wir fahren {P} {A}.',         subKat:['ort','gebaeude'],         praep:['nach','zu','aus'] },
+        { text:'Er kommt {P} {A}.',           subKat:['ort','gebaeude'],         praep:['aus','von','zu'] },
+        { text:'Sie wohnt {P} {A}.',          subKat:['person'],                 praep:['bei','gegenüber'] },
+        { text:'Er arbeitet {P} {A}.',        subKat:['person','beruf'],         praep:['mit','bei'] },
+        { text:'Ich spreche {P} {A}.',        subKat:['person'],                 praep:['mit','von'] },
+        { text:'Das Paket kommt {P} {A}.',    subKat:['ort','gebaeude'],         praep:['aus','von'] },
+        { text:'Er fährt {P} {A} zur Arbeit.',subKat:['fahrzeug'],               praep:['mit'] },
+        { text:'Sie geht {P} {A} spazieren.', subKat:['person'],                 praep:['mit'] },
+        { text:'Das Café ist {P} {A}.',       subKat:['ort','gebaeude'],         praep:['gegenüber','nach','bei'] },
+        { text:'Ich lerne {P} {A}.',          subKat:['person','beruf'],         praep:['bei'] },
+        { text:'Er wartet {P} {A}.',          subKat:['ort','gebaeude'],         praep:['bei','nach','seit'] },
     ],
+
     akkusativ: [
-        'Wir gehen {P} {A}.',
-        'Er kauft es {P} {A}.',
-        'Sie läuft {P} {A}.',
-        'Er fährt {P} {A}.',
+        { text:'Er fährt {P} {A}.',           subKat:['ort','gebaeude','natur'], praep:['durch','um'] },
+        { text:'Sie geht {P} {A}.',           subKat:['ort','gebaeude','natur'], praep:['durch','um','ohne'] },
+        { text:'Wir kämpfen {P} {A}.',        subKat:['gegenstand'],             praep:['für','ohne'] },
+        { text:'Er kauft es {P} {A}.',        subKat:['person'],                 praep:['für'] },
+        { text:'Sie macht es {P} {A}.',       subKat:['person'],                 praep:['für','ohne'] },
+        { text:'Wir laufen {P} {A}.',         subKat:['ort','natur'],            praep:['durch','um'] },
+        { text:'Er lehnt es {P} {A} ab.',     subKat:['person'],                 praep:['ohne'] },
+        { text:'Das ist {P} {A}.',            subKat:['person'],                 praep:['für','ohne'] },
     ],
+
     wechsel_dat: [
-        'Das Buch liegt {P} {A}.',
-        'Die Katze sitzt {P} {A}.',
-        'Er steht {P} {A}.',
-        'Sie wohnt {P} {A}.',
+        { text:'Das Buch liegt {P} {A}.',     subKat:['moebel','gegenstand'],    praep:['auf','unter','neben','an'] },
+        { text:'Die Tasche hängt {P} {A}.',   subKat:['moebel','gebaeude'],      praep:['an','über','neben'] },
+        { text:'Er sitzt {P} {A}.',           subKat:['moebel','ort','raum'],    praep:['auf','in','an','vor','hinter','neben'] },
+        { text:'Sie steht {P} {A}.',          subKat:['ort','raum','gebaeude'],  praep:['in','vor','hinter','an','neben'] },
+        { text:'Das Kind spielt {P} {A}.',    subKat:['ort','natur','raum'],     praep:['in','vor','an','auf'] },
+        { text:'Er schläft {P} {A}.',         subKat:['moebel'],                 praep:['in','auf'] },
+        { text:'Die Katze liegt {P} {A}.',    subKat:['moebel','ort'],           praep:['auf','unter','vor','hinter','neben'] },
+        { text:'Wir warten {P} {A}.',         subKat:['ort','gebaeude'],         praep:['vor','in','an'] },
     ],
+
     wechsel_akk: [
-        'Er legt das Buch {P} {A}.',
-        'Sie stellt die Vase {P} {A}.',
-        'Wir gehen {P} {A}.',
-        'Er hängt das Bild {P} {A}.',
+        { text:'Er legt das Buch {P} {A}.',   subKat:['moebel'],                 praep:['auf','unter','neben','vor','hinter'] },
+        { text:'Sie stellt die Vase {P} {A}.',subKat:['moebel'],                 praep:['auf','neben','vor','hinter','an'] },
+        { text:'Er hängt das Bild {P} {A}.',  subKat:['gebaeude','moebel'],      praep:['an','über','neben'] },
+        { text:'Wir gehen {P} {A}.',          subKat:['ort','gebaeude','raum'],  praep:['in','vor','hinter','an','auf'] },
+        { text:'Er fährt das Auto {P} {A}.',  subKat:['gebaeude','ort'],         praep:['vor','hinter','neben'] },
+        { text:'Sie setzt sich {P} {A}.',     subKat:['moebel'],                 praep:['auf','neben','an','vor','hinter'] },
+        { text:'Das Kind läuft {P} {A}.',     subKat:['ort','gebaeude','natur'], praep:['in','auf','vor','hinter','an'] },
+        { text:'Er steckt den Schlüssel {P} {A}.', subKat:['gegenstand','moebel'], praep:['in','unter','hinter','auf'] },
     ],
+
     genitiv: [
-        '{P} {A} bleiben wir zuhause.',
-        '{P} {A} ist er gegangen.',
-        'Er kommt {P} {A}.',
-        '{P} {A} war es schön.',
+        { text:'{P} {A} bleiben wir zuhause.',subKat:['natur','ort'],            praep:['wegen','während'] },
+        { text:'{P} {A} ist er gegangen.',    subKat:['person'],                 praep:['wegen','statt'] },
+        { text:'{P} {A} kam er zu spät.',     subKat:['fahrzeug','natur'],       praep:['wegen'] },
+        { text:'{P} {A} lernt sie allein.',   subKat:['person'],                 praep:['statt'] },
+        { text:'{P} {A} gehen wir nicht.',    subKat:['natur','ort'],            praep:['wegen','während'] },
+        { text:'{P} {A} sagt er nichts.',     subKat:['person'],                 praep:['wegen','statt'] },
     ],
 };
 
 function generiereKasusAufgabe(niveau) {
-    const sub = kasusSubstantive[Math.floor(Math.random() * kasusSubstantive.length)];
-    const bestimmt = Math.random() > 0.4;
     const verfuegbar = niveau === 'n1'
-        ? ['dativ','akkusativ','wechsel']
-        : ['dativ','akkusativ','wechsel','genitiv'];
-    const typ = verfuegbar[Math.floor(Math.random() * verfuegbar.length)];
-    let kasus, praep, schablone, hinweis;
-    if (typ === 'dativ') {
-        praep = praepDativ[Math.floor(Math.random() * praepDativ.length)];
-        kasus = 'dat';
-        schablone = kasusSchablonen.dativ[Math.floor(Math.random() * kasusSchablonen.dativ.length)];
-        hinweis = `"${praep}" → immer Dativ`;
-    } else if (typ === 'akkusativ') {
-        praep = praepAkkusativ[Math.floor(Math.random() * praepAkkusativ.length)];
-        kasus = 'akk';
-        schablone = kasusSchablonen.akkusativ[Math.floor(Math.random() * kasusSchablonen.akkusativ.length)];
-        hinweis = `"${praep}" → immer Akkusativ`;
-    } else if (typ === 'wechsel') {
-        praep = praepWechsel[Math.floor(Math.random() * praepWechsel.length)];
-        const richtung = Math.random() > 0.5;
-        kasus = richtung ? 'akk' : 'dat';
-        schablone = richtung
-            ? kasusSchablonen.wechsel_akk[Math.floor(Math.random() * kasusSchablonen.wechsel_akk.length)]
-            : kasusSchablonen.wechsel_dat[Math.floor(Math.random() * kasusSchablonen.wechsel_dat.length)];
-        hinweis = richtung ? `"${praep}" + Wohin? → Akkusativ` : `"${praep}" + Wo? → Dativ`;
-    } else {
-        praep = praepGenitiv[Math.floor(Math.random() * praepGenitiv.length)];
-        kasus = 'gen';
-        schablone = kasusSchablonen.genitiv[Math.floor(Math.random() * kasusSchablonen.genitiv.length)];
-        hinweis = `"${praep}" → immer Genitiv`;
+        ? ['dativ','akkusativ','wechsel_dat','wechsel_akk']
+        : ['dativ','akkusativ','wechsel_dat','wechsel_akk','genitiv'];
+
+    // Maximal 10 Versuche eine sinnvolle Kombination zu finden
+    for (let versuch = 0; versuch < 10; versuch++) {
+        const typ = verfuegbar[Math.floor(Math.random() * verfuegbar.length)];
+        const pool = kasusSchablonen[typ];
+        const schablone = pool[Math.floor(Math.random() * pool.length)];
+
+        // Passendes Substantiv finden
+        const passend = kasusSubstantive.filter(s =>
+            s.kat.some(k => schablone.subKat.includes(k))
+        );
+        if (!passend.length) continue;
+
+        const sub = passend[Math.floor(Math.random() * passend.length)];
+        const praep = schablone.praep[Math.floor(Math.random() * schablone.praep.length)];
+        const bestimmt = Math.random() > 0.4;
+
+        let kasus, hinweis;
+        if (typ === 'dativ')       { kasus = 'dat'; hinweis = `"${praep}" → immer Dativ`; }
+        else if (typ === 'akkusativ') { kasus = 'akk'; hinweis = `"${praep}" → immer Akkusativ`; }
+        else if (typ === 'wechsel_dat') { kasus = 'dat'; hinweis = `"${praep}" + Wo? → Dativ`; }
+        else if (typ === 'wechsel_akk') { kasus = 'akk'; hinweis = `"${praep}" + Wohin? → Akkusativ`; }
+        else { kasus = 'gen'; hinweis = `"${praep}" → immer Genitiv`; }
+
+        const richtigerArtikel = getArtikel(sub.genus, kasus, bestimmt);
+        const richtigeWortform = getWortform(sub, kasus);
+        const richtig = richtigerArtikel + ' ' + richtigeWortform;
+
+        const falsch = ['nom','akk','dat','gen']
+            .filter(k => k !== kasus)
+            .map(k => getArtikel(sub.genus, k, bestimmt) + ' ' + getWortform(sub, k))
+            .filter((v,i,a) => v !== richtig && a.indexOf(v) === i)
+            .slice(0,3);
+
+        const satz = schablone.text
+            .replace('{P}', praep)
+            .replace('{A}', '___');
+
+        return {
+            satz,
+            wort: sub.wort,
+            kasus: kasus==='nom'?'Nominativ':kasus==='akk'?'Akkusativ':kasus==='dat'?'Dativ':'Genitiv',
+            richtig,
+            antworten: shuffle([richtig, ...falsch]),
+            hinweis,
+            generiert: true
+        };
     }
-    const richtigerArtikel = getArtikel(sub.genus, kasus, bestimmt);
-    const richtigeWortform = getWortform(sub, kasus);
-    const richtig = richtigerArtikel + ' ' + richtigeWortform;
-    const falsch = ['nom','akk','dat','gen']
-        .filter(k => k !== kasus)
-        .map(k => getArtikel(sub.genus, k, bestimmt) + ' ' + getWortform(sub, k))
-        .filter((v,i,a) => v !== richtig && a.indexOf(v) === i)
-        .slice(0,3);
-    const satz = schablone.replace('{P}', praep).replace('{A}', '___');
-    return {
-        satz,
-        wort: sub.wort,
-        kasus: kasus==='nom'?'Nominativ':kasus==='akk'?'Akkusativ':kasus==='dat'?'Dativ':'Genitiv',
-        richtig,
-        antworten: shuffle([richtig, ...falsch]),
-        hinweis,
-        generiert: true
-    };
+    // Fallback falls nichts passt
+    return generiereKasusAufgabe(niveau);
 }
+
+       
         const grammatikDaten = {
             artikel: {
                 n1: [
