@@ -508,7 +508,193 @@ const diktatSilbenN1 = [];
 const diktatSilbenN2 = [];
 const diktatSilbenN3 = [];
 
-// ── Grammatik-Daten ───────────────────────────────────────────────────
+// ============================================================
+// KASUS-GENERATOR RUSSISCH v1
+// Einbauen direkt vor const grammatikDaten = {
+// ============================================================
+
+const kasusSubstantiveRU = [
+    // Maskulinum (Endung Konsonant)
+    { wort:'стол',    rod:'m', dekl:'hart',  kat:['moebel'] },         // Tisch
+    { wort:'стул',    rod:'m', dekl:'hart',  kat:['moebel'] },         // Stuhl
+    { wort:'врач',    rod:'m', dekl:'hart',  kat:['person','beruf'] }, // Arzt
+    { wort:'друг',    rod:'m', dekl:'hart',  kat:['person'] },         // Freund
+    { wort:'город',   rod:'m', dekl:'hart',  kat:['ort'] },            // Stadt
+    { wort:'магазин', rod:'m', dekl:'hart',  kat:['ort','gebaeude'] }, // Laden
+    { wort:'автобус', rod:'m', dekl:'hart',  kat:['fahrzeug'] },       // Bus
+    { wort:'поезд',   rod:'m', dekl:'hart',  kat:['fahrzeug'] },       // Zug
+    { wort:'парк',    rod:'m', dekl:'hart',  kat:['ort','natur'] },    // Park
+    { wort:'словарь', rod:'m', dekl:'weich', kat:['gegenstand'] },     // Wörterbuch
+    // Femininum (Endung -а/-я)
+    { wort:'книга',   rod:'f', dekl:'hart',  kat:['gegenstand','legbar'] }, // Buch
+    { wort:'школа',   rod:'f', dekl:'hart',  kat:['ort','gebaeude'] },       // Schule
+    { wort:'кухня',   rod:'f', dekl:'weich', kat:['ort','raum'] },           // Küche
+    { wort:'улица',   rod:'f', dekl:'hart',  kat:['ort'] },                   // Straße
+    { wort:'сумка',   rod:'f', dekl:'hart',  kat:['gegenstand','legbar'] },  // Tasche
+    { wort:'мама',    rod:'f', dekl:'hart',  kat:['person'] },                // Mama
+    { wort:'сестра',  rod:'f', dekl:'hart',  kat:['person'] },                // Schwester
+    { wort:'Россия',  rod:'f', dekl:'weich', kat:['ort'] },                   // Russland
+    // Neutrum (Endung -о/-е)
+    { wort:'окно',    rod:'n', dekl:'hart',  kat:['gebaeude','raum'] }, // Fenster
+    { wort:'письмо',  rod:'n', dekl:'hart',  kat:['gegenstand'] },      // Brief
+    { wort:'слово',   rod:'n', dekl:'hart',  kat:['gegenstand'] },      // Wort
+    { wort:'море',    rod:'n', dekl:'weich', kat:['ort','natur'] },     // Meer
+    { wort:'здание',  rod:'n', dekl:'weich', kat:['gebaeude','ort'] },  // Gebäude
+];
+
+// Endungstabellen
+// Maskulinum hart (Konsonant)
+const endungenMHart = {
+    nom: '',    gen: 'а',   dat: 'у',   akk: '',    inst: 'ом',  lok: 'е'
+};
+// Maskulinum weich (-ь)
+const endungenMWeich = {
+    nom: 'ь',  gen: 'я',   dat: 'ю',   akk: 'ь',   inst: 'ем',  lok: 'е'
+};
+// Femininum hart (-а)
+const endungenFHart = {
+    nom: 'а',  gen: 'ы',   dat: 'е',   akk: 'у',   inst: 'ой',  lok: 'е'
+};
+// Femininum weich (-я)
+const endungenFWeich = {
+    nom: 'я',  gen: 'и',   dat: 'е',   akk: 'ю',   inst: 'ей',  lok: 'е'
+};
+// Neutrum hart (-о)
+const endungenNHart = {
+    nom: 'о',  gen: 'а',   dat: 'у',   akk: 'о',   inst: 'ом',  lok: 'е'
+};
+// Neutrum weich (-е)
+const endungenNWeich = {
+    nom: 'е',  gen: 'я',   dat: 'ю',   akk: 'е',   inst: 'ем',  lok: 'е'
+};
+
+function getEndungenRU(rod, dekl) {
+    if (rod === 'm' && dekl === 'hart')  return endungenMHart;
+    if (rod === 'm' && dekl === 'weich') return endungenMWeich;
+    if (rod === 'f' && dekl === 'hart')  return endungenFHart;
+    if (rod === 'f' && dekl === 'weich') return endungenFWeich;
+    if (rod === 'n' && dekl === 'hart')  return endungenNHart;
+    if (rod === 'n' && dekl === 'weich') return endungenNWeich;
+    return endungenMHart;
+}
+
+function getWortformRU(sub, kasus) {
+    const endungen = getEndungenRU(sub.rod, sub.dekl);
+    const stamm = sub.rod === 'm' && sub.dekl === 'weich'
+        ? sub.wort.slice(0, -1)  // словарь → слова
+        : sub.rod === 'f' || sub.rod === 'n'
+        ? sub.wort.slice(0, -1)  // книга → книг, окно → окн
+        : sub.wort;              // Maskulinum hart: Stamm = ganzes Wort
+    return stamm + endungen[kasus];
+}
+
+// Präpositionen mit ihren Kasus
+// Präpositiv (Lokativ) = в/на + wo?
+// Akkusativ = в/на + wohin?
+const praepRU = {
+    lok:  ['в','на','о','при'],
+    dat:  ['к','по'],
+    akk:  ['в','на','за','под','через'],
+    gen:  ['из','от','до','без','у','около','для'],
+    inst: ['с','за','над','под','перед','между'],
+};
+
+// Schablonen
+const kasusSchablonenRU = {
+    lok: [
+        { text:'Он живёт {P} {A}.',         subKat:['ort','gebaeude'],        praep:['в','на'] },
+        { text:'Книга лежит {P} {A}.',       subKat:['moebel','gegenstand'],   praep:['на'] },
+        { text:'Мы учимся {P} {A}.',         subKat:['ort','gebaeude'],        praep:['в','на'] },
+        { text:'Она работает {P} {A}.',      subKat:['ort','gebaeude'],        praep:['в','на'] },
+        { text:'Дети играют {P} {A}.',       subKat:['ort','natur'],           praep:['в','на'] },
+        { text:'Я читаю {P} {A}.',           subKat:['ort','raum'],            praep:['в','на'] },
+    ],
+    akk: [
+        { text:'Он идёт {P} {A}.',           subKat:['ort','gebaeude'],        praep:['в','на'] },
+        { text:'Я кладу книгу {P} {A}.',     subKat:['moebel'],                praep:['на'] },
+        { text:'Мы едем {P} {A}.',           subKat:['ort'],                   praep:['в','на'] },
+        { text:'Она смотрит {P} {A}.',       subKat:['gegenstand','ort'],      praep:['на'] },
+        { text:'Я жду {P} {A}.',             subKat:['fahrzeug'],              praep:['на'] },
+    ],
+    dat: [
+        { text:'Я иду {P} {A}.',             subKat:['person','beruf'],        praep:['к'] },
+        { text:'Он звонит {P} {A}.',         subKat:['person'],                praep:['к'] },
+        { text:'Мы едем {P} {A}.',           subKat:['person'],                praep:['к'] },
+        { text:'Она пишет {P} {A}.',         subKat:['person'],                praep:['к'] },
+    ],
+    gen: [
+        { text:'Он приходит {P} {A}.',       subKat:['ort','gebaeude'],        praep:['из','от'] },
+        { text:'Письмо {P} {A}.',            subKat:['person'],                praep:['от','для'] },
+        { text:'Мы живём недалеко {P} {A}.', subKat:['ort','gebaeude','natur'],praep:['от','до','около'] },
+        { text:'Чай {P} {A}.',               subKat:['natur'],                 praep:['из'] },
+        { text:'Кофе {P} {A}.',              subKat:['ort','gebaeude'],        praep:['из'] },
+    ],
+    inst: [
+        { text:'Он пишет {P} {A}.',          subKat:['gegenstand'],            praep:['с'] },
+        { text:'Мы идём {P} {A}.',           subKat:['person'],                praep:['с'] },
+        { text:'Лампа стоит {P} {A}.',       subKat:['moebel'],                praep:['за','над','под','перед'] },
+        { text:'Он сидит {P} {A}.',          subKat:['moebel','ort'],          praep:['за','перед','между'] },
+        { text:'Она разговаривает {P} {A}.', subKat:['person'],                praep:['с'] },
+    ],
+};
+
+function generiereKasusAufgabeRU(niveau) {
+    const verfuegbar = niveau === 'n1'
+        ? ['lok','akk','dat']
+        : niveau === 'n2'
+        ? ['lok','akk','dat','gen']
+        : ['lok','akk','dat','gen','inst'];
+
+    for (let versuch = 0; versuch < 10; versuch++) {
+        const typ = verfuegbar[Math.floor(Math.random() * verfuegbar.length)];
+        const pool = kasusSchablonenRU[typ];
+        const schablone = pool[Math.floor(Math.random() * pool.length)];
+
+        const passend = kasusSubstantiveRU.filter(s =>
+            s.kat.some(k => schablone.subKat.includes(k))
+        );
+        if (!passend.length) continue;
+
+        const sub = passend[Math.floor(Math.random() * passend.length)];
+        const praep = schablone.praep[Math.floor(Math.random() * schablone.praep.length)];
+
+        const kasus = typ === 'lok' ? 'lok' : typ;
+
+        const richtig = getWortformRU(sub, kasus);
+
+        // Ablenkungen: andere Kasus desselben Substantivs
+        const alleKasus = ['nom','gen','dat','akk','inst','lok'];
+        const falsch = alleKasus
+            .filter(k => k !== kasus)
+            .map(k => getWortformRU(sub, k))
+            .filter((v,i,a) => v !== richtig && a.indexOf(v) === i)
+            .slice(0,3);
+
+        const kasusName = {
+            nom:'Именительный', gen:'Родительный', dat:'Дательный',
+            akk:'Винительный', inst:'Творительный', lok:'Предложный'
+        };
+        const hinweis = `"${praep}" → ${kasusName[kasus]}`;
+
+        const satz = schablone.text
+            .replace('{P}', praep)
+            .replace('{A}', '___');
+
+        return {
+            satz,
+            wort: sub.wort,
+            kasus: kasusName[kasus],
+            richtig,
+            antworten: shuffle([richtig, ...falsch]),
+            hinweis,
+            generiert: true
+        };
+    }
+    return generiereKasusAufgabeRU(niveau);
+}
+
+ // ── Grammatik-Daten ───────────────────────────────────────────────────
+
 // Genus: мужской (м) / женский (ж) / средний (с)
 const grammatikDaten = {
     genus: {
