@@ -3315,9 +3315,11 @@ function getArtikel(genus, kasus, bestimmt) {
 
 function getWortform(sub, kasus) {
     if (sub.dekl === 'schwach' && kasus !== 'nom') return sub.wort + 'en';
+    if (kasus === 'gen' && (sub.genus === 'm' || sub.genus === 'n') && sub.dekl === 'stark') {
+        return sub.wort + (sub.wort.endsWith('s') || sub.wort.endsWith('z') || sub.wort.endsWith('x') ? 'es' : 's');
+    }
     return sub.wort;
 }
-
 // Schablonen: text, subKat (erlaubte Substantiv-Kategorien), praep (erlaubte Präpositionen)
 // {P} = Präposition, {A} = Lücke (Artikel + Substantiv)
 const kasusSchablonen = {
