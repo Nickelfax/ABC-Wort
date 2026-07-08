@@ -1334,15 +1334,16 @@ function grammatikNeueAufgabe() {
         grammatikAktuell = e;
         grammatikVerlauf.push(e); grammatikVerlaufIdx = grammatikVerlauf.length - 1;
 
-    } else if (grammatikModus === 'kasus') {
-        const pool = grammatikDaten.kasus[diktatNiveau] || grammatikDaten.kasus.n1;
+   } else if (grammatikModus === 'kasus') {
+        const statisch = [...(grammatikDaten.kasus[diktatNiveau] || grammatikDaten.kasus.n1 || [])];
+        const dynamisch = Array.from({length:5}, () => generiereKasusAufgabeRU(diktatNiveau));
+        const pool = shuffle([...statisch, ...dynamisch]);
         const letztes = grammatikAktuell;
         let e;
         let versuche = 0;
         do { e = pool[Math.floor(Math.random() * pool.length)]; versuche++; }
         while (letztes && e === letztes && pool.length > 1 && versuche < 5);
         grammatikAktuell = e;
-
     } else if (grammatikModus === 'konjugation') {
         const niveau = diktatNiveau;
         const pool = verbGroups[niveau] || verbGroups.n1;
