@@ -3952,20 +3952,34 @@ function generiereKasusAufgabe(niveau) {
                     if (f) f.addEventListener('focus', () => f.select());
                 }, 50);
           } else if (grammatikModus === 'tempus') {
-                if (tempusModus === 'praeteritum') {
-                    // Präteritum-Konjugation aus praefixverben
-                    const praefixDaten = grammatikDaten.praefixverben;
-                    const verfuegbar = Object.keys(praefixDaten);
+               if (tempusModus === 'praeteritum') {
+                    function konjugierePraeteritum(praetForm) {
+                        const teile = praetForm.split(' ');
+                        const stamm = teile[0];
+                        const prefix = teile.slice(1).join(' ');
+                        let du, wir, ihr, sie;
+                        if (stamm.endsWith('te')) {
+                            du = stamm+'st'; wir = stamm+'n'; ihr = stamm+'t'; sie = stamm+'n';
+                        } else if (stamm.endsWith('s')||stamm.endsWith('ß')||stamm.endsWith('z')) {
+                            du = stamm+'t';  wir = stamm+'en'; ihr = stamm+'t'; sie = stamm+'en';
+                        } else if (stamm.endsWith('d')||stamm.endsWith('t')) {
+                            du = stamm+'est'; wir = stamm+'en'; ihr = stamm+'et'; sie = stamm+'en';
+                        } else {
+                            du = stamm+'st'; wir = stamm+'en'; ihr = stamm+'t'; sie = stamm+'en';
+                        }
+                        const p = prefix ? ' '+prefix : '';
+                        return [stamm+p, du+p, stamm+p, wir+p, ihr+p, sie+p];
+                    }
+                    const verfuegbar = Object.keys(praeteritumForms);
                     const verb = verfuegbar[Math.floor(Math.random() * verfuegbar.length)];
-                    const vDaten = praefixDaten[verb];
+                    const vDaten = praeteritumForms[verb];
+                    const formen = konjugierePraeteritum(vDaten.prät);
                     const pronIdx = Math.floor(Math.random() * 6);
                     const pronomen = ['ich','du','er/sie/es','wir','ihr','sie'][pronIdx];
-                    const richtig = vDaten.praeteritum[pronIdx];
-                   // Falsche Antworten: andere Formen desselben Verbs im Präteritum
+                    const richtig = formen[pronIdx];
                     const falsche = shuffle(
-                        vDaten.praeteritum
-                            .filter((_,i) => i !== pronIdx)
-                            .filter((v,i,a) => v !== richtig && a.indexOf(v) === i)
+                        formen.filter((_,i) => i !== pronIdx)
+                              .filter((v,i,a) => v !== richtig && a.indexOf(v) === i)
                     ).slice(0,3);
                     const alle = shuffle([richtig, ...falsche]);
                     grammatikAktuell = { verb, richtig, antworten: alle, regelmaessig: false };
