@@ -3406,8 +3406,8 @@ function generiereKasusAufgabe(niveau) {
         let kasus, hinweis;
         if (typ === 'dativ')       { kasus = 'dat'; hinweis = `"${praep}" → immer Dativ`; }
         else if (typ === 'akkusativ') { kasus = 'akk'; hinweis = `"${praep}" → immer Akkusativ`; }
-        else if (typ === 'wechsel_dat') { kasus = 'dat'; hinweis = `"${praep}" + Wo? → Dativ`; }
-        else if (typ === 'wechsel_akk') { kasus = 'akk'; hinweis = `"${praep}" + Wohin? → Akkusativ`; }
+        else if (typ === 'wechsel_dat') { kasus = 'dat'; hinweis = `🧍 "${praep}" + Wo? → Dativ`; }
+        else if (typ === 'wechsel_akk') { kasus = 'akk'; hinweis = `<span class="bewegung-hint">🚶</span> "${praep}" + Wohin? → Akkusativ`; }
         else { kasus = 'gen'; hinweis = `"${praep}" → immer Genitiv`; }
 
         const richtigerArtikel = getArtikel(sub.genus, kasus, bestimmt);
