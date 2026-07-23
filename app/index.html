@@ -99,7 +99,7 @@
         .art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
         .auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
         .auswahl-btn { padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; text-align: center; }
-        .auswahl-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        @media (hover: hover) and (pointer: fine) { .auswahl-btn:hover { background: var(--primary); color: white; border-color: var(--primary); } }
         .auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
         .auswahl-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
        /* ── Dark Mode ── */
