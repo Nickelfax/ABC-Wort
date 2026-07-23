@@ -2957,6 +2957,9 @@ function initTheme() {
 
         let grammatikModus = 'artikel';
         let grammatikGesperrt = false;
+        // alten Richtig/Falsch-Status der vorherigen Frage entfernen
+        const statusEl = document.getElementById('diktatStatus');
+        if (statusEl) { statusEl.textContent = ''; statusEl.style.display = 'none'; }
         let grammatikAktuell = null;
 
         const verbForms = {
