@@ -94,7 +94,7 @@
         .grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; }
         .artikel-buttons { display: flex; gap: 12px; justify-content: center; width: 100%; }
         .art-btn { padding: 14px 24px; font-size: 1.4rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; max-width: 120px; }
-        .art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        @media (hover: hover) and (pointer: fine) { .art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); } }
         .art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
         .art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
         .auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
