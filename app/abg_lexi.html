@@ -1391,11 +1391,13 @@ const diktatWorteN3 = [
             diktatRichtig++;
             document.getElementById('diktatRichtig').textContent = diktatRichtig;
             document.getElementById('diktatStatus').textContent = '✓ Σωστό! 🎉';
+            fortschrittSchritt(true); 
             setTimeout(diktatFanfare, 300);
         } else {
             diktatFalsch++;
             document.getElementById('diktatFalsch').textContent = diktatFalsch;
             document.getElementById('diktatStatus').textContent = `✗ Λάθος! Σωστό: ${richtig} ${grammatikAktuell.wort}`;
+            fortschrittSchritt(false);
             diktatBuzzer();
         }
         setTimeout(grammatikNeueAufgabe, 1800);
