@@ -4501,6 +4501,69 @@ const APP_REGISTRY = [
         if (grammatikAktiv) { grammatikNeueAufgabe(); }
         else if (diktatAktiv) { diktatNeuesWort(); }
     };
+
+       // ── Fortschritt ───────────────────────────────────────────────────────
+const RUNDEN_LAENGE = 10;
+let rundeAufgabe = 0;
+let rundeRichtig = 0;
+let rundeNummer  = 1;
+
+function fortschrittZeigen(aktiv) {
+    document.getElementById('fortschrittsBereich').style.display = aktiv ? 'block' : 'none';
+}
+
+function fortschrittReset() {
+    rundeAufgabe = 0;
+    rundeRichtig = 0;
+    document.getElementById('fortschrittsBalken').style.width = '0%';
+    document.getElementById('rundeAufgabe').textContent = '0';
+    document.getElementById('rundeAktuell').textContent = rundeNummer;
+}
+
+function fortschrittSchritt(richtig) {
+    rundeAufgabe++;
+    if (richtig) rundeRichtig++;
+    const pct = (rundeAufgabe / RUNDEN_LAENGE) * 100;
+    document.getElementById('fortschrittsBalken').style.width = pct + '%';
+    document.getElementById('rundeAufgabe').textContent = rundeAufgabe;
+    const balken = document.getElementById('fortschrittsBalken');
+    const quote = rundeRichtig / rundeAufgabe;
+    balken.style.background = quote >= 0.8
+        ? 'linear-gradient(90deg, #2ecc71, #27ae60)'
+        : quote >= 0.5
+            ? 'linear-gradient(90deg, #f39c12, #e67e22)'
+            : 'linear-gradient(90deg, #e74c3c, #c0392b)';
+    if (rundeAufgabe >= RUNDEN_LAENGE) {
+        setTimeout(rundenAuswertung, 400);
+    }
+}
+
+function rundenAuswertung() {
+    const display = document.getElementById('wordDisplay');
+    display.classList.remove('empty');
+    const emoji = rundeRichtig >= 9 ? '🏆' : rundeRichtig >= 7 ? '🎉' : rundeRichtig >= 5 ? '👍' : '💪';
+    const farbe = rundeRichtig >= 7 ? '#27ae60' : rundeRichtig >= 5 ? '#f39c12' : '#e74c3c';
+    display.innerHTML = `
+        <div style="text-align:center; padding:1rem; width:100%;">
+            <div style="font-size:3rem; margin-bottom:8px;">${emoji}</div>
+            <div style="font-size:1.4rem; font-weight:bold; color:${farbe}; margin-bottom:6px;">
+                ${rundeRichtig} / ${RUNDEN_LAENGE} richtig
+            </div>
+            <div style="font-size:0.9rem; color:#7f8c8d; margin-bottom:20px;">
+                Runde ${rundeNummer} abgeschlossen
+            </div>
+            <button onclick="neueRunde()" style="background:var(--primary); color:white; border:none; border-radius:12px; padding:12px 28px; font-size:1.1rem; font-weight:bold; cursor:pointer;">
+                ▶ Nächste Runde
+            </button>
+        </div>`;
+    rundeNummer++;
+}
+
+function neueRunde() {
+    fortschrittReset();
+    if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
     </script>
 
     <script>
