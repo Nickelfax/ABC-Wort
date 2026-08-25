@@ -1019,10 +1019,12 @@ const diktatWorteN3 = [
                 diktatRichtig++;
                 document.getElementById('diktatRichtig').textContent = diktatRichtig;
                 document.getElementById('diktatStatus').textContent = 'Σωστό! 🎉';
+                fortschrittSchritt(true);   
             } else {
                 diktatFalsch++;
                 document.getElementById('diktatFalsch').textContent = diktatFalsch;
                 document.getElementById('diktatStatus').textContent = 'Σωστό — αλλά με διορθώσεις.';
+                fortschrittSchritt(false);
             }
             setTimeout(diktatFanfare, 300);
             setTimeout(diktatNeuesWort, 2400);
