@@ -511,7 +511,7 @@ function speakChar(char) {
     const try_ = () => {
         const voices = window.speechSynthesis.getVoices();
         if (voices.length === 0) return false;
-        const u = new SpeechSynthesisUtterance(char);
+        const u = new SpeechSynthesisUtterance(char.toLowerCase());
         u.lang = 'el-GR'; u.rate = 0.75;
         const elVoice = voices.find(v => v.lang.startsWith('el'));
         if (elVoice) u.voice = elVoice;
