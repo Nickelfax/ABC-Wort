@@ -4062,12 +4062,14 @@ function generiereKasusAufgabe(niveau) {
                 diktatRichtig++;
                 document.getElementById('diktatRichtig').textContent = diktatRichtig;
                 document.getElementById('diktatStatus').textContent = '✓ Richtig! 🎉';
+                fortschrittSchritt(true);  
                 setTimeout(diktatFanfare, 300);
             } else {
                 diktatFalsch++;
                 document.getElementById('diktatFalsch').textContent = diktatFalsch;
                 document.getElementById('diktatStatus').textContent = `✗ Falsch! Es heißt: ${richtig} ${grammatikAktuell.wort}`;
-                diktatBuzzer();
+                fortschrittSchritt(false);  
+               diktatBuzzer();
             }
            setTimeout(()=>{const d=document.getElementById('wordDisplay');if(d)d.innerHTML='';setTimeout(()=>grammatikNeueAufgabe(),50);},1800);
         }
