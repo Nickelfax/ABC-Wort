@@ -171,6 +171,15 @@ function globalDictLookup(wort, zielSprache) {
             <span>Λάθος: <strong id="diktatFalsch">0</strong></span>
         </div>
     </div>
+   <div id="fortschrittsBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#7f8c8d; margin-bottom:4px;">
+        <span>Runde <span id="rundeAktuell">1</span></span>
+        <span><span id="rundeAufgabe">0</span> / 10</span>
+    </div>
+    <div style="background:#e9ecef; border-radius:20px; height:12px; overflow:hidden;">
+        <div id="fortschrittsBalken" style="height:100%; width:0%; border-radius:20px; background:linear-gradient(90deg, #2ecc71, #27ae60); transition:width 0.4s ease;"></div>
+    </div>
+</div>
 
     <div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
         <div class="diktat-modus-zeile">
