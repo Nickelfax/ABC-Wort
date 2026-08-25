@@ -2236,6 +2236,8 @@ function initTheme() {
             const beides = diktatAktiv || grammatikAktiv;
             document.getElementById('scoreBereich').style.display        = beides ? 'block' : 'none';
             document.getElementById('niveauSliderBereich').style.display = beides ? 'block' : 'none';
+           fortschrittZeigen(beides);  
+           if (!beides) fortschrittReset(); 
             document.getElementById('diktatStatus').style.display        = beides ? 'block' : 'none';
             document.getElementById('diktatModusBereich').style.display  = diktatAktiv ? 'block' : 'none';
             document.getElementById('grammatikZeile').style.display      = grammatikAktiv ? 'flex' : 'none';
