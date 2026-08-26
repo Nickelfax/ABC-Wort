@@ -4227,10 +4227,12 @@ function grBtnKlick() {
                     diktatRichtig++;
                     document.getElementById('diktatRichtig').textContent = diktatRichtig;
                     document.getElementById('diktatStatus').textContent = 'Richtig! 🎉';
+                   fortschrittSchritt(true);
                 } else {
                     diktatFalsch++;
                     document.getElementById('diktatFalsch').textContent = diktatFalsch;
                     document.getElementById('diktatStatus').textContent = 'Richtig — aber mit Korrekturen.';
+                   fortschrittSchritt(false); 
                 }
                setTimeout(diktatFanfare, 300);
                 setTimeout(diktatNeuesWort, 2400);
