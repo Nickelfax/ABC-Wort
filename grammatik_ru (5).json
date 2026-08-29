@@ -1,0 +1,6289 @@
+{
+  "version": "3.0",
+  "genus": {
+    "n1": [
+      {
+        "wort": "дом",
+        "genus": "м",
+        "emoji": "🏠",
+        "deutsch": "Haus"
+      },
+      {
+        "wort": "кот",
+        "genus": "м",
+        "emoji": "🐱",
+        "deutsch": "Kater"
+      },
+      {
+        "wort": "мяч",
+        "genus": "м",
+        "emoji": "⚽",
+        "deutsch": "Ball"
+      },
+      {
+        "wort": "нос",
+        "genus": "м",
+        "emoji": "👃",
+        "deutsch": "Nase"
+      },
+      {
+        "wort": "поезд",
+        "genus": "м",
+        "emoji": "🚂",
+        "deutsch": "Zug"
+      },
+      {
+        "wort": "глаз",
+        "genus": "м",
+        "emoji": "👁️",
+        "deutsch": "Auge"
+      },
+      {
+        "wort": "друг",
+        "genus": "м",
+        "emoji": "🤝",
+        "deutsch": "Freund"
+      },
+      {
+        "wort": "хлеб",
+        "genus": "м",
+        "emoji": "🍞",
+        "deutsch": "Brot"
+      },
+      {
+        "wort": "цветок",
+        "genus": "м",
+        "emoji": "🌸",
+        "deutsch": "Blume"
+      },
+      {
+        "wort": "мост",
+        "genus": "м",
+        "emoji": "🌉",
+        "deutsch": "Brücke"
+      },
+      {
+        "wort": "сад",
+        "genus": "м",
+        "emoji": "🌿",
+        "deutsch": "Garten"
+      },
+      {
+        "wort": "стол",
+        "genus": "м",
+        "emoji": "🪑",
+        "deutsch": "Tisch"
+      },
+      {
+        "wort": "чемодан",
+        "genus": "м",
+        "emoji": "🧳",
+        "deutsch": "Koffer"
+      },
+      {
+        "wort": "светофор",
+        "genus": "м",
+        "emoji": "🚦",
+        "deutsch": "Ampel"
+      },
+      {
+        "wort": "рука",
+        "genus": "ж",
+        "emoji": "✋",
+        "deutsch": "Hand"
+      },
+      {
+        "wort": "луна",
+        "genus": "ж",
+        "emoji": "🌙",
+        "deutsch": "Mond"
+      },
+      {
+        "wort": "рыба",
+        "genus": "ж",
+        "emoji": "🐟",
+        "deutsch": "Fisch"
+      },
+      {
+        "wort": "книга",
+        "genus": "ж",
+        "emoji": "📖",
+        "deutsch": "Buch"
+      },
+      {
+        "wort": "кошка",
+        "genus": "ж",
+        "emoji": "🐈",
+        "deutsch": "Katze"
+      },
+      {
+        "wort": "собака",
+        "genus": "ж",
+        "emoji": "🐕",
+        "deutsch": "Hund"
+      },
+      {
+        "wort": "школа",
+        "genus": "ж",
+        "emoji": "🏫",
+        "deutsch": "Schule"
+      },
+      {
+        "wort": "улица",
+        "genus": "ж",
+        "emoji": "🛣️",
+        "deutsch": "Straße"
+      },
+      {
+        "wort": "комната",
+        "genus": "ж",
+        "emoji": "🛋️",
+        "deutsch": "Zimmer"
+      },
+      {
+        "wort": "куртка",
+        "genus": "ж",
+        "emoji": "🧥",
+        "deutsch": "Jacke"
+      },
+      {
+        "wort": "лестница",
+        "genus": "ж",
+        "emoji": "🪜",
+        "deutsch": "Treppe"
+      },
+      {
+        "wort": "солнце",
+        "genus": "с",
+        "emoji": "☀️",
+        "deutsch": "Sonne"
+      },
+      {
+        "wort": "дерево",
+        "genus": "с",
+        "emoji": "🌳",
+        "deutsch": "Baum"
+      },
+      {
+        "wort": "яйцо",
+        "genus": "с",
+        "emoji": "🥚",
+        "deutsch": "Ei"
+      },
+      {
+        "wort": "молоко",
+        "genus": "с",
+        "emoji": "🥛",
+        "deutsch": "Milch"
+      },
+      {
+        "wort": "окно",
+        "genus": "с",
+        "emoji": "🪟",
+        "deutsch": "Fenster"
+      }
+    ],
+    "n2": [
+      {
+        "wort": "восторг",
+        "genus": "м",
+        "emoji": "🌟",
+        "deutsch": "Begeisterung"
+      },
+      {
+        "wort": "сюрприз",
+        "genus": "м",
+        "emoji": "🎁",
+        "deutsch": "Überraschung"
+      },
+      {
+        "wort": "дружба",
+        "genus": "ж",
+        "emoji": "💛",
+        "deutsch": "Freundschaft"
+      },
+      {
+        "wort": "ответственность",
+        "genus": "ж",
+        "emoji": "🎖️",
+        "deutsch": "Verantwortung"
+      },
+      {
+        "wort": "возможность",
+        "genus": "ж",
+        "emoji": "🔓",
+        "deutsch": "Möglichkeit"
+      },
+      {
+        "wort": "справедливость",
+        "genus": "ж",
+        "emoji": "⚖️",
+        "deutsch": "Gerechtigkeit"
+      },
+      {
+        "wort": "решение",
+        "genus": "с",
+        "emoji": "🎯",
+        "deutsch": "Entscheidung"
+      },
+      {
+        "wort": "влияние",
+        "genus": "с",
+        "emoji": "💡",
+        "deutsch": "Einfluss"
+      },
+      {
+        "wort": "понимание",
+        "genus": "с",
+        "emoji": "🤔",
+        "deutsch": "Verständnis"
+      },
+      {
+        "wort": "соседство",
+        "genus": "с",
+        "emoji": "🏘️",
+        "deutsch": "Nachbarschaft"
+      },
+      {
+        "wort": "сотрудничество",
+        "genus": "с",
+        "emoji": "🤲",
+        "deutsch": "Zusammenarbeit"
+      }
+    ],
+    "n3": [
+      {
+        "wort": "вода",
+        "genus": "ж",
+        "emoji": "💧",
+        "deutsch": "Wasser"
+      },
+      {
+        "wort": "мама",
+        "genus": "ж",
+        "emoji": "👩",
+        "deutsch": "Mama"
+      },
+      {
+        "wort": "папа",
+        "genus": "м",
+        "emoji": "👨",
+        "deutsch": "Papa"
+      },
+      {
+        "wort": "молоко",
+        "genus": "с",
+        "emoji": "🥛",
+        "deutsch": "Milch"
+      }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      {
+        "satz": "Я вижу ___",
+        "deutsch": "Ich sehe ___ (Hund)",
+        "wort": "собака",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "собака",
+          "собаку",
+          "собаке",
+          "собакой"
+        ],
+        "richtig": "собаку"
+      },
+      {
+        "satz": "Я помогаю ___",
+        "deutsch": "Ich helfe ___ (Freund)",
+        "wort": "друг",
+        "kasus": "Dativ",
+        "antworten": [
+          "друга",
+          "другу",
+          "друг",
+          "другом"
+        ],
+        "richtig": "другу"
+      },
+      {
+        "satz": "Это ___ мяч",
+        "deutsch": "Das ist ein Ball",
+        "wort": "мяч",
+        "kasus": "Nominativ",
+        "antworten": [
+          "мяч",
+          "мяча",
+          "мячу",
+          "мячом"
+        ],
+        "richtig": "мяч"
+      },
+      {
+        "satz": "Цвет ___",
+        "deutsch": "Die Farbe ___ (Katze)",
+        "wort": "кошка",
+        "kasus": "Genitiv",
+        "antworten": [
+          "кошка",
+          "кошки",
+          "кошке",
+          "кошку"
+        ],
+        "richtig": "кошки"
+      },
+      {
+        "satz": "Я играю с ___",
+        "deutsch": "Ich spiele mit ___ (Ball)",
+        "wort": "мяч",
+        "kasus": "Instrumental",
+        "antworten": [
+          "мяч",
+          "мячом",
+          "мячу",
+          "мяча"
+        ],
+        "richtig": "мячом"
+      },
+      {
+        "satz": "Я глажу ___",
+        "deutsch": "Ich streichle ___ (Hund)",
+        "wort": "собака",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "собака",
+          "собаку",
+          "собаке",
+          "собакой"
+        ],
+        "richtig": "собаку"
+      },
+      {
+        "satz": "Шерсть ___",
+        "deutsch": "Das Fell ___ (Hund)",
+        "wort": "собака",
+        "kasus": "Genitiv",
+        "antworten": [
+          "собака",
+          "собаки",
+          "собаке",
+          "собакой"
+        ],
+        "richtig": "собаки"
+      },
+      {
+        "satz": "Я даю ___ книгу",
+        "deutsch": "Ich gebe ___ ein Buch (Kind)",
+        "wort": "ребёнок",
+        "kasus": "Dativ",
+        "antworten": [
+          "ребёнка",
+          "ребёнку",
+          "ребёнок",
+          "ребёнком"
+        ],
+        "richtig": "ребёнку"
+      },
+      {
+        "satz": "___ светит ярко",
+        "deutsch": "___ scheint hell (Sonne)",
+        "wort": "солнце",
+        "kasus": "Nominativ",
+        "antworten": [
+          "солнце",
+          "солнца",
+          "солнцу",
+          "солнцем"
+        ],
+        "richtig": "солнце"
+      },
+      {
+        "satz": "Я вижу ___",
+        "deutsch": "Ich sehe ___ (Vogel)",
+        "wort": "птица",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "птица",
+          "птицу",
+          "птице",
+          "птицей"
+        ],
+        "richtig": "птицу"
+      },
+      {
+        "satz": "Я мою ___",
+        "deutsch": "Ich wasche ___ (Hand)",
+        "wort": "рука",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "рука",
+          "руку",
+          "руке",
+          "рукой"
+        ],
+        "richtig": "руку"
+      },
+      {
+        "satz": "___ светит ночью",
+        "deutsch": "___ leuchtet nachts (Mond)",
+        "wort": "луна",
+        "kasus": "Nominativ",
+        "antworten": [
+          "луна",
+          "луны",
+          "луне",
+          "луной"
+        ],
+        "richtig": "луна"
+      },
+      {
+        "satz": "Я читаю ___",
+        "deutsch": "Ich lese ___ (Buch)",
+        "wort": "книга",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "книга",
+          "книгу",
+          "книге",
+          "книгой"
+        ],
+        "richtig": "книгу"
+      },
+      {
+        "satz": "Я еду на ___",
+        "deutsch": "Ich fahre mit ___ (Zug)",
+        "wort": "поезд",
+        "kasus": "Präpositional",
+        "antworten": [
+          "поезд",
+          "поезде",
+          "поезду",
+          "поездом"
+        ],
+        "richtig": "поезде"
+      },
+      {
+        "satz": "Я вижу ___",
+        "deutsch": "Ich sehe ___ (Katze)",
+        "wort": "кошка",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "кошка",
+          "кошку",
+          "кошке",
+          "кошкой"
+        ],
+        "richtig": "кошку"
+      },
+      {
+        "satz": "Нет ___",
+        "deutsch": "Es gibt kein ___ (Brot)",
+        "wort": "хлеб",
+        "kasus": "Genitiv",
+        "antworten": [
+          "хлеб",
+          "хлеба",
+          "хлебу",
+          "хлебом"
+        ],
+        "richtig": "хлеба"
+      }
+    ],
+    "n2": [
+      {
+        "satz": "Я иду в ___",
+        "deutsch": "Ich gehe in ___ (Schule)",
+        "wort": "школа",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "школа",
+          "школу",
+          "школе",
+          "школой"
+        ],
+        "richtig": "школу"
+      },
+      {
+        "satz": "Я думаю о ___",
+        "deutsch": "Ich denke an ___ (Freund)",
+        "wort": "друг",
+        "kasus": "Präpositional",
+        "antworten": [
+          "друга",
+          "другу",
+          "друге",
+          "другом"
+        ],
+        "richtig": "друге"
+      },
+      {
+        "satz": "Книга ___",
+        "deutsch": "Das Buch ___ (Kind)",
+        "wort": "ребёнок",
+        "kasus": "Genitiv",
+        "antworten": [
+          "ребёнка",
+          "ребёнку",
+          "ребёнок",
+          "ребёнком"
+        ],
+        "richtig": "ребёнка"
+      },
+      {
+        "satz": "Я сижу за ___",
+        "deutsch": "Ich sitze an ___ (Tisch)",
+        "wort": "стол",
+        "kasus": "Instrumental",
+        "antworten": [
+          "стол",
+          "столом",
+          "столе",
+          "стола"
+        ],
+        "richtig": "столом"
+      },
+      {
+        "satz": "Он стоит на ___",
+        "deutsch": "Er steht auf ___ (Treppe)",
+        "wort": "лестница",
+        "kasus": "Präpositional",
+        "antworten": [
+          "лестницу",
+          "лестнице",
+          "лестницей",
+          "лестницы"
+        ],
+        "richtig": "лестнице"
+      },
+      {
+        "satz": "Я вешаю куртку в ___",
+        "deutsch": "Ich hänge die Jacke in ___ (Zimmer)",
+        "wort": "комната",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "комната",
+          "комнату",
+          "комнате",
+          "комнатой"
+        ],
+        "richtig": "комнату"
+      },
+      {
+        "satz": "Я жду у ___",
+        "deutsch": "Ich warte an ___ (Ampel)",
+        "wort": "светофор",
+        "kasus": "Genitiv",
+        "antworten": [
+          "светофора",
+          "светофору",
+          "светофор",
+          "светофором"
+        ],
+        "richtig": "светофора"
+      },
+      {
+        "satz": "Мы идём через ___",
+        "deutsch": "Wir gehen über ___ (Brücke)",
+        "wort": "мост",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "мост",
+          "моста",
+          "мосту",
+          "мостом"
+        ],
+        "richtig": "мост"
+      },
+      {
+        "satz": "Я иду в ___",
+        "deutsch": "Ich gehe in ___ (Garten)",
+        "wort": "сад",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "сад",
+          "сада",
+          "саду",
+          "садом"
+        ],
+        "richtig": "сад"
+      },
+      {
+        "satz": "Я надеваю ___",
+        "deutsch": "Ich ziehe ___ an (Jacke)",
+        "wort": "куртка",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "куртка",
+          "куртку",
+          "куртке",
+          "курткой"
+        ],
+        "richtig": "куртку"
+      },
+      {
+        "satz": "Я смотрю в ___",
+        "deutsch": "Ich schaue aus ___ (Fenster)",
+        "wort": "окно",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "окно",
+          "окна",
+          "окну",
+          "окном"
+        ],
+        "richtig": "окно"
+      },
+      {
+        "satz": "Цветок ___",
+        "deutsch": "___ (Blume) ist schön",
+        "wort": "цветок",
+        "kasus": "Nominativ",
+        "antworten": [
+          "цветок",
+          "цветка",
+          "цветку",
+          "цветком"
+        ],
+        "richtig": "цветок"
+      }
+    ],
+    "n3": [
+      {
+        "satz": "Я горжусь ___",
+        "deutsch": "Ich bin stolz auf ___ (Arbeit)",
+        "wort": "работа",
+        "kasus": "Instrumental",
+        "antworten": [
+          "работа",
+          "работой",
+          "работе",
+          "работу"
+        ],
+        "richtig": "работой"
+      },
+      {
+        "satz": "Он думает о ___",
+        "deutsch": "Er denkt über ___ (Entscheidung) nach",
+        "wort": "решение",
+        "kasus": "Präpositional",
+        "antworten": [
+          "решения",
+          "решению",
+          "решении",
+          "решением"
+        ],
+        "richtig": "решении"
+      },
+      {
+        "satz": "Важность ___",
+        "deutsch": "Die Wichtigkeit ___ (Freundschaft)",
+        "wort": "дружба",
+        "kasus": "Genitiv",
+        "antworten": [
+          "дружба",
+          "дружбы",
+          "дружбе",
+          "дружбой"
+        ],
+        "richtig": "дружбы"
+      },
+      {
+        "satz": "Он несёт ___",
+        "deutsch": "Er trägt ___ (Verantwortung)",
+        "wort": "ответственность",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "ответственность",
+          "ответственности",
+          "ответственностью",
+          "ответственного"
+        ],
+        "richtig": "ответственность"
+      },
+      {
+        "satz": "Нет ___",
+        "deutsch": "Es gibt keine ___ (Möglichkeit)",
+        "wort": "возможность",
+        "kasus": "Genitiv",
+        "antworten": [
+          "возможность",
+          "возможности",
+          "возможностью",
+          "возможного"
+        ],
+        "richtig": "возможности"
+      },
+      {
+        "satz": "Я верю в ___",
+        "deutsch": "Ich glaube an ___ (Gerechtigkeit)",
+        "wort": "справедливость",
+        "kasus": "Akkusativ",
+        "antworten": [
+          "справедливость",
+          "справедливости",
+          "справедливостью",
+          "справедливого"
+        ],
+        "richtig": "справедливость"
+      }
+    ]
+  },
+  "tempus": {
+    "praesens": {
+      "n1": [
+        {
+          "infinitiv": "быть",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "есть",
+          "falsch": [
+            "был"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "есть",
+          "falsch": [
+            "был"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "есть",
+          "falsch": [
+            "был"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "есть",
+          "falsch": [
+            "был"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "есть",
+          "falsch": [
+            "был"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "есть",
+          "falsch": [
+            "был"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "иду",
+          "falsch": [
+            "идём",
+            "идёшь",
+            "шёл"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "идёшь",
+          "falsch": [
+            "иду",
+            "идёте",
+            "шёл"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "идёт",
+          "falsch": [
+            "идёшь",
+            "идёте",
+            "шёл"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "идём",
+          "falsch": [
+            "идёте",
+            "идёшь",
+            "шёл"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "идёте",
+          "falsch": [
+            "идут",
+            "иду",
+            "шёл"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "идут",
+          "falsch": [
+            "идёт",
+            "иду",
+            "шёл"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "ем",
+          "falsch": [
+            "ест",
+            "ешь",
+            "ел"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "ешь",
+          "falsch": [
+            "едят",
+            "ем",
+            "ел"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "ест",
+          "falsch": [
+            "едим",
+            "едите",
+            "ел"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "едим",
+          "falsch": [
+            "едите",
+            "ешь",
+            "ел"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "едите",
+          "falsch": [
+            "ест",
+            "едят",
+            "ел"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "едят",
+          "falsch": [
+            "ем",
+            "едите",
+            "ел"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "пью",
+          "falsch": [
+            "пьют",
+            "пьёшь",
+            "пил"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "пьёшь",
+          "falsch": [
+            "пью",
+            "пьёт",
+            "пил"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "пьёт",
+          "falsch": [
+            "пьют",
+            "пьёте",
+            "пил"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "пьём",
+          "falsch": [
+            "пьёте",
+            "пьют",
+            "пил"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "пьёте",
+          "falsch": [
+            "пьёт",
+            "пьём",
+            "пил"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "пьют",
+          "falsch": [
+            "пьёшь",
+            "пьёт",
+            "пил"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "живу",
+          "falsch": [
+            "живут",
+            "живёт",
+            "жил"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "живёшь",
+          "falsch": [
+            "живут",
+            "живу",
+            "жил"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "живёт",
+          "falsch": [
+            "живёшь",
+            "живёте",
+            "жил"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "живём",
+          "falsch": [
+            "живёт",
+            "живут",
+            "жил"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "живёте",
+          "falsch": [
+            "живёт",
+            "живём",
+            "жил"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "живут",
+          "falsch": [
+            "живёте",
+            "живёт",
+            "жил"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "читаю",
+          "falsch": [
+            "читаешь",
+            "читаете",
+            "читал"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "читаешь",
+          "falsch": [
+            "читает",
+            "читают",
+            "читал"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "читает",
+          "falsch": [
+            "читаю",
+            "читаешь",
+            "читал"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "читаем",
+          "falsch": [
+            "читаю",
+            "читаешь",
+            "читал"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "читаете",
+          "falsch": [
+            "читают",
+            "читаю",
+            "читал"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "читают",
+          "falsch": [
+            "читаю",
+            "читаете",
+            "читал"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "говорю",
+          "falsch": [
+            "говорите",
+            "говорят",
+            "говорил"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "говоришь",
+          "falsch": [
+            "говорите",
+            "говорим",
+            "говорил"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "говорит",
+          "falsch": [
+            "говоришь",
+            "говорят",
+            "говорил"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "говорим",
+          "falsch": [
+            "говорят",
+            "говорит",
+            "говорил"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "говорите",
+          "falsch": [
+            "говоришь",
+            "говорит",
+            "говорил"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "говорят",
+          "falsch": [
+            "говоришь",
+            "говорите",
+            "говорил"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "делаю",
+          "falsch": [
+            "делаете",
+            "делаем",
+            "делал"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "делаешь",
+          "falsch": [
+            "делаем",
+            "делаю",
+            "делал"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "делает",
+          "falsch": [
+            "делаем",
+            "делают",
+            "делал"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "делаем",
+          "falsch": [
+            "делаю",
+            "делают",
+            "делал"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "делаете",
+          "falsch": [
+            "делаешь",
+            "делаю",
+            "делал"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "делают",
+          "falsch": [
+            "делаете",
+            "делаешь",
+            "делал"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "знаю",
+          "falsch": [
+            "знаете",
+            "знают",
+            "знал"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "знаешь",
+          "falsch": [
+            "знают",
+            "знает",
+            "знал"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "знает",
+          "falsch": [
+            "знаете",
+            "знаешь",
+            "знал"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "знаем",
+          "falsch": [
+            "знают",
+            "знает",
+            "знал"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "знаете",
+          "falsch": [
+            "знает",
+            "знаю",
+            "знал"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "знают",
+          "falsch": [
+            "знаете",
+            "знаем",
+            "знал"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "работаю",
+          "falsch": [
+            "работаешь",
+            "работает",
+            "работал"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "работаешь",
+          "falsch": [
+            "работает",
+            "работаете",
+            "работал"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "работает",
+          "falsch": [
+            "работаю",
+            "работают",
+            "работал"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "работаем",
+          "falsch": [
+            "работаешь",
+            "работаете",
+            "работал"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "работаете",
+          "falsch": [
+            "работаем",
+            "работают",
+            "работал"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "работают",
+          "falsch": [
+            "работаю",
+            "работаете",
+            "работал"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "играю",
+          "falsch": [
+            "играете",
+            "играешь",
+            "играл"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "играешь",
+          "falsch": [
+            "играют",
+            "играете",
+            "играл"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "играет",
+          "falsch": [
+            "играете",
+            "играю",
+            "играл"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "играем",
+          "falsch": [
+            "играю",
+            "играет",
+            "играл"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "играете",
+          "falsch": [
+            "играешь",
+            "играют",
+            "играл"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "играют",
+          "falsch": [
+            "играем",
+            "играете",
+            "играл"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "вижу",
+          "falsch": [
+            "видит",
+            "видят",
+            "видел"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "видишь",
+          "falsch": [
+            "видит",
+            "вижу",
+            "видел"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "видит",
+          "falsch": [
+            "видишь",
+            "видите",
+            "видел"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "видим",
+          "falsch": [
+            "видите",
+            "видишь",
+            "видел"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "видите",
+          "falsch": [
+            "видят",
+            "вижу",
+            "видел"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "видят",
+          "falsch": [
+            "видим",
+            "видите",
+            "видел"
+          ]
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "ехать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "еду",
+          "falsch": [
+            "едем",
+            "едет",
+            "ехал"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "едешь",
+          "falsch": [
+            "еду",
+            "едем",
+            "ехал"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "едет",
+          "falsch": [
+            "едут",
+            "едете",
+            "ехал"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "едем",
+          "falsch": [
+            "едешь",
+            "едут",
+            "ехал"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "едете",
+          "falsch": [
+            "едем",
+            "едет",
+            "ехал"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "едут",
+          "falsch": [
+            "едешь",
+            "едет",
+            "ехал"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "хочу",
+          "falsch": [
+            "хочет",
+            "хотите",
+            "хотел"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "хочешь",
+          "falsch": [
+            "хотите",
+            "хотят",
+            "хотел"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "хочет",
+          "falsch": [
+            "хочешь",
+            "хотим",
+            "хотел"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "хотим",
+          "falsch": [
+            "хотите",
+            "хотят",
+            "хотел"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "хотите",
+          "falsch": [
+            "хочешь",
+            "хочу",
+            "хотел"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "хотят",
+          "falsch": [
+            "хочет",
+            "хочу",
+            "хотел"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "могу",
+          "falsch": [
+            "можешь",
+            "можете",
+            "мог"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "можешь",
+          "falsch": [
+            "могут",
+            "могу",
+            "мог"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "может",
+          "falsch": [
+            "можете",
+            "можешь",
+            "мог"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "можем",
+          "falsch": [
+            "может",
+            "можешь",
+            "мог"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "можете",
+          "falsch": [
+            "можем",
+            "может",
+            "мог"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "могут",
+          "falsch": [
+            "можете",
+            "может",
+            "мог"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "пишу",
+          "falsch": [
+            "пишем",
+            "пишет",
+            "писал"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "пишешь",
+          "falsch": [
+            "пишу",
+            "пишем",
+            "писал"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "пишет",
+          "falsch": [
+            "пишете",
+            "пишу",
+            "писал"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "пишем",
+          "falsch": [
+            "пишете",
+            "пишут",
+            "писал"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "пишете",
+          "falsch": [
+            "пишут",
+            "пишешь",
+            "писал"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "пишут",
+          "falsch": [
+            "пишем",
+            "пишете",
+            "писал"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "понимаю",
+          "falsch": [
+            "понимаешь",
+            "понимают",
+            "понимал"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "понимаешь",
+          "falsch": [
+            "понимаете",
+            "понимаю",
+            "понимал"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "понимает",
+          "falsch": [
+            "понимаете",
+            "понимаешь",
+            "понимал"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "понимаем",
+          "falsch": [
+            "понимает",
+            "понимают",
+            "понимал"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "понимаете",
+          "falsch": [
+            "понимают",
+            "понимаем",
+            "понимал"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "понимают",
+          "falsch": [
+            "понимаю",
+            "понимаем",
+            "понимал"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "слышу",
+          "falsch": [
+            "слышим",
+            "слышите",
+            "слышал"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "слышишь",
+          "falsch": [
+            "слышат",
+            "слышит",
+            "слышал"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "слышит",
+          "falsch": [
+            "слышите",
+            "слышу",
+            "слышал"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "слышим",
+          "falsch": [
+            "слышит",
+            "слышат",
+            "слышал"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "слышите",
+          "falsch": [
+            "слышу",
+            "слышат",
+            "слышал"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "слышат",
+          "falsch": [
+            "слышишь",
+            "слышите",
+            "слышал"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "люблю",
+          "falsch": [
+            "любишь",
+            "любите",
+            "любил"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "любишь",
+          "falsch": [
+            "люблю",
+            "любим",
+            "любил"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "любит",
+          "falsch": [
+            "люблю",
+            "любят",
+            "любил"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "любим",
+          "falsch": [
+            "люблю",
+            "любишь",
+            "любил"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "любите",
+          "falsch": [
+            "любим",
+            "любит",
+            "любил"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "любят",
+          "falsch": [
+            "любишь",
+            "любит",
+            "любил"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "учусь",
+          "falsch": [
+            "учитесь",
+            "учимся",
+            "учился"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "учишься",
+          "falsch": [
+            "учимся",
+            "учатся",
+            "учился"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "учится",
+          "falsch": [
+            "учитесь",
+            "учимся",
+            "учился"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "учимся",
+          "falsch": [
+            "учишься",
+            "учатся",
+            "учился"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "учитесь",
+          "falsch": [
+            "учусь",
+            "учатся",
+            "учился"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "учатся",
+          "falsch": [
+            "учимся",
+            "учится",
+            "учился"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "помогаю",
+          "falsch": [
+            "помогаешь",
+            "помогаем",
+            "помогал"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "помогаешь",
+          "falsch": [
+            "помогаем",
+            "помогаю",
+            "помогал"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "помогает",
+          "falsch": [
+            "помогаю",
+            "помогаем",
+            "помогал"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "помогаем",
+          "falsch": [
+            "помогаю",
+            "помогаете",
+            "помогал"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "помогаете",
+          "falsch": [
+            "помогаю",
+            "помогаешь",
+            "помогал"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "помогают",
+          "falsch": [
+            "помогаю",
+            "помогаете",
+            "помогал"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "покупаю",
+          "falsch": [
+            "покупает",
+            "покупаешь",
+            "покупал"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "покупаешь",
+          "falsch": [
+            "покупает",
+            "покупаете",
+            "покупал"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "покупает",
+          "falsch": [
+            "покупаешь",
+            "покупаете",
+            "покупал"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "покупаем",
+          "falsch": [
+            "покупает",
+            "покупаешь",
+            "покупал"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "покупаете",
+          "falsch": [
+            "покупают",
+            "покупаем",
+            "покупал"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "покупают",
+          "falsch": [
+            "покупаем",
+            "покупаешь",
+            "покупал"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "думаю",
+          "falsch": [
+            "думают",
+            "думаешь",
+            "думал"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "думаешь",
+          "falsch": [
+            "думает",
+            "думаю",
+            "думал"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "думает",
+          "falsch": [
+            "думаешь",
+            "думают",
+            "думал"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "думаем",
+          "falsch": [
+            "думают",
+            "думаю",
+            "думал"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "думаете",
+          "falsch": [
+            "думаем",
+            "думает",
+            "думал"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "думают",
+          "falsch": [
+            "думает",
+            "думаешь",
+            "думал"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "сплю",
+          "falsch": [
+            "спите",
+            "спим",
+            "спал"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "спишь",
+          "falsch": [
+            "сплю",
+            "спим",
+            "спал"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "спит",
+          "falsch": [
+            "спите",
+            "спишь",
+            "спал"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "спим",
+          "falsch": [
+            "спят",
+            "спит",
+            "спал"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "спите",
+          "falsch": [
+            "спишь",
+            "сплю",
+            "спал"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "спят",
+          "falsch": [
+            "спишь",
+            "спим",
+            "спал"
+          ]
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "бежать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "бегу",
+          "falsch": [
+            "бежит",
+            "бежим",
+            "бежал"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "бежишь",
+          "falsch": [
+            "бегу",
+            "бежите",
+            "бежал"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "бежит",
+          "falsch": [
+            "бегу",
+            "бежишь",
+            "бежал"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "бежим",
+          "falsch": [
+            "бежите",
+            "бежишь",
+            "бежал"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "бежите",
+          "falsch": [
+            "бегут",
+            "бежишь",
+            "бежал"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "бегут",
+          "falsch": [
+            "бежим",
+            "бежите",
+            "бежал"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "звоню",
+          "falsch": [
+            "звоните",
+            "звонит",
+            "звонил"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "звонишь",
+          "falsch": [
+            "звоним",
+            "звоните",
+            "звонил"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "звонит",
+          "falsch": [
+            "звоните",
+            "звоню",
+            "звонил"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "звоним",
+          "falsch": [
+            "звонят",
+            "звоните",
+            "звонил"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "звоните",
+          "falsch": [
+            "звоним",
+            "звоню",
+            "звонил"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "звонят",
+          "falsch": [
+            "звонит",
+            "звоним",
+            "звонил"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "отвечаю",
+          "falsch": [
+            "отвечает",
+            "отвечаешь",
+            "отвечал"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "отвечаешь",
+          "falsch": [
+            "отвечают",
+            "отвечаем",
+            "отвечал"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "отвечает",
+          "falsch": [
+            "отвечаете",
+            "отвечаешь",
+            "отвечал"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "отвечаем",
+          "falsch": [
+            "отвечают",
+            "отвечаете",
+            "отвечал"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "отвечаете",
+          "falsch": [
+            "отвечаешь",
+            "отвечаю",
+            "отвечал"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "отвечают",
+          "falsch": [
+            "отвечаешь",
+            "отвечаете",
+            "отвечал"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "я",
+          "zeit": "Präsens",
+          "richtig": "спрашиваю",
+          "falsch": [
+            "спрашиваешь",
+            "спрашивает",
+            "спрашивал"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "ты",
+          "zeit": "Präsens",
+          "richtig": "спрашиваешь",
+          "falsch": [
+            "спрашиваете",
+            "спрашиваю",
+            "спрашивал"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "он/она",
+          "zeit": "Präsens",
+          "richtig": "спрашивает",
+          "falsch": [
+            "спрашивают",
+            "спрашиваете",
+            "спрашивал"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "мы",
+          "zeit": "Präsens",
+          "richtig": "спрашиваем",
+          "falsch": [
+            "спрашивают",
+            "спрашиваю",
+            "спрашивал"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "вы",
+          "zeit": "Präsens",
+          "richtig": "спрашиваете",
+          "falsch": [
+            "спрашиваем",
+            "спрашивает",
+            "спрашивал"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "они",
+          "zeit": "Präsens",
+          "richtig": "спрашивают",
+          "falsch": [
+            "спрашиваешь",
+            "спрашиваете",
+            "спрашивал"
+          ]
+        }
+      ]
+    },
+    "vergangenheit": {
+      "n1": [
+        {
+          "infinitiv": "быть",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "был",
+          "falsch": [
+            "были",
+            "была",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "была",
+          "falsch": [
+            "были",
+            "были",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "был/была",
+          "falsch": [
+            "были",
+            "были",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "были",
+          "falsch": [
+            "был/была",
+            "была",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "были",
+          "falsch": [
+            "была",
+            "был",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "были",
+          "falsch": [
+            "была",
+            "был/была",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "шёл",
+          "falsch": [
+            "шёл/шла",
+            "шли",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "шла",
+          "falsch": [
+            "шёл/шла",
+            "шли",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "шёл/шла",
+          "falsch": [
+            "шёл",
+            "шли",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "шли",
+          "falsch": [
+            "шёл",
+            "шла",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "шли",
+          "falsch": [
+            "шёл/шла",
+            "шёл",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "шли",
+          "falsch": [
+            "шла",
+            "шёл",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "ел",
+          "falsch": [
+            "ела",
+            "ели",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "ела",
+          "falsch": [
+            "ел",
+            "ели",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "ел/ла",
+          "falsch": [
+            "ели",
+            "ели",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "ели",
+          "falsch": [
+            "ела",
+            "ел",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "ели",
+          "falsch": [
+            "ела",
+            "ел/ла",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "ели",
+          "falsch": [
+            "ела",
+            "ел/ла",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "пил",
+          "falsch": [
+            "пила",
+            "пили",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "пила",
+          "falsch": [
+            "пил",
+            "пили",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "пил/пила",
+          "falsch": [
+            "пили",
+            "пила",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "пили",
+          "falsch": [
+            "пил/пила",
+            "пил",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "пили",
+          "falsch": [
+            "пил",
+            "пил/пила",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "пили",
+          "falsch": [
+            "пил/пила",
+            "пила",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "жил",
+          "falsch": [
+            "жила",
+            "жили",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "жила",
+          "falsch": [
+            "жил",
+            "жил/жила",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "жил/жила",
+          "falsch": [
+            "жили",
+            "жили",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "жили",
+          "falsch": [
+            "жил/жила",
+            "жил",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "жили",
+          "falsch": [
+            "жил",
+            "жил/жила",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "жили",
+          "falsch": [
+            "жил/жила",
+            "жила",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "читал",
+          "falsch": [
+            "читали",
+            "читали",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "читала",
+          "falsch": [
+            "читали",
+            "читал/ла",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "читал/ла",
+          "falsch": [
+            "читали",
+            "читали",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "читали",
+          "falsch": [
+            "читал",
+            "читала",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "читали",
+          "falsch": [
+            "читал",
+            "читала",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "читали",
+          "falsch": [
+            "читал",
+            "читала",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "говорил",
+          "falsch": [
+            "говорили",
+            "говорила",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "говорила",
+          "falsch": [
+            "говорили",
+            "говорили",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "говорил/ла",
+          "falsch": [
+            "говорил",
+            "говорили",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "говорили",
+          "falsch": [
+            "говорил/ла",
+            "говорил",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "говорили",
+          "falsch": [
+            "говорила",
+            "говорил",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "говорили",
+          "falsch": [
+            "говорил",
+            "говорила",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "делал",
+          "falsch": [
+            "делал/ла",
+            "делала",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "делала",
+          "falsch": [
+            "делали",
+            "делал",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "делал/ла",
+          "falsch": [
+            "делали",
+            "делали",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "делали",
+          "falsch": [
+            "делала",
+            "делал/ла",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "делали",
+          "falsch": [
+            "делал/ла",
+            "делал",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "делали",
+          "falsch": [
+            "делала",
+            "делал/ла",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "знал",
+          "falsch": [
+            "знали",
+            "знала",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "знала",
+          "falsch": [
+            "знали",
+            "знали",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "знал/ла",
+          "falsch": [
+            "знали",
+            "знали",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "знали",
+          "falsch": [
+            "знал",
+            "знала",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "знали",
+          "falsch": [
+            "знала",
+            "знал/ла",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "знали",
+          "falsch": [
+            "знал",
+            "знала",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "работал",
+          "falsch": [
+            "работали",
+            "работали",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "работала",
+          "falsch": [
+            "работал/ла",
+            "работали",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "работал/ла",
+          "falsch": [
+            "работал",
+            "работали",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "работали",
+          "falsch": [
+            "работала",
+            "работал",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "работали",
+          "falsch": [
+            "работал/ла",
+            "работала",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "работали",
+          "falsch": [
+            "работала",
+            "работал",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "играл",
+          "falsch": [
+            "играли",
+            "играли",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "играла",
+          "falsch": [
+            "играл",
+            "играли",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "играл/ла",
+          "falsch": [
+            "играли",
+            "играли",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "играли",
+          "falsch": [
+            "играл/ла",
+            "играл",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "играли",
+          "falsch": [
+            "играл/ла",
+            "играла",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "играли",
+          "falsch": [
+            "играл/ла",
+            "играла",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "видел",
+          "falsch": [
+            "видели",
+            "видела",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "видела",
+          "falsch": [
+            "видел",
+            "видели",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "видел/ла",
+          "falsch": [
+            "видел",
+            "видели",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "видели",
+          "falsch": [
+            "видел/ла",
+            "видела",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "видели",
+          "falsch": [
+            "видел/ла",
+            "видел",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "видели",
+          "falsch": [
+            "видел",
+            "видел/ла",
+            "вижу"
+          ]
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "ехать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "ехал",
+          "falsch": [
+            "ехали",
+            "ехала",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "ехала",
+          "falsch": [
+            "ехали",
+            "ехал",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "ехал/ла",
+          "falsch": [
+            "ехал",
+            "ехали",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "ехали",
+          "falsch": [
+            "ехал/ла",
+            "ехал",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "ехали",
+          "falsch": [
+            "ехала",
+            "ехал",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "ехали",
+          "falsch": [
+            "ехала",
+            "ехал/ла",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "хотел",
+          "falsch": [
+            "хотели",
+            "хотели",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "хотела",
+          "falsch": [
+            "хотел",
+            "хотели",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "хотел/ла",
+          "falsch": [
+            "хотели",
+            "хотела",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "хотели",
+          "falsch": [
+            "хотел",
+            "хотел/ла",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "хотели",
+          "falsch": [
+            "хотел",
+            "хотела",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "хотели",
+          "falsch": [
+            "хотел",
+            "хотела",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "мог",
+          "falsch": [
+            "могли",
+            "могла",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "могла",
+          "falsch": [
+            "могли",
+            "могли",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "мог/могла",
+          "falsch": [
+            "могла",
+            "могли",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "могли",
+          "falsch": [
+            "могла",
+            "мог/могла",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "могли",
+          "falsch": [
+            "могла",
+            "мог",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "могли",
+          "falsch": [
+            "могла",
+            "мог/могла",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "писал",
+          "falsch": [
+            "писали",
+            "писали",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "писала",
+          "falsch": [
+            "писали",
+            "писали",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "писал/ла",
+          "falsch": [
+            "писали",
+            "писала",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "писали",
+          "falsch": [
+            "писал",
+            "писал/ла",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "писали",
+          "falsch": [
+            "писал",
+            "писала",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "писали",
+          "falsch": [
+            "писала",
+            "писал/ла",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "понимал",
+          "falsch": [
+            "понимала",
+            "понимали",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "понимала",
+          "falsch": [
+            "понимали",
+            "понимал",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "понимал/ла",
+          "falsch": [
+            "понимали",
+            "понимал",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "понимали",
+          "falsch": [
+            "понимал",
+            "понимала",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "понимали",
+          "falsch": [
+            "понимал/ла",
+            "понимал",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "понимали",
+          "falsch": [
+            "понимала",
+            "понимал",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "слышал",
+          "falsch": [
+            "слышал/ла",
+            "слышали",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "слышала",
+          "falsch": [
+            "слышал",
+            "слышали",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "слышал/ла",
+          "falsch": [
+            "слышали",
+            "слышала",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "слышали",
+          "falsch": [
+            "слышала",
+            "слышал",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "слышали",
+          "falsch": [
+            "слышал/ла",
+            "слышала",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "слышали",
+          "falsch": [
+            "слышал/ла",
+            "слышала",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "любил",
+          "falsch": [
+            "любил/ла",
+            "любили",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "любила",
+          "falsch": [
+            "любил",
+            "любили",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "любил/ла",
+          "falsch": [
+            "любили",
+            "любили",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "любили",
+          "falsch": [
+            "любила",
+            "любил",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "любили",
+          "falsch": [
+            "любил",
+            "любил/ла",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "любили",
+          "falsch": [
+            "любил",
+            "любила",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "учился",
+          "falsch": [
+            "учились",
+            "учились",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "училась",
+          "falsch": [
+            "учился",
+            "учились",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "учился/училась",
+          "falsch": [
+            "училась",
+            "учились",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "учились",
+          "falsch": [
+            "учился",
+            "училась",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "учились",
+          "falsch": [
+            "учился",
+            "учился/училась",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "учились",
+          "falsch": [
+            "учился",
+            "учился/училась",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "помогал",
+          "falsch": [
+            "помогали",
+            "помогали",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "помогала",
+          "falsch": [
+            "помогали",
+            "помогал",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "помогал/ла",
+          "falsch": [
+            "помогали",
+            "помогали",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "помогали",
+          "falsch": [
+            "помогал/ла",
+            "помогал",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "помогали",
+          "falsch": [
+            "помогал",
+            "помогала",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "помогали",
+          "falsch": [
+            "помогал",
+            "помогал/ла",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "покупал",
+          "falsch": [
+            "покупала",
+            "покупали",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "покупала",
+          "falsch": [
+            "покупали",
+            "покупал",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "покупал/ла",
+          "falsch": [
+            "покупали",
+            "покупали",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "покупали",
+          "falsch": [
+            "покупал",
+            "покупал/ла",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "покупали",
+          "falsch": [
+            "покупала",
+            "покупал",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "покупали",
+          "falsch": [
+            "покупал/ла",
+            "покупала",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "думал",
+          "falsch": [
+            "думала",
+            "думал/ла",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "думала",
+          "falsch": [
+            "думал",
+            "думали",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "думал/ла",
+          "falsch": [
+            "думали",
+            "думали",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "думали",
+          "falsch": [
+            "думал/ла",
+            "думала",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "думали",
+          "falsch": [
+            "думал",
+            "думала",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "думали",
+          "falsch": [
+            "думал/ла",
+            "думал",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "спал",
+          "falsch": [
+            "спали",
+            "спал/спала",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "спала",
+          "falsch": [
+            "спали",
+            "спал/спала",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "спал/спала",
+          "falsch": [
+            "спал",
+            "спала",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "спали",
+          "falsch": [
+            "спала",
+            "спал/спала",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "спали",
+          "falsch": [
+            "спала",
+            "спал/спала",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "спали",
+          "falsch": [
+            "спал",
+            "спал/спала",
+            "сплю"
+          ]
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "бежать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "бежал",
+          "falsch": [
+            "бежали",
+            "бежал/бежала",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "бежала",
+          "falsch": [
+            "бежали",
+            "бежали",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "бежал/бежала",
+          "falsch": [
+            "бежали",
+            "бежал",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "бежали",
+          "falsch": [
+            "бежал",
+            "бежал/бежала",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "бежали",
+          "falsch": [
+            "бежал/бежала",
+            "бежала",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "бежали",
+          "falsch": [
+            "бежал/бежала",
+            "бежал",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "звонил",
+          "falsch": [
+            "звонили",
+            "звонила",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "звонила",
+          "falsch": [
+            "звонил",
+            "звонили",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "звонил/ла",
+          "falsch": [
+            "звонили",
+            "звонил",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "звонили",
+          "falsch": [
+            "звонил/ла",
+            "звонил",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "звонили",
+          "falsch": [
+            "звонил/ла",
+            "звонила",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "звонили",
+          "falsch": [
+            "звонил/ла",
+            "звонил",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "отвечал",
+          "falsch": [
+            "отвечал/ла",
+            "отвечали",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "отвечала",
+          "falsch": [
+            "отвечали",
+            "отвечали",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "отвечал/ла",
+          "falsch": [
+            "отвечали",
+            "отвечала",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "отвечали",
+          "falsch": [
+            "отвечал/ла",
+            "отвечал",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "отвечали",
+          "falsch": [
+            "отвечал/ла",
+            "отвечал",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "отвечали",
+          "falsch": [
+            "отвечал/ла",
+            "отвечал",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "я",
+          "zeit": "Vergangenheit",
+          "richtig": "спрашивал",
+          "falsch": [
+            "спрашивали",
+            "спрашивали",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "ты",
+          "zeit": "Vergangenheit",
+          "richtig": "спрашивала",
+          "falsch": [
+            "спрашивали",
+            "спрашивали",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "он/она",
+          "zeit": "Vergangenheit",
+          "richtig": "спрашивал/ла",
+          "falsch": [
+            "спрашивали",
+            "спрашивала",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "мы",
+          "zeit": "Vergangenheit",
+          "richtig": "спрашивали",
+          "falsch": [
+            "спрашивал",
+            "спрашивал/ла",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "вы",
+          "zeit": "Vergangenheit",
+          "richtig": "спрашивали",
+          "falsch": [
+            "спрашивала",
+            "спрашивал/ла",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "они",
+          "zeit": "Vergangenheit",
+          "richtig": "спрашивали",
+          "falsch": [
+            "спрашивал",
+            "спрашивала",
+            "спрашиваю"
+          ]
+        }
+      ]
+    },
+    "futur": {
+      "n1": [
+        {
+          "infinitiv": "быть",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду",
+          "falsch": [
+            "будете",
+            "будешь",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь",
+          "falsch": [
+            "будете",
+            "будем",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет",
+          "falsch": [
+            "буду",
+            "будешь",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем",
+          "falsch": [
+            "будете",
+            "будет",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете",
+          "falsch": [
+            "будут",
+            "будет",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "быть",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут",
+          "falsch": [
+            "будет",
+            "будете",
+            "есть"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду идти",
+          "falsch": [
+            "будет идти",
+            "будут идти",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь идти",
+          "falsch": [
+            "будем идти",
+            "буду идти",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет идти",
+          "falsch": [
+            "будете идти",
+            "будем идти",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем идти",
+          "falsch": [
+            "будешь идти",
+            "буду идти",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете идти",
+          "falsch": [
+            "будем идти",
+            "будет идти",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "идти",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут идти",
+          "falsch": [
+            "будет идти",
+            "будете идти",
+            "иду"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду есть",
+          "falsch": [
+            "будешь есть",
+            "будем есть",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь есть",
+          "falsch": [
+            "буду есть",
+            "будут есть",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет есть",
+          "falsch": [
+            "будем есть",
+            "будут есть",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем есть",
+          "falsch": [
+            "буду есть",
+            "будет есть",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете есть",
+          "falsch": [
+            "будут есть",
+            "будет есть",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "есть",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут есть",
+          "falsch": [
+            "будете есть",
+            "будет есть",
+            "ем"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду пить",
+          "falsch": [
+            "будете пить",
+            "будешь пить",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь пить",
+          "falsch": [
+            "будет пить",
+            "будете пить",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет пить",
+          "falsch": [
+            "будешь пить",
+            "будут пить",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем пить",
+          "falsch": [
+            "будешь пить",
+            "буду пить",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете пить",
+          "falsch": [
+            "будем пить",
+            "буду пить",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "пить",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут пить",
+          "falsch": [
+            "будет пить",
+            "будешь пить",
+            "пью"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду жить",
+          "falsch": [
+            "будет жить",
+            "будут жить",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь жить",
+          "falsch": [
+            "будем жить",
+            "будете жить",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет жить",
+          "falsch": [
+            "будут жить",
+            "будешь жить",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем жить",
+          "falsch": [
+            "будешь жить",
+            "буду жить",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете жить",
+          "falsch": [
+            "будут жить",
+            "будем жить",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "жить",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут жить",
+          "falsch": [
+            "будешь жить",
+            "будет жить",
+            "живу"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду читать",
+          "falsch": [
+            "будем читать",
+            "будете читать",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь читать",
+          "falsch": [
+            "буду читать",
+            "будем читать",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет читать",
+          "falsch": [
+            "будете читать",
+            "буду читать",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем читать",
+          "falsch": [
+            "будете читать",
+            "будешь читать",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете читать",
+          "falsch": [
+            "буду читать",
+            "будет читать",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "читать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут читать",
+          "falsch": [
+            "будешь читать",
+            "будет читать",
+            "читаю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду говорить",
+          "falsch": [
+            "будут говорить",
+            "будешь говорить",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь говорить",
+          "falsch": [
+            "буду говорить",
+            "будет говорить",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет говорить",
+          "falsch": [
+            "будешь говорить",
+            "будем говорить",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем говорить",
+          "falsch": [
+            "будут говорить",
+            "будешь говорить",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете говорить",
+          "falsch": [
+            "будет говорить",
+            "будешь говорить",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "говорить",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут говорить",
+          "falsch": [
+            "буду говорить",
+            "будете говорить",
+            "говорю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду делать",
+          "falsch": [
+            "будешь делать",
+            "будете делать",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь делать",
+          "falsch": [
+            "будет делать",
+            "будем делать",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет делать",
+          "falsch": [
+            "будем делать",
+            "будешь делать",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем делать",
+          "falsch": [
+            "будет делать",
+            "будут делать",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете делать",
+          "falsch": [
+            "будет делать",
+            "будут делать",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "делать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут делать",
+          "falsch": [
+            "будешь делать",
+            "будет делать",
+            "делаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду знать",
+          "falsch": [
+            "будет знать",
+            "будешь знать",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь знать",
+          "falsch": [
+            "буду знать",
+            "будете знать",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет знать",
+          "falsch": [
+            "будешь знать",
+            "будете знать",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем знать",
+          "falsch": [
+            "буду знать",
+            "будет знать",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете знать",
+          "falsch": [
+            "будешь знать",
+            "будет знать",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "знать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут знать",
+          "falsch": [
+            "будет знать",
+            "будете знать",
+            "знаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду работать",
+          "falsch": [
+            "будешь работать",
+            "будут работать",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь работать",
+          "falsch": [
+            "будут работать",
+            "будем работать",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет работать",
+          "falsch": [
+            "буду работать",
+            "будем работать",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем работать",
+          "falsch": [
+            "будет работать",
+            "будут работать",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете работать",
+          "falsch": [
+            "будешь работать",
+            "буду работать",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "работать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут работать",
+          "falsch": [
+            "будете работать",
+            "буду работать",
+            "работаю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду играть",
+          "falsch": [
+            "будем играть",
+            "будешь играть",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь играть",
+          "falsch": [
+            "будете играть",
+            "буду играть",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет играть",
+          "falsch": [
+            "будут играть",
+            "будете играть",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем играть",
+          "falsch": [
+            "будешь играть",
+            "будут играть",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете играть",
+          "falsch": [
+            "будем играть",
+            "будут играть",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "играть",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут играть",
+          "falsch": [
+            "будет играть",
+            "буду играть",
+            "играю"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду видеть",
+          "falsch": [
+            "будет видеть",
+            "будем видеть",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь видеть",
+          "falsch": [
+            "будут видеть",
+            "будет видеть",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет видеть",
+          "falsch": [
+            "будем видеть",
+            "будете видеть",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем видеть",
+          "falsch": [
+            "буду видеть",
+            "будешь видеть",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете видеть",
+          "falsch": [
+            "будут видеть",
+            "будет видеть",
+            "вижу"
+          ]
+        },
+        {
+          "infinitiv": "видеть",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут видеть",
+          "falsch": [
+            "будем видеть",
+            "будет видеть",
+            "вижу"
+          ]
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "ехать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду ехать",
+          "falsch": [
+            "будет ехать",
+            "будете ехать",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь ехать",
+          "falsch": [
+            "буду ехать",
+            "будете ехать",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет ехать",
+          "falsch": [
+            "будут ехать",
+            "буду ехать",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем ехать",
+          "falsch": [
+            "будет ехать",
+            "будете ехать",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете ехать",
+          "falsch": [
+            "будешь ехать",
+            "будут ехать",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "ехать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут ехать",
+          "falsch": [
+            "буду ехать",
+            "будете ехать",
+            "еду"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду хотеть",
+          "falsch": [
+            "будет хотеть",
+            "будете хотеть",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь хотеть",
+          "falsch": [
+            "будет хотеть",
+            "буду хотеть",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет хотеть",
+          "falsch": [
+            "будем хотеть",
+            "буду хотеть",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем хотеть",
+          "falsch": [
+            "будешь хотеть",
+            "будут хотеть",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете хотеть",
+          "falsch": [
+            "будешь хотеть",
+            "будем хотеть",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "хотеть",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут хотеть",
+          "falsch": [
+            "будем хотеть",
+            "будет хотеть",
+            "хочу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду мочь",
+          "falsch": [
+            "будете мочь",
+            "будут мочь",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь мочь",
+          "falsch": [
+            "будете мочь",
+            "будем мочь",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет мочь",
+          "falsch": [
+            "будешь мочь",
+            "буду мочь",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем мочь",
+          "falsch": [
+            "будет мочь",
+            "будете мочь",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете мочь",
+          "falsch": [
+            "буду мочь",
+            "будет мочь",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "мочь",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут мочь",
+          "falsch": [
+            "будет мочь",
+            "будешь мочь",
+            "могу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду писать",
+          "falsch": [
+            "будешь писать",
+            "будете писать",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь писать",
+          "falsch": [
+            "буду писать",
+            "будем писать",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет писать",
+          "falsch": [
+            "будете писать",
+            "будешь писать",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем писать",
+          "falsch": [
+            "будет писать",
+            "будешь писать",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете писать",
+          "falsch": [
+            "будет писать",
+            "будешь писать",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "писать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут писать",
+          "falsch": [
+            "будет писать",
+            "будете писать",
+            "пишу"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду понимать",
+          "falsch": [
+            "будем понимать",
+            "будут понимать",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь понимать",
+          "falsch": [
+            "будет понимать",
+            "будете понимать",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет понимать",
+          "falsch": [
+            "будете понимать",
+            "будем понимать",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем понимать",
+          "falsch": [
+            "будут понимать",
+            "буду понимать",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете понимать",
+          "falsch": [
+            "буду понимать",
+            "будешь понимать",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "понимать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут понимать",
+          "falsch": [
+            "будем понимать",
+            "будете понимать",
+            "понимаю"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду слышать",
+          "falsch": [
+            "будут слышать",
+            "будете слышать",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь слышать",
+          "falsch": [
+            "буду слышать",
+            "будут слышать",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет слышать",
+          "falsch": [
+            "будете слышать",
+            "буду слышать",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем слышать",
+          "falsch": [
+            "будет слышать",
+            "будешь слышать",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете слышать",
+          "falsch": [
+            "будешь слышать",
+            "будет слышать",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "слышать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут слышать",
+          "falsch": [
+            "будешь слышать",
+            "будете слышать",
+            "слышу"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду любить",
+          "falsch": [
+            "будем любить",
+            "будете любить",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь любить",
+          "falsch": [
+            "будем любить",
+            "будете любить",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет любить",
+          "falsch": [
+            "будут любить",
+            "будем любить",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем любить",
+          "falsch": [
+            "будешь любить",
+            "будут любить",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете любить",
+          "falsch": [
+            "будешь любить",
+            "будем любить",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "любить",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут любить",
+          "falsch": [
+            "буду любить",
+            "будете любить",
+            "люблю"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду учиться",
+          "falsch": [
+            "будем учиться",
+            "будешь учиться",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь учиться",
+          "falsch": [
+            "будут учиться",
+            "будет учиться",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет учиться",
+          "falsch": [
+            "будут учиться",
+            "будете учиться",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем учиться",
+          "falsch": [
+            "будешь учиться",
+            "будете учиться",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете учиться",
+          "falsch": [
+            "буду учиться",
+            "будет учиться",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "учиться",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут учиться",
+          "falsch": [
+            "будет учиться",
+            "будем учиться",
+            "учусь"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду помогать",
+          "falsch": [
+            "будут помогать",
+            "будете помогать",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь помогать",
+          "falsch": [
+            "будут помогать",
+            "будем помогать",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет помогать",
+          "falsch": [
+            "будем помогать",
+            "буду помогать",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем помогать",
+          "falsch": [
+            "будет помогать",
+            "будут помогать",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете помогать",
+          "falsch": [
+            "будет помогать",
+            "будут помогать",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "помогать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут помогать",
+          "falsch": [
+            "будет помогать",
+            "будешь помогать",
+            "помогаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду покупать",
+          "falsch": [
+            "будете покупать",
+            "будешь покупать",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь покупать",
+          "falsch": [
+            "буду покупать",
+            "будут покупать",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет покупать",
+          "falsch": [
+            "будем покупать",
+            "будете покупать",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем покупать",
+          "falsch": [
+            "будете покупать",
+            "будет покупать",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете покупать",
+          "falsch": [
+            "будем покупать",
+            "будут покупать",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "покупать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут покупать",
+          "falsch": [
+            "будете покупать",
+            "будет покупать",
+            "покупаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду думать",
+          "falsch": [
+            "будет думать",
+            "будешь думать",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь думать",
+          "falsch": [
+            "будете думать",
+            "буду думать",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет думать",
+          "falsch": [
+            "будем думать",
+            "будете думать",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем думать",
+          "falsch": [
+            "будет думать",
+            "будут думать",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете думать",
+          "falsch": [
+            "буду думать",
+            "будешь думать",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "думать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут думать",
+          "falsch": [
+            "будет думать",
+            "будешь думать",
+            "думаю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду спать",
+          "falsch": [
+            "будете спать",
+            "будет спать",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь спать",
+          "falsch": [
+            "будем спать",
+            "будут спать",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет спать",
+          "falsch": [
+            "будем спать",
+            "будешь спать",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем спать",
+          "falsch": [
+            "будете спать",
+            "будет спать",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете спать",
+          "falsch": [
+            "будут спать",
+            "будем спать",
+            "сплю"
+          ]
+        },
+        {
+          "infinitiv": "спать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут спать",
+          "falsch": [
+            "будем спать",
+            "будешь спать",
+            "сплю"
+          ]
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "бежать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду бежать",
+          "falsch": [
+            "будешь бежать",
+            "будут бежать",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь бежать",
+          "falsch": [
+            "буду бежать",
+            "будет бежать",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет бежать",
+          "falsch": [
+            "будешь бежать",
+            "будете бежать",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем бежать",
+          "falsch": [
+            "будет бежать",
+            "будешь бежать",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете бежать",
+          "falsch": [
+            "будем бежать",
+            "будешь бежать",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "бежать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут бежать",
+          "falsch": [
+            "будете бежать",
+            "будем бежать",
+            "бегу"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду звонить",
+          "falsch": [
+            "будешь звонить",
+            "будете звонить",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь звонить",
+          "falsch": [
+            "будем звонить",
+            "будете звонить",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет звонить",
+          "falsch": [
+            "будем звонить",
+            "будешь звонить",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем звонить",
+          "falsch": [
+            "буду звонить",
+            "будет звонить",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете звонить",
+          "falsch": [
+            "будем звонить",
+            "будет звонить",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "звонить",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут звонить",
+          "falsch": [
+            "будем звонить",
+            "будешь звонить",
+            "звоню"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду отвечать",
+          "falsch": [
+            "будет отвечать",
+            "будете отвечать",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь отвечать",
+          "falsch": [
+            "будете отвечать",
+            "буду отвечать",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет отвечать",
+          "falsch": [
+            "буду отвечать",
+            "будете отвечать",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем отвечать",
+          "falsch": [
+            "будешь отвечать",
+            "будете отвечать",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете отвечать",
+          "falsch": [
+            "будешь отвечать",
+            "будет отвечать",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "отвечать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут отвечать",
+          "falsch": [
+            "будет отвечать",
+            "будем отвечать",
+            "отвечаю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "я",
+          "zeit": "Futur",
+          "richtig": "буду спрашивать",
+          "falsch": [
+            "будете спрашивать",
+            "будет спрашивать",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "ты",
+          "zeit": "Futur",
+          "richtig": "будешь спрашивать",
+          "falsch": [
+            "будете спрашивать",
+            "будут спрашивать",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "он/она",
+          "zeit": "Futur",
+          "richtig": "будет спрашивать",
+          "falsch": [
+            "будешь спрашивать",
+            "будем спрашивать",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "мы",
+          "zeit": "Futur",
+          "richtig": "будем спрашивать",
+          "falsch": [
+            "буду спрашивать",
+            "будешь спрашивать",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "вы",
+          "zeit": "Futur",
+          "richtig": "будете спрашивать",
+          "falsch": [
+            "будем спрашивать",
+            "будешь спрашивать",
+            "спрашиваю"
+          ]
+        },
+        {
+          "infinitiv": "спрашивать",
+          "pronomen": "они",
+          "zeit": "Futur",
+          "richtig": "будут спрашивать",
+          "falsch": [
+            "будете спрашивать",
+            "будешь спрашивать",
+            "спрашиваю"
+          ]
+        }
+      ]
+    }
+  }
+}
