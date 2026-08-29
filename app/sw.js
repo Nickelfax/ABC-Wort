@@ -8,8 +8,8 @@ const CORE_FILES = [
   '../icon-192.png',
   '../icon-512.png',
   '../dict.js',
-  './data/diktat_de.json',
-  './data/grammatik_de.json',
+  './data/diktat.json',
+  './data/grammatik.json',
 ];
 
 self.addEventListener('install', e => {
