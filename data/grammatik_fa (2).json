@@ -1,0 +1,7455 @@
+{
+  "version": "3.0",
+  "genus": {
+    "n1": [
+      {
+        "wort": "سگ",
+        "genus": "م",
+        "emoji": "🐕",
+        "deutsch": "Hund"
+      },
+      {
+        "wort": "گربه",
+        "genus": "ف",
+        "emoji": "🐱",
+        "deutsch": "Katze"
+      },
+      {
+        "wort": "ماه",
+        "genus": "م",
+        "emoji": "🌙",
+        "deutsch": "Mond"
+      },
+      {
+        "wort": "بینی",
+        "genus": "ف",
+        "emoji": "👃",
+        "deutsch": "Nase"
+      },
+      {
+        "wort": "دست",
+        "genus": "م",
+        "emoji": "✋",
+        "deutsch": "Hand"
+      },
+      {
+        "wort": "آفتاب",
+        "genus": "م",
+        "emoji": "☀️",
+        "deutsch": "Sonne"
+      },
+      {
+        "wort": "کتاب",
+        "genus": "م",
+        "emoji": "📖",
+        "deutsch": "Buch"
+      },
+      {
+        "wort": "توپ",
+        "genus": "م",
+        "emoji": "⚽",
+        "deutsch": "Ball"
+      },
+      {
+        "wort": "تخم",
+        "genus": "م",
+        "emoji": "🥚",
+        "deutsch": "Ei"
+      },
+      {
+        "wort": "ماهی",
+        "genus": "ف",
+        "emoji": "🐟",
+        "deutsch": "Fisch"
+      },
+      {
+        "wort": "قطار",
+        "genus": "م",
+        "emoji": "🚂",
+        "deutsch": "Zug"
+      }
+    ],
+    "n2": [
+      {
+        "wort": "گل",
+        "genus": "م",
+        "emoji": "🌸",
+        "deutsch": "Blume"
+      },
+      {
+        "wort": "پل",
+        "genus": "م",
+        "emoji": "🌉",
+        "deutsch": "Brücke"
+      },
+      {
+        "wort": "جاکت",
+        "genus": "م",
+        "emoji": "🧥",
+        "deutsch": "Jacke"
+      },
+      {
+        "wort": "چمدان",
+        "genus": "م",
+        "emoji": "🧳",
+        "deutsch": "Koffer"
+      },
+      {
+        "wort": "باغ",
+        "genus": "م",
+        "emoji": "🌿",
+        "deutsch": "Garten"
+      },
+      {
+        "wort": "جاده",
+        "genus": "ف",
+        "emoji": "🛣️",
+        "deutsch": "Straße"
+      },
+      {
+        "wort": "پله",
+        "genus": "ف",
+        "emoji": "🪜",
+        "deutsch": "Treppe"
+      },
+      {
+        "wort": "اتاق",
+        "genus": "م",
+        "emoji": "🛋️",
+        "deutsch": "Zimmer"
+      },
+      {
+        "wort": "مکتب",
+        "genus": "م",
+        "emoji": "🏫",
+        "deutsch": "Schule"
+      }
+    ],
+    "n3": [
+      {
+        "wort": "دوستی",
+        "genus": "ف",
+        "emoji": "💛",
+        "deutsch": "Freundschaft"
+      },
+      {
+        "wort": "مسئولیت",
+        "genus": "ف",
+        "emoji": "🎖️",
+        "deutsch": "Verantwortung"
+      },
+      {
+        "wort": "امکان",
+        "genus": "م",
+        "emoji": "🔓",
+        "deutsch": "Möglichkeit"
+      },
+      {
+        "wort": "تصمیم",
+        "genus": "م",
+        "emoji": "🎯",
+        "deutsch": "Entscheidung"
+      },
+      {
+        "wort": "تعجب",
+        "genus": "م",
+        "emoji": "🎁",
+        "deutsch": "Überraschung"
+      },
+      {
+        "wort": "عدالت",
+        "genus": "ف",
+        "emoji": "⚖️",
+        "deutsch": "Gerechtigkeit"
+      },
+      {
+        "wort": "اشتیاق",
+        "genus": "م",
+        "emoji": "🌟",
+        "deutsch": "Begeisterung"
+      }
+    ]
+  },
+  "kasus": {
+    "n1": [
+      {
+        "wort": "سگ",
+        "satz": "من ___ می‌بینم۔",
+        "antworten": [
+          "سگ را",
+          "سگ",
+          "از سگ",
+          "به سگ"
+        ],
+        "richtig": "سگ را",
+        "hinweis": "Akkusativ را"
+      },
+      {
+        "wort": "مکتب",
+        "satz": "من به ___ می‌روم۔",
+        "antworten": [
+          "مکتب",
+          "مکتب را",
+          "از مکتب",
+          "در مکتب"
+        ],
+        "richtig": "مکتب",
+        "hinweis": "Richtung به"
+      },
+      {
+        "wort": "کتاب",
+        "satz": "این ___ است۔",
+        "antworten": [
+          "کتاب",
+          "کتاب را",
+          "از کتاب",
+          "به کتاب"
+        ],
+        "richtig": "کتاب",
+        "hinweis": "Nominativ"
+      },
+      {
+        "wort": "دست",
+        "satz": "___ شستن لازم است۔",
+        "antworten": [
+          "دست",
+          "دست را",
+          "از دست",
+          "به دست"
+        ],
+        "richtig": "دست",
+        "hinweis": "Nominativ"
+      },
+      {
+        "wort": "گربه",
+        "satz": "___ شیر می‌خورد۔",
+        "antworten": [
+          "گربه",
+          "گربه را",
+          "از گربه",
+          "به گربه"
+        ],
+        "richtig": "گربه",
+        "hinweis": "Nominativ"
+      }
+    ],
+    "n2": [
+      {
+        "wort": "باغ",
+        "satz": "من در ___ بازی می‌کنم۔",
+        "antworten": [
+          "باغ",
+          "باغ را",
+          "از باغ",
+          "به باغ"
+        ],
+        "richtig": "باغ",
+        "hinweis": "Lokativ در"
+      },
+      {
+        "wort": "جاده",
+        "satz": "او در ___ راه می‌رود۔",
+        "antworten": [
+          "جاده",
+          "جاده را",
+          "از جاده",
+          "به جاده"
+        ],
+        "richtig": "جاده",
+        "hinweis": "Lokativ در"
+      },
+      {
+        "wort": "مکتب",
+        "satz": "من در ___ درس می‌خوانم۔",
+        "antworten": [
+          "مکتب",
+          "مکتب را",
+          "از مکتب",
+          "به مکتب"
+        ],
+        "richtig": "مکتب",
+        "hinweis": "Lokativ در"
+      }
+    ],
+    "n3": [
+      {
+        "wort": "دوستی",
+        "satz": "___ خیلی مهم است۔",
+        "antworten": [
+          "دوستی",
+          "دوستی را",
+          "از دوستی",
+          "به دوستی"
+        ],
+        "richtig": "دوستی",
+        "hinweis": "Nominativ"
+      },
+      {
+        "wort": "تصمیم",
+        "satz": "من ___ گرفتم۔",
+        "antworten": [
+          "تصمیم",
+          "تصمیم را",
+          "از تصمیم",
+          "به تصمیم"
+        ],
+        "richtig": "تصمیم",
+        "hinweis": "Nominativ"
+      }
+    ]
+  },
+  "tempus": {
+    "haal": {
+      "n1": [
+        {
+          "infinitiv": "بودن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "هستم",
+          "falsch": [
+            "است",
+            "هستیم",
+            "بودم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "هستی",
+          "falsch": [
+            "هستند",
+            "است",
+            "بودم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "است",
+          "falsch": [
+            "هستیم",
+            "هستید",
+            "بودم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "هستیم",
+          "falsch": [
+            "هستید",
+            "هستم",
+            "بودم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "هستید",
+          "falsch": [
+            "است",
+            "هستند",
+            "بودم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "هستند",
+          "falsch": [
+            "هستید",
+            "است",
+            "بودم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌روم",
+          "falsch": [
+            "می‌رویم",
+            "می‌رود",
+            "رفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌روی",
+          "falsch": [
+            "می‌رویم",
+            "می‌روید",
+            "رفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌رود",
+          "falsch": [
+            "می‌روند",
+            "می‌رویم",
+            "رفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌رویم",
+          "falsch": [
+            "می‌رود",
+            "می‌روم",
+            "رفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌روید",
+          "falsch": [
+            "می‌روند",
+            "می‌رویم",
+            "رفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌روند",
+          "falsch": [
+            "می‌رویم",
+            "می‌رود",
+            "رفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌آیم",
+          "falsch": [
+            "می‌آید",
+            "می‌آیی",
+            "آمدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌آیی",
+          "falsch": [
+            "می‌آیید",
+            "می‌آید",
+            "آمدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌آید",
+          "falsch": [
+            "می‌آیم",
+            "می‌آییم",
+            "آمدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌آییم",
+          "falsch": [
+            "می‌آیید",
+            "می‌آیم",
+            "آمدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌آیید",
+          "falsch": [
+            "می‌آیند",
+            "می‌آییم",
+            "آمدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌آیند",
+          "falsch": [
+            "می‌آید",
+            "می‌آیید",
+            "آمدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌گویم",
+          "falsch": [
+            "می‌گوییم",
+            "می‌گویی",
+            "گفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌گویی",
+          "falsch": [
+            "می‌گویید",
+            "می‌گویم",
+            "گفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌گوید",
+          "falsch": [
+            "می‌گویید",
+            "می‌گویم",
+            "گفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌گوییم",
+          "falsch": [
+            "می‌گویید",
+            "می‌گویم",
+            "گفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌گویید",
+          "falsch": [
+            "می‌گویند",
+            "می‌گوییم",
+            "گفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌گویند",
+          "falsch": [
+            "می‌گویید",
+            "می‌گوید",
+            "گفتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌بینم",
+          "falsch": [
+            "می‌بینیم",
+            "می‌بیند",
+            "دیدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌بینی",
+          "falsch": [
+            "می‌بینیم",
+            "می‌بینم",
+            "دیدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌بیند",
+          "falsch": [
+            "می‌بینید",
+            "می‌بینم",
+            "دیدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌بینیم",
+          "falsch": [
+            "می‌بینید",
+            "می‌بینی",
+            "دیدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌بینید",
+          "falsch": [
+            "می‌بیند",
+            "می‌بینم",
+            "دیدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌بینند",
+          "falsch": [
+            "می‌بینی",
+            "می‌بینید",
+            "دیدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "دارم",
+          "falsch": [
+            "دارند",
+            "دارد",
+            "داشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "داری",
+          "falsch": [
+            "داریم",
+            "دارید",
+            "داشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "دارد",
+          "falsch": [
+            "دارند",
+            "دارید",
+            "داشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "داریم",
+          "falsch": [
+            "دارید",
+            "دارند",
+            "داشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "دارید",
+          "falsch": [
+            "دارد",
+            "داری",
+            "داشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "دارند",
+          "falsch": [
+            "داری",
+            "دارید",
+            "داشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌دهم",
+          "falsch": [
+            "می‌دهد",
+            "می‌دهی",
+            "دادم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌دهی",
+          "falsch": [
+            "می‌دهند",
+            "می‌دهیم",
+            "دادم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌دهد",
+          "falsch": [
+            "می‌دهند",
+            "می‌دهم",
+            "دادم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌دهیم",
+          "falsch": [
+            "می‌دهند",
+            "می‌دهد",
+            "دادم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌دهید",
+          "falsch": [
+            "می‌دهند",
+            "می‌دهی",
+            "دادم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌دهند",
+          "falsch": [
+            "می‌دهم",
+            "می‌دهید",
+            "دادم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌خواهم",
+          "falsch": [
+            "می‌خواهند",
+            "می‌خواهد",
+            "خواستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌خواهی",
+          "falsch": [
+            "می‌خواهید",
+            "می‌خواهیم",
+            "خواستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌خواهد",
+          "falsch": [
+            "می‌خواهند",
+            "می‌خواهی",
+            "خواستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌خواهیم",
+          "falsch": [
+            "می‌خواهم",
+            "می‌خواهی",
+            "خواستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌خواهید",
+          "falsch": [
+            "می‌خواهند",
+            "می‌خواهم",
+            "خواستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌خواهند",
+          "falsch": [
+            "می‌خواهید",
+            "می‌خواهد",
+            "خواستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌خورم",
+          "falsch": [
+            "می‌خورد",
+            "می‌خوریم",
+            "خوردم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌خوری",
+          "falsch": [
+            "می‌خوریم",
+            "می‌خورید",
+            "خوردم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌خورد",
+          "falsch": [
+            "می‌خوریم",
+            "می‌خورم",
+            "خوردم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌خوریم",
+          "falsch": [
+            "می‌خورند",
+            "می‌خورید",
+            "خوردم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌خورید",
+          "falsch": [
+            "می‌خورم",
+            "می‌خوریم",
+            "خوردم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌خورند",
+          "falsch": [
+            "می‌خوری",
+            "می‌خورید",
+            "خوردم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌خوانم",
+          "falsch": [
+            "می‌خوانیم",
+            "می‌خوانید",
+            "خواندم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌خوانی",
+          "falsch": [
+            "می‌خوانم",
+            "می‌خواند",
+            "خواندم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌خواند",
+          "falsch": [
+            "می‌خوانند",
+            "می‌خوانم",
+            "خواندم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌خوانیم",
+          "falsch": [
+            "می‌خوانی",
+            "می‌خوانند",
+            "خواندم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌خوانید",
+          "falsch": [
+            "می‌خواند",
+            "می‌خوانند",
+            "خواندم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌خوانند",
+          "falsch": [
+            "می‌خوانم",
+            "می‌خواند",
+            "خواندم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌کار کنم",
+          "falsch": [
+            "می‌کار کنی",
+            "می‌کار کنید",
+            "کار کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌کار کنی",
+          "falsch": [
+            "می‌کار کنند",
+            "می‌کار کند",
+            "کار کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌کار کند",
+          "falsch": [
+            "می‌کار کنم",
+            "می‌کار کنند",
+            "کار کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌کار کنیم",
+          "falsch": [
+            "می‌کار کنند",
+            "می‌کار کنی",
+            "کار کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌کار کنید",
+          "falsch": [
+            "می‌کار کنیم",
+            "می‌کار کنند",
+            "کار کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌کار کنند",
+          "falsch": [
+            "می‌کار کنی",
+            "می‌کار کنم",
+            "کار کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌تماشا کنم",
+          "falsch": [
+            "می‌تماشا کنی",
+            "می‌تماشا کنند",
+            "تماشا کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌تماشا کنی",
+          "falsch": [
+            "می‌تماشا کنیم",
+            "می‌تماشا کنم",
+            "تماشا کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌تماشا کند",
+          "falsch": [
+            "می‌تماشا کنیم",
+            "می‌تماشا کنید",
+            "تماشا کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌تماشا کنیم",
+          "falsch": [
+            "می‌تماشا کنی",
+            "می‌تماشا کنم",
+            "تماشا کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌تماشا کنید",
+          "falsch": [
+            "می‌تماشا کنم",
+            "می‌تماشا کند",
+            "تماشا کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌تماشا کنند",
+          "falsch": [
+            "می‌تماشا کنم",
+            "می‌تماشا کند",
+            "تماشا کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌دوست دارم",
+          "falsch": [
+            "می‌دوست داریم",
+            "می‌دوست دارند",
+            "دوست داشتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌دوست داری",
+          "falsch": [
+            "می‌دوست دارید",
+            "می‌دوست دارم",
+            "دوست داشتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌دوست دارد",
+          "falsch": [
+            "می‌دوست دارم",
+            "می‌دوست داریم",
+            "دوست داشتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌دوست داریم",
+          "falsch": [
+            "می‌دوست دارند",
+            "می‌دوست دارید",
+            "دوست داشتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌دوست دارید",
+          "falsch": [
+            "می‌دوست دارد",
+            "می‌دوست داریم",
+            "دوست داشتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌دوست دارند",
+          "falsch": [
+            "می‌دوست دارد",
+            "می‌دوست دارم",
+            "دوست داشتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌خوابم",
+          "falsch": [
+            "می‌خوابد",
+            "می‌خوابیم",
+            "خوابیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌خوابی",
+          "falsch": [
+            "می‌خوابید",
+            "می‌خوابند",
+            "خوابیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌خوابد",
+          "falsch": [
+            "می‌خوابند",
+            "می‌خوابید",
+            "خوابیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌خوابیم",
+          "falsch": [
+            "می‌خوابی",
+            "می‌خوابد",
+            "خوابیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌خوابید",
+          "falsch": [
+            "می‌خوابم",
+            "می‌خوابی",
+            "خوابیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌خوابند",
+          "falsch": [
+            "می‌خوابم",
+            "می‌خوابید",
+            "خوابیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌دوم",
+          "falsch": [
+            "می‌دوید",
+            "می‌دود",
+            "دویدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌دوی",
+          "falsch": [
+            "می‌دوم",
+            "می‌دویم",
+            "دویدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌دود",
+          "falsch": [
+            "می‌دوی",
+            "می‌دوند",
+            "دویدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌دویم",
+          "falsch": [
+            "می‌دوید",
+            "می‌دوند",
+            "دویدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌دوید",
+          "falsch": [
+            "می‌دوم",
+            "می‌دود",
+            "دویدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌دوند",
+          "falsch": [
+            "می‌دویم",
+            "می‌دوی",
+            "دویدم"
+          ],
+          "regelmaessig": true
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "شدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌شوم",
+          "falsch": [
+            "می‌شوند",
+            "می‌شوی",
+            "شدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌شوی",
+          "falsch": [
+            "می‌شود",
+            "می‌شوید",
+            "شدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌شود",
+          "falsch": [
+            "می‌شوند",
+            "می‌شوم",
+            "شدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌شویم",
+          "falsch": [
+            "می‌شوی",
+            "می‌شوید",
+            "شدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌شوید",
+          "falsch": [
+            "می‌شویم",
+            "می‌شوی",
+            "شدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌شوند",
+          "falsch": [
+            "می‌شوید",
+            "می‌شوم",
+            "شدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌توانم",
+          "falsch": [
+            "می‌توانید",
+            "می‌توانند",
+            "توانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌توانی",
+          "falsch": [
+            "می‌تواند",
+            "می‌توانید",
+            "توانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌تواند",
+          "falsch": [
+            "می‌توانید",
+            "می‌توانیم",
+            "توانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌توانیم",
+          "falsch": [
+            "می‌توانید",
+            "می‌تواند",
+            "توانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌توانید",
+          "falsch": [
+            "می‌تواند",
+            "می‌توانم",
+            "توانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌توانند",
+          "falsch": [
+            "می‌تواند",
+            "می‌توانیم",
+            "توانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌دانم",
+          "falsch": [
+            "می‌دانید",
+            "می‌دانیم",
+            "دانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌دانی",
+          "falsch": [
+            "می‌دانید",
+            "می‌دانند",
+            "دانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌داند",
+          "falsch": [
+            "می‌دانیم",
+            "می‌دانند",
+            "دانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌دانیم",
+          "falsch": [
+            "می‌دانید",
+            "می‌دانم",
+            "دانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌دانید",
+          "falsch": [
+            "می‌دانند",
+            "می‌دانیم",
+            "دانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌دانند",
+          "falsch": [
+            "می‌دانیم",
+            "می‌دانید",
+            "دانستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌نویسم",
+          "falsch": [
+            "می‌نویسید",
+            "می‌نویسند",
+            "نوشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌نویسی",
+          "falsch": [
+            "می‌نویسیم",
+            "می‌نویسید",
+            "نوشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌نویسد",
+          "falsch": [
+            "می‌نویسید",
+            "می‌نویسند",
+            "نوشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌نویسیم",
+          "falsch": [
+            "می‌نویسد",
+            "می‌نویسم",
+            "نوشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌نویسید",
+          "falsch": [
+            "می‌نویسد",
+            "می‌نویسی",
+            "نوشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌نویسند",
+          "falsch": [
+            "می‌نویسید",
+            "می‌نویسی",
+            "نوشتم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌خرم",
+          "falsch": [
+            "می‌خری",
+            "می‌خریم",
+            "خریدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌خری",
+          "falsch": [
+            "می‌خرند",
+            "می‌خرد",
+            "خریدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌خرد",
+          "falsch": [
+            "می‌خری",
+            "می‌خرم",
+            "خریدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌خریم",
+          "falsch": [
+            "می‌خرید",
+            "می‌خری",
+            "خریدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌خرید",
+          "falsch": [
+            "می‌خرند",
+            "می‌خرم",
+            "خریدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌خرند",
+          "falsch": [
+            "می‌خرید",
+            "می‌خریم",
+            "خریدم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌کمک کنم",
+          "falsch": [
+            "می‌کمک کنید",
+            "می‌کمک کنی",
+            "کمک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌کمک کنی",
+          "falsch": [
+            "می‌کمک کنند",
+            "می‌کمک کنیم",
+            "کمک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌کمک کند",
+          "falsch": [
+            "می‌کمک کنیم",
+            "می‌کمک کنم",
+            "کمک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌کمک کنیم",
+          "falsch": [
+            "می‌کمک کند",
+            "می‌کمک کنی",
+            "کمک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌کمک کنید",
+          "falsch": [
+            "می‌کمک کنم",
+            "می‌کمک کند",
+            "کمک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌کمک کنند",
+          "falsch": [
+            "می‌کمک کند",
+            "می‌کمک کنید",
+            "کمک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌صحبت کنم",
+          "falsch": [
+            "می‌صحبت کنید",
+            "می‌صحبت کند",
+            "صحبت کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌صحبت کنی",
+          "falsch": [
+            "می‌صحبت کند",
+            "می‌صحبت کنیم",
+            "صحبت کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌صحبت کند",
+          "falsch": [
+            "می‌صحبت کنند",
+            "می‌صحبت کنیم",
+            "صحبت کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌صحبت کنیم",
+          "falsch": [
+            "می‌صحبت کنی",
+            "می‌صحبت کنند",
+            "صحبت کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌صحبت کنید",
+          "falsch": [
+            "می‌صحبت کند",
+            "می‌صحبت کنند",
+            "صحبت کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌صحبت کنند",
+          "falsch": [
+            "می‌صحبت کنید",
+            "می‌صحبت کنی",
+            "صحبت کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌فکر کنم",
+          "falsch": [
+            "می‌فکر کنند",
+            "می‌فکر کنید",
+            "فکر کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌فکر کنی",
+          "falsch": [
+            "می‌فکر کنیم",
+            "می‌فکر کند",
+            "فکر کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌فکر کند",
+          "falsch": [
+            "می‌فکر کنند",
+            "می‌فکر کنی",
+            "فکر کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌فکر کنیم",
+          "falsch": [
+            "می‌فکر کنند",
+            "می‌فکر کنید",
+            "فکر کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌فکر کنید",
+          "falsch": [
+            "می‌فکر کنند",
+            "می‌فکر کند",
+            "فکر کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌فکر کنند",
+          "falsch": [
+            "می‌فکر کنید",
+            "می‌فکر کنم",
+            "فکر کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌زندگی کنم",
+          "falsch": [
+            "می‌زندگی کنید",
+            "می‌زندگی کند",
+            "زندگی کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌زندگی کنی",
+          "falsch": [
+            "می‌زندگی کنیم",
+            "می‌زندگی کنند",
+            "زندگی کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌زندگی کند",
+          "falsch": [
+            "می‌زندگی کنند",
+            "می‌زندگی کنیم",
+            "زندگی کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌زندگی کنیم",
+          "falsch": [
+            "می‌زندگی کنی",
+            "می‌زندگی کنند",
+            "زندگی کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌زندگی کنید",
+          "falsch": [
+            "می‌زندگی کنیم",
+            "می‌زندگی کند",
+            "زندگی کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌زندگی کنند",
+          "falsch": [
+            "می‌زندگی کنید",
+            "می‌زندگی کنی",
+            "زندگی کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌مطالعه کنم",
+          "falsch": [
+            "می‌مطالعه کنید",
+            "می‌مطالعه کند",
+            "مطالعه کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌مطالعه کنی",
+          "falsch": [
+            "می‌مطالعه کند",
+            "می‌مطالعه کنند",
+            "مطالعه کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌مطالعه کند",
+          "falsch": [
+            "می‌مطالعه کنم",
+            "می‌مطالعه کنی",
+            "مطالعه کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌مطالعه کنیم",
+          "falsch": [
+            "می‌مطالعه کنم",
+            "می‌مطالعه کنند",
+            "مطالعه کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌مطالعه کنید",
+          "falsch": [
+            "می‌مطالعه کنی",
+            "می‌مطالعه کنند",
+            "مطالعه کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌مطالعه کنند",
+          "falsch": [
+            "می‌مطالعه کنی",
+            "می‌مطالعه کند",
+            "مطالعه کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌یاد گیرم",
+          "falsch": [
+            "می‌یاد گیریم",
+            "می‌یاد گیرند",
+            "یاد گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌یاد گیری",
+          "falsch": [
+            "می‌یاد گیرید",
+            "می‌یاد گیرد",
+            "یاد گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌یاد گیرد",
+          "falsch": [
+            "می‌یاد گیری",
+            "می‌یاد گیرم",
+            "یاد گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌یاد گیریم",
+          "falsch": [
+            "می‌یاد گیرید",
+            "می‌یاد گیری",
+            "یاد گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌یاد گیرید",
+          "falsch": [
+            "می‌یاد گیرم",
+            "می‌یاد گیرند",
+            "یاد گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌یاد گیرند",
+          "falsch": [
+            "می‌یاد گیری",
+            "می‌یاد گیرم",
+            "یاد گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌یاد دهم",
+          "falsch": [
+            "می‌یاد دهیم",
+            "می‌یاد دهید",
+            "یاد دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌یاد دهی",
+          "falsch": [
+            "می‌یاد دهد",
+            "می‌یاد دهند",
+            "یاد دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌یاد دهد",
+          "falsch": [
+            "می‌یاد دهی",
+            "می‌یاد دهیم",
+            "یاد دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌یاد دهیم",
+          "falsch": [
+            "می‌یاد دهم",
+            "می‌یاد دهی",
+            "یاد دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌یاد دهید",
+          "falsch": [
+            "می‌یاد دهیم",
+            "می‌یاد دهند",
+            "یاد دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌یاد دهند",
+          "falsch": [
+            "می‌یاد دهی",
+            "می‌یاد دهم",
+            "یاد دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌پرسم",
+          "falsch": [
+            "می‌پرسد",
+            "می‌پرسیم",
+            "پرسیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌پرسی",
+          "falsch": [
+            "می‌پرسید",
+            "می‌پرسد",
+            "پرسیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌پرسد",
+          "falsch": [
+            "می‌پرسید",
+            "می‌پرسند",
+            "پرسیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌پرسیم",
+          "falsch": [
+            "می‌پرسم",
+            "می‌پرسی",
+            "پرسیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌پرسید",
+          "falsch": [
+            "می‌پرسد",
+            "می‌پرسیم",
+            "پرسیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌پرسند",
+          "falsch": [
+            "می‌پرسد",
+            "می‌پرسم",
+            "پرسیدم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌جواب دهم",
+          "falsch": [
+            "می‌جواب دهی",
+            "می‌جواب دهد",
+            "جواب دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌جواب دهی",
+          "falsch": [
+            "می‌جواب دهم",
+            "می‌جواب دهید",
+            "جواب دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌جواب دهد",
+          "falsch": [
+            "می‌جواب دهند",
+            "می‌جواب دهم",
+            "جواب دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌جواب دهیم",
+          "falsch": [
+            "می‌جواب دهم",
+            "می‌جواب دهند",
+            "جواب دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌جواب دهید",
+          "falsch": [
+            "می‌جواب دهیم",
+            "می‌جواب دهی",
+            "جواب دادم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌جواب دهند",
+          "falsch": [
+            "می‌جواب دهی",
+            "می‌جواب دهید",
+            "جواب دادم"
+          ],
+          "regelmaessig": true
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌استفاده کنم",
+          "falsch": [
+            "می‌استفاده کنی",
+            "می‌استفاده کند",
+            "استفاده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌استفاده کنی",
+          "falsch": [
+            "می‌استفاده کنیم",
+            "می‌استفاده کنید",
+            "استفاده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌استفاده کند",
+          "falsch": [
+            "می‌استفاده کنید",
+            "می‌استفاده کنی",
+            "استفاده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌استفاده کنیم",
+          "falsch": [
+            "می‌استفاده کنی",
+            "می‌استفاده کنم",
+            "استفاده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌استفاده کنید",
+          "falsch": [
+            "می‌استفاده کنیم",
+            "می‌استفاده کنند",
+            "استفاده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌استفاده کنند",
+          "falsch": [
+            "می‌استفاده کنی",
+            "می‌استفاده کنیم",
+            "استفاده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌تصمیم گیرم",
+          "falsch": [
+            "می‌تصمیم گیرند",
+            "می‌تصمیم گیرد",
+            "تصمیم گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌تصمیم گیری",
+          "falsch": [
+            "می‌تصمیم گیرد",
+            "می‌تصمیم گیرند",
+            "تصمیم گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌تصمیم گیرد",
+          "falsch": [
+            "می‌تصمیم گیریم",
+            "می‌تصمیم گیرند",
+            "تصمیم گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌تصمیم گیریم",
+          "falsch": [
+            "می‌تصمیم گیرید",
+            "می‌تصمیم گیرد",
+            "تصمیم گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌تصمیم گیرید",
+          "falsch": [
+            "می‌تصمیم گیری",
+            "می‌تصمیم گیریم",
+            "تصمیم گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌تصمیم گیرند",
+          "falsch": [
+            "می‌تصمیم گیریم",
+            "می‌تصمیم گیرم",
+            "تصمیم گرفتم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌درک کنم",
+          "falsch": [
+            "می‌درک کنیم",
+            "می‌درک کنند",
+            "درک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌درک کنی",
+          "falsch": [
+            "می‌درک کنم",
+            "می‌درک کنید",
+            "درک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌درک کند",
+          "falsch": [
+            "می‌درک کنند",
+            "می‌درک کنم",
+            "درک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌درک کنیم",
+          "falsch": [
+            "می‌درک کنید",
+            "می‌درک کنی",
+            "درک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌درک کنید",
+          "falsch": [
+            "می‌درک کنیم",
+            "می‌درک کنند",
+            "درک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌درک کنند",
+          "falsch": [
+            "می‌درک کنم",
+            "می‌درک کند",
+            "درک کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "من",
+          "zeit": "حال",
+          "richtig": "می‌مشاهده کنم",
+          "falsch": [
+            "می‌مشاهده کنند",
+            "می‌مشاهده کند",
+            "مشاهده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "تو",
+          "zeit": "حال",
+          "richtig": "می‌مشاهده کنی",
+          "falsch": [
+            "می‌مشاهده کنم",
+            "می‌مشاهده کنند",
+            "مشاهده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "او",
+          "zeit": "حال",
+          "richtig": "می‌مشاهده کند",
+          "falsch": [
+            "می‌مشاهده کنی",
+            "می‌مشاهده کنند",
+            "مشاهده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "ما",
+          "zeit": "حال",
+          "richtig": "می‌مشاهده کنیم",
+          "falsch": [
+            "می‌مشاهده کنند",
+            "می‌مشاهده کند",
+            "مشاهده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "شما",
+          "zeit": "حال",
+          "richtig": "می‌مشاهده کنید",
+          "falsch": [
+            "می‌مشاهده کنند",
+            "می‌مشاهده کنیم",
+            "مشاهده کردم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "حال",
+          "richtig": "می‌مشاهده کنند",
+          "falsch": [
+            "می‌مشاهده کنم",
+            "می‌مشاهده کنی",
+            "مشاهده کردم"
+          ],
+          "regelmaessig": true
+        }
+      ]
+    },
+    "gozashte": {
+      "n1": [
+        {
+          "infinitiv": "بودن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "بودم",
+          "falsch": [
+            "بود",
+            "بودند",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "بودی",
+          "falsch": [
+            "بود",
+            "بودند",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "بود",
+          "falsch": [
+            "بودند",
+            "بودید",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "بودیم",
+          "falsch": [
+            "بودی",
+            "بودم",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "بودید",
+          "falsch": [
+            "بود",
+            "بودی",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "بودند",
+          "falsch": [
+            "بودید",
+            "بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "رفتم",
+          "falsch": [
+            "رفتند",
+            "رفتیم",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "رفتی",
+          "falsch": [
+            "رفتم",
+            "رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "رفت",
+          "falsch": [
+            "رفتی",
+            "رفتم",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "رفتیم",
+          "falsch": [
+            "رفتند",
+            "رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "رفتید",
+          "falsch": [
+            "رفتیم",
+            "رفتم",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "رفتند",
+          "falsch": [
+            "رفتی",
+            "رفتم",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "آمدم",
+          "falsch": [
+            "آمد",
+            "آمدیم",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "آمدی",
+          "falsch": [
+            "آمد",
+            "آمدم",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "آمد",
+          "falsch": [
+            "آمدیم",
+            "آمدند",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "آمدیم",
+          "falsch": [
+            "آمدند",
+            "آمدم",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "آمدید",
+          "falsch": [
+            "آمدند",
+            "آمدم",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "آمدند",
+          "falsch": [
+            "آمدی",
+            "آمدید",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "گفتم",
+          "falsch": [
+            "گفتی",
+            "گفتیم",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "گفتی",
+          "falsch": [
+            "گفت",
+            "گفتند",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "گفت",
+          "falsch": [
+            "گفتید",
+            "گفتم",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "گفتیم",
+          "falsch": [
+            "گفتید",
+            "گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "گفتید",
+          "falsch": [
+            "گفتیم",
+            "گفتند",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "گفتند",
+          "falsch": [
+            "گفتید",
+            "گفتی",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "دیدم",
+          "falsch": [
+            "دیدید",
+            "دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "دیدی",
+          "falsch": [
+            "دید",
+            "دیدیم",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "دید",
+          "falsch": [
+            "دیدم",
+            "دیدند",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "دیدیم",
+          "falsch": [
+            "دید",
+            "دیدید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "دیدید",
+          "falsch": [
+            "دیدیم",
+            "دیدند",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "دیدند",
+          "falsch": [
+            "دیدید",
+            "دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "داشتم",
+          "falsch": [
+            "داشتی",
+            "داشتیم",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "داشتی",
+          "falsch": [
+            "داشتید",
+            "داشتم",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "داشت",
+          "falsch": [
+            "داشتی",
+            "داشتند",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "داشتیم",
+          "falsch": [
+            "داشتی",
+            "داشتم",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "داشتید",
+          "falsch": [
+            "داشتیم",
+            "داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "داشتند",
+          "falsch": [
+            "داشتیم",
+            "داشتی",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "دادم",
+          "falsch": [
+            "دادید",
+            "داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "دادی",
+          "falsch": [
+            "دادم",
+            "دادید",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "داد",
+          "falsch": [
+            "دادی",
+            "دادند",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "دادیم",
+          "falsch": [
+            "دادید",
+            "دادند",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "دادید",
+          "falsch": [
+            "دادی",
+            "داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "دادند",
+          "falsch": [
+            "دادی",
+            "داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "خواستم",
+          "falsch": [
+            "خواست",
+            "خواستیم",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "خواستی",
+          "falsch": [
+            "خواستم",
+            "خواستند",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "خواست",
+          "falsch": [
+            "خواستی",
+            "خواستید",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "خواستیم",
+          "falsch": [
+            "خواست",
+            "خواستید",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "خواستید",
+          "falsch": [
+            "خواستند",
+            "خواستیم",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "خواستند",
+          "falsch": [
+            "خواستم",
+            "خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "خوردم",
+          "falsch": [
+            "خوردیم",
+            "خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "خوردی",
+          "falsch": [
+            "خورد",
+            "خوردیم",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "خورد",
+          "falsch": [
+            "خوردند",
+            "خوردم",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "خوردیم",
+          "falsch": [
+            "خوردید",
+            "خوردم",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "خوردید",
+          "falsch": [
+            "خوردم",
+            "خوردیم",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "خوردند",
+          "falsch": [
+            "خوردی",
+            "خوردیم",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "خواندم",
+          "falsch": [
+            "خواندی",
+            "خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "خواندی",
+          "falsch": [
+            "خواند",
+            "خواندند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "خواند",
+          "falsch": [
+            "خواندیم",
+            "خواندید",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "خواندیم",
+          "falsch": [
+            "خواندی",
+            "خواندند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "خواندید",
+          "falsch": [
+            "خواندیم",
+            "خواندند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "خواندند",
+          "falsch": [
+            "خواندید",
+            "خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "کار کردم",
+          "falsch": [
+            "کار کردند",
+            "کار کردی",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "کار کردی",
+          "falsch": [
+            "کار کرد",
+            "کار کردم",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "کار کرد",
+          "falsch": [
+            "کار کردم",
+            "کار کردید",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "کار کردیم",
+          "falsch": [
+            "کار کرد",
+            "کار کردم",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "کار کردید",
+          "falsch": [
+            "کار کردم",
+            "کار کردیم",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "کار کردند",
+          "falsch": [
+            "کار کردیم",
+            "کار کردی",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "تماشا کردم",
+          "falsch": [
+            "تماشا کردی",
+            "تماشا کردند",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "تماشا کردی",
+          "falsch": [
+            "تماشا کرد",
+            "تماشا کردند",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "تماشا کرد",
+          "falsch": [
+            "تماشا کردی",
+            "تماشا کردم",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "تماشا کردیم",
+          "falsch": [
+            "تماشا کردید",
+            "تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "تماشا کردید",
+          "falsch": [
+            "تماشا کرد",
+            "تماشا کردم",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "تماشا کردند",
+          "falsch": [
+            "تماشا کردید",
+            "تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "دوست داشتم",
+          "falsch": [
+            "دوست داشتید",
+            "دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "دوست داشتی",
+          "falsch": [
+            "دوست داشتید",
+            "دوست داشتیم",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "دوست داشت",
+          "falsch": [
+            "دوست داشتم",
+            "دوست داشتند",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "دوست داشتیم",
+          "falsch": [
+            "دوست داشت",
+            "دوست داشتند",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "دوست داشتید",
+          "falsch": [
+            "دوست داشتم",
+            "دوست داشتی",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "دوست داشتند",
+          "falsch": [
+            "دوست داشت",
+            "دوست داشتم",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "خوابیدم",
+          "falsch": [
+            "خوابیدی",
+            "خوابیدند",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "خوابیدی",
+          "falsch": [
+            "خوابید",
+            "خوابیدند",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "خوابید",
+          "falsch": [
+            "خوابیدم",
+            "خوابیدید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "خوابیدیم",
+          "falsch": [
+            "خوابید",
+            "خوابیدم",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "خوابیدید",
+          "falsch": [
+            "خوابید",
+            "خوابیدی",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "خوابیدند",
+          "falsch": [
+            "خوابید",
+            "خوابیدیم",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "دویدم",
+          "falsch": [
+            "دویدیم",
+            "دویدی",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "دویدی",
+          "falsch": [
+            "دوید",
+            "دویدیم",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "دوید",
+          "falsch": [
+            "دویدند",
+            "دویدیم",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "دویدیم",
+          "falsch": [
+            "دویدند",
+            "دویدید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "دویدید",
+          "falsch": [
+            "دویدیم",
+            "دویدم",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "دویدند",
+          "falsch": [
+            "دویدم",
+            "دویدیم",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "شدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "شدم",
+          "falsch": [
+            "شدیم",
+            "شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "شدی",
+          "falsch": [
+            "شدید",
+            "شدند",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "شد",
+          "falsch": [
+            "شدیم",
+            "شدم",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "شدیم",
+          "falsch": [
+            "شدند",
+            "شدم",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "شدید",
+          "falsch": [
+            "شد",
+            "شدم",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "شدند",
+          "falsch": [
+            "شدم",
+            "شدی",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "توانستم",
+          "falsch": [
+            "توانستی",
+            "توانستند",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "توانستی",
+          "falsch": [
+            "توانستید",
+            "توانستند",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "توانست",
+          "falsch": [
+            "توانستیم",
+            "توانستند",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "توانستیم",
+          "falsch": [
+            "توانستند",
+            "توانستی",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "توانستید",
+          "falsch": [
+            "توانست",
+            "توانستیم",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "توانستند",
+          "falsch": [
+            "توانست",
+            "توانستی",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "دانستم",
+          "falsch": [
+            "دانستیم",
+            "دانستند",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "دانستی",
+          "falsch": [
+            "دانستیم",
+            "دانستم",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "دانست",
+          "falsch": [
+            "دانستیم",
+            "دانستید",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "دانستیم",
+          "falsch": [
+            "دانستید",
+            "دانستند",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "دانستید",
+          "falsch": [
+            "دانستند",
+            "دانستی",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "دانستند",
+          "falsch": [
+            "دانستم",
+            "دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "نوشتم",
+          "falsch": [
+            "نوشت",
+            "نوشتیم",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "نوشتی",
+          "falsch": [
+            "نوشتید",
+            "نوشتم",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "نوشت",
+          "falsch": [
+            "نوشتند",
+            "نوشتید",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "نوشتیم",
+          "falsch": [
+            "نوشتم",
+            "نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "نوشتید",
+          "falsch": [
+            "نوشت",
+            "نوشتی",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "نوشتند",
+          "falsch": [
+            "نوشتی",
+            "نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "خریدم",
+          "falsch": [
+            "خریدند",
+            "خریدی",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "خریدی",
+          "falsch": [
+            "خرید",
+            "خریدند",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "خرید",
+          "falsch": [
+            "خریدیم",
+            "خریدم",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "خریدیم",
+          "falsch": [
+            "خریدند",
+            "خریدید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "خریدید",
+          "falsch": [
+            "خریدیم",
+            "خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "خریدند",
+          "falsch": [
+            "خریدیم",
+            "خریدید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "کمک کردم",
+          "falsch": [
+            "کمک کردند",
+            "کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "کمک کردی",
+          "falsch": [
+            "کمک کرد",
+            "کمک کردم",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "کمک کرد",
+          "falsch": [
+            "کمک کردم",
+            "کمک کردیم",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "کمک کردیم",
+          "falsch": [
+            "کمک کردی",
+            "کمک کردند",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "کمک کردید",
+          "falsch": [
+            "کمک کردم",
+            "کمک کردی",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "کمک کردند",
+          "falsch": [
+            "کمک کرد",
+            "کمک کردی",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "صحبت کردم",
+          "falsch": [
+            "صحبت کردی",
+            "صحبت کردید",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "صحبت کردی",
+          "falsch": [
+            "صحبت کردیم",
+            "صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "صحبت کرد",
+          "falsch": [
+            "صحبت کردند",
+            "صحبت کردیم",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "صحبت کردیم",
+          "falsch": [
+            "صحبت کردند",
+            "صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "صحبت کردید",
+          "falsch": [
+            "صحبت کردند",
+            "صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "صحبت کردند",
+          "falsch": [
+            "صحبت کردید",
+            "صحبت کردم",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "فکر کردم",
+          "falsch": [
+            "فکر کردند",
+            "فکر کردی",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "فکر کردی",
+          "falsch": [
+            "فکر کردند",
+            "فکر کردیم",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "فکر کرد",
+          "falsch": [
+            "فکر کردم",
+            "فکر کردید",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "فکر کردیم",
+          "falsch": [
+            "فکر کردم",
+            "فکر کردید",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "فکر کردید",
+          "falsch": [
+            "فکر کردم",
+            "فکر کردی",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "فکر کردند",
+          "falsch": [
+            "فکر کردی",
+            "فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "زندگی کردم",
+          "falsch": [
+            "زندگی کرد",
+            "زندگی کردیم",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "زندگی کردی",
+          "falsch": [
+            "زندگی کردید",
+            "زندگی کردم",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "زندگی کرد",
+          "falsch": [
+            "زندگی کردند",
+            "زندگی کردیم",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "زندگی کردیم",
+          "falsch": [
+            "زندگی کردی",
+            "زندگی کردید",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "زندگی کردید",
+          "falsch": [
+            "زندگی کرد",
+            "زندگی کردند",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "زندگی کردند",
+          "falsch": [
+            "زندگی کرد",
+            "زندگی کردی",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "مطالعه کردم",
+          "falsch": [
+            "مطالعه کردید",
+            "مطالعه کردند",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "مطالعه کردی",
+          "falsch": [
+            "مطالعه کردم",
+            "مطالعه کردیم",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "مطالعه کرد",
+          "falsch": [
+            "مطالعه کردند",
+            "مطالعه کردم",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "مطالعه کردیم",
+          "falsch": [
+            "مطالعه کردید",
+            "مطالعه کردی",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "مطالعه کردید",
+          "falsch": [
+            "مطالعه کردیم",
+            "مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "مطالعه کردند",
+          "falsch": [
+            "مطالعه کردیم",
+            "مطالعه کردید",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "یاد گرفتم",
+          "falsch": [
+            "یاد گرفتید",
+            "یاد گرفتی",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "یاد گرفتی",
+          "falsch": [
+            "یاد گرفتند",
+            "یاد گرفتم",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "یاد گرفت",
+          "falsch": [
+            "یاد گرفتی",
+            "یاد گرفتیم",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "یاد گرفتیم",
+          "falsch": [
+            "یاد گرفتی",
+            "یاد گرفتند",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "یاد گرفتید",
+          "falsch": [
+            "یاد گرفتی",
+            "یاد گرفتند",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "یاد گرفتند",
+          "falsch": [
+            "یاد گرفتیم",
+            "یاد گرفتی",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "یاد دادم",
+          "falsch": [
+            "یاد دادند",
+            "یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "یاد دادی",
+          "falsch": [
+            "یاد دادم",
+            "یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "یاد داد",
+          "falsch": [
+            "یاد دادید",
+            "یاد دادی",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "یاد دادیم",
+          "falsch": [
+            "یاد دادند",
+            "یاد دادید",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "یاد دادید",
+          "falsch": [
+            "یاد دادیم",
+            "یاد دادی",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "یاد دادند",
+          "falsch": [
+            "یاد دادید",
+            "یاد دادی",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "پرسیدم",
+          "falsch": [
+            "پرسیدیم",
+            "پرسیدید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "پرسیدی",
+          "falsch": [
+            "پرسیدند",
+            "پرسیدیم",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "پرسید",
+          "falsch": [
+            "پرسیدم",
+            "پرسیدیم",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "پرسیدیم",
+          "falsch": [
+            "پرسیدید",
+            "پرسیدند",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "پرسیدید",
+          "falsch": [
+            "پرسیدند",
+            "پرسیدم",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "پرسیدند",
+          "falsch": [
+            "پرسیدی",
+            "پرسیدیم",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "جواب دادم",
+          "falsch": [
+            "جواب دادند",
+            "جواب دادی",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "جواب دادی",
+          "falsch": [
+            "جواب دادید",
+            "جواب دادیم",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "جواب داد",
+          "falsch": [
+            "جواب دادند",
+            "جواب دادی",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "جواب دادیم",
+          "falsch": [
+            "جواب دادی",
+            "جواب دادید",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "جواب دادید",
+          "falsch": [
+            "جواب دادند",
+            "جواب دادی",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "جواب دادند",
+          "falsch": [
+            "جواب دادی",
+            "جواب دادیم",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "استفاده کردم",
+          "falsch": [
+            "استفاده کرد",
+            "استفاده کردی",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "استفاده کردی",
+          "falsch": [
+            "استفاده کرد",
+            "استفاده کردید",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "استفاده کرد",
+          "falsch": [
+            "استفاده کردی",
+            "استفاده کردید",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "استفاده کردیم",
+          "falsch": [
+            "استفاده کردید",
+            "استفاده کردی",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "استفاده کردید",
+          "falsch": [
+            "استفاده کردم",
+            "استفاده کردیم",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "استفاده کردند",
+          "falsch": [
+            "استفاده کردم",
+            "استفاده کردیم",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "تصمیم گرفتم",
+          "falsch": [
+            "تصمیم گرفتند",
+            "تصمیم گرفتید",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "تصمیم گرفتی",
+          "falsch": [
+            "تصمیم گرفتیم",
+            "تصمیم گرفتم",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "تصمیم گرفت",
+          "falsch": [
+            "تصمیم گرفتند",
+            "تصمیم گرفتیم",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "تصمیم گرفتیم",
+          "falsch": [
+            "تصمیم گرفتید",
+            "تصمیم گرفتند",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "تصمیم گرفتید",
+          "falsch": [
+            "تصمیم گرفتی",
+            "تصمیم گرفتیم",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "تصمیم گرفتند",
+          "falsch": [
+            "تصمیم گرفتید",
+            "تصمیم گرفتی",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "درک کردم",
+          "falsch": [
+            "درک کرد",
+            "درک کردی",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "درک کردی",
+          "falsch": [
+            "درک کردید",
+            "درک کردم",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "درک کرد",
+          "falsch": [
+            "درک کردی",
+            "درک کردیم",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "درک کردیم",
+          "falsch": [
+            "درک کردند",
+            "درک کردید",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "درک کردید",
+          "falsch": [
+            "درک کرد",
+            "درک کردی",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "درک کردند",
+          "falsch": [
+            "درک کردیم",
+            "درک کردی",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "من",
+          "zeit": "گذشته",
+          "richtig": "مشاهده کردم",
+          "falsch": [
+            "مشاهده کرد",
+            "مشاهده کردید",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "تو",
+          "zeit": "گذشته",
+          "richtig": "مشاهده کردی",
+          "falsch": [
+            "مشاهده کرد",
+            "مشاهده کردیم",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "او",
+          "zeit": "گذشته",
+          "richtig": "مشاهده کرد",
+          "falsch": [
+            "مشاهده کردی",
+            "مشاهده کردیم",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "ما",
+          "zeit": "گذشته",
+          "richtig": "مشاهده کردیم",
+          "falsch": [
+            "مشاهده کردم",
+            "مشاهده کردند",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "شما",
+          "zeit": "گذشته",
+          "richtig": "مشاهده کردید",
+          "falsch": [
+            "مشاهده کردیم",
+            "مشاهده کردند",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "گذشته",
+          "richtig": "مشاهده کردند",
+          "falsch": [
+            "مشاهده کردیم",
+            "مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        }
+      ]
+    },
+    "ayande": {
+      "n1": [
+        {
+          "infinitiv": "بودن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم بود",
+          "falsch": [
+            "خواهند بود",
+            "خواهیم بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی بود",
+          "falsch": [
+            "خواهند بود",
+            "خواهد بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد بود",
+          "falsch": [
+            "خواهیم بود",
+            "خواهی بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم بود",
+          "falsch": [
+            "خواهید بود",
+            "خواهی بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید بود",
+          "falsch": [
+            "خواهیم بود",
+            "خواهد بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "بودن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند بود",
+          "falsch": [
+            "خواهم بود",
+            "خواهد بود",
+            "هستم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم رفت",
+          "falsch": [
+            "خواهی رفت",
+            "خواهند رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی رفت",
+          "falsch": [
+            "خواهند رفت",
+            "خواهید رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد رفت",
+          "falsch": [
+            "خواهیم رفت",
+            "خواهند رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم رفت",
+          "falsch": [
+            "خواهی رفت",
+            "خواهم رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید رفت",
+          "falsch": [
+            "خواهی رفت",
+            "خواهد رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "رفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند رفت",
+          "falsch": [
+            "خواهد رفت",
+            "خواهیم رفت",
+            "می‌روم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم آمد",
+          "falsch": [
+            "خواهیم آمد",
+            "خواهد آمد",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی آمد",
+          "falsch": [
+            "خواهند آمد",
+            "خواهید آمد",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد آمد",
+          "falsch": [
+            "خواهم آمد",
+            "خواهیم آمد",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم آمد",
+          "falsch": [
+            "خواهید آمد",
+            "خواهم آمد",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید آمد",
+          "falsch": [
+            "خواهیم آمد",
+            "خواهد آمد",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "آمدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند آمد",
+          "falsch": [
+            "خواهم آمد",
+            "خواهید آمد",
+            "می‌آیم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم گفت",
+          "falsch": [
+            "خواهی گفت",
+            "خواهیم گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی گفت",
+          "falsch": [
+            "خواهم گفت",
+            "خواهد گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد گفت",
+          "falsch": [
+            "خواهم گفت",
+            "خواهی گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم گفت",
+          "falsch": [
+            "خواهید گفت",
+            "خواهی گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید گفت",
+          "falsch": [
+            "خواهم گفت",
+            "خواهیم گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "گفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند گفت",
+          "falsch": [
+            "خواهی گفت",
+            "خواهیم گفت",
+            "می‌گویم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم دید",
+          "falsch": [
+            "خواهند دید",
+            "خواهد دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی دید",
+          "falsch": [
+            "خواهم دید",
+            "خواهیم دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد دید",
+          "falsch": [
+            "خواهیم دید",
+            "خواهی دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم دید",
+          "falsch": [
+            "خواهید دید",
+            "خواهی دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید دید",
+          "falsch": [
+            "خواهیم دید",
+            "خواهند دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند دید",
+          "falsch": [
+            "خواهم دید",
+            "خواهی دید",
+            "می‌بینم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم داشت",
+          "falsch": [
+            "خواهید داشت",
+            "خواهیم داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی داشت",
+          "falsch": [
+            "خواهید داشت",
+            "خواهم داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد داشت",
+          "falsch": [
+            "خواهید داشت",
+            "خواهی داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم داشت",
+          "falsch": [
+            "خواهید داشت",
+            "خواهند داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید داشت",
+          "falsch": [
+            "خواهم داشت",
+            "خواهد داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "داشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند داشت",
+          "falsch": [
+            "خواهم داشت",
+            "خواهد داشت",
+            "دارم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم داد",
+          "falsch": [
+            "خواهی داد",
+            "خواهید داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی داد",
+          "falsch": [
+            "خواهید داد",
+            "خواهم داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد داد",
+          "falsch": [
+            "خواهند داد",
+            "خواهم داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم داد",
+          "falsch": [
+            "خواهید داد",
+            "خواهی داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید داد",
+          "falsch": [
+            "خواهی داد",
+            "خواهم داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند داد",
+          "falsch": [
+            "خواهد داد",
+            "خواهم داد",
+            "می‌دهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم خواست",
+          "falsch": [
+            "خواهد خواست",
+            "خواهند خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی خواست",
+          "falsch": [
+            "خواهم خواست",
+            "خواهید خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد خواست",
+          "falsch": [
+            "خواهید خواست",
+            "خواهم خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم خواست",
+          "falsch": [
+            "خواهد خواست",
+            "خواهند خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید خواست",
+          "falsch": [
+            "خواهیم خواست",
+            "خواهد خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواستن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند خواست",
+          "falsch": [
+            "خواهم خواست",
+            "خواهید خواست",
+            "می‌خواهم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم خورد",
+          "falsch": [
+            "خواهید خورد",
+            "خواهیم خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی خورد",
+          "falsch": [
+            "خواهید خورد",
+            "خواهد خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد خورد",
+          "falsch": [
+            "خواهی خورد",
+            "خواهیم خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم خورد",
+          "falsch": [
+            "خواهی خورد",
+            "خواهد خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید خورد",
+          "falsch": [
+            "خواهند خورد",
+            "خواهیم خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خوردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند خورد",
+          "falsch": [
+            "خواهید خورد",
+            "خواهد خورد",
+            "می‌خورم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم خواند",
+          "falsch": [
+            "خواهی خواند",
+            "خواهیم خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی خواند",
+          "falsch": [
+            "خواهیم خواند",
+            "خواهند خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد خواند",
+          "falsch": [
+            "خواهند خواند",
+            "خواهیم خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم خواند",
+          "falsch": [
+            "خواهد خواند",
+            "خواهی خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید خواند",
+          "falsch": [
+            "خواهم خواند",
+            "خواهیم خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خواندن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند خواند",
+          "falsch": [
+            "خواهم خواند",
+            "خواهد خواند",
+            "می‌خوانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم کار کرد",
+          "falsch": [
+            "خواهید کار کرد",
+            "خواهند کار کرد",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی کار کرد",
+          "falsch": [
+            "خواهد کار کرد",
+            "خواهند کار کرد",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد کار کرد",
+          "falsch": [
+            "خواهید کار کرد",
+            "خواهم کار کرد",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم کار کرد",
+          "falsch": [
+            "خواهی کار کرد",
+            "خواهند کار کرد",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید کار کرد",
+          "falsch": [
+            "خواهم کار کرد",
+            "خواهیم کار کرد",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کار کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند کار کرد",
+          "falsch": [
+            "خواهم کار کرد",
+            "خواهد کار کرد",
+            "می‌کار کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم تماشا کرد",
+          "falsch": [
+            "خواهید تماشا کرد",
+            "خواهد تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی تماشا کرد",
+          "falsch": [
+            "خواهند تماشا کرد",
+            "خواهم تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد تماشا کرد",
+          "falsch": [
+            "خواهم تماشا کرد",
+            "خواهند تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم تماشا کرد",
+          "falsch": [
+            "خواهد تماشا کرد",
+            "خواهند تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید تماشا کرد",
+          "falsch": [
+            "خواهیم تماشا کرد",
+            "خواهی تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تماشا کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند تماشا کرد",
+          "falsch": [
+            "خواهید تماشا کرد",
+            "خواهم تماشا کرد",
+            "می‌تماشا کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم دوست داشت",
+          "falsch": [
+            "خواهید دوست داشت",
+            "خواهد دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی دوست داشت",
+          "falsch": [
+            "خواهم دوست داشت",
+            "خواهند دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد دوست داشت",
+          "falsch": [
+            "خواهیم دوست داشت",
+            "خواهی دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم دوست داشت",
+          "falsch": [
+            "خواهد دوست داشت",
+            "خواهید دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید دوست داشت",
+          "falsch": [
+            "خواهند دوست داشت",
+            "خواهی دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دوست داشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند دوست داشت",
+          "falsch": [
+            "خواهد دوست داشت",
+            "خواهی دوست داشت",
+            "می‌دوست دارم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم خوابید",
+          "falsch": [
+            "خواهیم خوابید",
+            "خواهد خوابید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی خوابید",
+          "falsch": [
+            "خواهد خوابید",
+            "خواهم خوابید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد خوابید",
+          "falsch": [
+            "خواهم خوابید",
+            "خواهیم خوابید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم خوابید",
+          "falsch": [
+            "خواهند خوابید",
+            "خواهد خوابید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید خوابید",
+          "falsch": [
+            "خواهد خوابید",
+            "خواهم خوابید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "خوابیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند خوابید",
+          "falsch": [
+            "خواهد خوابید",
+            "خواهی خوابید",
+            "می‌خوابم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم دوید",
+          "falsch": [
+            "خواهد دوید",
+            "خواهی دوید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی دوید",
+          "falsch": [
+            "خواهم دوید",
+            "خواهند دوید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد دوید",
+          "falsch": [
+            "خواهند دوید",
+            "خواهم دوید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم دوید",
+          "falsch": [
+            "خواهند دوید",
+            "خواهید دوید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید دوید",
+          "falsch": [
+            "خواهد دوید",
+            "خواهیم دوید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "دویدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند دوید",
+          "falsch": [
+            "خواهد دوید",
+            "خواهم دوید",
+            "می‌دوم"
+          ],
+          "regelmaessig": true
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "شدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم شد",
+          "falsch": [
+            "خواهید شد",
+            "خواهد شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی شد",
+          "falsch": [
+            "خواهم شد",
+            "خواهید شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد شد",
+          "falsch": [
+            "خواهیم شد",
+            "خواهم شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم شد",
+          "falsch": [
+            "خواهی شد",
+            "خواهد شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید شد",
+          "falsch": [
+            "خواهیم شد",
+            "خواهند شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "شدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند شد",
+          "falsch": [
+            "خواهیم شد",
+            "خواهی شد",
+            "می‌شوم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم توانست",
+          "falsch": [
+            "خواهد توانست",
+            "خواهیم توانست",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی توانست",
+          "falsch": [
+            "خواهیم توانست",
+            "خواهم توانست",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد توانست",
+          "falsch": [
+            "خواهیم توانست",
+            "خواهید توانست",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم توانست",
+          "falsch": [
+            "خواهند توانست",
+            "خواهید توانست",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید توانست",
+          "falsch": [
+            "خواهی توانست",
+            "خواهم توانست",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "توانستن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند توانست",
+          "falsch": [
+            "خواهیم توانست",
+            "خواهد توانست",
+            "می‌توانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم دانست",
+          "falsch": [
+            "خواهید دانست",
+            "خواهی دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی دانست",
+          "falsch": [
+            "خواهند دانست",
+            "خواهم دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد دانست",
+          "falsch": [
+            "خواهند دانست",
+            "خواهم دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم دانست",
+          "falsch": [
+            "خواهی دانست",
+            "خواهد دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید دانست",
+          "falsch": [
+            "خواهی دانست",
+            "خواهم دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "دانستن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند دانست",
+          "falsch": [
+            "خواهی دانست",
+            "خواهیم دانست",
+            "می‌دانم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم نوشت",
+          "falsch": [
+            "خواهند نوشت",
+            "خواهی نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی نوشت",
+          "falsch": [
+            "خواهیم نوشت",
+            "خواهم نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد نوشت",
+          "falsch": [
+            "خواهم نوشت",
+            "خواهند نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم نوشت",
+          "falsch": [
+            "خواهید نوشت",
+            "خواهم نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید نوشت",
+          "falsch": [
+            "خواهم نوشت",
+            "خواهیم نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "نوشتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند نوشت",
+          "falsch": [
+            "خواهی نوشت",
+            "خواهم نوشت",
+            "می‌نویسم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم خرید",
+          "falsch": [
+            "خواهیم خرید",
+            "خواهید خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی خرید",
+          "falsch": [
+            "خواهند خرید",
+            "خواهم خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد خرید",
+          "falsch": [
+            "خواهی خرید",
+            "خواهم خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم خرید",
+          "falsch": [
+            "خواهند خرید",
+            "خواهد خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید خرید",
+          "falsch": [
+            "خواهی خرید",
+            "خواهم خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "خریدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند خرید",
+          "falsch": [
+            "خواهیم خرید",
+            "خواهد خرید",
+            "می‌خرم"
+          ],
+          "regelmaessig": false
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم کمک کرد",
+          "falsch": [
+            "خواهند کمک کرد",
+            "خواهیم کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی کمک کرد",
+          "falsch": [
+            "خواهم کمک کرد",
+            "خواهد کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد کمک کرد",
+          "falsch": [
+            "خواهید کمک کرد",
+            "خواهیم کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم کمک کرد",
+          "falsch": [
+            "خواهید کمک کرد",
+            "خواهند کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید کمک کرد",
+          "falsch": [
+            "خواهم کمک کرد",
+            "خواهد کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "کمک کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند کمک کرد",
+          "falsch": [
+            "خواهد کمک کرد",
+            "خواهی کمک کرد",
+            "می‌کمک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم صحبت کرد",
+          "falsch": [
+            "خواهند صحبت کرد",
+            "خواهیم صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی صحبت کرد",
+          "falsch": [
+            "خواهند صحبت کرد",
+            "خواهد صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد صحبت کرد",
+          "falsch": [
+            "خواهید صحبت کرد",
+            "خواهند صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم صحبت کرد",
+          "falsch": [
+            "خواهید صحبت کرد",
+            "خواهد صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید صحبت کرد",
+          "falsch": [
+            "خواهی صحبت کرد",
+            "خواهیم صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "صحبت کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند صحبت کرد",
+          "falsch": [
+            "خواهید صحبت کرد",
+            "خواهم صحبت کرد",
+            "می‌صحبت کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم فکر کرد",
+          "falsch": [
+            "خواهید فکر کرد",
+            "خواهند فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی فکر کرد",
+          "falsch": [
+            "خواهم فکر کرد",
+            "خواهید فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد فکر کرد",
+          "falsch": [
+            "خواهند فکر کرد",
+            "خواهی فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم فکر کرد",
+          "falsch": [
+            "خواهی فکر کرد",
+            "خواهد فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید فکر کرد",
+          "falsch": [
+            "خواهند فکر کرد",
+            "خواهم فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "فکر کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند فکر کرد",
+          "falsch": [
+            "خواهم فکر کرد",
+            "خواهی فکر کرد",
+            "می‌فکر کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم زندگی کرد",
+          "falsch": [
+            "خواهیم زندگی کرد",
+            "خواهند زندگی کرد",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی زندگی کرد",
+          "falsch": [
+            "خواهید زندگی کرد",
+            "خواهد زندگی کرد",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد زندگی کرد",
+          "falsch": [
+            "خواهند زندگی کرد",
+            "خواهیم زندگی کرد",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم زندگی کرد",
+          "falsch": [
+            "خواهم زندگی کرد",
+            "خواهی زندگی کرد",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید زندگی کرد",
+          "falsch": [
+            "خواهی زندگی کرد",
+            "خواهیم زندگی کرد",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "زندگی کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند زندگی کرد",
+          "falsch": [
+            "خواهد زندگی کرد",
+            "خواهیم زندگی کرد",
+            "می‌زندگی کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم مطالعه کرد",
+          "falsch": [
+            "خواهید مطالعه کرد",
+            "خواهد مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی مطالعه کرد",
+          "falsch": [
+            "خواهد مطالعه کرد",
+            "خواهید مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد مطالعه کرد",
+          "falsch": [
+            "خواهی مطالعه کرد",
+            "خواهم مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم مطالعه کرد",
+          "falsch": [
+            "خواهید مطالعه کرد",
+            "خواهم مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید مطالعه کرد",
+          "falsch": [
+            "خواهی مطالعه کرد",
+            "خواهند مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مطالعه کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند مطالعه کرد",
+          "falsch": [
+            "خواهیم مطالعه کرد",
+            "خواهی مطالعه کرد",
+            "می‌مطالعه کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم یاد گرفت",
+          "falsch": [
+            "خواهید یاد گرفت",
+            "خواهیم یاد گرفت",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی یاد گرفت",
+          "falsch": [
+            "خواهیم یاد گرفت",
+            "خواهم یاد گرفت",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد یاد گرفت",
+          "falsch": [
+            "خواهی یاد گرفت",
+            "خواهیم یاد گرفت",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم یاد گرفت",
+          "falsch": [
+            "خواهد یاد گرفت",
+            "خواهم یاد گرفت",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید یاد گرفت",
+          "falsch": [
+            "خواهند یاد گرفت",
+            "خواهیم یاد گرفت",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد گرفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند یاد گرفت",
+          "falsch": [
+            "خواهی یاد گرفت",
+            "خواهید یاد گرفت",
+            "می‌یاد گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم یاد داد",
+          "falsch": [
+            "خواهیم یاد داد",
+            "خواهد یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی یاد داد",
+          "falsch": [
+            "خواهید یاد داد",
+            "خواهد یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد یاد داد",
+          "falsch": [
+            "خواهند یاد داد",
+            "خواهید یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم یاد داد",
+          "falsch": [
+            "خواهی یاد داد",
+            "خواهید یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید یاد داد",
+          "falsch": [
+            "خواهی یاد داد",
+            "خواهم یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "یاد دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند یاد داد",
+          "falsch": [
+            "خواهید یاد داد",
+            "خواهم یاد داد",
+            "می‌یاد دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم پرسید",
+          "falsch": [
+            "خواهی پرسید",
+            "خواهیم پرسید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی پرسید",
+          "falsch": [
+            "خواهد پرسید",
+            "خواهم پرسید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد پرسید",
+          "falsch": [
+            "خواهیم پرسید",
+            "خواهند پرسید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم پرسید",
+          "falsch": [
+            "خواهند پرسید",
+            "خواهی پرسید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید پرسید",
+          "falsch": [
+            "خواهی پرسید",
+            "خواهند پرسید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "پرسیدن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند پرسید",
+          "falsch": [
+            "خواهید پرسید",
+            "خواهیم پرسید",
+            "می‌پرسم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم جواب داد",
+          "falsch": [
+            "خواهید جواب داد",
+            "خواهی جواب داد",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی جواب داد",
+          "falsch": [
+            "خواهم جواب داد",
+            "خواهند جواب داد",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد جواب داد",
+          "falsch": [
+            "خواهم جواب داد",
+            "خواهیم جواب داد",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم جواب داد",
+          "falsch": [
+            "خواهند جواب داد",
+            "خواهید جواب داد",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید جواب داد",
+          "falsch": [
+            "خواهد جواب داد",
+            "خواهند جواب داد",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "جواب دادن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند جواب داد",
+          "falsch": [
+            "خواهد جواب داد",
+            "خواهیم جواب داد",
+            "می‌جواب دهم"
+          ],
+          "regelmaessig": true
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم استفاده کرد",
+          "falsch": [
+            "خواهند استفاده کرد",
+            "خواهید استفاده کرد",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی استفاده کرد",
+          "falsch": [
+            "خواهم استفاده کرد",
+            "خواهند استفاده کرد",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد استفاده کرد",
+          "falsch": [
+            "خواهی استفاده کرد",
+            "خواهند استفاده کرد",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم استفاده کرد",
+          "falsch": [
+            "خواهم استفاده کرد",
+            "خواهی استفاده کرد",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید استفاده کرد",
+          "falsch": [
+            "خواهی استفاده کرد",
+            "خواهم استفاده کرد",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "استفاده کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند استفاده کرد",
+          "falsch": [
+            "خواهی استفاده کرد",
+            "خواهد استفاده کرد",
+            "می‌استفاده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم تصمیم گرفت",
+          "falsch": [
+            "خواهی تصمیم گرفت",
+            "خواهند تصمیم گرفت",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی تصمیم گرفت",
+          "falsch": [
+            "خواهد تصمیم گرفت",
+            "خواهند تصمیم گرفت",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد تصمیم گرفت",
+          "falsch": [
+            "خواهیم تصمیم گرفت",
+            "خواهید تصمیم گرفت",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم تصمیم گرفت",
+          "falsch": [
+            "خواهند تصمیم گرفت",
+            "خواهی تصمیم گرفت",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید تصمیم گرفت",
+          "falsch": [
+            "خواهد تصمیم گرفت",
+            "خواهند تصمیم گرفت",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "تصمیم گرفتن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند تصمیم گرفت",
+          "falsch": [
+            "خواهد تصمیم گرفت",
+            "خواهی تصمیم گرفت",
+            "می‌تصمیم گیرم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم درک کرد",
+          "falsch": [
+            "خواهد درک کرد",
+            "خواهند درک کرد",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی درک کرد",
+          "falsch": [
+            "خواهیم درک کرد",
+            "خواهم درک کرد",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد درک کرد",
+          "falsch": [
+            "خواهیم درک کرد",
+            "خواهند درک کرد",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم درک کرد",
+          "falsch": [
+            "خواهم درک کرد",
+            "خواهد درک کرد",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید درک کرد",
+          "falsch": [
+            "خواهم درک کرد",
+            "خواهد درک کرد",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "درک کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند درک کرد",
+          "falsch": [
+            "خواهم درک کرد",
+            "خواهی درک کرد",
+            "می‌درک کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "من",
+          "zeit": "آینده",
+          "richtig": "خواهم مشاهده کرد",
+          "falsch": [
+            "خواهد مشاهده کرد",
+            "خواهید مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "تو",
+          "zeit": "آینده",
+          "richtig": "خواهی مشاهده کرد",
+          "falsch": [
+            "خواهم مشاهده کرد",
+            "خواهد مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "او",
+          "zeit": "آینده",
+          "richtig": "خواهد مشاهده کرد",
+          "falsch": [
+            "خواهند مشاهده کرد",
+            "خواهم مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "ما",
+          "zeit": "آینده",
+          "richtig": "خواهیم مشاهده کرد",
+          "falsch": [
+            "خواهند مشاهده کرد",
+            "خواهید مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "شما",
+          "zeit": "آینده",
+          "richtig": "خواهید مشاهده کرد",
+          "falsch": [
+            "خواهد مشاهده کرد",
+            "خواهیم مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        },
+        {
+          "infinitiv": "مشاهده کردن",
+          "pronomen": "آن‌ها",
+          "zeit": "آینده",
+          "richtig": "خواهند مشاهده کرد",
+          "falsch": [
+            "خواهم مشاهده کرد",
+            "خواهد مشاهده کرد",
+            "می‌مشاهده کنم"
+          ],
+          "regelmaessig": true
+        }
+      ]
+    }
+  }
+}
