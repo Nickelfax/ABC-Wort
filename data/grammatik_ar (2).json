@@ -1,0 +1,6509 @@
+{
+  "version": "3.0",
+  "tempus": {
+    "mudaari": {
+      "n1": [
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أكون",
+          "falsch": [
+            "يكونون",
+            "يكون/تكون",
+            "كنتُ"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تكون",
+          "falsch": [
+            "أكون",
+            "نكون",
+            "كنتُ"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يكون/تكون",
+          "falsch": [
+            "يكونون",
+            "تكونون",
+            "كنتُ"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نكون",
+          "falsch": [
+            "يكون/تكون",
+            "تكونون",
+            "كنتُ"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تكونون",
+          "falsch": [
+            "أكون",
+            "تكون",
+            "كنتُ"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يكونون",
+          "falsch": [
+            "تكون",
+            "تكونون",
+            "كنتُ"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أذهب",
+          "falsch": [
+            "تذهبون",
+            "يذهبون",
+            "ذهبتُ"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تذهب",
+          "falsch": [
+            "أذهب",
+            "يذهب/تذهب",
+            "ذهبتُ"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يذهب/تذهب",
+          "falsch": [
+            "أذهب",
+            "نذهب",
+            "ذهبتُ"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نذهب",
+          "falsch": [
+            "تذهبون",
+            "يذهبون",
+            "ذهبتُ"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تذهبون",
+          "falsch": [
+            "تذهب",
+            "نذهب",
+            "ذهبتُ"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يذهبون",
+          "falsch": [
+            "يذهب/تذهب",
+            "تذهبون",
+            "ذهبتُ"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "آكل",
+          "falsch": [
+            "نأكل",
+            "يأكلون",
+            "أكلتُ"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تأكل",
+          "falsch": [
+            "تأكلون",
+            "نأكل",
+            "أكلتُ"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يأكل/تأكل",
+          "falsch": [
+            "تأكل",
+            "نأكل",
+            "أكلتُ"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نأكل",
+          "falsch": [
+            "يأكلون",
+            "تأكلون",
+            "أكلتُ"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تأكلون",
+          "falsch": [
+            "يأكل/تأكل",
+            "يأكلون",
+            "أكلتُ"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يأكلون",
+          "falsch": [
+            "نأكل",
+            "تأكلون",
+            "أكلتُ"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أشرب",
+          "falsch": [
+            "تشربون",
+            "تشرب",
+            "شربتُ"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تشرب",
+          "falsch": [
+            "نشرب",
+            "يشربون",
+            "شربتُ"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يشرب/تشرب",
+          "falsch": [
+            "نشرب",
+            "تشربون",
+            "شربتُ"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نشرب",
+          "falsch": [
+            "يشربون",
+            "أشرب",
+            "شربتُ"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تشربون",
+          "falsch": [
+            "نشرب",
+            "يشربون",
+            "شربتُ"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يشربون",
+          "falsch": [
+            "يشرب/تشرب",
+            "نشرب",
+            "شربتُ"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أقرأ",
+          "falsch": [
+            "نقرأ",
+            "يقرأون",
+            "قرأتُ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تقرأ",
+          "falsch": [
+            "نقرأ",
+            "يقرأ/تقرأ",
+            "قرأتُ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يقرأ/تقرأ",
+          "falsch": [
+            "تقرأ",
+            "تقرأون",
+            "قرأتُ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نقرأ",
+          "falsch": [
+            "تقرأ",
+            "تقرأون",
+            "قرأتُ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تقرأون",
+          "falsch": [
+            "أقرأ",
+            "يقرأ/تقرأ",
+            "قرأتُ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يقرأون",
+          "falsch": [
+            "تقرأون",
+            "أقرأ",
+            "قرأتُ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أكتب",
+          "falsch": [
+            "نكتب",
+            "تكتبون",
+            "كتبتُ"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تكتب",
+          "falsch": [
+            "يكتبون",
+            "يكتب/تكتب",
+            "كتبتُ"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يكتب/تكتب",
+          "falsch": [
+            "يكتبون",
+            "أكتب",
+            "كتبتُ"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نكتب",
+          "falsch": [
+            "تكتبون",
+            "أكتب",
+            "كتبتُ"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تكتبون",
+          "falsch": [
+            "نكتب",
+            "يكتبون",
+            "كتبتُ"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يكتبون",
+          "falsch": [
+            "تكتبون",
+            "تكتب",
+            "كتبتُ"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "ألعب",
+          "falsch": [
+            "تلعبون",
+            "يلعب/تلعب",
+            "لعبتُ"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تلعب",
+          "falsch": [
+            "ألعب",
+            "نلعب",
+            "لعبتُ"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يلعب/تلعب",
+          "falsch": [
+            "ألعب",
+            "يلعبون",
+            "لعبتُ"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نلعب",
+          "falsch": [
+            "يلعب/تلعب",
+            "يلعبون",
+            "لعبتُ"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تلعبون",
+          "falsch": [
+            "يلعب/تلعب",
+            "ألعب",
+            "لعبتُ"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يلعبون",
+          "falsch": [
+            "ألعب",
+            "يلعب/تلعب",
+            "لعبتُ"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أقول",
+          "falsch": [
+            "يقول/تقول",
+            "تقول",
+            "قلتُ"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تقول",
+          "falsch": [
+            "نقول",
+            "يقولون",
+            "قلتُ"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يقول/تقول",
+          "falsch": [
+            "يقولون",
+            "تقول",
+            "قلتُ"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نقول",
+          "falsch": [
+            "يقول/تقول",
+            "تقول",
+            "قلتُ"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تقولون",
+          "falsch": [
+            "يقول/تقول",
+            "تقول",
+            "قلتُ"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يقولون",
+          "falsch": [
+            "أقول",
+            "نقول",
+            "قلتُ"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أجيء",
+          "falsch": [
+            "يجيئون",
+            "تجيء",
+            "جئتُ"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تجيء",
+          "falsch": [
+            "نجيء",
+            "أجيء",
+            "جئتُ"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يجيء/تجيء",
+          "falsch": [
+            "نجيء",
+            "تجيء",
+            "جئتُ"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نجيء",
+          "falsch": [
+            "يجيئون",
+            "تجيء",
+            "جئتُ"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تجيئون",
+          "falsch": [
+            "يجيئون",
+            "تجيء",
+            "جئتُ"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يجيئون",
+          "falsch": [
+            "نجيء",
+            "تجيئون",
+            "جئتُ"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أرى",
+          "falsch": [
+            "نرى",
+            "يرى/ترى",
+            "رأيتُ"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "ترى",
+          "falsch": [
+            "ترون",
+            "نرى",
+            "رأيتُ"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يرى/ترى",
+          "falsch": [
+            "يرون",
+            "ترون",
+            "رأيتُ"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نرى",
+          "falsch": [
+            "يرى/ترى",
+            "أرى",
+            "رأيتُ"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "ترون",
+          "falsch": [
+            "نرى",
+            "يرى/ترى",
+            "رأيتُ"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يرون",
+          "falsch": [
+            "ترى",
+            "أرى",
+            "رأيتُ"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "آخذ",
+          "falsch": [
+            "تأخذون",
+            "يأخذ/تأخذ",
+            "أخذتُ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تأخذ",
+          "falsch": [
+            "يأخذ/تأخذ",
+            "تأخذون",
+            "أخذتُ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يأخذ/تأخذ",
+          "falsch": [
+            "يأخذون",
+            "تأخذون",
+            "أخذتُ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نأخذ",
+          "falsch": [
+            "آخذ",
+            "يأخذ/تأخذ",
+            "أخذتُ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تأخذون",
+          "falsch": [
+            "آخذ",
+            "يأخذون",
+            "أخذتُ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يأخذون",
+          "falsch": [
+            "تأخذون",
+            "نأخذ",
+            "أخذتُ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أعرف",
+          "falsch": [
+            "يعرفون",
+            "يعرف/تعرف",
+            "عرفتُ"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تعرف",
+          "falsch": [
+            "يعرفون",
+            "تعرفون",
+            "عرفتُ"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يعرف/تعرف",
+          "falsch": [
+            "نعرف",
+            "تعرف",
+            "عرفتُ"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نعرف",
+          "falsch": [
+            "يعرف/تعرف",
+            "أعرف",
+            "عرفتُ"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تعرفون",
+          "falsch": [
+            "يعرف/تعرف",
+            "تعرف",
+            "عرفتُ"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يعرفون",
+          "falsch": [
+            "يعرف/تعرف",
+            "تعرف",
+            "عرفتُ"
+          ],
+          "deutsch": "kennen/wissen"
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أدرس",
+          "falsch": [
+            "تدرس",
+            "يدرس/تدرس",
+            "درستُ"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تدرس",
+          "falsch": [
+            "أدرس",
+            "يدرس/تدرس",
+            "درستُ"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يدرس/تدرس",
+          "falsch": [
+            "تدرسون",
+            "تدرس",
+            "درستُ"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "ندرس",
+          "falsch": [
+            "أدرس",
+            "يدرسون",
+            "درستُ"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تدرسون",
+          "falsch": [
+            "ندرس",
+            "يدرس/تدرس",
+            "درستُ"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يدرسون",
+          "falsch": [
+            "تدرسون",
+            "يدرس/تدرس",
+            "درستُ"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أعمل",
+          "falsch": [
+            "تعمل",
+            "يعمل/تعمل",
+            "عملتُ"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تعمل",
+          "falsch": [
+            "نعمل",
+            "أعمل",
+            "عملتُ"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يعمل/تعمل",
+          "falsch": [
+            "نعمل",
+            "تعملون",
+            "عملتُ"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نعمل",
+          "falsch": [
+            "أعمل",
+            "تعملون",
+            "عملتُ"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تعملون",
+          "falsch": [
+            "تعمل",
+            "يعمل/تعمل",
+            "عملتُ"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يعملون",
+          "falsch": [
+            "يعمل/تعمل",
+            "أعمل",
+            "عملتُ"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أفهم",
+          "falsch": [
+            "يفهم/تفهم",
+            "نفهم",
+            "فهمتُ"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تفهم",
+          "falsch": [
+            "أفهم",
+            "تفهمون",
+            "فهمتُ"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يفهم/تفهم",
+          "falsch": [
+            "يفهمون",
+            "أفهم",
+            "فهمتُ"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نفهم",
+          "falsch": [
+            "أفهم",
+            "يفهم/تفهم",
+            "فهمتُ"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تفهمون",
+          "falsch": [
+            "تفهم",
+            "يفهم/تفهم",
+            "فهمتُ"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يفهمون",
+          "falsch": [
+            "نفهم",
+            "أفهم",
+            "فهمتُ"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أساعد",
+          "falsch": [
+            "يساعدون",
+            "نساعد",
+            "ساعدتُ"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تساعد",
+          "falsch": [
+            "أساعد",
+            "تساعدون",
+            "ساعدتُ"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يساعد/تساعد",
+          "falsch": [
+            "تساعد",
+            "نساعد",
+            "ساعدتُ"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نساعد",
+          "falsch": [
+            "يساعدون",
+            "تساعد",
+            "ساعدتُ"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تساعدون",
+          "falsch": [
+            "تساعد",
+            "أساعد",
+            "ساعدتُ"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يساعدون",
+          "falsch": [
+            "تساعد",
+            "نساعد",
+            "ساعدتُ"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أسكن",
+          "falsch": [
+            "يسكنون",
+            "نسكن",
+            "سكنتُ"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تسكن",
+          "falsch": [
+            "نسكن",
+            "يسكنون",
+            "سكنتُ"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يسكن/تسكن",
+          "falsch": [
+            "نسكن",
+            "تسكن",
+            "سكنتُ"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نسكن",
+          "falsch": [
+            "أسكن",
+            "يسكن/تسكن",
+            "سكنتُ"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تسكنون",
+          "falsch": [
+            "أسكن",
+            "يسكنون",
+            "سكنتُ"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يسكنون",
+          "falsch": [
+            "نسكن",
+            "تسكنون",
+            "سكنتُ"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أرجع",
+          "falsch": [
+            "نرجع",
+            "يرجع/ترجع",
+            "رجعتُ"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "ترجع",
+          "falsch": [
+            "نرجع",
+            "يرجع/ترجع",
+            "رجعتُ"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يرجع/ترجع",
+          "falsch": [
+            "أرجع",
+            "ترجعون",
+            "رجعتُ"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نرجع",
+          "falsch": [
+            "ترجعون",
+            "ترجع",
+            "رجعتُ"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "ترجعون",
+          "falsch": [
+            "يرجع/ترجع",
+            "يرجعون",
+            "رجعتُ"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يرجعون",
+          "falsch": [
+            "يرجع/ترجع",
+            "ترجعون",
+            "رجعتُ"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أفتح",
+          "falsch": [
+            "يفتحون",
+            "تفتح",
+            "فتحتُ"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تفتح",
+          "falsch": [
+            "أفتح",
+            "يفتحون",
+            "فتحتُ"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يفتح/تفتح",
+          "falsch": [
+            "نفتح",
+            "تفتحون",
+            "فتحتُ"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نفتح",
+          "falsch": [
+            "أفتح",
+            "تفتحون",
+            "فتحتُ"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تفتحون",
+          "falsch": [
+            "يفتح/تفتح",
+            "يفتحون",
+            "فتحتُ"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يفتحون",
+          "falsch": [
+            "تفتحون",
+            "أفتح",
+            "فتحتُ"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أجد",
+          "falsch": [
+            "نجد",
+            "يجد/تجد",
+            "وجدتُ"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تجد",
+          "falsch": [
+            "تجدون",
+            "يجد/تجد",
+            "وجدتُ"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يجد/تجد",
+          "falsch": [
+            "تجدون",
+            "تجد",
+            "وجدتُ"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نجد",
+          "falsch": [
+            "يجد/تجد",
+            "تجدون",
+            "وجدتُ"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تجدون",
+          "falsch": [
+            "يجد/تجد",
+            "أجد",
+            "وجدتُ"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يجدون",
+          "falsch": [
+            "تجدون",
+            "أجد",
+            "وجدتُ"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أجلس",
+          "falsch": [
+            "يجلسون",
+            "يجلس/تجلس",
+            "جلستُ"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تجلس",
+          "falsch": [
+            "أجلس",
+            "يجلس/تجلس",
+            "جلستُ"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يجلس/تجلس",
+          "falsch": [
+            "أجلس",
+            "تجلسون",
+            "جلستُ"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نجلس",
+          "falsch": [
+            "يجلسون",
+            "تجلس",
+            "جلستُ"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تجلسون",
+          "falsch": [
+            "تجلس",
+            "نجلس",
+            "جلستُ"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يجلسون",
+          "falsch": [
+            "يجلس/تجلس",
+            "نجلس",
+            "جلستُ"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أسمع",
+          "falsch": [
+            "تسمعون",
+            "نسمع",
+            "سمعتُ"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تسمع",
+          "falsch": [
+            "أسمع",
+            "تسمعون",
+            "سمعتُ"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يسمع/تسمع",
+          "falsch": [
+            "يسمعون",
+            "نسمع",
+            "سمعتُ"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نسمع",
+          "falsch": [
+            "يسمع/تسمع",
+            "أسمع",
+            "سمعتُ"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تسمعون",
+          "falsch": [
+            "أسمع",
+            "يسمعون",
+            "سمعتُ"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يسمعون",
+          "falsch": [
+            "أسمع",
+            "نسمع",
+            "سمعتُ"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أطبخ",
+          "falsch": [
+            "تطبخون",
+            "نطبخ",
+            "طبختُ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تطبخ",
+          "falsch": [
+            "نطبخ",
+            "يطبخ/تطبخ",
+            "طبختُ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يطبخ/تطبخ",
+          "falsch": [
+            "تطبخ",
+            "أطبخ",
+            "طبختُ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نطبخ",
+          "falsch": [
+            "تطبخ",
+            "يطبخون",
+            "طبختُ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تطبخون",
+          "falsch": [
+            "أطبخ",
+            "نطبخ",
+            "طبختُ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يطبخون",
+          "falsch": [
+            "أطبخ",
+            "تطبخ",
+            "طبختُ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أحمل",
+          "falsch": [
+            "نحمل",
+            "يحمل/تحمل",
+            "حملتُ"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تحمل",
+          "falsch": [
+            "أحمل",
+            "نحمل",
+            "حملتُ"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يحمل/تحمل",
+          "falsch": [
+            "تحملون",
+            "تحمل",
+            "حملتُ"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نحمل",
+          "falsch": [
+            "أحمل",
+            "يحملون",
+            "حملتُ"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تحملون",
+          "falsch": [
+            "أحمل",
+            "يحملون",
+            "حملتُ"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يحملون",
+          "falsch": [
+            "نحمل",
+            "تحمل",
+            "حملتُ"
+          ],
+          "deutsch": "tragen"
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أتعلم",
+          "falsch": [
+            "يتعلمون",
+            "تتعلمون",
+            "تعلمتُ"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تتعلم",
+          "falsch": [
+            "يتعلمون",
+            "نتعلم",
+            "تعلمتُ"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يتعلم/تتعلم",
+          "falsch": [
+            "يتعلمون",
+            "أتعلم",
+            "تعلمتُ"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نتعلم",
+          "falsch": [
+            "أتعلم",
+            "تتعلمون",
+            "تعلمتُ"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تتعلمون",
+          "falsch": [
+            "تتعلم",
+            "يتعلم/تتعلم",
+            "تعلمتُ"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يتعلمون",
+          "falsch": [
+            "نتعلم",
+            "أتعلم",
+            "تعلمتُ"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أستمع",
+          "falsch": [
+            "يستمعون",
+            "تستمعون",
+            "استمعتُ"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تستمع",
+          "falsch": [
+            "أستمع",
+            "يستمعون",
+            "استمعتُ"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يستمع/تستمع",
+          "falsch": [
+            "يستمعون",
+            "نستمع",
+            "استمعتُ"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نستمع",
+          "falsch": [
+            "تستمعون",
+            "يستمعون",
+            "استمعتُ"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تستمعون",
+          "falsch": [
+            "يستمعون",
+            "يستمع/تستمع",
+            "استمعتُ"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يستمعون",
+          "falsch": [
+            "أستمع",
+            "تستمع",
+            "استمعتُ"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أستخدم",
+          "falsch": [
+            "نستخدم",
+            "تستخدم",
+            "استخدمتُ"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تستخدم",
+          "falsch": [
+            "تستخدمون",
+            "نستخدم",
+            "استخدمتُ"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يستخدم/تستخدم",
+          "falsch": [
+            "أستخدم",
+            "يستخدمون",
+            "استخدمتُ"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نستخدم",
+          "falsch": [
+            "أستخدم",
+            "تستخدم",
+            "استخدمتُ"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تستخدمون",
+          "falsch": [
+            "تستخدم",
+            "نستخدم",
+            "استخدمتُ"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يستخدمون",
+          "falsch": [
+            "يستخدم/تستخدم",
+            "نستخدم",
+            "استخدمتُ"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أشتري",
+          "falsch": [
+            "نشتري",
+            "يشتري/تشتري",
+            "اشتريتُ"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تشتري",
+          "falsch": [
+            "يشتري/تشتري",
+            "نشتري",
+            "اشتريتُ"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يشتري/تشتري",
+          "falsch": [
+            "يشترون",
+            "أشتري",
+            "اشتريتُ"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نشتري",
+          "falsch": [
+            "يشترون",
+            "تشترون",
+            "اشتريتُ"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تشترون",
+          "falsch": [
+            "أشتري",
+            "يشترون",
+            "اشتريتُ"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يشترون",
+          "falsch": [
+            "يشتري/تشتري",
+            "أشتري",
+            "اشتريتُ"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أجيب",
+          "falsch": [
+            "تجيبون",
+            "نجيب",
+            "أجبتُ"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تجيب",
+          "falsch": [
+            "يجيبون",
+            "نجيب",
+            "أجبتُ"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يجيب/تجيب",
+          "falsch": [
+            "أجيب",
+            "يجيبون",
+            "أجبتُ"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نجيب",
+          "falsch": [
+            "أجيب",
+            "يجيبون",
+            "أجبتُ"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تجيبون",
+          "falsch": [
+            "نجيب",
+            "يجيبون",
+            "أجبتُ"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يجيبون",
+          "falsch": [
+            "تجيبون",
+            "يجيب/تجيب",
+            "أجبتُ"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنا",
+          "zeit": "المضارع",
+          "richtig": "أسافر",
+          "falsch": [
+            "تسافر",
+            "تسافرون",
+            "سافرتُ"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنت",
+          "zeit": "المضارع",
+          "richtig": "تسافر",
+          "falsch": [
+            "نسافر",
+            "يسافر/تسافر",
+            "سافرتُ"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "هو/هي",
+          "zeit": "المضارع",
+          "richtig": "يسافر/تسافر",
+          "falsch": [
+            "يسافرون",
+            "تسافر",
+            "سافرتُ"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "نحن",
+          "zeit": "المضارع",
+          "richtig": "نسافر",
+          "falsch": [
+            "تسافرون",
+            "يسافرون",
+            "سافرتُ"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنتم",
+          "zeit": "المضارع",
+          "richtig": "تسافرون",
+          "falsch": [
+            "نسافر",
+            "يسافر/تسافر",
+            "سافرتُ"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "هم",
+          "zeit": "المضارع",
+          "richtig": "يسافرون",
+          "falsch": [
+            "تسافرون",
+            "يسافر/تسافر",
+            "سافرتُ"
+          ],
+          "deutsch": "reisen"
+        }
+      ]
+    },
+    "maadi": {
+      "n1": [
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "كنتُ",
+          "falsch": [
+            "كانوا",
+            "كان/كانت",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "كنتَ",
+          "falsch": [
+            "كانوا",
+            "كان/كانت",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "كان/كانت",
+          "falsch": [
+            "كنّا",
+            "كنتَ",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "كنّا",
+          "falsch": [
+            "كنتَ",
+            "كانوا",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "كنتم",
+          "falsch": [
+            "كان/كانت",
+            "كنتُ",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "كانوا",
+          "falsch": [
+            "كان/كانت",
+            "كنّا",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "ذهبتُ",
+          "falsch": [
+            "ذهبتَ",
+            "ذهبنا",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "ذهبتَ",
+          "falsch": [
+            "ذهبتُ",
+            "ذهبتم",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "ذهب/ذهبت",
+          "falsch": [
+            "ذهبتُ",
+            "ذهبتَ",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "ذهبنا",
+          "falsch": [
+            "ذهب/ذهبت",
+            "ذهبتَ",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "ذهبتم",
+          "falsch": [
+            "ذهب/ذهبت",
+            "ذهبوا",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "ذهبوا",
+          "falsch": [
+            "ذهبتَ",
+            "ذهبتم",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "أكلتُ",
+          "falsch": [
+            "أكلتم",
+            "أكلوا",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "أكلتَ",
+          "falsch": [
+            "أكلوا",
+            "أكل/أكلت",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "أكل/أكلت",
+          "falsch": [
+            "أكلتم",
+            "أكلتَ",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "أكلنا",
+          "falsch": [
+            "أكلتم",
+            "أكلوا",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "أكلتم",
+          "falsch": [
+            "أكلتُ",
+            "أكلوا",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "أكلوا",
+          "falsch": [
+            "أكل/أكلت",
+            "أكلنا",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "شربتُ",
+          "falsch": [
+            "شربوا",
+            "شربتم",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "شربتَ",
+          "falsch": [
+            "شربتم",
+            "شربوا",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "شرب/شربت",
+          "falsch": [
+            "شربتم",
+            "شربنا",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "شربنا",
+          "falsch": [
+            "شربتَ",
+            "شربتُ",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "شربتم",
+          "falsch": [
+            "شرب/شربت",
+            "شربنا",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "شربوا",
+          "falsch": [
+            "شربنا",
+            "شربتم",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "قرأتُ",
+          "falsch": [
+            "قرأنا",
+            "قرأتَ",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "قرأتَ",
+          "falsch": [
+            "قرأ/قرأت",
+            "قرأنا",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "قرأ/قرأت",
+          "falsch": [
+            "قرأوا",
+            "قرأتم",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "قرأنا",
+          "falsch": [
+            "قرأ/قرأت",
+            "قرأتَ",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "قرأتم",
+          "falsch": [
+            "قرأتَ",
+            "قرأنا",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "قرأوا",
+          "falsch": [
+            "قرأتم",
+            "قرأنا",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "كتبتُ",
+          "falsch": [
+            "كتبتم",
+            "كتبتَ",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "كتبتَ",
+          "falsch": [
+            "كتبتم",
+            "كتبوا",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "كتب/كتبت",
+          "falsch": [
+            "كتبوا",
+            "كتبتُ",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "كتبنا",
+          "falsch": [
+            "كتبتم",
+            "كتبوا",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "كتبتم",
+          "falsch": [
+            "كتبتُ",
+            "كتبتَ",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "كتبوا",
+          "falsch": [
+            "كتبتُ",
+            "كتب/كتبت",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "لعبتُ",
+          "falsch": [
+            "لعب/لعبت",
+            "لعبتم",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "لعبتَ",
+          "falsch": [
+            "لعبوا",
+            "لعبتُ",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "لعب/لعبت",
+          "falsch": [
+            "لعبوا",
+            "لعبنا",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "لعبنا",
+          "falsch": [
+            "لعبتم",
+            "لعبتَ",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "لعبتم",
+          "falsch": [
+            "لعبتَ",
+            "لعب/لعبت",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "لعبوا",
+          "falsch": [
+            "لعبتَ",
+            "لعبتُ",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "قلتُ",
+          "falsch": [
+            "قلنا",
+            "قالوا",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "قلتَ",
+          "falsch": [
+            "قال/قالت",
+            "قلتم",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "قال/قالت",
+          "falsch": [
+            "قلتم",
+            "قالوا",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "قلنا",
+          "falsch": [
+            "قال/قالت",
+            "قلتم",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "قلتم",
+          "falsch": [
+            "قلتُ",
+            "قال/قالت",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "قالوا",
+          "falsch": [
+            "قلتَ",
+            "قلنا",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "جئتُ",
+          "falsch": [
+            "جئتَ",
+            "جاء/جاءت",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "جئتَ",
+          "falsch": [
+            "جاء/جاءت",
+            "جئنا",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "جاء/جاءت",
+          "falsch": [
+            "جئنا",
+            "جاؤوا",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "جئنا",
+          "falsch": [
+            "جاؤوا",
+            "جاء/جاءت",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "جئتم",
+          "falsch": [
+            "جئتُ",
+            "جئنا",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "جاؤوا",
+          "falsch": [
+            "جاء/جاءت",
+            "جئنا",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "رأيتُ",
+          "falsch": [
+            "رأيتم",
+            "رأينا",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "رأيتَ",
+          "falsch": [
+            "رأينا",
+            "رأيتم",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "رأى/رأت",
+          "falsch": [
+            "رأيتم",
+            "رأيتُ",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "رأينا",
+          "falsch": [
+            "رأوا",
+            "رأيتَ",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "رأيتم",
+          "falsch": [
+            "رأوا",
+            "رأيتَ",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "رأوا",
+          "falsch": [
+            "رأينا",
+            "رأيتُ",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "أخذتُ",
+          "falsch": [
+            "أخذوا",
+            "أخذتم",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "أخذتَ",
+          "falsch": [
+            "أخذتُ",
+            "أخذوا",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "أخذ/أخذت",
+          "falsch": [
+            "أخذنا",
+            "أخذتُ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "أخذنا",
+          "falsch": [
+            "أخذتم",
+            "أخذ/أخذت",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "أخذتم",
+          "falsch": [
+            "أخذوا",
+            "أخذنا",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "أخذوا",
+          "falsch": [
+            "أخذنا",
+            "أخذتُ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "عرفتُ",
+          "falsch": [
+            "عرفنا",
+            "عرف/عرفت",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "عرفتَ",
+          "falsch": [
+            "عرفتم",
+            "عرفتُ",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "عرف/عرفت",
+          "falsch": [
+            "عرفتَ",
+            "عرفوا",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "عرفنا",
+          "falsch": [
+            "عرفوا",
+            "عرفتم",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "عرفتم",
+          "falsch": [
+            "عرفتُ",
+            "عرفنا",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "عرفوا",
+          "falsch": [
+            "عرف/عرفت",
+            "عرفنا",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "درستُ",
+          "falsch": [
+            "درستَ",
+            "درستم",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "درستَ",
+          "falsch": [
+            "درس/درست",
+            "درستم",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "درس/درست",
+          "falsch": [
+            "درستَ",
+            "درسنا",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "درسنا",
+          "falsch": [
+            "درستم",
+            "درستَ",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "درستم",
+          "falsch": [
+            "درس/درست",
+            "درسوا",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "درسوا",
+          "falsch": [
+            "درسنا",
+            "درستُ",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "عملتُ",
+          "falsch": [
+            "عملوا",
+            "عمل/عملت",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "عملتَ",
+          "falsch": [
+            "عملوا",
+            "عملنا",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "عمل/عملت",
+          "falsch": [
+            "عملتم",
+            "عملوا",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "عملنا",
+          "falsch": [
+            "عملتُ",
+            "عملتم",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "عملتم",
+          "falsch": [
+            "عملنا",
+            "عمل/عملت",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "عملوا",
+          "falsch": [
+            "عملتَ",
+            "عملتُ",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "فهمتُ",
+          "falsch": [
+            "فهمتم",
+            "فهم/فهمت",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "فهمتَ",
+          "falsch": [
+            "فهموا",
+            "فهمتُ",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "فهم/فهمت",
+          "falsch": [
+            "فهمتُ",
+            "فهموا",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "فهمنا",
+          "falsch": [
+            "فهمتُ",
+            "فهمتم",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "فهمتم",
+          "falsch": [
+            "فهمتُ",
+            "فهموا",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "فهموا",
+          "falsch": [
+            "فهمنا",
+            "فهمتَ",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "ساعدتُ",
+          "falsch": [
+            "ساعدوا",
+            "ساعد/ساعدت",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "ساعدتَ",
+          "falsch": [
+            "ساعد/ساعدت",
+            "ساعدتُ",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "ساعد/ساعدت",
+          "falsch": [
+            "ساعدتُ",
+            "ساعدتم",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "ساعدنا",
+          "falsch": [
+            "ساعدوا",
+            "ساعدتم",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "ساعدتم",
+          "falsch": [
+            "ساعدتَ",
+            "ساعدنا",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "ساعدوا",
+          "falsch": [
+            "ساعدنا",
+            "ساعدتُ",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "سكنتُ",
+          "falsch": [
+            "سكن/سكنت",
+            "سكنوا",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "سكنتَ",
+          "falsch": [
+            "سكنوا",
+            "سكنتُ",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "سكن/سكنت",
+          "falsch": [
+            "سكنوا",
+            "سكنا",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "سكنا",
+          "falsch": [
+            "سكن/سكنت",
+            "سكنوا",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "سكنتم",
+          "falsch": [
+            "سكنا",
+            "سكنتُ",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "سكنوا",
+          "falsch": [
+            "سكنا",
+            "سكنتم",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "رجعتُ",
+          "falsch": [
+            "رجعتم",
+            "رجع/رجعت",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "رجعتَ",
+          "falsch": [
+            "رجع/رجعت",
+            "رجعنا",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "رجع/رجعت",
+          "falsch": [
+            "رجعنا",
+            "رجعوا",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "رجعنا",
+          "falsch": [
+            "رجعتم",
+            "رجع/رجعت",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "رجعتم",
+          "falsch": [
+            "رجعوا",
+            "رجع/رجعت",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "رجعوا",
+          "falsch": [
+            "رجعتُ",
+            "رجعتَ",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "فتحتُ",
+          "falsch": [
+            "فتحنا",
+            "فتحتَ",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "فتحتَ",
+          "falsch": [
+            "فتحوا",
+            "فتحتُ",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "فتح/فتحت",
+          "falsch": [
+            "فتحتَ",
+            "فتحتم",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "فتحنا",
+          "falsch": [
+            "فتحتُ",
+            "فتح/فتحت",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "فتحتم",
+          "falsch": [
+            "فتحتَ",
+            "فتحتُ",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "فتحوا",
+          "falsch": [
+            "فتحتم",
+            "فتحتُ",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "وجدتُ",
+          "falsch": [
+            "وجدوا",
+            "وجدتم",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "وجدتَ",
+          "falsch": [
+            "وجد/وجدت",
+            "وجدوا",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "وجد/وجدت",
+          "falsch": [
+            "وجدوا",
+            "وجدتُ",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "وجدنا",
+          "falsch": [
+            "وجدتُ",
+            "وجد/وجدت",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "وجدتم",
+          "falsch": [
+            "وجدتَ",
+            "وجدتُ",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "وجدوا",
+          "falsch": [
+            "وجد/وجدت",
+            "وجدتَ",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "جلستُ",
+          "falsch": [
+            "جلستم",
+            "جلسوا",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "جلستَ",
+          "falsch": [
+            "جلستُ",
+            "جلس/جلست",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "جلس/جلست",
+          "falsch": [
+            "جلستَ",
+            "جلسنا",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "جلسنا",
+          "falsch": [
+            "جلستُ",
+            "جلسوا",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "جلستم",
+          "falsch": [
+            "جلسنا",
+            "جلس/جلست",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "جلسوا",
+          "falsch": [
+            "جلستُ",
+            "جلستَ",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "سمعتُ",
+          "falsch": [
+            "سمعتَ",
+            "سمع/سمعت",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "سمعتَ",
+          "falsch": [
+            "سمعوا",
+            "سمعتُ",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "سمع/سمعت",
+          "falsch": [
+            "سمعتَ",
+            "سمعتم",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "سمعنا",
+          "falsch": [
+            "سمع/سمعت",
+            "سمعتَ",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "سمعتم",
+          "falsch": [
+            "سمعنا",
+            "سمعتَ",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "سمعوا",
+          "falsch": [
+            "سمعنا",
+            "سمعتم",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "طبختُ",
+          "falsch": [
+            "طبخوا",
+            "طبخنا",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "طبختَ",
+          "falsch": [
+            "طبخوا",
+            "طبخنا",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "طبخ/طبخت",
+          "falsch": [
+            "طبخنا",
+            "طبختَ",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "طبخنا",
+          "falsch": [
+            "طبخوا",
+            "طبخ/طبخت",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "طبختم",
+          "falsch": [
+            "طبختُ",
+            "طبخنا",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "طبخوا",
+          "falsch": [
+            "طبخنا",
+            "طبختَ",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "حملتُ",
+          "falsch": [
+            "حملتَ",
+            "حملوا",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "حملتَ",
+          "falsch": [
+            "حملتم",
+            "حملوا",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "حمل/حملت",
+          "falsch": [
+            "حملوا",
+            "حملنا",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "حملنا",
+          "falsch": [
+            "حملتَ",
+            "حملتُ",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "حملتم",
+          "falsch": [
+            "حمل/حملت",
+            "حملتُ",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "حملوا",
+          "falsch": [
+            "حملتُ",
+            "حمل/حملت",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "تعلمتُ",
+          "falsch": [
+            "تعلمتَ",
+            "تعلمتم",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "تعلمتَ",
+          "falsch": [
+            "تعلموا",
+            "تعلم/تعلمت",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "تعلم/تعلمت",
+          "falsch": [
+            "تعلمتُ",
+            "تعلمتَ",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "تعلمنا",
+          "falsch": [
+            "تعلمتم",
+            "تعلم/تعلمت",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "تعلمتم",
+          "falsch": [
+            "تعلم/تعلمت",
+            "تعلمتُ",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "تعلموا",
+          "falsch": [
+            "تعلمتَ",
+            "تعلمتُ",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "استمعتُ",
+          "falsch": [
+            "استمعنا",
+            "استمعتم",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "استمعتَ",
+          "falsch": [
+            "استمعتُ",
+            "استمعتم",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "استمع/استمعت",
+          "falsch": [
+            "استمعتُ",
+            "استمعتم",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "استمعنا",
+          "falsch": [
+            "استمعتُ",
+            "استمعتم",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "استمعتم",
+          "falsch": [
+            "استمعوا",
+            "استمع/استمعت",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "استمعوا",
+          "falsch": [
+            "استمعتَ",
+            "استمعتُ",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "استخدمتُ",
+          "falsch": [
+            "استخدم/استخدمت",
+            "استخدمتَ",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "استخدمتَ",
+          "falsch": [
+            "استخدمنا",
+            "استخدمتُ",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "استخدم/استخدمت",
+          "falsch": [
+            "استخدمتَ",
+            "استخدموا",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "استخدمنا",
+          "falsch": [
+            "استخدمتُ",
+            "استخدموا",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "استخدمتم",
+          "falsch": [
+            "استخدمنا",
+            "استخدمتَ",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "استخدموا",
+          "falsch": [
+            "استخدمتُ",
+            "استخدمتم",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "اشتريتُ",
+          "falsch": [
+            "اشتريتَ",
+            "اشترى/اشترت",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "اشتريتَ",
+          "falsch": [
+            "اشترى/اشترت",
+            "اشتريتُ",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "اشترى/اشترت",
+          "falsch": [
+            "اشتروا",
+            "اشتريتَ",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "اشترينا",
+          "falsch": [
+            "اشتريتَ",
+            "اشتروا",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "اشتريتم",
+          "falsch": [
+            "اشترينا",
+            "اشتروا",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "اشتروا",
+          "falsch": [
+            "اشتريتُ",
+            "اشترى/اشترت",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "أجبتُ",
+          "falsch": [
+            "أجاب/أجابت",
+            "أجبنا",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "أجبتَ",
+          "falsch": [
+            "أجاب/أجابت",
+            "أجابوا",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "أجاب/أجابت",
+          "falsch": [
+            "أجبنا",
+            "أجبتم",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "أجبنا",
+          "falsch": [
+            "أجبتُ",
+            "أجبتَ",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "أجبتم",
+          "falsch": [
+            "أجاب/أجابت",
+            "أجبتَ",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "أجابوا",
+          "falsch": [
+            "أجبنا",
+            "أجبتم",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنا",
+          "zeit": "الماضي",
+          "richtig": "سافرتُ",
+          "falsch": [
+            "سافر/سافرت",
+            "سافرتم",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنت",
+          "zeit": "الماضي",
+          "richtig": "سافرتَ",
+          "falsch": [
+            "سافرتُ",
+            "سافر/سافرت",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "هو/هي",
+          "zeit": "الماضي",
+          "richtig": "سافر/سافرت",
+          "falsch": [
+            "سافرنا",
+            "سافرتُ",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "نحن",
+          "zeit": "الماضي",
+          "richtig": "سافرنا",
+          "falsch": [
+            "سافرتُ",
+            "سافرتَ",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنتم",
+          "zeit": "الماضي",
+          "richtig": "سافرتم",
+          "falsch": [
+            "سافرتُ",
+            "سافرتَ",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "هم",
+          "zeit": "الماضي",
+          "richtig": "سافروا",
+          "falsch": [
+            "سافر/سافرت",
+            "سافرتُ",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        }
+      ]
+    },
+    "mustaqbal": {
+      "n1": [
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأكون",
+          "falsch": [
+            "سَـتكون",
+            "سَـيكونون",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتكون",
+          "falsch": [
+            "سَـيكونون",
+            "سَـنكون",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيكون/تكون",
+          "falsch": [
+            "سَـتكونون",
+            "سَـتكون",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنكون",
+          "falsch": [
+            "سَـيكونون",
+            "سَـتكونون",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتكونون",
+          "falsch": [
+            "سَـتكون",
+            "سَـيكونون",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "كان",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيكونون",
+          "falsch": [
+            "سَـيكون/تكون",
+            "سَـتكونون",
+            "أكون"
+          ],
+          "deutsch": "sein"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأذهب",
+          "falsch": [
+            "سَـنذهب",
+            "سَـتذهبون",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتذهب",
+          "falsch": [
+            "سَـيذهب/تذهب",
+            "سَـيذهبون",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيذهب/تذهب",
+          "falsch": [
+            "سَـتذهبون",
+            "سَـيذهبون",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنذهب",
+          "falsch": [
+            "سَـتذهب",
+            "سَـيذهب/تذهب",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتذهبون",
+          "falsch": [
+            "سَـتذهب",
+            "سَـأذهب",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "ذهب",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيذهبون",
+          "falsch": [
+            "سَـتذهب",
+            "سَـيذهب/تذهب",
+            "أذهب"
+          ],
+          "deutsch": "gehen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـآكل",
+          "falsch": [
+            "سَـنأكل",
+            "سَـيأكل/تأكل",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتأكل",
+          "falsch": [
+            "سَـيأكل/تأكل",
+            "سَـيأكلون",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيأكل/تأكل",
+          "falsch": [
+            "سَـتأكل",
+            "سَـيأكلون",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنأكل",
+          "falsch": [
+            "سَـيأكلون",
+            "سَـآكل",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتأكلون",
+          "falsch": [
+            "سَـيأكلون",
+            "سَـيأكل/تأكل",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "أكل",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيأكلون",
+          "falsch": [
+            "سَـيأكل/تأكل",
+            "سَـنأكل",
+            "آكل"
+          ],
+          "deutsch": "essen"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأشرب",
+          "falsch": [
+            "سَـيشربون",
+            "سَـتشرب",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتشرب",
+          "falsch": [
+            "سَـيشربون",
+            "سَـنشرب",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيشرب/تشرب",
+          "falsch": [
+            "سَـيشربون",
+            "سَـتشرب",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنشرب",
+          "falsch": [
+            "سَـتشربون",
+            "سَـتشرب",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتشربون",
+          "falsch": [
+            "سَـتشرب",
+            "سَـأشرب",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "شرب",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيشربون",
+          "falsch": [
+            "سَـنشرب",
+            "سَـيشرب/تشرب",
+            "أشرب"
+          ],
+          "deutsch": "trinken"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأقرأ",
+          "falsch": [
+            "سَـنقرأ",
+            "سَـيقرأ/تقرأ",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتقرأ",
+          "falsch": [
+            "سَـيقرأ/تقرأ",
+            "سَـيقرأون",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيقرأ/تقرأ",
+          "falsch": [
+            "سَـأقرأ",
+            "سَـنقرأ",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنقرأ",
+          "falsch": [
+            "سَـيقرأون",
+            "سَـتقرأون",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتقرأون",
+          "falsch": [
+            "سَـيقرأون",
+            "سَـتقرأ",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "قرأ",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيقرأون",
+          "falsch": [
+            "سَـأقرأ",
+            "سَـيقرأ/تقرأ",
+            "أقرأ"
+          ],
+          "deutsch": "lesen"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأكتب",
+          "falsch": [
+            "سَـتكتبون",
+            "سَـيكتبون",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتكتب",
+          "falsch": [
+            "سَـيكتب/تكتب",
+            "سَـيكتبون",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيكتب/تكتب",
+          "falsch": [
+            "سَـتكتبون",
+            "سَـنكتب",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنكتب",
+          "falsch": [
+            "سَـأكتب",
+            "سَـيكتب/تكتب",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتكتبون",
+          "falsch": [
+            "سَـتكتب",
+            "سَـنكتب",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "كتب",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيكتبون",
+          "falsch": [
+            "سَـأكتب",
+            "سَـنكتب",
+            "أكتب"
+          ],
+          "deutsch": "schreiben"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـألعب",
+          "falsch": [
+            "سَـنلعب",
+            "سَـيلعب/تلعب",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتلعب",
+          "falsch": [
+            "سَـنلعب",
+            "سَـيلعبون",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيلعب/تلعب",
+          "falsch": [
+            "سَـنلعب",
+            "سَـيلعبون",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنلعب",
+          "falsch": [
+            "سَـيلعب/تلعب",
+            "سَـألعب",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتلعبون",
+          "falsch": [
+            "سَـتلعب",
+            "سَـألعب",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "لعب",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيلعبون",
+          "falsch": [
+            "سَـيلعب/تلعب",
+            "سَـتلعبون",
+            "ألعب"
+          ],
+          "deutsch": "spielen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأقول",
+          "falsch": [
+            "سَـيقول/تقول",
+            "سَـيقولون",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتقول",
+          "falsch": [
+            "سَـتقولون",
+            "سَـأقول",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيقول/تقول",
+          "falsch": [
+            "سَـنقول",
+            "سَـيقولون",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنقول",
+          "falsch": [
+            "سَـتقول",
+            "سَـأقول",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتقولون",
+          "falsch": [
+            "سَـأقول",
+            "سَـنقول",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "قال",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيقولون",
+          "falsch": [
+            "سَـأقول",
+            "سَـتقولون",
+            "أقول"
+          ],
+          "deutsch": "sagen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأجيء",
+          "falsch": [
+            "سَـنجيء",
+            "سَـيجيئون",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجيء",
+          "falsch": [
+            "سَـيجيء/تجيء",
+            "سَـيجيئون",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجيء/تجيء",
+          "falsch": [
+            "سَـيجيئون",
+            "سَـتجيء",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنجيء",
+          "falsch": [
+            "سَـيجيئون",
+            "سَـتجيئون",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجيئون",
+          "falsch": [
+            "سَـنجيء",
+            "سَـيجيء/تجيء",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "جاء",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجيئون",
+          "falsch": [
+            "سَـتجيء",
+            "سَـنجيء",
+            "أجيء"
+          ],
+          "deutsch": "kommen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأرى",
+          "falsch": [
+            "سَـترى",
+            "سَـترون",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـترى",
+          "falsch": [
+            "سَـنرى",
+            "سَـيرون",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيرى/ترى",
+          "falsch": [
+            "سَـترون",
+            "سَـنرى",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنرى",
+          "falsch": [
+            "سَـترون",
+            "سَـترى",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـترون",
+          "falsch": [
+            "سَـترى",
+            "سَـيرى/ترى",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "رأى",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيرون",
+          "falsch": [
+            "سَـأرى",
+            "سَـترون",
+            "أرى"
+          ],
+          "deutsch": "sehen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـآخذ",
+          "falsch": [
+            "سَـتأخذون",
+            "سَـنأخذ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتأخذ",
+          "falsch": [
+            "سَـنأخذ",
+            "سَـآخذ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيأخذ/تأخذ",
+          "falsch": [
+            "سَـآخذ",
+            "سَـتأخذ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنأخذ",
+          "falsch": [
+            "سَـيأخذ/تأخذ",
+            "سَـتأخذ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتأخذون",
+          "falsch": [
+            "سَـآخذ",
+            "سَـتأخذ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "أخذ",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيأخذون",
+          "falsch": [
+            "سَـتأخذون",
+            "سَـيأخذ/تأخذ",
+            "آخذ"
+          ],
+          "deutsch": "nehmen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأعرف",
+          "falsch": [
+            "سَـتعرف",
+            "سَـنعرف",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتعرف",
+          "falsch": [
+            "سَـأعرف",
+            "سَـنعرف",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيعرف/تعرف",
+          "falsch": [
+            "سَـتعرفون",
+            "سَـيعرفون",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنعرف",
+          "falsch": [
+            "سَـيعرف/تعرف",
+            "سَـتعرف",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتعرفون",
+          "falsch": [
+            "سَـأعرف",
+            "سَـيعرفون",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        },
+        {
+          "infinitiv": "عرف",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيعرفون",
+          "falsch": [
+            "سَـتعرفون",
+            "سَـتعرف",
+            "أعرف"
+          ],
+          "deutsch": "kennen/wissen"
+        }
+      ],
+      "n2": [
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأدرس",
+          "falsch": [
+            "سَـتدرس",
+            "سَـتدرسون",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتدرس",
+          "falsch": [
+            "سَـأدرس",
+            "سَـتدرسون",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيدرس/تدرس",
+          "falsch": [
+            "سَـندرس",
+            "سَـيدرسون",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـندرس",
+          "falsch": [
+            "سَـتدرس",
+            "سَـتدرسون",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتدرسون",
+          "falsch": [
+            "سَـيدرسون",
+            "سَـأدرس",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "درس",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيدرسون",
+          "falsch": [
+            "سَـتدرسون",
+            "سَـأدرس",
+            "أدرس"
+          ],
+          "deutsch": "studieren/lernen"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأعمل",
+          "falsch": [
+            "سَـنعمل",
+            "سَـيعمل/تعمل",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتعمل",
+          "falsch": [
+            "سَـيعملون",
+            "سَـنعمل",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيعمل/تعمل",
+          "falsch": [
+            "سَـأعمل",
+            "سَـنعمل",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنعمل",
+          "falsch": [
+            "سَـيعمل/تعمل",
+            "سَـتعمل",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتعملون",
+          "falsch": [
+            "سَـنعمل",
+            "سَـأعمل",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "عمل",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيعملون",
+          "falsch": [
+            "سَـأعمل",
+            "سَـتعملون",
+            "أعمل"
+          ],
+          "deutsch": "arbeiten"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأفهم",
+          "falsch": [
+            "سَـنفهم",
+            "سَـتفهم",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتفهم",
+          "falsch": [
+            "سَـنفهم",
+            "سَـتفهمون",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيفهم/تفهم",
+          "falsch": [
+            "سَـأفهم",
+            "سَـيفهمون",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنفهم",
+          "falsch": [
+            "سَـتفهمون",
+            "سَـيفهمون",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتفهمون",
+          "falsch": [
+            "سَـأفهم",
+            "سَـيفهم/تفهم",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "فهم",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيفهمون",
+          "falsch": [
+            "سَـنفهم",
+            "سَـيفهم/تفهم",
+            "أفهم"
+          ],
+          "deutsch": "verstehen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأساعد",
+          "falsch": [
+            "سَـيساعد/تساعد",
+            "سَـنساعد",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتساعد",
+          "falsch": [
+            "سَـيساعد/تساعد",
+            "سَـتساعدون",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيساعد/تساعد",
+          "falsch": [
+            "سَـتساعدون",
+            "سَـتساعد",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنساعد",
+          "falsch": [
+            "سَـتساعدون",
+            "سَـيساعد/تساعد",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتساعدون",
+          "falsch": [
+            "سَـيساعد/تساعد",
+            "سَـنساعد",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "ساعد",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيساعدون",
+          "falsch": [
+            "سَـتساعد",
+            "سَـيساعد/تساعد",
+            "أساعد"
+          ],
+          "deutsch": "helfen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأسكن",
+          "falsch": [
+            "سَـيسكنون",
+            "سَـتسكنون",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتسكن",
+          "falsch": [
+            "سَـتسكنون",
+            "سَـأسكن",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيسكن/تسكن",
+          "falsch": [
+            "سَـيسكنون",
+            "سَـتسكنون",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنسكن",
+          "falsch": [
+            "سَـأسكن",
+            "سَـتسكنون",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتسكنون",
+          "falsch": [
+            "سَـيسكن/تسكن",
+            "سَـأسكن",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "سكن",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيسكنون",
+          "falsch": [
+            "سَـيسكن/تسكن",
+            "سَـتسكنون",
+            "أسكن"
+          ],
+          "deutsch": "wohnen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأرجع",
+          "falsch": [
+            "سَـترجع",
+            "سَـيرجعون",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـترجع",
+          "falsch": [
+            "سَـيرجع/ترجع",
+            "سَـنرجع",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيرجع/ترجع",
+          "falsch": [
+            "سَـنرجع",
+            "سَـيرجعون",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنرجع",
+          "falsch": [
+            "سَـأرجع",
+            "سَـترجع",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـترجعون",
+          "falsch": [
+            "سَـترجع",
+            "سَـأرجع",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "رجع",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيرجعون",
+          "falsch": [
+            "سَـيرجع/ترجع",
+            "سَـأرجع",
+            "أرجع"
+          ],
+          "deutsch": "zurückkommen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأفتح",
+          "falsch": [
+            "سَـيفتحون",
+            "سَـيفتح/تفتح",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتفتح",
+          "falsch": [
+            "سَـتفتحون",
+            "سَـيفتحون",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيفتح/تفتح",
+          "falsch": [
+            "سَـأفتح",
+            "سَـيفتحون",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنفتح",
+          "falsch": [
+            "سَـأفتح",
+            "سَـتفتح",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتفتحون",
+          "falsch": [
+            "سَـيفتحون",
+            "سَـأفتح",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "فتح",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيفتحون",
+          "falsch": [
+            "سَـيفتح/تفتح",
+            "سَـنفتح",
+            "أفتح"
+          ],
+          "deutsch": "öffnen"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأجد",
+          "falsch": [
+            "سَـيجدون",
+            "سَـتجدون",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجد",
+          "falsch": [
+            "سَـيجدون",
+            "سَـتجدون",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجد/تجد",
+          "falsch": [
+            "سَـنجد",
+            "سَـأجد",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنجد",
+          "falsch": [
+            "سَـأجد",
+            "سَـتجدون",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجدون",
+          "falsch": [
+            "سَـيجد/تجد",
+            "سَـنجد",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "وجد",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجدون",
+          "falsch": [
+            "سَـأجد",
+            "سَـنجد",
+            "أجد"
+          ],
+          "deutsch": "finden"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأجلس",
+          "falsch": [
+            "سَـيجلسون",
+            "سَـتجلسون",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجلس",
+          "falsch": [
+            "سَـيجلسون",
+            "سَـيجلس/تجلس",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجلس/تجلس",
+          "falsch": [
+            "سَـتجلسون",
+            "سَـيجلسون",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنجلس",
+          "falsch": [
+            "سَـيجلسون",
+            "سَـتجلس",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجلسون",
+          "falsch": [
+            "سَـتجلس",
+            "سَـأجلس",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "جلس",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجلسون",
+          "falsch": [
+            "سَـتجلس",
+            "سَـنجلس",
+            "أجلس"
+          ],
+          "deutsch": "sitzen"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأسمع",
+          "falsch": [
+            "سَـيسمع/تسمع",
+            "سَـتسمع",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتسمع",
+          "falsch": [
+            "سَـيسمع/تسمع",
+            "سَـنسمع",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيسمع/تسمع",
+          "falsch": [
+            "سَـنسمع",
+            "سَـأسمع",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنسمع",
+          "falsch": [
+            "سَـيسمع/تسمع",
+            "سَـأسمع",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتسمعون",
+          "falsch": [
+            "سَـيسمعون",
+            "سَـأسمع",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "سمع",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيسمعون",
+          "falsch": [
+            "سَـيسمع/تسمع",
+            "سَـتسمعون",
+            "أسمع"
+          ],
+          "deutsch": "hören"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأطبخ",
+          "falsch": [
+            "سَـنطبخ",
+            "سَـيطبخ/تطبخ",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتطبخ",
+          "falsch": [
+            "سَـنطبخ",
+            "سَـيطبخون",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيطبخ/تطبخ",
+          "falsch": [
+            "سَـنطبخ",
+            "سَـتطبخ",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنطبخ",
+          "falsch": [
+            "سَـتطبخون",
+            "سَـيطبخون",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتطبخون",
+          "falsch": [
+            "سَـتطبخ",
+            "سَـيطبخون",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "طبخ",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيطبخون",
+          "falsch": [
+            "سَـأطبخ",
+            "سَـيطبخ/تطبخ",
+            "أطبخ"
+          ],
+          "deutsch": "kochen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأحمل",
+          "falsch": [
+            "سَـتحملون",
+            "سَـتحمل",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتحمل",
+          "falsch": [
+            "سَـيحملون",
+            "سَـنحمل",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيحمل/تحمل",
+          "falsch": [
+            "سَـتحمل",
+            "سَـنحمل",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنحمل",
+          "falsch": [
+            "سَـأحمل",
+            "سَـيحمل/تحمل",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتحملون",
+          "falsch": [
+            "سَـتحمل",
+            "سَـنحمل",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        },
+        {
+          "infinitiv": "حمل",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيحملون",
+          "falsch": [
+            "سَـأحمل",
+            "سَـنحمل",
+            "أحمل"
+          ],
+          "deutsch": "tragen"
+        }
+      ],
+      "n3": [
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأتعلم",
+          "falsch": [
+            "سَـيتعلم/تتعلم",
+            "سَـنتعلم",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتتعلم",
+          "falsch": [
+            "سَـأتعلم",
+            "سَـتتعلمون",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيتعلم/تتعلم",
+          "falsch": [
+            "سَـنتعلم",
+            "سَـتتعلمون",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنتعلم",
+          "falsch": [
+            "سَـتتعلم",
+            "سَـيتعلم/تتعلم",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتتعلمون",
+          "falsch": [
+            "سَـتتعلم",
+            "سَـيتعلم/تتعلم",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "تعلم",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيتعلمون",
+          "falsch": [
+            "سَـتتعلمون",
+            "سَـتتعلم",
+            "أتعلم"
+          ],
+          "deutsch": "lernen (sich)"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأستمع",
+          "falsch": [
+            "سَـيستمع/تستمع",
+            "سَـتستمعون",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتستمع",
+          "falsch": [
+            "سَـيستمعون",
+            "سَـأستمع",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيستمع/تستمع",
+          "falsch": [
+            "سَـأستمع",
+            "سَـتستمعون",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنستمع",
+          "falsch": [
+            "سَـيستمع/تستمع",
+            "سَـيستمعون",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتستمعون",
+          "falsch": [
+            "سَـتستمع",
+            "سَـنستمع",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استمع",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيستمعون",
+          "falsch": [
+            "سَـأستمع",
+            "سَـنستمع",
+            "أستمع"
+          ],
+          "deutsch": "zuhören"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأستخدم",
+          "falsch": [
+            "سَـيستخدمون",
+            "سَـتستخدم",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتستخدم",
+          "falsch": [
+            "سَـيستخدم/تستخدم",
+            "سَـنستخدم",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيستخدم/تستخدم",
+          "falsch": [
+            "سَـنستخدم",
+            "سَـتستخدمون",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنستخدم",
+          "falsch": [
+            "سَـتستخدمون",
+            "سَـتستخدم",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتستخدمون",
+          "falsch": [
+            "سَـيستخدمون",
+            "سَـنستخدم",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "استخدم",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيستخدمون",
+          "falsch": [
+            "سَـأستخدم",
+            "سَـنستخدم",
+            "أستخدم"
+          ],
+          "deutsch": "benutzen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأشتري",
+          "falsch": [
+            "سَـيشترون",
+            "سَـتشتري",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتشتري",
+          "falsch": [
+            "سَـأشتري",
+            "سَـنشتري",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيشتري/تشتري",
+          "falsch": [
+            "سَـأشتري",
+            "سَـيشترون",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنشتري",
+          "falsch": [
+            "سَـتشتري",
+            "سَـتشترون",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتشترون",
+          "falsch": [
+            "سَـتشتري",
+            "سَـيشترون",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "اشترى",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيشترون",
+          "falsch": [
+            "سَـيشتري/تشتري",
+            "سَـتشتري",
+            "أشتري"
+          ],
+          "deutsch": "kaufen"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأجيب",
+          "falsch": [
+            "سَـتجيب",
+            "سَـيجيبون",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجيب",
+          "falsch": [
+            "سَـنجيب",
+            "سَـيجيبون",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجيب/تجيب",
+          "falsch": [
+            "سَـنجيب",
+            "سَـتجيب",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنجيب",
+          "falsch": [
+            "سَـأجيب",
+            "سَـيجيب/تجيب",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتجيبون",
+          "falsch": [
+            "سَـنجيب",
+            "سَـيجيب/تجيب",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "أجاب",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيجيبون",
+          "falsch": [
+            "سَـنجيب",
+            "سَـتجيب",
+            "أجيب"
+          ],
+          "deutsch": "antworten"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنا",
+          "zeit": "المستقبل",
+          "richtig": "سَـأسافر",
+          "falsch": [
+            "سَـتسافرون",
+            "سَـيسافرون",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنت",
+          "zeit": "المستقبل",
+          "richtig": "سَـتسافر",
+          "falsch": [
+            "سَـأسافر",
+            "سَـتسافرون",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "هو/هي",
+          "zeit": "المستقبل",
+          "richtig": "سَـيسافر/تسافر",
+          "falsch": [
+            "سَـأسافر",
+            "سَـيسافرون",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "نحن",
+          "zeit": "المستقبل",
+          "richtig": "سَـنسافر",
+          "falsch": [
+            "سَـأسافر",
+            "سَـيسافرون",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "أنتم",
+          "zeit": "المستقبل",
+          "richtig": "سَـتسافرون",
+          "falsch": [
+            "سَـنسافر",
+            "سَـأسافر",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        },
+        {
+          "infinitiv": "سافر",
+          "pronomen": "هم",
+          "zeit": "المستقبل",
+          "richtig": "سَـيسافرون",
+          "falsch": [
+            "سَـأسافر",
+            "سَـيسافر/تسافر",
+            "أسافر"
+          ],
+          "deutsch": "reisen"
+        }
+      ]
+    }
+  }
+}
