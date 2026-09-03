@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Konjugator – ABC-Wort</title>
+<style>
+:root {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --text: #1a2332;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --radius: 16px;
+    --de: #3b82f6; --en: #ef4444; --es: #f59e0b; --ru: #8b5cf6; --ar: #10b981;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; padding: 20px 16px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0;
+}
+
+/* Header */
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.header p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+/* Sprache */
+.lang-row {
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 16px; width: 100%; max-width: 540px;
+}
+.lang-btn {
+    padding: 8px 16px; border-radius: 24px; border: 2px solid var(--border);
+    background: var(--card); font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; transition: all 0.18s; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+}
+.lang-btn:hover { border-color: #94a3b8; color: var(--text); }
+.lang-btn.aktiv { color: white; border-color: transparent; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.lang-btn[data-lang="de"].aktiv { background: var(--de); }
+.lang-btn[data-lang="en"].aktiv { background: var(--en); }
+.lang-btn[data-lang="es"].aktiv { background: var(--es); }
+.lang-btn[data-lang="ru"].aktiv { background: var(--ru); }
+.lang-btn[data-lang="ar"].aktiv { background: var(--ar); }
+.lang-btn[data-lang="fr"].aktiv { background: #3b82f6; }
+.lang-btn[data-lang="el"].aktiv { background: #0ea5e9; }
+.lang-btn[data-lang="fa"].aktiv { background: #6366f1; }
+
+/* Eingabe */
+.eingabe-box {
+    display: flex; gap: 8px; width: 100%; max-width: 540px; margin-bottom: 12px;
+}
+.verb-input {
+    flex: 1; padding: 13px 18px; border-radius: var(--radius);
+    border: 2px solid var(--border); font-size: 1.05rem; outline: none;
+    transition: border-color 0.2s; background: var(--card);
+    font-family: inherit;
+}
+.verb-input:focus { border-color: #94a3b8; }
+.such-btn {
+    padding: 13px 22px; border-radius: var(--radius);
+    border: none; background: var(--text); color: white;
+    font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    transition: opacity 0.2s;
+}
+.such-btn:hover { opacity: 0.85; }
+
+/* Schnellverben */
+.schnell-row {
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
+    width: 100%; max-width: 540px; margin-bottom: 20px;
+}
+.schnell-btn {
+    padding: 5px 12px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--card); font-size: 0.8rem; cursor: pointer;
+    transition: all 0.15s; color: var(--muted); font-family: inherit;
+}
+.schnell-btn:hover { color: var(--text); border-color: #94a3b8; }
+
+/* Tabelle */
+.tabelle-wrap {
+    width: 100%; max-width: 640px;
+    background: var(--card); border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+.tabelle-kopf {
+    padding: 18px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.verb-info { display: flex; align-items: baseline; gap: 10px; }
+.verb-titel { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+.badge {
+    font-size: 0.72rem; padding: 3px 9px; border-radius: 8px;
+    font-weight: 600; white-space: nowrap;
+}
+.badge-reg { background: #f0fdf4; color: #16a34a; }
+.badge-unreg { background: #fffbeb; color: #d97706; }
+
+.scroll-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 360px; }
+th {
+    padding: 10px 16px; text-align: left; font-size: 0.75rem;
+    font-weight: 700; color: var(--muted); background: #f8fafc;
+    border-bottom: 1px solid var(--border); letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+th:first-child { width: 90px; }
+td {
+    padding: 11px 16px; font-size: 0.92rem;
+    border-bottom: 1px solid var(--border); vertical-align: middle;
+}
+td:first-child { color: var(--muted); font-size: 0.8rem; font-weight: 600; }
+td:not(:first-child) { font-weight: 500; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafc; }
+
+/* Hinweis */
+.hinweis { text-align: center; padding: 48px 24px; color: var(--muted); }
+.hinweis .icon { font-size: 2.8rem; margin-bottom: 12px; }
+.hinweis p { font-size: 0.95rem; }
+
+/* Back */
+.back-link {
+    margin-top: 24px; font-size: 0.83rem; color: var(--muted);
+    text-decoration: none; display: inline-block;
+    transition: color 0.15s;
+}
+.back-link:hover { color: var(--text); }
+
+@media (max-width: 420px) {
+    th, td { padding: 9px 11px; }
+    .verb-titel { font-size: 1.3rem; }
+}
+</style>
+<script src="../dict.js"></script>
+</head>
+<body>
+
+<div class="header">
+    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiByeD0iODAiIGZpbGw9IiMwZjFmMzUiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSI3MiIgZmlsbD0iIzFlM2E1ZiIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIyMDAiIHI9IjY4IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNiA0IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iMjA4IiB5PSIyMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNhMGM0ZmYiIGZvbnQtc2l6ZT0iODQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgb3BhY2l0eT0iMC4zNSI+2YM8L3RleHQ+Cjx0ZXh0IHg9IjE5NiIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNGE5MGQ5IiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iOTAwIiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIG9wYWNpdHk9IjAuOTUiPks8L3RleHQ+Cjx0ZXh0IHg9IjIwMCIgeT0iNjgiICB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+8J+nkTwvdGV4dD4KPHRleHQgeD0iMzIyIiB5PSIxMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Gn8J+PvTwvdGV4dD4KPHRleHQgeD0iMzIyIiB5PSIyOTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Gm8J+PuzwvdGV4dD4KPHRleHQgeD0iMjAwIiB5PSIzNTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Go4oCN8J+RqeKAjfCfkac8L3RleHQ+Cjx0ZXh0IHg9Ijc4IiAgeT0iMjkyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+8J+nkeKAjfCfpJ3igI3wn6eRPC90ZXh0Pgo8dGV4dCB4PSI3OCIgIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI0MiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPvCfkaU8L3RleHQ+CjxsaW5lIHgxPSIyMDAiIHkxPSI3NiIgIHgyPSIyMDAiIHkyPSIxMzIiIHN0cm9rZT0iIzRhOTBkOSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KPGxpbmUgeDE9IjMwOCIgeTE9IjEyMCIgeDI9IjI2MiIgeTI9IjE1MiIgc3Ryb2tlPSIjNGE5MGQ5IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8bGluZSB4MT0iMzA4IiB5MT0iMjc4IiB4Mj0iMjYyIiB5Mj0iMjQ4IiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+CjxsaW5lIHgxPSIyMDAiIHkxPSIzMzIiIHgyPSIyMDAiIHkyPSIyNzAiIHN0cm9rZT0iIzRhOTBkOSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KPGxpbmUgeDE9IjkyIiAgeTE9IjI3OCIgeDI9IjEzOCIgeTI9IjI0OCIgc3Ryb2tlPSIjNGE5MGQ5IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8bGluZSB4MT0iOTIiICB5MT0iMTIwIiB4Mj0iMTM4IiB5Mj0iMTUyIiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+Cjwvc3ZnPgo=" width="64" height="64" style="border-radius:14px;">
+    <h1 style="margin-top:10px;">Konjugator</h1>
+    <p>ABC-Wort · Alle Formen auf einen Blick</p>
+</div>
+
+<div class="lang-row" id="langRow"></div>
+
+<div class="eingabe-box">
+    <input class="verb-input" id="verbInput" type="text"
+           placeholder="Verb eingeben…"
+           onkeydown="if(event.key==='Enter') konjugiere()">
+    <button class="such-btn" onclick="konjugiere()">→</button>
+</div>
+
+<div class="schnell-row" id="schnellRow"></div>
+
+<div class="tabelle-wrap" id="tabelleWrap">
+    <div class="hinweis">
+        <div class="icon">📖</div>
+        <p>Sprache wählen und Verb eingeben</p>
+    </div>
+</div>
+
+<a class="back-link" href="../">← ABC-Wort</a>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// KONFIGURATION
+// ══════════════════════════════════════════════════════════════
+const SPRACHEN = {
+    de: { name:'Deutsch',   flag:'🇩🇪', rtl:false, personen:['ich','du','er/sie','wir','ihr','sie'],                        tempora:['Präsens','Präteritum','Perfekt'] },
+    en: { name:'English',   flag:'🇬🇧', rtl:false, personen:['I','you','he/she','we','you (pl.)','they'],                   tempora:['Present','Past','Perfect','Future'] },
+    es: { name:'Español',   flag:'🇪🇸', rtl:false, personen:['yo','tú','él/ella','nosotros','vosotros','ellos/ellas'],       tempora:['Presente','Pretérito','Perfecto','Futuro'] },
+    fr: { name:'Français',  flag:'🇫🇷', rtl:false, personen:['je','tu','il/elle','nous','vous','ils/elles'],                 tempora:['Présent','Passé composé','Imparfait','Futur'] },
+    ru: { name:'Русский',   flag:'🇷🇺', rtl:false, personen:['я','ты','он/она','мы','вы','они'],                            tempora:['Präsens','Vergangenheit','Futur'] },
+    el: { name:'Ελληνικά',  flag:'🇬🇷', rtl:false, personen:['εγώ','εσύ','αυτός/ή','εμείς','εσείς','αυτοί'],               tempora:['Ενεστώτας','Αόριστος','Μέλλοντας'] },
+    ar: { name:'العربية',   flag:'🇸🇦', rtl:true,  personen:['أنا','أنت','هو/هي','نحن','أنتم','هم'],                       tempora:['المضارع','الماضي','المستقبل'] },
+    fa: { name:'دری',       flag:'🇦🇫', rtl:true,  personen:['من','تو','او','ما','شما','آن‌ها'],                           tempora:['حال','گذشته','آینده'] },
+};
+
+const SCHNELL = {
+    de: ['sein','haben','machen','gehen','kommen','lernen','einkaufen','aufräumen','verstehen','erzählen'],
+    en: ['be','have','do','go','come','learn','work','speak','understand','write'],
+    es: ['ser','tener','hacer','ir','venir','aprender','hablar','poder','saber','decir'],
+    fr: ['être','avoir','aller','faire','voir','venir','dire','pouvoir','vouloir','parler'],
+    ru: ['быть','делать','идти','говорить','знать','читать','работать','видеть','хотеть','учиться'],
+    el: ['είμαι','έχω','κάνω','πηγαίνω','τρώω','βλέπω','λέω','μπορώ','θέλω','μαθαίνω'],
+    ar: ['كان','ذهب','أكل','كتب','قرأ','عمل','فهم','قال','جاء','درس'],
+    fa: ['بودن','رفتن','آمدن','گفتن','دیدن','داشتن','کردن','خوردن','خواندن','دانستن'],
+};
+
+// ══════════════════════════════════════════════════════════════
+// DEUTSCH – vollständiger Algorithmus aus ABC-Wort Index
+// ══════════════════════════════════════════════════════════════
+const DE_NTP = ['be','er','ver','zer','ent','ge','miss','durch','über','unter','hinter','wider','um'];
+const DE_TP  = ['ab','an','auf','aus','bei','ein','mit','nach','vor','zu','weg','los',
+                'her','hin','zurück','fort','fern','fest','frei','gleich','klar',
+                'krank','leer','voll','wach','weiter'];
+
+// Unregelmäßige Präsensformen
+const DE_PRAESENS_UNREG = {
+    'sein':['bin','bist','ist','sind','seid','sind'],
+    'haben':['habe','hast','hat','haben','habt','haben'],
+    'werden':['werde','wirst','wird','werden','werdet','werden'],
+    'wissen':['weiß','weißt','weiß','wissen','wisst','wissen'],
+    'dürfen':['darf','darfst','darf','dürfen','dürft','dürfen'],
+    'können':['kann','kannst','kann','können','könnt','können'],
+    'mögen':['mag','magst','mag','mögen','mögt','mögen'],
+    'müssen':['muss','musst','muss','müssen','müsst','müssen'],
+    'sollen':['soll','sollst','soll','sollen','sollt','sollen'],
+    'wollen':['will','willst','will','wollen','wollt','wollen'],
+    'fahren':['fahre','fährst','fährt','fahren','fahrt','fahren'],
+    'laufen':['laufe','läufst','läuft','laufen','lauft','laufen'],
+    'schlafen':['schlafe','schläfst','schläft','schlafen','schlaft','schlafen'],
+    'tragen':['trage','trägst','trägt','tragen','tragt','tragen'],
+    'waschen':['wasche','wäschst','wäscht','waschen','wascht','waschen'],
+    'lesen':['lese','liest','liest','lesen','lest','lesen'],
+    'geben':['gebe','gibst','gibt','geben','gebt','geben'],
+    'nehmen':['nehme','nimmst','nimmt','nehmen','nehmt','nehmen'],
+    'sprechen':['spreche','sprichst','spricht','sprechen','sprecht','sprechen'],
+    'treffen':['treffe','triffst','trifft','treffen','trefft','treffen'],
+    'sehen':['sehe','siehst','sieht','sehen','seht','sehen'],
+    'essen':['esse','isst','isst','essen','esst','essen'],
+    'vergessen':['vergesse','vergisst','vergisst','vergessen','vergesst','vergessen'],
+    'helfen':['helfe','hilfst','hilft','helfen','helft','helfen'],
+    'werfen':['werfe','wirfst','wirft','werfen','werft','werfen'],
+    'empfehlen':['empfehle','empfiehlst','empfiehlt','empfehlen','empfehlt','empfehlen'],
+};
+
+// Unregelmäßige Vergangenheitsformen
+const DE_PRAET_UNREG = {
+    'sein':    {prät:'war',       hilfsverb:'sein',  partizip:'gewesen'},
+    'haben':   {prät:'hatte',     hilfsverb:'haben', partizip:'gehabt'},
+    'werden':  {prät:'wurde',     hilfsverb:'sein',  partizip:'geworden'},
+    'gehen':   {prät:'ging',      hilfsverb:'sein',  partizip:'gegangen'},
+    'kommen':  {prät:'kam',       hilfsverb:'sein',  partizip:'gekommen'},
+    'sehen':   {prät:'sah',       hilfsverb:'haben', partizip:'gesehen'},
+    'geben':   {prät:'gab',       hilfsverb:'haben', partizip:'gegeben'},
+    'nehmen':  {prät:'nahm',      hilfsverb:'haben', partizip:'genommen'},
+    'sprechen':{prät:'sprach',    hilfsverb:'haben', partizip:'gesprochen'},
+    'schreiben':{prät:'schrieb',  hilfsverb:'haben', partizip:'geschrieben'},
+    'lesen':   {prät:'las',       hilfsverb:'haben', partizip:'gelesen'},
+    'fahren':  {prät:'fuhr',      hilfsverb:'sein',  partizip:'gefahren'},
+    'laufen':  {prät:'lief',      hilfsverb:'sein',  partizip:'gelaufen'},
+    'wissen':  {prät:'wusste',    hilfsverb:'haben', partizip:'gewusst'},
+    'essen':   {prät:'aß',        hilfsverb:'haben', partizip:'gegessen'},
+    'trinken': {prät:'trank',     hilfsverb:'haben', partizip:'getrunken'},
+    'helfen':  {prät:'half',      hilfsverb:'haben', partizip:'geholfen'},
+    'treffen': {prät:'traf',      hilfsverb:'haben', partizip:'getroffen'},
+    'finden':  {prät:'fand',      hilfsverb:'haben', partizip:'gefunden'},
+    'bringen': {prät:'brachte',   hilfsverb:'haben', partizip:'gebracht'},
+    'denken':  {prät:'dachte',    hilfsverb:'haben', partizip:'gedacht'},
+    'stehen':  {prät:'stand',     hilfsverb:'haben', partizip:'gestanden'},
+    'sitzen':  {prät:'saß',       hilfsverb:'haben', partizip:'gesessen'},
+    'liegen':  {prät:'lag',       hilfsverb:'haben', partizip:'gelegen'},
+    'schlafen':{prät:'schlief',   hilfsverb:'haben', partizip:'geschlafen'},
+    'tragen':  {prät:'trug',      hilfsverb:'haben', partizip:'getragen'},
+    'waschen': {prät:'wusch',     hilfsverb:'haben', partizip:'gewaschen'},
+    'fallen':  {prät:'fiel',      hilfsverb:'sein',  partizip:'gefallen'},
+    'halten':  {prät:'hielt',     hilfsverb:'haben', partizip:'gehalten'},
+    'lassen':  {prät:'ließ',      hilfsverb:'haben', partizip:'gelassen'},
+    'rufen':   {prät:'rief',      hilfsverb:'haben', partizip:'gerufen'},
+    'werfen':  {prät:'warf',      hilfsverb:'haben', partizip:'geworfen'},
+    'ziehen':  {prät:'zog',       hilfsverb:'haben', partizip:'gezogen'},
+    'vergessen':{prät:'vergaß',   hilfsverb:'haben', partizip:'vergessen'},
+    'kennen':  {prät:'kannte',    hilfsverb:'haben', partizip:'gekannt'},
+    'nennen':  {prät:'nannte',    hilfsverb:'haben', partizip:'genannt'},
+    'rennen':  {prät:'rannte',    hilfsverb:'sein',  partizip:'gerannt'},
+    'schneiden':{prät:'schnitt',  hilfsverb:'haben', partizip:'geschnitten'},
+    'steigen': {prät:'stieg',     hilfsverb:'sein',  partizip:'gestiegen'},
+    'reisen':  {prät:'reiste',    hilfsverb:'sein',  partizip:'gereist'},
+    'fliegen': {prät:'flog',      hilfsverb:'sein',  partizip:'geflogen'},
+    'schwimmen':{prät:'schwamm',  hilfsverb:'sein',  partizip:'geschwommen'},
+    // Trennbare mit bekanntem Basis
+    'einkaufen':   {prät:'kaufte ein',    hilfsverb:'haben', partizip:'eingekauft'},
+    'abholen':     {prät:'holte ab',      hilfsverb:'haben', partizip:'abgeholt'},
+    'aufräumen':   {prät:'räumte auf',    hilfsverb:'haben', partizip:'aufgeräumt'},
+    'aufwachen':   {prät:'wachte auf',    hilfsverb:'sein',  partizip:'aufgewacht'},
+    'einsteigen':  {prät:'stieg ein',     hilfsverb:'sein',  partizip:'eingestiegen'},
+    'aussteigen':  {prät:'stieg aus',     hilfsverb:'sein',  partizip:'ausgestiegen'},
+    'anrufen':     {prät:'rief an',       hilfsverb:'haben', partizip:'angerufen'},
+    'aufstehen':   {prät:'stand auf',     hilfsverb:'sein',  partizip:'aufgestanden'},
+    'nachdenken':  {prät:'dachte nach',   hilfsverb:'haben', partizip:'nachgedacht'},
+    'vorlesen':    {prät:'las vor',       hilfsverb:'haben', partizip:'vorgelesen'},
+    'mitnehmen':   {prät:'nahm mit',      hilfsverb:'haben', partizip:'mitgenommen'},
+    'zurückkommen':{prät:'kam zurück',    hilfsverb:'sein',  partizip:'zurückgekommen'},
+    'weitergehen': {prät:'ging weiter',   hilfsverb:'sein',  partizip:'weitergegangen'},
+    // Nicht-trennbare mit bekanntem Stamm
+    'verstehen':   {prät:'verstand',      hilfsverb:'haben', partizip:'verstanden'},
+    'erzählen':    {prät:'erzählte',      hilfsverb:'haben', partizip:'erzählt'},
+    'erkennen':    {prät:'erkannte',      hilfsverb:'haben', partizip:'erkannt'},
+    'bekommen':    {prät:'bekam',         hilfsverb:'haben', partizip:'bekommen'},
+    'beginnen':    {prät:'begann',        hilfsverb:'haben', partizip:'begonnen'},
+    'beschreiben': {prät:'beschrieb',     hilfsverb:'haben', partizip:'beschrieben'},
+    'entscheiden': {prät:'entschied',     hilfsverb:'haben', partizip:'entschieden'},
+    'vergessen':   {prät:'vergaß',        hilfsverb:'haben', partizip:'vergessen'},
+    'verlieren':   {prät:'verlor',        hilfsverb:'haben', partizip:'verloren'},
+    'gefallen':    {prät:'gefiel',        hilfsverb:'haben', partizip:'gefallen'},
+};
+
+const DE_SEIN_VERBEN = new Set(['sein','werden','gehen','kommen','fahren','laufen','fallen',
+    'fliegen','reisen','steigen','wachsen','bleiben','passieren','aufwachen','aufstehen',
+    'einsteigen','aussteigen','zurückkommen','weitergehen','rennen','schwimmen']);
+
+function dePraesensStamm(verb, trennPräfix) {
+    let st = verb.endsWith('eln') ? verb.slice(0,-3)+'el' :
+             verb.endsWith('ern') ? verb.slice(0,-3)+'er' :
+             verb.endsWith('en')  ? verb.slice(0,-2) :
+             verb.endsWith('n')   ? verb.slice(0,-1) : verb;
+    const e = /[dt]$/.test(st) || /[^aeiouäöü][mn]$/.test(st) ? 'e' : '';
+    const suf = trennPräfix ? ' '+trennPräfix : '';
+    return [st+'e'+suf, st+e+'st'+suf, st+e+'t'+suf, st+'en'+suf, st+e+'t'+suf, st+'en'+suf];
+}
+
+function dePraesens(inf) {
+    if (DE_PRAESENS_UNREG[inf]) return DE_PRAESENS_UNREG[inf];
+    const ntp = DE_NTP.find(p => inf.startsWith(p));
+    if (ntp) {
+        // Nicht-trennbar: prüfe ob Basisform unregelmäßig
+        // z.B. vergessen → vergisst (Basis: essen/vergessen direkt in Tabelle)
+        return dePraesensStamm(inf, null);
+    }
+    const tp = DE_TP.find(p => inf.startsWith(p) && inf.length > p.length+1);
+    if (tp) {
+        const basis = inf.slice(tp.length);
+        // Trennbar mit unregelmäßigem Basisverb?
+        if (DE_PRAESENS_UNREG[basis]) {
+            // Formen des Basisverbs nehmen und Präfix anhängen
+            return DE_PRAESENS_UNREG[basis].map((f, i) => {
+                // Bei 1. Person: Präfix hinten ran
+                // Format: "gebe auf", "gibst auf" etc.
+                return f + ' ' + tp;
+            });
+        }
+        return dePraesensStamm(basis, tp);
+    }
+    return dePraesensStamm(inf, null);
+}
+
+function dePraeteritum(inf) {
+    if (DE_PRAET_UNREG[inf]) {
+        const d = DE_PRAET_UNREG[inf];
+        // Vollständige 6 Formen aus prät-Form ableiten
+        const p = d.prät;
+        // Für bekannte unregelmäßige: alle Personen aus dem Stamm
+        const st = p.replace(/ .+/,''); // bei trennbaren: "kaufte ein" → "kaufte"
+        const suf = p.includes(' ') ? ' '+p.split(' ').slice(1).join(' ') : '';
+        // Prüfe ob regelmäßige Endung (-te)
+        if (st.endsWith('te')) {
+            const b = st.slice(0,-2);
+            const e = /[dt]$/.test(b) ? 'e' : '';
+            return [b+e+'te'+suf, b+e+'test'+suf, b+e+'te'+suf, b+e+'ten'+suf, b+e+'tet'+suf, b+e+'ten'+suf];
+        }
+        // Starkes Verb: Vokalalternation, alle Personen gleich außer 2./3. Sg ohne Endung
+        return [st, st+'st', st, st+'en', st+'t', st+'en'];
+    }
+    // Trennbar mit bekanntem Basisverb?
+    const tp = DE_TP.find(p => inf.startsWith(p) && inf.length > p.length+1);
+    if (tp) {
+        const basis = inf.slice(tp.length);
+        if (DE_PRAET_UNREG[basis]) {
+            const b = DE_PRAET_UNREG[basis];
+            const partBasis = b.partizip.startsWith('ge') ? b.partizip.slice(2) : b.partizip;
+            const praetSt = b.prät.replace(/ .+/,'');
+            const suf = ' '+tp;
+            if (praetSt.endsWith('te')) {
+                const bs = praetSt.slice(0,-2);
+                const e = /[dt]$/.test(bs) ? 'e' : '';
+                return [bs+e+'te'+suf, bs+e+'test'+suf, bs+e+'te'+suf, bs+e+'ten'+suf, bs+e+'tet'+suf, bs+e+'ten'+suf];
+            }
+            return [praetSt+suf, praetSt+'st'+suf, praetSt+suf, praetSt+'en'+suf, praetSt+'t'+suf, praetSt+'en'+suf];
+        }
+        // Trennbar, regelmäßige Basis
+        const bStamm = basis.endsWith('en') ? basis.slice(0,-2) : basis.slice(0,-1);
+        const bE = /[dt]$/.test(bStamm) ? 'e' : '';
+        const s = ' '+tp;
+        return [bStamm+bE+'te'+s, bStamm+bE+'test'+s, bStamm+bE+'te'+s, bStamm+bE+'ten'+s, bStamm+bE+'tet'+s, bStamm+bE+'ten'+s];
+    }
+    // Nicht-trennbar oder einfach regelmäßig
+    const st = inf.endsWith('eln') ? inf.slice(0,-3)+'el' : inf.endsWith('ern') ? inf.slice(0,-3)+'er' : inf.endsWith('en') ? inf.slice(0,-2) : inf.endsWith('n') ? inf.slice(0,-1) : inf;
+    const e = /[dt]$/.test(st) || /[^aeiouäöü][mn]$/.test(st) ? 'e' : '';
+    return [st+e+'te', st+e+'test', st+e+'te', st+e+'ten', st+e+'tet', st+e+'ten'];
+}
+
+function dePerfekt(inf) {
+    let hilfsverb = DE_SEIN_VERBEN.has(inf) ? 'sein' : 'haben';
+    let partizip;
+    if (DE_PRAET_UNREG[inf]) {
+        partizip = DE_PRAET_UNREG[inf].partizip;
+        hilfsverb = DE_PRAET_UNREG[inf].hilfsverb;
+    } else {
+        // Trennbar?
+        const tp = DE_TP.find(p => inf.startsWith(p) && inf.length > p.length+1);
+        if (tp) {
+            const basis = inf.slice(tp.length);
+            if (DE_PRAET_UNREG[basis]) {
+                const b = DE_PRAET_UNREG[basis];
+                const pB = b.partizip.startsWith('ge') ? b.partizip.slice(2) : b.partizip;
+                partizip = tp+'ge'+pB;
+                hilfsverb = b.hilfsverb;
+            } else {
+                const bSt = basis.endsWith('en') ? basis.slice(0,-2) : basis.slice(0,-1);
+                const bE = /[dt]$/.test(bSt) ? 'e' : '';
+                partizip = tp+'ge'+bSt+bE+'t';
+            }
+        } else {
+            const ntp = DE_NTP.find(p => inf.startsWith(p));
+            const st = inf.endsWith('en') ? inf.slice(0,-2) : inf.endsWith('n') ? inf.slice(0,-1) : inf;
+            const e = /[dt]$/.test(st) ? 'e' : '';
+            partizip = ntp ? st+e+'t' : 'ge'+st+e+'t';
+        }
+    }
+    const h = hilfsverb === 'sein'
+        ? ['bin','bist','ist','sind','seid','sind']
+        : ['habe','hast','hat','haben','habt','haben'];
+    return h.map(x => x+' '+partizip);
+}
+
+function deKonjugiere(inf) {
+    const reg = !DE_PRAESENS_UNREG[inf] && !DE_PRAET_UNREG[inf];
+    return { regelmaessig:reg,
+        'Präsens':    dePraesens(inf),
+        'Präteritum': dePraeteritum(inf),
+        'Perfekt':    dePerfekt(inf) };
+}
+
+// ══════════════════════════════════════════════════════════════
+// ENGLISCH
+// ══════════════════════════════════════════════════════════════
+const EN_UNREG = {
+    'be':{p:['am','are','is','are','are','are'],pa:['was','were','was','were','were','were'],pp:'been'},
+    'have':{p:['have','have','has','have','have','have'],pa:Array(6).fill('had'),pp:'had'},
+    'do':{p:['do','do','does','do','do','do'],pa:Array(6).fill('did'),pp:'done'},
+    'go':{p:['go','go','goes','go','go','go'],pa:Array(6).fill('went'),pp:'gone'},
+    'eat':{p:['eat','eat','eats','eat','eat','eat'],pa:Array(6).fill('ate'),pp:'eaten'},
+    'see':{p:['see','see','sees','see','see','see'],pa:Array(6).fill('saw'),pp:'seen'},
+    'come':{p:['come','come','comes','come','come','come'],pa:Array(6).fill('came'),pp:'come'},
+    'say':{p:['say','say','says','say','say','say'],pa:Array(6).fill('said'),pp:'said'},
+    'make':{p:['make','make','makes','make','make','make'],pa:Array(6).fill('made'),pp:'made'},
+    'take':{p:['take','take','takes','take','take','take'],pa:Array(6).fill('took'),pp:'taken'},
+    'know':{p:['know','know','knows','know','know','know'],pa:Array(6).fill('knew'),pp:'known'},
+    'give':{p:['give','give','gives','give','give','give'],pa:Array(6).fill('gave'),pp:'given'},
+    'find':{p:['find','find','finds','find','find','find'],pa:Array(6).fill('found'),pp:'found'},
+    'get':{p:['get','get','gets','get','get','get'],pa:Array(6).fill('got'),pp:'got'},
+    'think':{p:['think','think','thinks','think','think','think'],pa:Array(6).fill('thought'),pp:'thought'},
+    'write':{p:['write','write','writes','write','write','write'],pa:Array(6).fill('wrote'),pp:'written'},
+    'read':{p:['read','read','reads','read','read','read'],pa:Array(6).fill('read'),pp:'read'},
+    'speak':{p:['speak','speak','speaks','speak','speak','speak'],pa:Array(6).fill('spoke'),pp:'spoken'},
+    'run':{p:['run','run','runs','run','run','run'],pa:Array(6).fill('ran'),pp:'run'},
+    'buy':{p:['buy','buy','buys','buy','buy','buy'],pa:Array(6).fill('bought'),pp:'bought'},
+    'bring':{p:['bring','bring','brings','bring','bring','bring'],pa:Array(6).fill('brought'),pp:'brought'},
+    'feel':{p:['feel','feel','feels','feel','feel','feel'],pa:Array(6).fill('felt'),pp:'felt'},
+    'leave':{p:['leave','leave','leaves','leave','leave','leave'],pa:Array(6).fill('left'),pp:'left'},
+    'meet':{p:['meet','meet','meets','meet','meet','meet'],pa:Array(6).fill('met'),pp:'met'},
+    'sit':{p:['sit','sit','sits','sit','sit','sit'],pa:Array(6).fill('sat'),pp:'sat'},
+    'sleep':{p:['sleep','sleep','sleeps','sleep','sleep','sleep'],pa:Array(6).fill('slept'),pp:'slept'},
+    'put':{p:['put','put','puts','put','put','put'],pa:Array(6).fill('put'),pp:'put'},
+    'pay':{p:['pay','pay','pays','pay','pay','pay'],pa:Array(6).fill('paid'),pp:'paid'},
+    'send':{p:['send','send','sends','send','send','send'],pa:Array(6).fill('sent'),pp:'sent'},
+    'teach':{p:['teach','teach','teaches','teach','teach','teach'],pa:Array(6).fill('taught'),pp:'taught'},
+    'understand':{p:['understand','understand','understands','understand','understand','understand'],pa:Array(6).fill('understood'),pp:'understood'},
+    'begin':{p:['begin','begin','begins','begin','begin','begin'],pa:Array(6).fill('began'),pp:'begun'},
+    'break':{p:['break','break','breaks','break','break','break'],pa:Array(6).fill('broke'),pp:'broken'},
+    'choose':{p:['choose','choose','chooses','choose','choose','choose'],pa:Array(6).fill('chose'),pp:'chosen'},
+    'drive':{p:['drive','drive','drives','drive','drive','drive'],pa:Array(6).fill('drove'),pp:'driven'},
+    'fall':{p:['fall','fall','falls','fall','fall','fall'],pa:Array(6).fill('fell'),pp:'fallen'},
+    'fly':{p:['fly','fly','flies','fly','fly','fly'],pa:Array(6).fill('flew'),pp:'flown'},
+    'keep':{p:['keep','keep','keeps','keep','keep','keep'],pa:Array(6).fill('kept'),pp:'kept'},
+    'lose':{p:['lose','lose','loses','lose','lose','lose'],pa:Array(6).fill('lost'),pp:'lost'},
+    'stand':{p:['stand','stand','stands','stand','stand','stand'],pa:Array(6).fill('stood'),pp:'stood'},
+    'win':{p:['win','win','wins','win','win','win'],pa:Array(6).fill('won'),pp:'won'},
+};
+function enPresReg(inf) {
+    const last = inf.slice(-1), pre = inf.slice(-2,-1);
+    let s3 = (inf.endsWith('s')||inf.endsWith('sh')||inf.endsWith('ch')||inf.endsWith('x')||inf.endsWith('o')) ? inf+'es' :
+              (last==='y' && !'aeiou'.includes(pre)) ? inf.slice(0,-1)+'ies' : inf+'s';
+    return [inf,inf,s3,inf,inf,inf];
+}
+function enPastReg(inf) {
+    const last=inf.slice(-1), pre=inf.slice(-2,-1), ppre=inf.slice(-3,-2);
+    let p = inf.endsWith('e') ? inf+'d' :
+            (last==='y'&&!'aeiou'.includes(pre)) ? inf.slice(0,-1)+'ied' :
+            (!'aeiouwxy'.includes(last)&&'aeiou'.includes(pre)&&!'aeiou'.includes(ppre)&&inf.length<=6) ? inf+last+'ed' :
+            inf+'ed';
+    return Array(6).fill(p);
+}
+function enKonjugiere(inf) {
+    const u = EN_UNREG[inf];
+    const present = u ? u.p : enPresReg(inf);
+    const past    = u ? u.pa : enPastReg(inf);
+    const pp      = u ? u.pp : past[0];
+    const haber   = ['have','have','has','have','have','have'];
+    return { regelmaessig:!u,
+        'Present': present,
+        'Past':    past,
+        'Perfect': haber.map(h=>h+' '+pp),
+        'Future':  Array(6).fill('will '+inf) };
+}
+
+// ══════════════════════════════════════════════════════════════
+// SPANISCH
+// ══════════════════════════════════════════════════════════════
+const ES_UNREG = {
+    'ser':{pr:['soy','eres','es','somos','sois','son'],pt:['fui','fuiste','fue','fuimos','fuisteis','fueron'],pp:'sido'},
+    'estar':{pr:['estoy','estás','está','estamos','estáis','están'],pt:['estuve','estuviste','estuvo','estuvimos','estuvisteis','estuvieron'],pp:'estado'},
+    'tener':{pr:['tengo','tienes','tiene','tenemos','tenéis','tienen'],pt:['tuve','tuviste','tuvo','tuvimos','tuvisteis','tuvieron'],pp:'tenido',fs:'tendr'},
+    'hacer':{pr:['hago','haces','hace','hacemos','hacéis','hacen'],pt:['hice','hiciste','hizo','hicimos','hicisteis','hicieron'],pp:'hecho',fs:'har'},
+    'ir':{pr:['voy','vas','va','vamos','vais','van'],pt:['fui','fuiste','fue','fuimos','fuisteis','fueron'],pp:'ido',fs:'ir'},
+    'poder':{pr:['puedo','puedes','puede','podemos','podéis','pueden'],pt:['pude','pudiste','pudo','pudimos','pudisteis','pudieron'],pp:'podido',fs:'podr'},
+    'querer':{pr:['quiero','quieres','quiere','queremos','queréis','quieren'],pt:['quise','quisiste','quiso','quisimos','quisisteis','quisieron'],pp:'querido',fs:'querr'},
+    'saber':{pr:['sé','sabes','sabe','sabemos','sabéis','saben'],pt:['supe','supiste','supo','supimos','supisteis','supieron'],pp:'sabido',fs:'sabr'},
+    'venir':{pr:['vengo','vienes','viene','venimos','venís','vienen'],pt:['vine','viniste','vino','vinimos','vinisteis','vinieron'],pp:'venido',fs:'vendr'},
+    'poner':{pr:['pongo','pones','pone','ponemos','ponéis','ponen'],pt:['puse','pusiste','puso','pusimos','pusisteis','pusieron'],pp:'puesto',fs:'pondr'},
+    'decir':{pr:['digo','dices','dice','decimos','decís','dicen'],pt:['dije','dijiste','dijo','dijimos','dijisteis','dijeron'],pp:'dicho',fs:'dir'},
+    'dar':{pr:['doy','das','da','damos','dais','dan'],pt:['di','diste','dio','dimos','disteis','dieron'],pp:'dado'},
+    'ver':{pr:['veo','ves','ve','vemos','veis','ven'],pt:['vi','viste','vio','vimos','visteis','vieron'],pp:'visto'},
+    'dormir':{pr:['duermo','duermes','duerme','dormimos','dormís','duermen'],pt:['dormí','dormiste','durmió','dormimos','dormisteis','durmieron'],pp:'dormido'},
+    'jugar':{pr:['juego','juegas','juega','jugamos','jugáis','juegan'],pt:['jugué','jugaste','jugó','jugamos','jugasteis','jugaron'],pp:'jugado'},
+    'conocer':{pr:['conozco','conoces','conoce','conocemos','conocéis','conocen'],pt:null,pp:'conocido'},
+    'traer':{pr:['traigo','traes','trae','traemos','traéis','traen'],pt:['traje','trajiste','trajo','trajimos','trajisteis','trajeron'],pp:'traído'},
+    'salir':{pr:['salgo','sales','sale','salimos','salís','salen'],pt:null,pp:'salido',fs:'saldr'},
+    'pedir':{pr:['pido','pides','pide','pedimos','pedís','piden'],pt:['pedí','pediste','pidió','pedimos','pedisteis','pidieron'],pp:'pedido'},
+    'empezar':{pr:['empiezo','empiezas','empieza','empezamos','empezáis','empiezan'],pt:['empecé','empezaste','empezó','empezamos','empezasteis','empezaron'],pp:'empezado'},
+};
+function esPrReg(inf) {
+    if(inf.endsWith('ar')){const s=inf.slice(0,-2);return[s+'o',s+'as',s+'a',s+'amos',s+'áis',s+'an'];}
+    if(inf.endsWith('er')){const s=inf.slice(0,-2);return[s+'o',s+'es',s+'e',s+'emos',s+'éis',s+'en'];}
+    if(inf.endsWith('ir')){const s=inf.slice(0,-2);return[s+'o',s+'es',s+'e',s+'imos',s+'ís',s+'en'];}
+    return Array(6).fill(inf);
+}
+function esPtReg(inf) {
+    if(inf.endsWith('ar')){const s=inf.slice(0,-2);return[s+'é',s+'aste',s+'ó',s+'amos',s+'asteis',s+'aron'];}
+    const s=inf.slice(0,-2);return[s+'í',s+'iste',s+'ió',s+'imos',s+'isteis',s+'ieron'];
+}
+function esPpReg(inf){return inf.endsWith('ar')?inf.slice(0,-2)+'ado':inf.slice(0,-2)+'ido';}
+function esKonjugiere(inf) {
+    const u = ES_UNREG[inf];
+    const h = ['he','has','ha','hemos','habéis','han'];
+    const pr = u ? u.pr : esPrReg(inf);
+    const pt = u ? (u.pt || esPtReg(inf)) : esPtReg(inf);
+    const pp = u ? u.pp : esPpReg(inf);
+    const base = u&&u.fs ? u.fs : inf.endsWith('re') ? inf.slice(0,-1) : inf;
+    const fut = [base+'é',base+'ás',base+'á',base+'emos',base+'éis',base+'án'];
+    return { regelmaessig:!u,
+        'Presente': pr,
+        'Pretérito': pt,
+        'Perfecto': h.map(x=>x+' '+pp),
+        'Futuro': fut };
+}
+
+// ══════════════════════════════════════════════════════════════
+// RUSSISCH
+// ══════════════════════════════════════════════════════════════
+const RU_UNREG = {
+    'быть':{pr:['есть','есть','есть','есть','есть','есть'],vg:['был/была','был/была','был/была','были','были','были']},
+    'идти':{pr:['иду','идёшь','идёт','идём','идёте','идут'],vg:['шёл/шла','шёл/шла','шёл/шла','шли','шли','шли']},
+    'мочь':{pr:['могу','можешь','может','можем','можете','могут'],vg:['мог/могла','мог/могла','мог/могла','могли','могли','могли']},
+    'хотеть':{pr:['хочу','хочешь','хочет','хотим','хотите','хотят'],vg:['хотел/хотела','хотел/хотела','хотел/хотела','хотели','хотели','хотели']},
+    'есть':{pr:['ем','ешь','ест','едим','едите','едят'],vg:['ел/ела','ел/ела','ел/ела','ели','ели','ели']},
+    'пить':{pr:['пью','пьёшь','пьёт','пьём','пьёте','пьют'],vg:['пил/пила','пил/пила','пил/пила','пили','пили','пили']},
+    'жить':{pr:['живу','живёшь','живёт','живём','живёте','живут'],vg:['жил/жила','жил/жила','жил/жила','жили','жили','жили']},
+    'писать':{pr:['пишу','пишешь','пишет','пишем','пишете','пишут'],vg:['писал/писала','писал/писала','писал/писала','писали','писали','писали']},
+    'видеть':{pr:['вижу','видишь','видит','видим','видите','видят'],vg:['видел/видела','видел/видела','видел/видела','видели','видели','видели']},
+    'любить':{pr:['люблю','любишь','любит','любим','любите','любят'],vg:['любил/любила','любил/любила','любил/любила','любили','любили','любили']},
+    'спать':{pr:['сплю','спишь','спит','спим','спите','спят'],vg:['спал/спала','спал/спала','спал/спала','спали','спали','спали']},
+    'говорить':{pr:['говорю','говоришь','говорит','говорим','говорите','говорят'],vg:['говорил/говорила','говорил/говорила','говорил/говорила','говорили','говорили','говорили']},
+    'знать':{pr:['знаю','знаешь','знает','знаем','знаете','знают'],vg:['знал/знала','знал/знала','знал/знала','знали','знали','знали']},
+    'читать':{pr:['читаю','читаешь','читает','читаем','читаете','читают'],vg:['читал/читала','читал/читала','читал/читала','читали','читали','читали']},
+    'работать':{pr:['работаю','работаешь','работает','работаем','работаете','работают'],vg:['работал/работала','работал/работала','работал/работала','работали','работали','работали']},
+    'делать':{pr:['делаю','делаешь','делает','делаем','делаете','делают'],vg:['делал/делала','делал/делала','делал/делала','делали','делали','делали']},
+    'играть':{pr:['играю','играешь','играет','играем','играете','играют'],vg:['играл/играла','играл/играла','играл/играла','играли','играли','играли']},
+    'понимать':{pr:['понимаю','понимаешь','понимает','понимаем','понимаете','понимают'],vg:['понимал/понимала','понимал/понимала','понимал/понимала','понимали','понимали','понимали']},
+    'учиться':{pr:['учусь','учишься','учится','учимся','учитесь','учатся'],vg:['учился/училась','учился/училась','учился/училась','учились','учились','учились']},
+    'помогать':{pr:['помогаю','помогаешь','помогает','помогаем','помогаете','помогают'],vg:['помогал/помогала','помогал/помогала','помогал/помогала','помогали','помогали','помогали']},
+    'покупать':{pr:['покупаю','покупаешь','покупает','покупаем','покупаете','покупают'],vg:['покупал/покупала','покупал/покупала','покупал/покупала','покупали','покупали','покупали']},
+    'думать':{pr:['думаю','думаешь','думает','думаем','думаете','думают'],vg:['думал/думала','думал/думала','думал/думала','думали','думали','думали']},
+    'ехать':{pr:['еду','едешь','едет','едем','едете','едут'],vg:['ехал/ехала','ехал/ехала','ехал/ехала','ехали','ехали','ехали']},
+    'бежать':{pr:['бегу','бежишь','бежит','бежим','бежите','бегут'],vg:['бежал/бежала','бежал/бежала','бежал/бежала','бежали','бежали','бежали']},
+};
+function ruPrReg(inf) {
+    if(inf.endsWith('ать')||inf.endsWith('ять')){const s=inf.slice(0,-3);return[s+'ю',s+'ешь',s+'ет',s+'ем',s+'ете',s+'ют'];}
+    if(inf.endsWith('овать')){const s=inf.slice(0,-5);return[s+'ую',s+'уешь',s+'ует',s+'уем',s+'уете',s+'уют'];}
+    if(inf.endsWith('ить')){const s=inf.slice(0,-3);return[s+'ю',s+'ишь',s+'ит',s+'им',s+'ите',s+'ят'];}
+    if(inf.endsWith('еть')){const s=inf.slice(0,-3);return[s+'ю',s+'еешь',s+'еет',s+'еем',s+'еете',s+'еют'];}
+    return Array(6).fill(inf);
+}
+function ruVgReg(inf) {
+    const s = inf.endsWith('ть') ? inf.slice(0,-2) : inf.endsWith('ти') ? inf.slice(0,-2) : inf.slice(0,-1);
+    return [s+'л/ла',s+'л/ла',s+'л/ла',s+'ли',s+'ли',s+'ли'];
+}
+function ruKonjugiere(inf) {
+    const u = RU_UNREG[inf];
+    const pr = u ? u.pr : ruPrReg(inf);
+    const vg = u ? u.vg : ruVgReg(inf);
+    const k = ['буду','будешь','будет','будем','будете','будут'];
+    return { regelmaessig:!u,
+        'Präsens': pr,
+        'Vergangenheit': vg,
+        'Futur': k.map(x=>x+' '+inf) };
+}
+
+// ══════════════════════════════════════════════════════════════
+// ARABISCH
+// ══════════════════════════════════════════════════════════════
+const AR_VERBEN = {
+    'كان':{mu:['أكون','تكون','يكون/تكون','نكون','تكونون','يكونون'],ma:['كنتُ','كنتَ','كان/كانت','كنّا','كنتم','كانوا']},
+    'ذهب':{mu:['أذهب','تذهب','يذهب/تذهب','نذهب','تذهبون','يذهبون'],ma:['ذهبتُ','ذهبتَ','ذهب/ذهبت','ذهبنا','ذهبتم','ذهبوا']},
+    'أكل':{mu:['آكل','تأكل','يأكل/تأكل','نأكل','تأكلون','يأكلون'],ma:['أكلتُ','أكلتَ','أكل/أكلت','أكلنا','أكلتم','أكلوا']},
+    'شرب':{mu:['أشرب','تشرب','يشرب/تشرب','نشرب','تشربون','يشربون'],ma:['شربتُ','شربتَ','شرب/شربت','شربنا','شربتم','شربوا']},
+    'قرأ':{mu:['أقرأ','تقرأ','يقرأ/تقرأ','نقرأ','تقرأون','يقرأون'],ma:['قرأتُ','قرأتَ','قرأ/قرأت','قرأنا','قرأتم','قرأوا']},
+    'كتب':{mu:['أكتب','تكتب','يكتب/تكتب','نكتب','تكتبون','يكتبون'],ma:['كتبتُ','كتبتَ','كتب/كتبت','كتبنا','كتبتم','كتبوا']},
+    'قال':{mu:['أقول','تقول','يقول/تقول','نقول','تقولون','يقولون'],ma:['قلتُ','قلتَ','قال/قالت','قلنا','قلتم','قالوا']},
+    'جاء':{mu:['أجيء','تجيء','يجيء/تجيء','نجيء','تجيئون','يجيئون'],ma:['جئتُ','جئتَ','جاء/جاءت','جئنا','جئتم','جاؤوا']},
+    'رأى':{mu:['أرى','ترى','يرى/ترى','نرى','ترون','يرون'],ma:['رأيتُ','رأيتَ','رأى/رأت','رأينا','رأيتم','رأوا']},
+    'أخذ':{mu:['آخذ','تأخذ','يأخذ/تأخذ','نأخذ','تأخذون','يأخذون'],ma:['أخذتُ','أخذتَ','أخذ/أخذت','أخذنا','أخذتم','أخذوا']},
+    'درس':{mu:['أدرس','تدرس','يدرس/تدرس','ندرس','تدرسون','يدرسون'],ma:['درستُ','درستَ','درس/درست','درسنا','درستم','درسوا']},
+    'عمل':{mu:['أعمل','تعمل','يعمل/تعمل','نعمل','تعملون','يعملون'],ma:['عملتُ','عملتَ','عمل/عملت','عملنا','عملتم','عملوا']},
+    'فهم':{mu:['أفهم','تفهم','يفهم/تفهم','نفهم','تفهمون','يفهمون'],ma:['فهمتُ','فهمتَ','فهم/فهمت','فهمنا','فهمتم','فهموا']},
+    'عرف':{mu:['أعرف','تعرف','يعرف/تعرف','نعرف','تعرفون','يعرفون'],ma:['عرفتُ','عرفتَ','عرف/عرفت','عرفنا','عرفتم','عرفوا']},
+    'ساعد':{mu:['أساعد','تساعد','يساعد/تساعد','نساعد','تساعدون','يساعدون'],ma:['ساعدتُ','ساعدتَ','ساعد/ساعدت','ساعدنا','ساعدتم','ساعدوا']},
+    'لعب':{mu:['ألعب','تلعب','يلعب/تلعب','نلعب','تلعبون','يلعبون'],ma:['لعبتُ','لعبتَ','لعب/لعبت','لعبنا','لعبتم','لعبوا']},
+    'وجد':{mu:['أجد','تجد','يجد/تجد','نجد','تجدون','يجدون'],ma:['وجدتُ','وجدتَ','وجد/وجدت','وجدنا','وجدتم','وجدوا']},
+    'سكن':{mu:['أسكن','تسكن','يسكن/تسكن','نسكن','تسكنون','يسكنون'],ma:['سكنتُ','سكنتَ','سكن/سكنت','سكنا','سكنتم','سكنوا']},
+    'فتح':{mu:['أفتح','تفتح','يفتح/تفتح','نفتح','تفتحون','يفتحون'],ma:['فتحتُ','فتحتَ','فتح/فتحت','فتحنا','فتحتم','فتحوا']},
+    'رجع':{mu:['أرجع','ترجع','يرجع/ترجع','نرجع','ترجعون','يرجعون'],ma:['رجعتُ','رجعتَ','رجع/رجعت','رجعنا','رجعتم','رجعوا']},
+    'سمع':{mu:['أسمع','تسمع','يسمع/تسمع','نسمع','تسمعون','يسمعون'],ma:['سمعتُ','سمعتَ','سمع/سمعت','سمعنا','سمعتم','سمعوا']},
+    'طبخ':{mu:['أطبخ','تطبخ','يطبخ/تطبخ','نطبخ','تطبخون','يطبخون'],ma:['طبختُ','طبختَ','طبخ/طبخت','طبخنا','طبختم','طبخوا']},
+    'جلس':{mu:['أجلس','تجلس','يجلس/تجلس','نجلس','تجلسون','يجلسون'],ma:['جلستُ','جلستَ','جلس/جلست','جلسنا','جلستم','جلسوا']},
+};
+function arMuReg(inf){return['أ'+inf,'تـ'+inf,'يـ'+inf+'/تـ'+inf,'نـ'+inf,'تـ'+inf+'ون','يـ'+inf+'ون'];}
+function arMaReg(inf){return[inf+'تُ',inf+'تَ',inf+'/'+inf+'ت',inf+'نا',inf+'تم',inf+'وا'];}
+function arKonjugiere(inf) {
+    const u = AR_VERBEN[inf];
+    const mu = u ? u.mu : arMuReg(inf);
+    const ma = u ? u.ma : arMaReg(inf);
+    return { regelmaessig:!u,
+        'المضارع': mu,
+        'الماضي': ma,
+        'المستقبل': mu.map(f=>'سَـ'+f) };
+}
+
+
+// ══════════════════════════════════════════════════════════════
+// FRANZÖSISCH
+// ══════════════════════════════════════════════════════════════
+const FR_UNREG = {
+    'être':    {pr:['suis','es','est','sommes','êtes','sont'],   pc:['ai été','as été','a été','avons été','avez été','ont été'],    imp:['étais','étais','était','étions','étiez','étaient'],    fut:['serai','seras','sera','serons','serez','seront']},
+    'avoir':   {pr:['ai','as','a','avons','avez','ont'],          pc:['ai eu','as eu','a eu','avons eu','avez eu','ont eu'],          imp:['avais','avais','avait','avions','aviez','avaient'],     fut:['aurai','auras','aura','aurons','aurez','auront']},
+    'aller':   {pr:['vais','vas','va','allons','allez','vont'],   pc:['suis allé','es allé','est allé','sommes allés','êtes allés','sont allés'], imp:['allais','allais','allait','allions','alliez','allaient'], fut:['irai','iras','ira','irons','irez','iront']},
+    'faire':   {pr:['fais','fais','fait','faisons','faites','font'],pc:['ai fait','as fait','a fait','avons fait','avez fait','ont fait'],imp:['faisais','faisais','faisait','faisions','faisiez','faisaient'],fut:['ferai','feras','fera','ferons','ferez','feront']},
+    'voir':    {pr:['vois','vois','voit','voyons','voyez','voient'],pc:['ai vu','as vu','a vu','avons vu','avez vu','ont vu'],imp:['voyais','voyais','voyait','voyions','voyiez','voyaient'],fut:['verrai','verras','verra','verrons','verrez','verront']},
+    'venir':   {pr:['viens','viens','vient','venons','venez','viennent'],pc:['suis venu','es venu','est venu','sommes venus','êtes venus','sont venus'],imp:['venais','venais','venait','venions','veniez','venaient'],fut:['viendrai','viendras','viendra','viendrons','viendrez','viendront']},
+    'dire':    {pr:['dis','dis','dit','disons','dites','disent'], pc:['ai dit','as dit','a dit','avons dit','avez dit','ont dit'],   imp:['disais','disais','disait','disions','disiez','disaient'],fut:['dirai','diras','dira','dirons','direz','diront']},
+    'pouvoir': {pr:['peux','peux','peut','pouvons','pouvez','peuvent'],pc:['ai pu','as pu','a pu','avons pu','avez pu','ont pu'],imp:['pouvais','pouvais','pouvait','pouvions','pouviez','pouvaient'],fut:['pourrai','pourras','pourra','pourrons','pourrez','pourront']},
+    'vouloir': {pr:['veux','veux','veut','voulons','voulez','veulent'],pc:['ai voulu','as voulu','a voulu','avons voulu','avez voulu','ont voulu'],imp:['voulais','voulais','voulait','voulions','vouliez','voulaient'],fut:['voudrai','voudras','voudra','voudrons','voudrez','voudront']},
+    'savoir':  {pr:['sais','sais','sait','savons','savez','savent'],pc:['ai su','as su','a su','avons su','avez su','ont su'],imp:['savais','savais','savait','savions','saviez','savaient'],fut:['saurai','sauras','saura','saurons','saurez','sauront']},
+    'prendre': {pr:['prends','prends','prend','prenons','prenez','prennent'],pc:['ai pris','as pris','a pris','avons pris','avez pris','ont pris'],imp:['prenais','prenais','prenait','prenions','preniez','prenaient'],fut:['prendrai','prendras','prendra','prendrons','prendrez','prendront']},
+    'mettre':  {pr:['mets','mets','met','mettons','mettez','mettent'],pc:['ai mis','as mis','a mis','avons mis','avez mis','ont mis'],imp:['mettais','mettais','mettait','mettions','mettiez','mettaient'],fut:['mettrai','mettras','mettra','mettrons','mettrez','mettront']},
+    'partir':  {pr:['pars','pars','part','partons','partez','partent'],pc:['suis parti','es parti','est parti','sommes partis','êtes partis','sont partis'],imp:['partais','partais','partait','partions','partiez','partaient'],fut:['partirai','partiras','partira','partirons','partirez','partiront']},
+    'sortir':  {pr:['sors','sors','sort','sortons','sortez','sortent'],pc:['suis sorti','es sorti','est sorti','sommes sortis','êtes sortis','sont sortis'],imp:['sortais','sortais','sortait','sortions','sortiez','sortaient'],fut:['sortirai','sortiras','sortira','sortirons','sortirez','sortiront']},
+    'lire':    {pr:['lis','lis','lit','lisons','lisez','lisent'],   pc:['ai lu','as lu','a lu','avons lu','avez lu','ont lu'],        imp:['lisais','lisais','lisait','lisions','lisiez','lisaient'],   fut:['lirai','liras','lira','lirons','lirez','liront']},
+    'écrire':  {pr:['écris','écris','écrit','écrivons','écrivez','écrivent'],pc:['ai écrit','as écrit','a écrit','avons écrit','avez écrit','ont écrit'],imp:['écrivais','écrivais','écrivait','écrivions','écriviez','écrivaient'],fut:['écrirai','écriras','écrira','écrirons','écrirez','écriront']},
+    'comprendre':{pr:['comprends','comprends','comprend','comprenons','comprenez','comprennent'],pc:['ai compris','as compris','a compris','avons compris','avez compris','ont compris'],imp:['comprenais','comprenais','comprenait','comprenions','compreniez','comprenaient'],fut:['comprendrai','comprendras','comprendra','comprendrons','comprendrez','comprendront']},
+    'recevoir':{pr:['reçois','reçois','reçoit','recevons','recevez','reçoivent'],pc:['ai reçu','as reçu','a reçu','avons reçu','avez reçu','ont reçu'],imp:['recevais','recevais','recevait','recevions','receviez','recevaient'],fut:['recevrai','recevras','recevra','recevrons','recevrez','recevront']},
+    'ouvrir':  {pr:['ouvre','ouvres','ouvre','ouvrons','ouvrez','ouvrent'],pc:['ai ouvert','as ouvert','a ouvert','avons ouvert','avez ouvert','ont ouvert'],imp:['ouvrais','ouvrais','ouvrait','ouvrions','ouvriez','ouvraient'],fut:['ouvrirai','ouvriras','ouvrira','ouvrirons','ouvrirez','ouvriront']},
+    'tenir':   {pr:['tiens','tiens','tient','tenons','tenez','tiennent'],pc:['ai tenu','as tenu','a tenu','avons tenu','avez tenu','ont tenu'],imp:['tenais','tenais','tenait','tenions','teniez','tenaient'],fut:['tiendrai','tiendras','tiendra','tiendrons','tiendrez','tiendront']},
+};
+
+const FR_SEIN_VERBEN = new Set(['aller','venir','partir','sortir','arriver','partir','naître','mourir','rester','tomber','monter','descendre','entrer','retourner']);
+
+function frPrReg(inf) {
+    if(inf.endsWith('er')){const s=inf.slice(0,-2);return[s+'e',s+'es',s+'e',s+'ons',s+'ez',s+'ent'];}
+    if(inf.endsWith('ir')&&!inf.endsWith('oir')){const s=inf.slice(0,-2);return[s+'is',s+'is',s+'it',s+'issons',s+'issez',s+'issent'];}
+    if(inf.endsWith('re')){const s=inf.slice(0,-2);return[s+'s',s+'s',s,s+'ons',s+'ez',s+'ent'];}
+    return Array(6).fill(inf);
+}
+function frPpReg(inf) {
+    if(inf.endsWith('er')) return inf.slice(0,-2)+'é';
+    if(inf.endsWith('ir')) return inf.slice(0,-2)+'i';
+    if(inf.endsWith('re')) return inf.slice(0,-2)+'u';
+    return inf;
+}
+function frImpReg(inf) {
+    // Basis: nous-Form des Präsens, -ons entfernen
+    const pr = frPrReg(inf);
+    const nousSt = pr[3].slice(0,-3); // 'nous parlons' → 'parl'
+    return [nousSt+'ais',nousSt+'ais',nousSt+'ait',nousSt+'ions',nousSt+'iez',nousSt+'aient'];
+}
+function frFutReg(inf) {
+    const fs = {'tenir':'tiendr','venir':'viendr','pouvoir':'pourr','vouloir':'voudr','savoir':'saur','faire':'fer','aller':'ir','être':'ser','avoir':'aur','voir':'verr','envoyer':'enverr'};
+    const base = fs[inf] || (inf.endsWith('re') ? inf.slice(0,-1) : inf);
+    return [base+'ai',base+'as',base+'a',base+'ons',base+'ez',base+'ont'];
+}
+function frKonjugiere(inf) {
+    const u = FR_UNREG[inf];
+    const reg = !u;
+    const avoir = ['ai','as','a','avons','avez','ont'];
+    const sein_pr = ['suis','es','est','sommes','êtes','sont'];
+    const pr = u ? u.pr : frPrReg(inf);
+    const pp = u ? null : frPpReg(inf);
+    let pc;
+    if(u) { pc = u.pc; }
+    else {
+        const h = FR_SEIN_VERBEN.has(inf) ? sein_pr : avoir;
+        pc = h.map(x=>x+' '+pp);
+    }
+    const imp = u ? u.imp : frImpReg(inf);
+    const fut = u ? u.fut : frFutReg(inf);
+    return { regelmaessig:reg, 'Présent':pr, 'Passé composé':pc, 'Imparfait':imp, 'Futur':fut };
+}
+
+// ══════════════════════════════════════════════════════════════
+// GRIECHISCH
+// ══════════════════════════════════════════════════════════════
+const EL_UNREG = {
+    'είμαι': {en:['είμαι','είσαι','είναι','είμαστε','είστε','είναι'],  ao:['ήμουν','ήσουν','ήταν','ήμαστε','ήσαστε','ήταν'],             fut:['θα είμαι','θα είσαι','θα είναι','θα είμαστε','θα είστε','θα είναι']},
+    'έχω':   {en:['έχω','έχεις','έχει','έχουμε','έχετε','έχουν'],      ao:['είχα','είχες','είχε','είχαμε','είχατε','είχαν'],              fut:['θα έχω','θα έχεις','θα έχει','θα έχουμε','θα έχετε','θα έχουν']},
+    'κάνω':  {en:['κάνω','κάνεις','κάνει','κάνουμε','κάνετε','κάνουν'],ao:['έκανα','έκανες','έκανε','κάναμε','κάνατε','έκαναν'],         fut:['θα κάνω','θα κάνεις','θα κάνει','θα κάνουμε','θα κάνετε','θα κάνουν']},
+    'πηγαίνω':{en:['πηγαίνω','πηγαίνεις','πηγαίνει','πηγαίνουμε','πηγαίνετε','πηγαίνουν'],ao:['πήγα','πήγες','πήγε','πήγαμε','πήγατε','πήγαν'],fut:['θα πάω','θα πας','θα πάει','θα πάμε','θα πάτε','θα πάνε']},
+    'τρώω':  {en:['τρώω','τρως','τρώει','τρώμε','τρώτε','τρώνε'],      ao:['έφαγα','έφαγες','έφαγε','φάγαμε','φάγατε','έφαγαν'],         fut:['θα φάω','θα φας','θα φάει','θα φάμε','θα φάτε','θα φάνε']},
+    'βλέπω': {en:['βλέπω','βλέπεις','βλέπει','βλέπουμε','βλέπετε','βλέπουν'],ao:['είδα','είδες','είδε','είδαμε','είδατε','είδαν'],       fut:['θα δω','θα δεις','θα δει','θα δούμε','θα δείτε','θα δουν']},
+    'λέω':   {en:['λέω','λες','λέει','λέμε','λέτε','λένε'],            ao:['είπα','είπες','είπε','είπαμε','είπατε','είπαν'],              fut:['θα πω','θα πεις','θα πει','θα πούμε','θα πείτε','θα πουν']},
+    'έρχομαι':{en:['έρχομαι','έρχεσαι','έρχεται','ερχόμαστε','έρχεστε','έρχονται'],ao:['ήρθα','ήρθες','ήρθε','ήρθαμε','ήρθατε','ήρθαν'],fut:['θα έρθω','θα έρθεις','θα έρθει','θα έρθουμε','θα έρθετε','θα έρθουν']},
+    'παίρνω':{en:['παίρνω','παίρνεις','παίρνει','παίρνουμε','παίρνετε','παίρνουν'],ao:['πήρα','πήρες','πήρε','πήραμε','πήρατε','πήραν'],fut:['θα πάρω','θα πάρεις','θα πάρει','θα πάρουμε','θα πάρετε','θα πάρουν']},
+    'δίνω':  {en:['δίνω','δίνεις','δίνει','δίνουμε','δίνετε','δίνουν'],ao:['έδωσα','έδωσες','έδωσε','δώσαμε','δώσατε','έδωσαν'],        fut:['θα δώσω','θα δώσεις','θα δώσει','θα δώσουμε','θα δώσετε','θα δώσουν']},
+    'ξέρω':  {en:['ξέρω','ξέρεις','ξέρει','ξέρουμε','ξέρετε','ξέρουν'],ao:['ήξερα','ήξερες','ήξερε','ξέραμε','ξέρατε','ήξεραν'],        fut:['θα ξέρω','θα ξέρεις','θα ξέρει','θα ξέρουμε','θα ξέρετε','θα ξέρουν']},
+    'θέλω':  {en:['θέλω','θέλεις','θέλει','θέλουμε','θέλετε','θέλουν'],ao:['ήθελα','ήθελες','ήθελε','θέλαμε','θέλατε','ήθελαν'],        fut:['θα θέλω','θα θέλεις','θα θέλει','θα θέλουμε','θα θέλετε','θα θέλουν']},
+    'μπορώ': {en:['μπορώ','μπορείς','μπορεί','μπορούμε','μπορείτε','μπορούν'],ao:['μπόρεσα','μπόρεσες','μπόρεσε','μπορέσαμε','μπορέσατε','μπόρεσαν'],fut:['θα μπορώ','θα μπορείς','θα μπορεί','θα μπορούμε','θα μπορείτε','θα μπορούν']},
+    'πίνω':  {en:['πίνω','πίνεις','πίνει','πίνουμε','πίνετε','πίνουν'],ao:['ήπια','ήπιες','ήπιε','ήπιαμε','ήπιατε','ήπιαν'],            fut:['θα πιω','θα πιεις','θα πιει','θα πιούμε','θα πιείτε','θα πιουν']},
+    'μαθαίνω':{en:['μαθαίνω','μαθαίνεις','μαθαίνει','μαθαίνουμε','μαθαίνετε','μαθαίνουν'],ao:['έμαθα','έμαθες','έμαθε','μάθαμε','μάθατε','έμαθαν'],fut:['θα μάθω','θα μάθεις','θα μάθει','θα μάθουμε','θα μάθετε','θα μάθουν']},
+};
+
+function elEnReg(inf, klasse) {
+    if(klasse==='A'){const s=inf.slice(0,-1);return[s+'ω',s+'εις',s+'ει',s+'ουμε',s+'ετε',s+'ουν'];}
+    if(klasse==='B'){const s=inf.slice(0,-3);return[s+'άω',s+'άς',s+'ά',s+'άμε',s+'άτε',s+'άνε'];}
+    return Array(6).fill(inf);
+}
+function elAoReg(inf, aoSt) {
+    return[aoSt+'α',aoSt+'ες',aoSt+'ε',aoSt+'αμε',aoSt+'ατε',aoSt+'αν'];
+}
+function elFutReg(en) { return en.map(f=>'θα '+f); }
+function elKonjugiere(inf) {
+    const u = EL_UNREG[inf];
+    if(u) return { regelmaessig:false, 'Ενεστώτας':u.en, 'Αόριστος':u.ao, 'Μέλλοντας':u.fut };
+    // Klasse A: endet auf -ω (nicht -άω)
+    if(inf.endsWith('άω')) {
+        const s = inf.slice(0,-3);
+        const en = elEnReg(inf,'B');
+        const ao = elAoReg(inf, s+'ήσ');
+        return { regelmaessig:true, 'Ενεστώτας':en, 'Αόριστος':ao, 'Μέλλοντας':elFutReg(en) };
+    }
+    if(inf.endsWith('ω')) {
+        // Aorist-Stamm: vereinfacht Stamm + σ
+        const s = inf.slice(0,-1);
+        const en = elEnReg(inf,'A');
+        const ao = elAoReg(inf, s+'σ');
+        return { regelmaessig:true, 'Ενεστώτας':en, 'Αόριστος':ao, 'Μέλλοντας':elFutReg(en) };
+    }
+    return { regelmaessig:true, 'Ενεστώτας':Array(6).fill(inf), 'Αόριστος':Array(6).fill(inf), 'Μέλλοντας':Array(6).fill('θα '+inf) };
+}
+
+// ══════════════════════════════════════════════════════════════
+// DARI / FARSI
+// ══════════════════════════════════════════════════════════════
+const FA_UNREG = {
+    'بودن':   {haal:['هستم','هستی','است','هستیم','هستید','هستند'],        goz:['بودم','بودی','بود','بودیم','بودید','بودند']},
+    'رفتن':   {haal:['می‌روم','می‌روی','می‌رود','می‌رویم','می‌روید','می‌روند'],  goz:['رفتم','رفتی','رفت','رفتیم','رفتید','رفتند']},
+    'آمدن':   {haal:['می‌آیم','می‌آیی','می‌آید','می‌آییم','می‌آیید','می‌آیند'],  goz:['آمدم','آمدی','آمد','آمدیم','آمدید','آمدند']},
+    'گفتن':   {haal:['می‌گویم','می‌گویی','می‌گوید','می‌گوییم','می‌گویید','می‌گویند'],goz:['گفتم','گفتی','گفت','گفتیم','گفتید','گفتند']},
+    'دیدن':   {haal:['می‌بینم','می‌بینی','می‌بیند','می‌بینیم','می‌بینید','می‌بینند'],goz:['دیدم','دیدی','دید','دیدیم','دیدید','دیدند']},
+    'داشتن':  {haal:['دارم','داری','دارد','داریم','دارید','دارند'],          goz:['داشتم','داشتی','داشت','داشتیم','داشتید','داشتند']},
+    'کردن':   {haal:['می‌کنم','می‌کنی','می‌کند','می‌کنیم','می‌کنید','می‌کنند'],  goz:['کردم','کردی','کرد','کردیم','کردید','کردند']},
+    'خوردن':  {haal:['می‌خورم','می‌خوری','می‌خورد','می‌خوریم','می‌خورید','می‌خورند'],goz:['خوردم','خوردی','خورد','خوردیم','خوردید','خوردند']},
+    'خواندن': {haal:['می‌خوانم','می‌خوانی','می‌خواند','می‌خوانیم','می‌خوانید','می‌خوانند'],goz:['خواندم','خواندی','خواند','خواندیم','خواندید','خواندند']},
+    'دانستن': {haal:['می‌دانم','می‌دانی','می‌داند','می‌دانیم','می‌دانید','می‌دانند'],goz:['دانستم','دانستی','دانست','دانستیم','دانستید','دانستند']},
+    'شدن':    {haal:['می‌شوم','می‌شوی','می‌شود','می‌شویم','می‌شوید','می‌شوند'],  goz:['شدم','شدی','شد','شدیم','شدید','شدند']},
+    'نوشتن':  {haal:['می‌نویسم','می‌نویسی','می‌نویسد','می‌نویسیم','می‌نویسید','می‌نویسند'],goz:['نوشتم','نوشتی','نوشت','نوشتیم','نوشتید','نوشتند']},
+    'خریدن':  {haal:['می‌خرم','می‌خری','می‌خرد','می‌خریم','می‌خرید','می‌خرند'],   goz:['خریدم','خریدی','خرید','خریدیم','خریدید','خریدند']},
+    'خواستن': {haal:['می‌خواهم','می‌خواهی','می‌خواهد','می‌خواهیم','می‌خواهید','می‌خواهند'],goz:['خواستم','خواستی','خواست','خواستیم','خواستید','خواستند']},
+    'توانستن':{haal:['می‌توانم','می‌توانی','می‌تواند','می‌توانیم','می‌توانید','می‌توانند'],goz:['توانستم','توانستی','توانست','توانستیم','توانستید','توانستند']},
+};
+
+function faHaalReg(inf) {
+    // Präsensstamm aus Infinitiv ableiten: -دن/-تن entfernen
+    const st = inf.endsWith('دن') ? inf.slice(0,-2) : inf.endsWith('تن') ? inf.slice(0,-2) : inf.slice(0,-1);
+    return ['می‌'+st+'م','می‌'+st+'ی','می‌'+st+'د','می‌'+st+'یم','می‌'+st+'ید','می‌'+st+'ند'];
+}
+function faGozReg(inf) {
+    const st = inf.endsWith('دن') ? inf.slice(0,-2)+'د' : inf.endsWith('تن') ? inf.slice(0,-2)+'ت' : inf.slice(0,-1);
+    // Vergangenheit: Stamm + م/ی/–/یم/ید/ند
+    return [st+'م',st+'ی',st,st+'یم',st+'ید',st+'ند'];
+}
+function faKonjugiere(inf) {
+    const u = FA_UNREG[inf];
+    const haal = u ? u.haal : faHaalReg(inf);
+    const goz  = u ? u.goz  : faGozReg(inf);
+    const khah = ['خواهم','خواهی','خواهد','خواهیم','خواهید','خواهند'];
+    // Futur: خواه + Vergangenheitsstamm (3. Person Sg. ohne Endung)
+    const gozSt = u ? u.goz[2] : faGozReg(inf)[2];
+    const ayande = khah.map(k=>k+' '+gozSt);
+    return { regelmaessig:!u, 'حال':haal, 'گذشته':goz, 'آینده':ayande };
+}
+
+// ══════════════════════════════════════════════════════════════
+// DISPATCHER & UI
+// ══════════════════════════════════════════════════════════════
+function konjugiereSprache(lang, inf) {
+    switch(lang) {
+        case 'de': return deKonjugiere(inf);
+        case 'en': return enKonjugiere(inf);
+        case 'es': return esKonjugiere(inf);
+        case 'fr': return frKonjugiere(inf);
+        case 'ru': return ruKonjugiere(inf);
+        case 'el': return elKonjugiere(inf);
+        case 'ar': return arKonjugiere(inf);
+        case 'fa': return faKonjugiere(inf);
+    }
+}
+
+let aktiveLang = 'de';
+
+function initUI() {
+    const row = document.getElementById('langRow');
+    Object.entries(SPRACHEN).forEach(([code, sp]) => {
+        const btn = document.createElement('button');
+        btn.className = 'lang-btn'+(code==='de'?' aktiv':'');
+        btn.dataset.lang = code;
+        btn.innerHTML = sp.flag+' '+sp.name;
+        btn.onclick = () => setLang(code);
+        row.appendChild(btn);
+    });
+    setLang('de');
+}
+
+function setLang(lang) {
+    aktiveLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('aktiv',b.dataset.lang===lang));
+    const sp = SPRACHEN[lang];
+    const inp = document.getElementById('verbInput');
+    inp.dir = sp.rtl ? 'rtl' : 'ltr';
+    inp.placeholder = sp.rtl ? 'أدخل الفعل…' : 'Verb eingeben…';
+    inp.value = '';
+    const sr = document.getElementById('schnellRow');
+    sr.innerHTML = '';
+    (SCHNELL[lang]||[]).forEach(v => {
+        const btn = document.createElement('button');
+        btn.className = 'schnell-btn';
+        btn.textContent = v;
+        btn.onclick = () => { inp.value=v; konjugiere(); };
+        sr.appendChild(btn);
+    });
+    document.getElementById('tabelleWrap').innerHTML = '<div class="hinweis"><div class="icon">📖</div><p>Verb eingeben oder oben auswählen</p></div>';
+}
+
+function konjugiere() {
+    const inf = document.getElementById('verbInput').value.trim().toLowerCase();
+    if (!inf) return;
+    const sp = SPRACHEN[aktiveLang];
+    const result = konjugiereSprache(aktiveLang, inf);
+    if (!result) return;
+    const rtl = sp.rtl;
+    let ths = `<th>Person</th>`+sp.tempora.map(t=>`<th>${t}</th>`).join('');
+    let rows = sp.personen.map((p,i) =>
+        `<tr><td>${p}</td>`+sp.tempora.map(t=>`<td dir="${rtl?'rtl':'ltr'}">${result[t]?result[t][i]:'–'}</td>`).join('')+`</tr>`
+    ).join('');
+    document.getElementById('tabelleWrap').innerHTML = `
+        <div class="tabelle-kopf">
+            <div class="verb-info">
+                <span class="verb-titel" dir="${rtl?'rtl':'ltr'}">${inf}</span>
+                <span class="badge ${result.regelmaessig?'badge-reg':'badge-unreg'}">${result.regelmaessig?'📝 Regelmäßig':'⚡ Unregelmäßig'}</span>
+            </div>
+        </div>
+        <div class="scroll-wrap"><table>
+            <thead><tr>${ths}</tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+initUI();
+</script>
+</body>
+</html>
