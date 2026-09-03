@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<!-- © 2026 Nickelfax – All rights reserved. Unauthorized copying, redistribution or commercial use of this code is prohibited. -->
+<meta name="theme-color" content="#c0392b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ABC Kelime">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" href="icon-512-tr.png">
+    <script src="dict.js"></script>
+<title>ABC Kelime</title>
+<style>
+:root {
+    --primary: #c0392b;
+    --secondary: #e67e22;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --purple: #8e44ad;
+    --bg: #fff5f5;
+    --card-bg: #ffffff;
+}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+h1 { color: #c0392b; margin-bottom: 4px; text-align: center; font-size: 1.8rem; }
+.subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; }
+.word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.5rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); box-sizing: border-box; }
+.word-display.empty { color: #bdc3c7; font-size: 1.2rem; font-weight: normal; font-style: italic; }
+.char-block { background: #fff5f5; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; }
+.char-block:hover { background: #fdecea; border-color: var(--danger); transform: scale(1.05); }
+.char-block::after { content: '✕'; position: absolute; top: -8px; right: -8px; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+.char-block:hover::after { opacity: 1; }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; }
+button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+button:active { transform: scale(0.95); }
+.keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
+.keyboard-section { margin-bottom: 15px; }
+.section-title { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 8px; }
+.key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 14px 4px; text-align: center; font-size: 1.4rem; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s; user-select: none; }
+.key.vokal { background: #fff5f5; border-color: #f1948a; color: #c0392b; }
+.key.konsonant { background: #eafaf1; border-color: #a9dfbf; color: #1e8449; }
+.key:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+.key.emoji-mode { padding: 8px 4px; font-size: 1.8rem; line-height: 1.2; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.key.emoji-mode .emoji-label { font-size: 0.6rem; font-weight: bold; color: #555; }
+.key.emoji-mode:hover .emoji-label { color: white; }
+.key.zahl { background: #e8eaf6; border-color: #9fa8da; color: #283593; }
+.key.zahl:hover { background: #3949ab; color: white; border-color: #3949ab; }
+.key.ozel { background: #fef9e7; border-color: #f9e79f; color: #7d6608; }
+.key.ozel:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+.case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.case-toggle span { font-size: 0.85rem; color: #7f8c8d; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.toggle-switch { position: relative; width: 52px; height: 28px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+.toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+.toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+.case-label { font-size: 1.1rem; font-weight: bold; min-width: 20px; color: #2c3e50; }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+.modal-overlay.open { display: flex; }
+.modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+.stored-word { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+.btn-close-modal { background: #95a5a6; margin-top: 15px; width: 100%; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.diktat-modus-zeile { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+.diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+.grammatik-aufgabe { font-size: 1.5rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; }
+.grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; }
+.artikel-buttons { display: flex; gap: 10px; justify-content: center; width: 100%; flex-wrap: wrap; }
+.art-btn { padding: 12px 16px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 80px; max-width: 160px; }
+.art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+.art-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+.auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.auswahl-btn { padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; }
+.auswahl-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+.auswahl-btn.falsch { background: var(--danger); color: white; border-color: var(--danger); }
+#uebersetzungAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em; margin-bottom: 4px; letter-spacing: 0.03em; transition: opacity 0.3s; }
+.hint-blink, .hint-arrow, .hint-question { animation: blinken 2.5s infinite; }
+.hint-arrow { animation-delay: 0.4s; }
+.hint-question { animation-delay: 0.8s; }
+@keyframes blinken { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+/* ── Dark Mode ── */
+:root.dark { --bg: #12131a; --card-bg: #1e2030; }
+* { transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+.dark body { background: var(--bg); color: #e8eaf6; }
+.dark h1 { color: #e8eaf6; }
+.dark .word-display { background: var(--card-bg); color: #e8eaf6; }
+.dark .keyboard-container { background: var(--card-bg); }
+.dark .key { background: #2a2d3e; border-color: #3a3d50; color: #e8eaf6; }
+.dark .key.vokal { background: #2a1010; border-color: #7c2020; color: #f1948a; }
+.dark .key.konsonant { background: #1a2a1a; border-color: #3a5c3a; color: #a9dfbf; }
+.dark .modal-content { background: var(--card-bg); color: #e8eaf6; }
+.dark .stored-word { border-color: #3a3d50; }
+.dark .case-label { color: #e8eaf6; }
+.dark #uebersetzungAnzeige { color: #a0a8b8; }
+.theme-toggle-wrap { position: fixed; top: 12px; right: 12px; z-index: 999; }
+.theme-btn { background: #2c3e50; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+@media (max-width: 600px) {
+    body { padding: 8px; } h1 { font-size: 1.3rem; }
+    .word-display { min-height: 60px; font-size: 1.6rem; padding: 10px; margin-bottom: 10px; }
+    button { padding: 9px 12px; font-size: 0.82rem; }
+    .keyboard-container { padding: 10px 8px; }
+    .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 5px; }
+    .key { padding: 10px 2px; font-size: 1.2rem; }
+}
+@keyframes blinken { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+@keyframes flagGlanz_tr {
+    0%   { transform: translateX(-100%) skewX(-20deg); }
+    100% { transform: translateX(400%) skewX(-20deg); }
+}
+.flag-header {
+    width: 100%; max-width: 700px; border-radius: 14px;
+    overflow: hidden; margin-bottom: 5px;
+    border: 3px solid #d4af37;
+    background: #E30A17;
+    position: relative;
+}
+.flag-header-symbol {
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    font-size: 2rem; z-index: 1; opacity: 0.9;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+.flag-header::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 30%; height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    animation: flagGlanz_tr 3s ease-in-out infinite;
+    pointer-events: none; z-index: 2;
+}
+.flag-header-title { text-align: center; padding: 10px 0 4px 0; position: relative; z-index: 3; }
+.flag-header-title h1 {
+    margin: 0; color: #8b0000; display: inline-block;
+    background: white; padding: 2px 18px;
+    border-radius: 8px; border: 2px solid #d4af37;
+}
+.flag-header-title .subtitle { margin: 0 0 6px 0; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+
+</style>
+</head>
+<body>
+<div class="theme-toggle-wrap">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+</div>
+<div class="flag-header">
+    <div class="flag-header-symbol">
+        <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:40px;">
+            <circle cx="18" cy="20" r="14" fill="white"/>
+            <circle cx="23" cy="20" r="10" fill="#E30A17"/>
+            <polygon points="36,20 39,28 47,25 42,31 47,37 39,32 36,40 33,32 25,37 30,31 25,25 33,28" fill="white" transform="scale(0.6) translate(22,12)"/>
+        </svg>
+    </div>
+    <div class="flag-header-title">
+        <h1>🇹🇷 ABC Kelime</h1>
+        <p class="subtitle">Türkçe öğren · Dikte · Dilbilgisi · Kelime Yapıcı</p>
+    </div>
+</div>
+
+<div id="scoreBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div style="display:flex; gap:20px; font-size:1rem; padding:8px 16px; background:#fff8e1; border:2px solid var(--secondary); border-radius:12px;">
+        <span>Doğru: <strong id="diktatRichtig">0</strong></span>
+        <span>Yanlış: <strong id="diktatFalsch">0</strong></span>
+    </div>
+</div>
+
+<div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)" title="Harflerle">🔤</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)" title="Yalnızca çizgiler">➖</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)" title="Kör">🙈</button>
+        <button class="diktat-modus-btn" id="btnDiktatStumm" onclick="diktatStummToggle(this)" title="Ses aç/kapat">🔊</button>
+    </div>
+</div>
+
+<div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" id="btnGPlural" onclick="grammatikSetModus('plural',this)">Çoğul</button>
+        <button class="diktat-modus-btn" id="btnGKasus" onclick="grammatikSetModus('kasus',this)">Hal</button>
+        <button class="diktat-modus-btn" id="btnGKonj" onclick="grammatikSetModus('konjugation',this)">Ben/Sen/O</button>
+        <button class="diktat-modus-btn" id="btnGTempus" onclick="grammatikSetModus('tempus',this)">⏰</button>
+    </div>
+</div>
+
+<div id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center; font-size:1rem; color:#555; min-height:1.4em;"></div>
+<div id="grBtnWrap" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center;">
+    <button onclick="grBtnKlick()" style="font-size:1.2rem; font-weight:bold; color:white; background:var(--purple); padding:8px 18px; border-radius:10px; border:none; cursor:pointer; animation:blinken 2.5s infinite;">❓ Gr.?</button>
+</div>
+
+<div id="uebersetzungAnzeige"></div>
+
+<div id="wordDisplay" class="word-display empty">
+    <span class="hint-blink">_ _ _</span>
+    <span class="hint-arrow">🔊 ↓</span>
+    <span class="hint-question">❓ → 🖊️ Dkt</span>
+</div>
+
+<div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; box-sizing:border-box; padding:0 4px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+        <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+        <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary); min-width:24px;">N1</span>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="wiederholenButton()" style="background:var(--primary); font-size:1.6rem;">🔁</button>
+    <button onclick="sprichWort()" style="background:var(--success); font-size:1.6rem;">🔊</button>
+    <button onclick="navigiereZurueck()" style="background:var(--purple); font-size:1.6rem;">◀</button>
+    <button onclick="randomWord()" style="background:var(--purple); font-size:1.6rem;">▶</button>
+    <button onclick="backspace()" style="font-size:1.6rem; background:#e74c3c;">⌫</button>
+    <button onclick="openStorage()" style="font-size:1.6rem; background:#16a085;">📚</button>
+        <button id="btnDiktatModus" onclick="diktatModusToggle()"
+        style="flex:1; padding:10px; border-radius:12px; border:2px solid #2c2c2a;
+               background:#2c2c2a; color:white; font-size:1rem; font-weight:bold;
+               cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+               justify-content:center; gap:8px;">
+        <span style="font-size:1.4rem;">🖊️</span>
+        <span id="diktatBtnLabel">Dkt</span>
+    </button>
+        <button id="btnGrammatikModus" onclick="grammatikModusToggle()"
+        style="flex:1; padding:10px; border-radius:12px; border:2px solid #e9ecef;
+               background:#f8f9fa; color:#7f8c8d; font-size:1rem; font-weight:bold;
+               cursor:pointer; transition:all 0.2s; display:flex; align-items:center;
+               justify-content:center; gap:8px;">
+        <span>❓</span><span id="grammatikBtnLabel">Grm</span>
+    </button>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">🌍</span>
+        <label class="toggle-switch"><input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">DE</span>
+    </div>
+    <button onclick="window.open('konjugator.html','_blank')"
+        style="margin-left:8px; background:none; border:none; cursor:pointer; padding:0;"
+        title="Konjugator">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiByeD0iODAiIGZpbGw9IiMwZjFmMzUiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSI3MiIgZmlsbD0iIzFlM2E1ZiIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIyMDAiIHI9IjY4IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNiA0IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iMjA4IiB5PSIyMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNhMGM0ZmYiIGZvbnQtc2l6ZT0iODQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgb3BhY2l0eT0iMC4zNSI+2YM8L3RleHQ+Cjx0ZXh0IHg9IjE5NiIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNGE5MGQ5IiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iOTAwIiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIG9wYWNpdHk9IjAuOTUiPks8L3RleHQ+Cjx0ZXh0IHg9IjIwMCIgeT0iNjgiICB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+8J+nkTwvdGV4dD4KPHRleHQgeD0iMzIyIiB5PSIxMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Gn8J+PvTwvdGV4dD4KPHRleHQgeD0iMzIyIiB5PSIyOTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Gm8J+PuzwvdGV4dD4KPHRleHQgeD0iMjAwIiB5PSIzNTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Go4oCN8J+RqeKAjfCfkac8L3RleHQ+Cjx0ZXh0IHg9Ijc4IiAgeT0iMjkyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+8J+nkeKAjfCfpJ3igI3wn6eRPC90ZXh0Pgo8dGV4dCB4PSI3OCIgIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI0MiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPvCfkaU8L3RleHQ+CjxsaW5lIHgxPSIyMDAiIHkxPSI3NiIgIHgyPSIyMDAiIHkyPSIxMzIiIHN0cm9rZT0iIzRhOTBkOSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KPGxpbmUgeDE9IjMwOCIgeTE9IjEyMCIgeDI9IjI2MiIgeTI9IjE1MiIgc3Ryb2tlPSIjNGE5MGQ5IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8bGluZSB4MT0iMzA4IiB5MT0iMjc4IiB4Mj0iMjYyIiB5Mj0iMjQ4IiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+CjxsaW5lIHgxPSIyMDAiIHkxPSIzMzIiIHgyPSIyMDAiIHkyPSIyNzAiIHN0cm9rZT0iIzRhOTBkOSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KPGxpbmUgeDE9IjkyIiAgeTE9IjI3OCIgeDI9IjEzOCIgeTI9IjI0OCIgc3Ryb2tlPSIjNGE5MGQ5IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8bGluZSB4MT0iOTIiICB5MT0iMTIwIiB4Mj0iMTM4IiB5Mj0iMTUyIiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+Cjwvc3ZnPgo=" width="36" height="36" style="border-radius:8px; display:block;">
+    </button>
+</div>
+
+    <div id="fortschrittsBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+        <div style="background:#f0f0f0; border-radius:8px; height:12px; overflow:hidden;">
+            <div id="fortschrittsBalken" style="height:100%; width:0%; background:linear-gradient(90deg,#2ecc71,#27ae60); transition:width 0.3s;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#7f8c8d; margin-top:4px;">
+            <span id="rundeAufgabe">0</span>/<span>10</span>
+            <span>Runde <span id="rundeAktuell">1</span></span>
+        </div>
+    </div>
+<div class="keyboard-container">
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span style="font-size:1rem; font-weight:bold; color:#2c3e50;">A</span>
+            <label class="toggle-switch"><input type="checkbox" id="caseToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="caseLabel">a</span>
+            <label class="toggle-switch" style="margin-left:12px;"><input type="checkbox" id="emojiToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+            <span style="font-size:1.2rem; margin-left:4px;">🖼️</span>
+        </div>
+        <div class="keyboard-grid" id="alphabetGrid"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">Özel harfler</span>
+            <label class="toggle-switch"><input type="checkbox" id="digraphToggle" onchange="renderAlphabet()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="digraphLabel">kapalı</span>
+        </div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">🔢 (0–9)</span>
+            <label class="toggle-switch"><input type="checkbox" id="numberToggle"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="numberLabel">kapalı</span>
+        </div>
+    </div>
+</div>
+
+<div id="storageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>📚 Kaydedilen Kelimeler</h2>
+        <button onclick="saveCurrentWord()" style="background:#e67e22;width:100%;margin-bottom:12px;font-size:1rem;">💾 Mevcut kelimeyi kaydet</button>
+        <div id="storedWordsList"></div>
+        <button class="btn-close-modal" onclick="closeStorage()">Kapat</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+// Türk alfabesi (29 harf)
+const alphabet = 'A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z'.split(' ');
+const vokale = new Set(['A','E','I','İ','O','Ö','U','Ü','a','e','ı','i','o','ö','u','ü']);
+// Türkçe özel harfler (digraph yerine)
+const ozelHarfler = ['ch','sh','ng','ck'];
+
+const emojiMap = {
+    'A':{ emoji:'🍎', word:'Araba' }, 'B':{ emoji:'🎈', word:'Balon' },
+    'C':{ emoji:'🦁', word:'Ceylan' }, 'Ç':{ emoji:'🌸', word:'Çiçek' },
+    'D':{ emoji:'🐉', word:'Dağ' }, 'E':{ emoji:'🥚', word:'Ekmek' },
+    'F':{ emoji:'🐸', word:'Fare' }, 'G':{ emoji:'🌹', word:'Gül' },
+    'Ğ':{ emoji:'🌙', word:'Ğ' }, 'H':{ emoji:'🏠', word:'Hava' },
+    'I':{ emoji:'🌡️', word:'Isı' }, 'İ':{ emoji:'🍦', word:'İpek' },
+    'J':{ emoji:'🃏', word:'Jilet' }, 'K':{ emoji:'🦋', word:'Kedi' },
+    'L':{ emoji:'🦁', word:'Lale' }, 'M':{ emoji:'🌙', word:'Masa' },
+    'N':{ emoji:'👃', word:'Nar' }, 'O':{ emoji:'🐙', word:'Orman' },
+    'Ö':{ emoji:'🦆', word:'Ördek' }, 'P':{ emoji:'🐧', word:'Panda' },
+    'R':{ emoji:'🌈', word:'Renk' }, 'S':{ emoji:'☀️', word:'Su' },
+    'Ş':{ emoji:'🍬', word:'Şeker' }, 'T':{ emoji:'🐯', word:'Tavşan' },
+    'U':{ emoji:'☂️', word:'Uçak' }, 'Ü':{ emoji:'🍇', word:'Üzüm' },
+    'V':{ emoji:'🎻', word:'Vazo' }, 'Y':{ emoji:'🌟', word:'Yıldız' },
+    'Z':{ emoji:'🦓', word:'Zeytin' },
+};
+
+const wordList = ['kedi','köpek','güneş','ay','ağaç','kitap','okul','ev','kuş','balık','yağmur','yıldız','elma','ekmek','su'];
+
+// TR→DE Wörterbuch
+const trDeDict = {
+    'kedi':'Katze','köpek':'Hund','güneş':'Sonne','ay':'Mond','ağaç':'Baum',
+    'kitap':'Buch','okul':'Schule','ev':'Haus','kuş':'Vogel','balık':'Fisch',
+    'yağmur':'Regen','yıldız':'Stern','elma':'Apfel','ekmek':'Brot','su':'Wasser',
+    'anne':'Mutter','baba':'Vater','çocuk':'Kind','araba':'Auto','yol':'Weg',
+    'büyük':'groß','küçük':'klein','hızlı':'schnell','mutlu':'glücklich','üzgün':'traurig',
+    'sıcak':'heiß','soğuk':'kalt','yeni':'neu','eski':'alt','arkadaş':'Freund',
+    'gel':'komm','git':'geh','ye':'iss','iç':'trink','oku':'lies',
+};
+
+// Diktat Wortlisten
+const diktatWorteN1 = [
+    { wort: 'ev', audio: '' },
+    { wort: 'su', audio: '' },
+    { wort: 'ay', audio: '' },
+    { wort: 'at', audio: '' },
+    { wort: 'göz', audio: '' },
+    { wort: 'kış', audio: '' },
+    { wort: 'yaz', audio: '' },
+    { wort: 'gün', audio: '' },
+    { wort: 'kedi', audio: '' },
+    { wort: 'elma', audio: '' },
+    { wort: 'balık', audio: '' },
+    { wort: 'okul', audio: '' },
+    { wort: 'kitap', audio: '' },
+    { wort: 'araba', audio: '' },
+    { wort: 'anne', audio: '' },
+    { wort: 'baba', audio: '' },
+    { wort: 'büyük', audio: '' },
+    { wort: 'küçük', audio: '' },
+    { wort: 'yeni', audio: '' },
+    { wort: 'eski', audio: '' },
+    { wort: 'gel', audio: '' },
+    { wort: 'git', audio: '' },
+    { wort: 'ye', audio: '' },
+    { wort: 'oku', audio: '' },
+    { wort: 'güneş', audio: '' },
+    { wort: 'yıldız', audio: '' },
+    { wort: 'ekmek', audio: '' },
+    { wort: 'sıcak', audio: '' },
+    { wort: 'soğuk', audio: '' },
+    { wort: 'mutlu', audio: '' },
+];
+
+const diktatWorteN2 = [
+    { wort: 'çiçek', audio: '' },
+    { wort: 'köpek', audio: '' },
+    { wort: 'pencere', audio: '' },
+    { wort: 'kapı', audio: '' },
+    { wort: 'çanta', audio: '' },
+    { wort: 'ağaç', audio: '' },
+    { wort: 'yağmur', audio: '' },
+    { wort: 'arkadaş', audio: '' },
+    { wort: 'öğrenci', audio: '' },
+    { wort: 'öğretmen', audio: '' },
+    { wort: 'güzel', audio: '' },
+    { wort: 'zor', audio: '' },
+    { wort: 'kolay', audio: '' },
+    { wort: 'hızlı', audio: '' },
+    { wort: 'yavaş', audio: '' },
+    { wort: 'çalışkan', audio: '' },
+    { wort: 'şehir', audio: '' },
+    { wort: 'ülke', audio: '' },
+    { wort: 'dil', audio: '' },
+    { wort: 'renk', audio: '' },
+    { wort: 'mavi', audio: '' },
+    { wort: 'kırmızı', audio: '' },
+    { wort: 'yeşil', audio: '' },
+    { wort: 'sarı', audio: '' },
+    { wort: 'beyaz', audio: '' },
+    { wort: 'siyah', audio: '' },
+    { wort: 'üzüm', audio: '' },
+    { wort: 'portakal', audio: '' },
+    { wort: 'domates', audio: '' },
+    { wort: 'patates', audio: '' },
+];
+
+const diktatWorteN3 = [
+    { wort: 'kardeşlik', audio: '' },
+    { wort: 'özgürlük', audio: '' },
+    { wort: 'sorumluluk', audio: '' },
+    { wort: 'dostluk', audio: '' },
+    { wort: 'mutluluk', audio: '' },
+    { wort: 'toplum', audio: '' },
+    { wort: 'anlamak', audio: '' },
+    { wort: 'düşünmek', audio: '' },
+    { wort: 'geliştirmek', audio: '' },
+    { wort: 'tanımlamak', audio: '' },
+    { wort: 'ilginç', audio: '' },
+    { wort: 'şaşırtıcı', audio: '' },
+    { wort: 'güvenilir', audio: '' },
+    { wort: 'bağımsız', audio: '' },
+    { wort: 'dikkatli', audio: '' },
+    { wort: 'çevre', audio: '' },
+    { wort: 'kültür', audio: '' },
+    { wort: 'tarih', audio: '' },
+    { wort: 'bilim', audio: '' },
+    { wort: 'teknoloji', audio: '' },
+];
+
+// Grammatik – Türkisch: Çoğul (Plural mit -ler/-lar), Hal (Fälle), Konjugation
+const grammatikDaten = {
+    plural: {
+        n1: [
+            { wort:'kedi',  plural:'kediler',  emoji:'🐱' },
+            { wort:'köpek', plural:'köpekler', emoji:'🐕' },
+            { wort:'elma',  plural:'elmalar',  emoji:'🍎' },
+            { wort:'araba', plural:'arabalar', emoji:'🚗' },
+            { wort:'kitap', plural:'kitaplar', emoji:'📚' },
+            { wort:'okul',  plural:'okullar',  emoji:'🏫' },
+            { wort:'ev',    plural:'evler',    emoji:'🏠' },
+            { wort:'göz',   plural:'gözler',   emoji:'👁️' },
+        ],
+        n2: [
+            { wort:'çiçek',   plural:'çiçekler',   emoji:'🌸' },
+            { wort:'öğrenci', plural:'öğrenciler',  emoji:'🎒' },
+            { wort:'şehir',   plural:'şehirler',    emoji:'🏙️' },
+            { wort:'ülke',    plural:'ülkeler',     emoji:'🌍' },
+        ],
+        n3: [
+            { wort:'sorumluluk', plural:'sorumluluklar', emoji:'⚖️' },
+            { wort:'özgürlük',   plural:'özgürlükler',   emoji:'🕊️' },
+        ]
+    },
+    kasus: {
+        n1: [
+            { satz:'___ okula gidiyor.', wort:'o', antworten:['O','Ona','Onun','Onu'], richtig:'O' },
+            { satz:'Kitabı ___ verdim.', wort:'o', antworten:['o','ona','onun','onu'], richtig:'ona' },
+            { satz:'___ arabası var.', wort:'o', antworten:['O','Ona','Onun','Onu'], richtig:'Onun' },
+            { satz:'___ görüyorum.', wort:'o', antworten:['o','ona','onun','onu'], richtig:'onu' },
+        ],
+        n2: [
+            { satz:'Bu kitap ___.', wort:'ben', antworten:['ben','benim','bana','beni'], richtig:'benim' },
+            { satz:'Mektup ___ geldi.', wort:'ben', antworten:['ben','benim','bana','benden'], richtig:'bana' },
+        ],
+        n3: [
+            { satz:'Seninle ___ konuştum.', wort:'o', antworten:['o','onun','onunla','ona'], richtig:'onunla' },
+        ]
+    },
+    tempus: {
+        n1: [
+            { infinitiv:'git', pronomen:'o', zeit:'Geçmiş zaman', richtig:'gitti', falsch:['gidiyor','gidecek','gitmiş'] },
+            { infinitiv:'ye',  pronomen:'ben', zeit:'Geçmiş zaman', richtig:'yedim', falsch:['yiyorum','yiyeceğim','yemiştim'] },
+            { infinitiv:'oku', pronomen:'sen', zeit:'Şimdiki zaman', richtig:'okuyorsun', falsch:['okudun','okuyacaksın','okumuşsun'] },
+            { infinitiv:'gel', pronomen:'biz', zeit:'Gelecek zaman', richtig:'geleceğiz', falsch:['geldik','geliyoruz','gelmiştik'] },
+        ],
+        n2: [
+            { infinitiv:'yaz', pronomen:'o',  zeit:'Geçmiş zaman', richtig:'yazdı',    falsch:['yazıyor','yazacak','yazmış'] },
+            { infinitiv:'konuş', pronomen:'siz', zeit:'Şimdiki zaman', richtig:'konuşuyorsunuz', falsch:['konuştunuz','konuşacaksınız','konuşmuşsunuz'] },
+        ],
+        n3: [
+            { infinitiv:'anla', pronomen:'onlar', zeit:'Geniş zaman', richtig:'anlarlar', falsch:['anladılar','anlıyorlar','anlayacaklar'] },
+        ]
+    }
+};
+
+const verbForms = {
+    'gitmek':   ['giderim','gidersin','gider','gideriz','gidersiniz','giderler'],
+    'gelmek':   ['gelirim','gelirsin','gelir','geliriz','gelirsiniz','gelirler'],
+    'yapmak':   ['yaparım','yaparsın','yapar','yaparız','yaparsınız','yaparlar'],
+    'okumak':   ['okurum','okursun','okur','okuruz','okursunuz','okurlar'],
+    'yemek':    ['yerim','yersin','yer','yeriz','yersiniz','yerler'],
+    'içmek':    ['içerim','içersin','içer','içeriz','içersiniz','içerler'],
+    'görmek':   ['görürüm','görürsün','görür','görürüz','görürsünüz','görürler'],
+    'bilmek':   ['bilirim','bilirsin','bilir','biliriz','bilirsiniz','bilirler'],
+};
+
+const pronouns    = ['👤 Ben','👤 Sen','👤 O','👤👤 Biz','👤👤 Siz','👤👤 Onlar'];
+const pronounsTTS = ['Ben','Sen','O','Biz','Siz','Onlar'];
+const verbGroups  = {
+    n1: ['gitmek','gelmek','yapmak','okumak'],
+    n2: ['yemek','içmek','görmek','bilmek'],
+    n3: ['gitmek','gelmek','yapmak','okumak','yemek','içmek','görmek','bilmek']
+};
+
+// ── State ──────────────────────────────────────────────────────────────
+let currentWord=[], savedWords=[];
+try { savedWords=JSON.parse(localStorage.getItem('abckelime_saved'))||[]; } catch(e) {}
+let diktatAktiv=false,grammatikAktiv=false,diktatRichtig=0,diktatFalsch=0;
+let diktatAktuell='',diktatEingabe='',diktatGesperrt=false,diktatHatFehler=false;
+let diktatBuzzerGespielt=false,diktatModus='hilfe',diktatNiveau='n1',diktatStumm=false,diktatAudioSrc='';
+let grammatikModus='plural',grammatikGesperrt=false,grammatikAktuell=null;
+let uebersetzungAktiv=false;
+const diktatVerlauf=[]; let diktatVerlaufIdx=-1;
+const normalVerlauf=[]; let normalVerlaufIdx=-1;
+let _nachGrammatikCallback=null;
+
+// ── Dark Mode ──────────────────────────────────────────────────────────
+function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+    try { localStorage.setItem('abckelime_theme', isDark ? 'dark' : 'light'); } catch(e) {}
+}
+function initTheme() {
+    try {
+        if (localStorage.getItem('abckelime_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            const btn = document.getElementById('themeBtn');
+            if (btn) btn.textContent = '☀️';
+        }
+    } catch(e) {}
+}
+
+function init() {
+    initTheme();
+    renderAlphabet();
+    updateDisplay();
+    ladeExterneDaten();
+    crossSellBannerEinfuegen(THIS_APP_ID);
+    document.getElementById('digraphToggle').addEventListener('change',function(){ document.getElementById('digraphLabel').textContent=this.checked?'açık':'kapalı'; renderAlphabet(); });
+    document.getElementById('numberToggle').addEventListener('change',function(){ document.getElementById('numberLabel').textContent=this.checked?'açık':'kapalı'; renderAlphabet(); });
+}
+
+async function ladeExterneDaten() {
+    try {
+        const gRes=await fetch('../data/grammatik_tr.json');
+        if(gRes.ok){const gData=await gRes.json();if(gData.plural)grammatikDaten.plural=gData.plural;if(gData.kasus)grammatikDaten.kasus=gData.kasus;if(gData.tempus)grammatikDaten.tempus=gData.tempus;console.log('Grammatik-TR geladen ✓');}
+    }catch(e){}
+    try {
+        const r = await fetch('../data/diktat_tr.json');
+        if (r.ok) {
+            const d = await r.json();
+            const fix = arr => arr.map(e=>({...e,audio:'../'+e.audio}));
+            if (d.n1&&d.n1.worte) diktatWorteN1.splice(0,diktatWorteN1.length,...fix(d.n1.worte));
+            if (d.n2&&d.n2.worte) diktatWorteN2.splice(0,diktatWorteN2.length,...fix(d.n2.worte));
+            if (d.n3&&d.n3.worte) diktatWorteN3.splice(0,diktatWorteN3.length,...fix(d.n3.worte));
+        }
+    } catch(e) { console.log('Çevrimdışı – yerleşik kelime listesi kullanılıyor'); }
+}
+
+function renderAlphabet() {
+    const container = document.getElementById('alphabetGrid');
+    const isLower = document.getElementById('caseToggle').checked;
+    const useEmoji = document.getElementById('emojiToggle').checked;
+    const showOzel = document.getElementById('digraphToggle').checked;
+    const showNumbers = document.getElementById('numberToggle').checked;
+    document.getElementById('caseLabel').textContent = isLower ? 'a' : 'A';
+    container.innerHTML = '';
+    alphabet.forEach(upper => {
+        const ch = isLower ? upper.toLowerCase() : upper;
+        const btn = document.createElement('div');
+        btn.className = 'key ' + (vokale.has(upper) ? 'vokal' : 'konsonant');
+        if (useEmoji && emojiMap[upper]) {
+            btn.classList.add('emoji-mode');
+            btn.innerHTML = `<span>${emojiMap[upper].emoji}</span><span class="emoji-label">${emojiMap[upper].word}</span>`;
+        } else { btn.textContent = ch; }
+        btn.onclick = () => addChar(ch);
+        container.appendChild(btn);
+    });
+    if (showOzel) {
+        ozelHarfler.forEach(h => {
+            const btn = document.createElement('div');
+            btn.className = 'key ozel';
+            btn.textContent = isLower ? h : h.toUpperCase();
+            btn.onclick = () => addChar(isLower ? h : h.toUpperCase());
+            container.appendChild(btn);
+        });
+    }
+    if (showNumbers) {
+        for (let i=0;i<=9;i++) {
+            const btn = document.createElement('div');
+            btn.className = 'key zahl'; btn.textContent = i;
+            btn.onclick = () => { if(diktatAktiv){diktatAddChar(String(i));return;} currentWord.push(String(i)); updateDisplay(); sprichZeichenTTS(String(i)); };
+            container.appendChild(btn);
+        }
+    }
+}
+
+let _lastAddTime=0;
+function addChar(ch) {
+    const now=Date.now(); if(now-_lastAddTime<80)return; _lastAddTime=now;
+    if(diktatAktiv){diktatAddChar(ch);return;}
+    currentWord.push(ch); updateDisplay(); sprichZeichenTTS(ch);
+}
+function backspace() {
+    if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
+    currentWord.pop(); updateDisplay();
+}
+function getVoiceForLang(lang) {
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find(v => v.lang && v.lang.startsWith(lang.split('-')[0])) || voices[0] || null;
+}
+function ttsSpeak(text, rate, lang) {
+    if (!window.speechSynthesis) { showToast('⚠️ Bu cihazda TTS mevcut değil'); return; }
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const voice = getVoiceForLang(lang);
+    if (voice) { u.voice = voice; u.lang = voice.lang; }
+    else { u.lang = lang; }
+    u.rate = rate;
+    window.speechSynthesis.speak(u);
+}
+function sprichZeichenTTS(ch) { ttsSpeak(ch.toLowerCase(), 0.7, 'tr-TR'); }
+function sprichWort() {
+    const s=currentWord.join(''); if(!s)return;
+    ttsSpeak(s, 0.85, 'tr-TR');
+}
+function updateDisplay() {
+    const display=document.getElementById('wordDisplay');
+    if(diktatAktiv){diktatRender();return;}
+    display.innerHTML='';
+    if(currentWord.length===0){
+        display.classList.add('empty');
+        display.innerHTML='<span class="hint-blink">_ _ _</span> <span class="hint-arrow">🔊 ↓</span> <span class="hint-question">❓ → 🖊️ Dkt</span>';
+        return;
+    }
+    display.classList.remove('empty');
+    currentWord.forEach((ch,i)=>{
+        const span=document.createElement('div'); span.className='char-block'; span.textContent=ch;
+        span.onclick=()=>{currentWord.splice(i,1);updateDisplay();}; display.appendChild(span);
+    });
+}
+function saveCurrentWord() {
+    const w = currentWord.join('');
+    if (!w) { showToast('Önce bir kelime yaz!'); return; }
+    if (!savedWords.includes(w)) { savedWords.push(w); try { localStorage.setItem('abckelime_saved', JSON.stringify(savedWords)); } catch(e) {} }
+    showToast('Kaydedildi: ' + w);
+    openStorage();
+}
+function randomWord() {
+    if(diktatAktiv&&grammatikAktiv){Math.random()>0.5?diktatNeuesWort():grammatikNeueAufgabe();}
+    else if(diktatAktiv){diktatNeuesWort();}
+    else if(grammatikAktiv){grammatikNeueAufgabe();}
+    else{const w=wordList[Math.floor(Math.random()*wordList.length)];currentWord=w.split('');updateDisplay();sprichWort();}
+}
+function navigiereZurueck() {
+    if(diktatAktiv && diktatVerlaufIdx > 0) {
+        diktatVerlaufIdx--;
+        const e = diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell = e.wort; diktatAudioSrc = e.audio;
+        diktatEingabe = ''; diktatGesperrt = false; diktatHatFehler = false; diktatBuzzerGespielt = false;
+        currentWord = []; diktatRender();
+        document.getElementById('diktatStatus').textContent = 'Dinle ve kelimeyi yaz';
+        diktatSprechen();
+    } else if (grammatikAktiv) {
+        grammatikNeueAufgabe();
+    } else {
+        if (wordList.length > 0) {
+            const idx = wordList.indexOf(currentWord.join(''));
+            const prev = wordList[(idx - 1 + wordList.length) % wordList.length];
+            currentWord = prev.split('');
+            updateDisplay();
+            sprichWort();
+        }
+    }
+}
+function wiederholenButton(){if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;} if(diktatAktiv)diktatNochmal(); else sprichWort();}
+function updateModusUI(){
+    const beides=diktatAktiv||grammatikAktiv;
+    document.getElementById('scoreBereich').style.display=beides?'block':'none';
+    document.getElementById('niveauSliderBereich').style.display=beides?'block':'none';
+    document.getElementById('diktatStatus').style.display=beides?'block':'none';
+    document.getElementById('diktatModusBereich').style.display=diktatAktiv?'block':'none';
+    document.getElementById('grammatikZeile').style.display=grammatikAktiv?'flex':'none';
+    if(!beides){document.getElementById('diktatStatus').textContent='';updateDisplay();}
+}
+function diktatModusToggle() {
+    diktatAktiv = !diktatAktiv;
+    const btn = document.getElementById('btnDiktatModus');
+    if (diktatAktiv) { btn.style.background='#c0392b'; btn.style.borderColor='#c0392b'; }
+    else { btn.style.background='#2c2c2a'; btn.style.borderColor='#2c2c2a'; }
+    updateModusUI();
+    if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
+function grammatikModusToggle() {
+    grammatikAktiv = !grammatikAktiv;
+    const btn = document.getElementById('btnGrammatikModus');
+    if (grammatikAktiv) { btn.style.background='#c0392b'; btn.style.color='white'; btn.style.borderColor='#c0392b'; }
+    else { btn.style.background='#f8f9fa'; btn.style.color='#7f8c8d'; btn.style.borderColor='#e9ecef'; }
+    updateModusUI();
+    if (grammatikAktiv) grammatikNeueAufgabe();
+    else if (diktatAktiv) diktatNeuesWort();
+}
+function diktatToggle(){diktatAktiv=document.getElementById('diktatToggleSwitch').checked;updateModusUI();if(diktatAktiv)diktatNeuesWort();else if(grammatikAktiv)grammatikNeueAufgabe();}
+function grammatikToggle(){grammatikAktiv=document.getElementById('grammatikToggleSwitch').checked;updateModusUI();if(grammatikAktiv)grammatikNeueAufgabe();else if(diktatAktiv)diktatNeuesWort();}
+function niveauSliderChange(val){diktatNiveau=['n1','n2','n3'][val-1];document.getElementById('niveauLabel').textContent='N'+val;if(diktatAktiv)diktatNeuesWort();if(grammatikAktiv)grammatikNeueAufgabe();}
+function diktatGetListe(){if(diktatNiveau==='n1')return diktatWorteN1;if(diktatNiveau==='n2')return diktatWorteN2;if(diktatNiveau==='n3')return diktatWorteN3;return[...diktatWorteN1,...diktatWorteN2,...diktatWorteN3];}
+function diktatNeuesWort(){
+    document.getElementById('grBtnWrap').style.display='none';
+    if(!proCheck(THIS_APP_ID,'Sınırsız dikte'))return;
+    const liste=diktatGetListe();
+    const e=liste[Math.floor(Math.random()*liste.length)];
+    diktatAktuell=e.wort;diktatAudioSrc=e.audio;
+    diktatEingabe='';diktatGesperrt=false;diktatHatFehler=false;diktatBuzzerGespielt=false;currentWord=[];
+    diktatVerlauf.splice(diktatVerlaufIdx+1);diktatVerlauf.push({wort:e.wort,audio:e.audio});
+    if(diktatVerlauf.length>50)diktatVerlauf.shift();diktatVerlaufIdx=diktatVerlauf.length-1;
+    diktatRender();document.getElementById('diktatStatus').textContent='Dinle ve kelimeyi yaz';
+    diktatSprechen();if(uebersetzungAktiv)zeigUebersetzung(diktatAktuell);
+}
+function diktatSprechen(){window.speechSynthesis.cancel();if(diktatAudioSrc){const a=new Audio(diktatAudioSrc);a.play().catch(()=>diktatSprechenTTS());}else diktatSprechenTTS();}
+function diktatSprechenTTS(){ ttsSpeak(diktatAktuell, 0.8, 'tr-TR'); }
+function diktatNochmal(){if(diktatAktuell)diktatSprechen();}
+function diktatRender(){
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');
+    if(!diktatAktuell)return;
+    const ziel=diktatAktuell;
+    if(diktatModus==='blind'){display.innerHTML=`<span style="font-size:1.5rem;color:#7f8c8d;">🙈 ${diktatEingabe.length} / ${ziel.length}</span>`;return;}
+    let html='';
+    for(let i=0;i<ziel.length;i++){
+        const entered=diktatEingabe[i];
+        if(diktatModus==='striche'){
+            if(!entered)html+=`<div class="char-block" style="min-width:28px;border-color:#ccc;background:#f8f9fa;">_</div>`;
+            else{const ok=entered.toLowerCase()===ziel[i].toLowerCase();html+=`<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`;}
+        }else{
+            if(!entered)html+=`<div class="char-block" style="min-width:28px;border-color:#ccc;background:#fafafa;">${ziel[i]}</div>`;
+            else{const ok=entered.toLowerCase()===ziel[i].toLowerCase();html+=`<div class="char-block" style="border-color:${ok?'var(--success)':'var(--danger)'};background:${ok?'#eafaf1':'#fdecea'}">${entered}</div>`;}
+        }
+    }
+    display.innerHTML=html;
+    const wrap=document.getElementById('grBtnWrap');
+    if(wrap)wrap.style.display=(diktatAktiv&&grammatikAktiv&&grammatikFuerWort(diktatAktuell).length>0)?'block':'none';
+}
+function diktatSetModus(m,btn){diktatModus=m;document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');diktatRender();}
+function diktatStummToggle(btn){diktatStumm=!diktatStumm;btn.textContent=diktatStumm?'🔇':'🔊';btn.classList.toggle('aktiv',diktatStumm);}
+let _lastDiktatAddTime=0;
+function diktatAddChar(ch){
+    const now=Date.now();if(now-_lastDiktatAddTime<80)return;_lastDiktatAddTime=now;
+    if(diktatGesperrt)return;
+    const ziel=diktatAktuell.toLowerCase();const idx=diktatEingabe.length;if(idx>=ziel.length)return;
+    diktatEingabe+=ch;
+    if(!diktatStumm)sprichZeichenTTS(ch);
+    if(ch.toLowerCase()!==ziel[idx]){diktatHatFehler=true;if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}}
+    diktatRender();
+    if(diktatEingabe.toLowerCase()===ziel){
+        diktatGesperrt=true;
+        if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Doğru! 🎉';}
+        else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='Doğru — ama düzeltmelerle.';}
+        setTimeout(diktatFanfare,300);setTimeout(diktatNeuesWort,2400);
+    }else{document.getElementById('diktatStatus').textContent=diktatEingabe.length<ziel.length?'Devam et…':'Henüz değil…';}
+}
+let _diktatCtx=null;
+function getDiktatCtx(){if(!_diktatCtx)_diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return _diktatCtx;}
+function diktatFanfare(){try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;[[523,0],[659,0.13],[784,0.26],[1047,0.39]].forEach(([f,d])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(0.2,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+d+0.3);o.connect(g);g.connect(ctx.destination);o.start(t+d);o.stop(t+d+0.3);});}catch(e){}}
+function diktatBuzzer(){try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}}
+
+function trShuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+
+function grammatikFuerWort(wort){
+    if(!wort||!grammatikDaten)return[];
+    const aufgaben=[];
+    const w=wort.toLowerCase();
+    if(grammatikDaten.plural){
+        const alle=[...(grammatikDaten.plural.n1||[]),...(grammatikDaten.plural.n2||[]),...(grammatikDaten.plural.n3||[])];
+        if(alle.find(e=>e.wort&&e.wort.toLowerCase()===w))aufgaben.push('plural');
+    }
+    if(verbForms&&verbForms[w])aufgaben.push('konjugation');
+    if(grammatikDaten.kasus){
+        const alle=[...(grammatikDaten.kasus.n1||[]),...(grammatikDaten.kasus.n2||[]),...(grammatikDaten.kasus.n3||[])];
+        if(alle.find(e=>e.wort&&e.wort.toLowerCase()===w))aufgaben.push('kasus');
+    }
+    if(grammatikDaten.tempus){
+        const alle=[...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        if(alle.find(e=>e.infinitiv&&e.infinitiv.toLowerCase()===w))aufgaben.push('tempus');
+    }
+    return aufgaben;
+}
+function grammatikRender(){
+    const display=document.getElementById('wordDisplay');
+    display.classList.remove('empty');
+    const d=grammatikAktuell;
+    if(!d)return;
+    if(grammatikModus==='plural'){
+        // Generiere Distraktoren aus anderen plural-Endungen
+        const endungen=['-ler','-lar','-ler mi?','-lar mı?'];
+        const richtig=d.plural||d.richtig;
+        const falschPool=[d.wort+'ler',d.wort+'lar',d.wort+'leri',d.wort+'ları'].filter(f=>f!==richtig);
+        const alle=trShuffle([richtig,...falschPool.slice(0,3)]);
+        let btns='';
+        for(let i=0;i<alle.length;i++){btns+='<button class="auswahl-btn" onclick="pluralAntwort(this.dataset.v,this)" data-v="'+alle[i]+'">'+alle[i]+'</button>';}
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div style="font-size:2rem;">'+(d.emoji||'')+'</div>'
+            +'<div class="grammatik-aufgabe">'+d.wort+'</div>'
+            +'<div class="grammatik-hinweis">Çoğul eki?</div>'
+            +'<div class="auswahl-grid">'+btns+'</div></div>';
+    }else if(grammatikModus==='kasus'){
+        const alle=trShuffle([...(d.antworten||[])]);
+        let btns='';
+        for(let i=0;i<alle.length;i++){btns+='<button class="auswahl-btn" onclick="kasusAntwort(this.dataset.v,this)" data-v="'+alle[i]+'">'+alle[i]+'</button>';}
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div class="grammatik-aufgabe">'+d.satz+'</div>'
+            +'<div class="grammatik-hinweis">'+(d.hinweis||'')+'</div>'
+            +'<div class="auswahl-grid">'+btns+'</div></div>';
+    }else if(grammatikModus==='konjugation'){
+        const alle=d.antworten||[];
+        let btns='';
+        for(let i=0;i<alle.length;i++){btns+='<button class="auswahl-btn" onclick="konjAntwort(this.dataset.v,this)" data-v="'+alle[i]+'">'+alle[i]+'</button>';}
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div class="grammatik-aufgabe">'+(pronouns[d.pIdx]||'')+' ___ <span style="color:var(--primary)">'+d.verb+'</span></div>'
+            +'<div class="grammatik-hinweis">Geniş zaman</div>'
+            +'<div class="auswahl-grid">'+btns+'</div></div>';
+    }else if(grammatikModus==='tempus'){
+        const alle=trShuffle([d.richtig,...(d.falsch||[])]);
+        let btns='';
+        for(let i=0;i<alle.length;i++){btns+='<button class="auswahl-btn" onclick="tempusAntwort(this.dataset.v,this)" data-v="'+alle[i]+'">'+alle[i]+'</button>';}
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div class="grammatik-aufgabe">'+d.pronomen+' ___ <span style="color:var(--primary)">'+d.infinitiv+'</span></div>'
+            +'<div class="grammatik-hinweis">'+d.zeit+'</div>'
+            +'<div class="auswahl-grid">'+btns+'</div></div>';
+    }
+    document.getElementById('diktatStatus').textContent='';
+}
+function diktatGrammatikAufgabeZeigen(modus){
+    const w=diktatAktuell.toLowerCase();
+    grammatikGesperrt=false;grammatikAktuell=null;
+    if(modus==='plural'){
+        const alle=[...(grammatikDaten.plural.n1||[]),...(grammatikDaten.plural.n2||[]),...(grammatikDaten.plural.n3||[])];
+        const tr=alle.find(e=>e.wort&&e.wort.toLowerCase()===w);
+        if(tr)grammatikAktuell={...tr,richtig:tr.plural};
+    }else if(modus==='kasus'){
+        const alle=[...(grammatikDaten.kasus.n1||[]),...(grammatikDaten.kasus.n2||[]),...(grammatikDaten.kasus.n3||[])];
+        grammatikAktuell=alle.find(e=>e.wort&&e.wort.toLowerCase()===w);
+    }else if(modus==='konjugation'){
+        if(verbForms&&verbForms[w]){
+            const formen=verbForms[w];
+            const pIdx=Math.floor(Math.random()*formen.length);
+            const richtig=formen[pIdx];
+            const falsch=formen.filter((_,i)=>i!==pIdx).filter(f=>f!==richtig).sort(()=>Math.random()-0.5).slice(0,3);
+            grammatikAktuell={verb:w,pIdx,richtig,antworten:trShuffle([richtig,...falsch])};
+        }
+    }else if(modus==='tempus'){
+        const alle=[...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        grammatikAktuell=alle.find(e=>e.infinitiv&&e.infinitiv.toLowerCase()===w);
+    }
+    if(!grammatikAktuell){diktatNeuesWort();return;}
+    grammatikModus=modus;
+    grammatikRender();
+    _nachGrammatikCallback=()=>diktatNeuesWort();
+}
+function grBtnKlick(){
+    document.getElementById('grBtnWrap').style.display='none';
+    const aufgaben=grammatikFuerWort(diktatAktuell);
+    if(!aufgaben.length)return;
+    diktatGrammatikAufgabeZeigen(aufgaben[Math.floor(Math.random()*aufgaben.length)]);
+}
+function grammatikSetModus(m,btn){grammatikModus=m;document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));btn.classList.add('aktiv');grammatikNeueAufgabe();}
+function grammatikNeueAufgabe(){
+    if(_nachGrammatikCallback){const cb=_nachGrammatikCallback;_nachGrammatikCallback=null;cb();return;}
+    if(diktatAktiv)return;
+    if(!proCheck(THIS_APP_ID,'Sınırsız dilbilgisi'))return;
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');grammatikGesperrt=false;
+    if(grammatikModus==='plural'){
+        const pool=grammatikDaten.plural[diktatNiveau]||grammatikDaten.plural.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div style="font-size:2rem;">${e.emoji}</div>
+            <div class="grammatik-aufgabe">${e.wort}</div>
+            <div class="grammatik-hinweis">Çoğulu nedir?</div>
+            <div class="artikel-buttons">
+                <button class="art-btn" onclick="pluralAntwort('${e.wort}ler',this)">${e.wort}ler</button>
+                <button class="art-btn" onclick="pluralAntwort('${e.wort}lar',this)">${e.wort}lar</button>
+            </div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='kasus'){
+        const pool=grammatikDaten.kasus[diktatNiveau]||grammatikDaten.kasus.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const gemischt=[...e.antworten].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.satz}</div>
+            <div class="grammatik-hinweis">„${e.wort}" için doğru hali seç</div>
+            <div class="auswahl-grid">${gemischt.map(a=>`<button class="auswahl-btn" onclick="kasusAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='konjugation'){
+        const pool=verbGroups[diktatNiveau]||verbGroups.n1;
+        const verb=pool[Math.floor(Math.random()*pool.length)];
+        const formen=verbForms[verb];if(!formen){grammatikNeueAufgabe();return;}
+        const pIdx=Math.floor(Math.random()*6);const richtig=formen[pIdx];
+        const falschForms=formen.filter((_,i)=>i!==pIdx).sort(()=>Math.random()-0.5).slice(0,3);
+        const alle=[richtig,...falschForms].sort(()=>Math.random()-0.5);
+        grammatikAktuell={verb,pIdx,richtig};
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${pronouns[pIdx]} ___ <span style="color:var(--primary)">${verb}</span></div>
+            <div class="grammatik-hinweis">Geniş zaman</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="konjAntwort('${a}',this)">${a}</button>`).join('')}</div></div>`;
+        grammatikSprechen();
+    }else if(grammatikModus==='tempus'){
+        const pool=[...(grammatikDaten.tempus.n1||[]),...(grammatikDaten.tempus.n2||[]),...(grammatikDaten.tempus.n3||[])];
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const alle=[e.richtig,...e.falsch].sort(()=>Math.random()-0.5);
+        display.innerHTML=`<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <div class="grammatik-aufgabe">${e.pronomen} ___ <span style="color:var(--primary)">${e.infinitiv}</span></div>
+            <div class="grammatik-hinweis">${e.zeit}</div>
+            <div class="auswahl-grid">${alle.map(a=>`<button class="auswahl-btn" onclick="tempusAntwort('${a.replace(/'/g,"\\'")}',this)">${a}</button>`).join('')}</div></div>`;
+    }
+    document.getElementById('diktatStatus').textContent='';
+}
+function pluralAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.plural){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Doğru! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Doğrusu: "${grammatikAktuell.plural}"`;}setTimeout(grammatikNeueAufgabe,1800);}
+function kasusAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.richtig){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Doğru! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Doğrusu: ${grammatikAktuell.richtig}`;}setTimeout(grammatikNeueAufgabe,1800);}
+function konjAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.richtig){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Doğru! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Doğrusu: ${grammatikAktuell.richtig}`;}setTimeout(grammatikNeueAufgabe,1800);}
+function tempusAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;if(g===grammatikAktuell.richtig){btn.classList.add('richtig');diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='Doğru! 🎉';setTimeout(diktatFanfare,200);}else{btn.classList.add('falsch');diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent=`Doğrusu: ${grammatikAktuell.richtig}`;}setTimeout(grammatikNeueAufgabe,1800);}
+function grammatikSprechen(){let text='';if(grammatikModus==='plural'&&grammatikAktuell)text=grammatikAktuell.wort;else if(grammatikModus==='konjugation'&&grammatikAktuell)text=pronounsTTS[grammatikAktuell.pIdx]+' '+grammatikAktuell.verb;if(!text)return;ttsSpeak(text, 0.85, 'tr-TR');}
+function uebersetzungToggle(){uebersetzungAktiv=document.getElementById('uebersetzungToggleSwitch').checked;if(!uebersetzungAktiv)document.getElementById('uebersetzungAnzeige').textContent='';}
+function zeigUebersetzung(wort){if(!uebersetzungAktiv)return;const eintrag=Object.values(GLOBAL_DICT).find(e=>e.tr&&e.tr.toLowerCase()===wort.toLowerCase());const ue=eintrag?eintrag.de:undefined;document.getElementById('uebersetzungAnzeige').textContent=ue?'🇩🇪 '+ue:'';}
+function openStorage(){const c=document.getElementById('storedWordsList');c.innerHTML='';if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">Henüz kaydedilen kelime yok.</p>';}else savedWords.forEach((w,i)=>{const div=document.createElement('div');div.className='stored-word';div.innerHTML=`<span>${w}</span>`;const b=document.createElement('button');b.className='btn-delete';b.style.background='var(--danger)';b.style.color='white';b.style.padding='5px 10px';b.style.fontSize='0.8rem';b.style.borderRadius='8px';b.style.border='none';b.textContent='Sil';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abckelime_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};div.appendChild(b);c.appendChild(div);});document.getElementById('storageModal').classList.add('open');}
+function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+let toastTimer=null;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800);}
+
+// === PRO-SYSTEM ===
+const THIS_APP_ID = 'tr';
+
+const APP_REGISTRY = [
+    { id:'de',  name:'ABC Wort',    flag:'🇩🇪', subtitle:'Deutsch lernen',     file:'index.html',        proCode:null,                   color:'#4a90e2' },
+    { id:'ru',  name:'АБВ Слово',   flag:'🇷🇺', subtitle:'Russisch lernen',    file:'abv_slowo.html',     proCode:'ABVSLOWO-PRO-2025',    color:'#c0392b' },
+    { id:'en',  name:'ABC Word',    flag:'🇬🇧', subtitle:'Englisch lernen',    file:'abc_word.html',      proCode:'ABCWORD-PRO-2025',     color:'#1a5276' },
+    { id:'es',  name:'ABC Palabra', flag:'🇪🇸', subtitle:'Spanisch lernen',    file:'abc_palabra.html',   proCode:'ABCPALABRA-PRO-2025',  color:'#c0392b' },
+    { id:'tr',  name:'ABC Kelime',  flag:'🇹🇷', subtitle:'Türkisch lernen',    file:'abc_kelime.html',    proCode:'ABCKELIME-PRO-2025',   color:'#c0392b' },
+    { id:'el',  name:'ΑΒΓ Λέξη',   flag:'🇬🇷', subtitle:'Griechisch lernen',  file:'abg_lexi.html',      proCode:'ABGLEXI-PRO-2025',     color:'#1565c0' },
+    { id:'ar',  name:'أبت كلمة',    flag:'🇸🇦', subtitle:'Arabisch lernen',    file:'abt_kalima.html',    proCode:'ABTKALIMA-PRO-2025',   color:'#1e8449' },
+    { id:'hi',  name:'एबीसी शब्द',  flag:'🇮🇳', subtitle:'Hindi lernen',       file:'abc_shabd.html',     proCode:'ABCSHABD-PRO-2025',    color:'#e65100' },
+    { id:'ur',  name:'ابت لفظ',     flag:'🇵🇰', subtitle:'Urdu lernen',        file:'abc_lafz.html',      proCode:'ABCLAFZ-PRO-2025',     color:'#1a5e2a' },
+    { id:'fa',  name:'الفبا کلمه',  flag:'🇦🇫', subtitle:'Dari lernen',        file:'abc_kalima.html',    proCode:'ABCKALIMA-PRO-2025',   color:'#1a237e' },
+    { id:'la',  name:'ABC Verbum',  flag:'🏛️',  subtitle:'Latein lernen',      file:'abc_verbum.html',    proCode:'ABCVERBUM-PRO-2025',   color:'#7b1fa2' },
+    { id:'egy', name:'Medu Netjer', flag:'𓇳',   subtitle:'Hieroglyphen lernen',file:'abc_medu.html',      proCode:'ABCMEDU-PRO-2025',     color:'#b8860b' },
+    { id:'fr',  name:'ABC Parole',  flag:'🇫🇷', subtitle:'Französisch lernen', file:'abc_parole.html',    proCode:'ABCPAROLE-PRO-2025',   color:'#002395' },
+    { id:'zh',  name:'汉字词',       flag:'🇨🇳', subtitle:'Mandarin lernen',    file:'abc_hanzi.html',     proCode:'ABCHANZI-PRO-2025',    color:'#c0392b' },
+    { id:'pl', name:'ABC Słowo', flag:'🇵🇱', subtitle:'Polnisch lernen', file:'abc_slowo_pl.html', proCode:'ABCSLOWO-PRO-2025', color:'#dc143c' },
+];
+
+function proIstAktiv(appId) {
+    if (!appId) return false;
+    const app = APP_REGISTRY.find(a => a.id === appId);
+    if (!app || !app.proCode) return true;
+    try { return localStorage.getItem('abc_pro_' + appId) === 'true'; } catch(e) { return false; }
+}
+function proAktivierenFuerApp(appId, code) {
+    const app = APP_REGISTRY.find(a => a.id === appId);
+    if (!app) return false;
+    if (code.toUpperCase() === app.proCode) {
+        try { localStorage.setItem('abc_pro_' + appId, 'true'); } catch(e) {}
+        return true;
+    }
+    return false;
+}
+const FREIE_RUNDEN = 10;
+function proCheck(appId, feature, onSuccess) {
+    if (proIstAktiv(appId)) { onSuccess && onSuccess(); return true; }
+    let runden = 0;
+    try { runden = parseInt(localStorage.getItem('abc_runden_' + appId) || '0'); } catch(e) {}
+    if (runden < FREIE_RUNDEN) {
+        try { localStorage.setItem('abc_runden_' + appId, runden + 1); } catch(e) {}
+        onSuccess && onSuccess();
+        return true;
+    }
+    proGateAnzeigen(appId, feature);
+    return false;
+}
+function proGateAnzeigen(appId, feature) {
+    const app = APP_REGISTRY.find(a => a.id === appId);
+    const display = document.getElementById('wordDisplay');
+    if (!display) return;
+    display.classList.remove('empty');
+    display.innerHTML = `
+        <div style="text-align:center; padding:1rem; width:100%;">
+            <div style="font-size:2.5rem; margin-bottom:8px;">${app.flag}</div>
+            <div style="font-size:1rem; font-weight:bold; color:#2c3e50; margin-bottom:6px;">Pro Sürüm</div>
+            <div style="font-size:0.85rem; color:#7f8c8d; margin-bottom:4px;">${feature} · sınırsız</div>
+            <div style="font-size:1.1rem; font-weight:bold; color:${app.color}; margin-bottom:16px;">2,99 € – tek seferlik</div>
+            <button onclick="proKaufen('${appId}')"
+                style="background:${app.color}; padding:10px 20px; border-radius:10px; color:white; border:none; cursor:pointer; font-weight:bold; font-size:1rem; margin-bottom:8px; display:block; width:100%;">
+                Pro'yu aç ☕ – 2,99€
+            </button>
+            <button onclick="proCodeEingeben('${appId}')"
+                style="background:var(--success,#27ae60); padding:8px 20px; border-radius:10px; color:white; border:none; cursor:pointer; font-size:0.85rem; width:100%;">
+                Zaten ödedim ✓
+            </button>
+        </div>`;
+}
+function proKaufen(appId) {
+    window.open('https://ko-fi.com/nickelfax', '_blank');
+    showToast('Ödeme sonrası kodunu Ko-fi mesajıyla alacaksın!');
+}
+function proCodeEingeben(appId) {
+    const code = prompt('Pro kodunu gir:');
+    if (!code) return;
+    if (proAktivierenFuerApp(appId, code)) {
+        showToast('Pro aktif! İyi eğlenceler! 🎉');
+        try { localStorage.removeItem('abc_runden_' + appId); } catch(e) {}
+        updateDisplay();
+        if (typeof diktatNeuesWort === 'function' && diktatAktiv) diktatNeuesWort();
+        if (typeof grammatikNeueAufgabe === 'function' && grammatikAktiv) grammatikNeueAufgabe();
+    } else {
+        showToast('Yanlış kod – ödeme sonrası Ko-fi\'den sor!');
+    }
+}
+function crossSellBannerEinfuegen(currentAppId) {
+    const andere = APP_REGISTRY.filter(a => a.id !== currentAppId);
+    const container = document.createElement('div');
+    container.id = 'crossSellBanner';
+    container.style.cssText = `width:100%;max-width:700px;margin-top:24px;background:white;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.08);overflow:hidden;`;
+    const header = document.createElement('div');
+    header.style.cssText = `padding:12px 16px;font-size:0.8rem;font-weight:bold;color:#7f8c8d;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f0f0f0;`;
+    header.textContent = '🌍 Ayrıca mevcut';
+    container.appendChild(header);
+    andere.forEach(app => {
+        const istFreigeschaltet = proIstAktiv(app.id);
+        const item = document.createElement('div');
+        item.style.cssText = `display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f8f8f8;cursor:pointer;transition:background 0.15s;`;
+        item.onmouseenter = () => item.style.background = '#f8f9fa';
+        item.onmouseleave = () => item.style.background = 'white';
+        item.onclick = () => window.location.href = app.file;
+        item.innerHTML = `<div style="display:flex;align-items:center;gap:12px;"><span style="font-size:1.8rem;">${app.flag}</span><div><div style="font-weight:bold;color:#2c3e50;font-size:0.95rem;">${app.name}</div><div style="font-size:0.8rem;color:#7f8c8d;">${app.subtitle}</div></div></div><div style="display:flex;align-items:center;gap:8px;">${istFreigeschaltet?`<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✓ Aktif</span>`:`<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">✨ Keşfet</span>`}<span style="color:#bdc3c7;font-size:1.2rem;">›</span></div>`;
+        container.appendChild(item);
+    });
+    const kb = document.querySelector('.keyboard-container');
+    if (kb && kb.parentNode) kb.parentNode.insertBefore(container, kb.nextSibling);
+    else document.body.appendChild(container);
+}
+
+window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
+window.addEventListener('DOMContentLoaded', init);
+
+const RUNDEN_LAENGE = 10;
+let rundeAufgabe = 0, rundeRichtig = 0, rundeNummer = 1;
+function fortschrittZeigen(aktiv) { document.getElementById('fortschrittsBereich').style.display = aktiv ? 'block' : 'none'; }
+function fortschrittReset() { rundeAufgabe=0; rundeRichtig=0; document.getElementById('fortschrittsBalken').style.width='0%'; document.getElementById('rundeAufgabe').textContent='0'; document.getElementById('rundeAktuell').textContent=rundeNummer; }
+function fortschrittSchritt(richtig) {
+    rundeAufgabe++; if(richtig) rundeRichtig++;
+    const pct=(rundeAufgabe/RUNDEN_LAENGE)*100;
+    document.getElementById('fortschrittsBalken').style.width=pct+'%';
+    document.getElementById('rundeAufgabe').textContent=rundeAufgabe;
+    const q=rundeRichtig/rundeAufgabe;
+    document.getElementById('fortschrittsBalken').style.background=q>=0.8?'linear-gradient(90deg,#2ecc71,#27ae60)':q>=0.5?'linear-gradient(90deg,#f39c12,#e67e22)':'linear-gradient(90deg,#e74c3c,#c0392b)';
+    if(rundeAufgabe>=RUNDEN_LAENGE) setTimeout(rundenAuswertung,400);
+}
+function rundenAuswertung() {
+    const d=document.getElementById('wordDisplay'); d.classList.remove('empty');
+    const e=rundeRichtig>=9?'🏆':rundeRichtig>=7?'🎉':rundeRichtig>=5?'👍':'💪';
+    const f=rundeRichtig>=7?'#27ae60':rundeRichtig>=5?'#f39c12':'#e74c3c';
+    d.innerHTML=`<div style="text-align:center;padding:1rem;width:100%;"><div style="font-size:3rem;margin-bottom:8px;">${e}</div><div style="font-size:1.4rem;font-weight:bold;color:${f};margin-bottom:6px;">${rundeRichtig}/10</div><button onclick="neueRunde()" style="background:var(--primary);color:white;border:none;border-radius:12px;padding:12px 28px;font-size:1.1rem;font-weight:bold;cursor:pointer;">▶</button></div>`;
+    rundeNummer++;
+}
+function neueRunde() { fortschrittReset(); if(diktatAktiv) diktatNeuesWort(); else if(grammatikAktiv) grammatikNeueAufgabe(); }
+</script>
+</body>
+</html>

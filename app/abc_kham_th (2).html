@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="th">
+<!-- © 2026 nickelfax. All rights reserved.
+     Unauthorized copying or distribution prohibited. -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#c0392b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ABC คำ">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="icon-512-th.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="dict.js"></script>
+    <script>
+function globalDictLookup(wort, zielSprache) {
+    const eintrag = Object.values(GLOBAL_DICT).find(e => e.th && e.th === wort);
+    return eintrag ? eintrag[zielSprache] || eintrag.de : null;
+}
+</script>
+    <title>ABC คำ</title>
+    <style>
+        :root {
+            --primary: #c0392b;
+            --secondary: #e67e22;
+            --success: #2e7d32;
+            --danger: #c62828;
+            --purple: #6a1b9a;
+            --bg: #fff5f5;
+            --card-bg: #ffffff;
+        }
+        body { font-family: 'Segoe UI', 'Noto Sans Thai', Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        h1 { color: #7b0000; margin-bottom: 5px; text-align: center; font-size: 1.8rem; }
+        .subtitle { color: #7f8c8d; margin-bottom: 20px; text-align: center; font-size: 0.9rem; }
+        .word-display { width: 100%; max-width: 700px; min-height: 100px; background: var(--card-bg); border: 4px dashed var(--primary); border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 2.2rem; color: #333; padding: 15px; flex-wrap: wrap; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .word-display.empty { color: #bdc3c7; font-size: 1.1rem; font-weight: normal; font-style: italic; }
+        .char-block { background: #fff0f0; border: 2px solid var(--primary); border-radius: 10px; padding: 5px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; }
+        .char-block:hover { background: #ffcdd2; border-color: var(--danger); transform: scale(1.05); }
+        .char-block::after { content: 'x'; position: absolute; top: -8px; right: -8px; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+        .char-block:hover::after { opacity: 1; }
+        .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 700px; }
+        button { padding: 12px 20px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.1s, background 0.2s; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        button:active { transform: scale(0.95); }
+        .keyboard-container { width: 100%; max-width: 800px; background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .keyboard-section { margin-bottom: 15px; }
+        .section-title { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .keyboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 8px; }
+        .key { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 12px 4px; text-align: center; font-size: 1.3rem; font-weight: bold; color: #2c3e50; cursor: pointer; transition: all 0.2s; user-select: none; }
+        .key.kh  { background: #fff3e0; border-color: #ffcc02; color: #b34700; }
+        .key.km  { background: #f1f8e9; border-color: #aed581; color: #33691e; }
+        .key.kn  { background: #e8f4fd; border-color: #90caf9; color: #0d47a1; }
+        .key.vok { background: #fce4ec; border-color: #f48fb1; color: #880e4f; font-size: 1.1rem; }
+        .key.sp  { background: #e8eaf6; border-color: #9fa8da; color: #283593; font-size: 1.1rem; }
+        .key:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+        .case-toggle { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .toggle-switch { position: relative; width: 52px; height: 28px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 28px; cursor: pointer; transition: background 0.2s; }
+        .toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 4px; top: 4px; background: white; border-radius: 50%; transition: transform 0.2s; }
+        .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); }
+        .case-label { font-size: 1rem; font-weight: bold; min-width: 20px; color: #2c3e50; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-overlay.open { display: flex; }
+        .modal-content { background: white; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+        .stored-word { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+        .btn-close-modal { background: #95a5a6; margin-top: 15px; width: 100%; }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: #2c3e50; color: white; padding: 12px 24px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transition: all 0.3s ease; z-index: 2000; white-space: nowrap; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .diktat-modus-zeile { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+        .diktat-modus-btn { background: #eee; color: #333; border: 2px solid #ccc; padding: 6px 12px; border-radius: 8px; font-size: 1.1rem; }
+        .diktat-modus-btn.aktiv { background: var(--secondary); border-color: var(--secondary); color: white; }
+        .grammatik-aufgabe { font-size: 1.6rem; font-weight: bold; color: #2c3e50; text-align: center; padding: 10px; }
+        .grammatik-hinweis { font-size: 0.85rem; color: #7f8c8d; text-align: center; }
+        .artikel-buttons { display: flex; gap: 10px; justify-content: center; width: 100%; flex-wrap: wrap; }
+        .art-btn { padding: 12px 16px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; flex: 1; min-width: 80px; max-width: 200px; }
+        .art-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .art-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+        .art-btn.falsch  { background: var(--danger);  color: white; border-color: var(--danger); }
+        .auswahl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+        .auswahl-btn { padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 10px; border: 2px solid #e9ecef; background: #f8f9fa; color: #2c3e50; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .auswahl-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .auswahl-btn.richtig { background: var(--success); color: white; border-color: var(--success); }
+        .auswahl-btn.falsch  { background: var(--danger);  color: white; border-color: var(--danger); }
+        #uebersetzungAnzeige { width: 100%; max-width: 700px; text-align: center; font-size: 1.1rem; color: #7f8c8d; min-height: 1.6em; margin-bottom: 4px; transition: opacity 0.3s; }
+        #uebersetzungAnzeige.laden { opacity: 0.4; }
+        @media (max-width: 600px) {
+            body { padding: 8px; } h1 { font-size: 1.3rem; }
+            .word-display { min-height: 60px; font-size: 1.6rem; padding: 10px; margin-bottom: 10px; }
+            button { padding: 9px 12px; font-size: 0.82rem; }
+            .keyboard-container { padding: 10px 8px; }
+            .keyboard-grid { grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 5px; }
+            .key { padding: 8px 2px; font-size: 1.1rem; }
+            .toast { white-space: normal; max-width: 85vw; text-align: center; }
+        }
+
+@keyframes flagGlanz_th {
+    0%   { transform: translateX(-100%) skewX(-20deg); }
+    100% { transform: translateX(400%)  skewX(-20deg); }
+}
+.flag-header {
+    width: 100%; max-width: 700px; border-radius: 14px;
+    overflow: hidden; margin-bottom: 5px;
+    border: 3px solid #aaa;
+    background: linear-gradient(to bottom,
+        #c0392b 20%, #ffffff 20%, #ffffff 40%,
+        #1a237e 40%, #1a237e 60%,
+        #ffffff 60%, #ffffff 80%, #c0392b 80%);
+    position: relative;
+}
+.flag-header::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 30%; height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+    animation: flagGlanz_th 3s ease-in-out infinite;
+    pointer-events: none;
+}
+.flag-header-title { text-align: center; padding: 10px 0 4px 0; }
+.flag-header-title h1 {
+    margin: 0; color: #1a0000; display: inline-block;
+    background: white; padding: 2px 18px;
+    border-radius: 8px; border: 2px solid #aaa;
+}
+.flag-header-title .subtitle { margin: 0 0 6px 0; text-shadow: 0 1px 2px rgba(255,255,255,0.9); }
+    </style>
+</head>
+<body>
+
+<div class="flag-header">
+    <div class="flag-header-title">
+        <h1>&#x1F1F9;&#x1F1ED; ABC &#x0E04;&#x0E33;</h1>
+        <p class="subtitle">&#x0E20;&#x0E32;&#x0E29;&#x0E32;&#x0E44;&#x0E17;&#x0E22; &middot; Thai lernen</p>
+    </div>
+</div>
+
+<div id="scoreBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div style="display:flex; gap:20px; font-size:1rem; padding:8px 16px; background:#fff8e1; border:2px solid var(--secondary); border-radius:12px;">
+        <span>&#x0E16;&#x0E39;&#x0E01;: <strong id="diktatRichtig">0</strong></span>
+        <span>&#x0E1C;&#x0E34;&#x0E14;: <strong id="diktatFalsch">0</strong></span>
+    </div>
+</div>
+
+<div id="diktatModusBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" onclick="diktatSetModus('hilfe',this)">&#x1F524;</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('striche',this)">&#x27D6;</button>
+        <button class="diktat-modus-btn" onclick="diktatSetModus('blind',this)">&#x1F648;</button>
+        <button class="diktat-modus-btn" id="btnDiktatStumm" onclick="diktatStummToggle(this)">&#x1F50A;</button>
+    </div>
+</div>
+
+<div id="grammatikZeile" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+    <div class="diktat-modus-zeile">
+        <button class="diktat-modus-btn aktiv" id="btnGKlasse" onclick="grammatikSetModus('klasse',this)">&#x0E01; &#x0E02; &#x0E04;</button>
+        <button class="diktat-modus-btn" id="btnGTon"    onclick="grammatikSetModus('ton',this)">&#x0E27;&#x0E23;&#x0E23;&#x0E13;&#x0E22;&#x0E38;&#x0E01;&#x0E15;&#x0E4C;</button>
+        <button class="diktat-modus-btn" id="btnGPron"   onclick="grammatikSetModus('pronomen',this)">&#x0E09;&#x0E31;&#x0E19; / &#x0E04;&#x0E38;&#x0E13;</button>
+        <button class="diktat-modus-btn" id="btnGZahl"   onclick="grammatikSetModus('zahlen',this)">&#x0E51; &#x0E52; &#x0E53;</button>
+    </div>
+</div>
+
+<div id="diktatStatus" style="display:none; width:100%; max-width:700px; margin-bottom:6px; text-align:center; font-size:1rem; color:#555; min-height:1.4em;"></div>
+
+<div id="uebersetzungAnzeige"></div>
+
+<div id="wordDisplay" class="word-display empty">
+    &#x0E01;&#x0E14;&#x0E15;&#x0E31;&#x0E27;&#x0E2D;&#x0E31;&#x0E01;&#x0E29;&#x0E23;&#x0E40;&#x0E1E;&#x0E37;&#x0E48;&#x0E2D;&#x0E2A;&#x0E23;&#x0E49;&#x0E32;&#x0E07;&#x0E04;&#x0E33;
+</div>
+
+<div id="niveauSliderBereich" style="display:none; width:100%; max-width:700px; margin-bottom:12px; box-sizing:border-box; padding:0 4px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N1</span>
+        <input type="range" id="niveauSlider" min="1" max="3" step="1" value="1" style="flex:1; accent-color:var(--primary);" oninput="niveauSliderChange(this.value)">
+        <span style="font-size:0.8rem; color:#7f8c8d; font-weight:bold;">N3</span>
+        <span id="niveauLabel" style="font-size:0.85rem; font-weight:bold; color:var(--primary);">N1</span>
+    </div>
+</div>
+
+<div class="controls">
+    <button onclick="wiederholenButton()" style="background:var(--primary); font-size:1.6rem;">&#x1F501;</button>
+    <button onclick="sprichWort()"        style="background:var(--success); font-size:1.6rem;">&#x1F50A;</button>
+    <button onclick="navigiereZurueck()"  style="background:var(--purple);  font-size:1.6rem;">&#x25C0;</button>
+    <button onclick="randomWord()"        style="background:var(--purple);  font-size:1.6rem;">&#x25B6;</button>
+    <button onclick="backspace()"         style="font-size:1.6rem; background:#e74c3c;">&#x232B;</button>
+    <button onclick="openStorage()"       style="font-size:1.6rem; background:#16a085;">&#x1F4DA;</button>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">&#x1F58A;&#xFE0F;</span>
+        <label class="toggle-switch"><input type="checkbox" id="diktatToggleSwitch" onchange="diktatToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">&#x0E14;&#x0E34;&#x0E01;</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">&#x2753;</span>
+        <label class="toggle-switch"><input type="checkbox" id="grammatikToggleSwitch" onchange="grammatikToggle()"><span class="toggle-slider"></span></label>
+        <span class="case-label" style="font-size:0.85rem;">&#x0E44;&#x0E27;&#x0E22;</span>
+    </div>
+    <div class="case-toggle" style="justify-content:center;">
+        <span style="font-size:1.2rem;">&#x1F30D;</span>
+        <label class="toggle-switch"><input type="checkbox" id="uebersetzungToggleSwitch" onchange="uebersetzungToggle()"><span class="toggle-slider"></span></label>
+        <div id="sprachDropdownInControls" style="display:none;">
+            <select id="sprachSelectControls" onchange="sprachWechseln(this.value)"
+                style="border-radius:8px; border:2px solid #e9ecef; padding:4px 8px; font-size:0.95rem; background:white; color:#2c3e50; cursor:pointer;"></select>
+        </div>
+    </div>
+    <button onclick="window.open('konjugator.html','_blank')"
+        style="margin-left:8px; background:none; border:none; cursor:pointer; padding:0;"
+        title="Konjugator">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDQwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiByeD0iODAiIGZpbGw9IiMwZjFmMzUiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMjAwIiByPSI3MiIgZmlsbD0iIzFlM2E1ZiIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIyMDAiIHI9IjY4IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNiA0IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iMjA4IiB5PSIyMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNhMGM0ZmYiIGZvbnQtc2l6ZT0iODQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgb3BhY2l0eT0iMC4zNSI+2YM8L3RleHQ+Cjx0ZXh0IHg9IjE5NiIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNGE5MGQ5IiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iOTAwIiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIG9wYWNpdHk9IjAuOTUiPks8L3RleHQ+Cjx0ZXh0IHg9IjIwMCIgeT0iNjgiICB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+8J+nkTwvdGV4dD4KPHRleHQgeD0iMzIyIiB5PSIxMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Gn8J+PvTwvdGV4dD4KPHRleHQgeD0iMzIyIiB5PSIyOTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Gm8J+PuzwvdGV4dD4KPHRleHQgeD0iMjAwIiB5PSIzNTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7wn5Go4oCN8J+RqeKAjfCfkac8L3RleHQ+Cjx0ZXh0IHg9Ijc4IiAgeT0iMjkyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjQyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+8J+nkeKAjfCfpJ3igI3wn6eRPC90ZXh0Pgo8dGV4dCB4PSI3OCIgIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI0MiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPvCfkaU8L3RleHQ+CjxsaW5lIHgxPSIyMDAiIHkxPSI3NiIgIHgyPSIyMDAiIHkyPSIxMzIiIHN0cm9rZT0iIzRhOTBkOSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KPGxpbmUgeDE9IjMwOCIgeTE9IjEyMCIgeDI9IjI2MiIgeTI9IjE1MiIgc3Ryb2tlPSIjNGE5MGQ5IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8bGluZSB4MT0iMzA4IiB5MT0iMjc4IiB4Mj0iMjYyIiB5Mj0iMjQ4IiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+CjxsaW5lIHgxPSIyMDAiIHkxPSIzMzIiIHgyPSIyMDAiIHkyPSIyNzAiIHN0cm9rZT0iIzRhOTBkOSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KPGxpbmUgeDE9IjkyIiAgeTE9IjI3OCIgeDI9IjEzOCIgeTI9IjI0OCIgc3Ryb2tlPSIjNGE5MGQ5IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8bGluZSB4MT0iOTIiICB5MT0iMTIwIiB4Mj0iMTM4IiB5Mj0iMTUyIiBzdHJva2U9IiM0YTkwZDkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+Cjwvc3ZnPgo=" width="36" height="36" style="border-radius:8px; display:block;">
+    </button>
+</div>
+
+    <div id="fortschrittsBereich" style="display:none; width:100%; max-width:700px; margin-bottom:8px; box-sizing:border-box;">
+        <div style="background:#f0f0f0; border-radius:8px; height:12px; overflow:hidden;">
+            <div id="fortschrittsBalken" style="height:100%; width:0%; background:linear-gradient(90deg,#2ecc71,#27ae60); transition:width 0.3s;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#7f8c8d; margin-top:4px;">
+            <span id="rundeAufgabe">0</span>/<span>10</span>
+            <span>Runde <span id="rundeAktuell">1</span></span>
+        </div>
+    </div>
+<div class="keyboard-container">
+    <div class="keyboard-section">
+        <div class="section-title">&#x1F7E1; &#x0E2D;&#x0E31;&#x0E01;&#x0E29;&#x0E23;&#x0E2A;&#x0E39;&#x0E07; &ndash; Hohe Klasse</div>
+        <div class="keyboard-grid" id="kbHoch"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">&#x1F7E2; &#x0E2D;&#x0E31;&#x0E01;&#x0E29;&#x0E23;&#x0E01;&#x0E25;&#x0E32;&#x0E07; &ndash; Mittlere Klasse</div>
+        <div class="keyboard-grid" id="kbMittel"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="section-title">&#x1F535; &#x0E2D;&#x0E31;&#x0E01;&#x0E29;&#x0E23;&#x0E15;&#x0E48;&#x0E33; &ndash; Niedrige Klasse</div>
+        <div class="keyboard-grid" id="kbNiedrig"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">&#x1F534; &#x0E2A;&#x0E23;&#x0E30; &ndash; Vokale</span>
+            <label class="toggle-switch"><input type="checkbox" id="vokalToggle" onchange="vokalToggleChange()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="vokalLabel">aus</span>
+        </div>
+        <div class="keyboard-grid" id="kbVokal" style="display:none;"></div>
+    </div>
+    <div class="keyboard-section">
+        <div class="case-toggle">
+            <span class="section-title" style="margin-bottom:0;">&#x2728; &#x0E27;&#x0E23;&#x0E23;&#x0E13;&#x0E22;&#x0E38;&#x0E01;&#x0E15;&#x0E4C; + &#x0E40;&#x0E25;&#x0E02; &ndash; Ton &amp; Zahlen</span>
+            <label class="toggle-switch"><input type="checkbox" id="spezialToggle" onchange="spezialToggleChange()"><span class="toggle-slider"></span></label>
+            <span class="case-label" id="spezialLabel">aus</span>
+        </div>
+        <div class="keyboard-grid" id="kbSpezial" style="display:none;"></div>
+    </div>
+</div>
+
+<div id="storageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>&#x1F4DA; &#x0E04;&#x0E33;&#x0E17;&#x0E35;&#x0E48;&#x0E1A;&#x0E31;&#x0E19;&#x0E17;&#x0E36;&#x0E01;&#x0E44;&#x0E27;&#x0E49;</h2>
+        <div id="storedWordsList"></div>
+        <button class="btn-close-modal" onclick="closeStorage()">&#x0E1B;&#x0E34;&#x0E14;</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+// ── Thai-Tastatur ─────────────────────────────────────────────────────
+const konsonantHoch    = ['\u0E02','\u0E03','\u0E09','\u0E10','\u0E16','\u0E1C','\u0E1D','\u0E28','\u0E29','\u0E2A','\u0E2B'];
+const konsonantMittel  = ['\u0E01','\u0E08','\u0E0E','\u0E0F','\u0E14','\u0E15','\u0E1A','\u0E1B','\u0E2D'];
+const konsonantNiedrig = ['\u0E04','\u0E05','\u0E06','\u0E07','\u0E0A','\u0E0B','\u0E0C','\u0E0D','\u0E11','\u0E12','\u0E13','\u0E17','\u0E18','\u0E19','\u0E1E','\u0E1F','\u0E20','\u0E21','\u0E22','\u0E23','\u0E25','\u0E27','\u0E2C','\u0E2E'];
+
+// Vokale mit Platzhalter ก zur Visualisierung
+const vokale = [
+    { z:'\u0E32', a:'\u0E01\u0E32', n:'aa'  },
+    { z:'\u0E34', a:'\u0E01\u0E34', n:'i'   },
+    { z:'\u0E35', a:'\u0E01\u0E35', n:'ii'  },
+    { z:'\u0E36', a:'\u0E01\u0E36', n:'ue'  },
+    { z:'\u0E37', a:'\u0E01\u0E37', n:'uea' },
+    { z:'\u0E38', a:'\u0E01\u0E38', n:'u'   },
+    { z:'\u0E39', a:'\u0E01\u0E39', n:'uu'  },
+    { z:'\u0E40', a:'\u0E40\u0E01', n:'e'   },
+    { z:'\u0E41', a:'\u0E41\u0E01', n:'ae'  },
+    { z:'\u0E42', a:'\u0E42\u0E01', n:'o'   },
+    { z:'\u0E43', a:'\u0E43\u0E01', n:'ai1' },
+    { z:'\u0E44', a:'\u0E44\u0E01', n:'ai2' },
+    { z:'\u0E31', a:'\u0E01\u0E31', n:'a'   },
+    { z:'\u0E47', a:'\u0E01\u0E47', n:'(k)' },
+    { z:'\u0E30', a:'\u0E01\u0E30', n:'-a'  },
+    { z:'\u0E33', a:'\u0E01\u0E33', n:'am'  },
+    { z:'\u0E27', a:'\u0E01\u0E27', n:'w'   },
+    { z:'\u0E22', a:'\u0E01\u0E22', n:'y'   },
+    { z:'\u0E2D', a:'\u0E01\u0E2D', n:'o2'  },
+];
+
+// Tonzeichen + Thai-Ziffern
+const spezial = [
+    { z:'\u0E48', a:'\u0E01\u0E48', n:'m\u00e8ek' },
+    { z:'\u0E49', a:'\u0E01\u0E49', n:'m\u00e2i tho' },
+    { z:'\u0E4A', a:'\u0E01\u0E4A', n:'m\u00e2i dtri' },
+    { z:'\u0E4B', a:'\u0E01\u0E4B', n:'m\u00e2i jat' },
+    { z:'\u0E4C', a:'\u0E01\u0E4C', n:'thantha' },
+    { z:'\u0E50', a:'\u0E50', n:'s\u016bn' },
+    { z:'\u0E51', a:'\u0E51', n:'n\u00f9ng' },
+    { z:'\u0E52', a:'\u0E52', n:'s\u014dng' },
+    { z:'\u0E53', a:'\u0E53', n:'s\u0103am' },
+    { z:'\u0E54', a:'\u0E54', n:'s\u00ec' },
+    { z:'\u0E55', a:'\u0E55', n:'h\u00e2a' },
+    { z:'\u0E56', a:'\u0E56', n:'h\u00f2k' },
+    { z:'\u0E57', a:'\u0E57', n:'j\u00e8t' },
+    { z:'\u0E58', a:'\u0E58', n:'p\u00e0et' },
+    { z:'\u0E59', a:'\u0E59', n:'g\u00e2o' },
+];
+
+const wordList = ['\u0E01\u0E34\u0E19','\u0E19\u0E49\u0E33','\u0E1A\u0E49\u0E32\u0E19','\u0E41\u0E21\u0E48','\u0E1E\u0E48\u0E2D','\u0E2B\u0E21\u0E32','\u0E41\u0E21\u0E27','\u0E14\u0E35','\u0E43\u0E2B\u0E21\u0E48','\u0E43\u0E2B\u0E0D\u0E48','\u0E40\u0E25\u0E47\u0E01','\u0E09\u0E31\u0E19','\u0E04\u0E38\u0E13','\u0E40\u0E02\u0E32','\u0E40\u0E23\u0E32'];
+
+const thDeDict = {
+    '\u0E01\u0E34\u0E19':'essen','\u0E19\u0E49\u0E33':'Wasser','\u0E1A\u0E49\u0E32\u0E19':'Haus','\u0E41\u0E21\u0E48':'Mutter','\u0E1E\u0E48\u0E2D':'Vater',
+    '\u0E2B\u0E21\u0E32':'Hund','\u0E41\u0E21\u0E27':'Katze','\u0E14\u0E35':'gut','\u0E43\u0E2B\u0E21\u0E48':'neu','\u0E43\u0E2B\u0E0D\u0E48':'gro\u00df',
+    '\u0E40\u0E25\u0E47\u0E01':'klein','\u0E09\u0E31\u0E19':'ich','\u0E04\u0E38\u0E13':'du/Sie','\u0E40\u0E02\u0E32':'er/sie','\u0E40\u0E23\u0E32':'wir',
+    '\u0E14\u0E39':'schauen','\u0E1F\u0E31\u0E07':'h\u00f6ren','\u0E1E\u0E39\u0E14':'sprechen','\u0E19\u0E2D\u0E19':'schlafen','\u0E27\u0E34\u0E48\u0E07':'laufen',
+    '\u0E23\u0E49\u0E2D\u0E19':'hei\u00df','\u0E40\u0E22\u0E47\u0E19':'kalt','\u0E1D\u0E19':'Regen','\u0E2A\u0E27\u0E22':'sch\u00f6n','\u0E40\u0E23\u0E47\u0E27':'schnell',
+};
+
+const sprachen = [
+    { code:'de', flag:'\u{1F1E9}\u{1F1EA}', name:'Deutsch' },
+    { code:'en', flag:'\u{1F1EC}\u{1F1E7}', name:'English'  },
+    { code:'ru', flag:'\u{1F1F7}\u{1F1FA}', name:'\u0420\u0443\u0441\u0441\u043a\u0438\u0439' },
+    { code:'zh', flag:'\u{1F1E8}\u{1F1F3}', name:'\u4e2d\u6587' },
+];
+let uebersetzungAktiv = false, userLang = 'de';
+try { userLang = localStorage.getItem('abckhamth_lang') || 'de'; } catch(e) {}
+const uebersetzungsCache = {};
+
+function sprachDropdownBauen() {
+    const sel = document.getElementById('sprachSelectControls');
+    if (!sel) return; sel.innerHTML = '';
+    sprachen.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.code; opt.textContent = s.flag + ' ' + s.name;
+        if (s.code === userLang) opt.selected = true;
+        sel.appendChild(opt);
+    });
+}
+function sprachWechseln(code) {
+    userLang = code; try { localStorage.setItem('abckhamth_lang', code); } catch(e) {}
+    const w = uebersetzungsAktuellesWort(); if (w) uebersetzeUndZeige(w);
+}
+function uebersetzungToggle() {
+    uebersetzungAktiv = document.getElementById('uebersetzungToggleSwitch').checked;
+    const dd = document.getElementById('sprachDropdownInControls');
+    const az = document.getElementById('uebersetzungAnzeige');
+    if (uebersetzungAktiv) { if(dd) dd.style.display='block'; const w=uebersetzungsAktuellesWort(); if(w) uebersetzeUndZeige(w); }
+    else { if(dd) dd.style.display='none'; az.textContent=''; }
+}
+function uebersetzungsAktuellesWort() {
+    if (diktatAktiv && diktatAktuell) return diktatAktuell;
+    if (grammatikAktiv && grammatikAktuell) return grammatikAktuell.wort || grammatikAktuell.zeichen || '';
+    return '';
+}
+async function uebersetzeAPI(text) {
+    if (!text) return '';
+    const key = 'th:'+userLang+':'+text;
+    if (uebersetzungsCache[key]) return uebersetzungsCache[key];
+    if (userLang==='de' && thDeDict[text]) { uebersetzungsCache[key]=thDeDict[text]; return thDeDict[text]; }
+    const g = globalDictLookup(text, userLang); if (g) { uebersetzungsCache[key]=g; return g; }
+    try {
+        const res = await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair=th|'+userLang);
+        if (!res.ok) return '';
+        const data = await res.json();
+        const r = (data.responseData && data.responseData.translatedText) || '';
+        if (r) uebersetzungsCache[key]=r; return r;
+    } catch(e) { return ''; }
+}
+function uebersetzeUndZeige(text) {
+    if (!uebersetzungAktiv || !text) return;
+    const az = document.getElementById('uebersetzungAnzeige');
+    const sp = sprachen.find(s=>s.code===userLang); const flag = sp?sp.flag:'🌍';
+    const key = 'th:'+userLang+':'+text;
+    if (uebersetzungsCache[key]) { az.textContent=flag+' '+uebersetzungsCache[key]; return; }
+    az.textContent=flag+' \u2026'; az.classList.add('laden');
+    uebersetzeAPI(text).then(r => { az.textContent=r?flag+' '+r:''; az.classList.remove('laden'); });
+}
+
+// ── TTS ───────────────────────────────────────────────────────────────
+function sprichTh(text) {
+    if (!text) return;
+    window.speechSynthesis.cancel();
+    const try_ = () => {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length === 0) return false;
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'th-TH'; u.rate = 0.82;
+        const v = voices.find(v => v.lang.startsWith('th'));
+        if (v) u.voice = v;
+        window.speechSynthesis.speak(u); return true;
+    };
+    if (!try_()) { window.speechSynthesis.onvoiceschanged = () => { try_(); }; }
+}
+function sprichZeichenTTS(ch) { sprichTh(ch); }
+function sprichWort() { const s = currentWord.join(''); if (s) sprichTh(s); }
+
+// ── Keyboard ──────────────────────────────────────────────────────────
+function buildKeyboard() {
+    const kbH = document.getElementById('kbHoch');
+    konsonantHoch.forEach(ch => { const b=document.createElement('div'); b.className='key kh'; b.textContent=ch; b.addEventListener('click',()=>addChar(ch)); kbH.appendChild(b); });
+    const kbM = document.getElementById('kbMittel');
+    konsonantMittel.forEach(ch => { const b=document.createElement('div'); b.className='key km'; b.textContent=ch; b.addEventListener('click',()=>addChar(ch)); kbM.appendChild(b); });
+    const kbN = document.getElementById('kbNiedrig');
+    konsonantNiedrig.forEach(ch => { const b=document.createElement('div'); b.className='key kn'; b.textContent=ch; b.addEventListener('click',()=>addChar(ch)); kbN.appendChild(b); });
+    const kbV = document.getElementById('kbVokal');
+    vokale.forEach(v => {
+        const b=document.createElement('div'); b.className='key vok';
+        b.style.cssText='padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:1px;';
+        b.innerHTML='<span style="font-size:1.2rem;">'+v.a+'</span><span style="font-size:0.55rem;font-weight:bold;color:#888;">'+v.n+'</span>';
+        b.addEventListener('click',()=>addChar(v.z)); kbV.appendChild(b);
+    });
+    const kbSp = document.getElementById('kbSpezial');
+    spezial.forEach(s => {
+        const b=document.createElement('div'); b.className='key sp';
+        b.style.cssText='padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:1px;';
+        b.innerHTML='<span style="font-size:1.2rem;">'+s.a+'</span><span style="font-size:0.5rem;font-weight:bold;color:#888;">'+s.n+'</span>';
+        b.addEventListener('click',()=>addChar(s.z)); kbSp.appendChild(b);
+    });
+}
+function vokalToggleChange() {
+    const on=document.getElementById('vokalToggle').checked;
+    document.getElementById('vokalLabel').textContent=on?'an':'aus';
+    document.getElementById('kbVokal').style.display=on?'grid':'none';
+}
+function spezialToggleChange() {
+    const on=document.getElementById('spezialToggle').checked;
+    document.getElementById('spezialLabel').textContent=on?'an':'aus';
+    document.getElementById('kbSpezial').style.display=on?'grid':'none';
+}
+
+// ── State ─────────────────────────────────────────────────────────────
+let currentWord=[], savedWords=[];
+try { savedWords=JSON.parse(localStorage.getItem('abckhamth_saved'))||[]; } catch(e) {}
+let diktatAktiv=false, grammatikAktiv=false, diktatRichtig=0, diktatFalsch=0;
+let diktatAktuell='', diktatEingabe='', diktatGesperrt=false, diktatHatFehler=false;
+let diktatBuzzerGespielt=false, diktatModus='hilfe', diktatNiveau='n1', diktatStumm=false;
+let grammatikModus='klasse', grammatikGesperrt=false, grammatikAktuell=null;
+const diktatVerlauf=[]; let diktatVerlaufIdx=-1;
+
+// ── Diktat-Wortlisten ─────────────────────────────────────────────────
+const diktatWorteN1 = [
+    {wort:'\u0E01\u0E34\u0E19',audio:''},{wort:'\u0E19\u0E49\u0E33',audio:''},{wort:'\u0E1A\u0E49\u0E32\u0E19',audio:''},
+    {wort:'\u0E41\u0E21\u0E48',audio:''},{wort:'\u0E1E\u0E48\u0E2D',audio:''},{wort:'\u0E2B\u0E21\u0E32',audio:''},
+    {wort:'\u0E41\u0E21\u0E27',audio:''},{wort:'\u0E14\u0E35',audio:''},{wort:'\u0E43\u0E2B\u0E21\u0E48',audio:''},
+    {wort:'\u0E43\u0E2B\u0E0D\u0E48',audio:''},{wort:'\u0E40\u0E25\u0E47\u0E01',audio:''},{wort:'\u0E09\u0E31\u0E19',audio:''},
+    {wort:'\u0E04\u0E38\u0E13',audio:''},{wort:'\u0E40\u0E02\u0E32',audio:''},{wort:'\u0E40\u0E23\u0E32',audio:''},
+    {wort:'\u0E14\u0E39',audio:''},{wort:'\u0E1F\u0E31\u0E07',audio:''},{wort:'\u0E1E\u0E39\u0E14',audio:''},
+    {wort:'\u0E19\u0E2D\u0E19',audio:''},{wort:'\u0E27\u0E34\u0E48\u0E07',audio:''},{wort:'\u0E23\u0E49\u0E2D\u0E19',audio:''},
+    {wort:'\u0E40\u0E22\u0E47\u0E19',audio:''},{wort:'\u0E1D\u0E19',audio:''},{wort:'\u0E2A\u0E27\u0E22',audio:''},
+    {wort:'\u0E40\u0E23\u0E47\u0E27',audio:''},{wort:'\u0E0A\u0E49\u0E32',audio:''},{wort:'\u0E1B\u0E25\u0E32',audio:''},
+    {wort:'\u0E02\u0E49\u0E32\u0E27',audio:''},{wort:'\u0E44\u0E01\u0E48',audio:''},{wort:'\u0E2B\u0E21\u0E39',audio:''},
+];
+const diktatWorteN2 = [
+    {wort:'\u0E2D\u0E48\u0E32\u0E19',audio:''},{wort:'\u0E40\u0E02\u0E35\u0E22\u0E19',audio:''},{wort:'\u0E40\u0E14\u0E34\u0E19',audio:''},
+    {wort:'\u0E2D\u0E32\u0E2B\u0E32\u0E23',audio:''},{wort:'\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19',audio:''},{wort:'\u0E14\u0E2D\u0E01\u0E44\u0E21\u0E49',audio:''},
+    {wort:'\u0E15\u0E49\u0E19\u0E44\u0E21\u0E49',audio:''},{wort:'\u0E42\u0E23\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19',audio:''},{wort:'\u0E23\u0E16\u0E44\u0E1F',audio:''},
+    {wort:'\u0E14\u0E37\u0E48\u0E21',audio:''},{wort:'\u0E0B\u0E37\u0E49\u0E2D',audio:''},{wort:'\u0E02\u0E32\u0E22',audio:''},
+    {wort:'\u0E17\u0E33\u0E07\u0E32\u0E19',audio:''},{wort:'\u0E40\u0E23\u0E35\u0E22\u0E19',audio:''},{wort:'\u0E2A\u0E19\u0E38\u0E01',audio:''},
+    {wort:'\u0E40\u0E2B\u0E19\u0E37\u0E48\u0E2D\u0E22',audio:''},{wort:'\u0E2B\u0E34\u0E27',audio:''},{wort:'\u0E2A\u0E35\u0E48',audio:''},
+    {wort:'\u0E2B\u0E49\u0E32',audio:''},{wort:'\u0E2B\u0E01',audio:''},{wort:'\u0E40\u0E08\u0E47\u0E14',audio:''},
+    {wort:'\u0E41\u0E1B\u0E14',audio:''},{wort:'\u0E40\u0E01\u0E49\u0E32',audio:''},{wort:'\u0E2A\u0E34\u0E1A',audio:''},
+    {wort:'\u0E23\u0E49\u0E2D\u0E22',audio:''},{wort:'\u0E1E\u0E31\u0E19',audio:''},{wort:'\u0E27\u0E31\u0E19',audio:''},
+    {wort:'\u0E40\u0E14\u0E37\u0E2D\u0E19',audio:''},{wort:'\u0E1B\u0E35',audio:''},
+];
+const diktatWorteN3 = [
+    {wort:'\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02',audio:''},{wort:'\u0E04\u0E27\u0E32\u0E21\u0E23\u0E31\u0E01',audio:''},
+    {wort:'\u0E27\u0E31\u0E12\u0E19\u0E18\u0E23\u0E23\u0E21',audio:''},{wort:'\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08',audio:''},
+    {wort:'\u0E40\u0E2A\u0E23\u0E35\u0E20\u0E32\u0E1E',audio:''},{wort:'\u0E2A\u0E31\u0E07\u0E04\u0E21',audio:''},
+    {wort:'\u0E40\u0E17\u0E04\u0E42\u0E19\u0E42\u0E25\u0E22\u0E35',audio:''},{wort:'\u0E2A\u0E38\u0E02\u0E20\u0E32\u0E1E',audio:''},
+    {wort:'\u0E40\u0E28\u0E23\u0E29\u0E10\u0E01\u0E34\u0E08',audio:''},{wort:'\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32',audio:''},
+    {wort:'\u0E23\u0E31\u0E10\u0E1A\u0E32\u0E25',audio:''},{wort:'\u0E2D\u0E19\u0E32\u0E04\u0E15',audio:''},
+    {wort:'\u0E1B\u0E23\u0E31\u0E0A\u0E0D\u0E32',audio:''},{wort:'\u0E21\u0E19\u0E38\u0E29\u0E22\u0E0A\u0E32\u0E15\u0E34',audio:''},
+    {wort:'\u0E1B\u0E23\u0E30\u0E27\u0E31\u0E15\u0E34\u0E28\u0E32\u0E2A\u0E15\u0E23\u0E4C',audio:''},
+];
+
+// ── Grammatik-Daten ───────────────────────────────────────────────────
+const grammatikDaten = {
+    klasse: {
+        n1: [
+            {zeichen:'\u0E01',klasse:'mittel', emoji:'\u{1F413}',deutsch:'Huhn \u00b7 Klasse Mitte'},
+            {zeichen:'\u0E02',klasse:'hoch',   emoji:'\u{1F95A}',deutsch:'Ei \u00b7 Klasse Hoch'},
+            {zeichen:'\u0E04',klasse:'niedrig',emoji:'\u{1F4A1}',deutsch:'Licht \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E07',klasse:'niedrig',emoji:'\u{1F40D}',deutsch:'Schlange \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E08',klasse:'mittel', emoji:'\u{1F37D}',deutsch:'Teller \u00b7 Klasse Mitte'},
+            {zeichen:'\u0E15',klasse:'mittel', emoji:'\u{1F422}',deutsch:'Schildkr\u00f6te \u00b7 Klasse Mitte'},
+            {zeichen:'\u0E19',klasse:'niedrig',emoji:'\u{1F42D}',deutsch:'Maus \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E21',klasse:'niedrig',emoji:'\u{1F434}',deutsch:'Pferd \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E2A',klasse:'hoch',   emoji:'\u{1F42F}',deutsch:'Tiger \u00b7 Klasse Hoch'},
+            {zeichen:'\u0E2B',klasse:'hoch',   emoji:'\u{1F9A2}',deutsch:'Schwan \u00b7 Klasse Hoch'},
+            {zeichen:'\u0E2D',klasse:'mittel', emoji:'\u{1F476}',deutsch:'Kind \u00b7 Klasse Mitte'},
+            {zeichen:'\u0E23',klasse:'niedrig',emoji:'\u{1F6A2}',deutsch:'Schiff \u00b7 Klasse Niedrig'},
+        ],
+        n2: [
+            {zeichen:'\u0E0A',klasse:'niedrig',emoji:'\u{1F418}',deutsch:'Elefant \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E16',klasse:'hoch',   emoji:'\u{1F6CD}',deutsch:'Tasche \u00b7 Klasse Hoch'},
+            {zeichen:'\u0E17',klasse:'niedrig',emoji:'\u{1FA96}',deutsch:'Helm \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E1A',klasse:'mittel', emoji:'\u{1F343}',deutsch:'Blatt \u00b7 Klasse Mitte'},
+            {zeichen:'\u0E1B',klasse:'mittel', emoji:'\u{1F41F}',deutsch:'Fisch \u00b7 Klasse Mitte'},
+            {zeichen:'\u0E1E',klasse:'niedrig',emoji:'\u{1F41D}',deutsch:'Biene \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E27',klasse:'niedrig',emoji:'\u{1F48D}',deutsch:'Ring \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E25',klasse:'niedrig',emoji:'\u{1F412}',deutsch:'Affe \u00b7 Klasse Niedrig'},
+        ],
+        n3: [
+            {zeichen:'\u0E28',klasse:'hoch',   emoji:'\u{1F981}',deutsch:'L\u00f6we \u00b7 Klasse Hoch'},
+            {zeichen:'\u0E29',klasse:'hoch',   emoji:'\u{1F474}',deutsch:'Greis \u00b7 Klasse Hoch'},
+            {zeichen:'\u0E18',klasse:'niedrig',emoji:'\u{1F6A9}',deutsch:'Flagge \u00b7 Klasse Niedrig'},
+            {zeichen:'\u0E13',klasse:'niedrig',emoji:'\u{1F9D2}',deutsch:'Kind \u00b7 Klasse Niedrig'},
+        ],
+    },
+    ton: {
+        n1: [
+            {wort:'\u0E21\u0E32', ton:'\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)', bedeutung:'kommen', antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)'},
+            {wort:'\u0E21\u0E49\u0E32',ton:'\u0E15\u0E23\u0E35 (steigend)',  bedeutung:'Pferd',  antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E15\u0E23\u0E35 (steigend)'},
+            {wort:'\u0E2B\u0E21\u0E32',ton:'\u0E40\u0E2D\u0E01 (tief)',      bedeutung:'Hund',   antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E40\u0E2D\u0E01 (tief)'},
+            {wort:'\u0E19\u0E49\u0E33',ton:'\u0E42\u0E17 (fallend)',         bedeutung:'Wasser', antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E42\u0E17 (fallend)'},
+            {wort:'\u0E44\u0E01\u0E48',ton:'\u0E40\u0E2D\u0E01 (tief)',      bedeutung:'Huhn',   antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E40\u0E2D\u0E01 (tief)'},
+            {wort:'\u0E02\u0E49\u0E32\u0E27',ton:'\u0E42\u0E17 (fallend)',   bedeutung:'Reis',   antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E42\u0E17 (fallend)'},
+            {wort:'\u0E14\u0E35',  ton:'\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)', bedeutung:'gut', antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)'},
+            {wort:'\u0E1B\u0E48\u0E32',ton:'\u0E40\u0E2D\u0E01 (tief)',     bedeutung:'Wald',   antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E40\u0E2D\u0E01 (tief)'},
+        ],
+        n2: [
+            {wort:'\u0E2B\u0E19\u0E49\u0E32',ton:'\u0E42\u0E17 (fallend)',  bedeutung:'Gesicht/Seite', antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E42\u0E17 (fallend)'},
+            {wort:'\u0E40\u0E01\u0E49\u0E32',ton:'\u0E15\u0E23\u0E35 (steigend)',bedeutung:'neun', antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E15\u0E23\u0E35 (steigend)'},
+            {wort:'\u0E1C\u0E49\u0E32', ton:'\u0E42\u0E17 (fallend)',       bedeutung:'Stoff',  antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E42\u0E17 (fallend)'},
+        ],
+        n3: [
+            {wort:'\u0E2A\u0E35\u0E02\u0E32\u0E27',ton:'\u0E40\u0E2D\u0E01 (tief)',bedeutung:'wei\u00df', antworten:['\u0E2A\u0E32\u0E21\u0E31\u0E0D (mittel)','\u0E40\u0E2D\u0E01 (tief)','\u0E42\u0E17 (fallend)','\u0E15\u0E23\u0E35 (steigend)'], richtig:'\u0E40\u0E2D\u0E01 (tief)'},
+        ],
+    },
+    pronomen: {
+        n1: [
+            {satz:'\u0E15\u0E27\u0E40\u0E2D\u0E07?',     satzDisplay:'___ \u0E0A\u0E37\u0E48\u0E2D\u0E2D\u0E30\u0E44\u0E23?',  deutsch:'Wie hei\u00dft ___?',           richtig:'\u0E04\u0E38\u0E13',  falsch:['\u0E40\u0E02\u0E32','\u0E40\u0E23\u0E32','\u0E09\u0E31\u0E19']},
+            {satz:'___ \u0E01\u0E34\u0E19\u0E02\u0E49\u0E32\u0E27',satzDisplay:'___ \u0E01\u0E34\u0E19\u0E02\u0E49\u0E32\u0E27', deutsch:'___ isst Reis',                 richtig:'\u0E09\u0E31\u0E19',  falsch:['\u0E04\u0E38\u0E13','\u0E40\u0E02\u0E32','\u0E40\u0E23\u0E32']},
+            {satz:'___ \u0E44\u0E1B\u0E42\u0E23\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19',satzDisplay:'___ \u0E44\u0E1B\u0E42\u0E23\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19',deutsch:'___ geht in die Schule',richtig:'\u0E40\u0E02\u0E32',  falsch:['\u0E09\u0E31\u0E19','\u0E04\u0E38\u0E13','\u0E40\u0E23\u0E32']},
+            {satz:'___ \u0E23\u0E31\u0E01\u0E01\u0E31\u0E19',satzDisplay:'___ \u0E23\u0E31\u0E01\u0E01\u0E31\u0E19', deutsch:'___ lieben einander',              richtig:'\u0E40\u0E23\u0E32',  falsch:['\u0E09\u0E31\u0E19','\u0E04\u0E38\u0E13','\u0E40\u0E02\u0E32']},
+            {satz:'___ \u0E14\u0E39\u0E17\u0E35\u0E27\u0E35',satzDisplay:'___ \u0E14\u0E39\u0E17\u0E35\u0E27\u0E35', deutsch:'___ schaut fern',                  richtig:'\u0E40\u0E18\u0E2D',  falsch:['\u0E09\u0E31\u0E19','\u0E04\u0E38\u0E13','\u0E40\u0E23\u0E32']},
+        ],
+        n2: [
+            {satz:'___ \u0E0B\u0E37\u0E49\u0E2D\u0E2D\u0E32\u0E2B\u0E32\u0E23',satzDisplay:'___ \u0E0B\u0E37\u0E49\u0E2D\u0E2D\u0E32\u0E2B\u0E32\u0E23',deutsch:'___ kauft Essen', richtig:'\u0E40\u0E18\u0E2D',falsch:['\u0E09\u0E31\u0E19','\u0E04\u0E38\u0E13','\u0E40\u0E02\u0E32']},
+            {satz:'___ \u0E17\u0E33\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E1A\u0E49\u0E32\u0E19',satzDisplay:'___ \u0E17\u0E33\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E1A\u0E49\u0E32\u0E19',deutsch:'___ arbeitet zuhause',richtig:'\u0E1C\u0E21',falsch:['\u0E09\u0E31\u0E19','\u0E04\u0E38\u0E13','\u0E40\u0E18\u0E2D']},
+        ],
+        n3: [
+            {satz:'___ \u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E20\u0E32\u0E29\u0E32\u0E44\u0E17\u0E22',satzDisplay:'___ \u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E20\u0E32\u0E29\u0E32\u0E44\u0E17\u0E22',deutsch:'___ versteht Thai',richtig:'\u0E40\u0E02\u0E32',falsch:['\u0E09\u0E31\u0E19','\u0E40\u0E23\u0E32','\u0E1E\u0E27\u0E01\u0E40\u0E02\u0E32']},
+        ],
+    },
+    zahlen: {
+        n1: [
+            {ziffer:'\u0E51',wort:'\u0E2B\u0E19\u0E36\u0E48\u0E07',deutsch:'eins',  falsch:['\u0E2A\u0E2D\u0E07','\u0E2A\u0E32\u0E21','\u0E2A\u0E35\u0E48']},
+            {ziffer:'\u0E52',wort:'\u0E2A\u0E2D\u0E07',  deutsch:'zwei',  falsch:['\u0E2B\u0E19\u0E36\u0E48\u0E07','\u0E2A\u0E32\u0E21','\u0E2A\u0E35\u0E48']},
+            {ziffer:'\u0E53',wort:'\u0E2A\u0E32\u0E21',  deutsch:'drei',  falsch:['\u0E2A\u0E2D\u0E07','\u0E2A\u0E35\u0E48','\u0E2B\u0E49\u0E32']},
+            {ziffer:'\u0E54',wort:'\u0E2A\u0E35\u0E48',  deutsch:'vier',  falsch:['\u0E2A\u0E32\u0E21','\u0E2B\u0E49\u0E32','\u0E2B\u0E01']},
+            {ziffer:'\u0E55',wort:'\u0E2B\u0E49\u0E32',  deutsch:'f\u00fcnf',falsch:['\u0E2A\u0E35\u0E48','\u0E2B\u0E01','\u0E40\u0E08\u0E47\u0E14']},
+        ],
+        n2: [
+            {ziffer:'\u0E56',wort:'\u0E2B\u0E01',   deutsch:'sechs', falsch:['\u0E2B\u0E49\u0E32','\u0E40\u0E08\u0E47\u0E14','\u0E41\u0E1B\u0E14']},
+            {ziffer:'\u0E57',wort:'\u0E40\u0E08\u0E47\u0E14',deutsch:'sieben',falsch:['\u0E2B\u0E01','\u0E41\u0E1B\u0E14','\u0E40\u0E01\u0E49\u0E32']},
+            {ziffer:'\u0E58',wort:'\u0E41\u0E1B\u0E14',deutsch:'acht',  falsch:['\u0E40\u0E08\u0E47\u0E14','\u0E40\u0E01\u0E49\u0E32','\u0E2A\u0E34\u0E1A']},
+            {ziffer:'\u0E59',wort:'\u0E40\u0E01\u0E49\u0E32',deutsch:'neun', falsch:['\u0E41\u0E1B\u0E14','\u0E2A\u0E34\u0E1A','\u0E2A\u0E35\u0E48']},
+            {ziffer:'\u0E51\u0E50',wort:'\u0E2A\u0E34\u0E1A',deutsch:'zehn', falsch:['\u0E40\u0E01\u0E49\u0E32','\u0E23\u0E49\u0E2D\u0E22','\u0E1E\u0E31\u0E19']},
+        ],
+        n3: [
+            {ziffer:'\u0E51\u0E50\u0E50',  wort:'\u0E23\u0E49\u0E2D\u0E22',deutsch:'hundert', falsch:['\u0E2A\u0E34\u0E1A','\u0E1E\u0E31\u0E19','\u0E2B\u0E21\u0E37\u0E48\u0E19']},
+            {ziffer:'\u0E51,\u0E50\u0E50\u0E50',wort:'\u0E1E\u0E31\u0E19',deutsch:'tausend',falsch:['\u0E23\u0E49\u0E2D\u0E22','\u0E2B\u0E21\u0E37\u0E48\u0E19','\u0E41\u0E2A\u0E19']},
+        ],
+    },
+};
+
+function shuffle(arr) {
+    const a=[...arr];
+    for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+    return a;
+}
+
+// ── Char / Display ────────────────────────────────────────────────────
+let _lastAddTime=0;
+function addChar(ch) {
+    const now=Date.now(); if(now-_lastAddTime<80) return; _lastAddTime=now;
+    if(diktatAktiv){diktatAddChar(ch);return;}
+    currentWord.push(ch); updateDisplay(); if(!diktatStumm) sprichZeichenTTS(ch);
+}
+function backspace() {
+    if(diktatAktiv){diktatEingabe=diktatEingabe.slice(0,-1);diktatRender();return;}
+    currentWord.pop(); updateDisplay();
+}
+function updateDisplay() {
+    const display=document.getElementById('wordDisplay');
+    if(diktatAktiv){diktatRender();return;}
+    display.innerHTML='';
+    if(currentWord.length===0){display.classList.add('empty');display.textContent='กดตัวอักษรเพื่อสร้างคำ';return;}
+    display.classList.remove('empty');
+    currentWord.forEach((ch,i)=>{
+        const span=document.createElement('div');span.className='char-block';span.textContent=ch;
+        span.onclick=()=>{currentWord.splice(i,1);updateDisplay();};
+        display.appendChild(span);
+    });
+}
+function randomWord() {
+    if(diktatAktiv&&grammatikAktiv){Math.random()>0.5?diktatNeuesWort():grammatikNeueAufgabe();}
+    else if(diktatAktiv){diktatNeuesWort();}
+    else if(grammatikAktiv){grammatikNeueAufgabe();}
+    else{const w=wordList[Math.floor(Math.random()*wordList.length)];currentWord=[...w];updateDisplay();sprichWort();}
+}
+function navigiereZurueck() {
+    if(diktatAktiv&&diktatVerlaufIdx>0){
+        diktatVerlaufIdx--;
+        const e=diktatVerlauf[diktatVerlaufIdx];
+        diktatAktuell=e.wort;diktatEingabe='';diktatGesperrt=false;
+        diktatHatFehler=false;diktatBuzzerGespielt=false;currentWord=[];
+        diktatRender();document.getElementById('diktatStatus').textContent='ฟัง แล้วพิมพ์คำ';
+        diktatSprechen();
+    }
+}
+function wiederholenButton() {
+    if(grammatikAktiv&&!diktatAktiv){grammatikSprechen();return;}
+    if(diktatAktiv) diktatNochmal(); else sprichWort();
+}
+function updateModusUI() {
+    const b=diktatAktiv||grammatikAktiv;
+    document.getElementById('scoreBereich').style.display        =b?'block':'none';
+    document.getElementById('niveauSliderBereich').style.display =b?'block':'none';
+    document.getElementById('diktatStatus').style.display        =b?'block':'none';
+    document.getElementById('diktatModusBereich').style.display  =diktatAktiv?'block':'none';
+    document.getElementById('grammatikZeile').style.display      =grammatikAktiv?'flex':'none';
+    if(!b){document.getElementById('diktatStatus').textContent='';updateDisplay();}
+}
+function diktatModusToggle() {
+    diktatAktiv = !diktatAktiv;
+    const btn = document.getElementById('btnDiktatModus');
+    const tastatur = document.querySelector('.keyboard-container');
+    if (diktatAktiv) {
+        btn.style.background = '#c0392b'; btn.style.borderColor = '#c0392b';
+        document.getElementById('diktatBtnLabel').textContent += ' ✓';
+        if (tastatur) tastatur.style.display = 'block';
+    } else {
+        btn.style.background = '#2c2c2a'; btn.style.borderColor = '#2c2c2a';
+        document.getElementById('diktatBtnLabel').textContent = document.getElementById('diktatBtnLabel').textContent.replace(' ✓','');
+    }
+    updateModusUI();
+    if (diktatAktiv) diktatNeuesWort();
+    else if (grammatikAktiv) grammatikNeueAufgabe();
+}
+function grammatikModusToggle() {
+    grammatikAktiv = !grammatikAktiv;
+    const btn = document.getElementById('btnGrammatikModus');
+    const tastatur = document.querySelector('.keyboard-container');
+    if (grammatikAktiv) {
+        btn.style.background = '#c0392b'; btn.style.color = 'white'; btn.style.borderColor = '#c0392b';
+        if (tastatur && !diktatAktiv) tastatur.style.display = 'none';
+    } else {
+        btn.style.background = '#f8f9fa'; btn.style.color = '#7f8c8d'; btn.style.borderColor = '#e9ecef';
+        if (tastatur) tastatur.style.display = 'block';
+    }
+    updateModusUI();
+    if (grammatikAktiv) grammatikNeueAufgabe();
+    else if (diktatAktiv) diktatNeuesWort();
+}
+function diktatToggle() {
+    diktatAktiv=document.getElementById('diktatToggleSwitch') ? document.getElementById('diktatToggleSwitch').checked : diktatAktiv;
+    updateModusUI();
+    if(diktatAktiv) diktatNeuesWort();
+    else if(grammatikAktiv) grammatikNeueAufgabe();
+}
+function diktatToggle_alt() {
+    diktatAktiv=document.getElementById('diktatToggleSwitch').checked;
+    updateModusUI();
+    if(diktatAktiv){if(!freiRundenCheck()){diktatAktiv=false;document.getElementById('diktatToggleSwitch').checked=false;updateModusUI();return;}diktatNeuesWort();}
+    else if(grammatikAktiv) grammatikNeueAufgabe();
+}
+function grammatikToggle() {
+    grammatikAktiv=document.getElementById('grammatikToggleSwitch').checked;
+    updateModusUI();
+    if(grammatikAktiv){if(!freiRundenCheck()){grammatikAktiv=false;document.getElementById('grammatikToggleSwitch').checked=false;updateModusUI();return;}grammatikNeueAufgabe();}
+    else if(diktatAktiv) diktatNeuesWort();
+}
+function niveauSliderChange(val) {
+    diktatNiveau=['n1','n2','n3'][val-1];
+    document.getElementById('niveauLabel').textContent='N'+val;
+    if(diktatAktiv) diktatNeuesWort();
+    if(grammatikAktiv) grammatikNeueAufgabe();
+}
+
+// ── Diktat ────────────────────────────────────────────────────────────
+function diktatGetListe(){if(diktatNiveau==='n2')return diktatWorteN2;if(diktatNiveau==='n3')return diktatWorteN3;return diktatWorteN1;}
+function diktatNeuesWort() {
+    const liste=diktatGetListe();
+    const e=liste[Math.floor(Math.random()*liste.length)];
+    diktatAktuell=e.wort;diktatEingabe='';diktatGesperrt=false;
+    diktatHatFehler=false;diktatBuzzerGespielt=false;currentWord=[];
+    diktatVerlauf.splice(diktatVerlaufIdx+1);
+    diktatVerlauf.push({wort:e.wort});if(diktatVerlauf.length>50)diktatVerlauf.shift();
+    diktatVerlaufIdx=diktatVerlauf.length-1;
+    diktatRender();document.getElementById('diktatStatus').textContent='ฟัง แล้วพิมพ์คำ';
+    setTimeout(()=>diktatSprechen(),300);
+    if(uebersetzungAktiv) uebersetzeUndZeige(diktatAktuell);
+}
+function diktatSprechen(){sprichTh(diktatAktuell);}
+function diktatNochmal(){if(diktatAktuell)diktatSprechen();}
+function diktatRender() {
+    const display=document.getElementById('wordDisplay');display.classList.remove('empty');
+    if(!diktatAktuell)return;
+    const zA=[...diktatAktuell],eA=[...diktatEingabe];
+    if(diktatModus==='blind'){display.innerHTML='<span style="font-size:1.5rem;color:#7f8c8d;">🙈 '+eA.length+' / '+zA.length+'</span>';return;}
+    let html='';
+    zA.forEach((ch,i)=>{
+        const e=eA[i];
+        if(diktatModus==='striche'){
+            if(!e)html+='<div class="char-block" style="min-width:28px;border-color:#ccc;background:#f8f9fa;">_</div>';
+            else{const ok=e===ch;html+='<div class="char-block" style="border-color:'+(ok?'var(--success)':'var(--danger)')+';background:'+(ok?'#eafaf1':'#fdecea')+'">'+e+'</div>';}
+        }else{
+            if(!e)html+='<div class="char-block" style="min-width:28px;border-color:#ccc;background:#fafafa;">'+ch+'</div>';
+            else{const ok=e===ch;html+='<div class="char-block" style="border-color:'+(ok?'var(--success)':'var(--danger)')+';background:'+(ok?'#eafaf1':'#fdecea')+'">'+e+'</div>';}
+        }
+    });
+    display.innerHTML=html;
+}
+function diktatSetModus(m,btn){
+    diktatModus=m;
+    document.querySelectorAll('.diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));
+    btn.classList.add('aktiv');diktatRender();
+}
+function diktatStummToggle(btn){
+    diktatStumm=!diktatStumm;btn.textContent=diktatStumm?'🔇':'🔊';
+    btn.classList.toggle('aktiv',diktatStumm);
+}
+let _lastDiktatAddTime=0;
+function diktatAddChar(ch) {
+    const now=Date.now();if(now-_lastDiktatAddTime<80)return;_lastDiktatAddTime=now;
+    if(diktatGesperrt)return;
+    const zA=[...diktatAktuell],eA=[...diktatEingabe];
+    const idx=eA.length;if(idx>=zA.length)return;
+    diktatEingabe+=ch;
+    if(!diktatStumm)sprichZeichenTTS(ch);
+    if(ch!==zA[idx]){
+        diktatHatFehler=true;
+        if(!diktatBuzzerGespielt){diktatBuzzerGespielt=true;diktatBuzzer();setTimeout(()=>{diktatBuzzerGespielt=false;},600);}
+    }
+    diktatRender();
+    const nA=[...diktatEingabe];
+    if(nA.length===zA.length&&nA.every((c,i)=>c===zA[i])){
+        diktatGesperrt=true;
+        if(!diktatHatFehler){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='เก่งมาก! 🎉';}
+        else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='ถูก — แต่มีการแก้ไข';}
+        setTimeout(diktatFanfare,300);setTimeout(diktatNeuesWort,2400);
+    }else{
+        document.getElementById('diktatStatus').textContent=nA.length<zA.length?'พิมพ์ต่อ…':'ยังไม่ถูก…';
+    }
+}
+
+// ── Grammatik ─────────────────────────────────────────────────────────
+function grammatikSetModus(m,btn){
+    grammatikModus=m;
+    document.querySelectorAll('#grammatikZeile .diktat-modus-btn').forEach(b=>b.classList.remove('aktiv'));
+    btn.classList.add('aktiv');grammatikNeueAufgabe();
+}
+function grammatikNeueAufgabe() {
+    const display=document.getElementById('wordDisplay');
+    display.classList.remove('empty');grammatikGesperrt=false;
+
+    if(grammatikModus==='klasse'){
+        const pool=grammatikDaten.klasse[diktatNiveau]||grammatikDaten.klasse.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div style="font-size:2rem;">'+e.emoji+'</div>'
+            +'<div class="grammatik-aufgabe" style="font-size:3rem;">'+e.zeichen+'</div>'
+            +'<div class="grammatik-hinweis">อักษรชั้นไหน? (Welche Konsonantenklasse?)</div>'
+            +'<div class="artikel-buttons">'
+            +'<button class="art-btn" onclick="klasseAntwort(\'hoch\',this)" style="color:#b34700;border-color:#b34700;">🟡 สูง (Hoch)</button>'
+            +'<button class="art-btn" onclick="klasseAntwort(\'mittel\',this)" style="color:#33691e;border-color:#33691e;">🟢 กลาง (Mittel)</button>'
+            +'<button class="art-btn" onclick="klasseAntwort(\'niedrig\',this)" style="color:#0d47a1;border-color:#0d47a1;">🔵 ต่ำ (Niedrig)</button>'
+            +'</div><div id="grammatikStatus" class="diktat-status" style="min-height:1.2em;"></div></div>';
+        grammatikSprechen();
+
+    } else if(grammatikModus==='ton'){
+        const pool=grammatikDaten.ton[diktatNiveau]||grammatikDaten.ton.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const btns=shuffle(e.antworten);
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div class="grammatik-aufgabe" style="font-size:3rem;">'+e.wort+'</div>'
+            +'<div class="grammatik-hinweis">วรรณยุกต์? (= '+e.bedeutung+')</div>'
+            +'<div class="auswahl-grid">'+btns.map(a=>'<button class="auswahl-btn" onclick="tonAntwort(\''+a.replace(/'/g,"\\'")
+            +'\',this)">'+a+'</button>').join('')+'</div>'
+            +'<div id="grammatikStatus" class="diktat-status"></div></div>';
+        grammatikSprechen();
+
+    } else if(grammatikModus==='pronomen'){
+        const pool=grammatikDaten.pronomen[diktatNiveau]||grammatikDaten.pronomen.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const btns=shuffle([e.richtig,...e.falsch]);
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div class="grammatik-aufgabe">'+e.satzDisplay+'</div>'
+            +'<div class="grammatik-hinweis">'+e.deutsch+'</div>'
+            +'<div class="auswahl-grid">'+btns.map(a=>'<button class="auswahl-btn" onclick="pronomenAntwort(\''+a+'\',this)">'+a+'</button>').join('')+'</div>'
+            +'<div id="grammatikStatus" class="diktat-status"></div></div>';
+
+    } else if(grammatikModus==='zahlen'){
+        const pool=grammatikDaten.zahlen[diktatNiveau]||grammatikDaten.zahlen.n1;
+        const e=pool[Math.floor(Math.random()*pool.length)];grammatikAktuell=e;
+        const btns=shuffle([e.wort,...e.falsch]);
+        display.innerHTML='<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;">'
+            +'<div class="grammatik-aufgabe" style="font-size:3rem;">'+e.ziffer+'</div>'
+            +'<div class="grammatik-hinweis">= '+e.deutsch+' · ภาษาไทย?</div>'
+            +'<div class="auswahl-grid">'+btns.map(a=>'<button class="auswahl-btn" onclick="zahlenAntwort(\''+a+'\',this)">'+a+'</button>').join('')+'</div>'
+            +'<div id="grammatikStatus" class="diktat-status"></div></div>';
+        grammatikSprechen();
+    }
+    document.getElementById('diktatStatus').textContent='';
+    if(uebersetzungAktiv&&grammatikAktuell){
+        const de=grammatikAktuell.deutsch||'';
+        if(de) document.getElementById('uebersetzungAnzeige').textContent='🇩🇪 '+de;
+        else{const gw=grammatikAktuell.wort||grammatikAktuell.zeichen||'';if(gw)uebersetzeUndZeige(gw);}
+    }
+}
+function _antw(ok,btn,richtig){
+    btn.classList.add(ok?'richtig':'falsch');
+    if(!ok){
+        const alleBtn=btn.closest('div').querySelectorAll('.auswahl-btn,.art-btn');
+        alleBtn.forEach(b=>{if(b.textContent.trim()===richtig)b.classList.add('richtig');});
+    }
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='เก่งมาก! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='ถูก: '+richtig;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function klasseAntwort(g,btn){
+    if(grammatikGesperrt)return;grammatikGesperrt=true;
+    const ok=g===grammatikAktuell.klasse;
+    btn.classList.add(ok?'richtig':'falsch');
+    const lbl=grammatikAktuell.klasse==='hoch'?'สูง (Hoch)':grammatikAktuell.klasse==='mittel'?'กลาง (Mittel)':'ต่ำ (Niedrig)';
+    if(!ok){btn.closest('div').querySelectorAll('.art-btn').forEach(b=>{if(b.textContent.includes(lbl))b.classList.add('richtig');});}
+    if(ok){diktatRichtig++;document.getElementById('diktatRichtig').textContent=diktatRichtig;document.getElementById('diktatStatus').textContent='เก่งมาก! 🎉';setTimeout(diktatFanfare,200);}
+    else{diktatFalsch++;document.getElementById('diktatFalsch').textContent=diktatFalsch;document.getElementById('diktatStatus').textContent='ถูก: '+lbl;diktatBuzzer();}
+    setTimeout(grammatikNeueAufgabe,1800);
+}
+function tonAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;_antw(g===grammatikAktuell.richtig,btn,grammatikAktuell.richtig);}
+function pronomenAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;_antw(g===grammatikAktuell.richtig,btn,grammatikAktuell.richtig);}
+function zahlenAntwort(g,btn){if(grammatikGesperrt)return;grammatikGesperrt=true;_antw(g===grammatikAktuell.wort,btn,grammatikAktuell.wort);}
+function grammatikSprechen(){
+    let t='';
+    if(grammatikModus==='klasse'&&grammatikAktuell)t=grammatikAktuell.zeichen;
+    else if(grammatikModus==='ton'&&grammatikAktuell)t=grammatikAktuell.wort;
+    else if(grammatikModus==='zahlen'&&grammatikAktuell)t=grammatikAktuell.wort;
+    if(t)sprichTh(t);
+}
+
+// ── Audio ─────────────────────────────────────────────────────────────
+let _diktatCtx=null;
+function getDiktatCtx(){if(!_diktatCtx)_diktatCtx=new(window.AudioContext||window.webkitAudioContext)();return _diktatCtx;}
+function diktatFanfare(){
+    try{const ctx=getDiktatCtx();const t=ctx.currentTime+0.05;
+        [[523,0],[659,0.13],[784,0.26],[1047,0.39]].forEach(([f,d])=>{
+            const o=ctx.createOscillator(),g=ctx.createGain();
+            o.frequency.value=f;g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(0.2,t+d+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+d+0.3);
+            o.connect(g);g.connect(ctx.destination);o.start(t+d);o.stop(t+d+0.3);
+        });}catch(e){}
+}
+function diktatBuzzer(){
+    try{const ctx=getDiktatCtx();const o=ctx.createOscillator(),g=ctx.createGain();
+        o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.18);
+        g.gain.setValueAtTime(0.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.22);
+        o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.22);}catch(e){}
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────
+let toastTimer=null;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');if(toastTimer)clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000);}
+
+// ── Storage ───────────────────────────────────────────────────────────
+function openStorage(){
+    const c=document.getElementById('storedWordsList');c.innerHTML='';
+    if(!savedWords.length){c.innerHTML='<p style="color:#7f8c8d;text-align:center;">ยังไม่มีคำ</p>';}
+    else savedWords.forEach((w,i)=>{
+        const div=document.createElement('div');div.className='stored-word';
+        div.innerHTML='<span style="font-size:1.3rem;">'+w+'</span>';
+        const b=document.createElement('button');b.style.cssText='background:var(--danger);color:white;padding:5px 10px;font-size:0.8rem;border-radius:8px;border:none;cursor:pointer;';
+        b.textContent='ลบ';b.onclick=()=>{savedWords.splice(i,1);try{localStorage.setItem('abckhamth_saved',JSON.stringify(savedWords));}catch(e){}openStorage();};
+        div.appendChild(b);c.appendChild(div);
+    });
+    document.getElementById('storageModal').classList.add('open');
+}
+function closeStorage(){document.getElementById('storageModal').classList.remove('open');}
+function saveCurrentWord(){
+    if(currentWord.length===0)return;
+    const wort=currentWord.join('');
+    if(savedWords.includes(wort)){showToast('✅ บันทึกไว้แล้ว!');return;}
+    savedWords.push(wort);try{localStorage.setItem('abckhamth_saved',JSON.stringify(savedWords));}catch(e){}
+    showToast('✅ บันทึกแล้ว!');
+}
+
+// === PRO-SYSTEM ===
+const THIS_APP_ID='th';
+const APP_REGISTRY=[
+    {id:'de', name:'ABC Wort',    flag:'\u{1F1E9}\u{1F1EA}',subtitle:'Deutsch lernen',     file:'index.html',        proCode:null,                  color:'#4a90e2'},
+    {id:'ru', name:'\u0410\u0411\u0412 \u0421\u043b\u043e\u0432\u043e',flag:'\u{1F1F7}\u{1F1FA}',subtitle:'Russisch lernen',    file:'abv_slowo.html',    proCode:'ABVSLOWO-PRO-2025',   color:'#c0392b'},
+    {id:'uk', name:'\u0410\u0411\u0412 \u0421\u043b\u043e\u0432\u043e',flag:'\u{1F1FA}\u{1F1E6}',subtitle:'Ukrainisch lernen',  file:'abc_slovo_uk.html', proCode:'ABCSLOVO-UK-2025',    color:'#005BBB'},
+    {id:'en', name:'ABC Word',    flag:'\u{1F1EC}\u{1F1E7}',subtitle:'Englisch lernen',    file:'abc_word.html',     proCode:'ABCWORD-PRO-2025',    color:'#1a5276'},
+    {id:'el', name:'\u0391\u0392\u0393 \u039B\u03AD\u03BE\u03B7',flag:'\u{1F1EC}\u{1F1F7}',subtitle:'Griechisch lernen',  file:'abg_lexi.html',     proCode:'ABGLEXI-PRO-2025',    color:'#1565c0'},
+    {id:'ar', name:'\u0623\u0628\u062A \u0643\u0644\u0645\u0629',flag:'\u{1F1F8}\u{1F1E6}',subtitle:'Arabisch lernen',    file:'abt_kalima.html',   proCode:'ABTKALIMA-PRO-2025',  color:'#1e8449'},
+    {id:'hi', name:'\u090F\u092C\u0940\u0938\u0940 \u0936\u092C\u094D\u0926',flag:'\u{1F1EE}\u{1F1F3}',subtitle:'Hindi lernen',       file:'abc_shabd.html',    proCode:'ABCSHABD-PRO-2025',   color:'#e65100'},
+    {id:'ur', name:'\u0627\u0628\u062A \u0644\u0641\u0638',flag:'\u{1F1F5}\u{1F1F0}',subtitle:'Urdu lernen',         file:'abc_lafz.html',     proCode:'ABCLAFZ-PRO-2025',    color:'#1a5e2a'},
+    {id:'fa', name:'\u0627\u0644\u0641\u0628\u0627 \u06A9\u0644\u0645\u0647',flag:'\u{1F1E6}\u{1F1EB}',subtitle:'Dari lernen',         file:'abc_kalima.html',   proCode:'ABCKALIMA-PRO-2025',  color:'#1a237e'},
+    {id:'la', name:'ABC Verbum',  flag:'\u{1F3DB}\uFE0F', subtitle:'Latein lernen',       file:'abc_verbum.html',   proCode:'ABCVERBUM-PRO-2025',  color:'#7b1fa2'},
+    {id:'egy',name:'Medu Netjer', flag:'\uD80C\uDDF3',    subtitle:'Hieroglyphen lernen', file:'abc_medu.html',     proCode:'ABCMEDU-PRO-2025',    color:'#b8860b'},
+    {id:'zh', name:'\u6C49\u5B57\u8BCD',flag:'\u{1F1E8}\u{1F1F3}',subtitle:'Mandarin lernen',    file:'abc_hanzi.html',    proCode:'ABCHANZI-PRO-2025',   color:'#c0392b'},
+    {id:'es', name:'ABC Palabra', flag:'\u{1F1EA}\u{1F1F8}',subtitle:'Spanisch lernen',    file:'abc_palabra.html',  proCode:'ABCPALABRA-PRO-2025', color:'#c0392b'},
+    {id:'fr', name:'ABC Parole',  flag:'\u{1F1EB}\u{1F1F7}',subtitle:'Franz\u00f6sisch lernen',file:'abc_parole.html',   proCode:'ABCPAROLE-PRO-2025',  color:'#002395'},
+    {id:'he', name:'\u05D0\u05D1\u05D2 \u05DE\u05D9\u05DC\u05D9\u05DD',flag:'\u{1F1EE}\u{1F1F1}',subtitle:'Hebr\u00e4isch lernen',  file:'abc_milim.html',    proCode:'ABCMILIM-PRO-2025',   color:'#1a5276'},
+    {id:'th', name:'ABC \u0E04\u0E33', flag:'\u{1F1F9}\u{1F1ED}',subtitle:'Thai lernen',         file:'abc_kham_th.html',  proCode:'ABCKHAM-PRO-2025',    color:'#c0392b'},
+];
+const FREIE_RUNDEN=10;
+
+function proIstAktiv(appId){
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    if(!app||!app.proCode)return true;
+    try{return localStorage.getItem('abc_pro_'+appId)==='true';}catch(e){return false;}
+}
+function freiRundenCheck(){
+    if(proIstAktiv(THIS_APP_ID))return true;
+    let r=0;try{r=parseInt(localStorage.getItem('abc_runden_'+THIS_APP_ID)||'0');}catch(e){}
+    if(r<FREIE_RUNDEN){try{localStorage.setItem('abc_runden_'+THIS_APP_ID,r+1);}catch(e){}return true;}
+    proGateAnzeigen(THIS_APP_ID,'Diktat & Grammatik');return false;
+}
+function proGateAnzeigen(appId,feature){
+    const app=APP_REGISTRY.find(a=>a.id===appId);
+    const display=document.getElementById('wordDisplay');if(!display)return;
+    display.classList.remove('empty');
+    display.innerHTML='<div style="text-align:center;padding:1rem;width:100%;">'
+        +'<div style="font-size:2.5rem;margin-bottom:8px;">'+app.flag+'</div>'
+        +'<div style="font-size:1rem;font-weight:bold;color:#2c3e50;margin-bottom:6px;">Pro-Version</div>'
+        +'<div style="font-size:0.85rem;color:#7f8c8d;margin-bottom:4px;">'+feature+' \u00b7 \u0E44\u0E21\u0E48\u0E08\u0E33\u0E01\u0E31\u0E14</div>'
+        +'<div style="font-size:1.1rem;font-weight:bold;color:'+app.color+';margin-bottom:16px;">2,99 \u20ac \u2013 \u0E04\u0E23\u0E31\u0E49\u0E07\u0E40\u0E14\u0E35\u0E22\u0E27</div>'
+        +'<button onclick="proKaufen(\''+appId+'\')" style="background:'+app.color+';padding:10px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-weight:bold;font-size:1rem;margin-bottom:8px;display:block;width:100%;">\u0E0B\u0E37\u0E49\u0E2D Pro \u2615 \u2013 2,99\u20ac</button>'
+        +'<button onclick="proCodeEingeben(\''+appId+'\')" style="background:#27ae60;padding:8px 20px;border-radius:10px;color:white;border:none;cursor:pointer;font-size:0.85rem;width:100%;">\u0E09\u0E31\u0E19\u0E08\u0E48\u0E32\u0E22\u0E41\u0E25\u0E49\u0E27 \u2713</button>'
+        +'</div>';
+}
+function proKaufen(appId){window.open('https://ko-fi.com/nickelfax','_blank');showToast('\u0E2B\u0E25\u0E31\u0E07\u0E08\u0E32\u0E01\u0E0A\u0E33\u0E23\u0E30\u0E40\u0E07\u0E34\u0E19 \u0E23\u0E31\u0E1A\u0E42\u0E04\u0E49\u0E14\u0E17\u0E32\u0E07 Ko-fi!');}
+function proCodeEingeben(appId){
+    const code=prompt('\u0E43\u0E2A\u0E48\u0E42\u0E04\u0E49\u0E14 Pro:');if(!code)return;
+    const app=APP_REGISTRY.find(a=>a.id===appId);if(!app)return;
+    if(code.toUpperCase()===app.proCode){
+        try{localStorage.setItem('abc_pro_'+appId,'true');localStorage.removeItem('abc_runden_'+appId);}catch(e){}
+        showToast('Pro \u0E40\u0E1B\u0E34\u0E14\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E41\u0E25\u0E49\u0E27! \u{1F389}');updateDisplay();
+    }else{showToast('\u0E42\u0E04\u0E49\u0E14\u0E1C\u0E34\u0E14 \u2013 \u0E16\u0E32\u0E21\u0E17\u0E32\u0E07 Ko-fi!');}
+}
+function crossSellBannerEinfuegen(currentAppId){
+    const andere=APP_REGISTRY.filter(a=>a.id!==currentAppId);
+    const container=document.createElement('div');
+    container.id='crossSellBanner';
+    container.style.cssText='width:100%;max-width:700px;margin-top:24px;background:white;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.08);overflow:hidden;';
+    const header=document.createElement('div');
+    header.style.cssText='padding:12px 16px;font-size:0.8rem;font-weight:bold;color:#7f8c8d;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f0f0f0;';
+    header.textContent='\u{1F30D} Auch verf\u00fcgbar';container.appendChild(header);
+    andere.forEach(app=>{
+        const aktiv=proIstAktiv(app.id);
+        const item=document.createElement('div');
+        item.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f8f8f8;cursor:pointer;transition:background 0.15s;';
+        item.onmouseenter=()=>item.style.background='#f8f9fa';
+        item.onmouseleave=()=>item.style.background='white';
+        item.onclick=()=>window.location.href=app.file;
+        item.innerHTML='<div style="display:flex;align-items:center;gap:12px;">'
+            +'<span style="font-size:1.8rem;">'+app.flag+'</span>'
+            +'<div><div style="font-weight:bold;color:#2c3e50;font-size:0.95rem;">'+app.name+'</div>'
+            +'<div style="font-size:0.8rem;color:#7f8c8d;">'+app.subtitle+'</div></div></div>'
+            +'<div style="display:flex;align-items:center;gap:8px;">'
+            +(aktiv?'<span style="background:#eafaf1;color:#27ae60;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">\u2713 Aktiviert</span>'
+                   :'<span style="background:#fff8e1;color:#e67e22;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">\u2728 Entdecken</span>')
+            +'<span style="color:#bdc3c7;font-size:1.2rem;">\u203a</span></div>';
+        container.appendChild(item);
+    });
+    const aktPros=APP_REGISTRY.filter(a=>a.proCode&&proIstAktiv(a.id));
+    if(aktPros.length>=2){
+        const hub=document.createElement('div');
+        hub.style.cssText='padding:12px 16px;background:linear-gradient(135deg,#667eea22,#764ba222);display:flex;align-items:center;justify-content:space-between;';
+        hub.innerHTML='<div><div style="font-weight:bold;color:#2c3e50;font-size:0.9rem;">\u{1F3C6} Pro Plus Hub</div><div style="font-size:0.75rem;color:#7f8c8d;">Alle Sprachen in einer App \u2014 bald verf\u00fcgbar</div></div><span style="background:#e8e8f5;color:#6c5ce7;font-size:0.75rem;font-weight:bold;padding:3px 8px;border-radius:20px;">Bald</span>';
+        container.appendChild(hub);
+    }
+    const kb=document.querySelector('.keyboard-container');
+    if(kb&&kb.parentNode)kb.parentNode.insertBefore(container,kb.nextSibling);
+    else document.body.appendChild(container);
+}
+// === ENDE PRO-SYSTEM ===
+
+function init(){
+    buildKeyboard();updateDisplay();sprachDropdownBauen();crossSellBannerEinfuegen(THIS_APP_ID);
+}
+window.addEventListener('DOMContentLoaded',init);
+
+(function(){
+    if(!window.visualViewport)return;
+    window.visualViewport.addEventListener('resize',function(){
+        if((window.innerHeight-window.visualViewport.height)>100){
+            var d=document.getElementById('wordDisplay');
+            if(d)setTimeout(function(){d.scrollIntoView({behavior:'smooth',block:'start'});},150);
+        }
+    });
+})();
+
+const RUNDEN_LAENGE = 10;
+let rundeAufgabe = 0, rundeRichtig = 0, rundeNummer = 1;
+function fortschrittZeigen(aktiv) { document.getElementById('fortschrittsBereich').style.display = aktiv ? 'block' : 'none'; }
+function fortschrittReset() { rundeAufgabe=0; rundeRichtig=0; document.getElementById('fortschrittsBalken').style.width='0%'; document.getElementById('rundeAufgabe').textContent='0'; document.getElementById('rundeAktuell').textContent=rundeNummer; }
+function fortschrittSchritt(richtig) {
+    rundeAufgabe++; if(richtig) rundeRichtig++;
+    const pct=(rundeAufgabe/RUNDEN_LAENGE)*100;
+    document.getElementById('fortschrittsBalken').style.width=pct+'%';
+    document.getElementById('rundeAufgabe').textContent=rundeAufgabe;
+    const q=rundeRichtig/rundeAufgabe;
+    document.getElementById('fortschrittsBalken').style.background=q>=0.8?'linear-gradient(90deg,#2ecc71,#27ae60)':q>=0.5?'linear-gradient(90deg,#f39c12,#e67e22)':'linear-gradient(90deg,#e74c3c,#c0392b)';
+    if(rundeAufgabe>=RUNDEN_LAENGE) setTimeout(rundenAuswertung,400);
+}
+function rundenAuswertung() {
+    const d=document.getElementById('wordDisplay'); d.classList.remove('empty');
+    const e=rundeRichtig>=9?'🏆':rundeRichtig>=7?'🎉':rundeRichtig>=5?'👍':'💪';
+    const f=rundeRichtig>=7?'#27ae60':rundeRichtig>=5?'#f39c12':'#e74c3c';
+    d.innerHTML=`<div style="text-align:center;padding:1rem;width:100%;"><div style="font-size:3rem;margin-bottom:8px;">${e}</div><div style="font-size:1.4rem;font-weight:bold;color:${f};margin-bottom:6px;">${rundeRichtig}/10</div><button onclick="neueRunde()" style="background:var(--primary);color:white;border:none;border-radius:12px;padding:12px 28px;font-size:1.1rem;font-weight:bold;cursor:pointer;">▶</button></div>`;
+    rundeNummer++;
+}
+function neueRunde() { fortschrittReset(); if(diktatAktiv) diktatNeuesWort(); else if(grammatikAktiv) grammatikNeueAufgabe(); }
+</script>
+
+<div style="text-align:center; margin-top:20px; font-size:0.8rem; color:#bdc3c7;">
+    <a href="impressum.html" style="color:#bdc3c7;">Impressum</a> &middot;
+    <a href="datenschutz.html" style="color:#bdc3c7;">Datenschutz</a>
+</div>
+</body>
+</html>
