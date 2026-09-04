@@ -4588,7 +4588,7 @@ function neueRunde() {
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('sw_de.js', { scope: '/ABC-Wort/app/' })
+            navigator.serviceWorker.register('../sw_de.js', { scope: '/ABC-Wort/app/' })
                 .then(() => console.log('Service Worker aktiv ✓'))
                 .catch(err => console.log('SW Fehler:', err));
         });
