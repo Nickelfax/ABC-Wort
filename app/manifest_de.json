@@ -1,0 +1,33 @@
+{
+  "name": "ABC-Wort Deutsch",
+  "short_name": "ABC Deutsch",
+  "description": "Deutsch lernen: Buchstaben, Wörter, Diktat und Grammatik – für Integrationskurse",
+  "start_url": "/ABC-Wort/app/",
+  "scope": "/ABC-Wort/app/",
+  "display": "standalone",
+  "background_color": "#e8eef5",
+  "theme_color": "#4a90d9",
+  "lang": "de",
+  "orientation": "portrait",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "../icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
