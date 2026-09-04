@@ -2,7 +2,7 @@
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target": {
         "namespace": "android_app",
-        "package_name": "io.github.nickelfax.twa",
-        "sha256_cert_fingerprints": ["DB:B1:A0:A4:31:B4:5E:0C:95:11:E4:65:F0:AB:DE:72:B7:D9:B9:06:BD:FE:8F:8A:F0:94:54:63:16:B3:52:23"]
+        "package_name": "de.abcwort.twa",
+        "sha256_cert_fingerprints": ["8A:D3:63:69:9A:79:9B:EF:78:C3:2C:B5:75:B2:1C:65:3D:AD:E6:C5:75:6E:49:8E:2E:50:6F:E1:2F:6F:19:EB"]
       }
     }]
